@@ -15,8 +15,6 @@ html {
 
 .blur {
   background: rgba(0, 0, 0, 0.411);
-  -webkit-backdrop-filter: blur(35px);
-          backdrop-filter: blur(35px);
   height: 100vh;
   width: 100%;
 }
@@ -40,7 +38,7 @@ html {
 
 .upper {
   width: 100%;
-  height: 15%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,28 +49,26 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
 .maininfo {
-  width: 23%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 4.5vh;
   color: #fff;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+.maininfo div, span {
+  padding-right: 1vw;
 }
 
 .hr hr {
@@ -87,6 +83,8 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
   color: white;
 }
 
@@ -94,7 +92,6 @@ html {
   font-size: 1.25vh;
   color: #a0a0a0;
   font-family: 'Oswald', sans-serif;
-  height: 2.1vh;
 }
 
 .rub {
@@ -103,21 +100,8 @@ html {
   font-weight: bold;
 }
 
-.buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 75%;
+.buttons span {
+  padding: 0;
 }
 
 .btns1 {
@@ -128,10 +112,9 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 33%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.8vh;
 }
@@ -154,17 +137,15 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 8vw;
-  height: 5.5vh;
+  padding: 1.5vh 2vw;
+  margin-right: 1vw;
   border: 2px solid #919191d8;
   border-radius: 35px;
 }
 
-.btn2 {
-  width: 13vw;
-}
-
 .warning {
+  -ms-flex-preferred-size: 18.2%;
+      flex-basis: 18.2%;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -181,11 +162,16 @@ html {
           align-items: center;
   border: 2px solid gray;
   border-radius: 10px;
-  width: 21vw;
-  height: 7vh;
+  padding: 1.5vh 2.2vw;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 2.5vh;
+  font-size: 2.2vh;
   font-weight: 500;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.warning span {
+  padding: 0;
 }
 
 .warning:hover {
@@ -252,7 +238,7 @@ html {
 
 .stack {
   width: 38%;
-  height: 100%;
+  height: 101.5%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -292,6 +278,8 @@ html {
   border-color: #944301;
   -webkit-box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
           box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
 }
 
 .ticket:hover {
@@ -306,6 +294,8 @@ html {
   border-color: #430396;
   -webkit-box-shadow: 0 0 5px #430396, inset 0 0 5px #430396;
           box-shadow: 0 0 5px #430396, inset 0 0 5px #430396;
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
 }
 
 .shop:hover {
@@ -442,13 +432,15 @@ html {
   position: relative;
   height: 30vh;
   width: 30vw;
+  bottom: 2vh;
+  right: 0vw;
 }
 
 .iconcar img {
   -webkit-filter: drop-shadow(12px 12px 10px #00000080);
           filter: drop-shadow(12px 12px 10px #00000080);
-  width: auto;
-  height: 100%;
+  width: calc( 20vw + 15vh);
+  height: auto;
 }
 
 .textticket {
@@ -512,7 +504,8 @@ html {
 }
 
 .iconticket img {
-  width: 10.5vw;
+  width: calc( 7.5vw + 5.3vh);
+  height: auto;
 }
 
 .textshop {
