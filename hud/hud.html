@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/hud.css" />
+    <link rel="stylesheet" href="./Notify/css/noty.css" />
+    <link rel="stylesheet" href="./Notify/css/theme.css" />
+    <link rel="stylesheet" href="./Notify/fonts/notify.css">
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Overpass&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" type="text/css" href="./css/animate.css">
+</head>
+
+<body id="fade" onload="load()">
+    <section id="body">
+        <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
+            leave-active-class="animated zoomOutUp">
+            <section v-if="showWUP">
+                <div class="warmInfo">
+                    <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse']">
+                        {{textWUP}}
+                    </h1>
+                </div>
+            </section>
+        </transition>
+        <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft"
+            leave-active-class="animated bounceOutRight">
+            <section v-if='showHUD'>
+                <div class="hud">
+
+                    <div class="playersInfo" v-show="!obs.show">
+                        <div class="alive">
+                            <div class="numberAlive" id="alive"
+                                :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
+                            <div class="textAlive" id="alive">УБИЙСТВ</div>
+                        </div>
+                        <div class="alive">
+                            <div class="numberAlive" id="alive">{{alivePlayers}}</div>
+                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ВРАГ" : "ВРАГОВ"}}</div>
+                        </div>
+                        <div class="alive">
+                            <div class="numberAlive" id="alive">
+                                <p>{{ammo[0]}}</p>
+                                <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
+                            </div>
+                            <div class="textAlive" id="alive"><img src="./img/bullets.png" alt=""></div>
+                        </div>
+                    </div>
+                    <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
+                        leave-active-class="animated bounceOut">
+                        <div class="playersInfo" v-show="!obs.show && time > 0" id="column2">
+                            <div class="alive">
+                                <div class="numberTime">{{fTimeDisplay()}}</div>
+                                <div class="textTime"><img src="./img/circle.png" alt=""></div>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <!-- OBSERVER -->
+                    <transition name="custom-classes-transition3" enter-active-class="animated tada"
+                        leave-active-class="animated hinge">
+                        <section v-show="obs.show && !killsBarShow">
+                            <div class="playersInfo">
+                                <div class="alive">
+                                    <div class="numberAlive" id="alive">{{alivePlayers}}</div>
+                                    <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ИГРОК" : "ИГРОКОВ"}}</div>
+                                </div>
+                            </div>
+                            <div class="helpObServer animated bounce delay-5s slower">
+                                <div class="subHelpOBS">
+                                    <div>
+                                        <p class="key">ESC</p>
+                                        <p class="textHelp">выход</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="observer" v-show="obs.nick.length != 0">
+                                <h1 class="animated infinite pulse slow">{{obs.nick}}</h1>
+                            </div>
+                        </section>
+                    </transition>
+
+                    <!-- KILL FEED -->
+                    <transition name="custom-classes-transition3" enter-active-class="animated tada"
+                        leave-active-class="animated hinge">
+                        <div id="killfeed">
+                            <template v-for="kill in killFeed">
+                                <div class="killfeed">
+                                    <div class="killelement">{{kill}}</div>
+                                </div>
+                            </template>
+                        </div>
+                    </transition>
+
+                    <transition name="custom-classes-transition4" enter-active-class="animated rotateInUpLeft fast"
+                        leave-active-class="animated rotateOutDownRight fast">
+                        <div class="help animated bounce delay-2s slower" v-show="helpJetPack">
+                            <div class="subHelp">
+                                <div>
+                                    <p class="key">
+                                        <img src="./img/keyboard.png" alt="">
+                                        <img src="./img/plus.png" alt="" id="plus">
+                                        <img src="./img/computer-mouse.png" alt="" id="pcMouse">
+                                    </p>
+                                    <p class="textHelp">управление</p>
+                                </div>
+                            </div>
+                            <div class="subHelp">
+                                <div>
+                                    <p class="key">
+                                        <img src="./img/keyboard.png" alt="">
+                                        <img src="./img/plus.png" alt="" id="plus">
+                                        <img src="./img/numKeyBoard.png" alt="">
+                                    </p>
+                                    <p class="textHelp">управление</p>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                <transition name="custom-classes-transition2" enter-active-class="animated tada"
+                    leave-active-class="animated bounceOutRight">
+                    <div class="killInfo" v-show="killsBarShow">
+                        <h1 id="killInfo" class="killText">Вы убили {{killsBar[0]}} с расстояния в {{killsBar[1]}}
+                            метров
+                        </h1>
+                        <h1 id="kills" class="killText">{{kills}} УБИЙСТВ</h1>
+                    </div>
+                </transition>
+            </section>
+        </transition>
+        <section>
+            <transition name="custom-classes-transition3" enter-active-class="animated tada slow"
+                leave-active-class="animated rollOut fast">
+                <div class="logoLoad" v-if='showLogo'>
+                    <img src="./img/kinghud.png" alt="" class="animated infinite wobble slower" id="logo">
+                </div>
+            </transition>
+        </section>
+    </section>
+</body>
+
+</html>
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!--<script src="../Chat/chat.js"></script>-->
+<!--<script src="../vue.js"></script>-->
+<script src="./Notify/js/notify.js"></script>
+<script src="./Notify/js/noty.min.js"></script>
+<script src="../vue.js"></script>
+<script src="js/hud.js"></script>
+
+<script>
+    if (!('alt' in window)) document.getElementById('fade').style.opacity = 1;
+
+    function load() {
+        setTimeout(() => {
+            document.getElementById('fade').style.opacity = 1;
+        }, 1000);
+    }
+</script>
+<!-- JS -->
