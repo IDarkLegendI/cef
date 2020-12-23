@@ -105,7 +105,12 @@ if ('alt' in window) {
 
     alt.on('toggleHud', (toggle, players = 0) => {
         hud.showHUD = toggle;
+
         hud.kills = 0;
+        hud.killsBar = false;
+        hud.killsBarShow = false;
+        if(this.killsHandle != null) clearTimeout(this.killsHandle);
+        
         hud.startPlayers = players; 
         hud.killFeed = [];
         if(hud.killFeedInterval != null) clearInterval(hud.killFeedInterval);
