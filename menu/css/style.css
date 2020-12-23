@@ -409,7 +409,7 @@ html {
   position: relative;
   font-size: 2.7vh;
   letter-spacing: -1px;
-  left: 3%;
+  margin-left: 3%;
   bottom: 0.5vh;
   color: #000000;
   background-color: #fff;
@@ -429,17 +429,16 @@ html {
 }
 
 .iconcar {
-  position: relative;
   height: 30vh;
   width: 30vw;
-  bottom: 2vh;
-  right: 0vw;
+  margin-top: 3%;
+  margin-left: 5%;
 }
 
 .iconcar img {
   -webkit-filter: drop-shadow(12px 12px 10px #00000080);
           filter: drop-shadow(12px 12px 10px #00000080);
-  width: calc( 20vw + 15vh);
+  width: calc( 22vw + 17vh);
   height: auto;
 }
 
@@ -548,7 +547,8 @@ html {
 }
 
 .iconshop img {
-  width: 13vw;
+  width: calc( 9.5vw + 6.3vh);
+  height: auto;
 }
 
 .textnoob {
