@@ -1,30 +1,17 @@
 body {
   padding: 0;
   margin: 0;
-<<<<<<< HEAD
   background-image: url(../img/fon.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: black;
-=======
-  background-image: url(../img/fon.jpg);
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
->>>>>>> parent of e791d41... -
+  height: 100vh;
   width: 100%;
   cursor: default;
 }
 
 html {
   overflow: hidden;
-}
-
-.blur {
-  background: rgba(0, 0, 0, 0.411);
-  height: 100vh;
-  width: 100%;
 }
 
 .main {
@@ -349,6 +336,14 @@ html {
 .backpack {
   width: 40%;
   border-color: #5aa800;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
   -webkit-box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
           box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
 }
@@ -357,6 +352,36 @@ html {
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
   background-color: #5aa800;
+}
+
+.bptext {
+  margin-top: 2.5vh;
+  margin-left: 2vw;
+  font-family: 'Rubik', sans-serif;
+}
+
+.bpname {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3.5vh;
+}
+
+.bpicons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 7vh;
+}
+
+.bpicons img {
+  width: calc( 4vw + 2vh);
+  height: auto;
 }
 
 .virt {
