@@ -136,6 +136,8 @@ html {
   margin-right: 1vw;
   border: 2px solid #919191d8;
   border-radius: 35px;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
 }
 
 .warning {
@@ -251,12 +253,12 @@ html {
   border: 3px solid #ffc400;
   -webkit-box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
           box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
 }
 
 .form:hover {
   background-color: #ffc400;
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
 }
 
 .form:hover span {
@@ -270,17 +272,15 @@ html {
 .ticket {
   width: 100%;
   height: 46%;
-  border-color: #944301;
-  -webkit-box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
-          box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
+  border-color: #5aa800;
+  -webkit-box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
+          box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
 }
 
 .ticket:hover {
-  background-color: #944301;
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
+  background-color: #5aa800;
 }
 
 .shop {
@@ -289,13 +289,11 @@ html {
   border-color: #430396;
   -webkit-box-shadow: 0 0 5px #430396, inset 0 0 5px #430396;
           box-shadow: 0 0 5px #430396, inset 0 0 5px #430396;
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .shop:hover {
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
   background-color: #430396;
 }
 
@@ -325,17 +323,17 @@ html {
   border-color: #c48f00;
   -webkit-box-shadow: 0 0 10px #c48f00, inset 0 0 10px #c48f00;
           box-shadow: 0 0 10px #c48f00, inset 0 0 10px #c48f00;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .noob:hover {
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
   background-color: #c48f00;
 }
 
 .backpack {
-  width: 40%;
-  border-color: #5aa800;
+  width: 35%;
+  border-color: #944301;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -344,14 +342,14 @@ html {
       -ms-flex-direction: column;
           flex-direction: column;
   color: white;
-  -webkit-box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
-          box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
+  -webkit-box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
+          box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .backpack:hover {
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
-  background-color: #5aa800;
+  background-color: #944301;
 }
 
 .bptext {
@@ -365,6 +363,39 @@ html {
   font-size: 3.5vh;
 }
 
+.bpstats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 2.3vh;
+  margin-left: 2vw;
+  margin-top: 5vh;
+}
+
+.bpscore {
+  font-size: 2.1vh;
+  font-family: 'Rubik', sans-serif;
+}
+
+.kd, .matchs {
+  margin-top: 0.5vh;
+}
+
+.bpmaininfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .bpicons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -373,27 +404,25 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-top: 7vh;
+  margin-top: 3vh;
+  margin-left: 6.5vw;
 }
 
 .bpicons img {
-  width: calc( 4vw + 2vh);
+  width: calc( 5vw + 3vh);
   height: auto;
 }
 
 .virt {
-  width: 16%;
+  width: 21%;
   border-color: #046e8f;
   -webkit-box-shadow: 0 0 5px #01b4eb, inset 0 0 5px #01b4eb;
           box-shadow: 0 0 5px #01b4eb, inset 0 0 5px #01b4eb;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .virt:hover {
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
   background-color: #046e8f;
 }
 
@@ -404,11 +433,11 @@ html {
   border-radius: 5px;
   -webkit-box-shadow: 0 0 10px #6e003c, inset 0 0 10px #6e003c;
           box-shadow: 0 0 10px #6e003c, inset 0 0 10px #6e003c;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .right:hover {
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
   background-color: #6e003c;
 }
 
@@ -462,8 +491,7 @@ html {
 }
 
 .iconcar {
-  height: 30vh;
-  width: 30vw;
+  width: 28vw;
   margin-top: 3%;
   margin-left: 5%;
 }
@@ -639,20 +667,23 @@ html {
 .iconnoob img {
   -webkit-filter: drop-shadow(12px 12px 10px #00000080);
           filter: drop-shadow(12px 12px 10px #00000080);
-  width: 23vh;
+  width: calc( 9vw + 6vh);
+  height: auto;
 }
 
-.mainright {
-  width: 15vw;
-  height: 65vh;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+.right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .headright {
+  margin-top: 3vh;
+  margin-left: 2vw;
   font-size: 3.7vh;
   color: white;
 }
@@ -661,24 +692,27 @@ html {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.headright2 {
-  font-family: 'Rubik', sans-serif;
-  letter-spacing: -0.2vh;
-}
-
 .textright {
   font-size: 1.6vh;
   color: white;
   font-family: 'Rubik', sans-serif;
+  margin-left: 2vw;
+  margin-top: 1vh;
 }
 
 .textright .textright1 {
   line-height: 5vh;
   border: 2px solid #747474;
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
-  padding-left: 2vh;
-  padding-right: 2vh;
+  padding: 0.5vh 2vh;
   border-radius: 100px;
+}
+
+.righticon {
+  margin-left: 2.2vw;
+}
+
+.righticon img {
+  width: calc( 16vw + 12.5vh);
+  height: auto;
 }
 /*# sourceMappingURL=style.css.map */
