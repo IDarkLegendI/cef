@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-image: url(../img/fon.jpg);
+  background-image: url(../img/fon.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -318,6 +318,10 @@ html {
   border-radius: 5px;
 }
 
+.form1:hover {
+  color: black;
+}
+
 .noob {
   width: 35%;
   border-color: #c48f00;
@@ -405,11 +409,11 @@ html {
       -ms-flex-direction: row;
           flex-direction: row;
   margin-top: 3vh;
-  margin-left: 6.5vw;
+  margin-left: 1.5vw;
 }
 
 .bpicons img {
-  width: calc( 5vw + 3vh);
+  width: calc( 12vw + 9vh);
   height: auto;
 }
 
@@ -439,6 +443,10 @@ html {
 
 .right:hover {
   background-color: #6e003c;
+}
+
+.right:hover span {
+  color: black;
 }
 
 .textcar {
@@ -686,6 +694,9 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .headright {
