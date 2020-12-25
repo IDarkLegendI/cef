@@ -100,6 +100,7 @@ html
     margin-right: 1vw
     border: 2px solid #919191d8
     border-radius: 35px
+    transition: 0.2s ease-out
 
 .warning
     flex-basis: 18.2%
@@ -169,10 +170,10 @@ html
     border-radius: 5px
     border: 3px solid #ffc400
     box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
+    transition: .3s ease-out
 
 .form:hover
     background-color: #ffc400
-    transition: .3s ease-out
     span
         color: black
     div
@@ -181,23 +182,21 @@ html
 .ticket
     width: 100%
     height: 46%
-    border-color: #944301
-    box-shadow: 0 0 10px #944301, inset 0 0 10px #944301
+    border-color: #5aa800
+    box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800
     transition: .3s ease-out
 
 .ticket:hover
-    background-color: #944301
-    transition: .3s ease-out
+    background-color: #5aa800
 
 .shop
     width: 100%
     height: 46%
     border-color: #430396
     box-shadow: 0 0 5px #430396, inset 0 0 5px #430396
-    transition: .3s ease-out
+    transition: .2s ease-out
 
 .shop:hover
-    transition: .3s ease-out
     background-color: #430396
 
 .downleft
@@ -217,22 +216,22 @@ html
     width: 35%
     border-color: #c48f00
     box-shadow: 0 0 10px #c48f00, inset 0 0 10px #c48f00
+    transition: .2s ease-out
 
 .noob:hover
-    transition: .3s ease-out
     background-color: #c48f00
 
 .backpack
-    width: 40%
-    border-color: #5aa800
+    width: 35%
+    border-color: #944301
     display: flex
     flex-direction: column
     color: white
-    box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800
+    box-shadow: 0 0 10px #944301, inset 0 0 10px #944301
+    transition: .2s ease-out
 
 .backpack:hover
-    transition: .3s ease-out
-    background-color: #5aa800
+    background-color: #944301
 
 .bptext
     margin-top: 2.5vh
@@ -244,23 +243,44 @@ html
     font-family: 'Roboto Condensed', sans-serif
     font-size: 3.5vh
 
+.bpstats
+    display: flex
+    flex-direction: column
+    font-family: 'Roboto Condensed', sans-serif
+    font-size: 2.3vh 
+    margin-left: 2vw
+    margin-top: 5vh
+    // align-items: center
+
+.bpscore
+    font-size: 2.1vh 
+    font-family: 'Rubik', sans-serif
+
+.kd, .matchs
+    margin-top: 0.5vh
+
+.bpmaininfo
+    display: flex
+    flex-direction: row
+
 .bpicons
     display: flex
     flex-direction: row
-    justify-content: space-between
+    // justify-content: flex-end
     // border: 1px solid black
-    margin-top: 7vh
+    margin-top: 3vh
+    margin-left: 6.5vw
     img
-        width: calc( 4vw + 2vh )
+        width: calc( 5vw + 3vh )
         height: auto
 
 .virt
-    width: 16%
+    width: 21%
     border-color: #046e8f
     box-shadow: 0 0 5px #01b4eb, inset 0 0 5px #01b4eb
+    transition: .2s ease-out
 
 .virt:hover
-    transition: .3s ease-out
     background-color: #046e8f
 
 .right
@@ -269,9 +289,9 @@ html
     border: 3px solid #6e003c
     border-radius: 5px
     box-shadow: 0 0 10px #6e003c, inset 0 0 10px #6e003c
+    transition: .2s ease-out
 
 .right:hover
-    transition: .3s ease-out
     background-color: #6e003c
 
 .textcar
@@ -323,8 +343,8 @@ html
 
 .iconcar
     // position: relative
-    height: 30vh
-    width: 30vw
+    // height: 30vh
+    width: 28vw
     margin-top: 3%
     margin-left: 5%
     // border: 3px solid black
@@ -460,37 +480,37 @@ html
     // border: 3px solid black
     img
         filter: drop-shadow(12px 12px 10px #00000080)
-        width: 23vh
+        width: calc( 9vw + 6vh )
+        height: auto
 
-.mainright
+.right
     // border: 1px solid black
-    width: 15vw
-    height: 65vh
-    position: relative
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+    display: flex
+    flex-direction: column
 
 .headright
+    margin-top: 3vh
+    margin-left: 2vw
     font-size: 3.7vh
     color: white
 
 .headright1
     font-family: 'Roboto Condensed', sans-serif
 
-.headright2
-    font-family: 'Rubik', sans-serif
-    letter-spacing: -0.2vh
-
 .textright
     font-size: 1.6vh
     color: white
     font-family: 'Rubik', sans-serif
+    margin-left: 2vw
+    margin-top: 1vh
     .textright1
         line-height: 5vh
         border: 2px solid #747474
-        padding-top: 0.5vh
-        padding-bottom: 0.5vh
-        padding-left: 2vh
-        padding-right: 2vh
+        padding: 0.5vh 2vh
         border-radius: 100px
+
+.righticon
+    margin-left: 2.2vw
+    img
+        width: calc( 16vw + 12.5vh )
+        height: auto
