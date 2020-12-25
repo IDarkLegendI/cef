@@ -337,7 +337,7 @@ html {
 
 .backpack {
   width: 35%;
-  border-color: #944301;
+  border-color: #b40803;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -346,14 +346,14 @@ html {
       -ms-flex-direction: column;
           flex-direction: column;
   color: white;
-  -webkit-box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
-          box-shadow: 0 0 10px #944301, inset 0 0 10px #944301;
+  -webkit-box-shadow: 0 0 10px #b40803, inset 0 0 10px #b40803;
+          box-shadow: 0 0 10px #b40803, inset 0 0 10px #b40803;
   -webkit-transition: .2s ease-out;
   transition: .2s ease-out;
 }
 
 .backpack:hover {
-  background-color: #944301;
+  background-color: #ca0903;
 }
 
 .bptext {
