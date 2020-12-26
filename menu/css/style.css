@@ -753,13 +753,16 @@ html {
   width: 8px;
   height: 8px;
   background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 #aura {
   width: 46px;
   height: 46px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(138, 138, 138, 0.4);
   background-color: rgba(255, 255, 255, 0.4);
+  -webkit-filter: drop-shadow(0 0 10px #00000080);
+          filter: drop-shadow(0 0 10px #00000080);
   -webkit-transform: translate(5px, 5px);
           transform: translate(5px, 5px);
 }
