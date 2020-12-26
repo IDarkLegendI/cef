@@ -10,7 +10,7 @@
     <body>
         <script>
             let STREAM_RANGE = 200;
-            const OBJECTS = {};
+            let OBJECTS = {};
             let LAST_POS = null;
 
             const updatePlayerPos = (x, y, z) => {
@@ -30,7 +30,7 @@
                         alt.emit("removeObject", name);
                     }
                 }
-                // console.log(`OBJECTS.length: ${iLength}`)
+                // console.log(`OBJECTS: ${JSON.stringify(OBJECTS)}`)
                 if(iLength > 70)
                 {
                     STREAM_RANGE = 10;
@@ -61,6 +61,12 @@
                 if(LAST_POS) updatePlayerPos(LAST_POS.x, LAST_POS.y, LAST_POS.z);
             }
             const removeObject = (name) => (delete OBJECTS[name]);
+            const removeAllObjects = () => {
+                for(const name in OBJECTS) {
+                    alt.emit("removeObject", name);
+                }
+                OBJECTS = {};
+            };
 
             const distance = (pointA, pointB) => {
                 let dx = pointB.x - pointA.x;
@@ -74,6 +80,7 @@
                 alt.on("updatePlayerPos", updatePlayerPos);
                 alt.on("addObject", addObject);
                 alt.on("removeObject", removeObject);
+                alt.on("removeAllObjects", removeAllObjects);
             }
         </script>
     </body>
