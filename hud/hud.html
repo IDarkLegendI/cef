@@ -21,7 +21,7 @@
             leave-active-class="animated zoomOutUp">
             <section v-if="showWUP">
                 <div class="warmInfo">
-                    <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse']">
+                    <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse slower']">
                         {{textWUP}}
                     </h1>
                 </div>
@@ -31,8 +31,7 @@
             leave-active-class="animated bounceOutRight">
             <section v-if='showHUD'>
                 <div class="hud">
-
-                    <div class="playersInfo" v-show="!obs.show">
+                    <div class="playersInfo" v-show="!obs.show && !showWUP">
                         <div class="alive">
                             <div class="numberAlive" id="alive"
                                 :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
@@ -52,7 +51,7 @@
                     </div>
                     <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
                         leave-active-class="animated bounceOut">
-                        <div class="playersInfo" v-show="!obs.show && time > 0" id="column2">
+                        <div class="playersInfo" v-show="!obs.show && time > 0 && !showWUP" id="column2">
                             <div class="alive">
                                 <div class="numberTime">{{fTimeDisplay()}}</div>
                                 <div class="textTime"><img src="./img/circle.png" alt=""></div>
@@ -87,7 +86,7 @@
                     <!-- KILL FEED -->
                     <transition name="custom-classes-transition3" enter-active-class="animated tada"
                         leave-active-class="animated hinge">
-                        <div id="killfeed">
+                        <div id="killfeed" v-show="!showWUP">
                             <template v-for="kill in killFeed">
                                 <div class="killfeed">
                                     <div class="killelement">{{kill}}</div>

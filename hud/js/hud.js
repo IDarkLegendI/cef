@@ -141,6 +141,8 @@ else
     hud.helpJetPack = true;
     // hud.showLogo = true;
     hud.fUpdateKills("OBLIKO", 100)
+    setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
+    setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
