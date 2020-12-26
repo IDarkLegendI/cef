@@ -13,143 +13,165 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="fade" onload="load()">
+    <section id="body">
 
-    <div id="cursor"></div>
-    <div id="aura"></div>
+        <div id="cursor"></div>
+        <div id="aura"></div>
 
-    <div class="main">
-        <div class="upper">
-            <div class="maininfo">
-                <div id="mouseFocus">
-                    ROYAL
-                </div>
-                <div class="hr">
-                    <hr>
-                </div>
-                <div class="money">
-                    <div class="balance">
-                        <span>БАЛАНС</span>
-                    </div>
-                    <div class="rub">
-                        <span>1 443 РУБ.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="buttons">
-                <div class="btns1">
-                    <div class="btn" id="mouseFocus">
-                        <span>ПОПОЛНИТЬ</span>
-                    </div>
-                    <div class="btn">
-                        <span>ПРОВЕРИТЬ ПОПОЛНЕНИЕ</span>
-                    </div>
-                </div>
-            </div>
-            <div class="warning">
-                <span><span class="warning1">СНЯТЬ</span> ПРЕДУПРЕЖДЕНИЕ</span>
-            </div>
-        </div>
-        <div class="down">
-            <div class="left">
-                <div class="upleft">
-                    <div class="car form">
-                        <div class="textcar" id="mouseFocus">
-                            <span class="textcar1">ЛИЧНЫЙ <br> <span class="textcar2">ТРАНСПОРТ</span></span>
-                            <span class="textcar3">УПРАВЛЕНИЕ </span>
-                            <span align="right" class="textcar4">Управляйте личным автомобилем</span>
+        <!-- ГЛАВНАЯ -->
+        <section v-show="page === 0">
+            <div class="main">
+                <div class="upper">
+                    <div class="maininfo">
+                        <div id="mouseFocus">
+                            ROYAL
                         </div>
-                        <div class="iconcar">
-                            <img src="./img/car.png" alt="">
+                        <div class="hr">
+                            <hr>
+                        </div>
+                        <div class="money">
+                            <div class="balance">
+                                <span>БАЛАНС</span>
+                            </div>
+                            <div class="rub">
+                                <span>1 443 РУБ.</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="stack">
-                        <div class="ticket form">
-                            <div class="textticket">
-                                <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
-                                <div class="textticket3">Статус: <span class="textticket4">В поиске</span></div>
-                                <div class="textticket5">Игроков в ожидании: <span class="textticket6">1</span>
+                    <div class="buttons">
+                        <div class="btns1">
+                            <div class="btn" id="mouseFocus">
+                                <span>ПОПОЛНИТЬ</span>
+                            </div>
+                            <div class="btn">
+                                <span>ПРОВЕРИТЬ ПОПОЛНЕНИЕ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warning">
+                        <span><span class="warning1">СНЯТЬ</span> ПРЕДУПРЕЖДЕНИЕ</span>
+                    </div>
+                </div>
+                <div class="down">
+                    <div class="left">
+                        <div class="upleft">
+                            <div class="car form">
+                                <div class="textcar" id="mouseFocus">
+                                    <span class="textcar1">ЛИЧНЫЙ <br> <span class="textcar2">ТРАНСПОРТ</span></span>
+                                    <span class="textcar3">УПРАВЛЕНИЕ </span>
+                                    <span align="right" class="textcar4">Управляйте личным автомобилем</span>
                                 </div>
-                                <!-- <span сlass="textticket5">Примерное</span> -->
-                            </div>
-                            <div class="iconticket">
-                                <img src="./img/jostik.png" alt="">
-                            </div>
-                        </div>
-                        <div class="shop form">
-                            <div class="textshop">
-                                <div class="textshop1">НАСТРОЙКИ</div>
-                            </div>
-                            <div class="iconshop">
-                                <img src="./img/shop.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="downleft">
-                    <div class="noob form1">
-                        <div class="textnoob">
-                            <span class="textnoob1">ПАК <br> <span class="textnoob2">НОВИЧКА</span> <br> <span
-                                    class="textnoob3">Осталось <span class="textnoob4">13 ЧАСОВ</span></span></span>
-                        </div>
-                        <div class="noobbtn">
-                            <span><span class="minibtn">ЛИЦЕНЗИИ</span> <br> <span class="minibtn">ДЕНЬГИ</span>
-                                <span class="minibtn">ОДЕЖДА</span></span>
-                        </div>
-                        <div class="iconnoob">
-                            <img src="./img/noob.png" alt="">
-                        </div>
-                    </div>
-                    <div class="backpack form1">
-                        <div class="bptext">
-                            <div class="bpname">
-                                <span>РАНГ</span>
-                            </div>
-                            <div class="bpname2">
-                                <span>За предыдущий матч: +25</span>
-                            </div>
-                        </div>
-                        <div class="bpmaininfo">
-                            <div class="bpstats">
-                                <div class="elo">
-                                    <span>ОЧКИ:</span><span class="bpscore">1958</span>
-                                </div>
-                                <div class="matchs">
-                                    <span>МАТЧИ:</span><span class="bpscore">201</span>
-                                </div>
-                                <div class="kd">
-                                    <span>K/D:</span><span class="bpscore"> 1.4</span>
+                                <div class="iconcar">
+                                    <img src="./img/car.png" alt="">
                                 </div>
                             </div>
-                            <div class="bpicons">
-                                <div class="bpicon1">
-                                    <img src="img/levels/10.png" alt="">
+                            <div class="stack">
+                                <div class="ticket form">
+                                    <div class="textticket">
+                                        <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
+                                        <div class="textticket3">Статус: <span class="textticket4">В поиске</span></div>
+                                        <div class="textticket5">Игроков в ожидании: <span class="textticket6">1</span>
+                                        </div>
+                                        <!-- <span сlass="textticket5">Примерное</span> -->
+                                    </div>
+                                    <div class="iconticket">
+                                        <img src="./img/jostik.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="shop form">
+                                    <div class="textshop">
+                                        <div class="textshop1">НАСТРОЙКИ</div>
+                                    </div>
+                                    <div class="iconshop">
+                                        <img src="./img/shop.png" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="virt form1">
+                        <div class="downleft">
+                            <div class="noob form1">
+                                <div class="textnoob">
+                                    <span class="textnoob1">ПАК <br> <span class="textnoob2">НОВИЧКА</span> <br> <span
+                                            class="textnoob3">Осталось <span class="textnoob4">13
+                                                ЧАСОВ</span></span></span>
+                                </div>
+                                <div class="noobbtn">
+                                    <span><span class="minibtn">ЛИЦЕНЗИИ</span> <br> <span class="minibtn">ДЕНЬГИ</span>
+                                        <span class="minibtn">ОДЕЖДА</span></span>
+                                </div>
+                                <div class="iconnoob">
+                                    <img src="./img/noob.png" alt="">
+                                </div>
+                            </div>
+                            <div class="backpack form1">
+                                <div class="bptext">
+                                    <div class="bpname">
+                                        <span>РАНГ</span>
+                                    </div>
+                                    <div class="bpname2">
+                                        <span>За предыдущий матч: +25</span>
+                                    </div>
+                                </div>
+                                <div class="bpmaininfo">
+                                    <div class="bpstats">
+                                        <div class="elo">
+                                            <span>ОЧКИ:</span><span class="bpscore">1958</span>
+                                        </div>
+                                        <div class="matchs">
+                                            <span>МАТЧИ:</span><span class="bpscore">201</span>
+                                        </div>
+                                        <div class="kd">
+                                            <span>K/D:</span><span class="bpscore"> 1.4</span>
+                                        </div>
+                                    </div>
+                                    <div class="bpicons">
+                                        <div class="bpicon1">
+                                            <img src="img/levels/10.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="virt form1">
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="headright">
+                            <span class="headright1">ПЕРСОНАЖ</span>
+                        </div>
+                        <div class="textright">
+                            <span class="minibtn">Кастомизация</span>
+                        </div>
+                        <div class="righticon">
+                            <img src="img/character.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="right">
-                <div class="headright">
-                    <span class="headright1">ПЕРСОНАЖ</span>
-                </div>
-                <div class="textright">
-                    <span class="minibtn">Кастомизация</span>
-                </div>
-                <div class="righticon">
-                    <img src="img/character.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        let enableVR = false;
-    </script>
-    <script src="js/app.min.js"></script>
+        </section>
+
+        <!-- НАСТРОЙКИ -->
+        <section v-if="page === 1">
+            <h1>ТУТ ДОЛЖНЫ БЫТЬ НАСТРОЙКИ</h1>
+            <h1>Карта: большая, маленькая</h1>
+            <h1>Подсказки: выключить\включить</h1>
+            <h1>Бинд клавиши для того, чтобы присесть: CTRL</h1>
+        </section>
+    </section>
+</body>
+<script>
+    function load() {
+        if (!('alt' in window)) return document.getElementById('fade').style.opacity = 1;
+        setTimeout(() => {
+            document.getElementById('fade').style.opacity = 1;
+        }, 1000);
+    }
+</script>
+<script src="../vue.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/app.min.js"></script>
 </body>
 
 </html>
