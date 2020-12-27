@@ -80,8 +80,8 @@
                                         <img src="./img/jostik.png" id="mouseFocus" alt="">
                                     </div>
                                 </div>
-                                <div class="shop form">
-                                    <div class="textshop" id="mouseFocus">
+                                <div class="shop form" id="mouseFocus" v-on:click="page = 1">
+                                    <div class="textshop">
                                         <div class="textshop1">НАСТРОЙКИ</div>
                                     </div>
                                     <div class="iconshop">
@@ -98,7 +98,8 @@
                                                 ЧАСОВ</span></span></span>
                                 </div>
                                 <div class="noobbtn">
-                                    <span><span class="minibtn" id="mouseFocus">ЛИЦЕНЗИИ</span> <br> <span class="minibtn" id="mouseFocus">ДЕНЬГИ</span>
+                                    <span><span class="minibtn" id="mouseFocus">ЛИЦЕНЗИИ</span> <br> <span
+                                            class="minibtn" id="mouseFocus">ДЕНЬГИ</span>
                                         <span class="minibtn" id="mouseFocus">ОДЕЖДА</span></span>
                                 </div>
                                 <div class="iconnoob">
@@ -126,7 +127,7 @@
                                             <div class="kd">
                                                 <span>K/D:</span><span class="bpscore"> 1.4</span>
                                             </div>
-                                        </div>  
+                                        </div>
                                         <div class="bpicons">
                                             <div class="bpicon1">
                                                 <img src="img/levels/10.png" id="mouseFocus" alt="">
@@ -167,6 +168,7 @@
         <section v-if="page === 1">
             <div class="mainsettings">
                 <div class="settingsh1">
+                    <a href="#" v-on:click="page = 0">Назад</a>
                     <h1>НАСТРОЙКИ</h1>
                 </div>
                 <div class="settings">
@@ -180,12 +182,12 @@
                         <label>
                             <input type="radio" class="option-input radio" name="mapc" checked />
                             Маленькая
-                          </label>
-                          <label>
+                        </label>
+                        <label>
                             <input type="radio" class="option-input radio" name="mapc" />
                             Средняя
-                          </label>
-                          <label>
+                        </label>
+                        <label>
                             <input type="radio" class="option-input radio" name="mapc" />
                             Большая
                         </label>
