@@ -173,7 +173,9 @@
 <script src="particles.min.js"></script>
 <script>
     function load() {
-        if ('alt' in window) alt.emit('emitToServer', 'auth:Ready');
+        if ('alt' in window) {
+            alt.emit('emitToServer', 'sAuth:Ready');
+        }
     }
 
     particlesJS("particles-js", {
