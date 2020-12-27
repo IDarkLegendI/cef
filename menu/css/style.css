@@ -865,6 +865,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-shadow: 1px 1px 2px #0000007e;
 }
 
 .settingsh1 {
