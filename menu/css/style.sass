@@ -177,9 +177,11 @@ html
     border: 3px solid #ffc400
     box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
     transition: .3s ease-out
+    text-shadow: 1px 1px 2px black
 
 .form:hover
     background-color: #ffc400
+    text-shadow: none
     span
         color: black
     div
@@ -217,9 +219,11 @@ html
     height: 100%
     border: 3px solid #000000
     border-radius: 5px
+    text-shadow: 1px 1px 2px black
 
 .form1:hover
     color: black
+    text-shadow: none
 
 .noob
     width: 35%
@@ -229,6 +233,8 @@ html
 
 .noob:hover
     background-color: #c48f00
+    span
+        color: black
 
 .backpack
     width: 35%
@@ -254,12 +260,17 @@ html
 
 .bpstats
     display: flex
-    flex-direction: column
+    flex-direction: row
     font-family: 'Roboto Condensed', sans-serif
+    justify-content: space-between
     font-size: 2.3vh
     margin-left: 2vw
     margin-top: 5vh
     // align-items: center
+
+.bpstats1
+    display: flex
+    flex-direction: column
 
 .bpscore
     font-size: 2.1vh
@@ -277,20 +288,44 @@ html
     flex-direction: row
     // justify-content: flex-end
     // border: 1px solid black
-    margin-top: 3vh
+    margin-top: -1.5vh
     margin-left: 1.5vw
     img
         width: calc( 12vw + 9vh )
         height: auto
 
 .virt
-    width: 21%
+    width: 22%
+    display: flex
+    flex-direction: column
+    color: white
     border-color: #046e8f
     box-shadow: 0 0 5px #01b4eb, inset 0 0 5px #01b4eb
     transition: .2s ease-out
 
+.virtname
+    margin-top: 2.5vh
+    margin-left: 2vh
+    font-family: 'Roboto Condensed', sans-serif
+    font-size: 3.5vh
+
+.virttext
+    margin-top: 1vh
+    margin-left: 2vh
+    font-size: 1.4vh
+    font-family: 'Rubik', sans-serif
+
 .virt:hover
     background-color: #046e8f
+
+.virticon
+    margin-top: 3vh
+    margin-left: -1vw
+    img
+        filter: drop-shadow(12px 12px 10px #00000080)
+        width: calc( 7vw + 3vh)
+        height: auto
+        transform: rotate(10deg)
 
 .right
     height: 100%
@@ -302,6 +337,7 @@ html
 
 .right:hover
     background-color: #6e003c
+    text-shadow: none
     span
         // background: white
         color: black
@@ -342,6 +378,7 @@ html
     padding-left: 1%
     padding-right: 1%
     border-radius: 5px
+    text-shadow: none
 
 .textcar4
     font-family: 'Rubik', sans-serif
@@ -431,10 +468,6 @@ html
     font-family: 'Roboto Condensed', sans-serif
     display: block
 
-.textshop2
-    font-family: 'Rubik', sans-serif
-    font-size: 3.5vh
-
 .iconshop
     position: relative
     left: 13.5vw
@@ -506,6 +539,7 @@ html
     display: flex
     flex-direction: column
     justify-content: space-between
+    text-shadow: 1px 1px 2px black
 
 .headright
     margin-top: 3vh
@@ -572,3 +606,108 @@ html
 #aura.hidden,
 #cursor.hidden
     transform: scale(.001)
+
+//SETTINGSPAGE
+    
+$red: #fd1a15
+$green: #007177
+$btnWidth: 2vw
+$switchWidth: 3vw
+$switchHeight: 1vw
+$padding: 1vw
+
+.mainsettings
+    width: 20vw
+    position: absolute
+    left: 50%
+    top: 30%
+    transform: translate(-50%, -50%)
+    // border: 1px solid black
+    display: flex
+    flex-direction: column
+
+.settingsh1
+    display: flex
+    justify-content: center
+    flex-direction: row
+    font-size: 4.5vh
+    color: #fff
+    font-family: 'Roboto Condensed', sans-serif
+    // border: 1px solid black
+    // height: 12vh
+
+.settings
+    // border: 1px solid black
+    // height: 80%
+    display: flex
+    flex-direction: column
+
+
+input[type=checkbox]
+	height: 0
+	width: 0
+	visibility: hidden
+
+label
+	cursor: pointer
+	text-indent: -9999px
+	width: 4vw
+	height: 4vh
+	background: grey
+	display: block
+	border-radius: 100px
+	position: relative
+
+label:hover
+    cursor: none
+
+label:after
+	content: ''
+	position: absolute
+	top: 5px
+	left: 5px
+	width: 1.5vw
+	height: 3vh
+	background: #fff
+	border-radius: 90px
+	transition: 0.4s
+
+input:checked + label
+	background: #f0b800
+
+input:checked + label:after 
+	left: calc(100% - 5px)
+	transform: translateX(-100%)
+
+label:active:after 
+	width: 2vw
+
+.checkboxtest
+    display: flex
+    flex-direction: row
+    align-items: center
+    color: white
+    font-family: 'Rubik', sans-serif
+    justify-content: space-between
+
+.bindname
+    color: white
+
+.binds
+    margin-top: 5vh
+    font-family: 'Rubik', sans-serif
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+
+.bindbtn
+    font-family: 'Roboto Condensed', sans-serif
+    // letter-spacing: 1px
+    font-size: 2.3vh
+    border: 1px solid white
+    padding: 1vh 0.7vw
+    background-color: white
+    border-radius: 5px
+    text-shadow: 0px 0px 1px black,
+

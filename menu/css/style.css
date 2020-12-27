@@ -263,10 +263,12 @@ html {
           box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
+  text-shadow: 1px 1px 2px black;
 }
 
 .form:hover {
   background-color: #ffc400;
+  text-shadow: none;
 }
 
 .form:hover span {
@@ -324,10 +326,12 @@ html {
   height: 100%;
   border: 3px solid #000000;
   border-radius: 5px;
+  text-shadow: 1px 1px 2px black;
 }
 
 .form1:hover {
   color: black;
+  text-shadow: none;
 }
 
 .noob {
@@ -341,6 +345,10 @@ html {
 
 .noob:hover {
   background-color: #c48f00;
+}
+
+.noob:hover span {
+  color: black;
 }
 
 .backpack {
@@ -379,14 +387,27 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: 'Roboto Condensed', sans-serif;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 2.3vh;
+  margin-left: 2vw;
+  margin-top: 5vh;
+}
+
+.bpstats1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 2.3vh;
-  margin-left: 2vw;
-  margin-top: 5vh;
 }
 
 .bpscore {
@@ -416,7 +437,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin-top: 3vh;
+  margin-top: -1.5vh;
   margin-left: 1.5vw;
 }
 
@@ -426,7 +447,15 @@ html {
 }
 
 .virt {
-  width: 21%;
+  width: 22%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
   border-color: #046e8f;
   -webkit-box-shadow: 0 0 5px #01b4eb, inset 0 0 5px #01b4eb;
           box-shadow: 0 0 5px #01b4eb, inset 0 0 5px #01b4eb;
@@ -434,8 +463,36 @@ html {
   transition: .2s ease-out;
 }
 
+.virtname {
+  margin-top: 2.5vh;
+  margin-left: 2vh;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3.5vh;
+}
+
+.virttext {
+  margin-top: 1vh;
+  margin-left: 2vh;
+  font-size: 1.4vh;
+  font-family: 'Rubik', sans-serif;
+}
+
 .virt:hover {
   background-color: #046e8f;
+}
+
+.virticon {
+  margin-top: 3vh;
+  margin-left: -1vw;
+}
+
+.virticon img {
+  -webkit-filter: drop-shadow(12px 12px 10px #00000080);
+          filter: drop-shadow(12px 12px 10px #00000080);
+  width: calc( 7vw + 3vh);
+  height: auto;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
 }
 
 .right {
@@ -451,6 +508,7 @@ html {
 
 .right:hover {
   background-color: #6e003c;
+  text-shadow: none;
 }
 
 .right:hover span {
@@ -494,6 +552,7 @@ html {
   padding-left: 1%;
   padding-right: 1%;
   border-radius: 5px;
+  text-shadow: none;
 }
 
 .textcar4 {
@@ -610,11 +669,6 @@ html {
   display: block;
 }
 
-.textshop2 {
-  font-family: 'Rubik', sans-serif;
-  font-size: 3.5vh;
-}
-
 .iconshop {
   position: relative;
   left: 13.5vw;
@@ -705,6 +759,7 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  text-shadow: 1px 1px 2px black;
 }
 
 .headright {
@@ -794,5 +849,145 @@ html {
 #cursor.hidden {
   -webkit-transform: scale(0.001);
           transform: scale(0.001);
+}
+
+.mainsettings {
+  width: 20vw;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.settingsh1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 4.5vh;
+  color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 4vw;
+  height: 4vh;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:hover {
+  cursor: none;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 1.5vw;
+  height: 3vh;
+  background: #fff;
+  border-radius: 90px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + label {
+  background: #f0b800;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 2vw;
+}
+
+.checkboxtest {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.bindname {
+  color: white;
+}
+
+.binds {
+  margin-top: 5vh;
+  font-family: 'Rubik', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.bindbtn {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 2.3vh;
+  border: 1px solid white;
+  padding: 1vh 0.7vw;
+  background-color: white;
+  border-radius: 5px;
+  text-shadow: 0px 0px 1px black;
 }
 /*# sourceMappingURL=style.css.map */

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/keys.css" type="text/css" />
     <title>povtorgranda</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
@@ -44,12 +45,12 @@
                             <div class="btn" id="mouseFocus">
                                 <span>ПОПОЛНИТЬ</span>
                             </div>
-                            <div class="btn">
+                            <div class="btn" id="mouseFocus">
                                 <span>ПРОВЕРИТЬ ПОПОЛНЕНИЕ</span>
                             </div>
                         </div>
                     </div>
-                    <div class="warning">
+                    <div class="warning" id="mouseFocus">
                         <span><span class="warning1">СНЯТЬ</span> ПРЕДУПРЕЖДЕНИЕ</span>
                     </div>
                 </div>
@@ -59,16 +60,16 @@
                             <div class="car form">
                                 <div class="textcar" id="mouseFocus">
                                     <span class="textcar1">ЛИЧНЫЙ <br> <span class="textcar2">ТРАНСПОРТ</span></span>
-                                    <span class="textcar3">УПРАВЛЕНИЕ </span>
+                                    <span class="textcar3">УПРАВЛЕНИЕ</span>
                                     <span align="right" class="textcar4">Управляйте личным автомобилем</span>
                                 </div>
                                 <div class="iconcar">
-                                    <img src="./img/car.png" alt="">
+                                    <img src="./img/car.png" id="mouseFocus" alt="">
                                 </div>
                             </div>
                             <div class="stack">
                                 <div class="ticket form">
-                                    <div class="textticket">
+                                    <div class="textticket" id="mouseFocus">
                                         <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
                                         <div class="textticket3">Статус: <span class="textticket4">В поиске</span></div>
                                         <div class="textticket5">Игроков в ожидании: <span class="textticket6">1</span>
@@ -76,36 +77,36 @@
                                         <!-- <span сlass="textticket5">Примерное</span> -->
                                     </div>
                                     <div class="iconticket">
-                                        <img src="./img/jostik.png" alt="">
+                                        <img src="./img/jostik.png" id="mouseFocus" alt="">
                                     </div>
                                 </div>
                                 <div class="shop form">
-                                    <div class="textshop">
+                                    <div class="textshop" id="mouseFocus">
                                         <div class="textshop1">НАСТРОЙКИ</div>
                                     </div>
                                     <div class="iconshop">
-                                        <img src="./img/shop.png" alt="">
+                                        <img src="./img/shop.png" id="mouseFocus" alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="downleft">
                             <div class="noob form1">
-                                <div class="textnoob">
+                                <div class="textnoob" id="mouseFocus">
                                     <span class="textnoob1">ПАК <br> <span class="textnoob2">НОВИЧКА</span> <br> <span
                                             class="textnoob3">Осталось <span class="textnoob4">13
                                                 ЧАСОВ</span></span></span>
                                 </div>
                                 <div class="noobbtn">
-                                    <span><span class="minibtn">ЛИЦЕНЗИИ</span> <br> <span class="minibtn">ДЕНЬГИ</span>
-                                        <span class="minibtn">ОДЕЖДА</span></span>
+                                    <span><span class="minibtn" id="mouseFocus">ЛИЦЕНЗИИ</span> <br> <span class="minibtn" id="mouseFocus">ДЕНЬГИ</span>
+                                        <span class="minibtn" id="mouseFocus">ОДЕЖДА</span></span>
                                 </div>
                                 <div class="iconnoob">
                                     <img src="./img/noob.png" alt="">
                                 </div>
                             </div>
                             <div class="backpack form1">
-                                <div class="bptext">
+                                <div class="bptext" id="mouseFocus">
                                     <div class="bpname">
                                         <span>РАНГ</span>
                                     </div>
@@ -115,25 +116,35 @@
                                 </div>
                                 <div class="bpmaininfo">
                                     <div class="bpstats">
-                                        <div class="elo">
-                                            <span>ОЧКИ:</span><span class="bpscore">1958</span>
-                                        </div>
-                                        <div class="matchs">
-                                            <span>МАТЧИ:</span><span class="bpscore">201</span>
-                                        </div>
-                                        <div class="kd">
-                                            <span>K/D:</span><span class="bpscore"> 1.4</span>
-                                        </div>
-                                    </div>
-                                    <div class="bpicons">
-                                        <div class="bpicon1">
-                                            <img src="img/levels/10.png" alt="">
+                                        <div class="bpstats1">
+                                            <div class="elo">
+                                                <span>ОЧКИ:</span><span class="bpscore">1958</span>
+                                            </div>
+                                            <div class="matchs">
+                                                <span>МАТЧИ:</span><span class="bpscore">201</span>
+                                            </div>
+                                            <div class="kd">
+                                                <span>K/D:</span><span class="bpscore"> 1.4</span>
+                                            </div>
+                                        </div>  
+                                        <div class="bpicons">
+                                            <div class="bpicon1">
+                                                <img src="img/levels/10.png" id="mouseFocus" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="virt form1">
-
+                                <div class="virtname">
+                                    <span>ОБНОВЛЕНИЯ</span>
+                                </div>
+                                <div class="virttext">
+                                    <span>Посмотреть последнее обновления</span>
+                                </div>
+                                <div class="virticon">
+                                    <img src="img/virt.png" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -142,10 +153,10 @@
                             <span class="headright1">ПЕРСОНАЖ</span>
                         </div>
                         <div class="textright">
-                            <span class="minibtn">Кастомизация</span>
+                            <span class="minibtn" id="mouseFocus">Кастомизация</span>
                         </div>
                         <div class="righticon">
-                            <img src="img/character.png" alt="">
+                            <img src="img/character.png" id="mouseFocus" alt="">
                         </div>
                     </div>
                 </div>
@@ -154,6 +165,21 @@
 
         <!-- НАСТРОЙКИ -->
         <section v-if="page === 1">
+            <div class="mainsettings">
+                <div class="settingsh1">
+                    <h1>НАСТРОЙКИ</h1>
+                </div>
+                <div class="settings">
+                    <div class="checkboxtest">
+                        <span>ПИКАПЫ</span>
+                        <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+                    </div>
+                    <div class="binds">
+                        <span class="bindname">ПРИСЕДАТЬ</span>
+                        <span class="bindbtn">CTRL</span>
+                    </div>
+                </div>
+            </div>
             <h1>ТУТ ДОЛЖНЫ БЫТЬ НАСТРОЙКИ</h1>
             <h1>Карта: большая, маленькая</h1>
             <h1>Подсказки: выключить\включить</h1>
