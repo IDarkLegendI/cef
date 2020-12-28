@@ -138,10 +138,10 @@
                             </div>
                             <div class="virt form1">
                                 <div class="virtname">
-                                    <span>ОБНОВЛЕНИЯ</span>
+                                    <span>НАГРАДЫ</span>
                                 </div>
                                 <div class="virttext">
-                                    <span>Посмотреть последнее обновление</span>
+                                    <span>Получай награды за вход на сервер</span>
                                 </div>
                                 <div class="virticon">
                                     <img src="img/virt.png" alt="">
@@ -168,35 +168,42 @@
         <section v-if="page === 1">
             <div class="mainsettings">
                 <div class="settingsh1">
-                    <a href="#" v-on:click="page = 0">Назад</a>
                     <h1>НАСТРОЙКИ</h1>
                 </div>
                 <div class="settings">
                     <div class="checkboxes">
                         <div class="checkboxtest">
                             <span>ПИКАПЫ</span>
-                            <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+                            <input type="checkbox" id="switch"/><label for="switch" id="mouseFocus">Toggle</label>
                         </div>
-                    </div>
-                    <div class="mapchoice">
-                        <label>
-                            <input type="radio" class="option-input radio" name="mapc" checked />
-                            Маленькая
-                        </label>
-                        <label>
-                            <input type="radio" class="option-input radio" name="mapc" />
-                            Средняя
-                        </label>
-                        <label>
-                            <input type="radio" class="option-input radio" name="mapc" />
-                            Большая
-                        </label>
                     </div>
                     <div class="binds">
                         <div class="bind">
                             <span class="bindname">ПРИСЕДАТЬ</span>
-                            <span class="bindbtn">CTRL</span>
+                            <span class="bindbtn" id="mouseFocus">CTRL</span>
                         </div>
+                    </div>
+                    <div class="mapchoice1">
+                        <div class="namechoice">
+                            <h1>РАЗМЕР КАРТЫ</h1>
+                        </div>
+                        <div class="mapchoice">
+                            <label id="mouseFocus">
+                                <input type="radio" class="option-input radio" name="mapc" checked />
+                                <span>Маленькая</span>
+                            </label>
+                            <label id="mouseFocus">
+                                <input type="radio" class="option-input radio" name="mapc" />
+                                <span>Средняя</span>
+                            </label>
+                            <label id="mouseFocus">
+                                <input type="radio" class="option-input radio" name="mapc" />
+                                <span>Большая</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="btnback" id="mouseFocus">
+                        <a href="#" v-on:click="page = 0">НАЗАД</a>
                     </div>
                 </div>
             </div>
