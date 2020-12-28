@@ -1,11 +1,18 @@
 @charset "UTF-8";
 * {
   cursor: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 body {
   padding: 0;
   margin: 0;
+}
+
+#body {
   background-image: url(../img/fon.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -295,6 +302,16 @@ html {
 
 .ticket:hover {
   background-color: #5aa800;
+}
+
+.ticketRed {
+  border-color: #f70303;
+  -webkit-box-shadow: 0 0 10px #a80000, inset 0 0 10px #a80000;
+          box-shadow: 0 0 10px #a80000, inset 0 0 10px #a80000;
+}
+
+.ticketRed:hover {
+  background-color: #f70303;
 }
 
 .shop {

@@ -1,9 +1,12 @@
 *
     cursor: none
-    
+    user-select: none
+
 body
     padding: 0
     margin: 0
+
+#body
     background-image: url(../img/fon.png)
     background-position: center
     background-repeat: no-repeat
@@ -197,6 +200,13 @@ html
 
 .ticket:hover
     background-color: #5aa800
+
+.ticketRed
+    border-color: #f70303
+    box-shadow: 0 0 10px #a80000, inset 0 0 10px #a80000
+
+.ticketRed:hover
+    background-color: #f70303
 
 .shop
     width: 100%
@@ -829,7 +839,7 @@ input[type=checkbox]
     display: flex
     flex-direction: row
     justify-content: center
-    a   
+    a
         font-size: 2vh
         border-radius: 5px
         padding: 1vh 1.7vw
@@ -839,13 +849,13 @@ input[type=checkbox]
         text-shadow: none
         transition: .2s ease-out
 
-a:link 
+a:link
     text-decoration: none
 
-a:visited  
+a:visited
     text-decoration: none
 
-a:active 
+a:active
     text-decoration: none
 
 a:hover
