@@ -34,7 +34,7 @@ var hud = new Vue({
         killFeedHTML: null,
         
         helpJetPack: false,  
-    },
+    }, 
     methods: {
         fUpdateKills(name, dist)
         {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/keys.css" type="text/css" />
-    <title>povtorgranda</title>
+    <title>ROYAL MENU</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
                                 <span>БАЛАНС</span>
                             </div>
                             <div class="rub">
-                                <span>1 443 РУБ.</span>
+                                <span>0 РУБ.</span>
                             </div>
                         </div>
                     </div>
@@ -68,11 +68,14 @@
                                 </div>
                             </div>
                             <div class="stack">
-                                <div class="ticket form">
-                                    <div class="textticket" id="mouseFocus">
+                                <div class="ticket form" id="mouseFocus" v-on:click="emit('sMenu:startGame')"
+                                    v-if="!statusGame">
+                                    <div class="textticket">
                                         <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
-                                        <div class="textticket3">Статус: <span class="textticket4">В поиске</span></div>
-                                        <div class="textticket5">Игроков в ожидании: <span class="textticket6">1</span>
+                                        <div class="textticket3">Статус: <span class="textticket4">{{textMatch}}</span>
+                                        </div>
+                                        <div class="textticket5">Игроков в ожидании: <span
+                                                class="textticket6">{{countWarmUp}}</span>
                                         </div>
                                         <!-- <span сlass="textticket5">Примерное</span> -->
                                     </div>
@@ -80,6 +83,24 @@
                                         <img src="./img/jostik.png" id="mouseFocus" alt="">
                                     </div>
                                 </div>
+
+                                <div class="ticket ticketRed form" id="mouseFocus" v-on:click="emit('sMenu:endGame')"
+                                    v-else>
+                                    <div class="textticket" style="justify-content: center;">
+                                        <div class="textticket1">ЗАКОНЧИТЬ <span class="textticket2">ИГРУ</span></div>
+                                        <!-- <div class="textticket3">Статус: <span class="textticket4">{{textMatch}}</span>
+                                        </div>
+                                        <div class="textticket5">Игроков в ожидании: <span
+                                                class="textticket6">{{countWarmUp}}</span>
+                                        </div> -->
+                                        <!-- <span сlass="textticket5">Примерное</span> -->
+                                    </div>
+                                    <div class="iconticket">
+                                        <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                    </div>
+                                </div>
+
+
                                 <div class="shop form" id="mouseFocus" v-on:click="page = 1">
                                     <div class="textshop">
                                         <div class="textshop1">НАСТРОЙКИ</div>
@@ -173,8 +194,15 @@
                 <div class="settings">
                     <div class="checkboxes">
                         <div class="checkboxtest">
-                            <span>ПИКАПЫ</span>
+                            <span>ПОДСКАЗКИ</span>
                             <input type="checkbox" id="switch" /><label for="switch" id="mouseFocus">Toggle</label>
+                        </div>
+                    </div>
+                    <div class="checkboxes">
+                        <div class="checkboxtest">
+                            <span>VR-РЕЖИМ</span>
+                            <input type="checkbox" id="switchVR" v-model='enableVR' /><label for="switchVR"
+                                id="mouseFocus">Toggle</label>
                         </div>
                     </div>
                     <div class="binds">
@@ -217,9 +245,9 @@
 <script>
     function load() {
         if (!('alt' in window)) return document.getElementById('fade').style.opacity = 1;
-        setTimeout(() => {
-            document.getElementById('fade').style.opacity = 1;
-        }, 1000);
+        // setTimeout(() => {
+        //     document.getElementById('fade').style.opacity = 1;
+        // }, 1000);
     }
 </script>
 <script src="../vue.js"></script>
