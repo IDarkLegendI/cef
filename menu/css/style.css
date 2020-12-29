@@ -1116,8 +1116,8 @@ input[type=checkbox] {
   left: 0;
   height: 4vh;
   width: 2.2vw;
-  -webkit-transition: all 0.15s ease-out 0s;
-  transition: all 0.15s ease-out 0s;
+  -webkit-transition: all .35s ease-out 0s;
+  transition: all .35s ease-out 0s;
   background: #cbd1d8;
   border: none;
   color: #fff;

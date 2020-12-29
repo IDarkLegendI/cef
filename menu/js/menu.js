@@ -3,17 +3,51 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, // 0 - главная, 1 - настройки
+
+        //SETTINGS
         enableVR: true, //true, чтобы вр подрубить,
+        mapMode: 0,
         
-        //Block Game
-        textMatch: 'В поиске',
+        //Block Game 
+        textMatch: 'В поиске', 
         countWarmUp: 0,
         statusGame: false,
     },
     methods: {
-        emit: function(value) 
+        emit: function(value)  
         { 
-            alt.emit('emitToServer', value) 
+            if ('alt' in window) alt.emit('emitToServer', value) 
+        },
+        saveSettings(page)
+        {
+            if(page != -1) this.switchPage(page);
+            if ('alt' in window) 
+            {
+                alt.emit('saveSettings', {
+                vr: this.enableVR, 
+                mapMode: this.mapMode, 
+                })
+            }
+        },
+        switchPage(newPage)
+        {
+            this.page = newPage;
+            // setTimeout(() => 
+            // { 
+            //     for(let i = 0; i < 3; i++)
+            //     {
+            //         if(this.mapMode === i) 
+            //         {
+            //             // document.getElementById(`map-${i}`).checked = 'true'; 
+            //             document.getElementById(`map-${i}`).click(); 
+            //             setTimeout(() => { 
+            //                 document.getElementById(`map-${i}`).click(); 
+            //             }, 10)
+            //             // document.getElementById(`map-${i}`).click(); 
+            //         }
+            //         else document.getElementById(`map-${i}`).checked = ''; 
+            //     }
+            // }, 10);
         }
     } 
 }); 
@@ -30,6 +64,11 @@ if ('alt' in window)
         menu.textMatch = textMatch;
         menu.countWarmUp = countWarmUp; 
     });
+
+    alt.on('loadMenu', data => {
+        menu.enableVR = data.vr;
+        menu.mapMode = data.mapMode; 
+    })
 }
 else 
 {

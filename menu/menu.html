@@ -101,7 +101,7 @@
                                 </div>
 
 
-                                <div class="shop form" id="mouseFocus" v-on:click="page = 1">
+                                <div class="shop form" id="mouseFocus" v-on:click="switchPage(1)">
                                     <div class="textshop">
                                         <div class="textshop1">НАСТРОЙКИ</div>
                                     </div>
@@ -201,8 +201,8 @@
                     <div class="checkboxes">
                         <div class="checkboxtest">
                             <span>VR-РЕЖИМ</span>
-                            <input type="checkbox" id="switchVR" v-model='enableVR' /><label for="switchVR"
-                                id="mouseFocus">Toggle</label>
+                            <input type="checkbox" id="switchVR" v-model='enableVR'
+                                v-on:click="saveSettings(-1)" /><label for="switchVR" id="mouseFocus">Toggle</label>
                         </div>
                     </div>
                     <div class="binds">
@@ -217,21 +217,21 @@
                         </div>
                         <div class="mapchoice">
                             <label>
-                                <input id="mouseFocus" type="radio" class="option-input radio" name="mapc" checked />
-                                <span>Маленькая</span>
+                                <input id="map-0" type="radio" class="option-input radio" value="0" v-model="mapMode">
+                                <span>Маленький</span>
                             </label>
                             <label>
-                                <input id="mouseFocus" type="radio" class="option-input radio" name="mapc" />
-                                <span>Средняя</span>
+                                <input id="map-1" type="radio" class="option-input radio" value="1" v-model="mapMode">
+                                <span>Средний</span>
                             </label>
                             <label>
-                                <input id="mouseFocus" type="radio" class="option-input radio" name="mapc" />
-                                <span>Большая</span>
+                                <input id="map-2" type="radio" class="option-input radio" value="2" v-model="mapMode">
+                                <span>Большой</span>
                             </label>
                         </div>
                     </div>
                     <div class="btnback">
-                        <a href="#" v-on:click="page = 0" id="mouseFocus">НАЗАД</a>
+                        <a href="#" v-on:click="saveSettings(0)" id="mouseFocus">НАЗАД</a>
                     </div>
                 </div>
             </div>
@@ -244,7 +244,14 @@
 </body>
 <script>
     function load() {
-        if (!('alt' in window)) return document.getElementById('fade').style.opacity = 1;
+        if (!('alt' in window)) {
+            // setTimeout(() => {
+            //     menu.switchPage(1)
+            // }, 10)
+            menu.switchPage(1)
+            return document.getElementById('fade').style.opacity = 1;
+        }
+        // else setTimeout(() => document.getElementById('fade').style.opacity = 1, 300); 
         // setTimeout(() => {
         //     document.getElementById('fade').style.opacity = 1;
         // }, 1000);
