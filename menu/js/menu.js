@@ -6,7 +6,7 @@ var menu = new Vue({
 
         //SETTINGS
         enableVR: true, //true, чтобы вр подрубить,
-        mapMode: 0,
+        sizeMap: 0,
         
         //Block Game 
         textMatch: 'В поиске', 
@@ -21,13 +21,13 @@ var menu = new Vue({
         saveSettings(page)
         {
             if(page != -1) this.switchPage(page);
-            if ('alt' in window) 
+            if ('alt' in window)  
             {
                 alt.emit('saveSettings', {
-                vr: this.enableVR, 
-                mapMode: this.mapMode, 
+                    vr: this.enableVR, 
+                    sizeMap: this.sizeMap,  
                 })
-            }
+            } 
         },
         switchPage(newPage)
         {
@@ -66,8 +66,8 @@ if ('alt' in window)
     });
 
     alt.on('loadMenu', data => {
-        menu.enableVR = data.vr;
-        menu.mapMode = data.mapMode; 
+        menu.enableVR = data.vr; 
+        menu.sizeMap = data.sizeMap;  
     })
 }
 else 
