@@ -862,3 +862,45 @@ a:hover
     text-decoration: none
     color: none
     box-shadow: 0px 0px 15px #ffffff
+
+// car
+
+.mainauto
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    position: absolute
+    top: 80%
+    left: 50%
+    transform: translateX(-50%)
+    // border: 1px solid black
+
+.arrowleft
+    transform: rotate(180deg)
+    fill: #0076fc
+    filter: drop-shadow(0 0 5px #0076fc)
+    margin-right: 3vw
+    transition: .1s ease-out
+
+.arrowright
+    fill: #0076fc
+    filter: drop-shadow(0 0 5px #0076fc)
+    margin-left: 3vw
+    transition: .1s ease-out
+
+.arrowleft:hover, .arrowright:hover
+    fill: #00a2ff
+    filter: drop-shadow(0 0 3px #00a2ff)
+
+.nameauto
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
+    border-radius: 5px
+    color: black
+    width: 9vw
+    height: 4vh
+    font-family: 'Roboto Condensed', sans-serif
+    font-size: 2vh

@@ -2,7 +2,7 @@ var menu = new Vue({
     el: '#body',
     data: {
         show: false,
-        page: 0, // 0 - главная, 1 - настройки
+        page: 2, // 0 - главная, 1 - настройки
 
         //SETTINGS
         enableVR: true, //true, чтобы вр подрубить,
