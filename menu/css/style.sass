@@ -871,7 +871,7 @@ a:hover
     justify-content: center
     align-items: center
     position: absolute
-    top: 80%
+    bottom: 20vh
     left: 50%
     transform: translateX(-50%)
     // border: 1px solid black
@@ -880,27 +880,51 @@ a:hover
     transform: rotate(180deg)
     fill: #0076fc
     filter: drop-shadow(0 0 5px #0076fc)
-    margin-right: 3vw
+    margin-right: 2vw
     transition: .1s ease-out
 
 .arrowright
     fill: #0076fc
     filter: drop-shadow(0 0 5px #0076fc)
-    margin-left: 3vw
+    margin-left: 2vw
     transition: .1s ease-out
+
+.arrowright svg, .arrowleft svg
+    transition: .05s ease-out
 
 .arrowleft:hover, .arrowright:hover
     fill: #00a2ff
     filter: drop-shadow(0 0 3px #00a2ff)
 
+.arrowleft:active svg, .arrowright:active svg
+    width: 2.4vw
+
 .nameauto
     display: flex
     justify-content: center
     align-items: center
-    background-color: #fff
+    // background-color: #fff
     border-radius: 5px
-    color: black
+    color: white
     width: 9vw
     height: 4vh
     font-family: 'Roboto Condensed', sans-serif
-    font-size: 2vh
+    font-size: 3vh
+
+.btnback2
+    position: absolute
+    bottom: 10vh
+    left: 50%
+    transform: translateX(-50%)
+    display: flex
+    flex-direction: row
+    justify-content: center
+    a
+        font-size: 2vh
+        border-radius: 5px
+        padding: 1vh 1.7vw
+        background-color: #fff
+        color: black
+        font-family: 'Roboto Condensed', sans-serif
+        text-shadow: none
+        transition: .2s ease-out
