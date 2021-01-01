@@ -2,7 +2,7 @@ var menu = new Vue({
     el: '#body',
     data: {
         show: false,
-        page: 2, // 0 - главная, 1 - настройки
+        page: 0, // 0 - главная, 1 - настройки 
 
         //SETTINGS
         enableVR: true, //true, чтобы вр подрубить,
@@ -69,6 +69,8 @@ if ('alt' in window)
         menu.enableVR = data.vr; 
         menu.sizeMap = data.sizeMap;  
     })
+
+    alt.on('getSettings', () => menu.saveSettings(-1));
 }
 else 
 {

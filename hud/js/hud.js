@@ -103,7 +103,7 @@ if ('alt' in window) {
         // console.log(`${notifyType}, 9, ${text}, ${time}`);
     });
 
-    alt.on('toggleHud', (toggle, players = 0) => {
+    alt.on('toggleHud', (toggle, players = -1) => {
         hud.showHUD = toggle;
 
         hud.kills = 0;
@@ -111,7 +111,7 @@ if ('alt' in window) {
         hud.killsBarShow = false;
         if(this.killsHandle != null) clearTimeout(this.killsHandle);
         
-        hud.startPlayers = players; 
+        if(players != -1) hud.startPlayers = players; 
         hud.killFeed = [];
         if(hud.killFeedInterval != null) clearInterval(hud.killFeedInterval);
     });
