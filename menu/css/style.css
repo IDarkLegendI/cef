@@ -1253,7 +1253,7 @@ a:hover {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  top: 80%;
+  bottom: 20vh;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -1265,7 +1265,7 @@ a:hover {
   fill: #0076fc;
   -webkit-filter: drop-shadow(0 0 5px #0076fc);
           filter: drop-shadow(0 0 5px #0076fc);
-  margin-right: 3vw;
+  margin-right: 2vw;
   -webkit-transition: .1s ease-out;
   transition: .1s ease-out;
 }
@@ -1274,15 +1274,24 @@ a:hover {
   fill: #0076fc;
   -webkit-filter: drop-shadow(0 0 5px #0076fc);
           filter: drop-shadow(0 0 5px #0076fc);
-  margin-left: 3vw;
+  margin-left: 2vw;
   -webkit-transition: .1s ease-out;
   transition: .1s ease-out;
+}
+
+.arrowright svg, .arrowleft svg {
+  -webkit-transition: .05s ease-out;
+  transition: .05s ease-out;
 }
 
 .arrowleft:hover, .arrowright:hover {
   fill: #00a2ff;
   -webkit-filter: drop-shadow(0 0 3px #00a2ff);
           filter: drop-shadow(0 0 3px #00a2ff);
+}
+
+.arrowleft:active svg, .arrowright:active svg {
+  width: 2.4vw;
 }
 
 .nameauto {
@@ -1295,12 +1304,41 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #fff;
   border-radius: 5px;
-  color: black;
+  color: white;
   width: 9vw;
   height: 4vh;
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3vh;
+}
+
+.btnback2 {
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.btnback2 a {
   font-size: 2vh;
+  border-radius: 5px;
+  padding: 1vh 1.7vw;
+  background-color: #fff;
+  color: black;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-shadow: none;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 /*# sourceMappingURL=style.css.map */
