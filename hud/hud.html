@@ -20,8 +20,7 @@
         <div class="center">
             <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
                 leave-active-class="animated zoomOutUp">
-                <!-- <section v-if="showWUP"> -->
-                <section>
+                <section v-if="showWUP">
                     <div class="warmInfo">
                         <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse slower']">
                             {{textWUP}}
