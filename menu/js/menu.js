@@ -5,7 +5,7 @@ var menu = new Vue({
         page: 0, // 0 - главная, 1 - настройки 
 
         //SETTINGS
-        enableVR: true, //true, чтобы вр подрубить,
+        enableVR: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         
         //Block Game 

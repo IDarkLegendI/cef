@@ -163,11 +163,6 @@ html
     flex-direction: row
     justify-content: space-between
 
-.car
-    // width: 40vw
-    flex-basis: 60%
-    height: 100%
-
 .stack
     flex-basis: 37%
     height: 45.5vh
@@ -367,12 +362,25 @@ html
         // background: white
         color: black
 
+// BLOCK CAR
+
+.car
+    // width: 40vw
+    flex-basis: 60%
+    height: 100%
+.carContent
+    // background-color: red
+    display: flex
+    flex-direction: column
+    margin-left: 5%
+    margin-top: 5%
+
 .textcar
-    position: relative
-    left: 7%
-    top: 5vh
-    width: 93%
-    // border: 1px solid black
+    display: flex
+    justify-content: space-between
+    align-items: center
+    align-content: center
+    // background-color: green
 
 .textcar1
     color: white
@@ -407,25 +415,24 @@ html
 
 .textcar4
     font-family: 'Rubik', sans-serif
-    position: absolute
+    // position: absolute
     font-size: 1.5vh
     color: white
-    right: 2vw
-    top: 1vh
-    width: 9vw
     // border: 1px solid black
 
 .iconcar
     // position: relative
     // height: 30vh
     // width: 28vw
-    margin-top: 3%
-    margin-left: 5%
-    // border: 3px solid black
+    display: flex
+    justify-content: center
+    // margin-top: 3%
+    // margin-left: 5%
+    // background-color: blue
+    // border: 3px solid blue
     img
         filter: drop-shadow(12px 12px 10px #00000080)
-        width: calc( 22vw + 17vh)
-        height: auto
+        width: 75%
 
 .textticket
     color: white
