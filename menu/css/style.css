@@ -35,7 +35,7 @@ html {
 
 .main {
   width: 90%;
-  height: 90vh;
+  height: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
