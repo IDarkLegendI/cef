@@ -423,6 +423,7 @@ html {
       flex-basis: 40%;
   -ms-flex-item-align: center;
       align-self: center;
+  height: 45%;
 }
 
 .rankContent .img img {
@@ -636,11 +637,13 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 35vh;
 }
 
 .iconcar img {
   -webkit-filter: drop-shadow(12px 12px 10px #00000080);
           filter: drop-shadow(12px 12px 10px #00000080);
+  height: auto;
   width: 30vw;
 }
 
