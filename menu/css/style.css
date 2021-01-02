@@ -248,12 +248,14 @@ html {
 }
 
 .car {
-  width: 40vw;
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
   height: 100%;
 }
 
 .stack {
-  width: 25vw;
+  -ms-flex-preferred-size: 37%;
+      flex-basis: 37%;
   height: 45.5vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -390,7 +392,48 @@ html {
 }
 
 .backpack:hover {
-  background-color: #ca0903;
+  background-color: #fc0c04;
+}
+
+.rankContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+}
+
+.rankContent .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-preferred-size: content;
+      flex-basis: content;
+  font-size: 1.5vh;
+}
+
+.rankContent .img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.rankContent .img img {
+  width: 200%;
+  height: auto;
 }
 
 .bptext {
@@ -444,27 +487,12 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.bpicons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-top: -1.5vh;
-  margin-left: 1.5vw;
-}
-
-.bpicons img {
-  width: calc( 12vw + 9vh);
-  height: auto;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .virt {
@@ -587,7 +615,6 @@ html {
 }
 
 .iconcar {
-  width: 28vw;
   margin-top: 3%;
   margin-left: 5%;
 }

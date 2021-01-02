@@ -164,11 +164,12 @@ html
     justify-content: space-between
 
 .car
-    width: 40vw
+    // width: 40vw
+    flex-basis: 60%
     height: 100%
 
 .stack
-    width: 25vw
+    flex-basis: 37%
     height: 45.5vh
     display: flex
     flex-direction: column
@@ -257,7 +258,29 @@ html
     transition: .2s ease-out
 
 .backpack:hover
-    background-color: #ca0903
+    background-color: #fc0c04
+
+.rankContent
+    display: flex
+    justify-content: space-between
+    height: 100%
+
+.rankContent .content
+    display: flex
+    flex-direction: column
+    flex-basis: content
+    font-size: 1.5vh
+    // background-color: red
+
+.rankContent .img
+    display: flex
+    justify-content: center
+    flex-basis: 40%
+    align-self: center
+    // background-color: blue
+    img
+        width: 200%
+        height: auto
 
 .bptext
     margin-top: 2.5vh
@@ -277,6 +300,7 @@ html
     font-size: 2.3vh
     margin-left: 2vw
     margin-top: 5vh
+    // background-color: blue
     // align-items: center
 
 .bpstats1
@@ -292,18 +316,8 @@ html
 
 .bpmaininfo
     display: flex
-    flex-direction: row
-
-.bpicons
-    display: flex
-    flex-direction: row
-    // justify-content: flex-end
-    // border: 1px solid black
-    margin-top: -1.5vh
-    margin-left: 1.5vw
-    img
-        width: calc( 12vw + 9vh )
-        height: auto
+    flex-direction: column
+    justify-content: space-around
 
 .virt
     width: 22%
@@ -404,7 +418,7 @@ html
 .iconcar
     // position: relative
     // height: 30vh
-    width: 28vw
+    // width: 28vw
     margin-top: 3%
     margin-left: 5%
     // border: 3px solid black
@@ -944,7 +958,7 @@ a:hover
         transition: .2s ease-out
 
 // Friends
-    
+
 .mainfrineds
     width: 30vw
     position: absolute
