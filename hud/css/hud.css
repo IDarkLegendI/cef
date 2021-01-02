@@ -102,11 +102,30 @@ body {
 
 #killInfo {
     text-shadow: 0 0 1px black, 0 0 0.2em black;
+    font-size: 2.5vh;
 }
 
 #kills { 
     text-shadow: 0 0 1px black, 0 0 0.2em red;
     color: red;
+    font-size: 2.5vh;
+}
+
+.kills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.killTextplayer {
+    color: orange;
+    border-bottom: 3px solid orange;
+    text-shadow: 0 0 1px black, 0 0 0.2em orange;
+}
+
+.killsnumber {
+    font-size: 4vh;
+    margin-right: 0.5vw;
 }
 
 .logoLoad {
