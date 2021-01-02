@@ -34,6 +34,7 @@ var menu = new Vue({
         },
         switchPage(newPage)
         {
+            if(('alt' in window) && newPage > 1) return;
             this.page = newPage;
             // setTimeout(() => 
             // { 
