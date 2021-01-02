@@ -17,10 +17,10 @@
 
 <body id="fade" onload="load()">
     <section id="body">
-        <div class="center">
+        <div class="center" v-show='visible'>
             <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
                 leave-active-class="animated zoomOutUp">
-                <section v-if="showWUP">
+                <section v-if="showWUP && !killsBarShow">
                     <div class="warmInfo">
                         <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse slower']">
                             {{textWUP}}
@@ -44,7 +44,7 @@
         </div>
         <transition name="custom-classes-transition3" enter-active-class="animated tada"
             leave-active-class="animated hinge">
-            <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0">
+            <div class="observer" v-show="visible && obs.show && !killsBarShow && obs.nick.length != 0">
                 <h1 class="animated infinite pulse slow">{{obs.nick}}</h1>
                 <div class="helpObServer animated bounce delay-5s slower">
                     <div class="subHelpOBS">
@@ -58,7 +58,7 @@
         </transition>
         <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutRight">
-            <section v-if='showHUD'>
+            <section v-if='showHUD && visible'>
                 <div class="hud">
                     <div class="playersInfo">
                         <div class="alive" v-show="!obs.show">
@@ -97,7 +97,7 @@
                     <!-- KILL FEED -->
                     <transition name="custom-classes-transition3" enter-active-class="animated tada"
                         leave-active-class="animated hinge">
-                        <div id="killfeed">
+                        <div id="killfeed" v-show="visible">
                             <template v-for="kill in killFeed">
                                 <div class="killfeed">
                                     <div class="killelement">{{kill}}</div>
@@ -108,7 +108,7 @@
 
                     <transition name="custom-classes-transition4" enter-active-class="animated rotateInUpLeft fast"
                         leave-active-class="animated rotateOutDownRight fast">
-                        <div class="help animated bounce delay-2s slower" v-show="helpJetPack">
+                        <div class="help animated bounce delay-2s slower" v-show="helpJetPack && visible">
                             <div class="subHelp">
                                 <div>
                                     <p class="key">
@@ -137,7 +137,7 @@
         <section>
             <transition name="custom-classes-transition3" enter-active-class="animated tada slow"
                 leave-active-class="animated rollOut fast">
-                <div class="logoLoad" v-if='showLogo'>
+                <div class="logoLoad" v-if='showLogo && visible'>
                     <img src="./img/kinghud.png" alt="" class="animated infinite wobble slower" id="logo">
                 </div>
             </transition>

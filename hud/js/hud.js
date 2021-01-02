@@ -7,6 +7,7 @@ var hud = new Vue({
             nick: "1234213",
         },
 
+        visible: true,
         showWUP: false,
         textWUP: 'Поиск игрового мира...',
         pulseWUP: false,
@@ -144,8 +145,8 @@ else
     // setInterval(() => {
     //     // hud.fUpdateKills("OBLIKO", 100)
     // }, 9000)
-    // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
-    // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
+    setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
+    setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
