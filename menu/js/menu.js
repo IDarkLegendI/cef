@@ -12,6 +12,9 @@ var menu = new Vue({
         textMatch: 'В поиске', 
         countWarmUp: 0,
         statusGame: false,
+
+        //Friend menu
+        friendh1: 1,
     },
     methods: {
         emit: function(value)  

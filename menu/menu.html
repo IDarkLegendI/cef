@@ -72,10 +72,10 @@
                                     v-if="!statusGame">
                                     <div class="textticket">
                                         <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
-                                        <div class="textticket3">Статус: <span class="textticket4">{{textMatch}}</span>
-                                        </div>
-                                        <div class="textticket5">Игроков в ожидании: <span
-                                                class="textticket6">{{countWarmUp}}</span>
+                                        <div class="textticket3">Статус: <span class="textticket4">{{textMatch}}</span></div>
+                                        <div class="textticketblock">
+                                            <div class="textticket5">Игроков в ожидании: <span class="textticket6">{{countWarmUp}}</span></div>
+                                            <div class="lobbybtn" v-on:click="switchPage(4)"><span class="minibtn">ЛОББИ</span></div>
                                         </div>
                                         <!-- <span сlass="textticket5">Примерное</span> -->
                                     </div>
@@ -175,7 +175,8 @@
                             <span class="headright1">ПЕРСОНАЖ</span>
                         </div>
                         <div class="textright">
-                            <span class="minibtn" id="mouseFocus">Кастомизация</span>
+                            <span class="minibtn" id="mouseFocus">КАСТОМИЗАЦИЯ</span> <br>
+                            <span class="minibtn" id="mouseFocus" v-on:click="switchPage(3)">ДРУЗЬЯ</span>
                         </div>
                         <div class="righticon">
                             <img src="img/character.png" id="mouseFocus" alt="">
@@ -260,6 +261,40 @@
                 <a href="#" v-on:click="saveSettings(0)" id="mouseFocus">НАЗАД</a>
             </div>
         </section>
+
+        <!-- ДРУЗЬЯ -->
+        <section v-if="page === 3">
+            <div class="mainfrineds">
+                <div class="uplinefriends">
+                   <div class="btnfriend">
+                        ДРУЗЬЯ
+                   </div>
+                   <div class="btnfriend">
+                        ДОБАВИТЬ ДРУГА
+                   </div>
+                </div>
+                <div class="friendsh1">
+                    <h1 v-if="friendh1 === 1">СПИСОК ДРУЗЕЙ</h1>
+                    <h1 v-if="friendh1 === 2">ПРИГЛАШЕНИЕ В ДРУЗЬЯ</h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- ЛОББИ -->
+        <section v-if="page === 4">
+            <div class="mainlobby">
+                <div class="mainlobbyleft">
+                    <div class="mainlobbyh1">
+                        <h1>ЛОББИ</h1>
+                    </div>
+                </div>
+                <div class="mainlobbyright">
+                    <div class="mainlobbyh1">
+                        <h1>ПРИГЛАСИТЬ ДРУЗЕЙ</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 </body>
 <script>
@@ -268,7 +303,7 @@
             // setTimeout(() => {
             //     menu.switchPage(1)
             // }, 10)
-            menu.switchPage(2)
+            menu.switchPage(0)
             return document.getElementById('fade').style.opacity = 1;
         }
         // else setTimeout(() => document.getElementById('fade').style.opacity = 1, 300); 
