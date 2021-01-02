@@ -17,36 +17,72 @@
 
 <body id="fade" onload="load()">
     <section id="body">
-        <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
-            leave-active-class="animated zoomOutUp">
-            <section v-if="showWUP">
-                <div class="warmInfo">
-                    <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse slower']">
-                        {{textWUP}}
+        <div class="center">
+            <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
+                leave-active-class="animated zoomOutUp">
+                <!-- <section v-if="showWUP"> -->
+                <section>
+                    <div class="warmInfo">
+                        <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse slower']">
+                            {{textWUP}}
+                        </h1>
+                    </div>
+                </section>
+            </transition>
+            <transition name="custom-classes-transition2" enter-active-class="animated tada"
+                leave-active-class="animated bounceOutRight">
+                <div class="killInfo" v-show="killsBarShow">
+                    <div class="kills">
+                        <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
+                        <h1 id="kills" class="killText">УБИЙСТВ</h1>
+                    </div>
+                    <h1 id="killInfo" class="killText">ВЫ УБИЛИ ИГРОКА <span
+                            class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В {{killsBar[1]}}
+                        МЕТРОВ
                     </h1>
                 </div>
-            </section>
+            </transition>
+        </div>
+        <transition name="custom-classes-transition3" enter-active-class="animated tada"
+            leave-active-class="animated hinge">
+            <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0">
+                <h1 class="animated infinite pulse slow">{{obs.nick}}</h1>
+                <div class="helpObServer animated bounce delay-5s slower">
+                    <div class="subHelpOBS">
+                        <div>
+                            <p class="key">ESC</p>
+                            <p class="textHelp">выход</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </transition>
         <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutRight">
             <section v-if='showHUD'>
                 <div class="hud">
-                    <div class="playersInfo" v-show="!obs.show && !showWUP">
-                        <div class="alive">
+                    <div class="playersInfo">
+                        <div class="alive" v-show="!obs.show">
                             <div class="numberAlive" id="alive"
                                 :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
                             <div class="textAlive" id="alive">УБИЙСТВ</div>
                         </div>
-                        <div class="alive">
+                        <div class="alive" v-show="!obs.show">
                             <div class="numberAlive" id="alive">{{alivePlayers}}</div>
                             <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ВРАГ" : "ВРАГОВ"}}</div>
                         </div>
-                        <div class="alive">
+                        <div class="alive" v-show="!obs.show">
                             <div class="numberAlive" id="alive">
                                 <p>{{ammo[0]}}</p>
                                 <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
                             </div>
                             <div class="textAlive" id="alive"><img src="./img/bullets.png" alt=""></div>
+                        </div>
+
+                        <!-- OBSERVER -->
+                        <div class="alive" v-show="obs.show">
+                            <div class="numberAlive" id="alive">{{alivePlayers}}</div>
+                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ИГРОК" : "ИГРОКОВ"}}</div>
                         </div>
                     </div>
                     <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
@@ -59,34 +95,10 @@
                         </div>
                     </transition>
 
-                    <!-- OBSERVER -->
-                    <transition name="custom-classes-transition3" enter-active-class="animated tada"
-                        leave-active-class="animated hinge">
-                        <section v-show="obs.show && !killsBarShow">
-                            <div class="playersInfo">
-                                <div class="alive">
-                                    <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                                    <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ИГРОК" : "ИГРОКОВ"}}</div>
-                                </div>
-                            </div>
-                            <div class="helpObServer animated bounce delay-5s slower">
-                                <div class="subHelpOBS">
-                                    <div>
-                                        <p class="key">ESC</p>
-                                        <p class="textHelp">выход</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="observer" v-show="obs.nick.length != 0">
-                                <h1 class="animated infinite pulse slow">{{obs.nick}}</h1>
-                            </div>
-                        </section>
-                    </transition>
-
                     <!-- KILL FEED -->
                     <transition name="custom-classes-transition3" enter-active-class="animated tada"
                         leave-active-class="animated hinge">
-                        <div id="killfeed" v-show="!showWUP">
+                        <div id="killfeed">
                             <template v-for="kill in killFeed">
                                 <div class="killfeed">
                                     <div class="killelement">{{kill}}</div>
@@ -121,18 +133,6 @@
                         </div>
                     </transition>
                 </div>
-                <transition name="custom-classes-transition2" enter-active-class="animated tada"
-                    leave-active-class="animated bounceOutRight">
-                    <div class="killInfo" v-show="killsBarShow">
-                        <div class="kills">
-                            <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
-                            <h1 id="kills" class="killText">УБИЙСТВ</h1>
-                        </div>
-                        <h1 id="killInfo" class="killText">ВЫ УБИЛИ ИГРОКА <span class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В {{killsBar[1]}}
-                            МЕТРОВ
-                        </h1>
-                    </div>
-                </transition>
             </section>
         </transition>
         <section>

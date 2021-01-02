@@ -37,6 +37,7 @@ body {
 .hud{
     display: flex;
     flex-direction: column;
+    /* background-color: blue; */
 }
 
 .playersInfo {
@@ -91,7 +92,7 @@ body {
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.226));
 }
 
-.killInfo, .observer {
+.killInfo{ 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -102,7 +103,7 @@ body {
 
 #killInfo {
     text-shadow: 0 0 1px black, 0 0 0.2em black;
-    font-size: 2.5vh;
+    font-size: 2.2vh;
 }
 
 #kills { 
@@ -171,7 +172,7 @@ body {
     justify-content: flex-end;
     color: #ebebeb;
     font-family: Oswald, serif;
-    margin-top: 70vh;
+    margin-left: 95vw;
 }
  
 p {
@@ -328,4 +329,24 @@ p {
  
 #pcMouse {
     filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.226));
+}
+
+.center {
+    position: absolute;
+    /* top: 10%; */ 
+    left: 50%; 
+    transform: translate(-50%, 0%);
+}
+
+.observer  {
+    position: absolute;
+    top: 20%;
+    left: 50%; 
+    transform: translate(-50%, -20%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(0, 128, 0, 0.24); */
+    margin-top: 60vh;
 }
