@@ -1,6 +1,17 @@
+@font-face {
+    font-family: "Graffiti"; 
+    src: url("../fonts/13891.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+    }  
+
 html {
     overflow-x:hidden;
     overflow-y:hidden; 
+}
+
+h1 {
+    margin: 0;
 }
 
 body {
@@ -101,21 +112,26 @@ body {
     margin-top: 78vh;
 }
 
+
+.killInfo img {
+    position: absolute;
+    margin-bottom: 3%; 
+    margin-left: 5%; 
+    width: 20%;
+    z-index: -3;
+    filter: blur(0.5px); 
+}
+
 #killInfo {
     text-shadow: 0 0 1px black, 0 0 0.2em black;
     font-size: 2.2vh;
 }
 
-#kills { 
-    text-shadow: 0 0 1px black, 0 0 0.2em red;
-    color: red;
-    font-size: 2.5vh;
-}
-
 .kills {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    z-index: 0;
 }
 
 .killTextplayer {
@@ -125,8 +141,14 @@ body {
 }
 
 .killsnumber {
-    font-size: 4vh;
-    margin-right: 0.5vw;
+    font-size: 10vh;
+    font-family: Graffiti; 
+    color: #ecab27;
+    text-shadow: 0 0 2px black, 0 0 0.2em #edb84e;
+}
+
+.killText2 {
+    margin-top: -10%;
 }
 
 .logoLoad {

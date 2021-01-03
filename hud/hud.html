@@ -31,9 +31,10 @@
             <transition name="custom-classes-transition2" enter-active-class="animated tada"
                 leave-active-class="animated bounceOutRight">
                 <div class="killInfo" v-show="killsBarShow">
+                    <img src="./img/blood.png" alt="">
                     <div class="kills">
                         <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
-                        <h1 id="kills">УБИЙСТВ</h1>
+                        <h1 id="killInfo" class="killText2">УБИЙСТВ</h1>
                     </div>
                     <h1 id="killInfo" class="killText">ВЫ УБИЛИ ИГРОКА <span
                             class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В {{killsBar[1]}}
