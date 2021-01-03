@@ -290,12 +290,27 @@
                         ДРУЗЬЯ
                     </div>
                     <div class="btnfriend">
-                        ДОБАВИТЬ ДРУГА
+                        ЗАПРОСЫ
                     </div>
                 </div>
                 <div class="friendsh1">
-                    <h1 v-if="friendh1 === 1">СПИСОК ДРУЗЕЙ</h1>
-                    <h1 v-if="friendh1 === 2">ПРИГЛАШЕНИЕ В ДРУЗЬЯ</h1>
+                    <h1 v-if="friends === 0">СПИСОК ДРУЗЕЙ</h1>
+                    <h1 v-if="friends === 1">ЗАПРОСЫ</h1>
+                </div>
+                <div class="friends" v-if="friends === 0">
+                    <ul class="rectangle">
+                        <li><a href="#">DarkLegend</a></li>
+                        <li><a href="#">OBLIKO</a></li>
+                        <li><a href="#">Res1ce</a></li>
+                    </ul>
+                </div>
+                <div class="zaprosi" v-if="friends === 1">
+                    <div class="vhod">
+                        <h1>ВХОДЯЩИЕ</h1>
+                    </div>
+                    <div class="vihod">
+                        <h1>ИСХОДЯЩИЕ</h1>
+                    </div>
                 </div>
             </div>
         </section>
@@ -323,7 +338,7 @@
             // setTimeout(() => {
             //     menu.switchPage(1)
             // }, 10)
-            menu.switchPage(0)
+            menu.switchPage(3)
             return document.getElementById('fade').style.opacity = 1;
         }
         // else setTimeout(() => document.getElementById('fade').style.opacity = 1, 300); 

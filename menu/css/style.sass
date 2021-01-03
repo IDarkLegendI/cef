@@ -974,7 +974,7 @@ a:hover
     position: absolute
     left: 50%
     top: 30%
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -30%)
     // border: 1px solid black
     display: flex
     flex-direction: column
@@ -998,13 +998,76 @@ a:hover
     color: white
     font-family: 'Roboto Condensed', sans-serif
     padding: 1vh 1.5vw
-    border: 2px solid #e0e0e0
+    border: 2px solid #e0e0e0d3
     border-radius: 10px
     transition: 0.2s ease-out
 
 .btnfriend:hover
     background: white
     color: #03001a
+
+.zaprosi
+    display: flex
+    flex-direction: row
+    // height: 50vh
+
+.vhod, .vihod
+    width: 50%
+    // border: 1px solid black
+    display: flex
+    justify-content: center
+    font-family: 'Roboto Condensed', sans-serif
+
+.vhod
+    // border-right: 1px solid black
+
+.rectangle 
+    counter-reset: li
+    list-style: none
+    font: 1.9vh "Trebuchet MS", "Lucida Sans"
+    padding: 0
+    text-shadow: 0 1px 0 rgba(255,255,255,.5)
+
+.rectangle a 
+    position: relative
+    display: block
+    padding: 0.4em 0.4em 0.4em 0.8em
+    margin: 0.5em 0 0.5em 2.5em  
+    // background: #D3D4DA
+    color: white
+    text-decoration: none
+    transition: all .3s ease-out
+
+.rectangle a:hover 
+    background: #dcdde159
+
+.rectangle a:before 
+    content: counter(li)
+    counter-increment: li
+    position: absolute
+    left: -2.5em
+    top: 50%
+    margin-top: -1em
+    background: #fd8f00ec
+    height: 2em
+    width: 2em
+    line-height: 2em
+    text-align: center
+    font-weight: bold
+
+.rectangle a:after 
+    position: absolute
+    content: ""
+    border: .5em solid transparent
+    left: -1em
+    top: 50%
+    margin-top: -0.5em
+    transition: all .3s ease-out
+
+.rectangle a:hover:after 
+    left: -0.5em
+    border-left-color: #fd8f00ec
+
 
 //lobby
 

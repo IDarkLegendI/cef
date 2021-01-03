@@ -14,7 +14,7 @@ var menu = new Vue({
         statusGame: false,
 
         //Friend menu
-        friendh1: 2,
+        friends: 1,
     },
     methods: {
         emit: function(value)  
