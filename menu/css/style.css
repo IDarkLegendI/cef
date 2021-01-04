@@ -1480,21 +1480,45 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.zapros {
+  margin-top: 1vh;
+  font: 1.9vh "Trebuchet MS", "Lucida Sans";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.vhod, .vihod {
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-family: 'Roboto Condensed', sans-serif;
+.nick {
+  color: white;
+}
+
+.btnimg img {
+  width: 9%;
+}
+
+.vhod {
+  color: #00ee14;
+}
+
+.vihod {
+  color: #004ddb;
+}
+
+.mrimg {
+  margin-left: 5vw;
 }
 
 .rectangle {
@@ -1528,6 +1552,7 @@ a:hover {
   top: 50%;
   margin-top: -1em;
   background: #fd8f00ec;
+  border-radius: 3px;
   height: 2em;
   width: 2em;
   line-height: 2em;
