@@ -133,6 +133,7 @@ if ('alt' in window) {
     alt.on('updateKillFeed', hud.fKillFeedUpdate)   
 
     alt.on('updateJetPack', toggle => hud.helpJetPack = toggle)   
+    alt.on('visible', toggle => hud.visible = toggle)    
 } 
 else 
 { 
@@ -143,7 +144,7 @@ else
     // hud.showLogo = true; 
     hud.fUpdateKills("OBLIKO", 100)
     setInterval(() => {
-        hud.fUpdateKills("OBLIKO", 100)
+        // hud.fUpdateKills("OBLIKO", 100)
     }, 9000)
     setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
     setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
