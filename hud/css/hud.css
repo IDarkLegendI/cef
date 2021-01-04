@@ -124,7 +124,7 @@ body {
 
 #killInfo {
     text-shadow: 0 0 1px black, 0 0 0.2em black;
-    font-size: 2.2vh;
+    font-size: 1.8vh;
 }
 
 .kills {
@@ -141,7 +141,7 @@ body {
 }
 
 .killsnumber {
-    font-size: 10vh;
+    font-size: 8vh;
     font-family: Graffiti; 
     color: #ecab27;
     text-shadow: 0 0 2px black, 0 0 0.2em #edb84e;
