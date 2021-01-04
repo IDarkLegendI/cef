@@ -1015,21 +1015,28 @@ a:hover
     font: 1.9vh "Trebuchet MS", "Lucida Sans"
     display: flex
     flex-direction: row
-    justify-content: space-between
+    justify-content: center
 
 .nick
     color: white
+    padding: 0 10%
 
 .btnimg
+    flex-basis: 10%
+    // display: flex
+    // justify-content: flex-end
     img
         // padding: 1%
         // border: 1px solid black
         // margin-left: 0.1vw
-        width: 9%
+        width: 40%
 
 .vhod
     color: #00ee14
     // background-color: #58585863
+
+.vidzapros
+    flex-basis: 10%
 
 .vihod
     color: #004ddb
@@ -1037,27 +1044,27 @@ a:hover
 .mrimg
     margin-left: 5vw
 
-.rectangle 
+.rectangle
     counter-reset: li
     list-style: none
     font: 1.9vh "Trebuchet MS", "Lucida Sans"
     padding: 0
     text-shadow: 0 1px 0 rgba(255,255,255,.5)
 
-.rectangle a 
+.rectangle a
     position: relative
     display: block
     padding: 0.4em 0.4em 0.4em 0.8em
-    margin: 0.5em 0 0.5em 2.5em  
+    margin: 0.5em 0 0.5em 2.5em
     // background: #D3D4DA
     color: white
     text-decoration: none
     transition: all .3s ease-out
 
-.rectangle a:hover 
+.rectangle a:hover
     background: #dcdde159
 
-.rectangle a:before 
+.rectangle a:before
     content: counter(li)
     counter-increment: li
     position: absolute
@@ -1072,7 +1079,7 @@ a:hover
     text-align: center
     font-weight: bold
 
-.rectangle a:after 
+.rectangle a:after
     position: absolute
     content: ""
     border: .5em solid transparent
@@ -1081,10 +1088,9 @@ a:hover
     margin-top: -0.5em
     transition: all .3s ease-out
 
-.rectangle a:hover:after 
+.rectangle a:hover:after
     left: -0.5em
     border-left-color: #fd8f00ec
-
 
 //lobby
 

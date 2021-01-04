@@ -1496,21 +1496,32 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .nick {
   color: white;
+  padding: 0 10%;
+}
+
+.btnimg {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
 }
 
 .btnimg img {
-  width: 9%;
+  width: 40%;
 }
 
 .vhod {
   color: #00ee14;
+}
+
+.vidzapros {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
 }
 
 .vihod {
