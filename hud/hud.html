@@ -22,7 +22,8 @@
                 leave-active-class="animated zoomOutUp">
                 <section v-if="showWUP && !killsBarShow">
                     <div class="warmInfo">
-                        <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'flash slower' : 'pulse slower']">
+                        <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'pulse faster' : 'pulse slower']"
+                            :style="{borderColor: pulseWUP ? 'rgb(255, 0, 0)' : 'rgba(0, 0, 0, 0.5)'}">
                             {{textWUP}}
                         </h1>
                     </div>
@@ -38,7 +39,8 @@
                             {{kills === 1 ? "УБИЙСТВО" : kills < 5 ? "УБИЙСТВА" : "УБИЙСТВ"}}</h1>
                     </div>
                     <h1 id="killInfo" class="killText">ВЫ УБИЛИ ИГРОКА <span
-                            class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В {{killsBar[1]}}
+                            class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В <span
+                            :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
                         МЕТРОВ
                     </h1>
                 </div>
@@ -48,7 +50,7 @@
             leave-active-class="animated hinge">
             <div class="observer" v-show="visible && obs.show && !killsBarShow && obs.nick.length != 0">
                 <h1 class="animated infinite pulse slow">{{obs.nick}}</h1>
-                <div class="helpObServer animated bounce delay-5s slower">
+                <div class="helpObServer animated infinite bounce delay-3s slower">
                     <div class="subHelpOBS">
                         <div>
                             <p class="key">ESC</p>

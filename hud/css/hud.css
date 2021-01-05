@@ -32,17 +32,22 @@ body {
 .warmInfo {
   display: flex;
   justify-content: center;
-  margin-top: 5vh;  
+  margin-top: 10vh;  
 }
 
 .warmInfo h1 {
-  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);  
+  /* background-color: rgba(0, 0, 0, 0.5); */
   color: #ebebeb;
   font-family: Oswald, serif;
   align-items: center;
   font-size: 1.9vh;  
   padding: 0.2vh 1.4vw; 
   border-radius: 0.9em 0.5em;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(255, 0, 0);
+  text-shadow: 0 0 1px black, 0 0 0.2em black;
 }
 
 .hud{
@@ -275,6 +280,7 @@ p {
     justify-content: flex-end;
     color: #5adf01f3;
     text-shadow: 0 0 1px rgba(255, 0, 0, 0.589), 0 0 1px rgb(0, 0, 0);
+    padding-top: 1vh;
 }
 
 .killelement {

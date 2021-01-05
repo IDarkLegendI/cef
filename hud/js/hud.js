@@ -142,12 +142,14 @@ else
     hud.showHUD = true;
     hud.helpJetPack = true;
     // hud.showLogo = true; 
-    hud.fUpdateKills("OBLIKO", 100)
+    // hud.fUpdateKills("OBLIKO", 100)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     setInterval(() => {
-        hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1-2") 
+        // hud.fUpdateKills("OBLIKO", 45)
+        hud.fupdateWarmUP('123333333333333', true) 
+        // hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1-2") 
     }, 1000)
     // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
     // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
