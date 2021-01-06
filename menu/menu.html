@@ -16,7 +16,6 @@
 
 <body id="fade" onload="load()">
     <section id="body">
-
         <div id="cursor"></div>
         <div id="aura"></div>
 
@@ -285,17 +284,12 @@
         <!-- ДРУЗЬЯ -->
         <section v-if="page === 3">
             <div class="mainfrineds">
-                <div class="uplinefriends">
-                    <div class="btnfriend">
-                        ДРУЗЬЯ
-                    </div>
-                    <div class="btnfriend">
-                        ЗАПРОСЫ
-                    </div>
-                </div>
                 <div class="friendsh1">
-                    <h1 v-if="friends === 0">СПИСОК ДРУЗЕЙ</h1>
-                    <h1 v-if="friends === 1">ЗАПРОСЫ</h1>
+                    <h1>ДРУЗЬЯ</h1>
+                </div>
+                <div class="btnfriends">
+                    <div v-if="friends === 0">ПРИГЛАШЕНИЯ</div>
+                    <div v-if="friends === 1">НАЗАД</div>
                 </div>
                 <div class="friends" v-if="friends === 0">
                     <ul class="rectangle">
@@ -305,29 +299,14 @@
                     </ul>
                 </div>
                 <div class="zaprosi" v-if="friends === 1">
-                    <div class="zapros">
-                        <div class="vidzapros vhod">ВХОДЯЩИЙ</div>
-                        <div class="nick">DarkLegend</div>
-                        <div class="btnimg">
-                            <img src="img/tick.png" alt="">
-                            <img src="img/close.png" alt="">
-                        </div>
+                    <div class="vidzapros">
+                        ВХОДЯЩИЕ
                     </div>
                     <div class="zapros">
-                        <div class="vidzapros vhod">ВХОДЯЩИЙ</div>
-                        <div class="nick">OBLIKO</div>
-                        <div class="btnimg">
-                            <img src="img/tick.png" alt="">
-                            <img src="img/close.png" alt="">
+                        <div class="avatarzapros">
+                            <img src="img/ava.jpg" alt="">
                         </div>
-                    </div>
-                    <div class="zapros">
-                        <div class="vidzapros vihod">ИСХОДЯЩИЙ</div>
-                        <div class="nick">Res1ce</div>
-                        <div class="btnimg">
-                            <img src="img/tick.png" alt="">
-                            <img src="img/close.png" alt="">
-                        </div>
+                        <div class="nickzapros">DarkLegend</div>
                     </div>
                 </div>
             </div>
@@ -336,15 +315,43 @@
         <!-- ЛОББИ -->
         <section v-if="page === 4">
             <div class="mainlobby">
-                <div class="mainlobbyleft">
-                    <div class="mainlobbyh1">
-                        <h1>ЛОББИ</h1>
+                <div class="lobbyh1">
+                    <h1>ЛОББИ</h1>
+                </div>
+                <div class="sectionslobby">
+                    <div class="sectionlobby">
+                        <div class="borderlobby ava">
+                            <img src="img/ava.jpg" alt="">
+                        </div>
+                        <div class="nicklobby">DarkLegend</div>
+                    </div>
+                    <div class="sectionlobby">
+                        <div class="borderlobby">
+                            <img src="img/plus.png" alt="">
+                        </div>
+                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
+                    </div>
+                    <div class="sectionlobby">
+                        <div class="borderlobby">
+                            <img src="img/plus.png" alt="">
+                        </div>
+                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
+                    </div>
+                    <div class="sectionlobby">
+                        <div class="borderlobby">
+                            <img src="img/plus.png" alt="">
+                        </div>
+                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
+                    </div>
+                    <div class="sectionlobby">
+                        <div class="borderlobby">
+                            <img src="img/plus.png" alt="">
+                        </div>
+                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
                     </div>
                 </div>
-                <div class="mainlobbyright">
-                    <div class="mainlobbyh1">
-                        <h1>ПРИГЛАСИТЬ ДРУЗЕЙ</h1>
-                    </div>
+                <div class="btnback">
+                    <a href="#" v-on:click="saveSettings(0)" id="mouseFocus">НАЗАД</a>
                 </div>
             </div>
         </section>
@@ -356,7 +363,7 @@
             // setTimeout(() => {
             //     menu.switchPage(1)
             // }, 10)
-            menu.switchPage(3)
+            menu.switchPage(4)
             return document.getElementById('fade').style.opacity = 1;
         }
         // else setTimeout(() => document.getElementById('fade').style.opacity = 1, 300); 

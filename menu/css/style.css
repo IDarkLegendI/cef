@@ -1447,89 +1447,29 @@ a:hover {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.uplinefriends {
-  margin-top: 3vh;
+.btnfriends {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  color: #fff;
+  font: 2vh "Roboto Condensed", sans-serif;
 }
 
-.btnfriend {
-  color: white;
-  font-family: 'Roboto Condensed', sans-serif;
-  padding: 1vh 1.5vw;
-  border: 2px solid #e0e0e0d3;
+.btnfriends div {
+  padding: 1%;
   border-radius: 10px;
-  -webkit-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+  border: 2px solid white;
+  -webkit-transition: .1s ease-out;
+  transition: .1s ease-out;
 }
 
-.btnfriend:hover {
-  background: white;
-  color: #03001a;
-}
-
-.zaprosi {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.zapros {
-  margin-top: 1vh;
-  font: 1.9vh "Trebuchet MS", "Lucida Sans";
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.nick {
-  color: white;
-  padding: 0 10%;
-}
-
-.btnimg {
-  -ms-flex-preferred-size: 10%;
-      flex-basis: 10%;
-}
-
-.btnimg img {
-  width: 40%;
-}
-
-.vhod {
-  color: #00ee14;
-}
-
-.vidzapros {
-  -ms-flex-preferred-size: 10%;
-      flex-basis: 10%;
-}
-
-.vihod {
-  color: #004ddb;
-}
-
-.mrimg {
-  margin-left: 5vw;
+.btnfriends div:hover {
+  background-color: #fff;
+  color: black;
 }
 
 .rectangle {
@@ -1587,15 +1527,13 @@ a:hover {
   border-left-color: #fd8f00ec;
 }
 
-.mainlobby {
-  width: 50vw;
-  height: 50vh;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  font-family: 'Roboto Condensed', sans-serif;
+.vidzapros {
+  color: white;
+  font: 1.9vh "Roboto Condensed", "Lucida Sans";
+  border-bottom: 1px solid white;
+}
+
+.zapros {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1603,10 +1541,63 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2vh;
+}
+
+.nickzapros {
+  font: 2vh "Trebuchet MS", "Lucida Sans";
+  color: white;
+  margin-left: 0.5vw;
+}
+
+.avatarzapros {
+  height: 3.5vh;
+  width: 1.8vw;
+  border-radius: 3px;
+}
+
+.avatarzapros img {
+  width: 100%;
+  height: 100%;
+}
+
+.mainlobby {
+  width: 40vw;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  -webkit-transform: translate(-50%, -30%);
+          transform: translate(-50%, -30%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-shadow: 1px 1px 2px #0000007e;
 }
 
-.mainlobbyh1 {
+.lobbyh1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 4vh;
+  color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.sectionslobby {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1614,17 +1605,52 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  font: 1.8vh "Trebuchet MS", "Lucida Sans";
+}
+
+.sectionlobby {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.borderlobby {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 10vh;
+  width: 5.2vw;
+  border: 2px solid #f0f0f0;
 }
 
-.mainlobbyleft {
-  width: 70%;
-  border-right: 1px solid black;
+.borderlobby img {
+  width: 50%;
+  height: 50%;
 }
 
-.mainlobbyright {
-  width: 30%;
+.ava img {
+  width: 100%;
+  height: 100%;
+}
+
+.nicklobby {
+  margin-top: 2vh;
 }
 /*# sourceMappingURL=style.css.map */
