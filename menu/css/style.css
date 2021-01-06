@@ -1385,11 +1385,7 @@ a:hover {
 }
 
 .btnback2 {
-  position: absolute;
-  bottom: 10vh;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  margin-top: 5vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1402,16 +1398,32 @@ a:hover {
           justify-content: center;
 }
 
+.btnback2 div {
+  padding-right: 1vw;
+  padding-left: 1vw;
+}
+
 .btnback2 a {
   font-size: 2vh;
   border-radius: 5px;
   padding: 1vh 1.7vw;
-  background-color: #fff;
-  color: black;
   font-family: 'Roboto Condensed', sans-serif;
   text-shadow: none;
   -webkit-transition: .2s ease-out;
   transition: .2s ease-out;
+}
+
+.btnOnlyBorder {
+  background-color: #ffffff00;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  color: #fff;
+}
+
+.btnBackGround {
+  background-color: #ffffff;
+  color: black;
 }
 
 .mainfrineds {
@@ -1652,5 +1664,20 @@ a:hover {
 
 .nicklobby {
   margin-top: 2vh;
+}
+
+.list-complete-enter, .list-complete-leave-to {
+  opacity: 0;
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
+}
+
+.list-complete-leave-active {
+  position: absolute;
+}
+
+.list-complete-item {
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 /*# sourceMappingURL=style.css.map */

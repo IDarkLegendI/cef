@@ -950,22 +950,31 @@ a:hover
     font-size: 3vh
 
 .btnback2
-    position: absolute
-    bottom: 10vh
-    left: 50%
-    transform: translateX(-50%)
+    margin-top: 5vh
     display: flex
     flex-direction: row
     justify-content: center
+    div
+        padding-right: 1vw
+        padding-left: 1vw
     a
         font-size: 2vh
         border-radius: 5px
         padding: 1vh 1.7vw
-        background-color: #fff
-        color: black
         font-family: 'Roboto Condensed', sans-serif
         text-shadow: none
         transition: .2s ease-out
+
+.btnOnlyBorder
+    background-color: #ffffff00
+    border-width: 1px
+    border-style: solid
+    border-color: #fff
+    color: #fff
+
+.btnBackGround
+    background-color: #ffffff
+    color: black
 
 // Friends
 
@@ -1126,3 +1135,13 @@ a:hover
 
 .nicklobby
     margin-top: 2vh
+
+.list-complete-enter, .list-complete-leave-to
+    opacity: 0
+    transform: translateY(30px)
+.list-complete-leave-active
+    position: absolute
+
+.list-complete-item
+    transition: all 1s
+    // margin-right: 10px

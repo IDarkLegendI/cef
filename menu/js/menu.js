@@ -3,6 +3,7 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, // 0 - главная, 1 - настройки 
+        subPage: 0, // 
 
         //SETTINGS
         enableVR: true, //true, чтобы вр подрубить,
@@ -14,7 +15,7 @@ var menu = new Vue({
         statusGame: false,
 
         //Friend menu
-        friends: 1,
+        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya']
     },
     methods: {
         emit: function(value)  
@@ -32,10 +33,19 @@ var menu = new Vue({
                 })
             } 
         },
-        switchPage(newPage)
+        switchPage(newPage, newSubPage = -1)
         {
+            if(this.subPage === -2) return;
+
             if(('alt' in window) && newPage > 1) return;
             this.page = newPage;
+            if(newSubPage != -1)
+            {
+                this.subPage = -2;
+                setTimeout(() => {
+                    this.subPage = newSubPage;
+                }, 850)
+            } 
             // setTimeout(() => 
             // { 
             //     for(let i = 0; i < 3; i++)
@@ -79,4 +89,5 @@ if ('alt' in window)
 else 
 {
     menu.show = true;
+    menu.switchPage(3, 0)
 }
