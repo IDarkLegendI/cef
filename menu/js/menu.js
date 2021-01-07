@@ -50,7 +50,7 @@ var menu = new Vue({
                 } 
             }
             else {
-                console.log('switchPage: ' + newPage);
+                // console.log('switchPage: ' + newPage); 
                 if (this.coolDown) return;
                 this.coolDown = true;
                 const container = document.getElementById('body');
