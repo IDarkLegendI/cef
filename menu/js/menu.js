@@ -6,7 +6,7 @@ var menu = new Vue({
         subPage: 0, // 
 
         //SETTINGS
-        enableVR: true, //true, чтобы вр подрубить,
+        enableVR: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         
         //Block Game 
@@ -38,14 +38,53 @@ var menu = new Vue({
             if(this.subPage === -2) return;
 
             if(('alt' in window) && newPage > 1) return;
-            this.page = newPage;
             if(newSubPage != -1)
             {
-                this.subPage = -2;
-                setTimeout(() => {
-                    this.subPage = newSubPage;
-                }, 850)
-            } 
+                this.page = newPage;
+                if(newSubPage != -1)
+                {
+                    this.subPage = -2;
+                    setTimeout(() => {
+                        this.subPage = newSubPage;
+                    }, 850)
+                } 
+            }
+            else {
+                console.log('switchPage: ' + newPage);
+                if (this.coolDown) return;
+                this.coolDown = true;
+                const container = document.getElementById('body');
+                // const container2 = document.getElementById('hrLong');
+                let i, intervalID;
+                promise = new Promise(function (resolve) {
+                    i = 1.0;
+                    intervalID = setInterval(() => {
+                        i -= 0.01;
+                        container.style.opacity = i;
+                        if (i < 0.1) {
+                            resolve('result');
+                            container.style.opacity = 0.0;
+                            clearInterval(intervalID);
+                        }
+                    }, 1);
+                });
+                promise.then(async () => {
+                    this.page = newPage;
+
+                    setTimeout(() => {
+                        i = 0.0;
+                        intervalID = setInterval(() => {
+                            i += 0.01; 
+                            container.style.opacity = i;
+                            if (i > 0.9) {
+                                this.coolDown = false;
+                                container.style.opacity = 1.0;
+                                clearInterval(intervalID);
+                            } 
+                        }, 1);
+                    }, 10);
+                });
+            }
             // setTimeout(() => 
             // { 
             //     for(let i = 0; i < 3; i++)
@@ -88,6 +127,7 @@ if ('alt' in window)
 }
 else 
 {
-    menu.show = true;
-    menu.switchPage(3, 0)
+    menu.show = true; 
+    menu.switchPage(0, 0) 
+    document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
 }
