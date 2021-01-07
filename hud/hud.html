@@ -102,11 +102,14 @@
                     <transition name="custom-classes-transition3" enter-active-class="animated tada"
                         leave-active-class="animated hinge">
                         <div id="killfeed" v-show="visible">
-                            <template v-for="kill in killFeed">
-                                <div class="killfeed">
-                                    <div class="killelement"><span class="killElementText">{{kill}}</span></div>
+                            <transition-group name="list-complete" tag="div">
+                                <div class="killfeed list-complete-item" v-for="(kill, index) in killFeed"
+                                    v-bind:key="kill">
+                                    <div class="killelement">
+                                        <span class="killElementText">{{kill}}</span>
+                                    </div>
                                 </div>
-                            </template>
+                            </transition-group>
                         </div>
                     </transition>
 

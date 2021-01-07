@@ -78,17 +78,26 @@ var hud = new Vue({
         },
         fKillFeedUpdate(text)
         {  
+            if(this.killFeed[2]) 
+            {
+                console.log(`${this.killFeed[2]}; ${this.killFeed.splice(0, 1)}`)
+                return setTimeout(() => this.fKillFeedUpdate(text), 50) 
+            }
             this.killFeed.push(text);
-            if(this.killFeed[3]) this.killFeed.splice(0, 1); 
             let htmlEl = document.getElementById('killfeed');
             htmlEl.style.opacity = 1;    
 
             if(this.killFeedInterval != null) clearInterval(this.killFeedInterval);
             this.killFeedInterval = setInterval(() => {
-                if(htmlEl.style.opacity <= 0.2)
+                if(htmlEl.style.opacity <= 0.4) 
+                {
+                    this.killFeed.splice(0, this.killFeed.length)
+                }
+                if(htmlEl.style.opacity <= 0.3) 
                 {  
                     htmlEl.style.opacity = 0;
                     clearInterval(this.killFeedInterval);
+                    this.killFeedInterval = null;
                     this.killFeed = [];
                 }
                 htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
@@ -143,14 +152,15 @@ else
     hud.helpJetPack = true;
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)
-    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
-    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
-    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
-    setInterval(() => {
-        // hud.fUpdateKills("OBLIKO", 45)
-        hud.fupdateWarmUP('123333333333333', true) 
-        // hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1-2") 
-    }, 1000)
+    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
+    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A12"), 2000)
+    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)
+    let index = 0;
+    // setInterval(() => {
+    //     // hud.fUpdateKills("OBLIKO", 45)
+    //     // hud.fupdateWarmUP('123333333333333', true) 
+    //     hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
+    // }, 2000) 
     // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
     // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
