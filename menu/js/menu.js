@@ -15,7 +15,7 @@ var menu = new Vue({
         statusGame: false,
 
         //Friend menu
-        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya']
+        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123']
     },
     methods: {
         emit: function(value)  
@@ -128,6 +128,6 @@ if ('alt' in window)
 else 
 {
     menu.show = true; 
-    menu.switchPage(0, 0) 
+    menu.switchPage(3, 0) 
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
 }
