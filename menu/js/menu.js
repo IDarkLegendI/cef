@@ -128,6 +128,6 @@ if ('alt' in window)
 else 
 {
     menu.show = true; 
-    menu.switchPage(3, 0) 
+    menu.switchPage(3, 1) 
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
 }

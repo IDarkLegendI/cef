@@ -905,7 +905,7 @@ a:hover
 
 .mainauto
     display: flex
-    flex-direction: row
+    flex-direction: column
     justify-content: center
     align-items: center
     position: absolute
@@ -913,6 +913,12 @@ a:hover
     left: 50%
     transform: translateX(-50%)
     // border: 1px solid black
+
+.switchauto
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
 
 .arrowleft
     transform: rotate(180deg)
@@ -1006,7 +1012,7 @@ a:hover
         padding: 1%
         border-radius: 10px
         border: 2px solid white
-        transition: .1s ease-out
+        // transition: .1s ease-out
     div:hover
         background-color: #fff
         color: black
@@ -1026,7 +1032,7 @@ a:hover
     // background: #D3D4DA
     color: white
     text-decoration: none
-    transition: all .3s ease-out
+    // transition: all .3s ease-out
 
 .rectangle a:hover
     background: #dcdde159
@@ -1053,7 +1059,7 @@ a:hover
     left: -1em
     top: 50%
     margin-top: -0.5em
-    transition: all .3s ease-out
+    // transition: all .3s ease-out
 
 .rectangle a:hover:after
     left: -0.5em
@@ -1072,7 +1078,39 @@ a:hover
     display: flex
     flex-direction: row
     align-items: center
+    justify-content: space-between
     margin-top: 2vh
+    border-radius: 13px
+    transition: .3s ease-out
+    border-bottom: 1px solid #ffffff80
+
+.zapros:hover
+    background: #dcdde159
+
+.avatarnickzapros
+    display: flex
+    flex-direction: row
+    align-items: center
+
+.btnszapros
+    display: flex
+    flex-direction: row
+
+.btnzapros
+    margin-right: 1vw
+    // padding: 2%
+    transition: .2s all
+    img
+        width: 1.3vw
+
+.btntick:hover 
+    border: 2px solid #0b9c1f
+    img
+        // border: 1px solid #0b9c1f
+        transform: rotate(360deg)
+
+.btnclose:hover
+    border: 2px solid #ff1d1d
 
 .nickzapros
     font: 2vh "Trebuchet MS", "Lucida Sans"
@@ -1139,13 +1177,20 @@ a:hover
     height: 10vh
     width: 5.2vw
     border: 2px solid #f0f0f0
+    border-radius: 20px
+    transition: .2s ease-out
     img
         width: 50%
         height: 50%
 
+.borderlobby:hover
+    border-color: #01dbf8
+    transform: rotate(90deg)
+
 .ava img
     width: 100%
     height: 100%
+    border-radius: 20px
 
 .nicklobby
     margin-top: 2vh
@@ -1157,5 +1202,5 @@ a:hover
     position: absolute
 
 .list-complete-item
-    transition: all 1s
+    // transition: all 1s
     // margin-right: 10px

@@ -1313,10 +1313,10 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1328,6 +1328,22 @@ a:hover {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+.switchauto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .arrowleft {
@@ -1474,8 +1490,6 @@ a:hover {
   padding: 1%;
   border-radius: 10px;
   border: 2px solid white;
-  -webkit-transition: .1s ease-out;
-  transition: .1s ease-out;
 }
 
 .btnfriends div:hover {
@@ -1498,8 +1512,6 @@ a:hover {
   margin: 0.5em 0 0.5em 2.5em;
   color: white;
   text-decoration: none;
-  -webkit-transition: all .3s ease-out;
-  transition: all .3s ease-out;
 }
 
 .rectangle a:hover {
@@ -1529,8 +1541,6 @@ a:hover {
   left: -1em;
   top: 50%;
   margin-top: -0.5em;
-  -webkit-transition: all .3s ease-out;
-  transition: all .3s ease-out;
 }
 
 .rectangle a:hover:after {
@@ -1560,7 +1570,64 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 2vh;
+  border-radius: 13px;
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
+  border-bottom: 1px solid #ffffff80;
+}
+
+.zapros:hover {
+  background: #dcdde159;
+}
+
+.avatarnickzapros {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btnszapros {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.btnzapros {
+  margin-right: 1vw;
+  -webkit-transition: .2s all;
+  transition: .2s all;
+}
+
+.btnzapros img {
+  width: 1.3vw;
+}
+
+.btntick:hover {
+  border: 2px solid #0b9c1f;
+}
+
+.btntick:hover img {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.btnclose:hover {
+  border: 2px solid #ff1d1d;
 }
 
 .nickzapros {
@@ -1665,6 +1732,9 @@ a:hover {
   height: 10vh;
   width: 5.2vw;
   border: 2px solid #f0f0f0;
+  border-radius: 20px;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .borderlobby img {
@@ -1672,9 +1742,16 @@ a:hover {
   height: 50%;
 }
 
+.borderlobby:hover {
+  border-color: #01dbf8;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
 .ava img {
   width: 100%;
   height: 100%;
+  border-radius: 20px;
 }
 
 .nicklobby {
@@ -1689,10 +1766,5 @@ a:hover {
 
 .list-complete-leave-active {
   position: absolute;
-}
-
-.list-complete-item {
-  -webkit-transition: all 1s;
-  transition: all 1s;
 }
 /*# sourceMappingURL=style.css.map */
