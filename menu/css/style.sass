@@ -984,12 +984,24 @@ a:hover
 
 // Friends
 
-.mainfrineds
-    width: 30vw
+.contentlobbyfriends
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    // align-items: center
     position: absolute
+    top: 50%
+    left: 50%
+    width: 80vw
+    transform: translate(-50%, -50%)
+    // border: 1px solid black
+
+.mainfrineds
+    width: 25vw
+    // position: absolute
     left: 50%
     top: 30%
-    transform: translate(-50%, -30%)
+    // transform: translate(-50%, -30%)
     // border: 1px solid black
     display: flex
     flex-direction: column
@@ -1080,7 +1092,7 @@ a:hover
     align-items: center
     justify-content: space-between
     margin-top: 2vh
-    border-radius: 13px
+    border-radius: 1vw
     transition: .3s ease-out
     border-bottom: 1px solid #ffffff80
 
@@ -1099,18 +1111,13 @@ a:hover
 .btnzapros
     margin-right: 1vw
     // padding: 2%
-    transition: .2s all
+    transition: .3s ease-out
+    padding: 1%
     img
         width: 1.3vw
-
-.btntick:hover 
-    border: 2px solid #0b9c1f
-    img
-        // border: 1px solid #0b9c1f
-        transform: rotate(360deg)
-
-.btnclose:hover
-    border: 2px solid #ff1d1d
+    
+.btnzapros:hover
+    transform: rotate(360deg)
 
 .nickzapros
     font: 2vh "Trebuchet MS", "Lucida Sans"
@@ -1135,15 +1142,49 @@ a:hover
 	background-color: #ffffff83
 	-webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5)
 
+.inputaddfriends
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    font-size: 3vh
+    margin-top: 5vh
+    h1
+        color: #fff
+        font-family: 'Roboto Condensed', sans-serif
+        text-align: center
+    input
+        border: none
+        height: 4vh
+        width: 10vw
+        border-radius: 50px
+        background-color: #0000006c
+        color: white
+        font: 2vh "Trebuchet MS", "Lucida Sans"
+        padding: 0 3% 0 3%
+        letter-spacing: 3px
+        text-align: center
+    input:focus
+        outline: 0
+        outline-offset: 0
+
+.inputandbtn
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    margin-left: 2vw
+    .btnback2
+        margin-top: 2vh
 
 //lobby
 
 .mainlobby
     width: 40vw
-    position: absolute
+    // position: absolute
     left: 50%
     top: 30%
-    transform: translate(-50%, -30%)
+    // transform: translate(-50%, -30%)
     // border: 1px solid black
     display: flex
     flex-direction: column
@@ -1174,18 +1215,18 @@ a:hover
     display: flex
     align-items: center
     justify-content: center
-    height: 10vh
-    width: 5.2vw
+    height: 9.5vh
+    width: 5vw
     border: 2px solid #f0f0f0
     border-radius: 20px
-    transition: .2s ease-out
+    transition: .5s ease-out
     img
         width: 50%
         height: 50%
 
 .borderlobby:hover
     border-color: #01dbf8
-    transform: rotate(90deg)
+    transform: rotate(360deg)
 
 .ava img
     width: 100%

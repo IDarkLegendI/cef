@@ -1441,13 +1441,29 @@ a:hover {
   color: black;
 }
 
-.mainfrineds {
-  width: 30vw;
+.contentlobbyfriends {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.mainfrineds {
+  width: 25vw;
   left: 50%;
   top: 30%;
-  -webkit-transform: translate(-50%, -30%);
-          transform: translate(-50%, -30%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1574,7 +1590,7 @@ a:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 2vh;
-  border-radius: 13px;
+  border-radius: 1vw;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
   border-bottom: 1px solid #ffffff80;
@@ -1609,25 +1625,18 @@ a:hover {
 
 .btnzapros {
   margin-right: 1vw;
-  -webkit-transition: .2s all;
-  transition: .2s all;
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
+  padding: 1%;
 }
 
 .btnzapros img {
   width: 1.3vw;
 }
 
-.btntick:hover {
-  border: 2px solid #0b9c1f;
-}
-
-.btntick:hover img {
+.btnzapros:hover {
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
-}
-
-.btnclose:hover {
-  border: 2px solid #ff1d1d;
 }
 
 .nickzapros {
@@ -1658,13 +1667,73 @@ a:hover {
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
+.inputaddfriends {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3vh;
+  margin-top: 5vh;
+}
+
+.inputaddfriends h1 {
+  color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+}
+
+.inputaddfriends input {
+  border: none;
+  height: 4vh;
+  width: 10vw;
+  border-radius: 50px;
+  background-color: #0000006c;
+  color: white;
+  font: 2vh "Trebuchet MS", "Lucida Sans";
+  padding: 0 3% 0 3%;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.inputaddfriends input:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.inputandbtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 2vw;
+}
+
+.inputandbtn .btnback2 {
+  margin-top: 2vh;
+}
+
 .mainlobby {
   width: 40vw;
-  position: absolute;
   left: 50%;
   top: 30%;
-  -webkit-transform: translate(-50%, -30%);
-          transform: translate(-50%, -30%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1729,12 +1798,12 @@ a:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 10vh;
-  width: 5.2vw;
+  height: 9.5vh;
+  width: 5vw;
   border: 2px solid #f0f0f0;
   border-radius: 20px;
-  -webkit-transition: .2s ease-out;
-  transition: .2s ease-out;
+  -webkit-transition: .5s ease-out;
+  transition: .5s ease-out;
 }
 
 .borderlobby img {
@@ -1744,8 +1813,8 @@ a:hover {
 
 .borderlobby:hover {
   border-color: #01dbf8;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
 
 .ava img {
