@@ -130,7 +130,7 @@ if ('alt' in window)
 else 
 {
     menu.show = true; 
-    menu.switchPage(0, 1) 
+    // menu.switchPage(0, 1) 
     // setTimeout(() => {
     //     menu.switchPage(0, 1) 
     // }, 2000)

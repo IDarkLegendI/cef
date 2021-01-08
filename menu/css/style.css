@@ -924,10 +924,12 @@ html {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: relative;
+  left: 2vw;
 }
 
 .righticon img {
-  width: calc( 15vw + 11.5vh);
+  width: 20vw;
   height: auto;
 }
 
