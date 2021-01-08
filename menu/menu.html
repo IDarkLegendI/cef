@@ -186,7 +186,7 @@
                             </div>
                             <div class="textright">
                                 <span class="minibtn" id="mouseFocus">КАСТОМИЗАЦИЯ</span> <br>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(3)">ДРУЗЬЯ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 1)">ТЕСТ КНОПКА</span>
                             </div>
                             <div class="righticon">
                                 <img src="img/character.png" id="mouseFocus" alt="">
@@ -195,7 +195,10 @@
                     </transition>
 
                     <transition name="person-friend2">
-                        <div class="right" v-show="subPage === 1">
+                        <div class="rightNoHover" v-show="subPage === 1">
+                            <div class="friendsh1">
+                                <h1>Пригласить в команду</h1>
+                            </div>
                             <div class="zaprosi">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-for="(friend, index) in friends"
@@ -214,10 +217,12 @@
                                     </div>
                                 </transition-group>
                             </div>
+                            <div class="miniBtn">
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
+                            </div>
                         </div>
                     </transition>
                 </div>
-            </div>
             </div>
         </section>
 

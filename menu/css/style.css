@@ -218,7 +218,8 @@ html {
 
 .left {
   height: 100%;
-  width: 67vw;
+  -ms-flex-preferred-size: 72%;
+      flex-basis: 72%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -539,8 +540,21 @@ html {
 }
 
 .right {
+  margin-left: 3vw;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
   height: 100%;
-  width: 20.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-shadow: 1px 1px 2px #0000007e;
   border: 3px solid #00df64;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 5px #00df64, inset 0 0 5px #00df64;
@@ -556,6 +570,41 @@ html {
 
 .right:hover span {
   color: black;
+}
+
+.rightNoHover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-shadow: 1px 1px 2px #0000007e;
+  margin-left: 3vw;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+  height: 100%;
+  border: 3px solid #00df64;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px #00df64, inset 0 0 5px #00df64;
+          box-shadow: 0 0 5px #00df64, inset 0 0 5px #00df64;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+.rightNoHover h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.rightNoHover:hover {
+  background-color: #00b15000;
+  -webkit-box-shadow: 0 0 15px #00df64, inset 0 0 5px #00df64;
+          box-shadow: 0 0 15px #00df64, inset 0 0 5px #00df64;
 }
 
 .car {
@@ -840,20 +889,6 @@ html {
   height: auto;
 }
 
-.right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-shadow: 1px 1px 2px #0000007e;
-}
-
 .headright {
   margin-top: 3vh;
   margin-left: 2vw;
@@ -881,7 +916,14 @@ html {
 }
 
 .righticon {
-  margin-left: 2.2vw;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .righticon img {
@@ -1485,7 +1527,8 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  font-size: 4vh;
+  font-size: 2.5vh;
+  margin-top: 2vh;
   color: #fff;
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -1571,8 +1614,13 @@ a:hover {
 }
 
 .zaprosi {
-  max-height: 30vh;
+  margin-top: 2vh;
+  margin-bottom: 9vh;
+  padding-bottom: 2vh;
+  margin-left: 1vw;
+  margin-right: 0.5vw;
   overflow-y: auto;
+  overflow-x: none;
 }
 
 .zapros {
@@ -1586,18 +1634,21 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 2vh;
-  border-radius: 1vw;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
-  border-bottom: 1px solid #ffffff80;
 }
 
 .zapros:hover {
-  background: #dcdde159;
+  background: #00000059;
+  border-radius: 5px;
 }
 
 .avatarnickzapros {
@@ -1613,21 +1664,18 @@ a:hover {
           align-items: center;
 }
 
-.btnszapros {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
 .btnzapros {
-  margin-right: 1vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
-  padding: 1%;
+  margin-right: 0.5vw;
 }
 
 .btnzapros img {
@@ -1635,6 +1683,8 @@ a:hover {
 }
 
 .btnzapros:hover {
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }
@@ -1646,14 +1696,14 @@ a:hover {
 }
 
 .avatarzapros {
-  height: 3.5vh;
+  height: auto;
   width: 1.8vw;
 }
 
 .avatarzapros img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 
 .zaprosi::-webkit-scrollbar {
@@ -1665,6 +1715,16 @@ a:hover {
   border-radius: 50px;
   background-color: #ffffff83;
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.miniBtn {
+  font-size: 1.6vh;
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.miniBtn:hover {
+  color: black;
 }
 
 .inputaddfriends {
@@ -1837,6 +1897,11 @@ a:hover {
   position: absolute;
 }
 
+.list-complete-item {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
 .person-friend-enter, .person-friend-leave-to {
   -webkit-transition: 1.8s;
   transition: 1.8s;
@@ -1863,7 +1928,7 @@ a:hover {
 
 .person-friend2-leave-active {
   opacity: 0;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 /*# sourceMappingURL=style.css.map */

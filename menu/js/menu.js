@@ -15,7 +15,8 @@ var menu = new Vue({
         statusGame: false,
 
         //Friend menu
-        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223']
+        // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
+        friends: ['DarkLegend', 'Res1ce', 'Obliko']
     },
     methods: {
         emit: function(value)  
@@ -129,8 +130,9 @@ if ('alt' in window)
 else 
 {
     menu.show = true; 
-    setTimeout(() => {
-        menu.switchPage(0, 1) 
-    }, 2000)
+    menu.switchPage(0, 1) 
+    // setTimeout(() => {
+    //     menu.switchPage(0, 1) 
+    // }, 2000)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
 }
