@@ -1115,7 +1115,7 @@ a:hover
     padding: 1%
     img
         width: 1.3vw
-    
+
 .btnzapros:hover
     transform: rotate(360deg)
 
@@ -1133,14 +1133,14 @@ a:hover
         height: 100%
         border-radius: 50%
 
-.zaprosi::-webkit-scrollbar 
-	-webkit-appearance: none
-	width: 7px
+.zaprosi::-webkit-scrollbar
+    -webkit-appearance: none
+    width: 7px
 
-.zaprosi::-webkit-scrollbar-thumb 
-	border-radius: 50px
-	background-color: #ffffff83
-	-webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5)
+.zaprosi::-webkit-scrollbar-thumb
+    border-radius: 50px
+    background-color: #ffffff83
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5)
 
 .inputaddfriends
     display: flex
@@ -1242,6 +1242,38 @@ a:hover
 .list-complete-leave-active
     position: absolute
 
-.list-complete-item
+// .list-complete-item
     // transition: all 1s
-    // margin-right: 10px
+    // margin-right: 10p
+
+.person-friend-enter, .person-friend-leave-to
+    // opacity: 0
+    transition: 1.8s
+    transform-style: preserve-3d
+    transform: rotateY(180deg)
+
+.person-friend-leave-active
+    opacity: 0
+    transition: 0.3s
+
+.person-friend2-enter, .person-friend2-leave-to
+    // opacity: 0
+    transition: 1.8s
+    transform-style: preserve-3d
+    transform: rotateY(180deg)
+
+.person-friend2-leave-active
+    opacity: 0
+    transition: 0.8s
+    // transform-style: preserve-3d
+    // transform: rotateY(-90deg)
+
+// .person-friend2-enter, .person-friend2-leave-to
+//     // opacity: 0
+//     transition: 0.8s
+//     transform-style: preserve-3d
+//     transform: rotateY(180deg)
+
+// .person-friend2-leave-active
+//     position: absolute
+//     opacity: 0

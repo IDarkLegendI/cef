@@ -15,7 +15,7 @@ var menu = new Vue({
         statusGame: false,
 
         //Friend menu
-        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123']
+        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223']
     },
     methods: {
         emit: function(value)  
@@ -40,13 +40,14 @@ var menu = new Vue({
             if(('alt' in window) && newPage > 1) return;
             if(newSubPage != -1)
             {
+                // if(newPage == 0) return this.subPage = newSubPage;
                 this.page = newPage;
                 if(newSubPage != -1)
                 {
                     this.subPage = -2;
                     setTimeout(() => {
                         this.subPage = newSubPage;
-                    }, 850)
+                    }, 350)
                 } 
             }
             else {
@@ -128,6 +129,8 @@ if ('alt' in window)
 else 
 {
     menu.show = true; 
-    menu.switchPage(3, 1) 
+    setTimeout(() => {
+        menu.switchPage(0, 1) 
+    }, 2000)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
 }
