@@ -64,35 +64,6 @@
                                 </div>
                             </transition-group>
                         </div>
-                        <!-- <span><span class="warning1">СНЯТЬ</span> ПРЕДУПРЕЖДЕНИЕ</span> -->
-                        <!-- <div class="mainlobby">
-                            <div class="sectionslobby">
-                                <div class="sectionlobby">
-                                    <div class="borderlobby ava" v-on:click="switchPage(0, 1)">
-                                        <img src="img/ava.jpg" alt="">
-                                    </div>
-                                    <div class="nicklobby">DarkLegend</div>
-                                </div>
-                                <div class="sectionlobby" v-on:click="switchPage(0, 1)">
-                                    <div class="borderlobby">
-                                        <img src="img/plus.png" alt="">
-                                    </div>
-                                    <div class="nicklobby">ПРИГЛАСИТЬ</div>
-                                </div>
-                                <div class="sectionlobby" v-on:click="switchPage(0, 1)">
-                                    <div class="borderlobby">
-                                        <img src="img/plus.png" alt="">
-                                    </div>
-                                    <div class="nicklobby">ПРИГЛАСИТЬ</div>
-                                </div>
-                                <div class="sectionlobby" v-on:click="switchPage(0, 1)">
-                                    <div class="borderlobby">
-                                        <img src="img/plus.png" alt="">
-                                    </div>
-                                    <div class="nicklobby">ПРИГЛАСИТЬ</div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="down">
@@ -239,7 +210,7 @@
                     <transition name="person-friend2">
                         <div class="rightNoHover" v-show="subPage === 1">
                             <div class="friendsh1">
-                                <h1>Пригласить в команду</h1>
+                                <h1>ПРИГЛАСИТЬ В КОМАНДУ</h1>
                             </div>
                             <div class="zaprosi">
                                 <transition-group name="list-complete" tag="div">
@@ -261,6 +232,65 @@
                             </div>
                             <div class="btnbackperson">
                                 <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
+                            </div>
+                        </div>
+                    </transition>
+                    <transition name="person-friend2">
+                        <div class="rightNoHover" v-show="subPage === 2">
+                            <div class="friendsh1">
+                                <h1>ДРУЗЬЯ</h1>
+                            </div>
+                            <div class="zaprosi">
+                                <transition-group name="list-complete" tag="div">
+                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
+                                        v-bind:key="friend">
+                                        <div class="avatarnickzapros">
+                                            <div class="avatarzapros">
+                                                <img src="img/ava.jpg" alt="">
+                                            </div>
+                                            <div class="nickzapros">{{friend}}</div>
+                                        </div>
+                                        <div class="btnszapros">
+                                            <div class="btnzapros">
+                                                <img src="img/plusbtn.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition-group>
+                            </div>
+                            <div class="btnbackperson">
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">ВХОДЯЩИЕ
+                                    ЗАЯВКИ</span>
+                            </div>
+                        </div>
+                    </transition>
+                    <transition name="person-friend2">
+                        <div class="rightNoHover" v-show="subPage === 3">
+                            <div class="friendsh1">
+                                <h1>ВХОДЯЩИЕ ЗАЯВКИ</h1>
+                            </div>
+                            <div class="zaprosi">
+                                <transition-group name="list-complete" tag="div">
+                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
+                                        v-bind:key="friend">
+                                        <div class="avatarnickzapros">
+                                            <div class="avatarzapros">
+                                                <img src="img/ava.jpg" alt="">
+                                            </div>
+                                            <div class="nickzapros">{{friend}}</div>
+                                        </div>
+                                        <div class="btnszapros">
+                                            <div class="btnzapros">
+                                                <img src="img/plusbtn.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition-group>
+                            </div>
+                            <div class="btnbackperson">
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)">ДРУЗЬЯ</span>
                             </div>
                         </div>
                     </transition>
