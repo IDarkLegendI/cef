@@ -50,35 +50,49 @@
                         </div>
                     </div>
                     <div class="warning" id="mouseFocus">
-                        <!-- <span><span class="warning1">СНЯТЬ</span> ПРЕДУПРЕЖДЕНИЕ</span> -->
                         <div class="mainlobby">
+                            <transition-group name="list-complete" tag="div" class="sectionslobby" appear>
+                                <div class="sectionlobby list-complete-item" v-for="(player, index) in lobby"
+                                    v-bind:key="player.name">
+
+                                    <div class="borderlobby" :class="{ava: player.ava > 0}"
+                                        v-on:click="switchPage(0, player.ava === 0 ? 1 : 0)">
+                                        <img src="img/plus.png" alt="" v-if="player.ava === 0">
+                                        <img :src="`img/avatars/${player.ava}.jpg`" alt="" v-else>
+                                    </div>
+                                    <div class="nicklobby">{{player.name.toUpperCase()}}</div>
+                                </div>
+                            </transition-group>
+                        </div>
+                        <!-- <span><span class="warning1">СНЯТЬ</span> ПРЕДУПРЕЖДЕНИЕ</span> -->
+                        <!-- <div class="mainlobby">
                             <div class="sectionslobby">
                                 <div class="sectionlobby">
-                                    <div class="borderlobby ava">
+                                    <div class="borderlobby ava" v-on:click="switchPage(0, 1)">
                                         <img src="img/ava.jpg" alt="">
                                     </div>
                                     <div class="nicklobby">DarkLegend</div>
                                 </div>
-                                <div class="sectionlobby">
+                                <div class="sectionlobby" v-on:click="switchPage(0, 1)">
                                     <div class="borderlobby">
                                         <img src="img/plus.png" alt="">
                                     </div>
                                     <div class="nicklobby">ПРИГЛАСИТЬ</div>
                                 </div>
-                                <div class="sectionlobby">
+                                <div class="sectionlobby" v-on:click="switchPage(0, 1)">
                                     <div class="borderlobby">
                                         <img src="img/plus.png" alt="">
                                     </div>
                                     <div class="nicklobby">ПРИГЛАСИТЬ</div>
                                 </div>
-                                <div class="sectionlobby">
+                                <div class="sectionlobby" v-on:click="switchPage(0, 1)">
                                     <div class="borderlobby">
                                         <img src="img/plus.png" alt="">
                                     </div>
                                     <div class="nicklobby">ПРИГЛАСИТЬ</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="down">
@@ -214,7 +228,7 @@
                             </div>
                             <div class="textright">
                                 <span class="minibtn" id="mouseFocus">КАСТОМИЗАЦИЯ</span> <br>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 1)">ТЕСТ КНОПКА</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)">ДРУЗЬЯ</span>
                             </div>
                             <div class="righticon">
                                 <img src="img/character.png" id="mouseFocus" alt="">

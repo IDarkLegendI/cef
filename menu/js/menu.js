@@ -14,9 +14,32 @@ var menu = new Vue({
         countWarmUp: 0,
         statusGame: false,
 
+
+        //Lobby
+        lobby: [
+            {
+                name: "DarkLegend",
+                ava: 1,
+            },
+            {
+                name: "123",
+                ava: 2, 
+            },
+            {
+                name: "Res1ce3",
+                ava: 3,
+            },
+            {
+                name: "Пригласить",
+                ava: 0,
+            }
+        ],
+        myName: "DarkLegend",
+        leader: 0,
+
         //Friend menu
-        // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
-        friends: ['DarkLegend', 'Res1ce', 'Obliko']
+        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
+        // friends: ['DarkLegend', 'Res1ce', 'Obliko']
     },
     methods: {
         emit: function(value)  
@@ -103,6 +126,23 @@ var menu = new Vue({
             //         else document.getElementById(`map-${i}`).checked = ''; 
             //     }
             // }, 10);
+        },
+        fUpdateLobby(data)
+        {
+            if(data[0].name !== menu.myName)
+            {
+                let index = data.findIndex(el => el.name === menu.myName);
+                let client = data.find(el => el.name === menu.myName);
+                data.splice(index, 1);
+                data.unshift(client)
+            }
+
+            if(data.length < 4)
+            {
+                data.push({name: "пригласить", ava: 0})
+            }
+
+            menu.lobby = data;
         }
     } 
 }); 
@@ -132,7 +172,9 @@ else
     menu.show = true; 
     // menu.switchPage(0, 1) 
     // setTimeout(() => {
-    //     menu.switchPage(0, 1) 
-    // }, 2000)
+    //     menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}, {name: "Player-3", ava: 1}])
+    //     menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
+    //     // menu.switchPage(0, 1) 
+    // }, 500)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
 }
