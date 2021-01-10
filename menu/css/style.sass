@@ -30,7 +30,7 @@ html
     // border: 3px solid red
     position: absolute
     left: 50%
-    top: 50%
+    top: 10%
     transform: translate(-50%, -50%)
 
 .upper
@@ -117,7 +117,7 @@ html
     color: white
     display: flex
     flex-direction: row
-    justify-content: center
+    // justify-content: center
     align-items: center
     // border: 2px solid #e0e0e0
     border-radius: 10px
@@ -386,7 +386,13 @@ html
 
 .btnbackperson
     display: flex
-    justify-content: center
+    justify-content: space-around
+    margin-bottom: 3vh
+
+.btnbackperson2
+    display: flex
+    justify-content: space-around
+    margin-bottom: 3vh
 
 .rightNoHover:hover
     background-color: #00b15000
@@ -499,15 +505,6 @@ html
     display: flex
     flex-direction: row
     align-items: center
-
-.lobbybtn
-    font-size: 2vh
-    margin-left: 1vw
-
-.lobbybtn .minibtn
-    border-color: #e0e0e0
-    border-radius: 10px
-    font-family: 'Roboto Condensed', sans-serif
 
 .textticket5
     font-family: 'Rubik', sans-serif
@@ -984,10 +981,11 @@ a:hover
     font-size: 3vh
 
 .btnback2
-    margin-top: 5vh
+    margin-top: 3vh
     display: flex
     flex-direction: row
-    justify-content: center
+    justify-content: space-between
+    border: 5px solid black
     div
         padding-right: 1vw
         padding-left: 1vw
@@ -1129,6 +1127,7 @@ a:hover
     align-self: center
     justify-content: space-between
     margin-top: 2vh
+    border-radius: 10vh
     // border-radius: 1px
     transition: .3s ease-out
     // border-bottom: 1px solid #ffffffc5
@@ -1136,13 +1135,16 @@ a:hover
 
 .zapros:hover
     background: #00000059
-    border-radius: 5px
 
 .avatarnickzapros
     display: flex
     flex-direction: row
     align-items: center
     // background-color: black
+
+.btnszapros
+    display: flex
+    flex-direction: row
 
 .btnzapros
     align-items: center
@@ -1167,13 +1169,13 @@ a:hover
     margin-left: 0.5vw
 
 .avatarzapros
-    height: auto
     width: 1.8vw
+    height: 1.8vw
     // border: 1px solid black
     img
         width: 100%
         height: 100%
-        border-radius: 5px
+        border-radius: 50%
 
 .zaprosi::-webkit-scrollbar
     -webkit-appearance: none
@@ -1230,6 +1232,7 @@ a:hover
     // width: 100%
     display: flex
     flex-direction: row
+    align-items: flex-end
     justify-content: space-between
     color: white
     font: 0.7vw "Trebuchet MS", "Lucida Sans"
@@ -1261,10 +1264,25 @@ a:hover
     img
         width: 100%
         height: auto
-        border-radius: 30px
+        border-radius: 50%
+
+.crownimg
+    // height: 5vh
+    width: 1.5vw
+    margin-bottom: 1vh
+    img
+        width: 100%
+        height: auto
 
 .ava:hover
-    transform: scale(1.5)
+    transform: scale(1.4)
+
+.ready
+    margin-bottom: 2vh
+    color: #39ff1f
+
+.readynot
+    color: #ff1e1e
 
 .nicklobby
     margin-top: 1.2vh
@@ -1324,3 +1342,24 @@ a:hover
 .list-complete-item
 
     transition: all 1s
+
+// Custom
+
+.switchcustom
+    display: flex
+    width: 5vw
+    height: 60vh
+    flex-direction: column
+    justify-content: space-between
+    position: relative
+    top: 50vh
+    transform: translateY(-50%)
+    left: 15vw
+    // border: 2px solid green
+
+.customelement
+    width: 100%
+    // border: 1px solid green
+    img
+        width: 100%
+        height: 100%
