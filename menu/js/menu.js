@@ -20,21 +20,28 @@ var menu = new Vue({
             {
                 name: "DarkLegend",
                 ava: 1,
+                leader: 1,
+                ready: 0,
             },
             {
                 name: "123",
-                ava: 2, 
+                ava: 2,
+                leader: 0,
+                ready: 1,
             },
             {
                 name: "Res1ce3",
                 ava: 3,
+                leader: 0,
+                ready: 0,
             },
             {
                 name: "Пригласить",
                 ava: 0,
+                ready: 0,
             }
         ],
-        myName: "DarkLegend",
+        myName: "123",
         leader: 0,
 
         //Friend menu
@@ -174,6 +181,7 @@ if ('alt' in window)
 else 
 {
     menu.show = true; 
+    menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "123", ava: 2}, {name: "DarkLegend", ava: 1}, {name: "Player-3", ava: 1}])
     // menu.switchPage(0, 1) 
     // setTimeout(() => {
     //     menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}, {name: "Player-3", ava: 1}])

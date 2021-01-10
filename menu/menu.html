@@ -54,7 +54,13 @@
                             <transition-group name="list-complete" tag="div" class="sectionslobby" appear>
                                 <div class="sectionlobby list-complete-item" v-for="(player, index) in lobby"
                                     v-bind:key="player.name">
-
+                                    <div class="crownimg">
+                                        <img src="img/Crown.png" v-show="player.leader === 1" alt="">
+                                    </div>
+                                    <div class="ready" v-if="player.leader === 0">
+                                        <span v-show="player.ready === 1">ГОТОВ</span>
+                                        <span class="readynot" v-show="player.ready === 0">НЕ ГОТОВ</span>
+                                    </div>
                                     <div class="borderlobby" :class="{ava: player.ava > 0}"
                                         v-on:click="switchPage(0, player.ava === 0 ? 1 : 0)">
                                         <img src="img/plus.png" alt="" v-if="player.ava === 0">
@@ -94,8 +100,6 @@
                                         <div class="textticketblock">
                                             <div class="textticket5">Игроков в ожидании: <span
                                                     class="textticket6">{{countWarmUp}}</span></div>
-                                            <div class="lobbybtn" v-on:click="switchPage(4)"><span
-                                                    class="minibtn">ЛОББИ</span></div>
                                         </div>
                                         <!-- <span сlass="textticket5">Примерное</span> -->
                                     </div>
@@ -200,7 +204,8 @@
                             <div class="textright">
                                 <span class="minibtn" id="mouseFocus"
                                     v-on:click="emit('characterOpen')">КАСТОМИЗАЦИЯ</span> <br>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)">ДРУЗЬЯ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)">ДРУЗЬЯ</span> <br>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(4, 0)">ОДЕЖДА</span>
                             </div>
                             <div class="righticon">
                                 <img src="img/character.png" id="mouseFocus" alt="">
@@ -252,14 +257,17 @@
                                             <div class="nickzapros">{{friend}}</div>
                                         </div>
                                         <div class="btnszapros">
-                                            <div class="btnzapros">
+                                            <!-- <div class="btnzapros">
                                                 <img src="img/plusbtn.png" alt="">
+                                            </div> -->
+                                            <div class="btnzapros">
+                                                <img src="img/dots.png" alt="">
                                             </div>
                                         </div>
                                     </div>
                                 </transition-group>
                             </div>
-                            <div class="btnbackperson">
+                            <div class="btnbackperson2">
                                 <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
                                 <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">ВХОДЯЩИЕ
                                     ЗАЯВКИ</span>
@@ -283,7 +291,10 @@
                                         </div>
                                         <div class="btnszapros">
                                             <div class="btnzapros">
-                                                <img src="img/plusbtn.png" alt="">
+                                                <img src="img/tick.png" alt="">
+                                            </div>
+                                            <div class="btnzapros">
+                                                <img src="img/close.png" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -471,6 +482,24 @@
                 </div>
             </div>
         </div> -->
+
+        <!-- Кастомизация -->
+        <section v-if="page === 4">
+            <div class="switchcustom">
+                <div class="customelement">
+                    <img src="img/clotches/shapka.png" alt="">
+                </div>
+                <div class="customelement">
+                    <img src="img/clotches/topi.png" alt="">
+                </div>
+                <div class="customelement">
+                    <img src="img/clotches/shtani.png" alt="">
+                </div>
+                <div class="customelement">
+                    <img src="img/clotches/boti.png" alt="">
+                </div>
+            </div>
+        </section>
 
         <!-- ДРУЗЬЯ -->
         <section v-if="page === 3">
