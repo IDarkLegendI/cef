@@ -42,9 +42,13 @@ var menu = new Vue({
         // friends: ['DarkLegend', 'Res1ce', 'Obliko']
     },
     methods: {
-        emit: function(value)  
+        emitServer: function(value)  
         { 
             if ('alt' in window) alt.emit('emitToServer', value) 
+        },
+        emit: function(value, ...args)  
+        { 
+            if ('alt' in window) alt.emit(value, ...args) 
         },
         saveSettings(page)
         {

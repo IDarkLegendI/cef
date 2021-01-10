@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="stack">
-                                <div class="ticket form" id="mouseFocus" v-on:click="emit('sMenu:startGame')"
+                                <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
                                     v-if="!statusGame">
                                     <div class="textticket">
                                         <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
@@ -104,8 +104,8 @@
                                     </div>
                                 </div>
 
-                                <div class="ticket ticketRed form" id="mouseFocus" v-on:click="emit('sMenu:endGame')"
-                                    v-else>
+                                <div class="ticket ticketRed form" id="mouseFocus"
+                                    v-on:click="emitServer('sMenu:endGame')" v-else>
                                     <div class="textticket" style="justify-content: center;">
                                         <div class="textticket1">ЗАКОНЧИТЬ <span class="textticket2">ИГРУ</span>
                                         </div>
@@ -198,7 +198,8 @@
                                 <span class="headright1">ПЕРСОНАЖ</span>
                             </div>
                             <div class="textright">
-                                <span class="minibtn" id="mouseFocus">КАСТОМИЗАЦИЯ</span> <br>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="emit('characterOpen')">КАСТОМИЗАЦИЯ</span> <br>
                                 <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)">ДРУЗЬЯ</span>
                             </div>
                             <div class="righticon">
