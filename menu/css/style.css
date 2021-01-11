@@ -1417,7 +1417,8 @@ a:hover {
 }
 
 .arrowleft:active svg, .arrowright:active svg {
-  width: 2.4vw;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .nameauto {
@@ -1969,10 +1970,102 @@ a:hover {
 
 .customelement {
   width: 100%;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
 }
 
 .customelement img {
   width: 100%;
   height: 100%;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.customelement:hover img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.sandwichcustom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 25vh;
+}
+
+.arrowleftcustom {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  fill: #ffffff;
+  -webkit-filter: drop-shadow(0 0 5px #ffffff8e);
+          filter: drop-shadow(0 0 5px #ffffff8e);
+  margin-right: 2vw;
+  -webkit-transition: .1s ease-out;
+  transition: .1s ease-out;
+}
+
+.arrowrightcustom {
+  fill: #ffffff;
+  -webkit-filter: drop-shadow(0 0 5px #ffffff8e);
+          filter: drop-shadow(0 0 5px #ffffff8e);
+  margin-left: 2vw;
+  -webkit-transition: .1s ease-out;
+  transition: .1s ease-out;
+}
+
+.arrowrightcustom svg, .arrowleftcustom svg {
+  -webkit-transition: .05s ease-out;
+  transition: .05s ease-out;
+}
+
+.arrowleftcustom:hover, .arrowrightcustom:hover {
+  fill: #00a2ff;
+  -webkit-filter: drop-shadow(0 0 3px #00a2ff);
+          filter: drop-shadow(0 0 3px #00a2ff);
+}
+
+.arrowleftcustom:active svg, .arrowrightcustom:active svg {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.namecustom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 1vh;
+  color: white;
+  width: 9vw;
+  height: 4vh;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 2.5vh;
+  -webkit-filter: drop-shadow(0 0 1px #fff);
+          filter: drop-shadow(0 0 1px #fff);
+  -webkit-box-shadow: 0px 0px 3px #ffffff;
+          box-shadow: 0px 0px 3px #ffffff;
+}
+
+.active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-filter: drop-shadow(0 0 10px #43fca6);
+          filter: drop-shadow(0 0 10px #43fca6);
 }
 /*# sourceMappingURL=style.css.map */
