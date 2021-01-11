@@ -54,10 +54,10 @@
                             <transition-group name="list-complete" tag="div" class="sectionslobby" appear>
                                 <div class="sectionlobby list-complete-item" v-for="(player, index) in lobby"
                                     v-bind:key="player.name">
-                                    <div class="crownimg">
-                                        <img src="img/Crown.png" v-show="player.leader === 1" alt="">
+                                    <div class="crownimg" v-if="player.ready === -1">
+                                        <img src="img/Crown.png" alt="">
                                     </div>
-                                    <div class="ready" v-if="player.leader === 0">
+                                    <div class="ready" v-if="player.ready >= 0">
                                         <span v-show="player.ready === 1">ГОТОВ</span>
                                         <span class="readynot" v-show="player.ready === 0">НЕ ГОТОВ</span>
                                     </div>
