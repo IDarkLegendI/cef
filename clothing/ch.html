@@ -198,18 +198,24 @@
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
 				}
+				alt.emit('emitToServer', 'sClothing:buy', JSON.stringify(obj));
 				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-BuyCloth", JSON.stringify(obj));
 			},
 
 			reset: function () {
 				this.currentTitle = false;
+				alt.emit('cClothing:SetCamera', this.currentTitle)
+				alt.emit('emitToServer', 'sClothing:reloadClothes');
 				// mp.trigger("cClothingShopSetCamera", this.currentTitle);
 				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
 			},
 			changeCamRotation: function () {
-				mp.trigger("cChangeHeading", this.camRotation);
+				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
+				// mp.trigger("cChangeHeading", this.camRotation);
 			},
 			exit: function () {
+				alt.emit('emitToClient', 'cCloseCEF');
+				alt.emit('emitToServer', 'sClothing:reloadClothes');
 				// mp.trigger("cCloseCefAndDestroyCam");
 				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
 			},
@@ -221,6 +227,7 @@
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
 				}
+				alt.emit('emitToServer', 'sClothing:setClothes', obj);
 				// mp.trigger("cMisc-CallServerEvent", "sClothes-SetCloth", JSON.stringify(obj));
 			},
 		}
@@ -598,6 +605,7 @@
 
 	if ('alt' in window) {
 		alt.on('setSex', sex => {
+			console.log(`sex: ${sex}`)
 			if (sex) loadMans();
 			else loadWomans();
 		})
