@@ -57,7 +57,7 @@
 	const app = new Vue({
 		el: '#app',
 		data: {
-			camRotation: 0,
+			camRotation: 180,
 			hats: false,
 			glasses: false,
 			tops: false,
@@ -95,6 +95,10 @@
 				return this.currentCloth.price;
 			},
 
+			load: function () {
+				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
+			},
+
 
 
 			setCurrentStartSettings: function () {
@@ -103,7 +107,7 @@
 				this.currentCloth.color = this.currentCloth.colors[0];
 				this.setColor(0);
 				if (this.currentTitle === "Tops") this.setUnderColor(0);
-				alt.emit('cClothing:SetCamera', this.currentTitle)
+				alt.emit('emitToClient', 'cClothing:SetCamera', this.currentTitle)
 				// mp.trigger("cClothingShop-SetCamera", this.currentTitle);
 			},
 			showHats: function () {
@@ -204,18 +208,19 @@
 
 			reset: function () {
 				this.currentTitle = false;
-				alt.emit('cClothing:SetCamera', this.currentTitle)
+				alt.emit('emitToClient', 'cClothing:SetCamera', this.currentTitle)
 				alt.emit('emitToServer', 'sClothing:reloadClothes');
 				// mp.trigger("cClothingShopSetCamera", this.currentTitle);
 				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
 			},
 			changeCamRotation: function () {
+				console.log(this.camRotation)
 				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
 				// mp.trigger("cChangeHeading", this.camRotation);
 			},
 			exit: function () {
 				alt.emit('emitToClient', 'cCloseCEF');
-				alt.emit('emitToServer', 'sClothing:reloadClothes');
+				alt.emit('emitToServer', 'sClothing:close');
 				// mp.trigger("cCloseCefAndDestroyCam");
 				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
 			},
@@ -588,6 +593,8 @@
 		];
 	}
 
+	app.load();
+
 
 	function loadRusLang() {
 		app.titleText = "Магазин одежды";
@@ -608,6 +615,11 @@
 			console.log(`sex: ${sex}`)
 			if (sex) loadMans();
 			else loadWomans();
+		})
+
+		alt.on('setLang', lang => {
+			console.log(`lang: ${lang}`)
+			if (lang === 'ru') loadRusLang();
 		})
 	}
 </script>
