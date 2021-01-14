@@ -304,7 +304,6 @@
 			buy: function () {
 				const obj = {
 					title: this.currentTitle,
-					id: this.id,
 					number: this.currentNum,
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
@@ -327,6 +326,7 @@
 			},
 			exit: function () {
 				alt.emit('emitToClient', 'cCloseCEF');
+				alt.emit('emitToClient', 'cClothing:close');
 				alt.emit('emitToServer', 'sClothing:close');
 				// mp.trigger("cCloseCefAndDestroyCam");
 				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
@@ -334,12 +334,14 @@
 
 			setClothToPlayer: function () {
 				const obj = {
+					id: this.currentCloth.id,
 					title: this.currentTitle,
 					number: this.currentNum,
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
 				}
-				alt.emit('emitToServer', 'sClothing:setClothes', obj);
+				alt.emit('emitToClient', 'cClothing:setClothes', obj);
+				// alt.emit('emitToServer', 'sClothing:setClothes', obj);
 				// mp.trigger("cMisc-CallServerEvent", "sClothes-SetCloth", JSON.stringify(obj));
 			},
 		}
