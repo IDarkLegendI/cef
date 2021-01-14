@@ -47,7 +47,7 @@ var menu = new Vue({
         {
             if(this.subPage === -2) return;
 
-            if(('alt' in window) && newPage > 1) return;
+            if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
             if(newSubPage != -1)
             {
                 // if(newPage == 0) return this.subPage = newSubPage;
