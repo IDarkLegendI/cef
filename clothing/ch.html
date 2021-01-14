@@ -59,7 +59,7 @@
 						<img src="clotches/boti.png" alt="">
 					</div>
 				</div>
-				<div class="sandwiches">
+				<div class="sandwiches" v-if="currentTitle">
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom" @click="prevColor">
 							<svg data-name="Livello 1" rotate="180deg" width="5vh" id="Livello_1" viewBox="0 0 128 128"
@@ -97,7 +97,7 @@
 							</svg>
 						</div>
 						<div class="namecustom">
-							<div class="textnamecustom">{{ currentTitle }}</div>
+							<div class="textnamecustom">{{ currentCloth.name }}</div>
 						</div>
 						<div class="arrowrightcustom" @click="nextCloth">
 							<svg data-name="Livello 1" width="5vh" id="Livello_1" viewBox="0 0 128 128"
@@ -137,13 +137,13 @@
 					</div>
 				</div>
 				<div class="btns">
-					<div class="btn btnbuy" @click="buy">
+					<div class="btn btnbuy" @click="buy" v-if="currentTitle">
 						<a href="#">{{ buyText }} {{ showPrice() }}</a>
 					</div>
-					<div class="btn">
+					<div class="btn" @click="reset">
 						<a href="#">СБРОСИТЬ</a>
 					</div>
-					<div class="btn btnclose">
+					<div class="btn btnclose" @click="exit">
 						<a href="#">ВЫХОД</a>
 					</div>
 				</div>
@@ -340,6 +340,8 @@
 					number: this.currentNum,
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
+					torso: this.currentCloth.torso,
+					undershirt: this.currentCloth.undershirt,
 				}
 				alt.emit('emitToClient', 'cClothing:setClothes', obj);
 				// alt.emit('emitToServer', 'sClothing:setClothes', obj);
@@ -515,8 +517,7 @@
 				underColor: 0,
 				underColors: [0],
 			},
-
-		];
+		]
 
 		app.legs = [{
 				id: 0,
