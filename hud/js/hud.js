@@ -85,6 +85,8 @@ var hud = new Vue({
             }
             this.killFeed.push(text);
             let htmlEl = document.getElementById('killfeed');
+            if(htmlEl == null) return;
+             
             htmlEl.style.opacity = 1;    
 
             if(this.killFeedInterval != null) clearInterval(this.killFeedInterval);
