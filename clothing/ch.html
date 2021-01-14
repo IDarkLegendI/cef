@@ -6,40 +6,6 @@
 
 <body>
 	<div id="app">
-		<!-- <div class="b1">
-			<div class="item title">{{ titleText }}</div>
-			<div class="item"></div>
-			<div class="item buttons" @click="showHats">{{ hatsText }}</div>
-			<div class="item buttons" @click="showGlasses">{{ glassesText }}</div>
-			<div class="item buttons" @click="showTops">{{ topsText }}</div>
-			<div class="item buttons" @click="showLegs">{{ legsText }}</div>
-			<div class="item buttons" @click="showFeet">{{ feetText }}</div>
-			<div class="item"></div>
-			<div v-if="currentTitle">
-				<div class="item title">{{ currentTitle }}</div>
-				<div class="item b name">
-					<div class="arrow l-arrow" @click="prevCloth">
-						</div> {{ currentCloth.name }} <div class="arrow r-arrow" @click="nextCloth">>
-					</div>
-				</div>
-				<div class="item b">
-					<div class="arrow l-arrow" @click="prevColor">
-						</div> {{ colorText }} {{ currentCloth.color }} <div class="arrow r-arrow" @click="nextColor">>
-					</div>
-				</div>
-
-				<div class="item b" v-if="currentTitle === 'Tops'">
-					<div class="arrow l-arrow" @click="prevUnderColor">
-						</div> {{ underColorText }} <div class="arrow r-arrow" @click="nextUnderColor">>
-					</div>
-				</div>
-
-				<div class="item b buy" @click="buy">
-					<div> {{ buyText }}</div>
-					<div>{{ showPrice() }}</div>
-				</div>
-			</div> -->
-
 		<div class="b1">
 			<div class="contentb1">
 				<div class="switchcustom">
@@ -151,10 +117,9 @@
 			<!-- <div class="item buttons reset" @click="reset">{{ resetText }}</div>
 			<div class="item exit" @click="exit">{{ exitText }}</div> -->
 		</div>
-	</div>
-	<div class="rotation">
-		<input type="range" min="-180" max="360" step="1" v-model.number="camRotation" @input="changeCamRotation">
-	</div>
+		<div class="rotation">
+			<input @input="changeCamRotation" max="360" min="-180" step="1" type="range" v-model.number="camRotation">
+		</div>
 	</div>
 </body>
 
@@ -321,7 +286,7 @@
 				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
 			},
 			changeCamRotation: function () {
-				console.log(this.camRotation)
+				// console.log(this.camRotation) 
 				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
 				// mp.trigger("cChangeHeading", this.camRotation);
 			},
