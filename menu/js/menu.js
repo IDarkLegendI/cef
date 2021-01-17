@@ -3,7 +3,7 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
-        subPage: 0, //  
+        subPage: 2, //  
 
         //SETTINGS
         enableVR: false, //true, чтобы вр подрубить,
@@ -17,7 +17,7 @@ var menu = new Vue({
 
         //Lobby
         lobby: [],
-        myName: "Res1ce",
+        myName: "DarkLegend",
 
         //Friend menu
         friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
@@ -131,8 +131,27 @@ var menu = new Vue({
                 data.push({name: "пригласить", ava: 0})
             }
 
+            // this.lobby.forEach(player => {
+            //     if(player.discordID && player.ava)
+            //     {
+            //         player.url = 
+            //     }
+            // })
             menu.lobby = data;
-        }
+        },
+        getPhoto(index, id, avatar)
+        {
+            let element = document.getElementById(`player${index}`) 
+            const url = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`
+
+            fetch(url) 
+            .then(response => (response.ok) ? response.blob() : Promise.reject())
+            .then(result => element.src = URL.createObjectURL(result)) 
+            .catch(() => element.src = `./img/avatars/${this.getRandomInt(13)}.jpg`)
+        },
+        getRandomInt: function (max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        },
     } 
 }); 
 

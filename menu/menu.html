@@ -64,7 +64,7 @@
                                     <div class="borderlobby" :class="{ava: player.ava > 0}"
                                         v-on:click="switchPage(0, player.ava === 0 ? 1 : 0)">
                                         <img src="img/plus.png" alt="" v-if="player.ava === 0">
-                                        <img :src="`img/avatars/${player.ava}.jpg`" alt="" v-else>
+                                        <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt="" v-else>
                                     </div>
                                     <div class="nicklobby">{{player.name.toUpperCase()}}</div>
                                 </div>
