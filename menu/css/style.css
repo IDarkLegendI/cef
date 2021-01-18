@@ -398,7 +398,7 @@ html {
           flex-direction: column;
   -ms-flex-preferred-size: content;
       flex-basis: content;
-  font-size: 1.5vh;
+  font-size: 0.8vw;
 }
 
 .rankContent .img {
@@ -447,7 +447,7 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 2.3vh;
+  font-size: 1.3vw;
   margin-left: 2vw;
   margin-top: 4vh;
 }
@@ -463,7 +463,7 @@ html {
 }
 
 .bpscore {
-  font-size: 2.1vh;
+  font-size: 1.3vw;
   font-family: 'Rubik', sans-serif;
 }
 

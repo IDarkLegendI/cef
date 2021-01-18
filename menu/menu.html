@@ -178,16 +178,17 @@
                                                         <span>K/D:</span><span class="bpscore">
                                                             {{(+kills/+matches).toFixed(2)}}</span>
                                                     </div>
-                                                    <div class="kd" style="font-size: 2.0vh;">
-                                                        ОТЫГРАНО ЧАСОВ:
-                                                        {{hours}}
+                                                    <div class="kd" style="font-size: 1.05vw;">
+                                                        НАИГРАНО ЧАСОВ:
+                                                        <span class="bpscore" style="font-size: 1.05vw;">
+                                                            30{{hours}}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="img">
-                                        <img src="img/levels/10.png" id="mouseFocus" alt="">
+                                        <img :src="`img/levels/${level}.png`" id="mouseFocus" alt="">
                                     </div>
                                 </div>
                             </div>

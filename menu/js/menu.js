@@ -27,12 +27,13 @@ var menu = new Vue({
         friends: ['DarkLegend', 'Res1ce', 'Obliko'],
 
         //Ranks
-        elo: 1000,
+        elo: 2000,
         kills: 185,
         matches: 70,
         lastMatch: 25,
         wins: 0,
         hours: 0,
+        level: '01',
     },
     methods: {
         emitServer: function(value)  
@@ -146,6 +147,19 @@ var menu = new Vue({
         getRandomInt: function (max) {
             return Math.floor(Math.random() * Math.floor(max));
         },
+        getLevel: function() {
+           if(this.elo < 800) this.level = '01';
+           else if(this.elo < 950) this.level = '02';
+           else if(this.elo < 1100) this.level = '03';
+           else if(this.elo < 1250) this.level = '04';
+           else if(this.elo < 1400) this.level = '05';
+           else if(this.elo < 1550) this.level = '06';
+           else if(this.elo < 1700) this.level = '07';
+           else if(this.elo < 1850) this.level = '08';
+           else if(this.elo < 2000) this.level = '09';
+           else this.level = '10';
+            console.log(this.level)
+        }
     } 
 }); 
 
@@ -189,6 +203,8 @@ if ('alt' in window)
         menu.lastMatch = obj.lastMatch;
         menu.wins = obj.wins;
         menu.hours = obj.hours;
+
+        menu.getLevel();
     });
 }
 else 
@@ -197,6 +213,7 @@ else
     // menu.switchPage(0, 1) 
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
+        menu.getLevel();
         menu.fUpdateLobby([{name: "Player-1", ava: 3, ready: 0}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: -1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.switchPage(0, 1)  
