@@ -16,16 +16,21 @@ var menu = new Vue({
         textMatch: 'В поиске', 
         countWarmUp: 0,
         statusGame: false,
-
-
+        
         //Lobby
         lobby: [],
         myName: "DarkLegend",
         myAvatar: "",
 
         //Friend menu
-        friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
-        // friends: ['DarkLegend', 'Res1ce', 'Obliko']
+        // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
+        friends: ['DarkLegend', 'Res1ce', 'Obliko'],
+
+        //Ranks
+        elo: 0,
+        kills: 0,
+        matches: 0,
+        lastMatch: 0,
     },
     methods: {
         emitServer: function(value)  
@@ -188,6 +193,14 @@ if ('alt' in window)
         console.log(`bMenu:setMyAvatar: ${avatar}`) 
         menu.myAvatar = await menu.getPhoto(avatar)
         menu.fUpdateLobby([{name: menu.myName, ava: menu.myAvatar, ready: -2}]);
+    });
+    
+    alt.on('bMenu:updateRank', (obj) => 
+    {
+        menu.elo = obj.elo;
+        menu.kills = obj.kills;
+        menu.matches = obj.matches;
+        menu.lastMatch = obj.lastMatch;
     });
 }
 else 

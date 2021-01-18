@@ -571,6 +571,8 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   text-shadow: 1px 1px 2px #0000007e;
   margin-left: 3vw;
   -ms-flex-preferred-size: 25%;
@@ -597,6 +599,8 @@ html {
       justify-content: space-around;
   margin-bottom: 3vh;
   height: 10%;
+  -ms-flex-preferred-size: 5%;
+      flex-basis: 5%;
 }
 
 .btnbackperson2 {
@@ -1623,6 +1627,8 @@ a:hover {
   padding-bottom: 2vh;
   margin-left: 1vw;
   margin-right: 0.5vw;
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
   overflow-y: auto;
   overflow-x: none;
 }
@@ -1687,19 +1693,21 @@ a:hover {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
   margin-top: 0.2vh;
   margin-right: 0.7vw;
 }
 
 .btnzapros img {
   width: 1.2vw;
+  -webkit-transition: .6s ease;
+  transition: .6s ease;
+  -webkit-transform: rotate(-360deg);
+          transform: rotate(-360deg);
 }
 
-.btnzapros:hover {
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
+.btnzapros:hover img {
+  -webkit-transition: .6s ease;
+  transition: .6s ease;
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }
