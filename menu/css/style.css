@@ -888,7 +888,7 @@ html {
 }
 
 .iconnoob {
-  position: absolute;
+  position: relative;
   left: 13vw;
   bottom: 1vh;
 }
@@ -896,7 +896,7 @@ html {
 .iconnoob img {
   -webkit-filter: drop-shadow(12px 12px 10px #00000080);
           filter: drop-shadow(12px 12px 10px #00000080);
-  width: calc( 9vw + 6vh);
+  width: 12vw;
   height: auto;
 }
 
