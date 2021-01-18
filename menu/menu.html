@@ -54,17 +54,20 @@
                             <transition-group name="list-complete" tag="div" class="sectionslobby" appear>
                                 <div class="sectionlobby list-complete-item" v-for="(player, index) in lobby"
                                     v-bind:key="player.name">
-                                    <div class="crownimg" v-if="player.ready === -1">
-                                        <img src="img/Crown.png" alt="">
-                                    </div>
-                                    <div class="ready" v-if="player.ready >= 0">
-                                        <span v-show="player.ready === 1">ГОТОВ</span>
-                                        <span class="readynot" v-show="player.ready === 0">НЕ ГОТОВ</span>
-                                    </div>
-                                    <div class="borderlobby" :class="{ava: player.ava > 0}"
+                                    <section v-if="player.ready !== -2">
+                                        <div class="crownimg" v-if="player.ready === -1">
+                                            <img alt="" src="img/Crown.png">
+                                        </div>
+                                        <div class="ready" v-if="player.ready >= 0">
+                                            <span v-show="player.ready === 1">ГОТОВ</span>
+                                            <span class="readynot" v-show="player.ready === 0">НЕ ГОТОВ</span>
+                                        </div>
+                                    </section>
+                                    <div :class="{ava: player.ava !== 0}" class="borderlobby"
                                         v-on:click="switchPage(0, player.ava === 0 ? 1 : 0)">
                                         <img src="img/plus.png" alt="" v-if="player.ava === 0">
-                                        <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt="" v-else>
+                                        <!-- <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt="" v-else> -->
+                                        <img :id="'player'+index" :src="player.ava" alt="" v-else>
                                     </div>
                                     <div class="nicklobby">{{player.name.toUpperCase()}}</div>
                                 </div>
@@ -159,7 +162,7 @@
                                             <div class="bpname">
                                                 <span>РАНГ</span>
                                             </div>
-                                            <span>За предыдущий матч: +25</span>
+                                            <span>За предыдущий матч: <span>+25</span></span>
                                         </div>
                                         <div class="bpmaininfo">
                                             <div class="bpstats">
