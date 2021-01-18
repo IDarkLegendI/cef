@@ -3,7 +3,10 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
-        subPage: 3, //  
+        subPage: 3, //
+        
+        //money
+        money: 0,
 
         //SETTINGS
         enableVR: false, //true, чтобы вр подрубить,
