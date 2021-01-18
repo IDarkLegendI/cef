@@ -162,19 +162,25 @@
                                             <div class="bpname">
                                                 <span>РАНГ</span>
                                             </div>
-                                            <span>За предыдущий матч: <span>+25</span></span>
+                                            За предыдущий матч: {{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
                                         </div>
                                         <div class="bpmaininfo">
                                             <div class="bpstats">
                                                 <div class="bpstats1">
                                                     <div class="elo">
-                                                        <span>ОЧКИ:</span><span class="bpscore">1958</span>
+                                                        <span>ОЧКИ:</span><span class="bpscore">{{elo}}</span>
                                                     </div>
                                                     <div class="matchs">
-                                                        <span>МАТЧИ:</span><span class="bpscore">201</span>
+                                                        <span>ПОБЕД:</span><span class="bpscore">{{wins}} из
+                                                            {{matches}}</span>
                                                     </div>
                                                     <div class="kd">
-                                                        <span>K/D:</span><span class="bpscore"> 1.4</span>
+                                                        <span>K/D:</span><span class="bpscore">
+                                                            {{(+kills/+matches).toFixed(2)}}</span>
+                                                    </div>
+                                                    <div class="kd" style="font-size: 2.0vh;">
+                                                        ОТЫГРАНО ЧАСОВ:
+                                                        {{hours}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,10 +196,10 @@
                                     <span>НАГРАДЫ</span>
                                 </div>
                                 <div class="virttext">
-                                    <span>Получай награды за вход на сервер</span>
+                                    <span>Получай подарки</span>
                                 </div>
                                 <div class="virticon">
-                                    <img src="img/virt.png" alt="">
+                                    <img alt="" src="img/gold.png">
                                 </div>
                             </div>
                         </div>
@@ -328,14 +334,14 @@
                     </div>
                     <div class="checkboxes">
                         <div class="checkboxtest">
-                            <span>VR-РЕЖИМ</span>
+                            <span>"VR"-РЕЖИМ В МЕНЮ</span>
                             <input type="checkbox" id="switchVR" v-model='enableVR'
                                 v-on:click="saveSettings(-1)" /><label for="switchVR" id="mouseFocus">Toggle</label>
                         </div>
                     </div>
                     <div class="binds">
                         <div class="bind">
-                            <span class="bindname">ПРИСЕДАТЬ</span>
+                            <span class="bindname">ПРИСЕСТЬ</span>
                             <span class="bindbtn" id="mouseFocus">CTRL</span>
                         </div>
                     </div>

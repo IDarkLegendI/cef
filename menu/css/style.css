@@ -420,6 +420,8 @@ html {
 .rankContent .img img {
   width: 100%;
   height: 100%;
+  -webkit-filter: drop-shadow(0 0 10px #000000);
+          filter: drop-shadow(0 0 10px #000000);
 }
 
 .bptext {
@@ -447,7 +449,7 @@ html {
           justify-content: space-between;
   font-size: 2.3vh;
   margin-left: 2vw;
-  margin-top: 5vh;
+  margin-top: 4vh;
 }
 
 .bpstats1 {
@@ -517,14 +519,19 @@ html {
 }
 
 .virticon {
-  margin-top: 3vh;
-  margin-left: -1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 2vh;
 }
 
 .virticon img {
-  -webkit-filter: drop-shadow(12px 12px 10px #00000080);
-          filter: drop-shadow(12px 12px 10px #00000080);
-  width: calc( 7vw + 3vh);
+  -webkit-filter: drop-shadow(0px 0px 20px #eeff0080);
+          filter: drop-shadow(0px 0px 20px #eeff0080);
+  width: calc( 10vw + 3vh);
   height: auto;
   -webkit-transform: rotate(10deg);
           transform: rotate(10deg);

@@ -27,10 +27,12 @@ var menu = new Vue({
         friends: ['DarkLegend', 'Res1ce', 'Obliko'],
 
         //Ranks
-        elo: 0,
-        kills: 0,
-        matches: 0,
-        lastMatch: 0,
+        elo: 1000,
+        kills: 185,
+        matches: 70,
+        lastMatch: 25,
+        wins: 0,
+        hours: 0,
     },
     methods: {
         emitServer: function(value)  
@@ -105,22 +107,6 @@ var menu = new Vue({
                     }, 10);
                 });
             }
-            // setTimeout(() => 
-            // { 
-            //     for(let i = 0; i < 3; i++)
-            //     {
-            //         if(this.mapMode === i) 
-            //         {
-            //             // document.getElementById(`map-${i}`).checked = 'true'; 
-            //             document.getElementById(`map-${i}`).click(); 
-            //             setTimeout(() => { 
-            //                 document.getElementById(`map-${i}`).click(); 
-            //             }, 10)
-            //             // document.getElementById(`map-${i}`).click(); 
-            //         }
-            //         else document.getElementById(`map-${i}`).checked = ''; 
-            //     }
-            // }, 10);
         },
         fUpdateLobby(data)
         {
@@ -201,6 +187,8 @@ if ('alt' in window)
         menu.kills = obj.kills;
         menu.matches = obj.matches;
         menu.lastMatch = obj.lastMatch;
+        menu.wins = obj.wins;
+        menu.hours = obj.hours;
     });
 }
 else 
