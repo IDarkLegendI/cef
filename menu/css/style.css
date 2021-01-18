@@ -1652,12 +1652,14 @@ a:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 2vh;
-  border-radius: 10vh;
-  -webkit-transition: .3s ease-out;
-  transition: .3s ease-out;
+  border-radius: 20px;
+  -webkit-transition: .1s ease-in-out;
+  transition: .1s ease-in-out;
 }
 
 .zapros:hover {
+  -webkit-transition: .1s ease-in-out;
+  transition: .1s ease-in-out;
   background: #00000059;
 }
 
@@ -1699,15 +1701,15 @@ a:hover {
 
 .btnzapros img {
   width: 1.2vw;
-  -webkit-transition: .6s ease;
-  transition: .6s ease;
+  -webkit-transition: .6s ease-in-out;
+  transition: .6s ease-in-out;
   -webkit-transform: rotate(-360deg);
           transform: rotate(-360deg);
 }
 
 .btnzapros:hover img {
-  -webkit-transition: .6s ease;
-  transition: .6s ease;
+  -webkit-transition: .6s ease-in-out;
+  transition: .6s ease-in-out;
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }
@@ -1900,21 +1902,6 @@ a:hover {
   margin-top: 1.2vh;
 }
 
-.list-complete-enter, .list-complete-leave-to {
-  opacity: 0;
-  -webkit-transform: translateY(30px);
-          transform: translateY(30px);
-}
-
-.list-complete-leave-active {
-  position: absolute;
-}
-
-.list-complete-item {
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
 .person-friend-enter, .person-friend-leave-to {
   -webkit-transition: 1.8s;
   transition: 1.8s;
@@ -1958,8 +1945,8 @@ a:hover {
 }
 
 .list-complete-item {
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .switchcustom {

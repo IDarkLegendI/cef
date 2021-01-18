@@ -1139,13 +1139,14 @@ a:hover
     align-self: center
     justify-content: space-between
     margin-top: 2vh
-    border-radius: 10vh
+    border-radius: 20px
     // border-radius: 1px
-    transition: .3s ease-out
+    transition: .1s ease-in-out
     // border-bottom: 1px solid #ffffffc5
     // background-color: blue
 
 .zapros:hover
+    transition: .1s ease-in-out
     background: #00000059
 
 .avatarnickzapros
@@ -1170,11 +1171,11 @@ a:hover
     // padding: 1%
     img
         width: 1.2vw
-        transition: .6s ease
+        transition: .6s ease-in-out
         transform: rotate(-360deg)
 
 .btnzapros:hover img
-    transition: .6s ease
+    transition: .6s ease-in-out
     transform: rotate(360deg)
 
 .nickzapros
@@ -1301,15 +1302,15 @@ a:hover
 .nicklobby
     margin-top: 1.2vh
 
-.list-complete-enter, .list-complete-leave-to
-    opacity: 0
-    transform: translateY(30px)
-.list-complete-leave-active
-    position: absolute
+// .list-complete-enter, .list-complete-leave-to
+//     opacity: 0
+//     transform: translateY(30px)
+// .list-complete-leave-active
+//     position: absolute
 
-.list-complete-item
-    transition: all 1s
-    // margin-right: 10p
+// .list-complete-item
+//     transition: all .2s
+//     // margin-right: 10p
 
 .person-friend-enter, .person-friend-leave-to
     // opacity: 0
@@ -1355,7 +1356,7 @@ a:hover
 
 .list-complete-item
 
-    transition: all 1s
+    transition: all 1s ease-in-out
 
 // Custom
 
