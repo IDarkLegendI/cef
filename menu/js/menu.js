@@ -28,8 +28,8 @@ var menu = new Vue({
 
         //Ranks
         elo: 2000,
-        kills: 185,
-        matches: 70,
+        kills: 0,
+        matches: 0,
         lastMatch: 25,
         wins: 0,
         hours: 0,
@@ -158,7 +158,11 @@ var menu = new Vue({
            else if(this.elo < 1850) this.level = '08';
            else if(this.elo < 2000) this.level = '09';
            else this.level = '10';
-            console.log(this.level)
+        },
+        getKD: function()
+        {
+            let value = (+this.kills/+this.matches).toFixed(2);
+            return value === 'NaN' ? '0.00' : value
         }
     } 
 }); 
@@ -184,13 +188,14 @@ if ('alt' in window)
     alt.on('getSettings', () => menu.saveSettings(-1));
     alt.on('bMenu:setMyName', async (name) =>
     {
+        console.log(name)
         menu.myName = name; 
         menu.fUpdateLobby([{name: menu.myName, ava: menu.myAvatar, ready: -2}]);
     });
       
     alt.on('bMenu:setMyAvatar', async (avatar) => 
     {
-        console.log(`bMenu:setMyAvatar: ${avatar}`) 
+        console.log(`bMenu:setMyAvatar: ${avatar}`)  
         menu.myAvatar = await menu.getPhoto(avatar)
         menu.fUpdateLobby([{name: menu.myName, ava: menu.myAvatar, ready: -2}]);
     });
