@@ -3,7 +3,7 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
-        subPage: 3, //
+        subPage: 0, //
         
         //money
         money: 0,
@@ -221,7 +221,7 @@ else
         menu.getLevel();
         menu.fUpdateLobby([{name: "Player-1", ava: 3, ready: 0}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: -1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        // menu.switchPage(0, 1)  
+        menu.switchPage(0, 3)  
     }, 500)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
 }
