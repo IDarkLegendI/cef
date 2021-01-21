@@ -35,7 +35,7 @@
                                 <span>БАЛАНС</span>
                             </div>
                             <div class="rub">
-                                <span>{{money}} RM</span>
+                                <span>{{money}} $</span>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="stack">
-                                <section v-if="lobby[myID].ready === -2">
+                                <section v-if="lobby[myID].ready <= -1">
                                     <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
                                         v-if="!statusGame">
                                         <div class="textticket">
