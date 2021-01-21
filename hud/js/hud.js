@@ -153,6 +153,8 @@ if ('alt' in window) {
 
     alt.on('updateJetPack', toggle => hud.helpJetPack = toggle)   
     alt.on('visible', toggle => hud.visible = toggle)    
+
+    alt.on('fGetAudio', fGetAudio)     
 } 
 else 
 { 
