@@ -1265,14 +1265,20 @@ input[type=checkbox] {
 }
 
 .option-input:checked::before {
-  height: 40px;
-  width: 40px;
+  height: 4vh;
+  width: 2.2vw;
   position: absolute;
   content: '✔';
-  display: inline-block;
-  font-size: 26.66667px;
-  text-align: center;
-  line-height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2.5vh;
 }
 
 .option-input:checked::after {
