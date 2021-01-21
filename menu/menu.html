@@ -94,40 +94,71 @@
                                 </div>
                             </div>
                             <div class="stack">
-                                <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
-                                    v-if="!statusGame">
-                                    <div class="textticket">
-                                        <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
-                                        <div class="textticket3">Статус: <span class="textticket4">{{textMatch}}</span>
+                                <section v-if="lobby[myID].ready === -2">
+                                    <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
+                                        v-if="!statusGame">
+                                        <div class="textticket">
+                                            <div class="textticket1">НАЧАТЬ <span class="textticket2">ИГРУ</span></div>
+                                            <div class="textticket3">Статус: <span
+                                                    class="textticket4">{{textMatch}}</span>
+                                            </div>
+                                            <div class="textticketblock">
+                                                <div class="textticket5">Игроков в ожидании: <span
+                                                        class="textticket6">{{countWarmUp}}</span></div>
+                                            </div>
+                                            <!-- <span сlass="textticket5">Примерное</span> -->
                                         </div>
-                                        <div class="textticketblock">
-                                            <div class="textticket5">Игроков в ожидании: <span
-                                                    class="textticket6">{{countWarmUp}}</span></div>
+                                        <div class="iconticket">
+                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
                                         </div>
-                                        <!-- <span сlass="textticket5">Примерное</span> -->
                                     </div>
-                                    <div class="iconticket">
-                                        <img src="./img/jostik.png" id="mouseFocus" alt="">
-                                    </div>
-                                </div>
 
-                                <div class="ticket ticketRed form" id="mouseFocus"
-                                    v-on:click="emitServer('sMenu:endGame')" v-else>
-                                    <div class="textticket" style="justify-content: center;">
-                                        <div class="textticket1">ЗАКОНЧИТЬ <span class="textticket2">ИГРУ</span>
+                                    <div class="ticket ticketRed form" id="mouseFocus"
+                                        v-on:click="emitServer('sMenu:endGame')" v-else>
+                                        <div class="textticket" style="justify-content: center;">
+                                            <div class="textticket1">ЗАКОНЧИТЬ <span class="textticket2">ИГРУ</span>
+                                            </div>
                                         </div>
-                                        <!-- <div class="textticket3">Статус: <span class="textticket4">{{textMatch}}</span>
+                                        <div class="iconticket">
+                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
                                         </div>
-                                        <div class="textticket5">Игроков в ожидании: <span
-                                                class="textticket6">{{countWarmUp}}</span>
-                                        </div> -->
-                                        <!-- <span сlass="textticket5">Примерное</span> -->
                                     </div>
-                                    <div class="iconticket">
-                                        <img src="./img/jostik.png" id="mouseFocus" alt="">
-                                    </div>
-                                </div>
+                                </section>
 
+                                <section v-else>
+                                    <div class="ticket ticketRed form" id="mouseFocus"
+                                        v-on:click="emitServer('sMenu:startGame')" v-if="lobby[myID].ready === 0">
+                                        <div class="textticket">
+                                            <div class="textticket1">НЕ ГОТОВ</span></div>
+                                            <div class="textticket3">Нажмите для готовности
+                                            </div>
+                                            <div class="textticketblock">
+                                                <div class="textticket5">Игроков в ожидании: <span
+                                                        class="textticket6">{{countWarmUp}}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="iconticket">
+                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
+                                        v-else>
+                                        <div class="textticket">
+                                            <div class="textticket1">ГОТОВ</span></div>
+                                            <div class="textticket3">Нажмите, если не готовы
+                                            </div>
+                                            <div class="textticketblock">
+                                                <div class="textticket5">Игроков в ожидании: <span
+                                                        class="textticket6">{{countWarmUp}}</span></div>
+                                            </div>
+                                            <!-- <span сlass="textticket5">Примерное</span> -->
+                                        </div>
+                                        <div class="iconticket">
+                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                        </div>
+                                    </div>
+                                </section>
 
                                 <div class="shop form" id="mouseFocus" v-on:click="switchPage(1)">
                                     <div class="textshop">

@@ -18,9 +18,10 @@ var menu = new Vue({
         statusGame: false,
         
         //Lobby
-        lobby: [],
-        myName: "DarkLegend",
+        lobby: [{name: "Player", ava: 1, ready: -2}], /* -2 = без лобби, -1 = капитан, 0 = не готов, 1 = готов */
+        myName: "Player",
         myAvatar: "",
+        myID: 0,
 
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
@@ -109,7 +110,7 @@ var menu = new Vue({
                 });
             }
         },
-        fUpdateLobby(data)
+        fUpdateLobby(data) 
         {
             if(data[0].name !== menu.myName)
             {
@@ -122,8 +123,12 @@ var menu = new Vue({
                 }
             }
 
-            data.forEach(async (player) => {
-                if(player.name === menu.myName) return player.ava = menu.myAvatar;  
+            data.forEach(async (player, index) => {
+                if(player.name === menu.myName) 
+                {
+                    myID = index;
+                    return player.ava = menu.myAvatar; 
+                } 
                 else player.ava = await this.getPhoto(player.ava.toString()) 
             }) 
 
@@ -164,7 +169,7 @@ var menu = new Vue({
             let value = (+this.kills/+this.matches).toFixed(2);
             return value === 'NaN' ? '0.00' : value
         }
-    } 
+    },
 }); 
 
 if ('alt' in window)
@@ -219,7 +224,7 @@ else
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();
-        menu.fUpdateLobby([{name: "Player-1", ava: 3, ready: 0}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: -1}])
+        menu.fUpdateLobby([{name: "Player", ava: 3, ready: 0}, {name: "Resce", ava: 2, ready: -1}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         menu.switchPage(0, 3)  
     }, 500)
