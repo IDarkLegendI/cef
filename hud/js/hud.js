@@ -114,18 +114,18 @@ var hud = new Vue({
             if(stage === 0) audio = new Audio('./audio/remen.mp3');
 
             audio.volume = 0.01;
-            audio.play();
+            audio.play(); 
         },
-        getLevel: function() {
-            if(this.elo < 800) return '01';
-            else if(this.elo < 950) return '02';
-            else if(this.elo < 1100) return '03';
-            else if(this.elo < 1250) return '04';
-            else if(this.elo < 1400) return '05';
-            else if(this.elo < 1550) return '06';
-            else if(this.elo < 1700) return '07';
-            else if(this.elo < 1850) return '08';
-            else if(this.elo < 2000) return '09';
+        getLevel: function(elo = 0) {
+            if(elo < 800) return '01';
+            else if(elo < 950) return '02';
+            else if(elo < 1100) return '03';
+            else if(elo < 1250) return '04';
+            else if(elo < 1400) return '05';
+            else if(elo < 1550) return '06';
+            else if(elo < 1700) return '07';
+            else if(elo < 1850) return '08';
+            else if(elo < 2000) return '09';
             else return '10'; 
          }, 
     },
