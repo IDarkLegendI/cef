@@ -190,6 +190,13 @@ body {
     border-radius: 3.5em 1em 3.5em 1em;
 }
 
+.observer img {
+    width: 2vw;
+    position: relative;
+    top: -6.5vh;
+    right: -6vw;
+}
+
 .helpObServer {
 
     /* background-color: blue; */

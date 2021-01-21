@@ -5,6 +5,7 @@ var hud = new Vue({
         obs: {
             show: false,
             nick: "1234213",
+            level: '06',
         },
 
         visible: true,
@@ -19,6 +20,7 @@ var hud = new Vue({
         killsHandle: null,
         killsBar: false,
         killsBarShow: false,
+
         //HUD
         alivePlayers: 0,
         kills: 0,
@@ -113,7 +115,19 @@ var hud = new Vue({
 
             audio.volume = 0.01;
             audio.play();
-        } 
+        },
+        getLevel: function() {
+            if(this.elo < 800) return '01';
+            else if(this.elo < 950) return '02';
+            else if(this.elo < 1100) return '03';
+            else if(this.elo < 1250) return '04';
+            else if(this.elo < 1400) return '05';
+            else if(this.elo < 1550) return '06';
+            else if(this.elo < 1700) return '07';
+            else if(this.elo < 1850) return '08';
+            else if(this.elo < 2000) return '09';
+            else return '10'; 
+         }, 
     },
 })
 
@@ -146,7 +160,11 @@ if ('alt' in window) {
     alt.on('updateAmmo', (clip, ammo) => hud.ammo = [clip, ammo])
     alt.on('updateWarmUP', hud.fupdateWarmUP)  
 
-    alt.on('obServer', data => hud.obs = data) 
+    alt.on('obServer', data => 
+    {
+        hud.obs = data;  
+        hud.obs.level = hud.getLevel(data.level)
+    })
 
     alt.on('fTimeUpdate', hud.fTimeUpdate) 
     alt.on('updateKillFeed', hud.fKillFeedUpdate)   
@@ -155,13 +173,14 @@ if ('alt' in window) {
     alt.on('visible', toggle => hud.visible = toggle)    
 
     alt.on('fGetAudio', fGetAudio)     
+  
 } 
 else 
 { 
-    // hud.obs.show = true;
+    hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true;
-    hud.helpJetPack = true;
+    // hud.helpJetPack = true;
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)
     setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)

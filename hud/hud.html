@@ -46,10 +46,14 @@
                 </div>
             </transition>
         </div>
+        <!-- OBSERVER -->
         <transition name="custom-classes-transition3" enter-active-class="animated tada"
             leave-active-class="animated hinge">
             <div class="observer" v-show="visible && obs.show && !killsBarShow && obs.nick.length != 0">
-                <h1 class="animated infinite pulse slow">{{obs.nick}}</h1>
+                <div class="animated infinite pulse slow">
+                    <h1>{{obs.nick}}</h1>
+                    <img :src="`../menu/img/levels/${obs.level}.png`" alt="">
+                </div>
                 <div class="helpObServer animated infinite bounce delay-3s slower">
                     <div class="subHelpOBS">
                         <div>
@@ -60,6 +64,7 @@
                 </div>
             </div>
         </transition>
+
         <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutRight">
             <section v-if='showHUD && visible'>
@@ -82,7 +87,7 @@
                             <div class="textAlive" id="alive"><img src="./img/bullets.png" alt=""></div>
                         </div>
 
-                        <!-- OBSERVER -->
+                        <!-- OBSERVER HUD -->
                         <div class="alive" v-show="obs.show">
                             <div class="numberAlive" id="alive">{{alivePlayers}}</div>
                             <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ИГРОК" : "ИГРОКОВ"}}</div>
