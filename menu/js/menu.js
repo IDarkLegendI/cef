@@ -168,7 +168,7 @@ var menu = new Vue({
         {
             let value = (+this.kills/+this.matches).toFixed(2);
             return value === 'NaN' ? '0.00' : value
-        }
+        }, 
     },
 }); 
 

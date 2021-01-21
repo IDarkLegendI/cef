@@ -105,7 +105,15 @@ var hud = new Vue({
                 htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
                 // console.log(htmlEl.style.opacity)
             }, 500);    
-        }
+        },
+        fGetAudio(stage = 0)
+        {
+            let audio;
+            if(stage === 0) audio = new Audio('./audio/remen.mp3');
+
+            audio.volume = 0.01;
+            audio.play();
+        } 
     },
 })
 
