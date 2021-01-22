@@ -195,7 +195,8 @@
                                             <div class="bpname">
                                                 <span>РАНГ</span>
                                             </div>
-                                            За предыдущий матч: {{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
+                                            За предыдущий матч: <span
+                                                :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</span>
                                         </div>
                                         <div class="bpmaininfo">
                                             <div class="bpstats">
