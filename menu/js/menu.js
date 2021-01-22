@@ -169,6 +169,33 @@ var menu = new Vue({
             let value = (+this.kills/+this.matches).toFixed(2);
             return value === 'NaN' ? '0.00' : value
         }, 
+        showProfileDetails: function(name, value = null)
+        {
+            let el = document.getElementById(name);
+            if(value == null) value = el.style.opacity;
+            else value = 1;
+
+            if(value <= 0.2)
+            {
+                el.style.opacity = 1;
+                // el.style.position = 'static'
+                el.style.transform = 'translateX(-2vw)'
+            }
+            else 
+            {
+                el.style.transform = 'translateX(2vw)'
+                el.style.position = 'absolute'
+                el.style.opacity = 0;
+            }
+            // if(value != null) el.style.opacity = value; 
+            // else el.style.opacity = el.style.opacity <= 0.2 ? 1 : 0;
+        },
+        delFriend: function(name)
+        {
+            let el = document.getElementById(name);
+            if(el.style.opacity <= 0.2) return;
+            console.log(name)
+        }
     },
 }); 
 
@@ -226,7 +253,8 @@ else
         menu.getLevel();
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: -2}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 3)  
+        menu.switchPage(0, 2)  
     }, 500)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
+    document.body.style.cursor = "default" 
 }

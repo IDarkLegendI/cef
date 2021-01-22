@@ -1,8 +1,10 @@
-*
-    cursor: none
-    user-select: none
+// *
+//     cursor: none
+//     user-select: none
 
 body
+    cursor: none
+    user-select: none
     padding: 0
     margin: 0
 
@@ -424,7 +426,6 @@ html
     .minibtn
         padding-top: 0vh
         padding-bottom: 0vh
-
 
 .btnbackperson2
     display: flex
@@ -1194,6 +1195,7 @@ a:hover
     // padding: 2%
     margin-top: 0.2vh
     margin-right: 0.7vw
+    transition: .3s ease-in-out
     // padding: 1%
     img
         width: 1.2vw
@@ -1203,6 +1205,12 @@ a:hover
 .btnzapros:hover img
     transition: .6s ease-in-out
     transform: rotate(360deg)
+
+.profileDetails
+    transform: translateX(1vw)
+    position: absolute
+    transition: .3s ease-in-out
+    opacity: 0
 
 .nickzapros
     font: 2vh "Trebuchet MS", "Lucida Sans"

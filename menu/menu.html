@@ -178,13 +178,14 @@
                                         <span class="textnoob3">Осталось <span class="textnoob4">13 ЧАСОВ</span></span>
                                     </div>
                                     <div class="noobbtn">
-                                        <span><span class="minibtn" id="mouseFocus">ЛИЦЕНЗИИ</span> <br> <span class="minibtn" id="mouseFocus">ДЕНЬГИ</span>
-                                    </div>  
+                                        <span><span class="minibtn" id="mouseFocus">ЛИЦЕНЗИИ</span> <br> <span
+                                                class="minibtn" id="mouseFocus">ДЕНЬГИ</span>
+                                    </div>
                                 </div>
                                 <div class="noobpart2">
                                     <div class="iconnoob">
                                         <img src="./img/noob.png" alt="">
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                             <div class="backpack form1">
@@ -203,13 +204,15 @@
                                                         <span>ОЧКИ:</span> <span class="bpscore">{{elo}}</span>
                                                     </div>
                                                     <div class="matchs">
-                                                        <span>ПОБЕД:</span> <span class="bpscore">{{wins}} из {{matches}}</span>
+                                                        <span>ПОБЕД:</span> <span class="bpscore">{{wins}} из
+                                                            {{matches}}</span>
                                                     </div>
                                                     <div class="kd">
                                                         <span>K/D:</span> <span class="bpscore">{{getKD()}}</span>
                                                     </div>
                                                     <div class="kd" style="font-size: 1.05vw;">НАИГРАНО ЧАСОВ:
-                                                        <span class="bpscore" style="font-size: 1.05vw;"> {{hours}}</span>
+                                                        <span class="bpscore" style="font-size: 1.05vw;">
+                                                            {{hours}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -287,7 +290,7 @@
                             <div class="zaprosi">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                        v-bind:key="friend">
+                                        v-bind:key="friend" v-on:mouseleave="showProfileDetails(friend, 0)">
                                         <div class="avatarnickzapros">
                                             <div class="avatarzapros">
                                                 <img src="img/ava.jpg" alt="">
@@ -295,10 +298,11 @@
                                             <div class="nickzapros">{{friend}}</div>
                                         </div>
                                         <div class="btnszapros">
-                                            <!-- <div class="btnzapros">
-                                                <img src="img/plusbtn.png" alt="">
-                                            </div> -->
-                                            <div class="btnzapros">
+                                            <div class="btnzapros profileDetails" :id='friend'
+                                                v-on:click="delFriend(friend)">
+                                                <img src="img/close.png" alt="">
+                                            </div>
+                                            <div class="btnzapros" v-on:click="showProfileDetails(friend)">
                                                 <img src="img/dots.png" alt="">
                                             </div>
                                         </div>
@@ -307,7 +311,8 @@
                             </div>
                             <div class="btnbackperson2">
                                 <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">ВХОДЯЩИЕ ЗАЯВКИ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">ВХОДЯЩИЕ
+                                    ЗАЯВКИ</span>
                             </div>
                         </div>
                     </transition>
@@ -346,8 +351,10 @@
                                 </div>
                             </div>
                             <div class="btnbackperson">
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)"><span>ПЕРСОНАЖ</span></span>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)"><span>ДРУЗЬЯ</span></span>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="switchPage(0, 0)"><span>ПЕРСОНАЖ</span></span>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="switchPage(0, 2)"><span>ДРУЗЬЯ</span></span>
                             </div>
                         </div>
                     </transition>

@@ -1,13 +1,10 @@
 @charset "UTF-8";
-* {
+body {
   cursor: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-}
-
-body {
   padding: 0;
   margin: 0;
 }
@@ -1739,6 +1736,8 @@ a:hover {
       align-self: center;
   margin-top: 0.2vh;
   margin-right: 0.7vw;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
 }
 
 .btnzapros img {
@@ -1754,6 +1753,15 @@ a:hover {
   transition: .6s ease-in-out;
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
+}
+
+.profileDetails {
+  -webkit-transform: translateX(1vw);
+          transform: translateX(1vw);
+  position: absolute;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  opacity: 0;
 }
 
 .nickzapros {
