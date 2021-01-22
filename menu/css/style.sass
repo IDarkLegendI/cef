@@ -58,7 +58,7 @@ html
     // align-content: center
     // letter-spacing: 2px
 
-.maininfo div, span
+.maininfo div, .maininfo span
     padding-right: 1vw
 
 .hr hr
@@ -421,12 +421,19 @@ html
     height: 8%
     flex-basis: 5%
     // background-color: blue
+    .minibtn
+        padding-top: 0vh
+        padding-bottom: 0vh
+
 
 .btnbackperson2
     display: flex
     justify-content: space-around
     margin-bottom: 3vh
-    height: 8%
+    // height: 8%
+    .minibtn
+        padding-top: 0vh
+        padding-bottom: 0vh
 
 .rightNoHover:hover
     background-color: #00b15000
@@ -437,6 +444,7 @@ html
     // width: 40vw
     flex-basis: 60%
     height: 100%
+
 .carContent
     // background-color: red
     display: flex
@@ -487,6 +495,7 @@ html
     // position: absolute
     font-size: 1.5vh
     color: white
+    padding-right: 1vw
     // border: 1px solid black
 
 .iconcar
@@ -617,14 +626,16 @@ html
 
 .minibtn
     transition: 0.2s ease-out
-    border: 2px solid #e0e0e0
-    padding-top: 0.5vh
-    padding-bottom: 0.5vh
+    border: 1px solid #e0e0e0
+    padding-top: 0.3vh
+    padding-bottom: 0.3vh
     padding-left: 2vh
     padding-right: 2vh
-    border-radius: 10px
+    // flex-basis: 25%
+    border-radius: 6px
     line-height: 4.3vh
     font-size: 1.8vh
+    text-align: center
     color: white
     font-family: 'Roboto Condensed', sans-serif
 
@@ -1017,27 +1028,22 @@ a:hover
     font-size: 3vh
 
 .btnback2
-    margin-top: 3vh
     display: flex
     flex-direction: row
     justify-content: space-between
-    border: 5px solid black
-    div
-        padding-right: 1vw
-        padding-left: 1vw
+    // border: 5px solid black
     a
-        font-size: 2vh
-        border-radius: 5px
-        padding: 1vh 1.7vw
+        font-size: 1.7vh
+        border-radius: 6px
+        padding: 0vh 1vw
+        line-height: 4.3vh
         font-family: 'Roboto Condensed', sans-serif
         text-shadow: none
         transition: .2s ease-out
 
 .btnOnlyBorder
     background-color: #ffffff00
-    border-width: 1px
-    border-style: solid
-    border-color: #fff
+    border: 1px solid white
     color: #fff
 
 .btnBackGround
@@ -1223,20 +1229,24 @@ a:hover
 
 .inputaddfriends
     display: flex
-    flex-direction: row
-    justify-content: center
+    flex-direction: column
+    justify-content: space-between
     align-items: center
-    font-size: 3vh
-    margin-top: 5vh
+    font-size: 2vh
+    height: 25%
+    // border: 1px solid black
+    // padding: 3vh
+    // border: 1px solid black
+    margin-bottom: 2vh
     h1
         color: #fff
         font-family: 'Roboto Condensed', sans-serif
         text-align: center
     input
         border: none
-        height: 4vh
-        width: 10vw
-        border-radius: 50px
+        height: 3.2vh
+        width: 8vw
+        border-radius: 10px
         background-color: #0000006c
         color: white
         font: 2vh "Trebuchet MS", "Lucida Sans"
@@ -1246,15 +1256,6 @@ a:hover
     input:focus
         outline: 0
         outline-offset: 0
-
-.inputandbtn
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    margin-left: 2vw
-    .btnback2
-        margin-top: 2vh
 
 //lobby
 

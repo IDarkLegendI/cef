@@ -200,20 +200,16 @@
                                             <div class="bpstats">
                                                 <div class="bpstats1">
                                                     <div class="elo">
-                                                        <span>ОЧКИ:</span><span class="bpscore">{{elo}}</span>
+                                                        <span>ОЧКИ:</span> <span class="bpscore">{{elo}}</span>
                                                     </div>
                                                     <div class="matchs">
-                                                        <span>ПОБЕД:</span><span class="bpscore">{{wins}} из
-                                                            {{matches}}</span>
+                                                        <span>ПОБЕД:</span> <span class="bpscore">{{wins}} из {{matches}}</span>
                                                     </div>
                                                     <div class="kd">
-                                                        <span>K/D:</span><span class="bpscore">
-                                                            {{getKD()}}</span>
+                                                        <span>K/D:</span> <span class="bpscore">{{getKD()}}</span>
                                                     </div>
-                                                    <div class="kd" style="font-size: 1.05vw;">
-                                                        НАИГРАНО ЧАСОВ:
-                                                        <span class="bpscore" style="font-size: 1.05vw;">
-                                                            {{hours}}</span>
+                                                    <div class="kd" style="font-size: 1.05vw;">НАИГРАНО ЧАСОВ:
+                                                        <span class="bpscore" style="font-size: 1.05vw;"> {{hours}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -311,8 +307,7 @@
                             </div>
                             <div class="btnbackperson2">
                                 <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">ВХОДЯЩИЕ
-                                    ЗАЯВКИ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">ВХОДЯЩИЕ ЗАЯВКИ</span>
                             </div>
                         </div>
                     </transition>
@@ -342,9 +337,17 @@
                                     </div>
                                 </transition-group>
                             </div>
+                            <div class="inputaddfriends">
+                                <h1>ДОБАВИТЬ ДРУГА</h1>
+                                <input type="text">
+                                <div class="btnback2">
+                                    <a href="#" v-on:click="switchPage(3, 0)" id="mouseFocus"
+                                        class="btnOnlyBorder">ОТПРАВИТЬ</a>
+                                </div>
+                            </div>
                             <div class="btnbackperson">
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)">ДРУЗЬЯ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)"><span>ПЕРСОНАЖ</span></span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)"><span>ДРУЗЬЯ</span></span>
                             </div>
                         </div>
                     </transition>

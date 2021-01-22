@@ -80,7 +80,7 @@ html {
   font-weight: 700;
 }
 
-.maininfo div, span {
+.maininfo div, .maininfo span {
   padding-right: 1vw;
 }
 
@@ -642,6 +642,11 @@ html {
       flex-basis: 5%;
 }
 
+.btnbackperson .minibtn {
+  padding-top: 0vh;
+  padding-bottom: 0vh;
+}
+
 .btnbackperson2 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -649,7 +654,11 @@ html {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-bottom: 3vh;
-  height: 8%;
+}
+
+.btnbackperson2 .minibtn {
+  padding-top: 0vh;
+  padding-bottom: 0vh;
 }
 
 .rightNoHover:hover {
@@ -727,6 +736,7 @@ html {
   font-family: 'Rubik', sans-serif;
   font-size: 1.5vh;
   color: white;
+  padding-right: 1vw;
 }
 
 .iconcar {
@@ -896,14 +906,15 @@ html {
 .minibtn {
   -webkit-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
-  border: 2px solid #e0e0e0;
-  padding-top: 0.5vh;
-  padding-bottom: 0.5vh;
+  border: 1px solid #e0e0e0;
+  padding-top: 0.3vh;
+  padding-bottom: 0.3vh;
   padding-left: 2vh;
   padding-right: 2vh;
-  border-radius: 10px;
+  border-radius: 6px;
   line-height: 4.3vh;
   font-size: 1.8vh;
+  text-align: center;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -1488,7 +1499,6 @@ a:hover {
 }
 
 .btnback2 {
-  margin-top: 3vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1499,18 +1509,13 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border: 5px solid black;
-}
-
-.btnback2 div {
-  padding-right: 1vw;
-  padding-left: 1vw;
 }
 
 .btnback2 a {
-  font-size: 2vh;
-  border-radius: 5px;
-  padding: 1vh 1.7vw;
+  font-size: 1.7vh;
+  border-radius: 6px;
+  padding: 0vh 1vw;
+  line-height: 4.3vh;
   font-family: 'Roboto Condensed', sans-serif;
   text-shadow: none;
   -webkit-transition: .2s ease-out;
@@ -1519,9 +1524,7 @@ a:hover {
 
 .btnOnlyBorder {
   background-color: #ffffff00;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #fff;
+  border: 1px solid white;
   color: #fff;
 }
 
@@ -1785,18 +1788,19 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 3vh;
-  margin-top: 5vh;
+  font-size: 2vh;
+  height: 25%;
+  margin-bottom: 2vh;
 }
 
 .inputaddfriends h1 {
@@ -1807,9 +1811,9 @@ a:hover {
 
 .inputaddfriends input {
   border: none;
-  height: 4vh;
-  width: 10vw;
-  border-radius: 50px;
+  height: 3.2vh;
+  width: 8vw;
+  border-radius: 10px;
   background-color: #0000006c;
   color: white;
   font: 2vh "Trebuchet MS", "Lucida Sans";
@@ -1821,27 +1825,6 @@ a:hover {
 .inputaddfriends input:focus {
   outline: 0;
   outline-offset: 0;
-}
-
-.inputandbtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-left: 2vw;
-}
-
-.inputandbtn .btnback2 {
-  margin-top: 2vh;
 }
 
 .mainlobby {
