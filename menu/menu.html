@@ -293,7 +293,7 @@
                                     <div class="zapros list-complete-item" v-for="(friend, index) in friends"
                                         v-bind:key="friend" v-on:mouseleave="showProfileDetails(friend, 0)">
                                         <div class="avatarnickzapros">
-                                            <div class="avatarzapros">
+                                            <div class="avatarzapros" :class="{online: index === 0}">
                                                 <img src="img/ava.jpg" alt="">
                                             </div>
                                             <div class="nickzapros">{{friend}}</div>
