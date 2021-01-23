@@ -3,8 +3,8 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
-        subPage: 0, //
-        
+        subPage: 2, //
+         
         //money
         money: 0,
 
@@ -30,7 +30,7 @@ var menu = new Vue({
         //Ranks
         elo: 2000,
         kills: 0,
-        matches: 0,
+        matches: 0, 
         lastMatch: 25,
         wins: 0,
         hours: 0,
@@ -243,6 +243,8 @@ if ('alt' in window)
 
         menu.getLevel();
     });
+
+    alt.on('bMenu:updateCash', (cash) => menu.money = cash);
 }
 else 
 {

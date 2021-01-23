@@ -113,7 +113,7 @@ var hud = new Vue({
             let audio;
             if(stage === 0) audio = new Audio('./audio/remen.mp3');
 
-            audio.volume = 0.01;
+            audio.volume = 0.1;  
             audio.play(); 
         },
         getLevel: function(elo = 0) {
@@ -172,9 +172,9 @@ if ('alt' in window) {
     alt.on('updateJetPack', toggle => hud.helpJetPack = toggle)   
     alt.on('visible', toggle => hud.visible = toggle)    
 
-    alt.on('fGetAudio', fGetAudio)     
+    alt.on('fGetAudio', (stage) => hud.fGetAudio(stage))       
   
-} 
+}  
 else 
 { 
     hud.obs.show = true;
