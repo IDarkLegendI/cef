@@ -32,7 +32,7 @@
                         </div>
                         <div class="money">
                             <div class="balance">
-                                <span>БАЛАНС</span>
+                                <span>{{i18n.balance}}</span>
                             </div>
                             <div class="rub">
                                 <span>{{money}} $</span>
@@ -81,11 +81,11 @@
                             <div class="car form" v-on:click="switchPage(2)">
                                 <div class="carContent">
                                     <div class="textcar" id="mouseFocus">
-                                        <span class="textcar1">ЛИЧНЫЙ</span>
-                                        <span class="textcar4">Управляйте своими машинами</span>
+                                        <span class="textcar1">{{i18n.personal}}</span>
+                                        <span class="textcar4">{{i18n.managerCars}}</span>
                                     </div>
                                     <div>
-                                        <span class="textcar2">ТРАНСПОРТ</span>
+                                        <span class="textcar2">{{i18n.transport}}</span>
                                         <span class="textcar3">УПРАВЛЕНИЕ</span>
                                     </div>
                                     <div class="iconcar">
@@ -303,8 +303,9 @@
                                                 v-on:click="delFriend(friend)" data-title="Удалить из друзей">
                                                 <img src="img/close.png" alt="">
                                             </div>
-                                            <div class="btnzapros" v-on:click="showProfileDetails(friend)" data-title="Действия">
-                                                <img src="img/dots.png" alt="" data-title="">
+                                            <div class="btnzapros" v-on:click="showProfileDetails(friend)"
+                                                data-title="Действия">
+                                                <img src="img/dots.png" alt="">
                                             </div>
                                         </div>
                                     </div>

@@ -35,6 +35,15 @@ var menu = new Vue({
         wins: 0,
         hours: 0,
         level: '01',
+
+        //i18n
+        i18n: {
+            // balance: 'Balance',
+            balance: 'Баланс',
+            personal: 'ЛИЧНЫЙ',
+            managerCars: 'Управляйте своими машинами',
+            transport: 'ТРАНСПОРТ',
+        }
     },
     methods: {
         emitServer: function(value)  
@@ -195,6 +204,14 @@ var menu = new Vue({
             let el = document.getElementById(name);
             if(el.style.opacity <= 0.2) return;
             console.log(name)
+        },
+        loadRus()
+        {
+            menu.i18n = {
+                balance: 'БАЛАНС',
+                personal: 'ЛИЧНЫЙ',
+                managerCars: 'Управляйте своими машинами',
+            }
         }
     },
 }); 

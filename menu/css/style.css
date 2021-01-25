@@ -2131,8 +2131,8 @@ a:hover {
 
 .btnzapros:hover::after {
   opacity: 1;
-  -webkit-transform: translate(0.5vw, -4vh);
-          transform: translate(0.5vw, -4vh);
+  -webkit-transform: translate(0.1vw, -4vh);
+          transform: translate(0.1vw, -4vh);
 }
 
 @-webkit-keyframes shake {
