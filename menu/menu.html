@@ -300,11 +300,11 @@
                                         </div>
                                         <div class="btnszapros">
                                             <div class="btnzapros profileDetails" :id='friend'
-                                                v-on:click="delFriend(friend)">
+                                                v-on:click="delFriend(friend)" data-title="Удалить из друзей">
                                                 <img src="img/close.png" alt="">
                                             </div>
-                                            <div class="btnzapros" v-on:click="showProfileDetails(friend)">
-                                                <img src="img/dots.png" alt="">
+                                            <div class="btnzapros" v-on:click="showProfileDetails(friend)" data-title="Действия">
+                                                <img src="img/dots.png" alt="" data-title="">
                                             </div>
                                         </div>
                                     </div>
@@ -333,10 +333,10 @@
                                             <div class="nickzapros">{{friend}}</div>
                                         </div>
                                         <div class="btnszapros">
-                                            <div class="btnzapros">
+                                            <div class="btnzapros" data-title="Принять">
                                                 <img src="img/tick.png" alt="">
                                             </div>
-                                            <div class="btnzapros">
+                                            <div class="btnzapros" data-title="Отклонить">
                                                 <img src="img/close.png" alt="">
                                             </div>
                                         </div>
