@@ -45,7 +45,7 @@
                                 <span>ПОПОЛНИТЬ</span>
                             </div>
                             <div class="btn" id="mouseFocus">
-                                <span>ПРОВЕРИТЬ ПОПОЛНЕНИЕ</span>
+                                <span>АДМИН-ПАНЕЛЬ</span>
                             </div>
                         </div>
                     </div>
@@ -313,45 +313,75 @@
                             </div>
                             <div class="btnbackperson2">
                                 <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">ПЕРСОНАЖ</span>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">ВХОДЯЩИЕ
-                                    ЗАЯВКИ</span>
+                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">УПРАВЛЕНИЕ
+                                    ДРУЗЬЯМИ</span>
                             </div>
                         </div>
                     </transition>
                     <transition name="person-friend2">
                         <div class="rightNoHover" v-show="subPage === 3">
-                            <div class="friendsh1">
-                                <h1>ВХОДЯЩИЕ ЗАЯВКИ</h1>
-                            </div>
-                            <div class="zaprosi">
-                                <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                        v-bind:key="friend">
-                                        <div class="avatarnickzapros">
-                                            <div class="avatarzapros">
-                                                <img src="img/ava.jpg" alt="">
+                            <section v-if="requestsIn[0]">
+                                <div class="friendsh1">
+                                    <h1>ВХОДЯЩИЕ ЗАЯВКИ</h1>
+                                </div>
+                                <div class="zaprosi">
+                                    <transition-group name="list-complete" tag="div">
+                                        <div class="zapros list-complete-item" v-for="(friend, index) in requestsIn"
+                                            v-bind:key="friend">
+                                            <div class="avatarnickzapros">
+                                                <div class="avatarzapros">
+                                                    <img src="img/ava.jpg" alt="">
+                                                </div>
+                                                <div class="nickzapros">{{friend}}</div>
                                             </div>
-                                            <div class="nickzapros">{{friend}}</div>
+                                            <div class="btnszapros">
+                                                <div class="btnzapros" data-title="Принять">
+                                                    <img src="img/tick.png" alt="">
+                                                </div>
+                                                <div class="btnzapros" data-title="Отклонить">
+                                                    <img src="img/close.png" alt="">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="btnszapros">
-                                            <div class="btnzapros" data-title="Принять">
-                                                <img src="img/tick.png" alt="">
-                                            </div>
-                                            <div class="btnzapros" data-title="Отклонить">
-                                                <img src="img/close.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </transition-group>
-                            </div>
-                            <div class="inputaddfriends">
+                                    </transition-group>
+                                </div>
+                            </section>
+
+                            <div class="inputaddfriends" :style="{marginTop: requestsIn[0] ? '-2%' : '7%' }">
                                 <h1>ДОБАВИТЬ ДРУГА</h1>
-                                <input type="text">
                                 <div class="btnback2">
+                                    <input type="text" placeholder="NickName" spellcheck="false">
                                     <a href="#" v-on:click="switchPage(3, 0)" id="mouseFocus"
-                                        class="btnOnlyBorder">ОТПРАВИТЬ</a>
+                                        class="btnOnlyBorder">ДОБАВИТЬ</a>
                                 </div>
                             </div>
+
+                            <section v-if="requestsOut[0]">
+                                <div class="friendsh1">
+                                    <h1>ИСХОДЯЩИЕ ЗАЯВКИ</h1>
+                                </div>
+                                <div class="zaprosi">
+                                    <transition-group name="list-complete" tag="div">
+                                        <div class="zapros list-complete-item" v-for="(friend, index) in requestsOut"
+                                            v-bind:key="friend">
+                                            <div class="avatarnickzapros">
+                                                <div class="avatarzapros">
+                                                    <img src="img/ava.jpg" alt="">
+                                                </div>
+                                                <div class="nickzapros">{{friend}}</div>
+                                            </div>
+                                            <div class="btnszapros">
+                                                <div class="btnzapros" data-title="Принять">
+                                                    <img src="img/tick.png" alt="">
+                                                </div>
+                                                <div class="btnzapros" data-title="Отклонить">
+                                                    <img src="img/close.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </transition-group>
+                                </div>
+                            </section>
                             <div class="btnbackperson">
                                 <span class="minibtn" id="mouseFocus"
                                     v-on:click="switchPage(0, 0)"><span>ПЕРСОНАЖ</span></span>
@@ -454,263 +484,6 @@
             </div>
 
         </section>
-
-        <!-- <div class="mainfrineds">
-            <transition name="custom-classes-transition" enter-active-class="animated bounceInRight"
-                leave-active-class="animated bounceOutRight">
-                <section v-if="subPage === 0">
-                    <div class="friendsh1">
-                        <h1>ДРУЗЬЯ</h1>
-                    </div>
-                    <div class="zaprosi">
-                        <transition-group name="list-complete" tag="div">
-                            <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                v-bind:key="friend">
-                                <div class="avatarnickzapros">
-                                    <div class="avatarzapros">
-                                        <img src="img/ava.jpg" alt="">
-                                    </div>
-                                    <div class="nickzapros">{{friend}}</div>
-                                </div>
-                            </div>
-                        </transition-group>
-                    </div>
-                    <div class="btnback2">
-                        <div>
-                            <a href="#" v-on:click="switchPage(0)" id="mouseFocus" class="btnBackGround">НАЗАД</a>
-                        </div>
-                        <div>
-                            <a href="#" v-on:click="switchPage(3, 1)" id="mouseFocus" class="btnOnlyBorder">ВХОДЯЩИЕ
-                                ЗАЯВКИ</a>
-                        </div>
-                    </div>
-                </section>
-            </transition>
-
-            <transition name="custom-classes-transition2" enter-active-class="animated bounceInLeft"
-                leave-active-class="animated bounceOutLeft">
-                <section v-if="subPage === 1">
-                    <div class="friendsh1">
-                        <h1>ВХОДЯЩИЕ ЗАЯВКИ</h1>
-                    </div>
-                    <div class="zaprosi">
-                        <transition-group name="list-complete" tag="div">
-                            <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                v-bind:key="friend">
-                                <div class="avatarnickzapros">
-                                    <div class="avatarzapros">
-                                        <img src="img/ava.jpg" alt="">
-                                    </div>
-                                    <div class="nickzapros">{{friend}}</div>
-                                </div>
-                                <div class="btnszapros">
-                                    <div class="btnzapros btntick">
-                                        <img src="img/tick.png" alt="">
-                                    </div>
-                                    <div class="btnzapros btnclose">
-                                        <img src="img/close.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </transition-group>
-                    </div>
-                    <div class="btnback2">
-                        <div>
-                            <a href="#" v-on:click="switchPage(3, 0)" id="mouseFocus"
-                                class="btnBackGround">НАЗАД</a>
-                        </div>
-                    </div>
-                </section>
-            </transition>
-            <div class="inputaddfriends">
-                <h1>ДОБАВИТЬ <br>ДРУГА</h1>
-                
-                <div class="inputandbtn">
-                    <input type="text">
-                    <div class="btnback2">
-                        <div>
-                            <a href="#" v-on:click="switchPage(3, 0)" id="mouseFocus"
-                                class="btnOnlyBorder">ОТПРАВИТЬ</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- ДРУЗЬЯ -->
-        <section v-if="page === 3">
-            <div class="contentlobbyfriends">
-                <div class="mainfrineds">
-                    <transition name="custom-classes-transition" enter-active-class="animated bounceInRight"
-                        leave-active-class="animated bounceOutRight">
-                        <section v-if="subPage === 0">
-                            <div class="friendsh1">
-                                <h1>ДРУЗЬЯ</h1>
-                            </div>
-                            <div class="zaprosi">
-                                <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                        v-bind:key="friend">
-                                        <div class="avatarnickzapros">
-                                            <div class="avatarzapros">
-                                                <img src="img/ava.jpg" alt="">
-                                            </div>
-                                            <div class="nickzapros">{{friend}}</div>
-                                        </div>
-                                        <div class="btnszapros">
-                                            <div class="btnzapros">
-                                                <img src="img/plusbtn.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </transition-group>
-                            </div>
-                            <div class="btnback2">
-                                <div>
-                                    <a href="#" v-on:click="switchPage(0)" id="mouseFocus"
-                                        class="btnBackGround">НАЗАД</a>
-                                </div>
-                                <div>
-                                    <a href="#" v-on:click="switchPage(3, 1)" id="mouseFocus"
-                                        class="btnOnlyBorder">ВХОДЯЩИЕ
-                                        ЗАЯВКИ</a>
-                                </div>
-                            </div>
-                        </section>
-                    </transition>
-
-                    <transition name="custom-classes-transition2" enter-active-class="animated bounceInLeft"
-                        leave-active-class="animated bounceOutLeft">
-                        <section v-if="subPage === 1">
-                            <div class="friendsh1">
-                                <h1>ВХОДЯЩИЕ ЗАЯВКИ</h1>
-                            </div>
-                            <div class="zaprosi">
-                                <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                        v-bind:key="friend">
-                                        <div class="avatarnickzapros">
-                                            <div class="avatarzapros">
-                                                <img src="img/ava.jpg" alt="">
-                                            </div>
-                                            <div class="nickzapros">{{friend}}</div>
-                                        </div>
-                                        <div class="btnszapros">
-                                            <div class="btnzapros">
-                                                <img src="img/tick.png" alt="">
-                                            </div>
-                                            <div class="btnzapros">
-                                                <img src="img/close.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </transition-group>
-                            </div>
-                            <div class="btnback2">
-                                <div>
-                                    <a href="#" v-on:click="switchPage(3, 0)" id="mouseFocus"
-                                        class="btnBackGround">НАЗАД</a>
-                                </div>
-                            </div>
-                        </section>
-                    </transition>
-                    <div class="inputaddfriends">
-                        <h1>ДОБАВИТЬ <br>ДРУГА</h1>
-
-                        <div class="inputandbtn">
-                            <input type="text">
-                            <div class="btnback2">
-                                <div>
-                                    <a href="#" v-on:click="switchPage(3, 0)" id="mouseFocus"
-                                        class="btnOnlyBorder">ОТПРАВИТЬ</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mainlobby">
-                    <div class="lobbyh1">
-                        <h1>ЛОББИ</h1>
-                    </div>
-                    <div class="sectionslobby">
-                        <div class="sectionlobby">
-                            <div class="borderlobby ava">
-                                <img src="img/ava.jpg" alt="">
-                            </div>
-                            <div class="nicklobby">DarkLegend</div>
-                        </div>
-                        <div class="sectionlobby">
-                            <div class="borderlobby">
-                                <img src="img/plus.png" alt="">
-                            </div>
-                            <div class="nicklobby">ПУСТО</div>
-                        </div>
-                        <div class="sectionlobby">
-                            <div class="borderlobby">
-                                <img src="img/plus.png" alt="">
-                            </div>
-                            <div class="nicklobby">ПУСТО</div>
-                        </div>
-                        <div class="sectionlobby">
-                            <div class="borderlobby">
-                                <img src="img/plus.png" alt="">
-                            </div>
-                            <div class="nicklobby">ПУСТО</div>
-                        </div>
-                        <div class="sectionlobby">
-                            <div class="borderlobby">
-                                <img src="img/plus.png" alt="">
-                            </div>
-                            <div class="nicklobby">ПУСТО</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ЛОББИ -->
-        <!-- <section v-if="page === 4">
-            <div class="mainlobby">
-                <div class="lobbyh1">
-                    <h1>ЛОББИ</h1>
-                </div>
-                <div class="sectionslobby">
-                    <div class="sectionlobby">
-                        <div class="borderlobby ava">
-                            <img src="img/ava.jpg" alt="">
-                        </div>
-                        <div class="nicklobby">DarkLegend</div>
-                    </div>
-                    <div class="sectionlobby">
-                        <div class="borderlobby">
-                            <img src="img/plus.png" alt="">
-                        </div>
-                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
-                    </div>
-                    <div class="sectionlobby">
-                        <div class="borderlobby">
-                            <img src="img/plus.png" alt="">
-                        </div>
-                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
-                    </div>
-                    <div class="sectionlobby">
-                        <div class="borderlobby">
-                            <img src="img/plus.png" alt="">
-                        </div>
-                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
-                    </div>
-                    <div class="sectionlobby">
-                        <div class="borderlobby">
-                            <img src="img/plus.png" alt="">
-                        </div>
-                        <div class="nicklobby">ПРИГЛАСИТЬ</div>
-                    </div>
-                </div>
-                <div class="btnback">
-                    <a href="#" v-on:click="saveSettings(0)" id="mouseFocus">НАЗАД</a>
-                </div>
-            </div>
-        </section> -->
     </section>
 </body>
 <script>

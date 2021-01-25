@@ -3,7 +3,7 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
-        subPage: 2, //
+        subPage: 0, //
          
         //money
         money: 0,
@@ -26,6 +26,8 @@ var menu = new Vue({
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
         friends: ['DarkLegend', 'Res1ce', 'Obliko'],
+        requestsIn: [],
+        requestsOut: [],
 
         //Ranks
         elo: 2000,
@@ -262,6 +264,13 @@ if ('alt' in window)
     });
 
     alt.on('bMenu:updateCash', (cash) => menu.money = cash);
+
+    // Friends
+    alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
+        menu.friends = JSON.parse(friends);
+        menu.requestsIn = JSON.parse(requestsIn); 
+        menu.requestsOut = JSON.parse(requestsOut);
+    })
 }
 else 
 {
@@ -272,8 +281,8 @@ else
         menu.getLevel();
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: -2}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 2)  
-    }, 500)
+        menu.switchPage(0, 3)  
+    }, 50)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
 }
