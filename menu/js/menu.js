@@ -3,7 +3,7 @@ var menu = new Vue({
     data: {
         show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
-        subPage: 0, //
+        subPage: 3, //
          
         //money
         money: 0,
@@ -26,7 +26,7 @@ var menu = new Vue({
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
         friends: ['DarkLegend', 'Res1ce', 'Obliko'],
-        requestsIn: [],
+        requestsIn: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
         requestsOut: [],
 
         //Ranks
@@ -37,6 +37,9 @@ var menu = new Vue({
         wins: 0,
         hours: 0,
         level: '01',
+
+        //Misc
+        miscInput: 'Dark',
 
         //i18n
         i18n: {
@@ -71,7 +74,7 @@ var menu = new Vue({
         {
             if(this.subPage === -2) return;
 
-            if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
+            // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
             if(newSubPage != -1)
             {
                 // if(newPage == 0) return this.subPage = newSubPage;
@@ -267,15 +270,17 @@ if ('alt' in window)
 
     // Friends
     alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
-        if(friends != null) menu.friends = friends;
-        if(requestsIn != null) menu.requestsIn = requestsIn; 
-        if(requestsOut != null) menu.requestsOut = requestsOut; 
+        console.log(`updateFriends-1: ${menu.requestsOut}`)  
+        if(friends != null && friends.length > 3) menu.friends = friends;
+        if(requestsIn != null && requestsIn.length > 3) menu.requestsIn = requestsIn; 
+        if(requestsOut != null && requestsOut.length > 3) menu.requestsOut = requestsOut; 
+        console.log(`updateFriends: ${menu.requestsOut}`)  
     })
 }
 else 
 {
     menu.show = true; 
-    // menu.switchPage(0, 1) 
+    menu.switchPage(0, 3) 
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();
