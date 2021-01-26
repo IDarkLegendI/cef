@@ -98,7 +98,8 @@
                                     <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
                                         v-if="!statusGame">
                                         <div class="textticket">
-                                            <div class="textticket1">{{i18n.start}} <span class="textticket2">{{i18n.game}}</span></div>
+                                            <div class="textticket1">{{i18n.start}} <span
+                                                    class="textticket2">{{i18n.game}}</span></div>
                                             <div class="textticket3">{{i18n.status}}: <span
                                                     class="textticket4">{{textMatch}}</span>
                                             </div>
@@ -116,7 +117,8 @@
                                     <div class="ticket ticketRed form" id="mouseFocus"
                                         v-on:click="emitServer('sMenu:endGame')" v-else>
                                         <div class="textticket" style="justify-content: center;">
-                                            <div class="textticket1">{{i18n.stop}} <span class="textticket2">{{i18n.game}}</span>
+                                            <div class="textticket1">{{i18n.stop}} <span
+                                                    class="textticket2">{{i18n.game}}</span>
                                             </div>
                                         </div>
                                         <div class="iconticket">
@@ -174,8 +176,10 @@
                             <div class="noob form1">
                                 <div class="noobpart1">
                                     <div class="textnoob" id="mouseFocus">
-                                        <span class="textnoob1">{{i18n.pack}} <br> <span class="textnoob2">{{i18n.noob}}</span></span>
-                                        <span class="textnoob3">{{i18n.left}} <span class="textnoob4">{{i18n.time}}</span></span>
+                                        <span class="textnoob1">{{i18n.pack}} <br> <span
+                                                class="textnoob2">{{i18n.noob}}</span></span>
+                                        <span class="textnoob3">{{i18n.left}} <span
+                                                class="textnoob4">{{i18n.time}}</span></span>
                                     </div>
                                     <div class="noobbtn">
                                         <span><span class="minibtn" id="mouseFocus">{{i18n.license}}</span> <br> <span
@@ -194,13 +198,15 @@
                                         <div class="bptext" id="mouseFocus">
                                             <div class="bpname">
                                                 <span>{{i18n.rank}}</span>
-                                            </div>{{i18n.backmatch}}: <span :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</span>
+                                            </div>{{i18n.backmatch}}: <span
+                                                :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</span>
                                         </div>
                                         <div class="bpmaininfo">
                                             <div class="bpstats">
                                                 <div class="bpstats1">
                                                     <div class="elo">
-                                                        <span>{{i18n.score}}:</span> <span class="bpscore">{{elo}}</span>
+                                                        <span>{{i18n.score}}:</span> <span
+                                                            class="bpscore">{{elo}}</span>
                                                     </div>
                                                     <div class="matchs">
                                                         <span>{{i18n.wins}}:</span> <span class="bpscore">{{wins}} из
@@ -244,8 +250,10 @@
                             <div class="textright">
                                 <span class="minibtn" id="mouseFocus"
                                     v-on:click="emit('characterOpen')">{{i18n.custom}}</span> <br>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 2)">{{i18n.friends}}</span> <br>
-                                <span class="minibtn" id="mouseFocus" v-on:click="emit('cClothes:open')">{{i18n.clothing}}</span>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="switchPage(0, 2)">{{i18n.friends}}</span> <br>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="emit('cClothes:open')">{{i18n.clothing}}</span>
                             </div>
                             <div class="righticon">
                                 <img src="img/character.png" id="mouseFocus" alt="">
@@ -277,7 +285,8 @@
                                 </transition-group>
                             </div>
                             <div class="btnbackperson">
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.person}}</span>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="switchPage(0, 0)">{{i18n.person}}</span>
                             </div>
                         </div>
                     </transition>
@@ -310,8 +319,10 @@
                                 </transition-group>
                             </div>
                             <div class="btnbackperson2">
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.friends}}</span>
-                                <span class="minibtn" id="mouseFocus" v-on:click="switchPage(0, 3)">{{i18n.controlFriends}}</span>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="switchPage(0, 0)">{{i18n.friends}}</span>
+                                <span class="minibtn" id="mouseFocus"
+                                    v-on:click="switchPage(0, 3)">{{i18n.controlFriends}}</span>
                             </div>
                         </div>
                     </transition>

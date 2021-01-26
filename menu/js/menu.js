@@ -25,9 +25,9 @@ var menu = new Vue({
 
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
-        friends: ['DarkLegend', 'Res1ce', 'Obliko'],
-        requestsIn: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
-        requestsOut: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
+        friends: [],
+        requestsIn: [],
+        requestsOut: [], 
 
         //Ranks
         elo: 2000,
@@ -39,7 +39,7 @@ var menu = new Vue({
         level: '01',
 
         //Misc
-        miscInput: 'Dark',
+        miscInput: '',
 
         //i18n
         i18n: {
@@ -55,7 +55,7 @@ var menu = new Vue({
             control: 'MANAGE',
             start: 'START',
             game: 'GAME',
-            status: 'STATUS',
+            status: 'Status',
             expectation: 'Players waiting',
             stop: 'STOP',
             clickready: 'Click for ready',
@@ -253,7 +253,7 @@ var menu = new Vue({
         {
             let el = document.getElementById(name);
             if(el.style.opacity <= 0.2) return;
-            console.log(name)
+            this.emitServer('sFriends:rejectRequest', name, 'friends') 
         },
         loadRus()
         {
@@ -269,7 +269,7 @@ var menu = new Vue({
                 control: 'УПРАВЛЕНИЕ',
                 start: 'НАЧАТЬ',
                 game: 'ИГРУ',
-                status: 'СТАТУС',
+                status: 'Статус',
                 expectation: 'Игроков в ожидании',
                 stop: 'ЗАКОНЧИТЬ',
                 clickready: 'Нажмите для готовности',
@@ -361,11 +361,16 @@ if ('alt' in window)
     // Friends
     alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
         console.log(`updateFriends-1: ${menu.requestsOut}`)  
-        if(friends != null && friends.length > 3) menu.friends = friends;
-        if(requestsIn != null && requestsIn.length > 3) menu.requestsIn = requestsIn; 
-        if(requestsOut != null && requestsOut.length > 3) menu.requestsOut = requestsOut; 
+        if(friends != null) menu.friends = JSON.parse(friends); 
+        if(requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);  
+        if(requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);  
         console.log(`updateFriends: ${menu.requestsOut}`)  
     })
+
+    alt.on('bFriends:remove', (variable, nickName) => {
+        console.log(`bFriends:remove: ${variable}; ${nickName}`) 
+        menu[variable] = menu[variable].filter(el => el !== nickName);
+    });
 }
 else 
 {
@@ -381,3 +386,5 @@ else
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
 }
+
+menu.loadRus()
