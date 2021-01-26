@@ -267,9 +267,9 @@ if ('alt' in window)
 
     // Friends
     alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
-        menu.friends = JSON.parse(friends);
-        menu.requestsIn = JSON.parse(requestsIn); 
-        menu.requestsOut = JSON.parse(requestsOut);
+        if(friends != null) menu.friends = friends;
+        if(requestsIn != null) menu.requestsIn = requestsIn; 
+        if(requestsOut != null) menu.requestsOut = requestsOut; 
     })
 }
 else 
