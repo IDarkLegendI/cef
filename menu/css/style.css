@@ -636,9 +636,6 @@ html {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-bottom: 3vh;
-  height: 8%;
-  -ms-flex-preferred-size: 5%;
-      flex-basis: 5%;
 }
 
 .btnbackperson .minibtn {
