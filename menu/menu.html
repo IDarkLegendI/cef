@@ -334,10 +334,12 @@
                                             <div class="nickzapros">{{friend}}</div>
                                         </div>
                                         <div class="btnszapros">
-                                            <div class="btnzapros" data-title="Принять">
+                                            <div class="btnzapros" data-title="Принять"
+                                                v-on:click="emitServer('sFriends:acceptRequest', friend)">
                                                 <img src="img/tick.png" alt="">
                                             </div>
-                                            <div class="btnzapros" data-title="Отклонить">
+                                            <div class="btnzapros" data-title="Отклонить"
+                                                v-on:click="emitServer('sFriends:rejectRequest', friend, 'requestsIn')">
                                                 <img src="img/close.png" alt="">
                                             </div>
                                         </div>
@@ -372,13 +374,9 @@
                                             </div>
                                             <div class="nickzapros">{{friend}}</div>
                                         </div>
-                                        <div class="btnszapros">
-                                            <div class="btnzapros" data-title="Принять">
-                                                <img src="img/tick.png" alt="">
-                                            </div>
-                                            <div class="btnzapros" data-title="Отклонить">
-                                                <img src="img/close.png" alt="">
-                                            </div>
+                                        <div class="btnzapros" data-title="Отменить"
+                                            v-on:click="emitServer('sFriends:rejectRequest', friend, 'requestsOut')">
+                                            <img src="img/close.png" alt="">
                                         </div>
                                     </div>
                                 </transition-group>

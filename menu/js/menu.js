@@ -27,7 +27,7 @@ var menu = new Vue({
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
         friends: ['DarkLegend', 'Res1ce', 'Obliko'],
         requestsIn: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
-        requestsOut: [],
+        requestsOut: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
 
         //Ranks
         elo: 2000,
@@ -51,9 +51,10 @@ var menu = new Vue({
         }
     },
     methods: {
-        emitServer: function(value)  
+        emitServer: function(...args)  
         { 
-            if ('alt' in window) alt.emit('emitToServer', value) 
+            // console.log(...args)
+            if ('alt' in window) alt.emit('emitToServer', ...args) 
         },
         emit: function(value, ...args)  
         { 
