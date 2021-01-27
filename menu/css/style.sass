@@ -548,6 +548,7 @@ html
 .textticketblock
     display: flex
     flex-direction: row
+    justify-content: space-between
     align-items: center
 
 .textticket5
@@ -627,7 +628,7 @@ html
 
 .minibtn
     transition: 0.2s ease-out
-    border: 1px solid #e0e0e0
+    border: 2px solid #e0e0e0
     padding: 0.3vh 2vh
     // flex-basis: 25%
     border-radius: 11px
@@ -1468,6 +1469,12 @@ a:hover
 .btnzapros:hover::after
     opacity: 1
     transform: translate(-0.4vw, -4vh)
+
+.ticket .minibtn
+    padding: 0 1.2vw
+    line-height: 4vh
+    // position: absolute
+    margin-left: 3vw
 
 @keyframes shake
     0%
