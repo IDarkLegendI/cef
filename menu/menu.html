@@ -273,13 +273,13 @@
                             </div>
                             <div class="zaprosi">
                                 <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                        v-bind:key="friend">
+                                    <div class="zapros list-complete-item" v-for="(friend, index) in getOnlineFriend()"
+                                        v-bind:key="friend.name">
                                         <div class="avatarnickzapros">
                                             <div class="avatarzapros">
                                                 <img src="img/ava.jpg" alt="">
                                             </div>
-                                            <div class="nickzapros">{{friend}}</div>
+                                            <div class="nickzapros">{{friend.name}}</div>
                                         </div>
                                         <div class="btnszapros">
                                             <div class="btnzapros" data-title="Пригласить">
@@ -303,19 +303,19 @@
                             <div class="zaprosi">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                        v-bind:key="friend" v-on:mouseleave="showProfileDetails(friend, 0)">
+                                        v-bind:key="friend.name" v-on:mouseleave="showProfileDetails(friend.name, 0)">
                                         <div class="avatarnickzapros">
-                                            <div class="avatarzapros" :class="{online: index === 0}">
+                                            <div class="avatarzapros" :class="{online: friend.online}">
                                                 <img src="img/ava.jpg" alt="">
                                             </div>
-                                            <div class="nickzapros">{{friend}}</div>
+                                            <div class="nickzapros">{{friend.name}}</div>
                                         </div>
                                         <div class="btnszapros">
-                                            <div class="btnzapros profileDetails" :id='friend'
-                                                v-on:click="delFriend(friend)" data-title="Удалить из друзей">
+                                            <div class="btnzapros profileDetails" :id='friend.name'
+                                                v-on:click="delFriend(friend.name)" data-title="Удалить из друзей">
                                                 <img src="img/close.png" alt="">
                                             </div>
-                                            <div class="btnzapros" v-on:click="showProfileDetails(friend)"
+                                            <div class="btnzapros" v-on:click="showProfileDetails(friend.name)"
                                                 data-title="Действия">
                                                 <img src="img/dots.png" alt="">
                                             </div>

@@ -25,7 +25,7 @@ var menu = new Vue({
 
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
-        friends: [],
+        friends: [{name: 'DarkLegend', online: true}, {name: 'Vanya', online: false}],
         requestsIn: [],
         requestsOut: [], 
 
@@ -255,6 +255,10 @@ var menu = new Vue({
             if(el.style.opacity <= 0.2) return;
             this.emitServer('sFriends:rejectRequest', name, 'friends') 
         },
+        getOnlineFriend: function()
+        {
+            return this.friends.filter(el => el.online)
+        },
         loadRus()
         {
             menu.i18n = {
@@ -376,7 +380,7 @@ if ('alt' in window)
 else 
 {
     menu.show = true; 
-    menu.switchPage(0, 3) 
+    menu.switchPage(0, 2) 
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();

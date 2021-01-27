@@ -1833,6 +1833,7 @@ a:hover {
   padding: 0 3% 0 3%;
   letter-spacing: 2px;
   text-align: center;
+  font-size: 1vw;
 }
 
 .inputaddfriends input:focus {
