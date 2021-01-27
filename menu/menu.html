@@ -200,8 +200,11 @@
                                         <div class="bptext" id="mouseFocus">
                                             <div class="bpname">
                                                 <span>{{i18n.rank}}</span>
-                                            </div>{{i18n.backmatch}}: <span
-                                                :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</span>
+                                            </div>
+                                            <span style="font-size: 1.7vh;">{{i18n.backmatch}}:</span>
+                                            <span
+                                                :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
+                                            </span>
                                         </div>
                                         <div class="bpmaininfo">
                                             <div class="bpstats">
