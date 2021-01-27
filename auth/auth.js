@@ -1,11 +1,11 @@
 if ('alt' in window) {
     alt.on('showPage', step => auth.showPage(step));
     alt.on('showAuth', toggle => auth.fOnLoad(toggle));
-} else setTimeout(() => auth.fOnLoad(true), 500);
+} else setTimeout(() => auth.fOnLoad(true), 10);
 
 let auth = new Vue({
     el: '#auth',
-    data: {
+    data: { 
         page: 0,
         agree: 0,
         autologin: 0,
@@ -15,7 +15,7 @@ let auth = new Vue({
         enteredPass1: '',
         enteredPass2: '',
         enteredName: '',
-        enteredSurname: '',
+        // enteredSurname: '',
         enteredFloor: '',
         passChecked: false,
         // character: [0, 0, -1],
@@ -86,7 +86,7 @@ let auth = new Vue({
                         password: auth.enteredPass1,
                         secondpassword: auth.enteredPass2,
                         name: auth.enteredName,
-                        surname: auth.enteredSurname
+                        // surname: auth.enteredSurname
                     });
                 }
             }
@@ -132,15 +132,15 @@ let auth = new Vue({
         isNameValid() {
             return !/[^A-Z-a-z]/g.test(this.enteredName);
         },
-        isSurnameValid() {
-            return !/[^A-Z-a-z]/g.test(this.enteredSurname);
-        },
+        // isSurnameValid() {
+        //     return !/[^A-Z-a-z]/g.test(this.enteredSurname);
+        // },
         verifySecondStep() {
             if (
                 this.enteredName &&
                 this.isNameValid &&
-                this.enteredSurname && this.isSurnameValid &&
-                this.agree
+                // this.enteredSurname && this.isSurnameValid &&
+                this.agree && this.enteredName.length > 3 
             )
                 return true;
             //&& this.enteredFloor

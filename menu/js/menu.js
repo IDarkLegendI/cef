@@ -25,7 +25,7 @@ var menu = new Vue({
 
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
-        friends: [{name: 'DarkLegend', online: true}, {name: 'Vanya', online: false}],
+        friends: [],
         requestsIn: [],
         requestsOut: [], 
 
@@ -259,6 +259,22 @@ var menu = new Vue({
         {
             return this.friends.filter(el => el.online)
         },
+        updateOnline: function(allPlayers)
+        {
+            console.log(`allPlayers: ${allPlayers}`)
+            let online = false;
+            this.friends.forEach(el => {
+                allPlayers.forEach(el2 => {
+                    if(el.name === el2)
+                    {
+                        online = true;
+                    }
+                })
+                 
+                el.online = online;
+                online = false;
+            })
+        },
         loadRus()
         {
             menu.i18n = {
@@ -365,17 +381,19 @@ if ('alt' in window)
 
     // Friends
     alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
-        console.log(`updateFriends-1: ${menu.requestsOut}`)  
-        if(friends != null) menu.friends = JSON.parse(friends); 
-        if(requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);  
+        if(friends != null) JSON.parse(friends).forEach(el => menu.friends.push({name: el, online: false})); 
+        console.log(`updateFriends: ${JSON.stringify(menu.friends)}`) 
+        if(requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);   
         if(requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);  
-        console.log(`updateFriends: ${menu.requestsOut}`)  
+        menu.updateOnline(allPlayers); 
     })
 
     alt.on('bFriends:remove', (variable, nickName) => {
         console.log(`bFriends:remove: ${variable}; ${nickName}`) 
         menu[variable] = menu[variable].filter(el => el !== nickName);
     });
+
+    alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers)) 
 }
 else 
 {
@@ -384,6 +402,7 @@ else
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();
+        menu.friends = [{name: 'DarkLegend', online: true}, {name: 'Vanya', online: false}]
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         menu.switchPage(0, 3)  

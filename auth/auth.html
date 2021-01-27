@@ -92,7 +92,7 @@
                     <button v-on:click="page = 2" :disabled="!verifyStep" type="button"
                         id="btnreg">Зарегистрироваться</button>
                 </form>
-                <form action="" v-if="page == 3">
+                <form action="" v-if="page === 3">
                     <h1>Восстановление пароля</h1>
                     <span>Введите E-Mail от аккаунта</span>
                     <div class="input-div">
@@ -108,7 +108,7 @@
                     <button v-on:click="sumbitData(1)" :disabled="!verifyForgotStep" type="button">Восстановить</button>
                 </form>
             </span>
-            <span class="forms reg step2" v-if="page == 2">
+            <span class="forms reg step2" v-if="page === 2">
                 <form action="#">
                     <h1>Как будут звать вашего персонажа?</h1>
                     <div class="input-div" :class="{ error: (enteredName && !isNameValid) }">
@@ -121,16 +121,7 @@
                             </span>
                         </label>
                     </div>
-                    <div class="input-div" :class="{ error: (enteredSurname && !isSurnameValid) }">
-                        <input type="text" name="name" autocomplete="off" required spellcheck="false"
-                            v-model="enteredSurname"
-                            :class="{ checked: (enteredSurname && isSurnameValid), error: (enteredSurname && !isSurnameValid) }">
-                        <label for="NamePerson" class="label-name">
-                            <span class="content-name">
-                                Фамилия
-                            </span>
-                        </label>
-                    </div>
+                    <p style="color: white">Длина игрового имени должна быть больше трех символов</p>
                     <div class="checkbox" id="agreebox">
                         <input type="checkbox" id="checkbox" v-model="agree">
                         <label for="checkbox">Вы согласны с правилами проекта?</label>
