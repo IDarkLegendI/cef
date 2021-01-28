@@ -635,12 +635,13 @@ html {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin-bottom: 3vh;
+  padding-bottom: 3vh;
+  height: 4.5vh;
 }
 
 .btnbackperson .minibtn {
-  padding-top: 0vh;
-  padding-bottom: 0vh;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .btnbackperson2 {
@@ -1509,7 +1510,7 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 1vw;
+  padding-top: 1vh;
 }
 
 .btnback2 a {
@@ -1579,7 +1580,6 @@ a:hover {
       -ms-flex-direction: row;
           flex-direction: row;
   font-size: 2.5vh;
-  margin-top: 2vh;
   color: #fff;
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -1665,13 +1665,10 @@ a:hover {
 }
 
 .zaprosi {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  padding-bottom: 2vh;
   margin-left: 1vw;
   margin-right: 0.5vw;
-  -ms-flex-preferred-size: 80%;
-      flex-basis: 80%;
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
   overflow-y: auto;
   overflow-x: none;
 }
@@ -1802,6 +1799,7 @@ a:hover {
 }
 
 .inputaddfriends {
+  padding-top: 2vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1812,8 +1810,7 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 2vh;
-  margin-bottom: 2vh;
+  font-size: 2.5vh;
 }
 
 .inputaddfriends h1 {
