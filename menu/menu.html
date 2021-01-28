@@ -297,10 +297,10 @@
                     </transition>
                     <transition name="person-friend2">
                         <div class="rightNoHover" v-show="subPage === 2">
-                            <div class="friendsh1">
+                            <div class="friendsh1" style="padding-top: 1vh;">
                                 <h1>{{i18n.friends}}</h1>
                             </div>
-                            <div class="zaprosi">
+                            <div class="zaprosi" style="flex-basis: 80%;">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-for="(friend, index) in friends"
                                         v-bind:key="friend.name" v-on:mouseleave="showProfileDetails(friend.name, 0)">
