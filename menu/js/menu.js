@@ -385,7 +385,8 @@ if ('alt' in window)
         console.log(`updateFriends: ${JSON.stringify(menu.friends)}`) 
         if(requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);   
         if(requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);  
-        menu.updateOnline(allPlayers); 
+        console.log(`menu.requestsOut: ${menu.requestsOut}`)
+        // menu.updateOnline(allPlayers); 
     })
 
     alt.on('bFriends:remove', (variable, nickName) => {
@@ -397,16 +398,17 @@ if ('alt' in window)
 }
 else 
 {
-    menu.show = true; 
-    menu.switchPage(0, 2) 
+    menu.show = true;  
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();
         menu.friends = [{name: 'DarkLegend', online: true}, {name: 'Vanya', online: false}]
+        menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
+        menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         menu.switchPage(0, 3)  
-    }, 50)
+    }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
 }
