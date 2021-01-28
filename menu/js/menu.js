@@ -38,6 +38,11 @@ var menu = new Vue({
         hours: 0,
         level: '01',
 
+        //Cars
+        cars: [{name: 'None', model: 'none'}, {name: 'X-80 PROTO', model: 'prototipo'}, {name: 'T-20', model: 't20'}, {name: 'Pfister-811', model: 'pfister811'}, {name: 'Dubsta 6x6', model: 'dubsta3'}, ],
+        carsPointer: 0,  
+        myCar: 'none',
+
         //Misc
         miscInput: '',
 
@@ -92,6 +97,9 @@ var menu = new Vue({
             normal: 'Normal',
             big: 'Big',
             btnBack: 'BACK',
+            buy: 'BUY',
+            select: 'SELECT',
+            selected: 'SELECTED',
         }
     },
     methods: {
@@ -326,8 +334,16 @@ var menu = new Vue({
                 normal: 'Средняя',
                 big: 'Большая',
                 btnBack: 'НАЗАД',
-                leavelobby: 'ВЫЙТИ'
+                leavelobby: 'ВЫЙТИ',
+                buy: 'КУПИТЬ',
+                select: 'ВЫБРАТЬ',
+                selected: 'ВЫБРАНО',
             }
+        }, 
+        setCar(model)
+        {
+            this.myCar = model;
+            this.emitServer('sCar:set', this.cars[this.carsPointer].model)
         }
     },
 }); 
@@ -407,7 +423,7 @@ else
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 2)  
+        menu.switchPage(2, 0)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 

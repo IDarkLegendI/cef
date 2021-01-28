@@ -462,7 +462,7 @@
         <section v-if="page === 2">
             <div class="mainauto">
                 <div class="switchauto">
-                    <div class="arrowleft">
+                    <div class="arrowleft" v-on:click="carsPointer === 0 ? carsPointer = 0 : carsPointer--">
                         <svg data-name="Livello 1" rotate="180deg" width="5vh" id="Livello_1" viewBox="0 0 128 128"
                             xmlns="http://www.w3.org/2000/svg">
                             <title />
@@ -473,9 +473,10 @@
                         </svg>
                     </div>
                     <div class="nameauto">
-                        <div class="textnameauto">X-80 PROTO</div>
+                        <div class="textnameauto">{{cars[carsPointer].name}}</div>
                     </div>
-                    <div class="arrowright">
+                    <div class="arrowright"
+                        v-on:click="carsPointer === cars.length-1 ? carsPointer = cars.length-1 : carsPointer++">
                         <svg data-name="Livello 1" width="5vh" id="Livello_1" viewBox="0 0 128 128"
                             xmlns="http://www.w3.org/2000/svg">
                             <title />
@@ -487,7 +488,11 @@
                     </div>
                 </div>
                 <div class="btnback">
-                    <a href="#" v-on:click="saveSettings(0)" id="mouseFocus">{{i18n.btnBack}}</a>
+                    <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
+                    <a id="mouseFocus" style="background-color: #ffffff81"
+                        v-if="cars[carsPointer].model === myCar">{{i18n.selected}}</a>
+
+                    <a id="mouseFocus" v-else v-on:click="setCar(cars[carsPointer].model)">{{i18n.select}}</a>
                 </div>
             </div>
         </section>
@@ -515,7 +520,7 @@
                     <div class="deluxe donatform">
                         <h1>DELUXE</h1>
                         <div class="donatimgform">
-                            <img src="img/gold.png" alt="">  
+                            <img alt="" src="img/gold.png">
                         </div>
                     </div>
                 </div>
