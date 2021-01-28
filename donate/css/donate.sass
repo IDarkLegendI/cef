@@ -13,28 +13,33 @@ body
     width: 100%
 
 .main
-    width: 90%
+    width: 80%
     height: 80%
     display: flex
-    flex-direction: column
-    justify-content: space-around
-    border: 3px solid red
+    flex-direction: row
+    justify-content: space-between
+    // border: 3px solid red
     position: absolute
     left: 50%
     top: 50%
     transform: translate(-50%, -50%)
 
-.upper
-    width: 100%
-    height: 30vh
-    border: 1px solid black
+.formsleft
     display: flex
     flex-direction: row
     justify-content: space-between
 
-.lower
-    width: 100%
-    height: 30vh
+.left
+    width: 70%
+    height: 100%
+    border: 1px solid black
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+.right
+    width: 25%
+    height: 100%
     border: 1px solid black
     display: flex
     flex-direction: row
@@ -42,5 +47,41 @@ body
     align-items: center
 
 .form
-    border: 1px solid purple
-    flex-basis: 25%
+    flex-basis: 40%
+    font-size: 2.5vh
+    font-family: 'Roboto Condensed', sans-serif
+    color: white
+    display: flex
+    flex-direction: column
+    align-items: center
+    // justify-content: center
+    // padding: 1vh 1.2vw 
+    text-shadow: 1px 1px 2px #ffc400
+    border: 3px solid #ffc400
+    // border-radius: 20px
+    box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
+    h1
+        letter-spacing: 0.4vh
+        // border: 2px solid white
+
+.vip
+    border-color: #acacac
+    box-shadow: 0 0 10px #acacac, inset 0 0 10px #acacac
+    text-shadow: 1px 1px 2px #acacac
+
+.deluxe
+    border-color: #77c2ff
+    box-shadow: 0 0 10px #77c2ff, inset 0 0 10px #77c2ff
+    text-shadow: 1px 1px 2px #77c2ff
+    height: 100%
+    flex-basis: 100%
+
+.imgform
+    width: 10vw
+    margin-top: auto
+    position: relative
+    top: 2vh
+    left: 6vw
+    img
+        width: 100%
+        height: 100%
