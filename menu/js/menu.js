@@ -100,7 +100,35 @@ var menu = new Vue({
             buy: 'BUY',
             select: 'SELECT',
             selected: 'SELECTED',
-        }
+        },
+        avatars: {
+            "A": "0",
+            "B": "1",
+            "C": "2",
+            "D": "3", 
+            "E": "4",
+            "F": "5",
+            "G": "6",
+            "H": "7",
+            "I": "8",
+            "J": "9",
+            "K": "10",
+            "L": "11",
+            "M": "12",
+            "N": "13", 
+            "O": "14",
+            "P": "15",
+            "Q": "16",
+            "R": "17",
+            "S": "18",
+            "T": "19",
+            "U": "20",
+            "V": "21",
+            "W": "22",
+            "X": "23",
+            "Y": "24",
+            "Z": "25"
+          },
     },
     methods: {
         emitServer: function(...args)  
@@ -216,6 +244,15 @@ var menu = new Vue({
             .then(result => Promise.resolve(URL.createObjectURL(result))) 
             .catch(() => Promise.resolve(`./img/avatars/${this.getRandomInt(13)}.jpg`))
         },
+        getAvatar(firstCharNick)
+        {
+            if(firstCharNick) 
+            {
+                firstCharNick = firstCharNick[0].toUpperCase();
+                return this.avatars[firstCharNick]
+            }
+            else return this.avatars['A']
+        },
         getRandomInt: function (max) {
             return Math.floor(Math.random() * Math.floor(max));
         },
@@ -261,7 +298,7 @@ var menu = new Vue({
         {
             let el = document.getElementById(name);
             if(el.style.opacity <= 0.2) return;
-            this.emitServer('sFriends:rejectRequest', name, 'friends') 
+            this.request(name, 'friends') 
         },
         getOnlineFriend: function()
         {
@@ -344,6 +381,24 @@ var menu = new Vue({
         {
             this.myCar = model;
             this.emitServer('sCar:set', this.cars[this.carsPointer].model)
+        },
+        request(friend, type, event = 'sFriends:rejectRequest')
+        { 
+            if(type === 'friends') this[type] = this[type].filter(el => el.name !== friend)
+            else this[type] = this[type].filter(el => el !== friend)
+            this.emitServer(event, friend, type);
+        },
+        findFriend()
+        {
+            return this.allPlayers.filter(el => {
+                let count = 0;
+                for(let i = 0; i < this.miscInput.length; i++)
+                {
+                   if(el[i].toLowerCase() === this.miscInput[i].toLowerCase()) count++;
+                }
+                // console.log(`count: ${count} === ${this.miscInput.length}`)
+                return count === this.miscInput.length
+            })
         }
     },
 }); 
@@ -418,12 +473,13 @@ else
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();
+        menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr']
         menu.friends = [{name: 'DarkLegend', online: true}, {name: 'Vanya', online: false}]
-        menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
-        menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66']
+        menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
+        menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'WSD', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(2, 0)  
+        menu.switchPage(0, 3)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 

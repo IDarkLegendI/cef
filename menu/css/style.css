@@ -635,7 +635,7 @@ html {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding-bottom: 3vh;
+  padding-bottom: 2vh;
   height: 4.5vh;
 }
 
@@ -1512,7 +1512,7 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 1vh;
+  padding-top: 2vh;
 }
 
 .btnback2 a {
@@ -1582,6 +1582,7 @@ a:hover {
       -ms-flex-direction: row;
           flex-direction: row;
   font-size: 2.5vh;
+  padding-top: 2vh;
   color: #fff;
   font-family: 'Roboto Condensed', sans-serif;
 }
@@ -1667,12 +1668,16 @@ a:hover {
 }
 
 .zaprosi {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   margin-left: 1vw;
   margin-right: 0.5vw;
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%;
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
   overflow-y: auto;
   overflow-x: none;
+  -webkit-transition: all 1.0s ease-in-out;
+  transition: all 1.0s ease-in-out;
 }
 
 .zapros {
@@ -1969,19 +1974,18 @@ a:hover {
 
 .list-complete-enter, .list-complete-leave-to {
   opacity: 0;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
+  -webkit-transform: translateY(150px);
+          transform: translateY(150px);
 }
 
 .list-complete-leave-active {
-  -webkit-transform: translateY(-100px);
-          transform: translateY(-100px);
-  position: absolute;
+  -webkit-transform: translateY(-150px);
+          transform: translateY(-150px);
 }
 
 .list-complete-item {
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+  -webkit-transition: all 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
 }
 
 .switchcustom {
