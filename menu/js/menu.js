@@ -182,7 +182,7 @@ var menu = new Vue({
                         container.style.opacity = i;
                         if (i < 0.1) {
                             if(newPage === 2) menu.emit('cCar:setCarPreview', true);
-                            else if(newPage === 0 && page === 2) menu.emit('cCar:setCarPreview', false)
+                            else if(newPage === 0 && this.page === 2) menu.emit('cCar:setCarPreview', false)
                             resolve('result');
                             container.style.opacity = 0.0;
                             clearInterval(intervalID);
