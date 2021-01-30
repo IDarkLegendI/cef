@@ -389,7 +389,7 @@ var menu = new Vue({
             if(plus) this.carsPointer === this.cars.length-1 ? this.carsPointer = this.cars.length-1 : this.carsPointer++
             else this.carsPointer === 0 ? this.carsPointer = 0 : this.carsPointer--
 
-            console.log(this.cars[this.carsPointer].model) 
+            // console.log(this.cars[this.carsPointer].model) 
             menu.emitServer('sCar:preview', this.cars[this.carsPointer].model);
         },
         request(friend, type, event = 'sFriends:rejectRequest')
