@@ -2272,10 +2272,10 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-shadow: 1px 1px 2px #ffc400;
-  border: 3px solid #ffc400;
-  -webkit-box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
-          box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
+  text-shadow: 1px 1px 2px #ff0000;
+  border: 3px solid #ff0000;
+  -webkit-box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
+          box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
 }
@@ -2286,7 +2286,7 @@ a:hover {
 }
 
 .donatimgform {
-  width: 10vw;
+  width: 8vw;
   position: relative;
 }
 
@@ -2330,28 +2330,33 @@ a:hover {
 }
 
 .premium .donatimgform {
-  width: 8vw;
+  left: 2vw;
+  top: 5vh;
+}
+
+.vip .donatimgform {
+  width: 12vw;
   left: 2vw;
   top: 5vh;
 }
 
 .donatform:hover {
-  background-color: #ffc400c7;
-  -webkit-box-shadow: 0 0 30px #ffc400, inset 0 0 30px #ffc400;
-          box-shadow: 0 0 30px #ffc400, inset 0 0 30px #ffc400;
+  background-color: #ff0000c7;
+  -webkit-box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
+          box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
 }
 
 .vip {
-  border-color: #acacac;
-  -webkit-box-shadow: 0 0 10px #acacac, inset 0 0 10px #acacac;
-          box-shadow: 0 0 10px #acacac, inset 0 0 10px #acacac;
-  text-shadow: 1px 1px 2px #acacac;
+  border-color: #ffc400;
+  -webkit-box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
+          box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
+  text-shadow: 1px 1px 2px #ffc400;
 }
 
 .vip:hover {
-  background-color: #acacacc7;
-  -webkit-box-shadow: 0 0 30px #acacac, inset 0 0 30px #acacac;
-          box-shadow: 0 0 30px #acacac, inset 0 0 30px #acacac;
+  background-color: #ffc400c7;
+  -webkit-box-shadow: 0 0 30px #ffc400, inset 0 0 30px #ffc400;
+          box-shadow: 0 0 30px #ffc400, inset 0 0 30px #ffc400;
 }
 
 .premium {

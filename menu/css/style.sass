@@ -1501,7 +1501,7 @@ a:hover
     flex-direction: row
     justify-content: space-between
     // border: 3px solid red
-    position: absolute
+    position: relative
     left: 50%
     top: 50%
     transform: translate(-50%, -50%)
@@ -1535,16 +1535,16 @@ a:hover
     color: white
     display: flex
     flex-direction: column
-    text-shadow: 1px 1px 2px #ffc400
-    border: 3px solid #ffc400
-    box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
+    text-shadow: 1px 1px 2px #ff0000
+    border: 3px solid #ff0000
+    box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000
     transition: 0.4s ease-in-out
     h1
         letter-spacing: 0.4vh
         text-align: center
 
 .donatimgform
-    width: 10vw
+    width: 8vw
     // margin-top: auto
     position: relative
     // top: 2vh
@@ -1578,22 +1578,27 @@ a:hover
         transform: rotate(-37deg)
 
 .premium .donatimgform
-    width: 8vw
+    // width: 8vw
+    left: 2vw
+    top: 5vh
+
+.vip .donatimgform
+    width: 12vw
     left: 2vw
     top: 5vh
 
 .donatform:hover
-    background-color:#ffc400c7
-    box-shadow: 0 0 30px #ffc400, inset 0 0 30px #ffc400
+    background-color:#ff0000c7
+    box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000
 
 .vip
-    border-color: #acacac
-    box-shadow: 0 0 10px #acacac, inset 0 0 10px #acacac
-    text-shadow: 1px 1px 2px #acacac
+    border-color: #ffc400
+    box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
+    text-shadow: 1px 1px 2px #ffc400
 
 .vip:hover
-    background-color: #acacacc7
-    box-shadow: 0 0 30px #acacac, inset 0 0 30px #acacac
+    background-color: #ffc400c7
+    box-shadow: 0 0 30px #ffc400, inset 0 0 30px #ffc400
 
 .premium
     border-color: #47b139
