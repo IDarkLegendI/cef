@@ -398,6 +398,8 @@ var menu = new Vue({
                 }
                 // console.log(`count: ${count} === ${this.miscInput.length}`)
                 return count === this.miscInput.length
+            }).filter(el => {
+                return !this.friends.some(el2 => el2.name.toLowerCase() === el.toLowerCase())
             })
         }
     },
@@ -473,8 +475,8 @@ else
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();
-        menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr']
-        menu.friends = [{name: 'DarkLegend', online: true}, {name: 'Vanya', online: false}]
+        menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
+        menu.friends = [{name: 'Dark', online: true}, {name: 'Vanya', online: false}]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'WSD', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
