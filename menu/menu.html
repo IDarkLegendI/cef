@@ -336,6 +336,7 @@
                             </div>
                         </div>
                     </transition>
+                    <!-- ДОБАВИТЬ НОВОГО ДРУГА -->
                     <transition name="person-friend2">
                         <div class="rightNoHover" v-show="subPage === 3">
 
@@ -355,7 +356,8 @@
 
                             <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
                                 leave-active-class="animated bounceOutUp">
-                                <div class="zaprosi" v-if="miscInput.length > 1 && findFriend().length !== 0">
+                                <div class="zaprosi" :style="{flexBasis: findFriend().length === 1 ? '25%' : '60%'}"
+                                    v-if="miscInput.length > 1 && findFriend().length !== 0">
                                     <transition-group name="list-complete" tag="div">
                                         <div class="zapros list-complete-item" v-for="(friend, index) in findFriend()"
                                             v-bind:key="friend">
@@ -376,6 +378,7 @@
                                 </div>
                             </transition>
 
+                            <!-- ВХОДЯЩИЕ ЗАЯВКИ -->
                             <div class="friendsh1" v-if="requestsIn[0]">
                                 <h1>{{i18n.requestsIn}}</h1>
                             </div>
