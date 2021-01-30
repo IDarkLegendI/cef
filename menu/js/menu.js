@@ -181,6 +181,8 @@ var menu = new Vue({
                         i -= 0.01;
                         container.style.opacity = i;
                         if (i < 0.1) {
+                            if(newPage === 2) menu.emit('cCar:setCarPreview', true);
+                            else if(newPage === 0 && page === 2) menu.emit('cCar:setCarPreview', false)
                             resolve('result');
                             container.style.opacity = 0.0;
                             clearInterval(intervalID);
@@ -381,6 +383,14 @@ var menu = new Vue({
         {
             this.myCar = model;
             this.emitServer('sCar:set', this.cars[this.carsPointer].model)
+        },
+        previewCar(plus)
+        {
+            if(plus) this.carsPointer === this.cars.length-1 ? this.carsPointer = this.cars.length-1 : this.carsPointer++
+            else this.carsPointer === 0 ? this.carsPointer = 0 : this.carsPointer--
+
+            console.log(this.cars[this.carsPointer].model) 
+            menu.emitServer('sCar:preview', this.cars[this.carsPointer].model);
         },
         request(friend, type, event = 'sFriends:rejectRequest')
         { 
