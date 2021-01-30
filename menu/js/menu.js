@@ -28,6 +28,7 @@ var menu = new Vue({
         friends: [],
         requestsIn: [],
         requestsOut: [], 
+        allPlayers: [], 
 
         //Ranks
         elo: 2000,
@@ -310,6 +311,7 @@ var menu = new Vue({
         {
             console.log(`allPlayers: ${allPlayers}`)
             let online = false;
+            this.allPlayers = allPlayers;
             this.friends.forEach(el => {
                 allPlayers.forEach(el2 => {
                     if(el.name === el2)
@@ -396,21 +398,29 @@ var menu = new Vue({
         { 
             if(type === 'friends') this[type] = this[type].filter(el => el.name !== friend)
             else this[type] = this[type].filter(el => el !== friend)
-            this.emitServer(event, friend, type);
+            this.emitServer(event, friend, type); 
         },
         findFriend()
         {
-            return this.allPlayers.filter(el => {
+            console.log(`allPlayers: ${this.allPlayers}`)
+            console.log(`requestsOut: ${this.requestsOut}`) 
+            console.log(`myName: ${this.myName}`) 
+            console.log(`this.friends: ${JSON.stringify(this.friends)}`) 
+            return this.allPlayers.filter(el => { 
                 let count = 0;
-                for(let i = 0; i < this.miscInput.length; i++)
+                for(let i = 0; i < this.miscInput.length; i++) 
                 {
                    if(el[i].toLowerCase() === this.miscInput[i].toLowerCase()) count++;
                 }
                 // console.log(`count: ${count} === ${this.miscInput.length}`)
                 return count === this.miscInput.length
-            }).filter(el => {
-                return !this.friends.some(el2 => el2.name.toLowerCase() === el.toLowerCase())
-            })
+            })  
+                .filter(el => !this.friends.some(el2 => el2.name.toLowerCase() === el.toLowerCase()))
+                .filter(el => !this.requestsOut.some(el2 => el2.toLowerCase() === el.toLowerCase()))
+                .filter(el => el.toLowerCase() !== this.myName.toLowerCase())  
+                // .filter(el => {   
+                //     if(this.myName && el) el.toLowerCase() === this.myName.toLowerCase() 
+                // })  
         }
     },
 }); 
@@ -464,6 +474,7 @@ if ('alt' in window)
 
     // Friends
     alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
+        menu.friends = [];
         if(friends != null) JSON.parse(friends).forEach(el => menu.friends.push({name: el, online: false})); 
         console.log(`updateFriends: ${JSON.stringify(menu.friends)}`) 
         if(requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);   
@@ -491,7 +502,7 @@ else
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'WSD', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 3)  
+        menu.switchPage(0, 2)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 

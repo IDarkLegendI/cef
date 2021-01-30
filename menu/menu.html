@@ -317,12 +317,12 @@
                                         </div>
                                         <div class="btnszapros">
                                             <div class="btnzapros profileDetails" :id='friend.name'
-                                                v-on:click="delFriend(friend.name)" data-title="Удалить из друзей">
-                                                <img src="img/close.png" alt="">
+                                                data-title="Удалить из друзей">
+                                                <img v-on:click="delFriend(friend.name)" src="img/close.png" alt="">
                                             </div>
-                                            <div class="btnzapros" v-on:click="showProfileDetails(friend.name)"
-                                                data-title="Действия">
-                                                <img src="img/dots.png" alt="">
+                                            <div class="btnzapros" data-title="Действия">
+                                                <img v-on:click="showProfileDetails(friend.name)" src="img/dots.png"
+                                                    alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -368,9 +368,9 @@
                                                 <div class="nickzapros">{{friend}}</div>
                                             </div>
                                             <div class="btnszapros">
-                                                <div class="btnzapros" data-title="Добавить"
-                                                    v-on:click="emit('cFriends:addRequest', friend, friends, requestsIn, requestsOut)">
-                                                    <img src="img/plusbtn.png" alt="">
+                                                <div class="btnzapros" data-title="Добавить">
+                                                    <img v-on:click="emit('cFriends:addRequest', friend, friends, requestsIn, requestsOut)"
+                                                        src="img/plusbtn.png" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -395,13 +395,13 @@
                                                 <div class="nickzapros">{{friend}}</div>
                                             </div>
                                             <div class="btnszapros">
-                                                <div class="btnzapros" data-title="Принять"
-                                                    v-on:click="request(friend, 'requestsIn', 'sFriends:acceptRequest')">
-                                                    <img src="img/tick.png" alt="">
+                                                <div class="btnzapros" data-title="Принять">
+                                                    <img v-on:click="request(friend, 'requestsIn', 'sFriends:acceptRequest')"
+                                                        src="img/tick.png" alt="">
                                                 </div>
-                                                <div class="btnzapros" data-title="Отклонить"
-                                                    v-on:click="request(friend, 'requestsIn')">
-                                                    <img src="img/close.png" alt="">
+                                                <div class="btnzapros" data-title="Отклонить">
+                                                    <img v-on:click="request(friend, 'requestsIn')" src="img/close.png"
+                                                        alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -424,9 +424,9 @@
                                                 </div>
                                                 <div class="nickzapros">{{friend}}</div>
                                             </div>
-                                            <div class="btnzapros" data-title="Отменить"
-                                                v-on:click="request(friend, 'requestsOut')">
-                                                <img src="img/close.png" alt="">
+                                            <div class="btnzapros" data-title="Отменить">
+                                                <img v-on:click="request(friend, 'requestsOut')" src="img/close.png"
+                                                    alt="">
                                             </div>
                                         </div>
                                     </transition-group>
