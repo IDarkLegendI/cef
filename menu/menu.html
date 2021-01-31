@@ -512,7 +512,8 @@
                         </svg>
                     </div>
                     <div class="nameauto">
-                        <div class="textnameauto">{{cars[carsPointer].name}}</div>
+                        <div class="textnameauto">
+                            {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}</div>
                     </div>
                     <div class="arrowright">
                         <svg data-name="Livello 1" width="5vh" id="Livello_1" viewBox="0 0 128 128"
