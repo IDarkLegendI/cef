@@ -651,6 +651,7 @@ html {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-bottom: 3vh;
+  height: 4.5vh;
 }
 
 .btnbackperson2 .minibtn {
@@ -1672,8 +1673,8 @@ a:hover {
   padding-bottom: 1vh;
   margin-left: 1vw;
   margin-right: 0.5vw;
-  -ms-flex-preferred-size: 80%;
-      flex-basis: 80%;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   overflow-y: auto;
   overflow-x: none;
   -webkit-transition: all 1.0s ease-in-out;
@@ -2204,7 +2205,7 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
