@@ -330,6 +330,7 @@ var menu = new Vue({
         },
         loadRus()
         {
+            document.getElementById('inputAddFriend').placeholder = "Введите NickName"
             menu.i18n = {
                 balance: 'Баланс',
                 personal: 'ЛИЧНЫЙ',

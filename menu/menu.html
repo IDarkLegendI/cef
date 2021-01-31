@@ -343,7 +343,8 @@
                             <div class="inputaddfriends">
                                 <h1>{{i18n.addFriend}}</h1>
                                 <div class="btnback2">
-                                    <input type="text" placeholder="Введите имя" spellcheck="false" v-model="miscInput">
+                                    <input type="text" placeholder="Input NickName" spellcheck="false"
+                                        v-model="miscInput" maxlength="15" id="inputAddFriend">
                                     <transition name="custom-classes-transition"
                                         enter-active-class="animated fadeInLeft"
                                         leave-active-class="animated fadeOutRight">
