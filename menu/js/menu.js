@@ -139,6 +139,7 @@ var menu = new Vue({
         },
         emit: function(value, ...args)  
         { 
+            console.log(`emit: ${value} -> ${args[0]}`)
             if ('alt' in window) alt.emit(value, ...args) 
         },
         saveSettings(page)
@@ -155,7 +156,9 @@ var menu = new Vue({
         switchPage(newPage, newSubPage = -1)
         {
             if(this.subPage === -2) return;
-
+             
+            console.log(`switchPage: ${newPage}; ${this.page}`)
+            if(newPage === 0 && this.page === 2) menu.emit('cCar:setCarPreview', false)
             // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
             if(newSubPage != -1)
             {
@@ -180,10 +183,11 @@ var menu = new Vue({
                     i = 1.0;
                     intervalID = setInterval(() => {
                         i -= 0.01;
-                        container.style.opacity = i;
+                        container.style.opacity = i; 
                         if (i < 0.1) {
+                            console.log(`switchPage: ${newPage}; ${this.page}`)
                             if(newPage === 2) menu.emit('cCar:setCarPreview', true);
-                            else if(newPage === 0 && this.page === 2) menu.emit('cCar:setCarPreview', false)
+                            // else if(newPage === 0 && this.page === 2) menu.emit('cCar:setCarPreview', false)
                             resolve('result');
                             container.style.opacity = 0.0;
                             clearInterval(intervalID);
