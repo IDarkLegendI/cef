@@ -44,6 +44,9 @@ var menu = new Vue({
         carsPointer: 0,  
         myCar: 'none',
 
+        //Inventory
+        invCars: [],
+
         //Misc
         miscInput: '',
 
