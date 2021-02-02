@@ -1496,12 +1496,12 @@ a:hover
 
 .maindonat
     width: 70%
-    height: 65%
+    height: 60%
     display: flex
     flex-direction: row
     justify-content: space-between
     // border: 3px solid red
-    position: relative
+    position: absolute
     left: 50%
     top: 50%
     transform: translate(-50%, -50%)
@@ -1530,25 +1530,47 @@ a:hover
 
 .donatform
     flex-basis: 45%
+    height: 27vh
     font-size: 2.5vh
     font-family: 'Roboto Condensed', sans-serif
     color: white
     display: flex
     flex-direction: column
-    text-shadow: 1px 1px 2px #ff0000
     border: 3px solid #ff0000
     box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000
     transition: 0.4s ease-in-out
+    text-shadow: 1px 1px 1px #ff0000
     h1
+        text-shadow: 1px 1px 10px #ff0000
         letter-spacing: 0.4vh
         text-align: center
 
+.calculator
+    // background-image: url(../img/moneys.png)
+    // // background-color: #0000007e
+    // background-position: center
+    // background-repeat: no-repeat
+    // background-size: cover
+    flex-basis: 45%
+    border: 2px solid #00aeff
+    box-shadow: 0 0 10px #00aeff, inset 0 0 10px #00aeff
+    transition: 0.4s ease-in-out
+    text-shadow: 1px 1px 1px #00aeff
+    transition: 0.4s ease-in-out
+    font-size: 2.5vh
+    font-family: 'Roboto Condensed', sans-serif
+    h1
+        text-align: center
+        // text-shadow: 1px 1px 10px #00aeff
+        letter-spacing: 0.2vh
+
+.calculator:hover
+    background-color: #00aeffc7
+    box-shadow: 0 0 20px #00aeff, inset 0 0 20px #00aeff
+
 .donatimgform
     width: 8vw
-    // margin-top: auto
     position: relative
-    // top: 2vh
-    // left: 6vw
     img
         width: 100%
         height: 100%
@@ -1559,8 +1581,6 @@ a:hover
 
 .imgprice
     padding-left: 1vw
-    // padding-top: 2vh
-    // padding-bottom: 2vh
     font-size: 5vh
     display: flex
     align-items: center
@@ -1571,6 +1591,9 @@ a:hover
     img
         transition: 0.5s ease-in-out
 
+.donatnumber
+    font-family: 'Lato', sans-serif
+
 .premium:hover .imgprice
     span
         // transform: translateX(1vw)
@@ -1578,14 +1601,13 @@ a:hover
         transform: rotate(-37deg)
 
 .premium .donatimgform
-    // width: 8vw
     left: 2vw
     top: 5vh
 
 .vip .donatimgform
     width: 12vw
-    left: 2vw
-    top: 5vh
+    top: 5.5vh
+    left: 3vw
 
 .donatform:hover
     background-color: #ff0000c7
@@ -1594,7 +1616,9 @@ a:hover
 .vip
     border-color: #ffc400
     box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
-    text-shadow: 1px 1px 2px #ffc400
+    text-shadow: 1px 1px 1px #ffc400
+    h1
+        text-shadow: 1px 1px 10px #ffdf74
 
 .vip:hover
     background-color: #ffc400c7
@@ -1603,15 +1627,76 @@ a:hover
 .premium
     border-color: #47b139
     box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139
-    text-shadow: 1px 1px 2px #47b139
+    text-shadow: 1px 1px 1px #47b139
+    h1
+        text-shadow: 1px 1px 10px #5fec4c
 
 .premium:hover
     background-color: #47b139c7
     box-shadow: 0 0 30px #47b139, inset 0 0 30px #47b139
 
+.rightdonat .donatimgform
+    width: 20vw
+
 .deluxe
     height: 100%
     flex-basis: 100%
+    // background-image: url(../img/deluxecharacter.png)
+    // // background-color: #00000044
+    // background-position: center
+    // background-repeat: no-repeat
+    // background-size: cover
+    ul
+        padding-left: 2vw
+        margin: 0
+    li
+        padding-top: 1vh 
+        list-style-type: none
+        font-size: 2.1vh
+    li::before
+        content: '- '
+        font-size: 3vh
+        color: red
+        font-weight: bold
+        text-shadow: 1px 1px 2px #ff0000
+    .imgprice
+        margin-top: auto
 
-.rightdonat .donatimgform
-    width: 20vw
+.deluxeimgform
+    width: 9vw
+    position: relative
+    // padding-left: 1vw
+    img
+        width: 100%
+        height: 100%
+ 
+.converterblock
+    padding-top: 2vh
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    input:focus
+        outline: 0
+        outline-offset: 0
+    span
+        color: white
+        // text-shadow: none
+        // font-size: 2.5vh
+    input
+        border: none
+        height: 3.5vh
+        width: 6vw
+        border-radius: 10px
+        background-color: #0000006c
+        color: white
+        font: 2vh "Trebuchet MS", "Lucida Sans"
+        padding: 0 3% 0 3%
+        margin-left: 0.5vw
+        margin-right: 0.5vw
+        letter-spacing: 2px
+        text-align: center
+        font-size: 1vw
+    .donatimgform
+        width: 3vw
+    
