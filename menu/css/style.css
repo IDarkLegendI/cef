@@ -1442,6 +1442,10 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 .arrowleft {
@@ -1495,7 +1499,7 @@ a:hover {
   width: 9vw;
   height: 4vh;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 3vh;
+  font-size: 1.5vw;
 }
 
 .btnback2 {
