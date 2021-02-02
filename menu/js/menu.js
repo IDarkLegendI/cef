@@ -40,7 +40,8 @@ var menu = new Vue({
         level: '01',
 
         //Cars
-        cars: [{name: 'None', model: 'none'}, {name: 'X-80 PROTO', model: 'prototipo'}, {name: 'T-20', model: 't20'}, {name: 'Pfister-811', model: 'pfister811'}, {name: 'Dubsta 6x6', model: 'dubsta3'}, ],
+        cars: [{name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000}, 
+                {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}],
         carsPointer: 0,  
         myCar: 'none',
 
@@ -391,6 +392,15 @@ var menu = new Vue({
                 none: 'НЕ ВЫБРАНО',
             }
         }, 
+        updateCar(list)
+        {
+            this.invCars = list;
+            this.cars.forEach(car => {
+                if(this.invCars.some(el => el.model === car.model)) this.invCars.push(car);
+            })
+            this.invCars.unshift({name: 'None', model: 'none', price: 0});
+            this.carsPointer = 1;
+        },
         setCar(model)
         {
             this.myCar = model;
