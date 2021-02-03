@@ -533,7 +533,13 @@
                     <a id="mouseFocus" style="background-color: #ffffff81"
                         v-if="cars[carsPointer].model === myCar">{{i18n.selected}}</a>
 
-                    <a id="mouseFocus" v-else v-on:click="setCar(cars[carsPointer].model)">{{i18n.select}}</a>
+                    <section v-else style="display: flex; align-items: center; justify-content: center;">
+                        <a id="mouseFocus" v-if="cars[carsPointer].price === 0"
+                            v-on:click="setCar(cars[carsPointer].model)">{{i18n.select}}</a>
+                        <a id="mouseFocus" v-else
+                            v-on:click="emitServer('sCar:buy', cars[carsPointer].model)">{{i18n.buy}}
+                            ({{cars[carsPointer].price}}$)</a>
+                    </section>
                 </div>
             </div>
         </section>
