@@ -2290,6 +2290,7 @@ a:hover {
   text-shadow: 1px 1px 10px #ff0000;
   letter-spacing: 0.4vh;
   text-align: center;
+  font-family: 'Sriracha', cursive;
 }
 
 .calculator {
@@ -2303,16 +2304,18 @@ a:hover {
   text-shadow: 1px 1px 1px #00aeff;
   transition: 0.4s ease-in-out;
   font-size: 2.5vh;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', cursive;
 }
 
 .calculator h1 {
   text-align: center;
+  text-shadow: 1px 1px 10px #00aeff;
   letter-spacing: 0.2vh;
+  font-family: 'Sriracha', cursive;
 }
 
 .calculator:hover {
-  background-color: #00aeffc7;
+  background-color: #00aeff98;
   -webkit-box-shadow: 0 0 20px #00aeff, inset 0 0 20px #00aeff;
           box-shadow: 0 0 20px #00aeff, inset 0 0 20px #00aeff;
 }
@@ -2357,7 +2360,7 @@ a:hover {
 }
 
 .donatnumber {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Sriracha', cursive;
 }
 
 .premium:hover .imgprice img {
@@ -2367,12 +2370,12 @@ a:hover {
 
 .premium .donatimgform {
   left: 2vw;
-  top: 5vh;
+  top: 2vh;
 }
 
 .vip .donatimgform {
   width: 12vw;
-  top: 5.5vh;
+  top: 3vh;
   left: 3vw;
 }
 
@@ -2380,6 +2383,8 @@ a:hover {
   background-color: #ff0000c7;
   -webkit-box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
           box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
+  -webkit-transform: skewX(-3deg);
+          transform: skewX(-3deg);
 }
 
 .vip {
@@ -2432,14 +2437,13 @@ a:hover {
 }
 
 .deluxe li {
-  padding-top: 1vh;
   list-style-type: none;
   font-size: 2.1vh;
 }
 
 .deluxe li::before {
   content: '- ';
-  font-size: 3vh;
+  font-size: 4vh;
   color: red;
   font-weight: bold;
   text-shadow: 1px 1px 2px #ff0000;
@@ -2503,5 +2507,11 @@ a:hover {
 
 .converterblock .donatimgform {
   width: 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=style.css.map */
