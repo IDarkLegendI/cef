@@ -2197,7 +2197,7 @@ a:hover {
 }
 
 .maindonat {
-  width: 70%;
+  width: 65%;
   height: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2230,8 +2230,8 @@ a:hover {
 }
 
 .leftdonat {
-  -ms-flex-preferred-size: 68%;
-      flex-basis: 68%;
+  -ms-flex-preferred-size: 18%;
+      flex-basis: 18%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2246,8 +2246,8 @@ a:hover {
 }
 
 .rightdonat {
-  -ms-flex-preferred-size: 27%;
-      flex-basis: 27%;
+  -ms-flex-preferred-size: 63%;
+      flex-basis: 63%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2256,9 +2256,9 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2363,11 +2363,6 @@ a:hover {
   font-family: 'Sriracha', cursive;
 }
 
-.premium:hover .imgprice img {
-  -webkit-transform: rotate(-37deg);
-          transform: rotate(-37deg);
-}
-
 .premium .donatimgform {
   left: 2vw;
   top: 2vh;
@@ -2405,6 +2400,9 @@ a:hover {
 }
 
 .premium {
+  height: 100%;
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
   border-color: #47b139;
   -webkit-box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
           box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
@@ -2413,6 +2411,39 @@ a:hover {
 
 .premium h1 {
   text-shadow: 1px 1px 10px #5fec4c;
+}
+
+.premium .premiumimgform {
+  width: 8vw;
+  position: relative;
+  top: 3vh;
+  left: 4vh;
+}
+
+.premium img {
+  width: 100%;
+  height: 100%;
+}
+
+.premium ul {
+  padding-left: 2vw;
+  margin: 0;
+}
+
+.premium li {
+  list-style-type: none;
+  font-size: 2.3vh;
+}
+
+.premium li::before {
+  content: '- ';
+  color: #00ff15;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #00ff15;
+}
+
+.premium .imgprice {
+  margin-top: auto;
 }
 
 .premium:hover {
@@ -2427,8 +2458,8 @@ a:hover {
 
 .deluxe {
   height: 100%;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
 }
 
 .deluxe ul {
@@ -2438,12 +2469,11 @@ a:hover {
 
 .deluxe li {
   list-style-type: none;
-  font-size: 2.1vh;
+  font-size: 2.3vh;
 }
 
 .deluxe li::before {
   content: '- ';
-  font-size: 4vh;
   color: red;
   font-weight: bold;
   text-shadow: 1px 1px 2px #ff0000;
@@ -2456,6 +2486,10 @@ a:hover {
 .deluxeimgform {
   width: 9vw;
   position: relative;
+  top: 4vh;
+  left: 4vh;
+  -webkit-transform: rotate(28deg);
+          transform: rotate(28deg);
 }
 
 .deluxeimgform img {

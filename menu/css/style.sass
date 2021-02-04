@@ -1497,7 +1497,7 @@ a:hover
 // ДОНАТ
 
 .maindonat
-    width: 70%
+    width: 65%
     height: 60%
     display: flex
     flex-direction: row
@@ -1514,20 +1514,20 @@ a:hover
     justify-content: space-between
 
 .leftdonat
-    flex-basis: 68%
+    flex-basis: 18%
     height: 100%
-    // border: 1px solid black
+    // border: 3px solid black
     display: flex
     flex-direction: column
     justify-content: space-between
 
 .rightdonat
-    flex-basis: 27%
+    flex-basis: 63%
     height: 100%
-    // border: 1px solid black
+    // border: 3px solid black
     display: flex
     flex-direction: row
-    justify-content: center
+    justify-content: space-between
     align-items: center
 
 .donatform
@@ -1597,10 +1597,6 @@ a:hover
 .donatnumber
     font-family: 'Sriracha', cursive
 
-.premium:hover .imgprice
-    img
-        transform: rotate(-37deg)
-
 .premium .donatimgform
     left: 2vw
     top: 2vh
@@ -1627,11 +1623,37 @@ a:hover
     box-shadow: 0 0 30px #ffc400, inset 0 0 30px #ffc400
 
 .premium
+    height: 100%
+    flex-basis: 45%
     border-color: #47b139
     box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139
     text-shadow: 1px 1px 1px #47b139
     h1
         text-shadow: 1px 1px 10px #5fec4c
+    .premiumimgform
+        width: 8vw
+        position: relative
+        top: 3vh
+        left: 4vh
+        // border: 1px solid black
+    img
+        width: 100%
+        height: 100%
+    ul
+        padding-left: 2vw
+        margin: 0
+    li 
+        list-style-type: none
+        font-size: 2.3vh
+    li::before
+        content: '- '
+        // font-size: 3vh
+        // line-height: 4vh
+        color:#00ff15
+        font-weight: bold
+        text-shadow: 1px 1px 2px #00ff15
+    .imgprice
+        margin-top: auto
 
 .premium:hover
     background-color: #47b139c7
@@ -1642,17 +1664,18 @@ a:hover
 
 .deluxe
     height: 100%
-    flex-basis: 100%
+    flex-basis: 45%
     ul
         padding-left: 2vw
         margin: 0
     li
-        // padding-top: 1vh 
+        // padding-top: 3vh 
         list-style-type: none
-        font-size: 2.1vh
+        font-size: 2.3vh
     li::before
         content: '- '
-        font-size: 4vh
+        // font-size: 4vh
+        // line-height: 4vh
         color: red
         font-weight: bold
         text-shadow: 1px 1px 2px #ff0000
@@ -1662,6 +1685,10 @@ a:hover
 .deluxeimgform
     width: 9vw
     position: relative
+    top: 4vh
+    left: 4vh
+    // border: 1px solid black
+    transform: rotate(28deg)
     // padding-left: 1vw
     img
         width: 100%
