@@ -1449,9 +1449,7 @@ a:hover {
 }
 
 .arrowleft {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-  fill: #0076fc;
+  fill: #006be6;
   -webkit-filter: drop-shadow(0 0 5px #0076fc);
           filter: drop-shadow(0 0 5px #0076fc);
   margin-right: 2vw;
@@ -1460,7 +1458,7 @@ a:hover {
 }
 
 .arrowright {
-  fill: #0076fc;
+  fill: #006be6;
   -webkit-filter: drop-shadow(0 0 5px #0076fc);
           filter: drop-shadow(0 0 5px #0076fc);
   margin-left: 2vw;
@@ -2230,8 +2228,8 @@ a:hover {
 }
 
 .leftdonat {
-  -ms-flex-preferred-size: 18%;
-      flex-basis: 18%;
+  -ms-flex-preferred-size: 32%;
+      flex-basis: 32%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2265,8 +2263,6 @@ a:hover {
 }
 
 .donatform {
-  -ms-flex-preferred-size: 45%;
-      flex-basis: 45%;
   height: 27vh;
   font-size: 2.5vh;
   font-family: 'Roboto Condensed', sans-serif;
@@ -2291,6 +2287,7 @@ a:hover {
   letter-spacing: 0.4vh;
   text-align: center;
   font-family: 'Sriracha', cursive;
+  text-decoration: underline;
 }
 
 .calculator {
@@ -2314,6 +2311,10 @@ a:hover {
   font-family: 'Sriracha', cursive;
 }
 
+.leftform {
+  width: 100%;
+}
+
 .calculator:hover {
   background-color: #00aeff98;
   -webkit-box-shadow: 0 0 20px #00aeff, inset 0 0 20px #00aeff;
@@ -2321,7 +2322,7 @@ a:hover {
 }
 
 .donatimgform {
-  width: 8vw;
+  width: 7vw;
   position: relative;
 }
 
@@ -2337,6 +2338,7 @@ a:hover {
 
 .imgprice {
   padding-left: 1vw;
+  padding-bottom: 1vh;
   font-size: 5vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2347,6 +2349,7 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 12vh;
 }
 
 .imgprice span {
@@ -2360,7 +2363,8 @@ a:hover {
 }
 
 .donatnumber {
-  font-family: 'Sriracha', cursive;
+  font-family: 'Comfortaa', cursive;
+  font-size: 4.5vh;
 }
 
 .premium .donatimgform {
@@ -2369,7 +2373,7 @@ a:hover {
 }
 
 .vip .donatimgform {
-  width: 12vw;
+  width: 10vw;
   top: 3vh;
   left: 3vw;
 }
@@ -2378,8 +2382,6 @@ a:hover {
   background-color: #ff0000c7;
   -webkit-box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
           box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
-  -webkit-transform: skewX(-3deg);
-          transform: skewX(-3deg);
 }
 
 .vip {
@@ -2414,7 +2416,7 @@ a:hover {
 }
 
 .premium .premiumimgform {
-  width: 8vw;
+  width: 7.5vw;
   position: relative;
   top: 3vh;
   left: 4vh;
@@ -2426,13 +2428,14 @@ a:hover {
 }
 
 .premium ul {
-  padding-left: 2vw;
+  padding-left: 1.5vw;
   margin: 0;
 }
 
 .premium li {
   list-style-type: none;
-  font-size: 2.3vh;
+  font-size: 2.2vh;
+  padding-top: 2vh;
 }
 
 .premium li::before {
@@ -2469,7 +2472,8 @@ a:hover {
 
 .deluxe li {
   list-style-type: none;
-  font-size: 2.3vh;
+  font-size: 2.2vh;
+  padding-top: 2vh;
 }
 
 .deluxe li::before {
@@ -2484,12 +2488,12 @@ a:hover {
 }
 
 .deluxeimgform {
-  width: 9vw;
+  width: 10vw;
   position: relative;
-  top: 4vh;
+  top: 2vh;
   left: 4vh;
-  -webkit-transform: rotate(28deg);
-          transform: rotate(28deg);
+  -webkit-transform: rotate(26deg);
+          transform: rotate(26deg);
 }
 
 .deluxeimgform img {
@@ -2527,7 +2531,7 @@ a:hover {
   border: none;
   height: 3.5vh;
   width: 6vw;
-  border-radius: 10px;
+  border-radius: 3px;
   background-color: #0000006c;
   color: white;
   font: 2vh "Trebuchet MS", "Lucida Sans";
@@ -2547,5 +2551,22 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.inputcalc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inputcalc span {
+  padding-bottom: 1vh;
 }
 /*# sourceMappingURL=style.css.map */
