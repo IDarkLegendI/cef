@@ -1449,6 +1449,12 @@ a:hover {
 }
 
 .arrowleft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   fill: #006be6;
   -webkit-filter: drop-shadow(0 0 5px #0076fc);
           filter: drop-shadow(0 0 5px #0076fc);
@@ -1458,6 +1464,12 @@ a:hover {
 }
 
 .arrowright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   fill: #006be6;
   -webkit-filter: drop-shadow(0 0 5px #0076fc);
           filter: drop-shadow(0 0 5px #0076fc);
