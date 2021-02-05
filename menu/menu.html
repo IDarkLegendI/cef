@@ -84,7 +84,7 @@
                 <div class="down">
                     <div class="left">
                         <div class="upleft">
-                            <div class="car form" v-on:click="switchPage(2)">
+                            <div class="car form" v-on:click="emit('cCar:setCarPreview', true)">
                                 <div class="carContent">
                                     <div class="textcar" id="mouseFocus">
                                         <span class="textcar1">{{i18n.personal}}</span>
@@ -531,7 +531,7 @@
                 <div class="btnback">
                     <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
                     <a id="mouseFocus" style="background-color: #ffffff81"
-                        v-if="cars[carsPointer].model === myCar">{{i18n.selected}}</a>
+                        v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
 
                     <section v-else style="display: flex; align-items: center; justify-content: center;">
                         <a id="mouseFocus" v-if="cars[carsPointer].price === 0"

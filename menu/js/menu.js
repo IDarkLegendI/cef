@@ -190,8 +190,6 @@ var menu = new Vue({
                         container.style.opacity = i; 
                         if (i < 0.1) {
                             console.log(`switchPage: ${newPage}; ${this.page}`)
-                            if(newPage === 2) menu.emit('cCar:setCarPreview', true);
-                            // else if(newPage === 0 && this.page === 2) menu.emit('cCar:setCarPreview', false)
                             resolve('result');
                             container.style.opacity = 0.0;
                             clearInterval(intervalID);
@@ -393,18 +391,28 @@ var menu = new Vue({
         }, 
         updateCar(list)
         {
+            let carSelected = this.cars[this.carsPointer].model;
             this.cars.forEach((car, index) => {
-                if(list.some(el => el === car.model)) 
-                {
-                    this.cars[index].price = 0;
+                if(list.some((el) => el === car.model)) 
+                { 
+                    if(this.cars[index] === list[0]) this.cars[index].price = -1;
+                    else this.cars[index].price = 0;
                 }
             })
-
-            this.cars.sort((a, b) => a.price - b.price)
+ 
+            this.cars.sort((a, b) => a.price - b.price) 
+            this.carsPointer = this.cars.findIndex(car => car.model === carSelected);
+            if(this.page === 2) this.setPreviewCar(this.carsPointer); 
+        },
+        setPreviewCar(pointer = 1)
+        {
+            menu.emitServer('sCar:preview', this.cars[pointer].model); 
         },
         setCar(model)
         {
-            this.myCar = model;
+            // this.myCar = model;
+            this.cars.forEach(car => car.price = 0)
+            this.cars[this.carsPointer].price = -1; 
             this.emitServer('sCar:set', this.cars[this.carsPointer].model)
         },
         previewCar(plus)
@@ -453,6 +461,7 @@ if ('alt' in window)
         document.getElementById('fade').style.opacity = toggle ? 1 : 0; 
     });
     alt.on('getShow', () => alt.emit('keyOpenPressed', menu.show));
+    alt.on('bMenu:switchPage', (page = 0, subPage = 0) => menu.switchPage(page, subPage)) 
     alt.on('changeStatusGame', toggle => menu.statusGame = toggle); 
     alt.on('update', (textMatch, countWarmUp) => {
         menu.textMatch = textMatch;
@@ -510,6 +519,8 @@ if ('alt' in window)
     });
 
     alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers)) 
+    alt.on('bMenu:updateCars', (list) => menu.updateCar(list))  
+    alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
 }
 else 
 {
@@ -524,7 +535,7 @@ else
         menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 0)  
+        menu.switchPage(2, 0)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
