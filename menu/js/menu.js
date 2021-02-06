@@ -49,6 +49,7 @@ var menu = new Vue({
 
         //Misc
         miscInput: '',
+        coolDown: false,
 
         //i18n
         i18n: {
@@ -137,7 +138,7 @@ var menu = new Vue({
     },
     methods: {
         emitServer: function(...args)  
-        { 
+        {
             // console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', ...args) 
         },
@@ -417,6 +418,8 @@ var menu = new Vue({
         },
         previewCar(plus)
         {
+            if(!this.fCoolDown()) return;
+
             if(plus) this.carsPointer === this.cars.length-1 ? this.carsPointer = this.cars.length-1 : this.carsPointer++
             else this.carsPointer === 0 ? this.carsPointer = 0 : this.carsPointer--
 
@@ -428,6 +431,19 @@ var menu = new Vue({
             if(type === 'friends') this[type] = this[type].filter(el => el.name !== friend)
             else this[type] = this[type].filter(el => el !== friend)
             this.emitServer(event, friend, type); 
+        },
+        fCoolDown()
+        {
+            if(this.coolDown)
+            {
+                this.emit('customNotify', 4, 'Прекратите флудить!') 
+                return false;
+            }
+            this.coolDown = true; 
+            setTimeout(() => {
+                this.coolDown = false; 
+            }, 500)
+            return true;
         },
         findFriend()
         {
