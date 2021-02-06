@@ -40,7 +40,7 @@ var menu = new Vue({
         level: '01',
 
         //Cars
-        cars: [{name: 'None', model: 'none', price: 0}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000}, 
+        cars: [{name: 'None', model: 'none', price: -2}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000}, 
                 {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}],
         carsPointer: 0,  
         myCar: 'none',
@@ -396,7 +396,8 @@ var menu = new Vue({
             this.cars.forEach((car, index) => {
                 if(list.some((el) => el === car.model)) 
                 { 
-                    if(this.cars[index] === list[0]) this.cars[index].price = -1;
+                    console.log(`${this.cars[index].model} === ${list[0]}`)
+                    if(this.cars[index].model === list[0]) this.cars[index].price = -1;
                     else this.cars[index].price = 0;
                 }
             })
@@ -407,14 +408,19 @@ var menu = new Vue({
         },
         setPreviewCar(pointer = 1)
         {
+            this.carsPointer = 1
             menu.emitServer('sCar:preview', this.cars[pointer].model); 
         },
         setCar(model)
         {
-            // this.myCar = model;
-            this.cars.forEach(car => car.price = 0)
+            // this.myCar = model; 
+            this.cars.forEach(car => 
+            {
+                if(car.model === 'none') car.price = -2
+                else car.price = 0
+            })
             this.cars[this.carsPointer].price = -1; 
-            this.emitServer('sCar:set', this.cars[this.carsPointer].model)
+            this.emitServer('sCar:set', this.cars[this.carsPointer].model, true)
         },
         previewCar(plus)
         {
