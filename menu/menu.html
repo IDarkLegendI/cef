@@ -27,7 +27,7 @@
             <div class="main" id="main">
                 <div class="upper">
                     <div class="maininfo">
-                        <div id="mouseFocus">
+                        <div class="nameroyale" id="mouseFocus">
                             ROYAL
                         </div>
                         <div class="hr">
@@ -502,6 +502,19 @@
 
         <!-- Автомобили -->
         <section v-if="page === 2">
+            <div class="upline">
+                <div class="balancemoney">
+                    <span>БАЛАНС <br> <span class="rub">213941 $</span></span>
+                </div>
+                <div class="nameupline">
+                    <span>ROYALE</span>
+                </div>
+                <div class="buttonsupline">
+                    <div class="btnupline">
+                        <span v-on:click="saveSettings(0)">{{i18n.btnBack}}</span>
+                    </div>
+                </div>
+            </div>
             <div class="mainauto">
                 <div class="switchauto">
                     <div class="arrowleft">
@@ -554,6 +567,19 @@
 
         <!-- ДОНАТ -->
         <section v-if="page === 3">
+            <div class="upline">
+                <div class="balancemoney">
+                    <span>БАЛАНС <br> <span class="rub">213941 $</span></span>
+                </div>
+                <div class="nameupline">
+                    <span>ROYALE</span>
+                </div>
+                <div class="buttonsupline">
+                    <div class="btnupline">
+                        <span v-on:click="saveSettings(0)">{{i18n.btnBack}}</span>
+                    </div>
+                </div>
+            </div>
             <div class="maindonat">
                 <div class="leftdonat">
                     <div class="donatformsleft">

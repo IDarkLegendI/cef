@@ -2364,11 +2364,6 @@ a:hover {
   height: 12vh;
 }
 
-.imgprice span {
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-}
-
 .imgprice img {
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
@@ -2580,5 +2575,74 @@ a:hover {
 
 .inputcalc span {
   padding-bottom: 1vh;
+}
+
+.upline {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 65%;
+  left: 50%;
+  top: 5vh;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 2vh;
+  font-family: 'Roboto Condensed', cursive;
+  text-shadow: 1px 1px 2px #0000007e;
+}
+
+.nameupline {
+  font-family: 'Sriracha', cursive;
+  font-size: 4vh;
+}
+
+.balancemoney {
+  font-size: 1.4vh;
+  color: #efefefea;
+  font-family: 'Oswald', sans-serif;
+}
+
+.rub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 2.5vh;
+  font-weight: bold;
+}
+
+.buttonsupline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.btnupline {
+  border: 1px solid white;
+  padding: 1vh 1vw;
+  border-radius: 5px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.btnupline:hover {
+  background-color: white;
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */
