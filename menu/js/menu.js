@@ -509,7 +509,8 @@ if ('alt' in window)
         menu.myAvatar = await menu.getPhoto(avatar)
         menu.fUpdateLobby([{name: menu.myName, ava: menu.myAvatar, ready: -2}]);
     });
-    
+     
+    alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
     alt.on('bMenu:updateRank', (obj) => 
     {
         menu.elo = obj.elo;
@@ -555,9 +556,9 @@ else
         // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend']
-        menu.fUpdateLobby([{name: "Player", ava: 3, ready: 01}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
+        menu.fUpdateLobby([{name: "Player", ava: 3, ready: 1}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(2, 0)  
+        menu.switchPage(0, 0)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
