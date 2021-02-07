@@ -519,7 +519,7 @@
                 <div class="switchauto">
                     <div class="arrowleft">
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="4.1vw" height="5vh"
+                             height="5vh" width="4.1vw" x="0px" y="0px"
                             viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;"
                             v-on:click="previewCar(false)">
 
@@ -537,9 +537,9 @@
                     </div>
                     <div class="arrowright">
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="4.1vw" height="5vh"
-                            viewBox="0 0 612.02 612.02" style="enable-background:new 0 0 612.02 612.02;"
-                            xml:space="preserve" v-on:click="previewCar(true)">
+                             height="5vh" style="enable-background:new 0 0 612.02 612.02;" v-on:click="previewCar(true)" viewBox="0 0 612.02 612.02"
+                             width="4.1vw" x="0px"
+                             xml:space="preserve" y="0px">
 
                             <path d="M596.96,269.674L342.381,15.094c-20.079-20.079-52.644-20.079-72.723,0c-20.079,20.079-20.079,52.644,0,72.723
                                 L487.852,306.01L269.658,524.202c-20.079,20.079-20.079,52.644,0,72.723s52.644,20.079,72.723,0L596.96,342.346
@@ -555,7 +555,7 @@
                         v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
 
                     <section v-else style="display: flex; align-items: center; justify-content: center;">
-                        <a id="mouseFocus" v-if="cars[carsPointer].price === 0"
+                        <a id="mouseFocus" v-if="cars[carsPointer].price === 0 || cars[carsPointer].price === -2"
                             v-on:click="setCar(cars[carsPointer].model)">{{i18n.select}}</a>
                         <a id="mouseFocus" v-else
                             v-on:click="emitServer('sCar:buy', cars[carsPointer].model)">{{i18n.buy}}
