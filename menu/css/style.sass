@@ -2,6 +2,10 @@
 //     cursor: none
 //     user-select: none
 
+@font-face
+    font-family: 'fontPrice'
+    src: url('../fonts/price.ttf')
+
 body
     cursor: none
     user-select: none
@@ -1067,33 +1071,29 @@ a:hover
     background-color: #ffffff
     color: black
 
-.rotation 
-   position: fixed
-   left: 0
-   top: 14vh
-   width: 100vw
-   border: 1px solid black
-   z-index: 1
+.rotation
+    position: fixed
+    left: 0
+    top: 14vh
+    width: 100vw
+    border: 1px solid black
+    z-index: 1
 
-.rotation input:focus 
-   outline: none
+.rotation input:focus
+    outline: none
 
+.rotation input[type=range]
+    -webkit-appearance: none
+    width: 100vw
+    background: url(transparent.png)
 
-.rotation input[type=range] 
-   -webkit-appearance: none
-   width: 100vw
-   background: url(transparent.png)
+.rotation input[type=range]::-webkit-slider-runnable-track
+    height: 55vh
 
-
-.rotation input[type=range]::-webkit-slider-runnable-track 
-   height: 55vh
-
-
-.rotation input[type=range]::-webkit-slider-thumb 
-   height: 100vh
-   width: 10vw
-   -webkit-appearance: none
-
+.rotation input[type=range]::-webkit-slider-thumb
+    height: 100vh
+    width: 10vw
+    -webkit-appearance: none
 
 // Friends
 
@@ -1621,11 +1621,11 @@ a:hover
     padding-left: 1vw
 
 .imgprice
-    padding-left: 1vw
-    padding-bottom: 1vh
+    // padding-left: 1vw
+    // padding-bottom: -1vh
     font-size: 5vh
     display: flex
-    align-items: center
+    align-items: flex-end
     justify-content: space-between
     // border: 1px solid black
     height: 12vh
@@ -1633,22 +1633,24 @@ a:hover
         transition: 0.5s ease-in-out
 
 .donatbtn
-    border: 2px solid white
+    // border: 2px solid white
+    border-top: 2px solid white
+    border-right: 2px solid white
     // background-color: rgba(255, 0, 0, 0.034)
-    border-radius: 5px
-    padding: 0.5vh 1vw
-    font-family: 'Comfortaa', cursive
-    font-size: 3vh
+    // border-radius: 5px
+    padding: 0.8vh 1vw
+    font-family: 'fontPrice'
+    font-size: 4vh
 
-.premium 
+.premium
     .donatimgform
         left: 2vw
         top: 2vh
     // .donatbtn
-    //     border: 2px solid #47b139
+        // border: 2px solid #47b139
     //     background-color: #47b13921
 
-.vip 
+.vip
     .donatimgform
         width: 10vw
         top: 3vh
@@ -1807,7 +1809,7 @@ a:hover
     justify-content: space-between
     width: 65%
     left: 50%
-    top: 5vh     
+    top: 5vh
     transform: translateX(-50%)
     font-size: 2vh
     font-family: 'Roboto Condensed', cursive

@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@font-face {
+  font-family: 'fontPrice';
+  src: url("../fonts/price.ttf");
+}
+
 body {
   cursor: none;
   -webkit-user-select: none;
@@ -2380,15 +2385,13 @@ a:hover {
 }
 
 .imgprice {
-  padding-left: 1vw;
-  padding-bottom: 1vh;
   font-size: 5vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -2401,11 +2404,11 @@ a:hover {
 }
 
 .donatbtn {
-  border: 2px solid white;
-  border-radius: 5px;
-  padding: 0.5vh 1vw;
-  font-family: 'Comfortaa', cursive;
-  font-size: 3vh;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  padding: 0.8vh 1vw;
+  font-family: 'fontPrice';
+  font-size: 4vh;
 }
 
 .premium .donatimgform {
