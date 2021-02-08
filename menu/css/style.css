@@ -77,7 +77,7 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 4.5vh;
+  font-size: 4vh;
   color: #fff;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;
@@ -105,7 +105,7 @@ html {
 }
 
 .balance {
-  font-size: 1.25vh;
+  font-size: 1.35vh;
   color: #efefefea;
   font-family: 'Oswald', sans-serif;
 }
@@ -1562,7 +1562,6 @@ a:hover {
   left: 0;
   top: 14vh;
   width: 100vw;
-  border: 1px solid black;
   z-index: 1;
 }
 

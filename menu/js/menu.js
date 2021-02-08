@@ -44,6 +44,7 @@ var menu = new Vue({
                 {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}],
         carsPointer: 0,  
         myCar: 'none',
+        camRotation: 180,
 
         //Inventory
 
@@ -472,7 +473,12 @@ var menu = new Vue({
                 // .filter(el => {   
                 //     if(this.myName && el) el.toLowerCase() === this.myName.toLowerCase() 
                 // })  
-        }
+        },
+        changeCamRotation: function () {
+            // console.log(this.camRotation)  
+            this.emit('cCar:rotation', this.camRotation);
+            // mp.trigger("cChangeHeading", this.camRotation);
+        },
     },
 }); 
 
@@ -558,7 +564,7 @@ else
         menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 1}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 0)  
+        menu.switchPage(0, 0)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
