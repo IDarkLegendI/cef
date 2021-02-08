@@ -1421,8 +1421,8 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
-  bottom: 20vh;
+  position: fixed;
+  bottom: 15vh;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -1550,6 +1550,35 @@ a:hover {
 .btnBackGround {
   background-color: #ffffff;
   color: black;
+}
+
+.rotation {
+  position: fixed;
+  left: 0;
+  top: 14vh;
+  width: 100vw;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.rotation input:focus {
+  outline: none;
+}
+
+.rotation input[type=range] {
+  -webkit-appearance: none;
+  width: 100vw;
+  background: url(transparent.png);
+}
+
+.rotation input[type=range]::-webkit-slider-runnable-track {
+  height: 55vh;
+}
+
+.rotation input[type=range]::-webkit-slider-thumb {
+  height: 100vh;
+  width: 10vw;
+  -webkit-appearance: none;
 }
 
 .contentlobbyfriends {
@@ -2292,6 +2321,7 @@ a:hover {
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
   text-shadow: 1px 1px 1px #ff0000;
+  background-color: #ff00001c;
 }
 
 .donatform h1 {
@@ -2314,6 +2344,7 @@ a:hover {
   transition: 0.4s ease-in-out;
   font-size: 2.5vh;
   font-family: 'Roboto Condensed', cursive;
+  background-color: #00aeff17;
 }
 
 .calculator h1 {
@@ -2369,9 +2400,12 @@ a:hover {
   transition: 0.5s ease-in-out;
 }
 
-.donatnumber {
+.donatbtn {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 0.5vh 1vw;
   font-family: 'Comfortaa', cursive;
-  font-size: 4.5vh;
+  font-size: 3vh;
 }
 
 .premium .donatimgform {
@@ -2386,7 +2420,7 @@ a:hover {
 }
 
 .donatform:hover {
-  background-color: #ff0000c7;
+  background-color: #ff000088;
   -webkit-box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
           box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
 }
@@ -2396,6 +2430,7 @@ a:hover {
   -webkit-box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
           box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
   text-shadow: 1px 1px 1px #ffc400;
+  background-color: #ffc4000e;
 }
 
 .vip h1 {
@@ -2416,6 +2451,7 @@ a:hover {
   -webkit-box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
           box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
   text-shadow: 1px 1px 1px #47b139;
+  background-color: #47b13923;
 }
 
 .premium h1 {
@@ -2639,6 +2675,7 @@ a:hover {
   border-radius: 5px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
+  z-index: 0;
 }
 
 .btnupline:hover {
