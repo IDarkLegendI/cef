@@ -145,7 +145,7 @@ var menu = new Vue({
         },
         emit: function(value, ...args)  
         { 
-            console.log(`emit: ${value} -> ${args[0]}`)
+            // console.log(`emit: ${value} -> ${args[0]}`) 
             if ('alt' in window) alt.emit(value, ...args) 
         },
         saveSettings(page)
