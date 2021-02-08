@@ -44,7 +44,7 @@ var menu = new Vue({
                 {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}],
         carsPointer: 0,  
         myCar: 'none',
-        camRotation: 180,
+        camRotation: 0, 
 
         //Inventory
 
@@ -409,7 +409,7 @@ var menu = new Vue({
         },
         setPreviewCar(pointer = 1)
         {
-            this.carsPointer = 1
+            this.carsPointer = pointer 
             menu.emitServer('sCar:preview', this.cars[pointer].model); 
         },
         setCar(model)
