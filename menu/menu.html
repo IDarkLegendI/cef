@@ -515,6 +515,9 @@
                     </div>
                 </div>
             </div>
+            <div class="rotation">
+                <input @input="changeCamRotation" max="360" min="-180" step="1" type="range" v-model.number="camRotation">
+            </div>
             <div class="mainauto">
                 <div class="switchauto">
                     <div class="arrowleft">
@@ -587,7 +590,7 @@
                             <h1>VIP</h1>
                             <span class="donatinf">- Нажмите для более подробной информации</span>
                             <div class="imgprice">
-                                <span class="donatnumber">2.99$</span>
+                                <span class="donatbtn">2.99$</span>
                                 <div class="donatimgform">
                                     <img src="img/gold.png" alt="">
                                 </div>
@@ -623,7 +626,7 @@
                             <li>ХУЙ</li>
                         </ul>
                         <div class="imgprice">
-                            <span class="donatnumber">6.99$</span>
+                            <span class="donatbtn">6.99$</span>
                             <div class="premiumimgform">
                                 <img src="img/emerald.png" alt="">
                             </div>
@@ -643,7 +646,7 @@
                             <img alt="" src="img/gold.png">
                         </div> -->
                         <div class="imgprice">
-                            <span class="donatnumber">15.99$</span>
+                            <span class="donatbtn">15.99$</span>
                             <div class="deluxeimgform">
                                 <img src="img/corona.png" alt="">
                             </div>
