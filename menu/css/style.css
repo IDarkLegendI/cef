@@ -1555,8 +1555,10 @@ a:hover {
 .rotation {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 14vh;
   width: 100vw;
+  border: 1px solid black;
+  z-index: 1;
 }
 
 .rotation input:focus {
@@ -1570,7 +1572,7 @@ a:hover {
 }
 
 .rotation input[type=range]::-webkit-slider-runnable-track {
-  height: 70vh;
+  height: 55vh;
 }
 
 .rotation input[type=range]::-webkit-slider-thumb {
@@ -2673,6 +2675,7 @@ a:hover {
   border-radius: 5px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
+  z-index: 0;
 }
 
 .btnupline:hover {
