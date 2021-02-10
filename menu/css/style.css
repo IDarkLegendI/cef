@@ -1994,7 +1994,7 @@ a:hover {
 }
 
 .ready {
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
   color: #39ff1f;
 }
 
@@ -2003,7 +2003,7 @@ a:hover {
 }
 
 .nicklobby {
-  margin-top: 1.2vh;
+  margin-top: 1vh;
 }
 
 .person-friend-enter, .person-friend-leave-to {
