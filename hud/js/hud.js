@@ -51,7 +51,7 @@ var hud = new Vue({
                 this.killsHandle = null;
             }, 9000);  
         }, 
-        fupdateWarmUP(text, pulse)
+        fupdateWarmUP(text, pulse, time = 1500)
         {
             if(hud.intervalWUP != null) clearTimeout(hud.intervalWUP); 
             hud.showWUP = true;
@@ -61,7 +61,7 @@ var hud = new Vue({
             hud.intervalWUP = setTimeout(() => {
                 hud.showWUP = false;
                 hud.intervalWUP = null;  
-            }, 1500); 
+            }, time); 
         },
         fTimeDisplay()
         {
