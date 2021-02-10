@@ -22,6 +22,7 @@ var menu = new Vue({
         myName: "Player",
         myAvatar: "",
         myID: 0,
+        lobbyID: 0,
 
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
@@ -46,6 +47,9 @@ var menu = new Vue({
         myCar: 'none',
         camRotation: 0, 
 
+        //Admin
+        adminLevel: 0,
+
         //Inventory
 
         //Misc
@@ -61,8 +65,8 @@ var menu = new Vue({
             transport: 'TRANSPORT',
             ready: 'READY',
             notready: 'NOT READY',
-            topap: 'TOP UP',
-            adminpanel: 'ADMIN-PANEL',
+            topap: 'TOP UP YOUR BALANCE',
+            managmentSub: 'MANAGE SUBSCRIPTIONS',
             control: 'MANAGE',
             start: 'START',
             game: 'GAME',
@@ -107,6 +111,9 @@ var menu = new Vue({
             select: 'SELECT',
             selected: 'SELECTED',
             none: 'NOT SELECTED',
+            inviteToLobby: 'INVITATION TO THE LOBBY',
+            accept: 'ACCEPT',
+            cancel: 'DENY',
         },
         avatars: {
             "A": "0",
@@ -216,6 +223,8 @@ var menu = new Vue({
                 });
             }
         },
+
+        //LOBBY
         fUpdateLobby(data) 
         {
             if(data[0].name !== menu.myName)
@@ -245,6 +254,8 @@ var menu = new Vue({
 
             menu.lobby = data;
         },
+
+        //FRIENDS
         getPhoto(avatar)
         {
             if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
@@ -340,10 +351,10 @@ var menu = new Vue({
                 personal: 'ЛИЧНЫЙ',
                 managerCars: 'Управляйте своими машинами',
                 transport: 'ТРАНСПОРТ',
-                ready: 'ГОТОВ',
+                ready: 'ГОТОВ', 
                 notready: 'НЕ ГОТОВ',
-                topap: 'ПОПОЛНИТЬ',
-                adminpanel: 'АДМИН-ПАНЕЛЬ',
+                topap: 'ПОПОЛНИТЬ БАЛАНС',
+                managmentSub: 'УПРАВЛЕНИЕ ПОДПИСКАМИ',
                 control: 'УПРАВЛЕНИЕ',
                 start: 'НАЧАТЬ',
                 game: 'ИГРУ',
@@ -389,6 +400,9 @@ var menu = new Vue({
                 select: 'ВЫБРАТЬ',
                 selected: 'ВЫБРАНО',
                 none: 'НЕ ВЫБРАНО',
+                inviteToLobby: 'ПРИГЛАШЕНИЕ В ЛОББИ',
+                accept: 'ПРИНЯТЬ',
+                cancel: 'ОТКАЗАТЬСЯ',
             }
         }, 
         updateCar(list)
@@ -561,10 +575,10 @@ else
         menu.friends = [{name: 'Dark', online: true}, {name: 'Vanya', online: false}]
         // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
-        menu.requestsOut = ['DarkLegend']
+        // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 1}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 0)  
+        menu.switchPage(0, 4)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
