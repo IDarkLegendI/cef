@@ -114,6 +114,7 @@ var menu = new Vue({
             inviteToLobby: 'INVITATION TO THE LOBBY',
             accept: 'ACCEPT',
             cancel: 'DENY',
+            quickWeapon: 'TAKE THE SELECTED WEAPON IN HAND',
         },
         avatars: {
             "A": "0",
@@ -163,6 +164,7 @@ var menu = new Vue({
                 alt.emit('saveSettings', {
                     vr: this.enableVR, 
                     sizeMap: this.sizeMap,  
+                    quickWeapon: this.quickWeapon,  
                 })
             } 
         },
@@ -403,6 +405,7 @@ var menu = new Vue({
                 inviteToLobby: 'ПРИГЛАШЕНИЕ В ЛОББИ',
                 accept: 'ПРИНЯТЬ',
                 cancel: 'ОТКАЗАТЬСЯ',
+                quickWeapon: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
             }
         }, 
         updateCar(list)
@@ -578,7 +581,7 @@ else
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 1}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 4)  
+        menu.switchPage(1, 4)  
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 

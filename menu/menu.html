@@ -504,6 +504,13 @@
                                 v-on:click="saveSettings(-1)" /><label for="switchVR" id="mouseFocus">Toggle</label>
                         </div>
                     </div>
+                    <div class="checkboxes">
+                        <div class="checkboxtest">
+                            <span>{{i18n.quickWeapon}}</span>
+                            <input type="checkbox" id="quickWeapon" v-model='quickWeapon'
+                                v-on:click="saveSettings(-1)" /><label for="quickWeapon" id="mouseFocus">Toggle</label>
+                        </div>
+                    </div>
                     <div class="binds">
                         <div class="bind">
                             <span class="bindname">{{i18n.sit}}</span>
