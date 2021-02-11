@@ -2394,6 +2394,7 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: auto;
   height: 12vh;
 }
 
@@ -2410,23 +2411,6 @@ a:hover {
   font-size: 4vh;
 }
 
-.premium .donatimgform {
-  left: 2vw;
-  top: 2vh;
-}
-
-.vip .donatimgform {
-  width: 10vw;
-  top: 3vh;
-  left: 3vw;
-}
-
-.donatform:hover {
-  background-color: #ff000088;
-  -webkit-box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
-          box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
-}
-
 .vip {
   border-color: #ffc400;
   -webkit-box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
@@ -2435,8 +2419,26 @@ a:hover {
   background-color: #ffc4000e;
 }
 
+.vip .donatimgform {
+  width: 10vw;
+  top: 3vh;
+  left: 3vw;
+}
+
 .vip h1 {
   text-shadow: 1px 1px 10px #ffdf74;
+}
+
+.vip .donatbtn {
+  border-color: #ffc400;
+  -webkit-box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
+          box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
+}
+
+.donatform:hover {
+  background-color: #ff000088;
+  -webkit-box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
+          box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000;
 }
 
 .vip:hover {
@@ -2494,6 +2496,17 @@ a:hover {
   margin-top: auto;
 }
 
+.premium .donatimgform {
+  left: 2vw;
+  top: 2vh;
+}
+
+.premium .donatbtn {
+  border-color: #47b139;
+  -webkit-box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
+          box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
+}
+
 .premium:hover {
   background-color: #47b139c7;
   -webkit-box-shadow: 0 0 30px #47b139, inset 0 0 30px #47b139;
@@ -2530,6 +2543,12 @@ a:hover {
 
 .deluxe .imgprice {
   margin-top: auto;
+}
+
+.deluxe .donatbtn {
+  border-color: #ff0000;
+  -webkit-box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
+          box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
 }
 
 .deluxeimgform {
