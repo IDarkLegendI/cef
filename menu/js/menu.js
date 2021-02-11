@@ -590,7 +590,7 @@ else
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 1}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 4)  
+        menu.switchPage(3, 4)  
         menu.fInviteToLobby(1, [{name: "Player", ready: 1}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 

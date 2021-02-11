@@ -2348,7 +2348,7 @@ a:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   border: 3px solid #ff0000;
-  border-radius: 15px 80px;
+  border-radius: 10% 10%;
   -webkit-box-shadow: 0 0 30px #ff0000, inset 0 0 10px #ff0000;
           box-shadow: 0 0 30px #ff0000, inset 0 0 10px #ff0000;
   -webkit-transition: 0.4s ease-in-out;
@@ -2435,13 +2435,11 @@ a:hover {
 }
 
 .donatbtn {
-  padding: 1vh 1vw;
-  margin-left: 0.5vw;
   font-family: 'fontPrice';
   font-size: 5vh;
   position: relative;
-  top: 8vh;
-  left: 5vw;
+  top: 7vh;
+  left: 4.5vw;
   z-index: 2000;
 }
 
@@ -2491,14 +2489,13 @@ a:hover {
 }
 
 .premium .premiumimgform {
-  width: 7.5vw;
   position: relative;
   top: 3vh;
-  left: 4vh;
+  left: 5vw;
 }
 
 .premium img {
-  width: 100%;
+  width: 70%;
   height: 100%;
 }
 
@@ -2568,16 +2565,15 @@ a:hover {
 }
 
 .deluxeimgform {
-  width: 10vw;
   position: relative;
   top: 2vh;
-  left: 4vh;
+  left: 2.5vw;
   -webkit-transform: rotate(26deg);
           transform: rotate(26deg);
 }
 
 .deluxeimgform img {
-  width: 100%;
+  width: 130%;
   height: 100%;
 }
 
