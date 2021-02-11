@@ -1055,7 +1055,7 @@ html {
 }
 
 .mainsettings {
-  width: 20vw;
+  width: 30vw;
   position: absolute;
   left: 50%;
   top: 40%;
@@ -1121,10 +1121,10 @@ input[type=checkbox] {
 .checkboxtest label:after {
   content: '';
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 0.4vh;
+  left: 0.2vw;
   width: 1.2vw;
-  height: 2.3vh;
+  height: 2.2vh;
   background: #fff;
   border-radius: 90px;
   -webkit-transition: 0.4s;
@@ -1174,8 +1174,13 @@ input[type=checkbox] {
           justify-content: space-between;
 }
 
+.checkboxtest span {
+  font-size: 1.5vh;
+}
+
 .bindname {
   color: white;
+  font-size: 1.5vh;
 }
 
 .binds {
@@ -1250,9 +1255,8 @@ input[type=checkbox] {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 @-webkit-keyframes click-wave {
@@ -1292,12 +1296,20 @@ input[type=checkbox] {
      -moz-appearance: none;
           appearance: none;
   position: relative;
-  top: 13.33333px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 1vh;
   right: 0;
   bottom: 0;
-  left: 0;
   height: 4vh;
-  width: 2.2vw;
+  width: 4vh;
   -webkit-transition: all .35s ease-out 0s;
   transition: all .35s ease-out 0s;
   background: #cbd1d8;
@@ -1322,7 +1334,7 @@ input[type=checkbox] {
 
 .option-input:checked::before {
   height: 4vh;
-  width: 2.2vw;
+  width: 4vh;
   position: absolute;
   content: '✔';
   display: -webkit-box;
@@ -1370,15 +1382,12 @@ input[type=checkbox] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  line-height: 40px;
+  line-height: 2vh;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 .mapchoice label span {
-  margin-top: 1vh;
-  margin-left: 50%;
-  -webkit-transform: translateX(-15%);
-          transform: translateX(-15%);
+  margin-top: 1.5vh;
 }
 
 .btnback {

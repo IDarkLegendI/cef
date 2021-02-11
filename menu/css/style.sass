@@ -757,7 +757,7 @@ html
     $padding: 1vw
 
 .mainsettings
-    width: 20vw
+    width: 30vw
     position: absolute
     left: 50%
     top: 40%
@@ -804,10 +804,10 @@ input[type=checkbox]
 .checkboxtest label:after
     content: ''
     position: absolute
-    top: 5px
-    left: 5px
+    top: 0.4vh
+    left: 0.2vw
     width: 1.2vw
-    height: 2.3vh
+    height: 2.2vh
     background: #fff
     border-radius: 90px
     transition: 0.4s
@@ -835,9 +835,12 @@ input[type=checkbox]
     color: white
     font-family: 'Rubik', sans-serif
     justify-content: space-between
+    span
+        font-size: 1.5vh
 
 .bindname
     color: white
+    font-size: 1.5vh
 
 .binds
     display: flex
@@ -879,7 +882,7 @@ input[type=checkbox]
     color: white
     display: flex
     flex-direction: row
-    justify-content: space-between
+    justify-content: space-around
 
 @keyframes click-wave
     0%
@@ -898,12 +901,16 @@ input[type=checkbox]
 .option-input
     appearance: none
     position: relative
-    top: 13.33333px
+    display: flex
+    justify-content: center
+    align-items: center
+    top: 1vh
     right: 0
     bottom: 0
-    left: 0
+    // left: 50%
+    // transform: translate(-50%)
     height: 4vh
-    width: 2.2vw
+    width: 4vh
     transition: all .35s ease-out 0s
     background: #cbd1d8
     border: none
@@ -924,7 +931,7 @@ input[type=checkbox]
 
 .option-input:checked::before
     height: 4vh
-    width: 2.2vw
+    width: 4vh
     position: absolute
     content: '✔'
     display: flex
@@ -957,13 +964,13 @@ input[type=checkbox]
     display: flex
     flex-direction: column
     align-items: center
-    line-height: 40px
+    line-height: 2vh
     font-family: 'Roboto Condensed', sans-serif
     // border: 1px solid black
     span
-        margin-top: 1vh
-        margin-left: 50%
-        transform: translateX(-15%)
+        margin-top: 1.5vh
+        // margin-left: 50%
+        // transform: translateX(-15%)
 
 .btnback
     margin-top: 4vh
