@@ -640,7 +640,7 @@ html {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding-bottom: 2vh;
+  margin-bottom: 2vh;
   height: 4.5vh;
 }
 
@@ -668,6 +668,22 @@ html {
   background-color: #00b15000;
   -webkit-box-shadow: 0 0 15px #00df64, inset 0 0 5px #00df64;
           box-shadow: 0 0 15px #00df64, inset 0 0 5px #00df64;
+}
+
+.btnbackperson2 .green {
+  border-color: lime;
+}
+
+.btnbackperson2 .green:hover {
+  background-color: lime;
+}
+
+.btnbackperson2 .red {
+  border-color: red;
+}
+
+.btnbackperson2 .red:hover {
+  background-color: red;
 }
 
 .car {
@@ -1978,8 +1994,9 @@ a:hover {
 }
 
 .ready {
-  margin-bottom: 2vh;
+  margin-bottom: 1vh;
   color: #39ff1f;
+  font-size: 0.6vw;
 }
 
 .readynot {
@@ -1987,7 +2004,7 @@ a:hover {
 }
 
 .nicklobby {
-  margin-top: 1.2vh;
+  margin-top: 1vh;
 }
 
 .person-friend-enter, .person-friend-leave-to {

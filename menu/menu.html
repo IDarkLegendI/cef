@@ -47,8 +47,11 @@
                             <div class="btn" id="mouseFocus">
                                 <span>{{i18n.topap}}</span>
                             </div>
-                            <div class="btn" id="mouseFocus">
-                                <span>{{i18n.adminpanel}}</span>
+                            <div class="btn" id="mouseFocus" v-if="adminLevel === 0">
+                                <span>{{i18n.managmentSub}}</span>
+                            </div>
+                            <div class="btn" id="mouseFocus" v-else>
+                                <span>АДМИН-ПАНЕЛЬ</span>
                             </div>
                         </div>
                     </div>
@@ -144,7 +147,8 @@
                                             <div class="textticketblock">
                                                 <div class="textticket5">{{i18n.expectation}}: <span
                                                         class="textticket6">{{countWarmUp}}</span></div>
-                                                <span class="minibtn">{{i18n.leavelobby}}</span>
+                                                <span class="minibtn"
+                                                    v-on:click="emitServer('sLobby:leavelobby', lobbyID)">{{i18n.leavelobby}}</span>
                                             </div>
                                         </div>
                                         <div class="iconticket">
@@ -161,7 +165,8 @@
                                             <div class="textticketblock">
                                                 <div class="textticket5">{{i18n.expectation}}: <span
                                                         class="textticket6">{{countWarmUp}}</span></div>
-                                                <span class="minibtn">{{i18n.leavelobby}}</span>
+                                                <span class="minibtn"
+                                                    v-on:click="emitServer('sLobby:leavelobby', lobbyID)">{{i18n.leavelobby}}</span>
                                             </div>
                                             <!-- <span сlass="textticket5">Примерное</span> -->
                                         </div>
@@ -290,7 +295,8 @@
                                         </div>
                                         <div class="btnszapros">
                                             <div class="btnzapros" data-title="Пригласить">
-                                                <img src="img/plusbtn.png" alt="">
+                                                <img src="img/plusbtn.png" alt=""
+                                                    v-on:click="emitServer('sLobby:inviteToLobby', lobbyID, friend.name)">
                                             </div>
                                         </div>
                                     </div>
@@ -444,6 +450,36 @@
                             </div>
                         </div>
                     </transition>
+
+                    <!-- ПРИГЛАШЕНИЕ В ЛОББИ -->
+
+                    <transition name="person-friend2">
+                        <div class="rightNoHover" v-show="subPage === 4">
+                            <div class="friendsh1">
+                                <h1>{{i18n.inviteToLobby + '#' + lobbyID}}</h1>
+                            </div>
+                            <div class="zaprosi">
+                                <transition-group name="list-complete" tag="div">
+                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
+                                        v-bind:key="friend.name" v-on:mouseleave="showProfileDetails(friend.name, 0)">
+                                        <div class="avatarnickzapros">
+                                            <div class="avatarzapros">
+                                                <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
+                                            </div>
+                                            <div class="nickzapros">{{friend.name}}</div>
+                                        </div>
+                                    </div>
+                                </transition-group>
+                            </div>
+                            <div class="btnbackperson2">
+                                <span class="minibtn red" id="mouseFocus"
+                                    v-on:click="emitServer('sLobby:answerInvite', false, lobbyID)">{{i18n.cancel}}</span>
+                                <span class="minibtn green" id="mouseFocus"
+                                    v-on:click="emitServer('sLobby:answerInvite', true, lobbyID)">
+                                    {{i18n.accept}}</span>
+                            </div>
+                        </div>
+                    </transition>
                 </div>
             </div>
         </section>
@@ -466,6 +502,13 @@
                             <span>"VR" - {{i18n.menuMode}}</span>
                             <input type="checkbox" id="switchVR" v-model='enableVR'
                                 v-on:click="saveSettings(-1)" /><label for="switchVR" id="mouseFocus">Toggle</label>
+                        </div>
+                    </div>
+                    <div class="checkboxes">
+                        <div class="checkboxtest">
+                            <span>{{i18n.quickWeapon}}</span>
+                            <input type="checkbox" id="quickWeapon" v-model='quickWeapon'
+                                v-on:click="saveSettings(-1)" /><label for="quickWeapon" id="mouseFocus">Toggle</label>
                         </div>
                     </div>
                     <div class="binds">
