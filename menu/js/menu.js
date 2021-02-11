@@ -23,6 +23,7 @@ var menu = new Vue({
         myAvatar: "",
         myID: 0,
         lobbyID: 0,
+        myData: null,
 
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
@@ -255,6 +256,13 @@ var menu = new Vue({
             }
 
             menu.lobby = data;
+        },
+
+        fInviteToLobby(lobbyID, myData)
+        {
+            this.lobbyID = lobbyID;
+            this.myData = myData;
+            this.switchPage(0, 4);
         },
 
         //FRIENDS
@@ -567,6 +575,7 @@ if ('alt' in window)
     alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers)) 
     alt.on('bMenu:updateCars', (list) => menu.updateCar(list))  
     alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
+    alt.on('bMenu:fInviteToLobby', menu.fInviteToLobby)  
 }
 else 
 {
@@ -581,10 +590,10 @@ else
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ava: 3, ready: 1}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 4)  
+        menu.switchPage(0, 4)  
+        menu.fInviteToLobby(1, [{name: "Player", ready: 1}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
+    menu.loadRus()
 }
-
-menu.loadRus()
