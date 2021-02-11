@@ -1595,11 +1595,12 @@ a:hover
     display: flex
     flex-direction: column
     border: 3px solid #ff0000
-    border-radius: 30px
+    border-radius: 15px 80px
     box-shadow: 0 0 30px #ff0000, inset 0 0 10px #ff0000
     transition: 0.4s ease-in-out
     text-shadow: 1px 1px 1px #ff0000
     background-color: #ff00001c
+    z-index: 1000
     h1
         text-shadow: 1px 1px 10px #ff0000
         letter-spacing: 0.4vh
@@ -1657,14 +1658,19 @@ a:hover
 
 .donatbtn
     // border: 2px solid white
-    border-top: 4px solid white
-    border-right: 3px solid white
-    border-radius: 30px
+    // border-top: 4px solid white
+    // border-right: 3px solid white
+    // border-radius: 0 30px 0 120px
     // background-color: rgba(255, 0, 0, 0.034)
     // border-radius: 5px
-    padding: 0.8vh 1vw
+    padding: 1vh 1vw
+    margin-left: 0.5vw
     font-family: 'fontPrice'
-    font-size: 4vh
+    font-size: 5vh
+    position: relative
+    top: 8vh
+    left: 5vw
+    z-index: 2000
 
 .vip
     border-color: #ffc400
@@ -1681,8 +1687,8 @@ a:hover
     h1
         text-shadow: 1px 1px 10px #ffdf74
     .donatbtn
-        border-color: #ffc400
-        box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
+        // border-color: #ffc400
+        // box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
 
 .donatform:hover
     background-color: #ff000088
@@ -1735,8 +1741,8 @@ a:hover
         left: 2vw
         top: 2vh
     .donatbtn
-        border-color: #47b139
-        box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139
+        // border-color: #47b139
+        // box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139
 
 .premium:hover
     background-color: #47b139c7
@@ -1766,8 +1772,8 @@ a:hover
     .imgprice
         margin-top: auto
     .donatbtn
-        border-color: #ff0000
-        box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000
+        // border-color: #ff0000
+        // box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000
 
 .deluxeimgform
     width: 10vw
