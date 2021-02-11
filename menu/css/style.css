@@ -2348,8 +2348,9 @@ a:hover {
       -ms-flex-direction: column;
           flex-direction: column;
   border: 3px solid #ff0000;
-  -webkit-box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
-          box-shadow: 0 0 10px #ff0000, inset 0 0 10px #ff0000;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 0 30px #ff0000, inset 0 0 10px #ff0000;
+          box-shadow: 0 0 30px #ff0000, inset 0 0 10px #ff0000;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
   text-shadow: 1px 1px 1px #ff0000;
@@ -2372,6 +2373,7 @@ a:hover {
           box-shadow: 0 0 10px #00aeff, inset 0 0 10px #00aeff;
   -webkit-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
+  border-radius: 30px;
   text-shadow: 1px 1px 1px #00aeff;
   transition: 0.4s ease-in-out;
   font-size: 2.5vh;
@@ -2432,9 +2434,9 @@ a:hover {
 }
 
 .donatbtn {
-  border-top: 2px solid white;
-  border-right: 2px solid white;
-  border-radius: 0 30px 0 0;
+  border-top: 5px solid white;
+  border-right: 3px solid white;
+  border-radius: 30px;
   padding: 0.8vh 1vw;
   font-family: 'fontPrice';
   font-size: 4vh;
@@ -2481,8 +2483,8 @@ a:hover {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   border-color: #47b139;
-  -webkit-box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
-          box-shadow: 0 0 10px #47b139, inset 0 0 10px #47b139;
+  -webkit-box-shadow: 0 0 20px #47b139, inset 0 0 10px #47b139;
+          box-shadow: 0 0 20px #47b139, inset 0 0 10px #47b139;
   text-shadow: 1px 1px 1px #47b139;
   background-color: #47b13923;
 }
