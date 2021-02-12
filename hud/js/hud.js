@@ -6,6 +6,7 @@ var hud = new Vue({
             show: false,
             nick: "1234213",
             level: '06',
+            kills: '0'
         },
 
         visible: true,
@@ -37,6 +38,34 @@ var hud = new Vue({
         killFeedHTML: null,
         
         helpJetPack: false,  
+        avatars: {
+            "A": "0",
+            "B": "1",
+            "C": "2",
+            "D": "3", 
+            "E": "4",
+            "F": "5",
+            "G": "6",
+            "H": "7",
+            "I": "8",
+            "J": "9",
+            "K": "10",
+            "L": "11",
+            "M": "12",
+            "N": "13", 
+            "O": "14",
+            "P": "15",
+            "Q": "16",
+            "R": "17",
+            "S": "18",
+            "T": "19",
+            "U": "20",
+            "V": "21",
+            "W": "22",
+            "X": "23",
+            "Y": "24",
+            "Z": "25"
+          },
     }, 
     methods: {
         fUpdateKills(name, dist)
@@ -128,6 +157,14 @@ var hud = new Vue({
             else if(elo < 2000) return '09';
             else return '10'; 
          }, 
+        getAvatar(nick)
+        {
+            if(nick) 
+            {
+                return this.avatars[nick[0].toUpperCase()]
+            }
+            else return this.avatars['A']
+        },
     },
 })
 
@@ -161,7 +198,7 @@ if ('alt' in window) {
     alt.on('updateWarmUP', hud.fupdateWarmUP)  
 
     alt.on('obServer', data => 
-    {
+    { 
         hud.obs = data;  
         hud.obs.level = hud.getLevel(data.level)
     })

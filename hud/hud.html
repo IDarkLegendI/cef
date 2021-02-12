@@ -50,9 +50,13 @@
         <transition name="custom-classes-transition3" enter-active-class="animated tada"
             leave-active-class="animated hinge">
             <div class="observer" v-show="visible && obs.show && !killsBarShow && obs.nick.length != 0">
-                <div class="animated infinite pulse slow">
-                    <h1>{{obs.nick}}</h1>
-                    <img :src="`../menu/img/levels/${obs.level}.png`" alt="">
+                <div class="obsContainer animated infinite pulse slow">
+                    <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
+                    <div class="obsTexts">
+                        <h1>{{obs.nick}}</h1>
+                        <h1 class="obsKills">KILLS: {{kills}}</h1>
+                    </div>
+                    <img class="level" :src="`../menu/img/levels/${obs.level}.png`" alt="">
                 </div>
                 <div class="helpObServer animated infinite bounce delay-3s slower">
                     <div class="subHelpOBS">

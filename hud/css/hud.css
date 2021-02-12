@@ -180,22 +180,51 @@ body {
   /* background-color: red;  */
 }
 
-.observer h1 {
+.obsContainer {
+    display: flex;
     background-color: rgba(0, 0, 0, 0.623);
+    border-radius: 3.5em 1em 3.5em 1em;
+    padding: 1.2vh 1.4vw; 
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+
+.obsTexts {
+    display: flex;
+    flex-direction: column;
+    text-shadow: 1px 1px 1px #0000007e;
+    margin-bottom: 3.5%;
+}
+
+
+.observer .obsKills {
+    font-size: 1.1vh;  
+}
+
+.observer h1 {
     color: #ebebeb;
     font-family: Oswald, serif;
     align-items: center;
-    font-size: 1.9vh;  
-    padding: 1.2vh 1.4vw; 
-    border-radius: 3.5em 1em 3.5em 1em;
+    font-size: 1.7vh;  
 }
 
-.observer img {
-    width: 2vw;
+.observer .level {
+    width: 2vw; 
     height: 2vw; 
     position: absolute;
-    top: -1.3vh;
-    right: -0.8vw;
+    top: -1.7vh;
+    right: -1.1vw;
+} 
+.observer .avatar {
+    align-items: center;
+    width: 2.25vw; 
+    height: 2.25vw; 
+    border-radius: 1em;
+    margin-right: 5%
+    /* position: absolute; */
+    /* top: -1.3vh; */
+    /* right: -0.8vw; */
 } 
 
 .helpObServer {
