@@ -225,13 +225,13 @@ body {
     position: absolute;
     top: 4.5vh;
     right: 7.9vw;
-    filter: drop-shadow(0 0 5px #ecfd0048);
+    filter: drop-shadow(0 0 1px #ecfd0033);
 } 
 
 .observer .avatar {
     align-items: center;
-    width: 2.25vw; 
-    height: 2.25vw; 
+    width: 2.5vw; 
+    height: 2.5vw; 
     border-radius: 50%;
     /* margin-right: 5% */
 } 
