@@ -51,6 +51,7 @@
             leave-active-class="animated hinge">
             <div class="observer" v-show="visible && obs.show && !killsBarShow && obs.nick.length != 0">
                 <div class="obsContainer animated infinite pulse slow">
+                    <img class="vip" :src="`../menu/img/corona.png`" alt="">
                     <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
                     <div class="obsTexts">
                         <h1>{{obs.nick}}</h1>

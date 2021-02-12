@@ -205,7 +205,7 @@ body {
 .observer h1 {
     color: #ebebeb;
     font-family: Oswald, serif;
-    align-items: center;
+    align-items: center; 
     font-size: 1.7vh;  
 }
 
@@ -216,15 +216,22 @@ body {
     top: -1.7vh;
     right: -1.1vw;
 } 
+
+.observer .vip {
+    width: 1.5vw; 
+    height: 1.5vw; 
+    position: absolute;
+    top: 4.5vh;
+    right: 7.9vw;
+    filter: drop-shadow(0 0 5px #ecfd0048);
+} 
+
 .observer .avatar {
     align-items: center;
     width: 2.25vw; 
     height: 2.25vw; 
     border-radius: 1em;
     margin-right: 5%
-    /* position: absolute; */
-    /* top: -1.3vh; */
-    /* right: -0.8vw; */
 } 
 
 .helpObServer {
