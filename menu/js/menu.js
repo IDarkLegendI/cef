@@ -116,6 +116,7 @@ var menu = new Vue({
             accept: 'ACCEPT',
             cancel: 'DENY',
             quickWeapon: 'TAKE THE SELECTED WEAPON IN HAND',
+            infoStopGame: 'When you finish the game, you will leave the lobby',
         },
         avatars: {
             "A": "0",
@@ -228,8 +229,9 @@ var menu = new Vue({
         },
 
         //LOBBY
-        fUpdateLobby(data) 
+        fUpdateLobby(data)  
         {
+            console.log(JSON.stringify(data))
             if(data[0].name !== menu.myName)
             {
                 let index = data.findIndex(el => el.name === menu.myName);
@@ -247,7 +249,7 @@ var menu = new Vue({
                     myID = index;
                     return player.ava = menu.myAvatar; 
                 } 
-                else player.ava = await this.getPhoto(player.ava.toString()) 
+                else player.ava = await this.getPhoto(null, player.name) 
             }) 
 
             if(data.length < 4)
@@ -262,26 +264,49 @@ var menu = new Vue({
         {
             this.lobbyID = lobbyID;
             this.myData = myData;
-            this.switchPage(0, 4);
+            this.switchPage(0, 4); 
+
+            setTimeout(() => {
+                if(this.lobbyID === lobbyID && this.myData === myData)
+                {
+                    this.answerInvite(false)
+                }
+            }, 15000)
+        },
+
+        answerInvite(value)
+        {
+            this.emitServer('sLobby:answerInvite', value, this.lobbyID)
+            this.lobbyID = null;
+            this.myData = null;
+            this.switchPage(0, 0);
+        },
+
+        fLeaveLobby()
+        {
+            this.emitServer(`sLobby:leaveLobby`);
+            this.lobbyID = 1; 
+            this.lobby.splice(1, this.lobby.length);
+            this.lobby.push({name: "пригласить", ava: 0})
         },
 
         //FRIENDS
-        getPhoto(avatar)
+        getPhoto(avatar, name = this.myName)
         {
-            if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
+            if(avatar === null) return Promise.resolve(`./img/avatars/${this.getAvatar(name)}.jpg`)
+            // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
             const url = `https://cdn.discordapp.com/avatars/${avatar}.png`
 
             return fetch(url) 
             .then(response => (response.ok) ? response.blob() : Promise.reject())
             .then(result => Promise.resolve(URL.createObjectURL(result))) 
-            .catch(() => Promise.resolve(`./img/avatars/${this.getRandomInt(13)}.jpg`))
+            .catch(() => Promise.resolve(`./img/avatars/${this.getAvatar(name)}.jpg`))
         },
-        getAvatar(firstCharNick)
+        getAvatar(nick)
         {
-            if(firstCharNick) 
+            if(nick) 
             {
-                firstCharNick = firstCharNick[0].toUpperCase();
-                return this.avatars[firstCharNick]
+                return this.avatars[nick[0].toUpperCase()]
             }
             else return this.avatars['A']
         },
@@ -414,6 +439,7 @@ var menu = new Vue({
                 accept: 'ПРИНЯТЬ',
                 cancel: 'ОТКАЗАТЬСЯ',
                 quickWeapon: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
+                infoStopGame: 'Закончив игру, Вы покинете лобби',
             }
         }, 
         updateCar(list)
@@ -529,14 +555,14 @@ if ('alt' in window)
     alt.on('getSettings', () => menu.saveSettings(-1));
     alt.on('bMenu:setMyName', async (name) =>
     {
-        console.log(name)
+        // console.log(name)
         menu.myName = name; 
         menu.fUpdateLobby([{name: menu.myName, ava: menu.myAvatar, ready: -2}]);
     });
       
     alt.on('bMenu:setMyAvatar', async (avatar) => 
     {
-        console.log(`bMenu:setMyAvatar: ${avatar}`)  
+        // console.log(`bMenu:setMyAvatar: ${avatar}`)  
         menu.myAvatar = await menu.getPhoto(avatar)
         menu.fUpdateLobby([{name: menu.myName, ava: menu.myAvatar, ready: -2}]);
     });
@@ -575,7 +601,8 @@ if ('alt' in window)
     alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers)) 
     alt.on('bMenu:updateCars', (list) => menu.updateCar(list))  
     alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
-    alt.on('bMenu:fInviteToLobby', menu.fInviteToLobby)  
+    alt.on('bMenu:fInviteToLobby', (lobbyID, myData) => menu.fInviteToLobby(lobbyID, myData))   
+    alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby())   
 }
 else 
 {
@@ -588,12 +615,14 @@ else
         // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
-        menu.fUpdateLobby([{name: "Player", ava: 3, ready: 1}, {name: "Resce", ava: 2, ready: 0}, {name: "DarkLegend", ava: 1, ready: 1}])
+        menu.fUpdateLobby([{name: "Player", ready: -2}, {name: "Resce", ready: -1}, {name: "DarkLegend", ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 4)  
-        menu.fInviteToLobby(1, [{name: "Player", ready: 1}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
+        // menu.switchPage(0, 0)  
+        menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
+        // menu.statusGame = true;
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
-    menu.loadRus()
 }
+
+menu.loadRus()

@@ -104,9 +104,11 @@
                                 </div>
                             </div>
                             <div class="stack">
-                                <section v-if="lobby[myID].ready <= -1">
+                                <!-- Если игра не начата -->
+                                <section v-if="!statusGame">
+                                    <!-- Если игрок капитан -->
                                     <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
-                                        v-if="!statusGame">
+                                        v-if="lobby[myID].ready <= -1">
                                         <div class="textticket">
                                             <div class="textticket1">{{i18n.start}} <span
                                                     class="textticket2">{{i18n.game}}</span></div>
@@ -116,59 +118,69 @@
                                             <div class="textticketblock">
                                                 <div class="textticket5">{{i18n.expectation}}: <span
                                                         class="textticket6">{{countWarmUp}}</span></div>
+                                                <span class="minibtn" v-on:click="fLeaveLobby()"
+                                                    v-if="lobby[myID].ready === -1">{{i18n.leavelobby}}</span>
                                             </div>
-                                            <!-- <span сlass="textticket5">Примерное</span> -->
                                         </div>
                                         <div class="iconticket">
                                             <img src="./img/jostik.png" id="mouseFocus" alt="">
                                         </div>
                                     </div>
 
+                                    <section v-else>
+                                        <!-- Если игрок не готов -->
+                                        <div class="ticket ticketRed form" id="mouseFocus"
+                                            v-on:click="emitServer('sLobby:setReady(false)')"
+                                            v-if="lobby[myID].ready === 0">
+                                            <div class="textticket">
+                                                <div class="textticket1">{{i18n.notready}}</span></div>
+                                                <div class="textticket3">{{i18n.clickready}}
+                                                </div>
+                                                <div class="textticketblock">
+                                                    <div class="textticket5">{{i18n.expectation}}: <span
+                                                            class="textticket6">{{countWarmUp}}</span></div>
+                                                    <span class="minibtn"
+                                                        v-on:click="fLeaveLobby()">{{i18n.leavelobby}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iconticket">
+                                                <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                            </div>
+                                        </div>
+
+                                        <!-- Если игрок готов -->
+                                        <div class="ticket form" id="mouseFocus"
+                                            v-on:click="emitServer('sLobby:setReady(true)')" v-else>
+                                            <div class="textticket">
+                                                <div class="textticket1">{{i18n.ready}}</span></div>
+                                                <div class="textticket3">{{i18n.clicknotready}}
+                                                </div>
+                                                <div class="textticketblock">
+                                                    <div class="textticket5">{{i18n.expectation}}: <span
+                                                            class="textticket6">{{countWarmUp}}</span></div>
+                                                    <span class="minibtn"
+                                                        v-on:click="fLeaveLobby()">{{i18n.leavelobby}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="iconticket">
+                                                <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                            </div>
+                                        </div>
+                                    </section>
+                                </section>
+
+                                <!-- Если игрок в игре -->
+                                <section v-else>
                                     <div class="ticket ticketRed form" id="mouseFocus"
-                                        v-on:click="emitServer('sMenu:endGame')" v-else>
+                                        v-on:click="emitServer('sMenu:endGame')">
                                         <div class="textticket" style="justify-content: center;">
                                             <div class="textticket1">{{i18n.stop}} <span
                                                     class="textticket2">{{i18n.game}}</span>
                                             </div>
-                                        </div>
-                                        <div class="iconticket">
-                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <section v-else>
-                                    <div class="ticket ticketRed form" id="mouseFocus"
-                                        v-on:click="emitServer('sMenu:startGame')" v-if="lobby[myID].ready === 0">
-                                        <div class="textticket">
-                                            <div class="textticket1">{{i18n.notready}}</span></div>
-                                            <div class="textticket3">{{i18n.clickready}}
+                                            <div class="textticket3" v-if="lobby[myID].ready !== -2"
+                                                style="font-size: 0.8vw;">
+                                                {{i18n.infoStopGame}}
                                             </div>
-                                            <div class="textticketblock">
-                                                <div class="textticket5">{{i18n.expectation}}: <span
-                                                        class="textticket6">{{countWarmUp}}</span></div>
-                                                <span class="minibtn"
-                                                    v-on:click="emitServer('sLobby:leavelobby', lobbyID)">{{i18n.leavelobby}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="iconticket">
-                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
-                                        v-else>
-                                        <div class="textticket">
-                                            <div class="textticket1">{{i18n.ready}}</span></div>
-                                            <div class="textticket3">{{i18n.clicknotready}}
-                                            </div>
-                                            <div class="textticketblock">
-                                                <div class="textticket5">{{i18n.expectation}}: <span
-                                                        class="textticket6">{{countWarmUp}}</span></div>
-                                                <span class="minibtn"
-                                                    v-on:click="emitServer('sLobby:leavelobby', lobbyID)">{{i18n.leavelobby}}</span>
-                                            </div>
-                                            <!-- <span сlass="textticket5">Примерное</span> -->
                                         </div>
                                         <div class="iconticket">
                                             <img src="./img/jostik.png" id="mouseFocus" alt="">
@@ -289,14 +301,14 @@
                                         v-bind:key="friend.name">
                                         <div class="avatarnickzapros">
                                             <div class="avatarzapros">
-                                                <img src="img/ava.jpg" alt="">
+                                                <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
                                             </div>
                                             <div class="nickzapros">{{friend.name}}</div>
                                         </div>
                                         <div class="btnszapros">
                                             <div class="btnzapros" data-title="Пригласить">
                                                 <img src="img/plusbtn.png" alt=""
-                                                    v-on:click="emitServer('sLobby:inviteToLobby', lobbyID, friend.name)">
+                                                    v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
                                             </div>
                                         </div>
                                     </div>
@@ -456,7 +468,7 @@
                     <transition name="person-friend2">
                         <div class="rightNoHover" v-show="subPage === 4">
                             <div class="friendsh1">
-                                <h1>{{i18n.inviteToLobby + '#' + lobbyID}}</h1>
+                                <h1>{{i18n.inviteToLobby + ' №' + lobbyID}}</h1>
                             </div>
                             <div class="zaprosi">
                                 <transition-group name="list-complete" tag="div">
@@ -473,9 +485,8 @@
                             </div>
                             <div class="btnbackperson2">
                                 <span class="minibtn red" id="mouseFocus"
-                                    v-on:click="emitServer('sLobby:answerInvite', false, lobbyID)">{{i18n.cancel}}</span>
-                                <span class="minibtn green" id="mouseFocus"
-                                    v-on:click="emitServer('sLobby:answerInvite', true, lobbyID)">
+                                    v-on:click="answerInvite(false)">{{i18n.cancel}}</span>
+                                <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">
                                     {{i18n.accept}}</span>
                             </div>
                         </div>
