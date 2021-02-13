@@ -769,12 +769,14 @@ html {
 }
 
 .iconcar {
-  width: 25vw;
+  position: relative;
+  top: 1vh;
+  left: 2vw;
 }
 
 .iconcar img {
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 31vw;
 }
 
 .textticket {
@@ -2268,7 +2270,7 @@ a:hover {
 
 .maindonat {
   width: 65%;
-  height: 60%;
+  height: 63%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
