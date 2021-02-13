@@ -277,16 +277,17 @@ var menu = new Vue({
         answerInvite(value)
         {
             this.emitServer('sLobby:answerInvite', value, this.lobbyID)
-            this.lobbyID = null;
+            this.lobbyID = 0;
             this.myData = null;
             this.switchPage(0, 0);
         },
 
-        fLeaveLobby()
-        {
-            this.emitServer(`sLobby:leaveLobby`);
-            this.lobbyID = 1; 
+        fLeaveLobby(onServer = false)
+        { 
+            if(!onServer) this.emitServer(`sLobby:leaveLobby`);
+            this.lobbyID = 0;    
             this.lobby.splice(1, this.lobby.length);
+            this.lobby[0].ready = -2
             this.lobby.push({name: "пригласить", ava: 0})
         },
 
@@ -602,7 +603,7 @@ if ('alt' in window)
     alt.on('bMenu:updateCars', (list) => menu.updateCar(list))  
     alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
     alt.on('bMenu:fInviteToLobby', (lobbyID, myData) => menu.fInviteToLobby(lobbyID, myData))   
-    alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby())   
+    alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))   
 }
 else 
 {
@@ -615,7 +616,7 @@ else
         // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
-        menu.fUpdateLobby([{name: "Player", ready: -2}, {name: "Resce", ready: -1}, {name: "DarkLegend", ready: 1}])
+        menu.fUpdateLobby([{name: "Player", ready: 1}, {name: "Resce", ready: -1}, {name: "DarkLegend", ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.switchPage(0, 0)  
         menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])

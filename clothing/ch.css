@@ -117,8 +117,8 @@
 .rotation input[type=range] {
    -webkit-appearance: none;
    width: 80vw;
-   background: url(transparent.png);
-}
+   /* background: url(transparent.png); */
+} 
 
 .rotation input[type=range]::-webkit-slider-runnable-track {
    height: 100vh;

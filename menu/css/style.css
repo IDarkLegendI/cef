@@ -1599,7 +1599,6 @@ a:hover {
 .rotation input[type=range] {
   -webkit-appearance: none;
   width: 100vw;
-  background: url(transparent.png);
 }
 
 .rotation input[type=range]::-webkit-slider-runnable-track {
