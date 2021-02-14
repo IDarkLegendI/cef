@@ -608,36 +608,19 @@ input {
 }
 
 .social{
+	display: flex;
+	flex-direction: row;
+	width: 13vh;
+	justify-content: space-between;
+	/* border: 1px solid black; */
 	position: relative;
 	top: 4vh;
-	right: 1vw;
 }
 
-.button_lang{
-    color: #ffffff00;
-    padding: 1vh 1.3vw;
-    border-radius: 5px;
+.currentLang{ 
+    border-bottom: 2px solid #ffffff;
 }
 
-.current_lang{ 
-    border: 1px solid #1aff05;
-}
-
-ul li{
-    width: auto;
-    display: inline;
-}
-
-#en{
-    background-image: url(eu.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#ru{
-    background-image: url(russia.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.imgform img{
+    width: 6vh;
 }

@@ -1440,37 +1440,26 @@ a:hover {
           box-shadow: 0px 0px 15px #ffffff;
 }
 
-.button_lang {
-  color: #ffffff00;
-  padding: 0.8vh 1.2vw;
-  border-radius: 5px;
-  -webkit-transition: background-color .3s ease-in-out;
-  transition: background-color .3s ease-in-out;
+.social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 11vh;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.current_lang {
-  border: 1px solid #3fff05;
-  -webkit-transition: background-color .3s ease-in-out;
-  transition: background-color .3s ease-in-out;
+.currentLang {
+  border-bottom: 3px solid #52dcff;
 }
 
-ul li {
-  width: auto;
-  display: inline;
-}
-
-#en {
-  background-image: url(../img/eu.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#ru {
-  background-image: url(../img/russia.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.imgformlang img {
+  width: 5vh;
 }
 
 .mainauto {
