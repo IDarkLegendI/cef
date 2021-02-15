@@ -2819,7 +2819,7 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 1vh;
+  padding: 2vh;
 }
 
 .imgcloseform {
