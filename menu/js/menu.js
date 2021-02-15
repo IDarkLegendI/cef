@@ -42,8 +42,10 @@ var menu = new Vue({
         level: '01',
 
         //Cars
-        cars: [{name: 'None', model: 'none', price: -2}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000}, 
-                {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}],
+        cars: [{name: 'None', model: 'none', price: 0}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000},
+                {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}, {name: 'Lamborghini Urus', model: 'urus', price: 5000},
+                {name: 'Porsche Taycan', model: 'taycan', price: 5000}, {name: 'Tesla Model X', model: 'teslax', price: 5000}, {name: 'Bentley Bentayga', model: 'bentayga17', price: 4000},
+                {name: 'Porsche Turismo', model: 'pturismo', price: 5500}],   
         carsPointer: 0,  
         myCar: 'none',
         camRotation: 0, 
