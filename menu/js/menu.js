@@ -40,7 +40,7 @@ var menu = new Vue({
         wins: 0,
         hours: 0,
         level: '01',
-
+ 
         //Cars
         cars: [{name: 'None', model: 'none', price: 0}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000},
                 {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}, {name: 'Lamborghini Urus', model: 'urus', price: 5000},
@@ -154,6 +154,20 @@ var menu = new Vue({
         {
             // console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', ...args) 
+        },
+        waitEmitToServer: function(variable, valueTrue, valueFalse, ...args)  
+        { 
+            // console.log(...args)
+            if ('alt' in window) alt.emit('waitEmitToServer', variable, valueTrue, valueFalse, ...args) 
+        },
+        callBackEmitToServer: function(variable, value) {
+            menu[variable] = value;     
+            console.log(this.cars[this.carsPointer].model)  
+        },
+        emitToClient: function(...args)  
+        {
+            // console.log(...args)
+            if ('alt' in window) alt.emit('emitToClient', ...args)  
         },
         emit: function(value, ...args)  
         { 
@@ -455,22 +469,29 @@ var menu = new Vue({
                     if(this.cars[index].model === list[0]) this.cars[index].price = -1;
                     else this.cars[index].price = 0;
                 }
-            })
+            }) 
  
-            this.cars.sort((a, b) => a.price - b.price) 
+            this.cars.sort((a, b) => a.price - b.price)  
             this.carsPointer = this.cars.findIndex(car => car.model === carSelected);
+            // console.log(`this.carsPointer: ${this.carsPointer}; page: ${this.page}`) 
             if(this.page === 2) this.setPreviewCar(this.carsPointer); 
         },
-        setPreviewCar(pointer = 1)
+        setPreviewCar(pointer = null)
         {
-            this.carsPointer = pointer 
+            if(pointer === null) 
+            {
+                pointer = this.cars.findIndex(car => car.price === -1)
+                if(pointer === -1) pointer = 0; 
+                this.carsPointer = pointer; 
+            }
             menu.emitServer('sCar:preview', this.cars[pointer].model); 
+            console.log(`this.carsPointer: ${this.carsPointer}`) 
         },
         setCar(model)
         {
             // this.myCar = model; 
             this.cars.forEach(car => 
-            {
+            { 
                 if(car.model === 'none') car.price = -2
                 else car.price = 0
             })
@@ -479,13 +500,14 @@ var menu = new Vue({
         },
         previewCar(plus)
         {
-            if(!this.fCoolDown()) return;
-
-            if(plus) this.carsPointer === this.cars.length-1 ? this.carsPointer = this.cars.length-1 : this.carsPointer++
-            else this.carsPointer === 0 ? this.carsPointer = 0 : this.carsPointer--
+            // if(!this.fCoolDown()) return;
+            let valueFalse = this.carsPointer, valueTrue;
+            if(plus) this.carsPointer === this.cars.length-1 ? valueTrue = this.cars.length-1 : valueTrue = this.carsPointer+1;
+            else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer-1 
 
             // console.log(this.cars[this.carsPointer].model) 
-            menu.emitServer('sCar:preview', this.cars[this.carsPointer].model);
+            if(valueFalse === valueTrue) return;     
+            this.waitEmitToServer(1000, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', this.cars[valueTrue].model); 
         },
         request(friend, type, event = 'sFriends:rejectRequest')
         { 
@@ -606,6 +628,9 @@ if ('alt' in window)
     alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
     alt.on('bMenu:fInviteToLobby', (lobbyID, myData) => menu.fInviteToLobby(lobbyID, myData))   
     alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))   
+
+    //EMIT 
+    alt.on('bMenu:callBackEmitToServer', (variable, value) => menu.callBackEmitToServer(variable, value))   
 }
 else 
 {
@@ -620,7 +645,7 @@ else
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ready: 1}, {name: "Resce", ready: -1}, {name: "DarkLegend", ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 0)  
+        menu.switchPage(2, 0)  
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
