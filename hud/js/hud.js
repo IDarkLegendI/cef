@@ -214,8 +214,8 @@ if ('alt' in window) {
 }  
 else 
 { 
-    hud.obs.show = true;
-    hud.obs.nick = 'DarkLegend'
+    // hud.obs.show = true;
+    // hud.obs.nick = 'DarkLegend'
     hud.showHUD = true;
     // hud.helpJetPack = true;
     // hud.showLogo = true; 
@@ -229,8 +229,8 @@ else
     //     // hud.fupdateWarmUP('123333333333333', true) 
     //     hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
     // }, 2000) 
-    // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
-    // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
+    setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
+    setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
