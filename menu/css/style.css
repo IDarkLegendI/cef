@@ -1507,8 +1507,8 @@ a:hover {
       -ms-flex-align: center;
           align-items: center;
   margin-right: 2vw;
-  -webkit-transition: .1s ease-out;
-  transition: .1s ease-out;
+  -webkit-transition: .1s ease;
+  transition: .1s ease;
 }
 
 .arrowright {
@@ -1519,8 +1519,8 @@ a:hover {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 2vw;
-  -webkit-transition: .1s ease-out;
-  transition: .1s ease-out;
+  -webkit-transition: .1s ease;
+  transition: .1s ease;
 }
 
 .arrowright img, .arrowleft img {
@@ -1533,8 +1533,8 @@ a:hover {
 .arrowleft:hover img, .arrowright:hover img {
   -webkit-filter: hue-rotate(60deg);
           filter: hue-rotate(60deg);
-  -webkit-transition: 0.5s all;
-  transition: 0.5s all;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }

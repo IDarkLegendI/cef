@@ -190,17 +190,69 @@ body {
     align-content: center;
 }
 
+
+.obsCenter {
+    display: flex;
+    align-items: center;
+    color: #ebebeb;
+    font-family: Oswald;
+    border-radius: 7%;
+    background-color: rgba(0, 0, 0, 0.623);
+}
+
+.obsCenter .avatar {
+    width: 5vw;
+    height: 5vw; 
+    border-radius: 12%;
+}
+
 .obsTexts {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     text-shadow: 1px 1px 1px #0000007e;
-    padding-left: 0.2vw;
-    /* padding-bottom: 1.2vh; */
-    /* margin-bottom: 0.9vh; */
+    width: 6.6vw;
+    margin-left: 0.5vw;
+}
+
+.obsTexts h1 {
+    font-size: 1.4vw;
+}
+
+.obsCenter .kills {
+    display: flex;
+    flex-direction: row;
+}
+
+.obsCenter .kills h1 {
+    font-size: 1vw;
+    padding-left: 0.1vw;
+}
+
+.obsCenter .kills img {
+    width: 1.3vw;
+}
+
+.obsCenter .level {
+    width: 2vw; 
+    height: 2vw; 
+    position: absolute;
+    top: -1.2vh;
+    /* left: 43.55vw; */
+    left: calc(42vw + 3vh);
+}
+
+.obsCenter .vip {
+    width: 2vw; 
+    height: 2vw; 
+    position: absolute;
+    top: -2vh;
+    left: calc(53.9vw + 3vh);
+    transform: rotate(15deg);
 }
 
 
-.observer .obsKills {
+/* .observer .obsKills {
     font-size: 1.1vh;  
 }
 
@@ -233,8 +285,7 @@ body {
     width: 2.5vw; 
     height: 2.5vw; 
     border-radius: 50%;
-    /* margin-right: 5% */
-} 
+}  */
 
 .helpObServer {
 
