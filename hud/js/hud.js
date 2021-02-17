@@ -200,7 +200,7 @@ if ('alt' in window) {
     alt.on('obServer', data => 
     { 
         hud.obs = data;  
-        hud.obs.level = hud.getLevel(data.level)
+        hud.obs.level = hud.getLevel(data.level) 
     })
 
     alt.on('fTimeUpdate', hud.fTimeUpdate) 
