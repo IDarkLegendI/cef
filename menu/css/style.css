@@ -1550,12 +1550,18 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   border-radius: 5px;
   color: white;
   width: 9vw;
@@ -1606,7 +1612,6 @@ a:hover {
 
 .rotation {
   height: 70vh;
-  border: 1px solid red;
   z-index: 1;
 }
 

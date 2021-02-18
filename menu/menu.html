@@ -627,6 +627,8 @@
                                 v-else>
                         </div>
                         <div class="nameauto">
+                            <div style="color: #fffb00;" v-show="cars[carsPointer].price > 0">
+                                {{cars[carsPointer].price}}$</div>
                             <div class="textnameauto">
                                 {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}</div>
                         </div>
@@ -645,9 +647,8 @@
                         <section v-else style="display: flex; align-items: center; justify-content: center;">
                             <a id="mouseFocus" v-if="cars[carsPointer].price === 0 || cars[carsPointer].price === -2"
                                 v-on:click="setCar(cars[carsPointer].model)">{{i18n.select}}</a>
-                            <a id="mouseFocus" v-else
-                                v-on:click="emitServer('sCar:buy', cars[carsPointer].model)">{{i18n.buy}}
-                                ({{cars[carsPointer].price}}$)</a>
+                            <a id="mouseFocus" v-else v-on:click="emitServer('sCar:buy', cars[carsPointer].model)"
+                                style="background-color: #fffb00">{{i18n.buy}}</a>
                         </section>
                     </div>
                 </div>
