@@ -216,11 +216,12 @@ body {
     font-family: Oswald;
     border-radius: 7%;
     background-color: rgba(0, 0, 0, 0.623);
+    width: auto;
 }
 
 .obsCenter .avatar {
-    width: 5vw;
-    height: 5vw; 
+    width: auto;
+    height: auto; 
     border-radius: 12%;
 }
 
@@ -229,8 +230,9 @@ body {
     flex-direction: column;
     align-items: flex-start;
     text-shadow: 1px 1px 1px #0000007e;
-    width: 6.6vw;
+    width: auto;
     margin-left: 0.5vw;
+    padding-right: 0.5vw;
 }
 
 .obsTexts h1 {
@@ -257,7 +259,7 @@ body {
     position: absolute;
     top: -1.2vh;
     /* left: 43.55vw; */
-    right: calc(10vw + 1.9vh);;
+    right: 92%;
     /* left: calc(1vw + 3vh); */
 }
 
@@ -266,7 +268,7 @@ body {
     height: 2vw; 
     position: absolute;
     top: -2vh;
-    left: calc(10.5vw + 1vh); 
+    left: 92%;
     transform: rotate(15deg);
 }
 
