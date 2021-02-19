@@ -1085,6 +1085,34 @@ a:hover
     font-family: 'Roboto Condensed', sans-serif
     font-size: 1.2vw
 
+.colorInput
+    // box-sizing: border-box
+    -webkit-appearance: none
+    border: none
+    background: #0808085b
+    width: 2.8vw
+    height: 2.8vw
+    border-radius: 1em
+    margin-left: 1vw
+    filter: drop-shadow(0 0 1px white)
+    // box-shadow: 0 0 0 2px white
+
+.colorInput:focus
+    outline: none
+    border-radius: 1em
+    filter: drop-shadow(0 0 3px white)
+    // box-shadow: 0 0 0 3px white
+
+.colorInput
+
+/* -webkit */
+.colorInput::-webkit-color-swatch-wrapper
+    padding: 0
+
+.colorInput::-webkit-color-swatch
+    border: none
+    border-radius: 1em
+
 .btnback2
     display: flex
     flex-direction: row

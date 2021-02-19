@@ -45,8 +45,8 @@ var menu = new Vue({
         cars: [{name: 'None', model: 'none', price: 0}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000},
                 {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}, {name: 'Lamborghini Urus', model: 'urus', price: 5000},
                 {name: 'Porsche Taycan', model: 'taycan', price: 5000}, {name: 'Tesla Model X', model: 'teslax', price: 5000}, {name: 'Bentley Bentayga', model: 'bentayga17', price: 4000},
-                {name: 'Porsche Turismo', model: 'pturismo', price: 5500}],   
-        carsPointer: 0,  
+                {name: 'Porsche Turismo', model: 'pturismo', price: 5500}],  
+        carsPointer: 0,   
         myCar: 'none',
         camRotation: 0, 
 
@@ -458,20 +458,27 @@ var menu = new Vue({
                 quickWeapon: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
                 infoStopGame: 'Закончив игру, Вы покинете лобби',
             }
-        }, 
+        },  
         updateCar(list)
         {
-            let carSelected = this.cars[this.carsPointer].model;
+            let carSelected = this.cars[this.carsPointer].model; 
             this.cars.forEach((car, index) => {
                 if(list.some((el) => el === car.model)) 
                 { 
                     console.log(`${this.cars[index].model} === ${list[0]}`)
                     if(this.cars[index].model === list[0]) this.cars[index].price = -1;
                     else this.cars[index].price = 0;
-                }
+                } 
             }) 
  
+            //Чтобы "не выбрано" всегда было в начале списка
+            let index = 0;
+            if(this.cars[1].model === 'none') index = 1;
+            this.cars[index].price = -2;
+
             this.cars.sort((a, b) => a.price - b.price)  
+             
+            this.cars[index].price = -1;
             this.carsPointer = this.cars.findIndex(car => car.model === carSelected);
             // console.log(`this.carsPointer: ${this.carsPointer}; page: ${this.page}`) 
             if(this.page === 2) this.setPreviewCar(this.carsPointer); 
@@ -635,6 +642,7 @@ if ('alt' in window)
 else 
 {
     menu.show = true;  
+    menu.carsPointer = 1; 
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();

@@ -1570,6 +1570,35 @@ a:hover {
   font-size: 1.2vw;
 }
 
+.colorInput {
+  -webkit-appearance: none;
+  border: none;
+  background: #0808085b;
+  width: 2.8vw;
+  height: 2.8vw;
+  border-radius: 1em;
+  margin-left: 1vw;
+  -webkit-filter: drop-shadow(0 0 1px white);
+          filter: drop-shadow(0 0 1px white);
+}
+
+.colorInput:focus {
+  outline: none;
+  border-radius: 1em;
+  -webkit-filter: drop-shadow(0 0 3px white);
+          filter: drop-shadow(0 0 3px white);
+}
+
+/* -webkit */
+.colorInput::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.colorInput::-webkit-color-swatch {
+  border: none;
+  border-radius: 1em;
+}
+
 .btnback2 {
   display: -webkit-box;
   display: -ms-flexbox;
