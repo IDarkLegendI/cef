@@ -257,17 +257,17 @@ body {
     width: 2vw; 
     height: 2vw; 
     position: absolute;
-    top: -1.2vh;
+    top: -1.6vh;
     /* left: 43.55vw; */
     right: 92%;
     /* left: calc(1vw + 3vh); */
 }
 
 .vip {
-    width: 2vw; 
-    height: 2vw; 
+    width: 2.5vw; 
+    height: 2.5vw; 
     position: absolute;
-    top: -2vh;
+    top: -2.8vh;
     left: 92%;
     transform: rotate(15deg);
 }

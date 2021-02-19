@@ -216,14 +216,14 @@ if ('alt' in window) {
     alt.on('fGetAudio', (stage) => hud.fGetAudio(stage))       
   
 }  
-else 
+else  
 { 
-    // hud.obs.show = true;
-    // hud.obs.nick = 'DarkLegend'
-    // hud.showHUD = true; 
-    hud.help = 2;
+    hud.obs.show = true;
+    hud.obs.nick = 'DarkLegend'
+    hud.showHUD = true; 
+    // hud.help = 2;
     // hud.showLogo = true; 
-    hud.fUpdateKills("OBLIKO", 100)
+    // hud.fUpdateKills("OBLIKO", 100)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A12"), 2000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)

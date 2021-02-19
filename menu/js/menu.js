@@ -46,7 +46,7 @@ var menu = new Vue({
                 {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}, {name: 'Lamborghini Urus', model: 'urus', price: 5000},
                 {name: 'Porsche Taycan', model: 'taycan', price: 5000}, {name: 'Tesla Model X', model: 'teslax', price: 5000}, {name: 'Bentley Bentayga', model: 'bentayga17', price: 4000},
                 {name: 'Porsche Turismo', model: 'pturismo', price: 5500}],  
-        carsPointer: 0,   
+        carsPointer: 0,  
         myCar: 'none',
         camRotation: 0, 
 
@@ -461,27 +461,39 @@ var menu = new Vue({
         },  
         updateCar(list)
         {
+            console.log(`updateCar(before): ${JSON.stringify(list)}; ${JSON.stringify(this.cars)}`) 
             let carSelected = this.cars[this.carsPointer].model; 
-            this.cars.forEach((car, index) => {
-                if(list.some((el) => el === car.model)) 
-                { 
-                    console.log(`${this.cars[index].model} === ${list[0]}`)
-                    if(this.cars[index].model === list[0]) this.cars[index].price = -1;
-                    else this.cars[index].price = 0;
-                } 
-            }) 
+            list.forEach((carName, index) => {
+                let found = this.cars.findIndex(car => car.model === carName);
+                if(found != -1)
+                {
+                    if(index === 0) this.cars[found].price = -1;
+                    else this.cars[found].price = 0;
+                }
+            })
+            // this.cars.forEach((car, index) => {
+            //     if(list.some((el) => el === car.model)) 
+            //     { 
+            //         console.log(`${this.cars[index].model} === ${list[0]}`)
+            //         if(this.cars[index].model === list[0]) this.cars[index].price = -1;
+            //         else this.cars[index].price = 0;
+            //     } 
+            // }) 
  
             //Чтобы "не выбрано" всегда было в начале списка
-            let index = 0;
+            let index = 0, value;
             if(this.cars[1].model === 'none') index = 1;
+            value = this.cars[index].price;
             this.cars[index].price = -2;
 
             this.cars.sort((a, b) => a.price - b.price)  
              
-            this.cars[index].price = -1;
+            this.cars[index].price = value; 
+            if(this.cars[1].price === -1) this.cars[0].price = 0;  
             this.carsPointer = this.cars.findIndex(car => car.model === carSelected);
             // console.log(`this.carsPointer: ${this.carsPointer}; page: ${this.page}`) 
             if(this.page === 2) this.setPreviewCar(this.carsPointer); 
+            console.log(`updateCar(after): ${JSON.stringify(this.cars)}`)  
         },
         setPreviewCar(pointer = null)
         {
@@ -514,7 +526,7 @@ var menu = new Vue({
 
             // console.log(this.cars[this.carsPointer].model) 
             if(valueFalse === valueTrue) return;     
-            this.waitEmitToServer(1000, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', this.cars[valueTrue].model); 
+            this.waitEmitToServer(250, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', this.cars[valueTrue].model); 
         },
         request(friend, type, event = 'sFriends:rejectRequest')
         { 
