@@ -97,7 +97,7 @@
 
 .buy:hover {
    background: limegreen;
-}
+} 
 
 .buy>div:nth-child(2):before {
    content: "$";
@@ -184,31 +184,28 @@
 }
 
 .arrowleftcustom {
-   transform: rotate(180deg);
-   fill: #ffffff;
-   /* filter: drop-shadow(0 0 5px #ffffff8e); */
-   transition: .1s all;
+   filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.411));
+   transition: .1s all; 
    margin-right: 1vw;
 }
 
 .arrowrightcustom {
-   fill: #ffffff;
-   /* filter: drop-shadow(0 0 5px #ffffff8e); */
+   filter: drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.411));
    transition: .1s all;
    margin-left: 1vw;
 }
 
-.arrowrightcustom svg, .arrowleftcustom svg {
+.arrowrightcustom img, .arrowleftcustom img {
    transition: .05s all;
    width: 2vw;
 }
 
 .arrowleftcustom:hover, .arrowrightcustom:hover {
-   fill: #00a2ff;
-   filter: drop-shadow(0 0 3px #00a2ff);
+   filter: drop-shadow(0 0 3px #ffffff);
+   transition: .05s all;
 }
 
-.arrowleftcustom:active svg, .arrowrightcustom:active svg {
+.arrowleftcustom:active img, .arrowrightcustom:active img {
    transform: scale(0.9);
 }
 

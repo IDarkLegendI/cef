@@ -10,95 +10,53 @@
 			<div class="contentb1">
 				<div class="switchcustom">
 					<div class="customelement" :class="{active: (currentTitle === 'Hats')}" @click="showHats">
-						<img src="clotches/shapka.png" alt="">
+						<img src="./img/shapka.png" alt="">
 					</div>
 					<div class="customelement" :class="{active: (currentTitle === 'Glasses')}" @click="showGlasses">
-						<img src="clotches/oki.png" alt="">
+						<img src="./img/oki.png" alt="">
 					</div>
 					<div class="customelement" :class="{active: (currentTitle === 'Tops')}" @click="showTops">
-						<img src="clotches/topi.png" alt="">
+						<img src="./img/topi.png" alt="">
 					</div>
 					<div class="customelement" :class="{active: (currentTitle === 'Legs')}" @click="showLegs">
-						<img src="clotches/shtani.png" alt="">
+						<img src="./img/shtani.png" alt="">
 					</div>
 					<div class="customelement" :class="{active: (currentTitle === 'Feet')}" @click="showFeet">
-						<img src="clotches/boti.png" alt="">
+						<img src="./img/boti.png" alt="">
 					</div>
 				</div>
 				<div class="sandwiches" v-if="currentTitle">
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom" @click="prevColor">
-							<svg data-name="Livello 1" rotate="180deg" width="5vh" id="Livello_1" viewBox="0 0 128 128"
-								xmlns="http://www.w3.org/2000/svg">
-								<title />
-								<path
-									d="M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z" />
-								<path
-									d="M58.12,35.88a3,3,0,0,0-4.24,4.24L77.76,64,53.88,87.88a3,3,0,1,0,4.24,4.24l26-26a3,3,0,0,0,0-4.24Z" />
-							</svg>
+							<img src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom">
 							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color }}</div>
 						</div>
 						<div class="arrowrightcustom" @click="nextColor">
-							<svg data-name="Livello 1" width="5vh" id="Livello_1" viewBox="0 0 128 128"
-								xmlns="http://www.w3.org/2000/svg">
-								<title />
-								<path
-									d="M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z" />
-								<path
-									d="M58.12,35.88a3,3,0,0,0-4.24,4.24L77.76,64,53.88,87.88a3,3,0,1,0,4.24,4.24l26-26a3,3,0,0,0,0-4.24Z" />
-							</svg>
+							<img src="./img/arrowRight.png" width="30vw">
 						</div>
 					</div>
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom" @click="prevCloth">
-							<svg data-name="Livello 1" rotate="180deg" width="5vh" id="Livello_1" viewBox="0 0 128 128"
-								xmlns="http://www.w3.org/2000/svg">
-								<title />
-								<path
-									d="M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z" />
-								<path
-									d="M58.12,35.88a3,3,0,0,0-4.24,4.24L77.76,64,53.88,87.88a3,3,0,1,0,4.24,4.24l26-26a3,3,0,0,0,0-4.24Z" />
-							</svg>
+							<img src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom">
 							<div class="textnamecustom">{{ currentCloth.name }}</div>
 						</div>
 						<div class="arrowrightcustom" @click="nextCloth">
-							<svg data-name="Livello 1" width="5vh" id="Livello_1" viewBox="0 0 128 128"
-								xmlns="http://www.w3.org/2000/svg">
-								<title />
-								<path
-									d="M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z" />
-								<path
-									d="M58.12,35.88a3,3,0,0,0-4.24,4.24L77.76,64,53.88,87.88a3,3,0,1,0,4.24,4.24l26-26a3,3,0,0,0,0-4.24Z" />
-							</svg>
+							<img src="./img/arrowRight.png" width="30vw">
 						</div>
 					</div>
 					<div class="sandwichcustom" v-if="currentTitle === 'Tops'">
 						<div class="arrowleftcustom" @click="prevUnderColor">
-							<svg data-name="Livello 1" rotate="180deg" width="5vh" id="Livello_1" viewBox="0 0 128 128"
-								xmlns="http://www.w3.org/2000/svg">
-								<title />
-								<path
-									d="M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z" />
-								<path
-									d="M58.12,35.88a3,3,0,0,0-4.24,4.24L77.76,64,53.88,87.88a3,3,0,1,0,4.24,4.24l26-26a3,3,0,0,0,0-4.24Z" />
-							</svg>
+							<img src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom">
 							<div class="textnamecustom">{{ underColorText }}</div>
 						</div>
 						<div class="arrowrightcustom" @click="nextUnderColor">
-							<svg data-name="Livello 1" width="5vh" id="Livello_1" viewBox="0 0 128 128"
-								xmlns="http://www.w3.org/2000/svg">
-								<title />
-								<path
-									d="M64,0a64,64,0,1,0,64,64A64.07,64.07,0,0,0,64,0Zm0,122a58,58,0,1,1,58-58A58.07,58.07,0,0,1,64,122Z" />
-								<path
-									d="M58.12,35.88a3,3,0,0,0-4.24,4.24L77.76,64,53.88,87.88a3,3,0,1,0,4.24,4.24l26-26a3,3,0,0,0,0-4.24Z" />
-							</svg>
+							<img src="./img/arrowRight.png" width="30vw">
 						</div>
 					</div>
 				</div>
@@ -135,7 +93,8 @@
 			legs: false,
 			feet: false,
 
-			currentTitle: false,
+			// currentTitle: false,
+			currentTitle: 'Tops',
 			currentArr: false,
 			currentNum: false,
 			currentColorNum: 0,
