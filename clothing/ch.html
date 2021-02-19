@@ -114,8 +114,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div class="item buttons reset" @click="reset">{{ resetText }}</div>
-			<div class="item exit" @click="exit">{{ exitText }}</div> -->
 		</div>
 		<div class="rotation">
 			<input @input="changeCamRotation" max="360" min="-180" step="1" type="range" v-model.number="camRotation">
@@ -181,7 +179,6 @@
 				this.setColor(0);
 				if (this.currentTitle === "Tops") this.setUnderColor(0);
 				alt.emit('emitToClient', 'cClothing:SetCamera', this.currentTitle)
-				// mp.trigger("cClothingShop-SetCamera", this.currentTitle);
 			},
 			showHats: function () {
 				this.currentTitle = "Hats";
@@ -275,27 +272,21 @@
 					underColor: this.currentCloth.underColor,
 				}
 				alt.emit('emitToServer', 'sClothing:buy', obj);
-				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-BuyCloth", JSON.stringify(obj));
 			},
 
 			reset: function () {
 				this.currentTitle = false;
 				alt.emit('emitToClient', 'cClothing:SetCamera', this.currentTitle)
 				alt.emit('emitToServer', 'sClothing:reloadClothes');
-				// mp.trigger("cClothingShopSetCamera", this.currentTitle);
-				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
 			},
 			changeCamRotation: function () {
 				// console.log(this.camRotation) 
 				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
-				// mp.trigger("cChangeHeading", this.camRotation);
 			},
 			exit: function () {
 				alt.emit('emitToClient', 'cCloseCEF');
 				alt.emit('emitToClient', 'cClothing:close');
 				alt.emit('emitToServer', 'sClothing:close');
-				// mp.trigger("cCloseCefAndDestroyCam");
-				// mp.trigger("cMisc-CallServerEvent", "sClothingShop-ReloadClothes");
 			},
 
 			setClothToPlayer: function () {
@@ -309,8 +300,6 @@
 					undershirt: this.currentCloth.undershirt,
 				}
 				alt.emit('emitToClient', 'cClothing:setClothes', obj);
-				// alt.emit('emitToServer', 'sClothing:setClothes', obj);
-				// mp.trigger("cMisc-CallServerEvent", "sClothes-SetCloth", JSON.stringify(obj));
 			},
 		}
 	});
