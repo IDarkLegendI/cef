@@ -646,9 +646,10 @@
 
                         <section v-else style="display: flex; align-items: center; justify-content: center;">
                             <a id="mouseFocus" v-if="cars[carsPointer].price === 0 || cars[carsPointer].price === -2"
-                                v-on:click="setCar(cars[carsPointer].model)">{{i18n.select}}</a>
+                                v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: {r: 255, g: 255, b: 255}})">{{i18n.select}}</a>
                             <section v-else style="display: flex; align-items: center;">
-                                <a id="mouseFocus" v-on:click="emitServer('sCar:buy', cars[carsPointer].model)"
+                                <a id="mouseFocus"
+                                    v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: {r: 255, g: 255, b: 255}})"
                                     style="background-color: #fffb00">{{i18n.buy}}</a>
                                 <input type="color" value="цвет" name="имя" class="colorInput">
                             </section>

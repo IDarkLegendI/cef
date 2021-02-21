@@ -458,64 +458,56 @@ var menu = new Vue({
                 quickWeapon: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
                 infoStopGame: 'Закончив игру, Вы покинете лобби',
             }
-        },  
-        updateCar(list)
+        },   
+        updateCars(list, selected)
         {
-            console.log(`updateCar(before): ${JSON.stringify(list)}; ${JSON.stringify(this.cars)}`) 
-            let carSelected = this.cars[this.carsPointer].model; 
-            list.forEach((carName, index) => {
-                let found = this.cars.findIndex(car => car.model === carName);
-                if(found != -1)
+            console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
+            // {
+            //     model: string,  
+            //     color: iRGB,
+            // }
+            let carSelected = this.cars[this.carsPointer].model, foundIndex = this.cars.findIndex(el => el.price === -1);
+            //Сбрасываем старый выбор
+            if(foundIndex !== -1) this.cars[foundIndex].price = 0;
+
+            //Добавляем новые машины
+            list.forEach((carOfList) => {
+                let found = this.cars.findIndex(car => car.model === carOfList.model);
+                if(found != -1)  
                 {
-                    if(index === 0) this.cars[found].price = -1;
-                    else this.cars[found].price = 0;
+                    this.cars[found].price = 0;
                 }
             })
-            // this.cars.forEach((car, index) => {
-            //     if(list.some((el) => el === car.model)) 
-            //     { 
-            //         console.log(`${this.cars[index].model} === ${list[0]}`)
-            //         if(this.cars[index].model === list[0]) this.cars[index].price = -1;
-            //         else this.cars[index].price = 0;
-            //     } 
-            // }) 
- 
-            //Чтобы "не выбрано" всегда было в начале списка
-            let index = 0, value;
-            if(this.cars[1].model === 'none') index = 1;
-            value = this.cars[index].price;
-            this.cars[index].price = -2;
 
+            //Выставляем новый выбор
+            foundIndex = this.cars.findIndex(el => el.model === selected.model);
+            console.log(`foundIndex: ${foundIndex}; ${selected.model}`)
+            if(foundIndex !== -1) this.cars[foundIndex].price = -1;
+
+            //Чтобы "не выбрано" всегда было в начале списка
+            let value;
+            foundIndex = this.cars.findIndex(el => el.model === 'none');
+            if(foundIndex !== -1) 
+            {
+                value = this.cars[foundIndex].price;
+                this.cars[foundIndex].price = -2;
+            }
             this.cars.sort((a, b) => a.price - b.price)  
-             
-            this.cars[index].price = value; 
-            if(this.cars[1].price === -1) this.cars[0].price = 0;  
-            this.carsPointer = this.cars.findIndex(car => car.model === carSelected);
-            // console.log(`this.carsPointer: ${this.carsPointer}; page: ${this.page}`) 
-            if(this.page === 2) this.setPreviewCar(this.carsPointer); 
-            console.log(`updateCar(after): ${JSON.stringify(this.cars)}`)  
+            if(foundIndex !== -1) this.cars[foundIndex].price = value;   
+
+            this.carsPointer = this.cars.findIndex(el => el.model === carSelected);
+            if(this.page === 2) this.setPreviewCar(this.carsPointer);
         },
         setPreviewCar(pointer = null)
         {
             if(pointer === null) 
             {
-                pointer = this.cars.findIndex(car => car.price === -1)
+                pointer = this.cars.findIndex(el => el.price === -1)
                 if(pointer === -1) pointer = 0; 
-                this.carsPointer = pointer; 
+                this.carsPointer = pointer;  
             }
-            menu.emitServer('sCar:preview', this.cars[pointer].model); 
+            menu.emitServer('sCar:preview', {model: this.cars[pointer].model, color: {r: 255, g: 255, b: 255}}); 
             console.log(`this.carsPointer: ${this.carsPointer}`) 
-        },
-        setCar(model)
-        {
-            // this.myCar = model; 
-            this.cars.forEach(car => 
-            { 
-                if(car.model === 'none') car.price = -2
-                else car.price = 0
-            })
-            this.cars[this.carsPointer].price = -1; 
-            this.emitServer('sCar:set', this.cars[this.carsPointer].model, true)
         },
         previewCar(plus)
         {
@@ -526,7 +518,7 @@ var menu = new Vue({
 
             // console.log(this.cars[this.carsPointer].model) 
             if(valueFalse === valueTrue) return;     
-            this.waitEmitToServer(250, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', this.cars[valueTrue].model); 
+            this.waitEmitToServer(250, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {model: this.cars[valueTrue].model, color: {r: 255, g: 255, b: 255}}); 
         },
         request(friend, type, event = 'sFriends:rejectRequest')
         { 
@@ -643,7 +635,7 @@ if ('alt' in window)
     });
 
     alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers)) 
-    alt.on('bMenu:updateCars', (list) => menu.updateCar(list))  
+    alt.on('bMenu:updateCars', (list, selected) => menu.updateCars(list, selected))   
     alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
     alt.on('bMenu:fInviteToLobby', (lobbyID, myData) => menu.fInviteToLobby(lobbyID, myData))   
     alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))   
