@@ -161,7 +161,7 @@ var menu = new Vue({
             if ('alt' in window) alt.emit('waitEmitToServer', variable, valueTrue, valueFalse, ...args) 
         },
         callBackEmitToServer: function(variable, value) {
-            menu[variable] = value;     
+            menu[variable] = value;  
             console.log(this.cars[this.carsPointer].model)  
         },
         emitToClient: function(...args)  
@@ -475,7 +475,8 @@ var menu = new Vue({
                 let found = this.cars.findIndex(car => car.model === carOfList.model);
                 if(found != -1)  
                 {
-                    this.cars[found].price = 0;
+                    this.cars[found].price = 0; 
+                    this.cars[found].color = carOfList.color; 
                 }
             })
 
@@ -506,8 +507,13 @@ var menu = new Vue({
                 if(pointer === -1) pointer = 0; 
                 this.carsPointer = pointer;  
             }
-            menu.emitServer('sCar:preview', {model: this.cars[pointer].model, color: {r: 255, g: 255, b: 255}}); 
+            menu.emitServer('sCar:preview', {model: this.cars[pointer].model, color: this.cars[pointer].color});  
             console.log(`this.carsPointer: ${this.carsPointer}`) 
+            console.log(`setPreviewCar: ${JSON.stringify(this.cars[pointer])}`)  
+            initColor(); 
+            ColorPicker(); 
+            if(!this.cars[pointer].color) this.cars[pointer].color = {r: 255, g: 255, b: 255}
+            colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
         },
         previewCar(plus)
         {
@@ -517,8 +523,9 @@ var menu = new Vue({
             else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer-1 
 
             // console.log(this.cars[this.carsPointer].model) 
-            if(valueFalse === valueTrue) return;     
-            this.waitEmitToServer(250, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {model: this.cars[valueTrue].model, color: {r: 255, g: 255, b: 255}}); 
+            if(valueFalse === valueTrue) return;        
+            if(!this.cars[valueTrue].color) this.cars[valueTrue].color = {r: 255, g: 255, b: 255} 
+            this.waitEmitToServer(250, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {model: this.cars[valueTrue].model, color: this.cars[valueTrue].color}); 
         },
         request(friend, type, event = 'sFriends:rejectRequest')
         { 
@@ -663,6 +670,9 @@ else
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
+    setTimeout(() => {
+    initColor();
+    ColorPicker(); 
+}, 500)
 }
-
 menu.loadRus()

@@ -2679,6 +2679,7 @@ a:hover {
   font-size: 2vh;
   font-family: 'Roboto Condensed', cursive;
   text-shadow: 1px 1px 2px #0000007e;
+  padding-top: 2vh;
 }
 
 .nameupline {
@@ -2924,5 +2925,9 @@ a:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.colorPicker {
+  z-index: 2;
 }
 /*# sourceMappingURL=style.css.map */
