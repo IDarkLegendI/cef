@@ -388,15 +388,15 @@ function closeCP() {
 new ColorPicker();
 
 //SLIDER
-var slider = document.getElementById("pearlslider");
-var output = document.getElementById("output-slider");
-output.innerHTML = slider.value; // Display the default slider value
+// var slider = document.getElementById("pearlslider");
+// var output = document.getElementById("output-slider");
+// output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value;
-  alt.emit("setPearlColorLive:ClientSide", slider.value);
-}
+// slider.oninput = function() {
+//   output.innerHTML = this.value;
+//   alt.emit("setPearlColorLive:ClientSide", slider.value);
+// }
 
 function setPearlColor(){
   console.log(slider.value);

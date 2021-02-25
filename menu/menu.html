@@ -622,47 +622,14 @@
                     <input @input="changeCamRotation" max="360" min="-180" step="1" type="range"
                         v-model.number="camRotation">
                 </div>
-                <div class="colorPicker" v-on:mouseleave="setPreviewCar(carsPointer)">
-                    <div id="slider" class="slider-panel">
-
-                        <div class="slidecontainer" id="slidecontainer">
-                            <input type="range" min="1" max="156" value="1" class="slider" id="pearlslider">
-                            <div class="output-id" id="output-id">ID: </div>
-                            <div class="slider-header" id="slider-header">von 156 Farben</div>
-                            <div class="output-slider" id="output-slider"></div>
-                        </div>
-                        <button onclick="setPearlColor()" id="setslider" class="button setslider">Bestätigen</button>
-                        <button onclick="openCloseSlider()" id="backslider" class="button backslider">Zurück</button>
-
-
-                    </div>
-
+                <!-- v-on:mouseleave="setPreviewCar(carsPointer)" -->
+                <div class="colorPicker" v-show="cars[carsPointer].price > 0">
                     <div id="colorpicker" class="color-picker-panel">
-
-                        <div class="panel-row">
+                        <div class=" panel-row">
                             <div class="spectrum-map">
                                 <button id="spectrum-cursor" class="color-cursor"></button>
                                 <canvas id="spectrum-canvas"></canvas>
                             </div>
-
-                            <!-- <div class="buttongrp1">
-                                <button onclick="setModColor(3)" id="matteff" class="button">Matt</button>
-                                <button onclick="setModColor(5)" id="chromeeff" class="button">Chrom</button>
-                                <button onclick="openCloseSlider()" id="pearleff" class="button">Pearl</button>
-                                <button onclick="setModColor(0)" id="pearleff" class="button">Normal</button>
-                                <button class="button acceptcolor" id="acceptcolor" onclick="setCarColorCP()">Farbe
-                                    lackieren</button>
-                            </div> -->
-
-                            <!-- <div class="checkboxgrp1">
-                                <span><input type="checkbox" value="setPrim" classname="primaryColor"
-                                        class="primaryColor" id="primaryColor"></span>
-                                <span><input type="checkbox" value="setSek" classname="secondaryColor"
-                                        class="secondaryColor" id="secondaryColor"></span>
-                                <button id="primaryBut" class="button prim">P</button>
-                                <button id="secondaryBut" class="button sec">S</button>
-                            </div> -->
-
                             <div class="hue-map">
                                 <button id="hue-cursor" class="color-cursor"></button>
                                 <canvas id="hue-canvas"></canvas>
@@ -670,32 +637,10 @@
                         </div>
 
                         <div class="panel-row">
-                            <!-- <div id="rgb-fields" class="field-group value-fields rgb-fields active">
-                                <div class="field-group">
-                                    <label for="" class="field-label">R:</label>
-                                    <input type="number" max="255" min="0" id="red" class="field-input rgb-input" />
-                                </div>
-                                <div class="field-group">
-                                    <label for="" class="field-label">G:</label>
-                                    <input type="number" max="255" min="0" id="green" class="field-input rgb-input" />
-                                </div>
-                                <div class="field-group">
-                                    <label for="" class="field-label">B:</label>
-                                    <input type="number" max="255" min="0" id="blue" class="field-input rgb-input" />
-                                </div>
-
-                            </div> -->
-
-                            <!-- <div id="hex-field" class="field-group value-fields hex-field">
-                                <label for="" id="hexname" class="field-label">Hex:</label>
-                                <input type="text" id="hex" class="field-input" />
-                            </div> -->
-                            <!-- <button id="mode-toggle" class="button mode-toggle">Modus</button> -->
-
+                            <button id="mode-toggle mouseFocus" class="button mode-toggle"
+                                v-on:click="setPreviewCar(carsPointer)">{{i18n.applyColor}}</button>
                         </div>
                         <div class="panel-row">
-                            <!-- <button id="closeButton" class="button closeButton" onClick="closeCP()">Farbauswahl
-                                schliessen</button> -->
                             <span id="color-indicator" class="color-indicator">
                         </div>
                     </div>

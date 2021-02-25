@@ -119,6 +119,7 @@ var menu = new Vue({
             cancel: 'DENY',
             quickWeapon: 'TAKE THE SELECTED WEAPON IN HAND',
             infoStopGame: 'When you finish the game, you will leave the lobby',
+            applyColor: 'APPLY',
         },
         avatars: {
             "A": "0",
@@ -162,7 +163,8 @@ var menu = new Vue({
         },
         callBackEmitToServer: function(variable, value) {
             menu[variable] = value;  
-            console.log(this.cars[this.carsPointer].model)  
+            if(variable === 'carsPointer') colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b) 
+            // console.log(this.cars[this.carsPointer].model)  
         },
         emitToClient: function(...args)  
         {
@@ -457,6 +459,7 @@ var menu = new Vue({
                 cancel: 'ОТКАЗАТЬСЯ',
                 quickWeapon: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
                 infoStopGame: 'Закончив игру, Вы покинете лобби',
+                applyColor: 'ПРИМЕНИТЬ',
             }
         },   
         updateCars(list, selected)
