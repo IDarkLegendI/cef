@@ -2284,8 +2284,8 @@ a:hover {
 }
 
 .maindonat {
-  width: 65%;
-  height: 63%;
+  width: 85%;
+  height: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2303,22 +2303,14 @@ a:hover {
           transform: translate(-50%, -50%);
 }
 
-.donatformsleft {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.maindonat h1 {
+  padding-top: 2vh;
+  font-size: 1.8vw;
 }
 
 .leftdonat {
-  -ms-flex-preferred-size: 32%;
-      flex-basis: 32%;
+  -ms-flex-preferred-size: 29.5%;
+      flex-basis: 29.5%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2333,8 +2325,8 @@ a:hover {
 }
 
 .rightdonat {
-  -ms-flex-preferred-size: 63%;
-      flex-basis: 63%;
+  -ms-flex-preferred-size: 65.5%;
+      flex-basis: 65.5%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2378,13 +2370,13 @@ a:hover {
   text-shadow: 1px 1px 10px #ff0000;
   letter-spacing: 0.4vh;
   text-align: center;
-  font-family: 'Sriracha', cursive;
-  text-decoration: underline;
+  font-family: 'Roboto Condensed';
+  font-weight: 900;
 }
 
 .calculator {
-  -ms-flex-preferred-size: 45%;
-      flex-basis: 45%;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
   border: 2px solid #00aeff;
   -webkit-box-shadow: 0 0 10px #00aeff, inset 0 0 10px #00aeff;
           box-shadow: 0 0 10px #00aeff, inset 0 0 10px #00aeff;
@@ -2400,9 +2392,9 @@ a:hover {
 
 .calculator h1 {
   text-align: center;
-  text-shadow: 1px 1px 10px #00aeff;
-  letter-spacing: 0.2vh;
-  font-family: 'Sriracha', cursive;
+  text-shadow: 1px 1px 5px #00aeff;
+  font-family: 'Roboto Condensed';
+  font-weight: 900;
 }
 
 .leftform {
@@ -2460,6 +2452,8 @@ a:hover {
 }
 
 .vip {
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
   border-color: #ffc400;
   -webkit-box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
           box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400;
@@ -2475,6 +2469,24 @@ a:hover {
 
 .vip h1 {
   text-shadow: 1px 1px 10px #ffdf74;
+}
+
+.vip ul {
+  padding-left: 2vw;
+  margin: 0;
+}
+
+.vip li {
+  list-style-type: none;
+  font-size: 1vw;
+  padding-top: 2vh;
+}
+
+.vip li::before {
+  content: '- ';
+  color: yellow;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #ff0000;
 }
 
 .donatform:hover {
@@ -2516,13 +2528,13 @@ a:hover {
 }
 
 .premium ul {
-  padding-left: 1.5vw;
+  padding-left: 2vw;
   margin: 0;
 }
 
 .premium li {
   list-style-type: none;
-  font-size: 2.2vh;
+  font-size: 1vw;
   padding-top: 2vh;
 }
 
@@ -2565,7 +2577,7 @@ a:hover {
 
 .deluxe li {
   list-style-type: none;
-  font-size: 2.2vh;
+  font-size: 1vw;
   padding-top: 2vh;
 }
 

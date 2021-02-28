@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -700,12 +700,32 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="donateMain">
+                <div class="donateRow1">
+                    <span>
+                        <h1>GOLD</h1>
+                    </span>
+                    <span>
+                        <h1>CONVERTER</h1>
+                    </span>
+                </div>
+                <span class="donateRow2">
+                    <h1>PREMIUM</h1>
+                </span>
+                <span class="donateRow3">
+                    <h1>DELUXE</h1>
+                </span>
+            </div> -->
             <div class="maindonat">
                 <div class="leftdonat">
-                    <div class="donatformsleft">
                         <div class="vip donatform leftform">
                             <h1>VIP</h1>
-                            <span class="donatinf">- Нажмите для более подробной информации</span>
+                            <ul>
+                                <li>АВТОМОБИЛИ</li>
+                                <li>МНОГО ОДЕЖДЫ</li>
+                                <li>ВСЕ ФУНКЦИИ VIP</li>
+                                <li>EXAMPLE</li>
+                            </ul>
                             <div class="imgprice">
                                 <span class="donatbtn">150RM</span>
                                 <div class="donatimgform">
@@ -713,20 +733,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <div class="calculator leftform">
                         <h1>КОНВЕРТЕР</h1>
                         <div class="converterblock">
                             <div class="inputcalc">
-                                <span>ДОЛЛАРЫ</span>
-                                <input type="number">
+                                <span>RM</span>
+                                <input type="number" v-model="converterRM" v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
                             </div>
                             <div class="donatimgform">
                                 <img src="img/sort.png" alt="">
                             </div>
                             <div class="inputcalc">
-                                <span>РУБЛИ</span>
-                                <input type="number">
+                                <span>$</span>
+                                <input type="number" v-model="converterD" v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
                             </div>
                         </div>
                     </div>
@@ -738,9 +757,9 @@
                             <li>АВТОМОБИЛИ</li>
                             <li>МНОГО ОДЕЖДЫ</li>
                             <li>ВСЕ ФУНКЦИИ VIP</li>
-                            <li>ХУЙ</li>
-                            <li>ХУЙ</li>
-                            <li>ХУЙ</li>
+                            <li>EXAMPLE</li>
+                            <li>EXAMPLE</li>
+                            <li>EXAMPLE</li>
                         </ul>
                         <div class="imgprice">
                             <span class="donatbtn">299RM</span>
@@ -755,22 +774,16 @@
                             <li>АВТОМОБИЛИ</li>
                             <li>МНОГО ОДЕЖДЫ</li>
                             <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
-                            <li>ХУЙ</li>
-                            <li>ХУЙ</li>
-                            <li>ХУЙ</li>
+                            <li>EXAMPLE</li>
+                            <li>EXAMPLE</li>
+                            <li>EXAMPLE</li>
                         </ul>
-                        <!-- <div class="donatimgform">
-                            <img alt="" src="img/gold.png">
-                        </div> -->
                         <div class="imgprice">
                             <span class="donatbtn">500RM</span>
                             <div class="deluxeimgform">
                                 <img src="img/corona.png" alt="">
                             </div>
                         </div>
-                        <!-- <div class="deluxeimgform">
-                            <img src="img/corona.png" alt="">
-                        </div>    -->
                     </div>
                 </div>
             </div>
@@ -780,9 +793,9 @@
             <div class="bancontent">
                 <h1>ВЫ ЗАБЛОКИРОВАНЫ</h1>
                 <div class="banspans">
-                    <span><span class="baninfo">ПРИЧИНА:</span> Читерство</span>
-                    <span><span class="baninfo">ВРЕМЯ:</span> 7 ДНЕЙ</span>
-                    <span><span class="baninfo">АДМИНИСТРАТОР:</span> DarkLegend</span>
+                    <span><span class="baninfo">Причина:</span> Читерство</span>
+                    <span><span class="baninfo">Время:</span> 7 дней</span>
+                    <span><span class="baninfo">Администратор:</span> DarkLegend</span>
                 </div>
                 <h2>Подать на аппеляцию можно на GTAROYALE.COM</h1>
             </div>

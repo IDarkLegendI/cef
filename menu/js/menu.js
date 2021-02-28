@@ -59,6 +59,10 @@ var menu = new Vue({
         miscInput: '',
         coolDown: false,
 
+        //Shop
+        converterRM: 0,
+        converterD: 0,
+
         //i18n
         i18n: {
             // balance: 'Balance',
@@ -576,6 +580,10 @@ var menu = new Vue({
             this.emit('cCar:rotation', this.camRotation);
             // mp.trigger("cChangeHeading", this.camRotation);
         },
+        changeConverter: function(nameOut, nameIn, k)
+        {
+            this[nameOut] = Math.round(this[nameIn] * +k); 
+        }
     },
 }); 
 
@@ -614,7 +622,7 @@ if ('alt' in window)
     });
      
     alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
-    alt.on('bMenu:updateRank', (obj) => 
+    alt.on('bMenu:updateRank', (obj) =>   
     {
         menu.elo = obj.elo;
         menu.kills = obj.kills;
@@ -667,7 +675,7 @@ else
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ready: 1}, {name: "Resce", ready: -1}, {name: "DarkLegend", ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(2, 0)  
+        menu.switchPage(3, 0)  
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)

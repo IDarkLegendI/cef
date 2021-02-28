@@ -1582,24 +1582,22 @@ a:hover
 // ДОНАТ
 
 .maindonat
-    width: 65%
-    height: 63%
+    width: 85%
+    height: 70%
     display: flex
     flex-direction: row
     justify-content: space-between
     // border: 3px solid red
-    position: absolute
+    position: absolute 
     left: 50%
     top: 50%
     transform: translate(-50%, -50%)
-
-.donatformsleft
-    display: flex
-    flex-direction: row
-    justify-content: space-between
+    h1
+        padding-top: 2vh
+        font-size: 1.8vw
 
 .leftdonat
-    flex-basis: 32%
+    flex-basis: 29.5%
     height: 100%
     // border: 3px solid black
     display: flex
@@ -1607,7 +1605,7 @@ a:hover
     justify-content: space-between
 
 .rightdonat
-    flex-basis: 63%
+    flex-basis: 65.5%
     height: 100%
     // border: 3px solid black
     display: flex
@@ -1633,11 +1631,12 @@ a:hover
         text-shadow: 1px 1px 10px #ff0000
         letter-spacing: 0.4vh
         text-align: center
-        font-family: 'Sriracha', cursive
-        text-decoration: underline
+        font-family: 'Roboto Condensed' 
+        font-weight: 900
+        // text-decoration: underline
 
 .calculator
-    flex-basis: 45%
+    flex-basis: 25%
     border: 2px solid #00aeff
     box-shadow: 0 0 10px #00aeff, inset 0 0 10px #00aeff
     transition: 0.4s ease-in-out
@@ -1649,9 +1648,10 @@ a:hover
     background-color: #00aeff17
     h1
         text-align: center
-        text-shadow: 1px 1px 10px #00aeff
-        letter-spacing: 0.2vh
-        font-family: 'Sriracha', cursive
+        text-shadow: 1px 1px 5px #00aeff
+        // letter-spacing: 0.2vh
+        font-family: 'Roboto Condensed'
+        font-weight: 900
 
 .leftform
     width: 100%
@@ -1701,6 +1701,7 @@ a:hover
     z-index: 2000
 
 .vip
+    flex-basis: 60%
     border-color: #ffc400
     box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
     text-shadow: 1px 1px 1px #ffc400
@@ -1714,6 +1715,21 @@ a:hover
     //     background-color: #ffc40017
     h1
         text-shadow: 1px 1px 10px #ffdf74
+    ul
+        padding-left: 2vw
+        margin: 0
+    li
+        // padding-top: 3vh 
+        list-style-type: none
+        font-size: 1vw
+        padding-top: 2vh
+    li::before
+        content: '- '
+        // font-size: 4vh
+        // line-height: 4vh
+        color: yellow
+        font-weight: bold
+        text-shadow: 1px 1px 2px #ff0000    
     .donatbtn
         // border-color: #ffc400
         // box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
@@ -1750,11 +1766,12 @@ a:hover
         width: 70%
         height: 100%
     ul
-        padding-left: 1.5vw
+        padding-left: 2vw
         margin: 0
     li
+        // padding-top: 3vh 
         list-style-type: none
-        font-size: 2.2vh
+        font-size: 1vw
         padding-top: 2vh
     li::before
         content: '- '
@@ -1788,7 +1805,7 @@ a:hover
     li
         // padding-top: 3vh 
         list-style-type: none
-        font-size: 2.2vh
+        font-size: 1vw
         padding-top: 2vh
     li::before
         content: '- '
