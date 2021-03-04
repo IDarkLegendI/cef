@@ -1,31 +1,6 @@
 //https://github.com/bgrins/TinyColor
 
-
-var modeToggle = document.getElementById('mode-toggle');
-var colorIndicator = document.getElementById('color-indicator');
-
-var spectrumCanvas = document.getElementById('spectrum-canvas');
-var spectrumCtx = spectrumCanvas.getContext('2d');
-var spectrumCursor = document.getElementById('spectrum-cursor'); 
-var spectrumRect = spectrumCanvas.getBoundingClientRect();
-
-var hueCanvas = document.getElementById('hue-canvas');
-var hueCtx = hueCanvas.getContext('2d');
-var hueCursor = document.getElementById('hue-cursor'); 
-var hueRect = hueCanvas.getBoundingClientRect();
-
-var currentColor = '';
-var hue = 0;
-var saturation = 1;
-var lightness = .5;
-
-var rgbFields = document.getElementById('rgb-fields');
-var hexField = document.getElementById('hex-field');
-
-var red = document.getElementById('red');
-var blue = document.getElementById('blue');
-var green = document.getElementById('green');
-var hex = document.getElementById('hex');
+let modeToggle, colorIndicator, spectrumCanvas, spectrumCtx, spectrumCursor, spectrumRect, hueCanvas, hueCtx, hueCursor, hueRect, currentColor, hue, saturation, lightness, rgbFields, hexField, red, blue, green, hex;
 
 // var primaryBut = document.getElementById("primaryBut");
 // var secondaryBut = document.getElementById("secondaryBut");
@@ -74,6 +49,7 @@ function ColorPicker(){
 };
 
 function refreshElementRects(){
+  if(!spectrumRect) return;
   spectrumRect = spectrumCanvas.getBoundingClientRect();
   hueRect = hueCanvas.getBoundingClientRect();
 }
@@ -385,7 +361,7 @@ function closeCP() {
   alt.emit("cancelSetColor:ClientSide");
 }
 
-new ColorPicker();
+// new ColorPicker();
 
 //SLIDER
 // var slider = document.getElementById("pearlslider");

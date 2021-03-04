@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -565,7 +565,7 @@
                     </div>
                     <div class="checkboxes">
                         <div class="checkboxtest">
-                            <span>{{i18n.quickWeapon}}</span>
+                            <span>{{i18n.quickWeaponT}}</span>
                             <input type="checkbox" id="quickWeapon" v-model='quickWeapon'
                                 v-on:click="saveSettings(-1)" /><label for="quickWeapon" id="mouseFocus">Toggle</label>
                         </div>
@@ -718,34 +718,36 @@
             </div> -->
             <div class="maindonat">
                 <div class="leftdonat">
-                        <div class="vip donatform leftform">
-                            <h1>VIP</h1>
-                            <ul>
-                                <li>АВТОМОБИЛИ</li>
-                                <li>МНОГО ОДЕЖДЫ</li>
-                                <li>ВСЕ ФУНКЦИИ VIP</li>
-                                <li>EXAMPLE</li>
-                            </ul>
-                            <div class="imgprice">
-                                <span class="donatbtn">150RM</span>
-                                <div class="donatimgform">
-                                    <img src="img/gold.png" alt="">
-                                </div>
+                    <div class="vip donatform leftform">
+                        <h1>VIP</h1>
+                        <ul>
+                            <li>АВТОМОБИЛИ</li>
+                            <li>МНОГО ОДЕЖДЫ</li>
+                            <li>ВСЕ ФУНКЦИИ VIP</li>
+                            <li>EXAMPLE</li>
+                        </ul>
+                        <div class="imgprice">
+                            <span class="donatbtn">150RM</span>
+                            <div class="donatimgform">
+                                <img alt="" src="img/gold.png">
                             </div>
                         </div>
+                    </div>
                     <div class="calculator leftform">
                         <h1>КОНВЕРТЕР</h1>
                         <div class="converterblock">
                             <div class="inputcalc">
                                 <span>RM</span>
-                                <input type="number" v-model="converterRM" v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
+                                <input type="number" v-model="converterRM"
+                                    v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
                             </div>
                             <div class="donatimgform">
                                 <img src="img/sort.png" alt="">
                             </div>
                             <div class="inputcalc">
                                 <span>$</span>
-                                <input type="number" v-model="converterD" v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
+                                <input type="number" v-model="converterD"
+                                    v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
                             </div>
                         </div>
                     </div>
