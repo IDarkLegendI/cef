@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
 <body>
-	<div id="app">
+	<div id="app"> 
 		<div class="b1">
 			<div class="contentb1">
 				<div class="switchcustom">
@@ -137,6 +137,7 @@
 				this.currentCloth.color = this.currentCloth.colors[0];
 				this.setColor(0);
 				if (this.currentTitle === "Tops") this.setUnderColor(0);
+				alt.emit('emitToServer', 'sClothing:reloadClothes');
 				alt.emit('emitToClient', 'cClothing:SetCamera', this.currentTitle)
 			},
 			showHats: function () {
