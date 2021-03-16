@@ -673,7 +673,7 @@
 
 		alt.on('setLang', lang => {
 			console.log(`lang: ${lang}`)
-			if (lang === 'ru') loadRusLang();
+			if (lang === 'ru') setTimeout(loadRusLang, 500);
 		})
 	}
 </script>
