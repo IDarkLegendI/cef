@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
 <body>
-	<div id="app"> 
+	<div id="app">
 		<div class="b1">
 			<div class="contentb1">
 				<div class="switchcustom">
@@ -93,8 +93,7 @@
 			legs: false,
 			feet: false,
 
-			// currentTitle: false,
-			currentTitle: 'Tops',
+			currentTitle: false,
 			currentArr: false,
 			currentNum: false,
 			currentColorNum: 0,
@@ -662,6 +661,8 @@
 		app.buyText = "Купить за";
 		app.resetText = "Сбросить все";
 		app.exitText = "Выход";
+		app.hats[0].name = "Без головного убора"
+		app.glasses[0].name = "Без очков"
 	}
 
 	if ('alt' in window) {
