@@ -9,46 +9,46 @@
 		<div class="b1">
 			<div class="contentb1">
 				<div class="switchcustom">
-					<div class="customelement" :class="{active: (currentTitle === 'Hats')}" @click="showHats">
-						<img src="./img/shapka.png" alt="">
+					<div :class="{active: (currentTitle === 'Hats')}" class="customelement">
+						<img @click="showHats" alt="" src="./img/shapka.png">
 					</div>
-					<div class="customelement" :class="{active: (currentTitle === 'Glasses')}" @click="showGlasses">
-						<img src="./img/oki.png" alt="">
+					<div :class="{active: (currentTitle === 'Glasses')}" class="customelement">
+						<img @click="showGlasses" alt="" src="./img/oki.png">
 					</div>
-					<div class="customelement" :class="{active: (currentTitle === 'Tops')}" @click="showTops">
-						<img src="./img/topi.png" alt="">
+					<div :class="{active: (currentTitle === 'Tops')}" class="customelement">
+						<img @click="showTops" alt="" src="./img/topi.png">
 					</div>
-					<div class="customelement" :class="{active: (currentTitle === 'Legs')}" @click="showLegs">
-						<img src="./img/shtani.png" alt="">
+					<div :class="{active: (currentTitle === 'Legs')}" class="customelement">
+						<img @click="showLegs" alt="" src="./img/shtani.png">
 					</div>
-					<div class="customelement" :class="{active: (currentTitle === 'Feet')}" @click="showFeet">
-						<img src="./img/boti.png" alt="">
+					<div :class="{active: (currentTitle === 'Feet')}" class="customelement">
+						<img @click="showFeet" alt="" src="./img/boti.png">
 					</div>
 				</div>
 				<div class="sandwiches" v-if="currentTitle">
 					<div class="sandwichcustom">
-						<div class="arrowleftcustom" @click="prevColor">
-							<img src="./img/arrowLeft.png" width="30vw">
+						<div class="arrowleftcustom">
+							<img @click="prevColor" src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom">
 							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color }}</div>
 						</div>
-						<div class="arrowrightcustom" @click="nextColor">
-							<img src="./img/arrowRight.png" width="30vw">
+						<div class="arrowrightcustom">
+							<img @click="nextColor" src="./img/arrowRight.png" width="30vw">
 						</div>
 					</div>
 					<div class="sandwichcustom">
-						<div class="arrowleftcustom" @click="prevCloth">
-							<img src="./img/arrowLeft.png" width="30vw">
+						<div class="arrowleftcustom">
+							<img @click="prevCloth" src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom">
 							<div class="textnamecustom">{{ currentCloth.name }}</div>
 						</div>
-						<div class="arrowrightcustom" @click="nextCloth">
-							<img src="./img/arrowRight.png" width="30vw">
+						<div class="arrowrightcustom">
+							<img @click="nextCloth" src="./img/arrowRight.png" width="30vw">
 						</div>
 					</div>
-					<div class="sandwichcustom" v-if="currentTitle === 'Tops'">
+					<!-- <div class="sandwichcustom" v-if="currentTitle === 'Tops'">
 						<div class="arrowleftcustom" @click="prevUnderColor">
 							<img src="./img/arrowLeft.png" width="30vw">
 						</div>
@@ -58,7 +58,7 @@
 						<div class="arrowrightcustom" @click="nextUnderColor">
 							<img src="./img/arrowRight.png" width="30vw">
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="btns">
 					<div class="btn btnbuy" @click="buy" v-if="currentTitle">
@@ -109,7 +109,7 @@
 			colorText: "Color:",
 			underColorText: "Undershirt Color",
 			buyText: "Buy for",
-			resetText: "Reset All",
+			resetText: "Reset",
 			exitText: "Exit",
 
 
@@ -487,7 +487,7 @@
 				id: 5,
 				name: "Bedroom Slippers",
 				color: 0,
-				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+				colors: [0, 1, 2, 3],
 				price: 400,
 			},
 		];
@@ -659,7 +659,7 @@
 		app.colorText = "Цвет";
 		app.underColorText = "Цвет-2";
 		app.buyText = "Купить за";
-		app.resetText = "Сбросить все";
+		app.resetText = "Сбросить";
 		app.exitText = "Выход";
 		app.hats[0].name = "Без головного убора"
 		app.glasses[0].name = "Без очков"
