@@ -247,7 +247,7 @@ function updateCarColor(color){
   // //     checkedSecondary = inputSecondary[i].value;
   // //   }
   // // }
-  if(!color["_r"]) return
+  if(!color["_a"]) return
   let rgbColor = color.toRgb();
   // console.log(JSON.stringify(rgbColor))
   menu.cars[menu.carsPointer].color = {r: rgbColor.r, g: rgbColor.g, b: rgbColor.b}
