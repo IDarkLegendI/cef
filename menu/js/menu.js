@@ -124,7 +124,7 @@ var menu = new Vue({
             cancel: 'DENY',
             quickWeaponT: 'TAKE THE SELECTED WEAPON IN HAND',
             infoStopGame: 'When you finish the game, you will leave the lobby',
-            applyColor: 'APPLY',
+            applyColor: 'APPLY COLOR',
         },
         avatars: {
             "A": "0",
@@ -473,7 +473,7 @@ var menu = new Vue({
                 cancel: 'ОТКАЗАТЬСЯ',
                 quickWeaponT: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
                 infoStopGame: 'Закончив игру, Вы покинете лобби',
-                applyColor: 'ПРИМЕНИТЬ',
+                applyColor: 'ПРИМЕНИТЬ ЦВЕТ',
             }
         },   
         updateCars(list, selected)
