@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./Notify/fonts/notify.css">
 
     <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Exo|Overpass&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -17,59 +18,78 @@
 
 <body id="fade" onload="load()">
     <section id="body">
-        <div class="center" v-show='visible'>
-            <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
-                leave-active-class="animated zoomOutUp">
-                <section v-if="showWUP && !killsBarShow">
-                    <div class="warmInfo">
-                        <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'pulse fast' : 'pulse slower']"
-                            :style="{borderColor: pulseWUP ? 'rgb(255, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.5)'}">
-                            {{textWUP}}
+        <section v-show="visible">
+            <div class="center">
+                <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
+                    leave-active-class="animated zoomOutUp">
+                    <section v-if="showWUP && !killsBarShow">
+                        <div class="warmInfo">
+                            <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'pulse fast' : 'pulse slower']"
+                                :style="{borderColor: pulseWUP ? 'rgb(255, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.5)'}">
+                                {{textWUP}}
+                            </h1>
+                        </div>
+                    </section>
+                </transition>
+                <transition name="custom-classes-transition2" enter-active-class="animated tada"
+                    leave-active-class="animated bounceOutRight">
+                    <div class="killInfo" v-show="killsBarShow">
+                        <img src="./img/blood.png" alt="">
+                        <div class="kills">
+                            <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
+                            <h1 id="killInfo" class="killText2">
+                                {{kills === 1 ? "УБИЙСТВО" : kills < 5 ? "УБИЙСТВА" : "УБИЙСТВ"}}</h1>
+                        </div>
+                        <h1 id="killInfo" class="killText">ВЫ УБИЛИ ИГРОКА <span
+                                class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В <span
+                                :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
+                            МЕТРОВ
                         </h1>
                     </div>
-                </section>
-            </transition>
-            <transition name="custom-classes-transition2" enter-active-class="animated tada"
-                leave-active-class="animated bounceOutRight">
-                <div class="killInfo" v-show="killsBarShow">
-                    <img src="./img/blood.png" alt="">
-                    <div class="kills">
-                        <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
-                        <h1 id="killInfo" class="killText2">
-                            {{kills === 1 ? "УБИЙСТВО" : kills < 5 ? "УБИЙСТВА" : "УБИЙСТВ"}}</h1>
+                </transition>
+            </div>
+            <!-- OBSERVER -->
+            <transition name="custom-classes-transition3" enter-active-class="animated tada"
+                leave-active-class="animated hinge">
+                <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0">
+                    <div class="obsCenter animated infinite pulse slow">
+                        <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
+                        <div class="obsTexts">
+                            <h1>{{obs.nick}}</h1>
+                            <div class="kills">
+                                <img src="./img/skull.png" alt="">
+                                <h1 class="obsKills">{{obs.kills}}</h1>
+                            </div>
+                        </div>
+                        <img class="level" :src="`../menu/img/levels/${obs.level}.png`" alt="">
+                        <img class="vip" :src="`../menu/img/corona.png`" alt="">
                     </div>
-                    <h1 id="killInfo" class="killText">ВЫ УБИЛИ ИГРОКА <span
-                            class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В <span
-                            :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
-                        МЕТРОВ
-                    </h1>
-                </div>
-            </transition>
-        </div>
-        <!-- OBSERVER -->
-        <transition name="custom-classes-transition3" enter-active-class="animated tada"
-            leave-active-class="animated hinge">
-            <div class="observer" v-show="visible && obs.show && !killsBarShow && obs.nick.length != 0">
-                <div class="obsContainer animated infinite pulse slow">
-                    <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
-                    <div class="obsTexts">
-                        <h1>{{obs.nick}}</h1>
-                        <h1 class="obsKills">KILLS: {{kills}}</h1>
-                    </div>
-                    <img class="level" :src="`../menu/img/levels/${obs.level}.png`" alt="">
-                    <img class="vip" :src="`../menu/img/corona.png`" alt="">
-                </div>
-                <div class="helpObServer animated infinite bounce delay-3s slower">
-                    <div class="subHelpOBS">
-                        <div>
-                            <p class="key">ESC</p>
-                            <p class="textHelp">выход</p>
+
+                    <div class="helpObServer animated infinite bounce delay-3s slower">
+                        <div class="subHelpOBS">
+                            <div>
+                                <p class="key">ESC</p>
+                                <p class="textHelp">выход</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </transition>
+            </transition>
 
+            <transition name="custom-classes-transition3" enter-active-class="animated tada"
+                leave-active-class="animated hinge">
+                <div class="observer" v-show="help === 2">
+                    <div class="helpObServer animated infinite bounce slow">
+                        <div class="subHelpOBS">
+                            <div>
+                                <p class="key">F1</p>
+                                <p class="textHelp">menu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+        </section>
         <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutRight">
             <section v-if='showHUD && visible'>
@@ -100,7 +120,7 @@
                     </div>
                     <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
                         leave-active-class="animated bounceOut">
-                        <div class="playersInfo" v-show="!obs.show && time > 0 && !showWUP" id="column2">
+                        <div class="playersInfo" v-show="!obs.show && time > 0" id="column2">
                             <div class="alive">
                                 <div class="numberTime">{{fTimeDisplay()}}</div>
                                 <div class="textTime"><img src="./img/circle.png" alt=""></div>
@@ -125,37 +145,51 @@
 
                     <transition name="custom-classes-transition4" enter-active-class="animated rotateInUpLeft fast"
                         leave-active-class="animated rotateOutDownRight fast">
-                        <div class="help animated bounce delay-2s slower" v-show="helpJetPack && visible">
-                            <div class="subHelp">
-                                <div>
-                                    <p class="key">
-                                        <img src="./img/keyboard.png" alt="">
-                                        <img src="./img/plus.png" alt="" id="plus">
-                                        <img src="./img/computer-mouse.png" alt="" id="pcMouse">
-                                    </p>
-                                    <p class="textHelp">управление</p>
+                        <section>
+                            <div class="help animated bounce delay-2s slower" v-show="help === 1">
+                                <div class="subHelp">
+                                    <div>
+                                        <p class="key">
+                                            <img src="./img/keyboard.png" alt="">
+                                            <img src="./img/plus.png" alt="" id="plus">
+                                            <img src="./img/computer-mouse.png" alt="" id="pcMouse">
+                                        </p>
+                                        <p class="textHelp">управление</p>
+                                    </div>
+                                </div>
+                                <div class="subHelp">
+                                    <div>
+                                        <p class="key">
+                                            <img src="./img/keyboard.png" alt="">
+                                            <img src="./img/plus.png" alt="" id="plus">
+                                            <img src="./img/numKeyBoard.png" alt="">
+                                        </p>
+                                        <p class="textHelp">управление</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="subHelp">
-                                <div>
-                                    <p class="key">
-                                        <img src="./img/keyboard.png" alt="">
-                                        <img src="./img/plus.png" alt="" id="plus">
-                                        <img src="./img/numKeyBoard.png" alt="">
-                                    </p>
-                                    <p class="textHelp">управление</p>
-                                </div>
-                            </div>
-                        </div>
                     </transition>
                 </div>
             </section>
         </transition>
-        <section>
-            <transition name="custom-classes-transition3" enter-active-class="animated tada slow"
+        <section v-show="visible">
+            <transition name="custom-classes-transition3" enter-active-class="animated rollIn slow"
                 leave-active-class="animated rollOut fast">
-                <div class="logoLoad" v-if='showLogo && visible'>
-                    <img src="./img/kinghud.png" alt="" class="animated infinite wobble slower" id="logo">
+                <div class="logoLoad" v-show='showLogo'>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <img src="./img/kinghud.png" alt="" class="animated infinite wobble slower" id="logo">
+                        <h1 class="animated flash delay-2s fast" style="padding-top: 20vh; font-size: 3vh;"
+                            id="gtaRoyalRu">
+                            GTAROYAL.RU</h1>
+                    </div>
+                </div>
+            </transition>
+
+            <transition name="gtaRoyalRuAnimate" enter-active-class="animated fadeInLeftBig slow"
+                leave-active-class="animated fadeOutUpBig fast">
+                <div style="position: absolute; bottom: 0.1%; left: 0.5%; opacity: 0.7;" v-show="!showLogo">
+                    <h1 style="font-size: 1.6vh;" id="gtaRoyalRu">
+                        GTAROYAL.RU</h1>
                 </div>
             </transition>
         </section>

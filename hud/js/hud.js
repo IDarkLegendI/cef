@@ -37,7 +37,8 @@ var hud = new Vue({
         killFeedInterval: null, 
         killFeedHTML: null,
         
-        helpJetPack: false,  
+        help: 0,   
+        helpMainMenu: false,
         avatars: {
             "A": "0",
             "B": "1",
@@ -200,37 +201,39 @@ if ('alt' in window) {
     alt.on('obServer', data => 
     { 
         hud.obs = data;  
-        hud.obs.level = hud.getLevel(data.level)
+        hud.obs.level = hud.getLevel(data.level) 
     })
 
     alt.on('fTimeUpdate', hud.fTimeUpdate) 
     alt.on('updateKillFeed', hud.fKillFeedUpdate)   
 
-    alt.on('updateJetPack', toggle => hud.helpJetPack = toggle)   
+    alt.on('updateHelp', toggle =>
+    {
+        hud.help = toggle
+    })    
     alt.on('visible', toggle => hud.visible = toggle)    
 
     alt.on('fGetAudio', (stage) => hud.fGetAudio(stage))       
   
 }  
-else 
+else  
 { 
     hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
-    hud.showHUD = true;
-    // hud.helpJetPack = true;
+    hud.showHUD = true; 
+    // hud.help = 2;
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)
-    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
-    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A12"), 2000)
-    setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)
+    // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
+    // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A12"), 2000)
+    // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)
     let index = 0;
     // setInterval(() => {
     //     // hud.fUpdateKills("OBLIKO", 45)
     //     // hud.fupdateWarmUP('123333333333333', true) 
     //     hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
     // }, 2000) 
-    // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1000)
-    // setTimeout(() => hud.fupdateWarmUP('123333333333333', true), 1900) 
+    setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)

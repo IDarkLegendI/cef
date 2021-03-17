@@ -156,6 +156,24 @@ body {
     margin-top: -10%;
 }
 
+#gtaRoyalRu {
+    font-family: 'Roboto Condensed'; 
+    text-shadow: 0 0 0.5px black, 0 0 0.1em black;
+    animation: color 30s infinite ease-in-out;
+} 
+ 
+@keyframes color {
+    0% {
+      color: white;
+    }
+    50% { 
+      color: rgb(30, 255, 0);
+    } 
+    100% {
+        color: white;
+    }
+  }
+
 .logoLoad {
   position: absolute;
   width: 100%;
@@ -166,7 +184,7 @@ body {
   /* background-color: black; */
   display: flex;
   justify-content: center;
-  text-shadow: 0 0 1px black, 0 0 1.2em rgb(0, 0, 0);
+  /* text-shadow: 0 0 1px black, 0 0 1.2em rgb(0, 0, 0); */
 }
 
 #logo {
@@ -190,58 +208,71 @@ body {
     align-content: center;
 }
 
+
+.obsCenter {
+    display: flex;
+    align-items: center;
+    color: #ebebeb;
+    font-family: Oswald;
+    border-radius: 7%;
+    background-color: rgba(0, 0, 0, 0.623);
+    width: auto;
+}
+
+.obsCenter .avatar {
+    width: auto;
+    height: auto; 
+    border-radius: 12%;
+}
+
 .obsTexts {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     text-shadow: 1px 1px 1px #0000007e;
-    padding-left: 0.2vw;
-    /* padding-bottom: 1.2vh; */
-    /* margin-bottom: 0.9vh; */
+    width: auto;
+    margin-left: 0.5vw;
+    padding-right: 0.5vw;
 }
 
-
-.observer .obsKills {
-    font-size: 1.1vh;  
+.obsTexts h1 {
+    font-size: 1.4vw;
 }
 
-.observer h1 {
-    color: #ebebeb;
-    font-family: Oswald, serif;
-    align-items: center; 
-    font-size: 1.7vh;  
+.obsCenter .kills {
+    display: flex;
+    flex-direction: row;
 }
 
-.observer .level {
+.obsCenter .kills h1 {
+    font-size: 1vw;
+    padding-left: 0.1vw;
+}
+
+.obsCenter .kills img {
+    width: 1.3vw;
+}
+
+.obsCenter .level {
     width: 2vw; 
     height: 2vw; 
     position: absolute;
-    top: -1.7vh;
-    right: -1.1vw;
-} 
+    top: -1.6vh;
+    /* left: 43.55vw; */
+    right: 92%;
+    /* left: calc(1vw + 3vh); */
+}
 
-.observer .vip {
-    width: 1.5vw; 
-    height: 1.5vw; 
-    position: absolute;
-    top: 4.5vh;
-    right: 7.9vw;
-    filter: drop-shadow(0 0 1px #ecfd0033);
-} 
-
-.observer .avatar {
-    align-items: center;
+.vip {
     width: 2.5vw; 
     height: 2.5vw; 
-    border-radius: 50%;
-    /* margin-right: 5% */
-} 
+    position: absolute;
+    top: -2.8vh;
+    left: 92%;
+    transform: rotate(15deg);
+}
 
 .helpObServer {
-
-    /* background-color: blue; */
-    /* position: absolute;
-    top: 25vh;
-    right: 0.5vw; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

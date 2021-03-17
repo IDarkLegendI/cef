@@ -11,6 +11,7 @@ var menu = new Vue({
         //SETTINGS
         enableVR: false, //true, чтобы вр подрубить,
         sizeMap: 0,
+        quickWeapon: 0,
         
         //Block Game 
         textMatch: 'В поиске', 
@@ -40,10 +41,12 @@ var menu = new Vue({
         wins: 0,
         hours: 0,
         level: '01',
-
+ 
         //Cars
-        cars: [{name: 'None', model: 'none', price: -2}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000}, 
-                {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}],
+        cars: [{name: 'None', model: 'none', price: 0}, {name: 'X-80 PROTO', model: 'prototipo', price: 1000}, {name: 'T-20', model: 't20', price: 2000},
+                {name: 'Pfister-811', model: 'pfister811', price: 1500}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 2000}, {name: 'Lamborghini Urus', model: 'urus', price: 5000},
+                {name: 'Porsche Taycan', model: 'taycan', price: 5000}, {name: 'Tesla Model X', model: 'teslax', price: 5000}, {name: 'Bentley Bentayga', model: 'bentayga17', price: 4000},
+                {name: 'Porsche Turismo', model: 'pturismo', price: 5500}],  
         carsPointer: 0,  
         myCar: 'none',
         camRotation: 0, 
@@ -56,6 +59,10 @@ var menu = new Vue({
         //Misc
         miscInput: '',
         coolDown: false,
+
+        //Shop
+        converterRM: 0,
+        converterD: 0,
 
         //i18n
         i18n: {
@@ -95,7 +102,7 @@ var menu = new Vue({
             friends: 'FRIENDS',
             clothing: 'CLOTHES',
             invite: 'Invite to team',
-            controlFriends: 'FRIEND MANAGEMENT',
+            controlFriends: 'MANAGEMENT',
             requestsIn: 'INCOMING REQUESTS',
             requestsOut: 'OUTGOING REQUESTS',
             add: 'ADD',
@@ -115,8 +122,9 @@ var menu = new Vue({
             inviteToLobby: 'INVITATION TO THE LOBBY',
             accept: 'ACCEPT',
             cancel: 'DENY',
-            quickWeapon: 'TAKE THE SELECTED WEAPON IN HAND',
+            quickWeaponT: 'TAKE THE SELECTED WEAPON IN HAND',
             infoStopGame: 'When you finish the game, you will leave the lobby',
+            applyColor: 'APPLY',
         },
         avatars: {
             "A": "0",
@@ -152,6 +160,30 @@ var menu = new Vue({
         {
             // console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', ...args) 
+        },
+        waitEmitToServer: function(variable, valueTrue, valueFalse, ...args)  
+        { 
+            // console.log(...args)
+            if ('alt' in window) alt.emit('waitEmitToServer', variable, valueTrue, valueFalse, ...args) 
+        },
+        callBackEmitToServer: function(variable, value) {
+            menu[variable] = value;  
+            if(variable === 'carsPointer') 
+            { 
+                initColor(); 
+                ColorPicker();  
+                setTimeout(() => {
+                    initColor(); 
+                    ColorPicker();  
+                    colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b) 
+                }, 100)
+            } 
+            // console.log(this.cars[this.carsPointer].model)  
+        },
+        emitToClient: function(...args)  
+        {
+            // console.log(...args)
+            if ('alt' in window) alt.emit('emitToClient', ...args)  
         },
         emit: function(value, ...args)  
         { 
@@ -418,7 +450,7 @@ var menu = new Vue({
                 friends: 'ДРУЗЬЯ',
                 clothing: 'ОДЕЖДА',
                 invite: 'Пригласить в команду',
-                controlFriends: 'УПРАВЛЕНИЕ ДРУЗЬЯМИ',
+                controlFriends: 'УПРАВЛЕНИЕ',
                 requestsIn: 'ВХОДЯЩИЕ ЗАЯВКИ',
                 requestsOut: 'ИСХОДЯЩИЕ ЗАЯВКИ',
                 add: 'ДОБАВИТЬ',
@@ -439,51 +471,78 @@ var menu = new Vue({
                 inviteToLobby: 'ПРИГЛАШЕНИЕ В ЛОББИ',
                 accept: 'ПРИНЯТЬ',
                 cancel: 'ОТКАЗАТЬСЯ',
-                quickWeapon: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
+                quickWeaponT: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
                 infoStopGame: 'Закончив игру, Вы покинете лобби',
+                applyColor: 'ПРИМЕНИТЬ',
             }
-        }, 
-        updateCar(list)
+        },   
+        updateCars(list, selected)
         {
-            let carSelected = this.cars[this.carsPointer].model;
-            this.cars.forEach((car, index) => {
-                if(list.some((el) => el === car.model)) 
-                { 
-                    console.log(`${this.cars[index].model} === ${list[0]}`)
-                    if(this.cars[index].model === list[0]) this.cars[index].price = -1;
-                    else this.cars[index].price = 0;
+            console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
+            // {
+            //     model: string,  
+            //     color: iRGB,
+            // }
+            let carSelected = this.cars[this.carsPointer].model, foundIndex = this.cars.findIndex(el => el.price === -1);
+            //Сбрасываем старый выбор
+            if(foundIndex !== -1) this.cars[foundIndex].price = 0;
+
+            //Добавляем новые машины
+            list.forEach((carOfList) => {
+                let found = this.cars.findIndex(car => car.model === carOfList.model);
+                if(found != -1)  
+                {
+                    this.cars[found].price = 0; 
+                    this.cars[found].color = carOfList.color; 
                 }
             })
- 
-            this.cars.sort((a, b) => a.price - b.price) 
-            this.carsPointer = this.cars.findIndex(car => car.model === carSelected);
-            if(this.page === 2) this.setPreviewCar(this.carsPointer); 
-        },
-        setPreviewCar(pointer = 1)
-        {
-            this.carsPointer = pointer 
-            menu.emitServer('sCar:preview', this.cars[pointer].model); 
-        },
-        setCar(model)
-        {
-            // this.myCar = model; 
-            this.cars.forEach(car => 
+
+            //Выставляем новый выбор
+            foundIndex = this.cars.findIndex(el => el.model === selected.model);
+            console.log(`foundIndex: ${foundIndex}; ${selected.model}`)
+            if(foundIndex !== -1) this.cars[foundIndex].price = -1;
+
+            //Чтобы "не выбрано" всегда было в начале списка
+            let value;
+            foundIndex = this.cars.findIndex(el => el.model === 'none');
+            if(foundIndex !== -1) 
             {
-                if(car.model === 'none') car.price = -2
-                else car.price = 0
-            })
-            this.cars[this.carsPointer].price = -1; 
-            this.emitServer('sCar:set', this.cars[this.carsPointer].model, true)
+                value = this.cars[foundIndex].price;
+                this.cars[foundIndex].price = -2;
+            }
+            this.cars.sort((a, b) => a.price - b.price)  
+            if(foundIndex !== -1) this.cars[foundIndex].price = value;   
+
+            this.carsPointer = this.cars.findIndex(el => el.model === carSelected);
+            if(this.page === 2) this.setPreviewCar(this.carsPointer);
+        },
+        setPreviewCar(pointer = null)
+        {
+            if(pointer === null) 
+            {
+                pointer = this.cars.findIndex(el => el.price === -1)
+                if(pointer === -1) pointer = 0; 
+                this.carsPointer = pointer;   
+            }
+            menu.emitServer('sCar:preview', {model: this.cars[pointer].model, color: this.cars[pointer].color});  
+            console.log(`this.carsPointer: ${this.carsPointer}`) 
+            console.log(`setPreviewCar: ${JSON.stringify(this.cars[pointer])}`)  
+            initColor(); 
+            ColorPicker(); 
+            if(!this.cars[pointer].color) this.cars[pointer].color = {r: 255, g: 255, b: 255}
+            colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
         },
         previewCar(plus)
         {
-            if(!this.fCoolDown()) return;
-
-            if(plus) this.carsPointer === this.cars.length-1 ? this.carsPointer = this.cars.length-1 : this.carsPointer++
-            else this.carsPointer === 0 ? this.carsPointer = 0 : this.carsPointer--
+            // if(!this.fCoolDown()) return;
+            let valueFalse = this.carsPointer, valueTrue;
+            if(plus) this.carsPointer === this.cars.length-1 ? valueTrue = this.cars.length-1 : valueTrue = this.carsPointer+1;
+            else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer-1 
 
             // console.log(this.cars[this.carsPointer].model) 
-            menu.emitServer('sCar:preview', this.cars[this.carsPointer].model);
+            if(valueFalse === valueTrue) return;        
+            if(!this.cars[valueTrue].color) this.cars[valueTrue].color = {r: 255, g: 255, b: 255} 
+            this.waitEmitToServer(250, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {model: this.cars[valueTrue].model, color: this.cars[valueTrue].color}); 
         },
         request(friend, type, event = 'sFriends:rejectRequest')
         { 
@@ -531,6 +590,10 @@ var menu = new Vue({
             this.emit('cCar:rotation', this.camRotation);
             // mp.trigger("cChangeHeading", this.camRotation);
         },
+        changeConverter: function(nameOut, nameIn, k)
+        {
+            this[nameOut] = Math.round(this[nameIn] * +k); 
+        }
     },
 }); 
 
@@ -569,7 +632,7 @@ if ('alt' in window)
     });
      
     alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
-    alt.on('bMenu:updateRank', (obj) => 
+    alt.on('bMenu:updateRank', (obj) =>   
     {
         menu.elo = obj.elo;
         menu.kills = obj.kills;
@@ -600,14 +663,18 @@ if ('alt' in window)
     });
 
     alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers)) 
-    alt.on('bMenu:updateCars', (list) => menu.updateCar(list))  
+    alt.on('bMenu:updateCars', (list, selected) => menu.updateCars(list, selected))   
     alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
     alt.on('bMenu:fInviteToLobby', (lobbyID, myData) => menu.fInviteToLobby(lobbyID, myData))   
     alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))   
+
+    //EMIT 
+    alt.on('bMenu:callBackEmitToServer', (variable, value) => menu.callBackEmitToServer(variable, value))   
 }
 else 
 {
     menu.show = true;  
+    menu.carsPointer = 1; 
     setTimeout(async () => {
         menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
         menu.getLevel();
@@ -618,12 +685,19 @@ else
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ready: 1}, {name: "Resce", ready: -1}, {name: "DarkLegend", ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        // menu.switchPage(0, 0)  
-        menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
+        menu.switchPage(0, 0)  
+        // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)" 
     document.body.style.cursor = "default" 
+//     setTimeout(() => {
+//     initColor();
+//     ColorPicker(); 
+// }, 500)
 }
-
 menu.loadRus()
+
+// window.addEventListener('resize', function(){
+//   });
+  
