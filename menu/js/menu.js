@@ -50,6 +50,8 @@ var menu = new Vue({
         carsPointer: 0,  
         myCar: 'none',
         camRotation: 0, 
+        oldColor: [0, 0, 0, 'none'], 
+        updateTuning: false,
 
         //Admin
         adminLevel: 0,
@@ -125,6 +127,7 @@ var menu = new Vue({
             quickWeaponT: 'TAKE THE SELECTED WEAPON IN HAND',
             infoStopGame: 'When you finish the game, you will leave the lobby',
             applyColor: 'APPLY COLOR',
+            applyTuning: 'APPLY TUNING',
         },
         avatars: {
             "A": "0",
@@ -166,18 +169,28 @@ var menu = new Vue({
             // console.log(...args)
             if ('alt' in window) alt.emit('waitEmitToServer', variable, valueTrue, valueFalse, ...args) 
         },
-        callBackEmitToServer: function(variable, value) {
-            menu[variable] = value;  
-            if(variable === 'carsPointer') 
-            { 
+        callBackEmitToServer: function(variable, value) {  
+            if(variable === 'carsPointer')  
+            {
+                this.cars[this.carsPointer].color = {r: this.oldColor[0], g: this.oldColor[1], b: this.oldColor[2]} 
+                menu[variable] = value;    
+                console.log(`callBackEmitToServer: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
+                if(this.cars[this.carsPointer].model !== this.oldColor[3])  
+                { 
+                    menu.oldColor = [this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b,
+                    this.cars[this.carsPointer].model];  
+                    this.updateTuning = false;
+                } 
+                // console.log(`callBackEmitToServer: ${JSON.stringify(this.oldColor)}; model: ${this.cars[this.carsPointer].model}; this.updateTuning: ${this.updateTuning}`)
                 initColor(); 
                 ColorPicker();  
-                setTimeout(() => {
+                setTimeout(() => { 
                     initColor(); 
                     ColorPicker();  
                     colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b) 
                 }, 100)
             } 
+            else menu[variable] = value; 
             // console.log(this.cars[this.carsPointer].model)  
         },
         emitToClient: function(...args)  
@@ -474,6 +487,7 @@ var menu = new Vue({
                 quickWeaponT: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
                 infoStopGame: 'Закончив игру, Вы покинете лобби',
                 applyColor: 'ПРИМЕНИТЬ ЦВЕТ',
+                applyTuning: 'ПРИМЕНИТЬ ТЮНИНГ',
             }
         },   
         updateCars(list, selected)
@@ -525,12 +539,30 @@ var menu = new Vue({
                 this.carsPointer = pointer;   
             }
             menu.emitServer('sCar:preview', {model: this.cars[pointer].model, color: this.cars[pointer].color});  
-            console.log(`this.carsPointer: ${this.carsPointer}`) 
-            console.log(`setPreviewCar: ${JSON.stringify(this.cars[pointer])}`)  
-            initColor(); 
-            ColorPicker(); 
-            if(!this.cars[pointer].color) this.cars[pointer].color = {r: 255, g: 255, b: 255}
-            colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
+            // console.log(`setPreviewCar: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
+            if(this.cars[this.carsPointer].model !== this.oldColor[3])  
+            { 
+                menu.oldColor = [this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b,
+                this.cars[this.carsPointer].model];  
+                this.updateTuning = false;
+            } 
+            else if(menu.oldColor[0] !== this.cars[this.carsPointer].color.r 
+                || menu.oldColor[1] !== this.cars[this.carsPointer].color.g 
+                || menu.oldColor[2] !== this.cars[this.carsPointer].color.b) 
+                {
+                    this.updateTuning = true;
+                    let el = document.getElementById('changeColorCar');
+                    if(el) el.style.backgroundColor = 'rgb(' + this.cars[this.carsPointer].color.r  + ',' + this.cars[this.carsPointer].color.g  + ',' + this.cars[this.carsPointer].color.b + ')';
+                } 
+
+            // console.log(`this.updateTuning: ${this.updateTuning}`)  
+                
+            setTimeout(() => {
+                initColor(); 
+                ColorPicker(); 
+                if(!this.cars[pointer].color) this.cars[pointer].color = {r: 255, g: 255, b: 255}
+                colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b) 
+            }, 100)
         },
         previewCar(plus)
         {
@@ -543,6 +575,17 @@ var menu = new Vue({
             if(valueFalse === valueTrue) return;        
             if(!this.cars[valueTrue].color) this.cars[valueTrue].color = {r: 255, g: 255, b: 255} 
             this.waitEmitToServer(250, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {model: this.cars[valueTrue].model, color: this.cars[valueTrue].color}); 
+        },
+        fApplyTuning(car)
+        {
+            console.log(`fApplyTuning: ${JSON.stringify(car)}`)
+            let found = this.cars.findIndex(veh => veh.model === car.model)
+            if(!found) return;
+            console.log(`fApplyTuning: found: ${found}`);
+            this.cars[found].color = car.color;  
+            this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
+            this.updateTuning = false;
+            
         },
         request(friend, type, event = 'sFriends:rejectRequest')
         { 
@@ -664,9 +707,11 @@ if ('alt' in window)
 
     alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers)) 
     alt.on('bMenu:updateCars', (list, selected) => menu.updateCars(list, selected))   
-    alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())  
+    alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())   
     alt.on('bMenu:fInviteToLobby', (lobbyID, myData) => menu.fInviteToLobby(lobbyID, myData))   
     alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))   
+
+    alt.on('bMenu:applyTuning', (car) => menu.fApplyTuning(car))   
 
     //EMIT 
     alt.on('bMenu:callBackEmitToServer', (variable, value) => menu.callBackEmitToServer(variable, value))   
@@ -696,8 +741,7 @@ else
     ColorPicker(); 
 }, 500)
 }
-menu.loadRus()
-
+menu.loadRus()  
 // window.addEventListener('resize', function(){
-//   });
-  
+//   }); 
+   

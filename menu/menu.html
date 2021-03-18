@@ -629,7 +629,7 @@
                         v-model.number="camRotation">
                 </div>
                 <!-- v-on:mouseleave="setPreviewCar(carsPointer)" -->
-                <div class="colorPicker" v-show="cars[carsPointer].price > 0">
+                <div class="colorPicker" v-show="cars[carsPointer].model !== 'none'">
                     <div id="colorpicker" class="color-picker-panel">
                         <div class=" panel-row">
                             <div class="spectrum-map">
@@ -673,22 +673,29 @@
                     </div>
                     <div class="btnback" style="display: flex; align-items: center;">
                         <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
-                        <a id="mouseFocus" style="background-color: #ffffff81"
-                            v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
+                        <section id="mouseFocus" style="display: flex; align-items: center; justify-content: center;" v-if="cars[carsPointer].price <= 0">
+                            <a id="changeColorCar"     
+                                v-on:click="emitServer('sCar:applyTuning', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
+                                v-show="updateTuning && cars[carsPointer].model !== 'none'">{{i18n.applyTuning}}($200)</a>
 
-                        <section v-else style="display: flex; align-items: center; justify-content: center;">
-                            <a id="mouseFocus" v-if="cars[carsPointer].price === 0 || cars[carsPointer].price === -2"
-                                v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
-                            <section v-else style="display: flex; align-items: center;">
-                                <a id="mouseFocus"
-                                    v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
-                                    style="background-color: #fffb00">{{i18n.buy}}</a>
-                                <!-- <input type="color" value="цвет" name="имя" class="colorInput"> -->
-                            </section>
+                                <a id="mouseFocus" style="background-color: #ffffff81"
+                                v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
+
+                                <section style="display: flex; align-items: center; justify-content: center;" v-else>
+                                    <a id="mouseFocus" 
+                                    v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
+                                </section> 
+                        </section>
+                        <section style="display: flex; align-items: center;" v-else>
+                            <section style="display: flex; align-items: center;" v-else>
+                        <section style="display: flex; align-items: center;" v-else>
+                            <a id="mouseFocus"
+                                style="background-color: #fffb00"
+                                v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
                         </section>
                     </div>
                 </div>
-            </div>
+            </div> 
         </section>
 
         <!-- ДОНАТ -->
