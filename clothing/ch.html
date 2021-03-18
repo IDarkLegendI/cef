@@ -56,16 +56,16 @@
 							<div class="textnamecustom">{{ underColorText }}</div>
 						</div>
 						<div class="arrowrightcustom" @click="nextUnderColor">
-							<img src="./img/arrowRight.png" width="30vw">
+							<img src="./img/arrowRight.png" width="30vw"> 
 						</div>
 					</div> -->
 				</div>
 				<div class="btns">
-					<div class="btn btnbuy" @click="buy" v-if="currentTitle">
-						<a href="#">{{ buyText }} {{ showPrice() }}</a>
-					</div>
+					<div @click="buy" class="btn btnbuy" v-if="currentTitle && !colorCloth">
+						<a href="#">{{ buyText }} {{ showPrice() }}</a>   
+					</div> 
 					<div class="btn" @click="reset">
-						<a href="#">{{ resetText }}</a>
+						<a href="#">{{ resetText }}</a>  
 					</div>
 					<div class="btn btnclose" @click="exit">
 						<a href="#">{{ exitText }} </a>
@@ -86,6 +86,7 @@
 	const app = new Vue({
 		el: '#app',
 		data: {
+			myClothes: {},
 			camRotation: 180,
 			hats: false,
 			glasses: false,
@@ -111,8 +112,14 @@
 			buyText: "Buy for",
 			resetText: "Reset",
 			exitText: "Exit",
-
-
+		},
+		computed:{
+			colorCloth() 
+			{
+				console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
+				console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
+				return this.myClothes[this.currentTitle].color === this.currentCloth.color && this.currentArr[this.myClothes[this.currentTitle].number] === this.currentCloth 
+			}
 		},
 		methods: {
 			prettify: function (num) {
@@ -128,11 +135,12 @@
 				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
 			},
 			setCurrentStartSettings: function () {
-				this.currentNum = 0;
-				this.currentCloth = this.currentArr[0];
-				this.currentCloth.color = this.currentCloth.colors[0];
-				this.setColor(0);
-				if (this.currentTitle === "Tops") this.setUnderColor(0);
+				console.log(`this.myClothes: ${JSON.stringify(this.myClothes)}`) 
+				this.currentNum = this.myClothes[this.currentTitle].number;
+				this.currentCloth = this.currentArr[this.myClothes[this.currentTitle].number];
+				this.currentCloth.color = this.myClothes[this.currentTitle].color; 
+				this.setColor(this.myClothes[this.currentTitle].color);  
+				if (this.currentTitle === "Tops") this.setUnderColor(0); 
 				alt.emit('emitToServer', 'sClothing:reloadClothes');
 				alt.emit('emitToClient', 'cClothing:SetCamera', this.currentTitle)
 			},
@@ -183,6 +191,7 @@
 
 
 			setColor: function (num) {
+				console.log(`setColor: ${num}`)
 				this.currentColorNum = num;
 				this.currentCloth.color = this.currentCloth.colors[num];
 				this.setClothToPlayer();
@@ -668,6 +677,8 @@
 			if (sex) loadMans();
 			else loadWomans();
 		})
+
+		alt.on('updateClothes', clothes => app.myClothes = clothes)
 
 		alt.on('setLang', lang => {
 			console.log(`lang: ${lang}`)

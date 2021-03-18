@@ -220,7 +220,11 @@ var menu = new Vue({
             if(this.subPage === -2) return;
              
             console.log(`switchPage: ${newPage}; ${this.page}`)
-            if(newPage === 0 && this.page === 2) menu.emit('cCar:setCarPreview', false)
+            if(newPage === 0 && this.page === 2) 
+            {
+                menu.emit('cCar:setCarPreview', false)
+                this.cars[this.carsPointer].color = {r: this.oldColor[0], g: this.oldColor[1], b: this.oldColor[2]}                  
+            }
             // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
             if(newSubPage != -1)
             {

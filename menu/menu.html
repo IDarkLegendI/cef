@@ -660,7 +660,7 @@
                         </div>
                         <div class="nameauto">
                             <div style="color: #fffb00;" v-show="cars[carsPointer].price > 0">
-                                {{cars[carsPointer].price}}$</div>
+                                ${{cars[carsPointer].price}}</div>
                             <div class="textnameauto">
                                 {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}</div>
                         </div>
@@ -685,9 +685,7 @@
                                     <a id="mouseFocus" 
                                     v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
                                 </section> 
-                        </section>
-                        <section style="display: flex; align-items: center;" v-else>
-                            <section style="display: flex; align-items: center;" v-else>
+                        </section> 
                         <section style="display: flex; align-items: center;" v-else>
                             <a id="mouseFocus"
                                 style="background-color: #fffb00"
