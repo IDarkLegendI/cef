@@ -233,7 +233,7 @@ html
     box-shadow: 0 0 10px #c48f00, inset 0 0 10px #c48f00
     transition: .2s ease-out
     display: flex
-    flex-direction: row
+    flex-direction: column
 
 .noob:hover
     background-color: #c48f00
@@ -244,16 +244,33 @@ html
     display: flex
     flex-direction: column
     align-items: flex-start
-    justify-content: space-between
-    width: 50%
-    padding: 1.4vw 0 1.4vw 1.5vw
+    // justify-content: space-between
+    padding: 2.6vh 0 0 1.5vw
+    flex-basis: 50% 
     // border: 1px solid black
     // justify-content: flex-start
 
 .noobpart2
-    // border: 1px solid black
+    // border: 1px solid red
     display: flex
-    width: 50%
+    justify-content: space-between
+    flex-basis: 50%
+    padding-left: 1vw
+    // width: 100%
+
+
+.iconnoob
+    // display: flex
+    // justify-content: flex-end
+    // margin-top: auto
+    position: relative
+    top: 1.5vh 
+    img
+        filter: drop-shadow(0px 0px 5px #000000d2)
+        width: 12vw
+        height: auto
+        // margin-top: auto
+        // transform: rotate(10deg)
 
 .backpack
     width: 35%
@@ -607,27 +624,6 @@ html
         width: calc( 9.5vw + 6.3vh )
         height: auto
 
-.textnoob
-    color: white
-    // margin-top: 3vh
-    // margin-left: 2vw
-    font-size: 3.5vh
-
-.textnoob1
-    font-family: 'Rubik', sans-serif
-    display: block
-    line-height: 3.7vh
-
-.textnoob2
-    font-family: 'Roboto Condensed', sans-serif
-
-.textnoob3
-    font-family: 'Rubik', sans-serif
-    font-size: 1.6vh
-
-.textnoob4
-    font-family: 'Roboto Condensed', sans-serif
-
 .noobbtn
     color: white
     font-family: 'Roboto Condensed', sans-serif
@@ -637,10 +633,10 @@ html
 
 .minibtn
     transition: 0.2s ease-out
-    border: 2px solid #e0e0e0
+    border: 0.11em solid #e0e0e0
     padding: 0.3vh 2vh
     // flex-basis: 25%
-    border-radius: 11px
+    border-radius: 0.5em
     line-height: 4.3vh
     font-size: 1.8vh
     text-align: center
@@ -651,19 +647,6 @@ html
     background: white
     color: black
     // border: none
-
-.iconnoob
-    // display: flex
-    // justify-content: flex-end
-    margin-top: auto
-    position: relative
-    top: 3vh
-    img
-        filter: drop-shadow(0px 0px 5px #000000d2)
-        width: 12vw
-        height: auto
-        // margin-top: auto
-        // transform: rotate(10deg)
 
 .headright
     margin-top: 3vh
@@ -1255,7 +1238,7 @@ a:hover
     padding-bottom: 1vh
     margin-left: 1vw
     margin-right: 0.5vw
-    flex-basis: 100%
+    flex-basis: 80% 
     // max-height: 25vh
     overflow-y: auto
     overflow-x: none
@@ -1355,7 +1338,7 @@ a:hover
     input
         border: none
         height: 3.5vh
-        width: 10vw
+        width: 13vw
         border-radius: 10px
         background-color: #0000006c
         color: white
@@ -2036,3 +2019,16 @@ a:hover
     right: 1.25vw
     width: 0.7vw
     height: 22vh
+
+@keyframes color 
+    0% 
+      color: white
+    
+    50% 
+      color: rgb(255, 0, 0)
+    
+    100% 
+        color: white
+    
+#RMMoney
+    animation: color 8s infinite ease-in-out

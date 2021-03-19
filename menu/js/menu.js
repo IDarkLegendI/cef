@@ -63,6 +63,7 @@ var menu = new Vue({
         coolDown: false,
 
         //Shop
+        moneyRM: 0,
         converterRM: 0,
         converterD: 0,
 
@@ -86,9 +87,9 @@ var menu = new Vue({
             clickready: 'Click for ready',
             clicknotready: 'Click if not ready',
             settings: 'SETTINGS',
-            pack: 'PACK',
-            noob: 'NOOB',
-            left: 'Left',
+            pack: 'STORE',
+            noob: 'PRIVILEGE',
+            left: 'left until the end of the discount',
             time: '13 hours',
             license: 'LICENSE',
             money: 'MONEY',
@@ -117,6 +118,7 @@ var menu = new Vue({
             normal: 'Normal',
             big: 'Big',
             btnBack: 'BACK',
+            leavelobby: 'LEAVY LOBBY',
             buy: 'BUY',
             select: 'SELECT',
             selected: 'SELECTED',
@@ -449,9 +451,9 @@ var menu = new Vue({
                 clickready: 'Нажмите для готовности',
                 clicknotready: 'Нажмите, если не готовы',
                 settings: 'НАСТРОЙКИ',
-                pack: 'ПАК',
-                noob: 'НОВИЧКА',
-                left: 'Осталось',
+                pack: 'МАГАЗИН',
+                noob: 'ПРИВИЛЕГИЙ',
+                left: 'Осталось до конца скидки',
                 time: '13 ЧАСОВ',
                 license: 'ЛИЦЕНЗИИ',
                 money: 'ДЕНЬГИ',
@@ -734,7 +736,7 @@ else
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{name: "Player", ready: 1}, {name: "Resce", ready: -1}, {name: "DarkLegend", ready: 1}])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 0)  
+        menu.switchPage(0, 3)  
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)

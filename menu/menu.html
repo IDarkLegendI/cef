@@ -209,18 +209,22 @@
                         <div class="downleft">
                             <div class="noob form1" v-on:click="switchPage(3)">
                                 <div class="noobpart1">
-                                    <div class="textnoob" id="mouseFocus">
-                                        <span class="textnoob1">{{i18n.pack}} <br> <span
-                                                class="textnoob2">{{i18n.noob}}</span></span>
-                                        <span class="textnoob3">{{i18n.left}} <span
-                                                class="textnoob4">{{i18n.time}}</span></span>
+                                    <div id="mouseFocus" style="display: flex; color: white; flex-direction: column; justify-content: space-between;">
+                                        <div style="font-size: 3.5vh; font-family: 'Rubik'">
+                                            <div>{{i18n.pack}}</div>
+                                            <div style="font-family: 'Roboto Condensed'">{{i18n.noob}}</div>
+                                        </div>
+                                        <div style="font-size: 1.6vh; font-family: 'Roboto Condensed'; display: flex; margin-top: 1vh;">
+                                            <div>{{i18n.left}}:</div>
+                                            <div style="margin-left: 0.3vw;">{{i18n.time}}</div>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="noobpart2">
                                     <div class="noobbtn">
                                         <span><span class="minibtn" id="mouseFocus">{{i18n.license}}</span> <br> <span
                                                 class="minibtn" id="mouseFocus">{{i18n.money}}</span>
                                     </div>
-                                </div>
-                                <div class="noobpart2">
                                     <div class="iconnoob">
                                         <img src="./img/noob.png" alt="">
                                     </div>
@@ -233,9 +237,9 @@
                                             <div class="bpname">
                                                 <span>{{i18n.rank}}</span>
                                             </div>
-                                            <span style="font-size: 0.9vw;
+                                            <span style="font-size: 0.8vw;
                                             margin-top: 5%;">{{i18n.backmatch}}:</span>
-                                            <span style="font-size: 1vw;"
+                                            <span style="font-size: 0.9vw;"
                                                 :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
                                             </span>
                                         </div>
@@ -696,7 +700,7 @@
                 </div>
             </div> 
         </section>
-
+ 
         <!-- ДОНАТ -->
         <section v-if="page === 3">
             <div class="upline">
@@ -704,12 +708,15 @@
                     <span>GTAROYAL.RU</span>
                 </div>
                 <div class="balancemoney">
-                    <span>БАЛАНС <br> <span class="rub">213941 $</span></span>
-                </div>
-                <div class="buttonsupline">
-                    <div class="btnupline">
-                        <span v-on:click="saveSettings(0)">{{i18n.btnBack}}</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
+                        <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
                     </div>
+                </div>
+                <div class="btn" id="mouseFocus">
+                    <span>{{i18n.topap}}</span>
+                </div>
+                <div class="btn" id="mouseFocus">
+                    <span v-on:click="switchPage(0,0)">{{i18n.btnBack}}</span>
                 </div>
             </div>
             <!-- <div class="donateMain">
