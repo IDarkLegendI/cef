@@ -9,6 +9,10 @@
 	<div id="app">
 		<div class="b1">
 			<div class="contentb1">
+				<div style="display: flex; flex-direction: column; margin-top: 2vh">
+					<p style="font-size: 1.5vh; margin: 0;">{{titleBalance}}</p>
+					<p style="font-size: 2vh; margin: 0; margin-top: 0.11vh">${{money}}</p>
+				</div>
 				<div class="switchcustom">
 					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Hats')}" class="customelement">
 						<img @click="showHats" alt="" src="./img/shapka.png">
@@ -91,7 +95,8 @@
 	const app = new Vue({
 		el: '#app',
 		data: {
-			koef: 2,
+			koef: 2, 
+			money: 0,
 
 			myClothes: {},
 			camRotation: 180,
@@ -108,6 +113,7 @@
 			currentUnderColorNum: 0,
 			currentCloth: false,
 
+			titleBalance: "Balance",
 			titleText: "Clothing Store",
 			hatsText: "Hats",
 			glassesText: "Glasses",
@@ -680,6 +686,7 @@
 
 
 	function loadRusLang() {
+		app.titleBalance = "Баланс";
 		app.titleText = "Магазин одежды";
 		app.hatsText = "Головные уборы";
 		app.glassesText = "Очки";
@@ -704,6 +711,7 @@
 		})
 
 		alt.on('updateClothes', clothes => app.myClothes = clothes)
+		alt.on('updateCash', value => app.money = value)
 
 		alt.on('setLang', lang => {
 			console.log(`lang: ${lang}`)
