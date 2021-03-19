@@ -2,6 +2,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="ch.css">
 <script src="../vue.js"></script>
+<link href="../animate.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
 <body>
@@ -9,19 +10,19 @@
 		<div class="b1">
 			<div class="contentb1">
 				<div class="switchcustom">
-					<div :class="{active: (currentTitle === 'Hats')}" class="customelement">
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Hats')}" class="customelement">
 						<img @click="showHats" alt="" src="./img/shapka.png">
 					</div>
-					<div :class="{active: (currentTitle === 'Glasses')}" class="customelement">
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Glasses')}" class="customelement">
 						<img @click="showGlasses" alt="" src="./img/oki.png">
 					</div>
-					<div :class="{active: (currentTitle === 'Tops')}" class="customelement">
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Tops')}" class="customelement">
 						<img @click="showTops" alt="" src="./img/topi.png">
 					</div>
-					<div :class="{active: (currentTitle === 'Legs')}" class="customelement">
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Legs')}" class="customelement">
 						<img @click="showLegs" alt="" src="./img/shtani.png">
 					</div>
-					<div :class="{active: (currentTitle === 'Feet')}" class="customelement">
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Feet')}" class="customelement"> 
 						<img @click="showFeet" alt="" src="./img/boti.png">
 					</div>
 				</div>
@@ -61,9 +62,13 @@
 					</div> -->
 				</div>
 				<div class="btns">
-					<div @click="buy" class="btn btnbuy" v-if="currentTitle && !colorCloth">
-						<a href="#">{{ buyText }} {{ showPrice() }}</a>   
-					</div> 
+					<section v-if="currentTitle && !colorCloth">
+						<div style="display: flex; align-items: center; font-size: 1.5vh;"><p>{{saleText}}: </p>
+							<p style="padding-left: 0.25vw; font-size: 2vh; color: greenyellow">${{showSale()}}</p></div>
+						<div @click="buy" class="btn btnbuy">
+							<a href="#">{{ buyText }} {{ showPrice() }}</a>    
+						</div> 
+					</section>
 					<div class="btn" @click="reset">
 						<a href="#">{{ resetText }}</a>  
 					</div>
@@ -86,6 +91,8 @@
 	const app = new Vue({
 		el: '#app',
 		data: {
+			koef: 2,
+
 			myClothes: {},
 			camRotation: 180,
 			hats: false,
@@ -109,6 +116,7 @@
 			feetText: "Feet",
 			colorText: "Color:",
 			underColorText: "Undershirt Color",
+			saleText: "Discount for an old item",
 			buyText: "Buy for",
 			resetText: "Reset",
 			exitText: "Exit",
@@ -127,8 +135,24 @@
 				const separator = " ";
 				return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + separator);
 			},
-			showPrice: function () {
-				return this.currentCloth.price;
+			showSale: function()
+			{
+				if(this.currentArr)
+				{
+					return this.currentArr[this.myClothes[this.currentTitle].number].price / +this.koef; 
+				}
+
+				return 0
+			},
+			showPrice: function () { 
+				console.log(`showPrice: ${this.currentCloth.price} -> ${this.currentArr[this.myClothes[this.currentTitle].number].price / +this.koef}`)
+				let sale = this.currentCloth.price - this.currentArr[this.myClothes[this.currentTitle].number].price / +this.koef;
+				if(sale < +0) 
+				{
+					sale *= -1;
+					sale = '+' + sale
+				}
+				return sale;
 			},
 
 			load: function () {
@@ -664,6 +688,7 @@
 		app.feetText = "Обувь";
 		app.colorText = "Цвет";
 		app.underColorText = "Цвет-2";
+		app.saleText = "Скидка за старую вещь";
 		app.buyText = "Купить за";
 		app.resetText = "Сбросить";
 		app.exitText = "Выход";
