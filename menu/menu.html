@@ -233,8 +233,9 @@
                                             <div class="bpname">
                                                 <span>{{i18n.rank}}</span>
                                             </div>
-                                            <span style="font-size: 1.7vh;">{{i18n.backmatch}}:</span>
-                                            <span
+                                            <span style="font-size: 0.9vw;
+                                            margin-top: 5%;">{{i18n.backmatch}}:</span>
+                                            <span style="font-size: 1vw;"
                                                 :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
                                             </span>
                                         </div>
@@ -612,11 +613,11 @@
         <section v-if="page === 2">
             <div style="display: flex; flex-direction: column;">
                 <div class="upline">
-                    <div class="balancemoney">
-                        <span>БАЛАНС <br> <span class="rub">${{money}}</span></span>
-                    </div>
                     <div class="nameupline">
                         <span>GTAROYAL.RU</span>
+                    </div>
+                    <div class="balancemoney">
+                        <span>БАЛАНС <br> <span class="rub">${{money}}</span></span>
                     </div>
                     <!-- <div class="buttonsupline">
                     <div class="btnupline">
@@ -699,11 +700,11 @@
         <!-- ДОНАТ -->
         <section v-if="page === 3">
             <div class="upline">
-                <div class="balancemoney">
-                    <span>БАЛАНС <br> <span class="rub">213941 $</span></span>
-                </div>
                 <div class="nameupline">
                     <span>GTAROYAL.RU</span>
+                </div>
+                <div class="balancemoney">
+                    <span>БАЛАНС <br> <span class="rub">213941 $</span></span>
                 </div>
                 <div class="buttonsupline">
                     <div class="btnupline">
