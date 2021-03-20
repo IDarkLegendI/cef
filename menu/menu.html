@@ -96,7 +96,8 @@
                 <div class="down">
                     <div class="left">
                         <div class="upleft">
-                            <div class="car form" v-on:click="emit('cCar:setCarPreview', true)">
+                            <!-- УПРАВЛЕНИЕ МАШИНАМИ -->
+                            <div class="car form" v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1)">
                                 <div class="carContent">
                                     <div class="textcar" id="mouseFocus">
                                         <span class="textcar1">{{i18n.personal}}</span>
