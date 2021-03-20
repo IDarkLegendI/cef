@@ -291,11 +291,11 @@
                             </div>
                             <div class="textright">
                                 <span class="minibtn" id="mouseFocus"
-                                    v-on:click="emit('characterOpen')">{{i18n.custom}}</span> <br>
+                                    v-on:click="emit('characterOpen', lobby[myID].ready === 1)">{{i18n.custom}}</span> <br>
                                 <span class="minibtn" id="mouseFocus"
                                     v-on:click="switchPage(0, 2)">{{i18n.friends}}</span> <br>
                                 <span class="minibtn" id="mouseFocus"
-                                    v-on:click="emit('cClothes:open')">{{i18n.clothing}}</span>
+                                    v-on:click="emit('cClothes:open', lobby[myID].ready === 1)">{{i18n.clothing}}</span>
                             </div>
                             <div class="righticon">
                                 <img src="img/character.png" id="mouseFocus" alt="">
