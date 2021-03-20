@@ -139,8 +139,8 @@
                                     <section v-else>
                                         <!-- Если игрок не готов -->
                                         <div class="ticket ticketRed form" id="mouseFocus"
-                                            v-on:click="emitServer('sLobby:setReady', false)"
-                                            v-if="lobby[myID].ready === 0">
+                                            v-if="lobby[myID].ready === 0"
+                                            v-on:click="emitServer('sLobby:setReady', 1)">
                                             <div class="textticket">
                                                 <div class="textticket1">{{i18n.notready}}</span></div>
                                                 <div class="textticket3">{{i18n.clickready}}
@@ -156,10 +156,10 @@
                                                 <img src="./img/jostik.png" id="mouseFocus" alt="">
                                             </div>
                                         </div>
-
+ 
                                         <!-- Если игрок готов -->
                                         <div class="ticket form" id="mouseFocus"
-                                            v-else v-on:click="emitServer('sLobby:setReady', true)">
+                                            v-else v-on:click="emitServer('sLobby:setReady', 0)"> 
                                             <div class="textticket">
                                                 <div class="textticket1">{{i18n.ready}}</span></div>
                                                 <div class="textticket3">{{i18n.clicknotready}}
@@ -716,8 +716,8 @@
                 <div class="btn" id="mouseFocus">
                     <span>{{i18n.topap}}</span>
                 </div>
-                <div class="btn" id="mouseFocus">
-                    <span v-on:click="switchPage(0,0)">{{i18n.btnBack}}</span>
+                <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                    <span>{{i18n.btnBack}}</span>
                 </div>
             </div>
             <!-- <div class="donateMain">
