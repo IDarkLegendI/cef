@@ -161,10 +161,10 @@ var menu = new Vue({
           },
     },
     methods: {
-        emitServer: function(...args)  
+        emitServer: function(eventName, ...args)  
         {
             // console.log(...args)
-            if ('alt' in window) alt.emit('emitToServer', ...args) 
+            if ('alt' in window) alt.emit('emitToServer', eventName, ...args) 
         },
         waitEmitToServer: function(variable, valueTrue, valueFalse, ...args)  
         { 
