@@ -144,16 +144,17 @@ html {
 .switchcustom {
    margin-top: 2vh;
    display: flex;
-   width: 3.8vw;
    height: 50vh;
+   width: 100%;
    flex-direction: column;
    justify-content: space-between;
+   align-items: center;
    flex-wrap: wrap;
    /* border: 2px solid green; */
 }
 
 .customelement {
-   width: 100%;
+   width: 3.8vw;
    height: 8vh;
    /* border: 1px solid green; */
    transition: 0.2s all;

@@ -17,16 +17,21 @@
 					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Hats')}" class="customelement">
 						<img @click="showHats" alt="" src="./img/shapka.png">
 					</div>
-					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Glasses')}" class="customelement">
-						<img @click="showGlasses" alt="" src="./img/oki.png">
+					<div style="display: flex; width: 50%; justify-content: space-between; align-items: center;">
+						<div :class="{'animated infinite wobble slower active': (currentTitle === 'Glasses')}" class="customelement">
+							<img @click="showGlasses" alt="" src="./img/oki.png">
+						</div>
+						<div :class="{'animated infinite wobble slower active': (currentTitle === 'Masks')}" class="customelement" style="height: 6.5vh">
+							<img @click="showMasks" alt="" src="./img/facemask.png">
+						</div>
 					</div>
-					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Tops')}" class="customelement">
-						<img @click="showTops" alt="" src="./img/topi.png">
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Tops')}" class="customelement" style="height: 7vh">
+						<img @click="showTops" alt="" :src="`./img/${bMan ? 'topi' : 't-shirt'}.png`">
 					</div>
-					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Legs')}" class="customelement">
-						<img @click="showLegs" alt="" src="./img/shtani.png">
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Legs')}" class="customelement" style="height: 7vh">
+						<img @click="showLegs" alt="" :src="`./img/${bMan ? 'shtani' : 'skirt'}.png`">
 					</div>
-					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Feet')}" class="customelement"> 
+					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Feet')}" class="customelement" style="height: 6.5vh"> 
 						<img @click="showFeet" alt="" src="./img/boti.png">
 					</div>
 				</div>
@@ -36,7 +41,7 @@
 							<img @click="prevColor" src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom">
-							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color }}</div>
+							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color }} {{ ofText }} {{currentCloth.colors[currentCloth.colors.length - 1]}}</div>
 						</div>
 						<div class="arrowrightcustom">
 							<img @click="nextColor" src="./img/arrowRight.png" width="30vw">
@@ -98,10 +103,12 @@
 			koef: 2, 
 			money: 0,
 
+			bMan: false,
 			myClothes: {},
 			camRotation: 180,
 			hats: false,
 			glasses: false,
+			masks: false,
 			tops: false,
 			legs: false,
 			feet: false,
@@ -117,6 +124,7 @@
 			titleText: "Clothing Store",
 			hatsText: "Hats",
 			glassesText: "Glasses",
+			masksText: "Masks",
 			topsText: "Tops",
 			legsText: "Legs",
 			feetText: "Feet",
@@ -125,13 +133,14 @@
 			saleText: "Discount for an old item",
 			buyText: "Buy for",
 			resetText: "Reset",
+			ofText: "of",
 			exitText: "Exit",
 		},
 		computed:{
 			colorCloth() 
 			{
-				console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
-				console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
+				// console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
+				// console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
 				return this.myClothes[this.currentTitle].color === this.currentCloth.color && this.currentArr[this.myClothes[this.currentTitle].number] === this.currentCloth 
 			}
 		},
@@ -182,6 +191,11 @@
 			showGlasses: function () {
 				this.currentTitle = "Glasses";
 				this.currentArr = this.glasses;
+				this.setCurrentStartSettings();
+			},
+			showMasks: function () {
+				this.currentTitle = "Masks";
+				this.currentArr = this.mask;
 				this.setCurrentStartSettings();
 			},
 			showTops: function () {
@@ -300,6 +314,7 @@
 	});
 
 	function loadMans() {
+		this.bMan = true;
 		app.hats = [{
 				id: 8,
 				name: "Without Hat",
@@ -365,6 +380,8 @@
 				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 				price: 450,
 			},
+			{	id: 21, name: "Star Frame Shades", color: 0, colors: [0], 	price: 450,  },  
+			{	id: 26, name: "Star Frame Shades", color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 	price: 900,  }, 
 		];
 
 		app.tops = [{
@@ -531,6 +548,7 @@
 
 
 	function loadWomans() {
+		this.bMan = false
 		app.hats = [{
 				id: 57,
 				name: "Without Hat",
@@ -690,6 +708,7 @@
 		app.titleText = "Магазин одежды";
 		app.hatsText = "Головные уборы";
 		app.glassesText = "Очки";
+		app.masksText = "Маски";
 		app.topsText = "Верхняя одежда";
 		app.legsText = "Брюки";
 		app.feetText = "Обувь";
@@ -699,6 +718,7 @@
 		app.buyText = "Купить за";
 		app.resetText = "Сбросить";
 		app.exitText = "Выход";
+		app.ofText = "из";
 		app.hats[0].name = "Без головного убора"
 		app.glasses[0].name = "Без очков"
 	}
