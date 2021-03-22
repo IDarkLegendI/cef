@@ -35,15 +35,15 @@
 						<img @click="showFeet" alt="" src="./img/boti.png">
 					</div>
 				</div>
-				<div class="sandwiches" v-if="currentTitle">
-					<div class="sandwichcustom">
+				<div class="sandwiches" v-if="currentTitle"> 
+					<div class="sandwichcustom"> 
 						<div class="arrowleftcustom">
 							<img @click="prevColor" src="./img/arrowLeft.png" width="30vw">
 						</div>
-						<div class="namecustom">
-							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color }} {{ ofText }} {{currentCloth.colors[currentCloth.colors.length - 1]}}</div>
+						<div class="namecustom"> 
+							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color + 1}} {{ ofText }} {{currentCloth.colors[currentCloth.colors.length-1] + 1}}</div>
 						</div>
-						<div class="arrowrightcustom">
+						<div class="arrowrightcustom"> 
 							<img @click="nextColor" src="./img/arrowRight.png" width="30vw">
 						</div>
 					</div>
@@ -76,8 +76,8 @@
 							<p style="padding-left: 0.25vw; font-size: 2vh; color: greenyellow">${{showSale()}}</p></div>
 							<div class="btn"><input :value="showPrice()" class="button btngreen" type="button" v-on:click="buy()"></div>
 					</section>  
-					<div class="btn"><input :value="resetText" class="button" type="button" v-on:click="buy()"></div>
-					<div class="btn"><input :value="exitText" class="button btnclose" type="button" v-on:click="buy()"></div>
+					<div class="btn"><input :value="resetText" class="button" type="button" v-on:click="reset()"></div>
+					<div class="btn"><input :value="exitText" class="button btnclose" type="button" v-on:click="exit()"></div>
 				</div>
 			</div>
 		</div>
@@ -133,14 +133,15 @@
 		computed:{
 			colorCloth() 
 			{
-				// console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
-				// console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
+				console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
+				console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
+				console.log(`this.myClothes[this.currentTitle]: ${this.myClothes[this.currentTitle]}`) 
 				return this.myClothes[this.currentTitle].color === this.currentCloth.color && this.currentArr[this.myClothes[this.currentTitle].number] === this.currentCloth 
 			}
 		},
 		methods: {
 			prettify: function (num) {
-				let n = num.toString();
+				let n = num.toString(); 
 				const separator = " ";
 				return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + separator);
 			},
@@ -148,7 +149,7 @@
 			{
 				if(this.currentArr)
 				{
-					return this.currentArr[this.myClothes[this.currentTitle].number].price / +this.koef; 
+					return Math.round(this.currentArr[this.myClothes[this.currentTitle].number].price / +this.koef); 
 				}
 
 				return 0
@@ -277,7 +278,7 @@
 					underColor: this.currentCloth.underColor,
 				}
 				console.log(`buy ----------------->	${JSON.stringify(obj)}`) 
-				alt.emit('emitToServer', 'sClothing:buy', obj);
+				alt.emit('emitToServer', 'sClothing:buy', obj); 
 			},
 
 			reset: function () {
@@ -343,6 +344,7 @@
     	];
 
 		app.masks =  [
+		{	id: 0, 	name: "Without mask", 	color: 0, colors: [0], 	price: 0,  },
         {	id: 1, 	name: "Pink Pig", 	color: 0, colors: [0, 1, 2, 3], 	price: 4500,  },
         {	id: 2, 	name: "Silver Skull", 	color: 0, colors: [0, 1, 2, 3], 	price: 4600,  },
         {	id: 3, 	name: "Pogo", 	color: 0, colors: [0], 	price: 4750,  },
@@ -432,6 +434,7 @@
     ];
 	
 	app.watch = [
+        {	id: 0, 	name: "Without watch", 	color: 0, colors: [0], 	price: 0,  },
         {	id: 3, 	name: "Black Sports", 	color: 0, colors: [0, 1, 2, 3, 4], 	price: 500,  },
         {	id: 5, 	name: "Red LED, White Strap", 	color: 0, colors: [0, 1, 2, 3], 	price: 400,  },
         {	id: 40, 	name: "Blue Bangles (L)", 	color: 0, colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 	price: 400,  },
@@ -738,6 +741,7 @@
     ];
 
 	app.masks = [
+		{	id: 0, 	name: "Without mask", 	color: 0, colors: [0], 	price: 0,  },
         {	id: 1, 	name: "Pink Pig", color: 0, colors: [0, 1, 2, 3], 	price: 3000,  },
         {	id: 75, 	name: "Pink Crazy Gingerbread", color: 0, colors: [0, 1, 2], 	price: 4200,  },
         {	id: 77, 	name: "Green Festive Luchador", color: 0, colors: [0, 1, 2], 	price: 4300,  },
@@ -947,6 +951,7 @@
 		app.ofText = "из";
 		app.hats[0].name = "Без головного убора"
 		app.glasses[0].name = "Без очков"
+		app.masks[0].name = "Без маски"
 	}
 
 	if ('alt' in window) {
