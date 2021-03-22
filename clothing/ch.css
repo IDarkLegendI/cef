@@ -295,3 +295,41 @@ a:hover {
 .textnamecustom {
    text-shadow: 0 0 1px black;
 }
+
+input[type="button" i]:focus, .button :focus, .button :active {
+   outline: none;
+}
+
+
+.button {
+   background-color: rgba(255, 255, 255, 0);
+   font-size: 2vh;
+   border-radius: 5px;
+   width: 11.4vw;
+   padding: 1vh 1.7vw;
+   border: 1px solid white;
+   color: white;
+   font-family: 'Roboto Condensed', sans-serif;
+   text-shadow: none;
+   transition: .2s all;
+}
+
+
+.button:hover {
+   box-shadow: 0px 0px 15px #ffffff;
+}
+
+.btngreen:hover {
+   border-color: rgb(12, 255, 24);
+   color: rgb(12, 255, 24);
+   box-shadow: 0px 0px 8px rgb(12, 255, 24);
+}
+
+.btnclose {
+   border-color: red;
+   color: red;
+}
+
+.btnclose:hover {
+   box-shadow: 0px 0px 8px red;
+}
