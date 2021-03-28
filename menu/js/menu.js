@@ -578,6 +578,12 @@ var menu = new Vue({
             })
         },
 
+        //Кнопка сверху справа в лобби
+        fInviteOrProfile(ava)
+        {
+            this.switchPage(0, ava === 0 ? 1 : 0); 
+        }, 
+
         //FRIENDS
         getPhoto(avatar, name = this.myName) {
             if (avatar === null) return Promise.resolve(`./img/avatars/${this.getAvatar(name)}.jpg`)
