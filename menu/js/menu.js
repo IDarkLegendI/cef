@@ -645,7 +645,7 @@ var menu = new Vue({
             return this.friends.filter(el => el.online)
         },
         updateOnline: function (allPlayers) {
-            console.log(`allPlayers: ${allPlayers}`)
+            // console.log(`allPlayers: ${allPlayers}`)
             let online = false;
             this.allPlayers = allPlayers;
             this.friends.forEach(el => {
@@ -846,10 +846,10 @@ var menu = new Vue({
             return true;
         },
         findFriend() {
-            console.log(`allPlayers: ${this.allPlayers}`)
-            console.log(`requestsOut: ${this.requestsOut}`)
-            console.log(`myName: ${this.myName}`)
-            console.log(`this.friends: ${JSON.stringify(this.friends)}`)
+            // console.log(`allPlayers: ${this.allPlayers}`)
+            // console.log(`requestsOut: ${this.requestsOut}`)
+            // console.log(`myName: ${this.myName}`)
+            // console.log(`this.friends: ${JSON.stringify(this.friends)}`)
             return this.allPlayers.filter(el => {
                     let count = 0;
                     for (let i = 0; i < this.miscInput.length; i++) {
