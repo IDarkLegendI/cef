@@ -522,7 +522,7 @@ var menu = new Vue({
         //LOBBY
         fUpdateLobby(data) {
             console.log(JSON.stringify(data))
-            if (data[0].name !== menu.myName) {
+            if (data[0].name && data[0].name !== menu.myName) { 
                 let index = data.findIndex(el => el.name === menu.myName);
                 if (index !== -1) {
                     let client = data.find(el => el.name === menu.myName);
@@ -976,14 +976,8 @@ if ('alt' in window) {
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
-            name: "Player",
-            ready: 1
-        }, {
-            name: "Resce",
-            ready: -1
-        }, {
             name: "DarkLegend",
-            ready: 1
+            ready: -2
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         menu.switchPage(0, 3)
