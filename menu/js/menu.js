@@ -320,6 +320,7 @@ var menu = new Vue({
             transport: 'TRANSPORT',
             ready: 'READY',
             notready: 'NOT READY',
+            inGame: 'IN GAME',
             topap: 'TOP UP YOUR BALANCE',
             managmentSub: 'MANAGE SUBSCRIPTIONS',
             control: 'MANAGE',
@@ -668,6 +669,7 @@ var menu = new Vue({
                 transport: 'ТРАНСПОРТ',
                 ready: 'ГОТОВ',
                 notready: 'НЕ ГОТОВ',
+                inGame: 'В ИГРЕ',
                 topap: 'ПОПОЛНИТЬ БАЛАНС',
                 managmentSub: 'УПРАВЛЕНИЕ ПОДПИСКАМИ',
                 control: 'УПРАВЛЕНИЕ',
@@ -977,7 +979,7 @@ if ('alt' in window) {
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
             name: "DarkLegend",
-            ready: -2
+            ready: 2
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         menu.switchPage(0, 3)
