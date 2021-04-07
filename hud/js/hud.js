@@ -85,10 +85,10 @@ var hud = new Vue({
         {
             if(hud.intervalWUP != null) clearTimeout(hud.intervalWUP); 
             hud.showWUP = true;
-            hud.textWUP = text;
+            hud.textWUP = text; 
             hud.pulseWUP = pulse; 
 
-            hud.intervalWUP = setTimeout(() => {
+            hud.intervalWUP = setTimeout(() => { 
                 hud.showWUP = false;
                 hud.intervalWUP = null;  
             }, time); 

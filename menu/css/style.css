@@ -325,8 +325,8 @@ html {
 }
 
 .bptext {
-  margin-top: 2.5vh;
-  margin-left: 2vw;
+  margin-top: 2.6vh;
+  margin-left: 1.5vw;
   font-family: "Rubik", sans-serif;
 }
 
@@ -341,7 +341,7 @@ html {
   font-family: "Roboto Condensed", sans-serif;
   justify-content: space-between;
   font-size: 1.3vw;
-  margin-left: 2vw;
+  margin-left: 1.5vw;
   margin-top: 4vh;
 }
 
