@@ -957,7 +957,7 @@ if ('alt' in window) {
     alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))
 
     alt.on('bMenu:applyTuning', (car) => menu.fApplyTuning(car))
-
+ 
     //EMIT 
     alt.on('bMenu:callBackEmitToServer', (variable, value) => menu.callBackEmitToServer(variable, value))
 } else {
