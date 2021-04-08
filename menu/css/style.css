@@ -2959,6 +2959,30 @@ a:hover {
           animation: color 8s infinite ease-in-out;
 }
 
+@-webkit-keyframes colorGreen {
+  0% {
+    color: white;
+  }
+  50% {
+    color: #15ff00;
+  }
+  100% {
+    color: white;
+  }
+}
+
+@keyframes colorGreen {
+  0% {
+    color: white;
+  }
+  50% {
+    color: #15ff00;
+  }
+  100% {
+    color: white;
+  }
+}
+
 .winMain {
   padding-top: 10vh;
   display: -webkit-box;
@@ -2976,6 +3000,7 @@ a:hover {
   -ms-flex-item-align: center;
       align-self: center;
   font-family: 'Oswald';
+  text-shadow: 1px 1px 1px #000;
 }
 
 .winLine {
@@ -3005,6 +3030,17 @@ a:hover {
   border-image-slice: 1;
   padding: 0.1vh 0.5vw;
   margin: 1vh 1vw;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.winEl:hover {
+  -webkit-filter: hue-rotate(90deg);
+          filter: hue-rotate(90deg);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .winElRight {
@@ -3027,6 +3063,8 @@ a:hover {
   width: 2.5vw;
   height: 2.5vw;
   padding-top: 0.6vh;
+  -webkit-filter: drop-shadow(0 0 1px #000000);
+          filter: drop-shadow(0 0 1px #000000);
 }
 
 .winText {
@@ -3045,6 +3083,7 @@ a:hover {
   -webkit-transition: all 1s;
   transition: all 1s;
   margin-top: 10vh;
+  text-shadow: 1px 1px 1px #000;
 }
 
 .exitToMenu:hover {
@@ -3052,12 +3091,15 @@ a:hover {
   color: black;
   -webkit-transition: all 1s;
   transition: all 1s;
+  text-shadow: 1px 1px 1px #ffffff;
 }
 
 .exitToMenu img {
   width: 1.5vw;
   height: 1.5vw;
   padding-right: 0.5vw;
+  -webkit-filter: drop-shadow(0 0 1px #000000);
+          filter: drop-shadow(0 0 1px #000000);
 }
 
 input[type="button" i]:focus, .button :focus, .button :active {

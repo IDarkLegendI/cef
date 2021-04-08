@@ -2033,6 +2033,16 @@ a:hover
 #RMMoney
     animation: color 8s infinite ease-in-out
 
+@keyframes colorGreen 
+    0% 
+      color: white
+    
+    50% 
+      color: rgb(21, 255, 0) 
+    
+    100% 
+        color: white
+
 .winMain
     padding-top: 10vh
     display: flex
@@ -2041,6 +2051,7 @@ a:hover
     align-content: center
     align-self: center
     font-family: 'Oswald';
+    text-shadow: 1px 1px 1px #000;
 
 .winLine
     padding-top: 5vh
@@ -2057,6 +2068,12 @@ a:hover
     border-image-slice: 1
     padding: 0.1vh 0.5vw
     margin: 1vh 1vw
+    transition: all 1s
+
+.winEl:hover
+    filter: hue-rotate(90deg);
+    transform: scale(1.1)
+    transition: all 1s
 
 .winElRight
     display: flex
@@ -2071,7 +2088,8 @@ a:hover
     // right: 5vw
     width: 2.5vw
     height: 2.5vw
-    padding-top: 0.6vh    
+    padding-top: 0.6vh  
+    filter: drop-shadow(0 0 1px #000000);  
 
 .winText 
     font-size: 5vw
@@ -2088,16 +2106,19 @@ a:hover
     font-family: 'Oswald'
     transition: all 1s
     margin-top: 10vh;
+    text-shadow: 1px 1px 1px #000;
 
 .exitToMenu:hover
     background-color: white
     color: black
     transition: all 1s
+    text-shadow: 1px 1px 1px #ffffff;
 
 .exitToMenu img
     width: 1.5vw
     height: 1.5vw
     padding-right: 0.5vw 
+    filter: drop-shadow(0 0 1px #000000);
 
 input[type="button" i]:focus, .button :focus, .button :active 
    outline: none;
