@@ -311,6 +311,15 @@ var menu = new Vue({
         converterRM: 0,
         converterD: 0,
 
+        //EndGame
+        egWin: false,
+        kills: 0,
+        // elo: 0, 
+        place: 0,
+        placeAll: 0,
+        plusMoney: 0,
+        lifeTime: 0, //Минут
+
         //i18n
         i18n: {
             // balance: 'Balance',
@@ -376,6 +385,13 @@ var menu = new Vue({
             applyColor: 'APPLY COLOR',
             applyTuning: 'APPLY TUNING',
             inviteText: 'INVITE',
+            win: "WIN",
+            lose: "LOSE",
+            place: "PLACE",
+            kills: "KILLS",
+            playingTime: "PLAYING TIME",
+            minutes: "MINUTES",
+            exitToMenu: "EXIT TO THE MENU",
         },
         avatars: {
             "A": "0",
@@ -725,6 +741,13 @@ var menu = new Vue({
                 applyColor: 'ПРИМЕНИТЬ ЦВЕТ',
                 applyTuning: 'ПРИМЕНИТЬ ТЮНИНГ',
                 inviteText: 'ПРИГЛАСИТЬ',
+                win: "ПОБЕДА",
+                lose: "ПОРАЖЕНИЕ",
+                place: "МЕСТО",
+                kills: "УБИЙСТВ",
+                playingTime: "ИГРОВОЕ ВРЕМЯ",
+                minutes: "МИНУТ",
+                exitToMenu: "ВЫЙТИ В МЕНЮ",
             }
         },
         updateCars(list, selected) {
@@ -982,12 +1005,14 @@ if ('alt' in window) {
             ready: 2
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 3)
+        menu.switchPage(5, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)"
     document.body.style.cursor = "default"
+    menu.placeAll = 3;
+    menu.place = 2;
     //     setTimeout(() => {
     //     initColor();
     //     ColorPicker(); 
@@ -995,4 +1020,5 @@ if ('alt' in window) {
 }
 menu.loadRus()
 // window.addEventListener('resize', function(){
+//     console.log('resize')
 //   }); 
