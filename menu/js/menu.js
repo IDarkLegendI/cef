@@ -312,7 +312,7 @@ var menu = new Vue({
         converterD: 0,
 
         //EndGame
-        egWin: false,
+        wsWin: false,
         kills: 0,
         // elo: 0, 
         place: 0,
@@ -941,6 +941,14 @@ if ('alt' in window) {
     });
 
     alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
+    alt.on('bMenu:updateWinScreen', (data) => {
+        menu.wsWin = data.wsWin;
+        menu.place = data.place;
+        menu.placeAll = data.placeAll;
+        menu.kills = data.kills;
+        menu.plusMoney = data.plusMoney;
+        menu.lifeTime = data.lifeTime;
+    });
     alt.on('bMenu:updateRank', (obj) => {
         menu.elo = obj.elo;
         menu.kills = obj.kills;
