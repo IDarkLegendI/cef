@@ -3000,7 +3000,7 @@ a:hover {
   -ms-flex-item-align: center;
       align-self: center;
   font-family: 'Oswald';
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 3px #000;
 }
 
 .winLine {
