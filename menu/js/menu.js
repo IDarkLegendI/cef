@@ -907,7 +907,7 @@ if ('alt' in window) {
         document.getElementById('fade').style.opacity = toggle ? 1 : 0;
     });
     alt.on('getShow', () => alt.emit('keyOpenPressed', menu.show));
-    alt.on('bMenu:switchPage', (page = 0, subPage = 0) => menu.switchPage(page, subPage))
+    alt.on('bMenu:switchPage', (page = 0, subPage = 0) => menu.switchPage(page, subPage)) 
     alt.on('changeStatusGame', toggle => menu.statusGame = toggle);
     alt.on('update', (textMatch, countWarmUp) => {
         menu.textMatch = textMatch;
