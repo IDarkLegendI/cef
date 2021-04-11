@@ -543,7 +543,7 @@ input::-webkit-inner-spin-button {
 	will-change: transform;
 	transform: translateY(1000px);
 	animation: fireworkstart 3s ease-out;
-  animation-iteration-count: 2;
+  animation-iteration-count: 3;
 	
 }
 .fireworks .firework .explosion {
@@ -555,7 +555,7 @@ input::-webkit-inner-spin-button {
   transform-origin: top center;
 	will-change: transform;
   animation: explosion 0.7s linear 3s;
-  animation-iteration-count: 8;
+  animation-iteration-count: 10;
 }
 .fireworks .firework .explosion:nth-child(1) {
           transform: rotate(0deg);
