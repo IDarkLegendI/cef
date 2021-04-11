@@ -860,7 +860,7 @@
                         </div>
                     </div>
                     <div class="winEl">  
-                        <h1 class="winText">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</h1>
+                        <h1 :style="{color: lastMatch >= 1 ? 'lime' : lastMatch <= -1 ? 'red' : 'orange'}" class="winText">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</h1>
                         <div class="winElRight">
                             <h1>{{i18n.score}}</h1>
                             <img src="./img/win/diagram.png" alt="">
