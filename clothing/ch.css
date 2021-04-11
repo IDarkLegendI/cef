@@ -217,10 +217,11 @@ html {
 .namecustom {
    border: 1px solid #ffffff;
    /* background-color: #fff; */
-   width: 7vw;
-   border-radius: 0.5vh;
+   /* width: 7vw; */
+   /* height: 2vw; */
+   border-radius: 5px;
    color: white;
-   padding: 0.7vh 0 0.7vh 0;
+   padding: 0.7vh 1vw;
    font-family: 'Roboto Condensed', sans-serif;
    font-size: 0.9vw;
    /* filter: drop-shadow(0 0 1px #fff); */
@@ -232,9 +233,9 @@ html {
    filter: drop-shadow(0 0 1px #00000085);
 }
 
-.btns{
+/* .btns{
    margin-top: 5vh;
-}
+} */
 
 .btn {
    /* margin-top: 4vh; */
@@ -332,4 +333,26 @@ input[type="button" i]:focus, .button :focus, .button :active {
 
 .btnclose:hover {
    box-shadow: 0px 0px 8px red;
+}
+
+
+.inputForNumber {
+   background: none; 
+   width: 2vw; 
+   /* height: 2vw; */
+   padding: 0;
+   color: white;
+   border: 1px solid white;
+   font-family: 'Roboto Condensed', sans-serif;
+   padding: 0.7vh 0vw;
+   text-shadow: none;
+   font-size: 0.9vw;
+   border-radius: 5px;
+   text-align: center;
+   box-sizing: border-box;
+   margin-left: 1vw;
+}
+
+.inputForNumber:focus {
+   outline: none;
 }

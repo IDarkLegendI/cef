@@ -36,15 +36,18 @@
 					</div>
 				</div>
 				<div class="sandwiches" v-if="currentTitle"> 
+				<!-- <div class="sandwiches">  -->
 					<div class="sandwichcustom"> 
 						<div class="arrowleftcustom">
 							<img @click="prevColor" src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom"> 
 							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color + 1}} {{ ofText }} {{currentCloth.colors[currentCloth.colors.length-1] + 1}}</div>
+							<!-- <div class="textnamecustom">1 из 2</div> -->
 						</div>
+						<div class="textnamecustom"><input type="text" class="inputForNumber" onchange="app.changeNum(+this.value - +1, false)" :value ='+currentColorNum + +1'></div> 
 						<div class="arrowrightcustom"> 
-							<img @click="nextColor" src="./img/arrowRight.png" width="30vw">
+							<img @click="nextColor" src="./img/arrowRight.png" width="30vw"> 
 						</div>
 					</div>
 					<div class="sandwichcustom">
@@ -53,7 +56,9 @@
 						</div>
 						<div class="namecustom">
 							<div class="textnamecustom">{{ currentCloth.name }}</div>
+							<!-- <div class="textnamecustom">Pink Pig</div> -->
 						</div>
+						<div class="textnamecustom"><input type="text" class="inputForNumber" onchange="app.changeNum(this.value, true)" :value ='currentNum'></div>
 						<div class="arrowrightcustom">
 							<img @click="nextCloth" src="./img/arrowRight.png" width="30vw">
 						</div>
@@ -76,6 +81,11 @@
 							<p style="padding-left: 0.25vw; font-size: 2vh; color: greenyellow">${{showSale()}}</p></div>
 							<div class="btn"><input :value="showPrice()" class="button btngreen" type="button" v-on:click="buy()"></div>
 					</section>  
+					<!-- <section>
+						<div style="display: flex; align-items: center; font-size: 1.5vh;"><p>{{12311}}: </p>
+							<p style="padding-left: 0.25vw; font-size: 2vh; color: greenyellow">${{12321321312321}}</p></div>
+							<div class="btn"><input :value="123" class="button btngreen" type="button" v-on:click="buy()"></div>
+					</section>   -->
 					<div class="btn"><input :value="resetText" class="button" type="button" v-on:click="reset()"></div>
 					<div class="btn"><input :value="exitText" class="button btnclose" type="button" v-on:click="exit()"></div>
 				</div>
@@ -134,9 +144,9 @@
 		computed:{
 			colorCloth() 
 			{
-				console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
-				console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
-				console.log(`this.myClothes[this.currentTitle]: ${this.myClothes[this.currentTitle]}`) 
+				// console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
+				// console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
+				// console.log(`this.myClothes[this.currentTitle]: ${this.myClothes[this.currentTitle]}`) 
 				return this.myClothes[this.currentTitle].color === this.currentCloth.color && this.currentArr[this.myClothes[this.currentTitle].number] === this.currentCloth 
 			}
 		},
@@ -172,7 +182,7 @@
 				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
 			},
 			setCurrentStartSettings: function () {
-				console.log(`this.myClothes: ${JSON.stringify(this.myClothes)}`) 
+				// console.log(`this.myClothes: ${JSON.stringify(this.myClothes)}`) 
 				this.currentNum = this.myClothes[this.currentTitle].number;
 				this.currentCloth = this.currentArr[this.myClothes[this.currentTitle].number];
 				this.currentCloth.color = this.myClothes[this.currentTitle].color; 
@@ -229,6 +239,19 @@
 				if (this.currentNum === 0) return this.setCurrentCloth(this.currentArr.length - 1);
 				this.setCurrentCloth(--this.currentNum);
 			},
+			changeNum: function (value, cloth) {
+				if (value <= 0) value = 0;
+				if(cloth)
+				{
+					if(value >= this.currentArr.length - 1) value = this.currentArr.length - 1;
+					this.setCurrentCloth(value); 
+				}
+				else {
+					if(value >= this.currentCloth.colors.length - 1) value = this.currentCloth.colors.length - 1;
+					this.setColor(value); 
+				}
+			},
+			
 
 
 
@@ -250,6 +273,7 @@
 				}
 				this.setColor(--this.currentColorNum);
 			},
+			
 
 
 
@@ -272,14 +296,14 @@
 			},
 
 			buy: function () {
-				console.log(`buy start -----------------> `) 
+				// console.log(`buy start -----------------> `) 
 				const obj = {
 					title: this.currentTitle,
 					number: this.currentNum,
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
 				}
-				console.log(`buy ----------------->	${JSON.stringify(obj)}`) 
+				// console.log(`buy ----------------->	${JSON.stringify(obj)}`) 
 				alt.emit('emitToServer', 'sClothing:buy', obj); 
 			},
 
@@ -312,6 +336,11 @@
 			},
 		}
 	});
+
+	if(!('alt' in window))
+	{
+		app.currentTitle = 'Masks'
+	}
 
 	function loadMans() {
 		app.bMan = true;
