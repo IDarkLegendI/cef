@@ -3094,6 +3094,10 @@ a:hover {
   text-shadow: 1px 1px 1px #ffffff;
 }
 
+.exitToMenu:focus {
+  outline: none;
+}
+
 .exitToMenu img {
   width: 1.5vw;
   height: 1.5vw;
