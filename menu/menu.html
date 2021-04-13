@@ -834,10 +834,10 @@
         <transition name="custom-classes-transition" enter-active-class="animated bounceInUp">
         <section v-if="page === 5">
             <div class="winMain">
-                <h1 style="display: flex; font-size: 5vh;" :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}">{{ wsWin ? i18n.win : i18n.lose}}!</h1>
+                <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}" style="display: flex; font-size: 8vh;">{{ wsWin ? i18n.win : i18n.lose}}!</h1>
                 <div class="winLine">
                     <div class="winEl">  
-                        <h1 class="winText">{{kills}}</h1>
+                        <h1 class="winText">{{killsInMatch}}</h1>
                         <div class="winElRight">
                             <h1>{{i18n.kills}}</h1>
                             <img src="../hud/img/skull.png" alt="">
