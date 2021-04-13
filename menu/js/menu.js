@@ -48,249 +48,24 @@ var menu = new Vue({
         level: '01',
 
         //Cars 
-        cars: [{
-                name: 'None',
-                model: 'none',
-                price: 0
-            }, {
-                name: 'X-80 PROTO',
-                model: 'prototipo',
-                price: 275000
-            }, {
-                name: 'T-20',
-                model: 't20',
-                price: 270000
-            },
-            {
-                name: 'Porsche-811',
-                model: 'pfister811',
-                price: 90000
-            }, {
-                name: 'Dubsta 6x6',
-                model: 'dubsta3',
-                price: 54000
-            }, {
-                name: 'Lamborghini Urus',
-                model: 'urus',
-                price: 178000
-            },
-            {
-                name: 'Porsche Taycan',
-                model: 'taycan',
-                price: 178000
-            }, {
-                name: 'Tesla Model X',
-                model: 'teslax',
-                price: 185000
-            }, {
-                name: 'Bentley Bentayga',
-                model: 'bentayga17',
-                price: 33000
-            },
-            {
-                name: 'Porsche Turismo',
-                model: 'pturismo',
-                price: 5000
-            }, {
-                name: 'RHAPSODY',
-                model: 'rhapsody',
-                price: 15000
-            }, {
-                name: 'ISSI',
-                model: 'issi6',
-                price: 16500
-            }, {
-                name: 'OCELOT',
-                model: 'f620',
-                price: 20000
-            }, {
-                name: 'EXEMPLAR',
-                model: 'exemplar',
-                price: 21500
-            }, {
-                name: 'COGCABRIO',
-                model: 'cogcabrio',
-                price: 21000
-            },
-            {
-                name: 'SENTINEL',
-                model: 'felon2',
-                price: 20000
-            }, {
-                name: 'FBI',
-                model: 'fbi',
-                price: 36500
-            }, {
-                name: 'COQUETTE',
-                model: 'coquette3',
-                price: 17950
-            }, {
-                name: 'DOMINATOR',
-                model: 'dominator3',
-                price: 45000
-            }, {
-                name: 'HERMES',
-                model: 'hermes',
-                price: 28000
-            },
-            {
-                name: 'DUBSTA',
-                model: 'dubsta2',
-                price: 49000
-            }, {
-                name: 'BANSHEE',
-                model: 'banshee',
-                price: 50000
-            }, {
-                name: 'Nissan GT-R',
-                model: '17r35',
-                price: 52000
-            },
-            {
-                name: 'COQUETTE',
-                model: 'coquette4',
-                price: 70000
-            }, {
-                name: 'DEVESTE',
-                model: 'deveste',
-                price: 170000
-            }, {
-                name: 'ELEGY',
-                model: 'elegy2',
-                price: 28500
-            },
-            {
-                name: 'HOTRING',
-                model: 'hotring',
-                price: 65000
-            }, {
-                name: 'ITALI',
-                model: 'italigto',
-                price: 90000
-            }, {
-                name: 'NEON',
-                model: 'neon',
-                price: 275000
-            }, {
-                name: 'NINEF',
-                model: 'ninef2',
-                price: 130000
-            },
-            {
-                name: 'OMNIS',
-                model: 'omnis',
-                price: 30000
-            }, {
-                name: 'SCHLAGEN',
-                model: 'schlagen',
-                price: 120000
-            }, {
-                name: 'SENTINEL',
-                model: 'sentinel3',
-                price: 23000
-            },
-            {
-                name: 'SPECTER',
-                model: 'specter2',
-                price: 125000
-            }, {
-                name: 'VERLIERER',
-                model: 'verlierer2',
-                price: 85000
-            },
-            {
-                name: 'SAVESTRA',
-                model: 'savestra',
-                price: 35000
-            }, {
-                name: 'SWINGER',
-                model: 'swinger',
-                price: 135000
-            }, {
-                name: 'TURISMO',
-                model: 'turismo2',
-                price: 115000
-            },
-            {
-                name: 'ADDER',
-                model: 'adder',
-                price: 190000
-            }, {
-                name: 'CYCLONE',
-                model: 'cyclone',
-                price: 210000
-            }, {
-                name: 'ENTITYXF',
-                model: 'entityxf',
-                price: 200000
-            },
-            {
-                name: 'FMJ',
-                model: 'fmj',
-                price: 230000
-            }, {
-                name: 'ITALIGTD',
-                model: 'italigtb2',
-                price: 245000
-            }, {
-                name: 'NERO',
-                model: 'nero2',
-                price: 255000
-            },
-            {
-                name: 'REAPER',
-                model: 'reaper',
-                price: 260000
-            }, {
-                name: 'TEMPESTA',
-                model: 'tempesta',
-                price: 262000
-            }, {
-                name: 'SHEAVA',
-                model: 'sheava',
-                price: 220000
-            },
-            {
-                name: 'TYRUS',
-                model: 'tyrus',
-                price: 235000
-            }, {
-                name: 'XA-21',
-                model: 'xa21',
-                price: 270000
-            }, {
-                name: 'TROPHYTRUCK',
-                model: 'trophytruck',
-                price: 70000
-            },
-            {
-                name: 'ZENTORNO',
-                model: 'zentorno',
-                price: 220000
-            }, {
-                name: 'SHOTARO',
-                model: 'shotaro',
-                price: 280000
-            },
-            {
-                name: 'SANCTUS',
-                model: 'sanctus',
-                price: 80000
-            }, {
-                name: 'VORTEX',
-                model: 'vortex',
-                price: 110000
-            },
-            {
-                name: 'ENDURO',
-                model: 'enduro',
-                price: 29000
-            }, {
-                name: 'BATI',
-                model: 'bati',
-                price: 47500
-            },
-        ],
+        cars: [{name: 'None', model: 'none', price: 0}, {name: 'X-80 PROTO', model: 'prototipo', price: 275000}, {name: 'T-20', model: 't20', price: 270000},
+        {name: 'Porsche-811', model: 'pfister811', price: 90000}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 54000}, {name: 'Lamborghini Urus', model: 'urus', price: 178000},
+        {name: 'Porsche Taycan', model: 'taycan', price: 178000}, {name: 'Tesla Model X', model: 'teslax', price: 185000}, {name: 'Bentley Bentayga', model: 'bentayga17', price: 33000},
+        {name: 'RHAPSODY', model: 'rhapsody', price: 15000}, {name: 'ISSI', model: 'issi6', price: 16500}, {name: 'OCELOT', model: 'f620', price: 20000}, {name: 'EXEMPLAR', model: 'exemplar', price: 21500}, {name: 'COGCABRIO', model: 'cogcabrio', price: 21000},
+        {name: 'SENTINEL', model: 'felon2', price: 20000}, {name: 'FBI', model: 'fbi', price: 36500}, {name: 'COQUETTE', model: 'coquette3', price: 17950}, {name: 'DOMINATOR', model: 'dominator3', price: 45000}, {name: 'HERMES', model: 'hermes', price: 28000},
+        {name: 'DUBSTA', model: 'dubsta2', price: 49000}, {name: 'BANSHEE', model: 'banshee', price: 50000}, {name: 'Nissan GT-R', model: '17r35', price: 52000},
+        {name: 'COQUETTE', model: 'coquette4', price: 70000}, {name: 'DEVESTE', model: 'deveste', price: 170000}, {name: 'ELEGY', model: 'elegy2', price: 28500},
+        {name: 'HOTRING', model: 'hotring', price: 65000}, {name: 'ITALI', model: 'italigto', price: 90000}, {name: 'NEON', model: 'neon', price: 275000}, {name: 'NINEF', model: 'ninef2', price: 130000},
+        {name: 'OMNIS', model: 'omnis', price: 30000}, {name: 'SCHLAGEN', model: 'schlagen', price: 120000}, {name: 'SENTINEL', model: 'sentinel3', price: 23000},
+        {name: 'SPECTER', model: 'specter2', price: 125000}, {name: 'VERLIERER', model: 'verlierer2', price: 85000},
+        {name: 'SAVESTRA', model: 'savestra', price: 35000}, {name: 'SWINGER', model: 'swinger', price: 135000}, {name: 'TURISMO', model: 'turismo2', price: 115000},
+        {name: 'ADDER', model: 'adder', price: 190000}, {name: 'CYCLONE', model: 'cyclone', price: 210000}, {name: 'ENTITYXF', model: 'entityxf', price: 200000},
+        {name: 'FMJ', model: 'fmj', price: 230000}, {name: 'ITALIGTD', model: 'italigtb2', price: 245000}, {name: 'NERO', model: 'nero2', price: 255000},
+        {name: 'REAPER', model: 'reaper', price: 260000}, {name: 'TEMPESTA', model: 'tempesta', price: 262000}, {name: 'SHEAVA', model: 'sheava', price: 220000},
+        {name: 'TYRUS', model: 'tyrus', price: 235000}, {name: 'XA-21', model: 'xa21', price: 270000}, {name: 'TROPHYTRUCK', model: 'trophytruck', price: 70000},
+        {name: 'ZENTORNO', model: 'zentorno', price: 220000}, {name: 'SHOTARO', model: 'shotaro', price: 280000},
+        {name: 'SANCTUS', model: 'sanctus', price: 80000}, {name: 'VORTEX', model: 'vortex', price: 110000},
+        {name: 'ENDURO', model: 'enduro', price: 29000}, {name: 'BATI', model: 'bati', price: 47500}, {name: 'Porsche Turismo', model: 'pturismo', price: 300000}, ].sort((a, b) => a.price - b.price),
         carsPointer: 0,
         myCar: 'none',
         camRotation: 0,
@@ -313,7 +88,7 @@ var menu = new Vue({
 
         //EndGame
         wsWin: true,
-        kills: 0,
+        killsInMatch: 0,
         // elo: 0, 
         place: 0,
         placeAll: 0,
@@ -945,7 +720,8 @@ if ('alt' in window) {
         menu.wsWin = data.wsWin;
         menu.place = data.place;
         menu.placeAll = data.placeAll;
-        menu.kills = data.kills;
+        menu.killsInMatch = data.kills;
+        if(menu.killsInMatch < 0) menu.killsInMatch = 0.
         menu.plusMoney = data.plusMoney;
         menu.lifeTime = data.lifeTime;
     });
