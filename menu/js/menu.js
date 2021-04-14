@@ -434,7 +434,7 @@ var menu = new Vue({
             this.request(name, 'friends')
         },
         getOnlineFriend: function () {
-            return this.friends.filter(el => el.online)
+            return this.friends.filter(el => el.online).filter(el => !this.lobby.some(player => player.name === el.name)) //.toUpperCase()
         },
         updateOnline: function (allPlayers) {
             // console.log(`allPlayers: ${allPlayers}`)
@@ -775,21 +775,29 @@ if ('alt' in window) {
         menu.getLevel();
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
         menu.friends = [{
-            name: 'Dark',
+            name: 'DARKLEGEND',
             online: true
         }, {
             name: 'Vanya',
-            online: false
+            online: true
+        },
+        {
+            name: 'Dima',
+            online: true
         }]
         // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
-            name: "DarkLegend",
+            name: "DARKLEGEND",
             ready: 2
+        },
+        {
+            name: "Dima",
+            ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(5, 0)
+        menu.switchPage(0, 1)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
