@@ -343,7 +343,7 @@ var menu = new Vue({
         fInviteToLobby(lobbyID, myData) {
             this.lobbyID = lobbyID;
             this.myData = myData;
-            if(this.page !== 0) //Если игрок не на главной странице
+            if(this.page !== 0 || !menu.show) //Если игрок не на главной странице
             {
                 this.emitToClient('notifyI18n', 3, 'menu', 'inviteToLobby', 3000)
             }
