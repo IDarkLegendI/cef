@@ -343,13 +343,17 @@ var menu = new Vue({
         fInviteToLobby(lobbyID, myData) {
             this.lobbyID = lobbyID;
             this.myData = myData;
-            this.switchPage(0, 4);
+            if(this.page !== 0) //Если игрок не на главной странице
+            {
+                this.emitToClient('notifyI18n', 3, 'menu', 'inviteToLobby', 3000)
+            }
+            else this.switchPage(0, 4);
 
             setTimeout(() => {
                 if (this.lobbyID === lobbyID && this.myData === myData) {
                     this.answerInvite(false)
                 }
-            }, 15000)
+            }, 30000)
         },
 
         answerInvite(value) {
