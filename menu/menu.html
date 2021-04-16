@@ -754,7 +754,10 @@
                             <li>EXAMPLE</li>
                         </ul>
                         <div class="imgprice">
-                            <span class="donatbtn">150RM</span>
+                            <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
+                                <span class="donatbtn">150RM</span>
+                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
+                            </div>
                             <div class="donatimgform">
                                 <img alt="" src="img/gold.png">
                             </div>
@@ -769,7 +772,7 @@
                                     v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
                             </div>
                             <div class="donatimgform">
-                                <img src="img/sort.png" alt="">
+                                <img alt="" src="img/r-arrow.png">
                             </div>
                             <div class="inputcalc">
                                 <span>$</span>
@@ -777,6 +780,7 @@
                                     v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
                             </div>
                         </div>
+                        <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
                     </div>
                 </div>
                 <div class="rightdonat">
@@ -791,7 +795,10 @@
                             <li>EXAMPLE</li>
                         </ul>
                         <div class="imgprice">
-                            <span class="donatbtn">299RM</span>
+                            <div class="podvalDonat">
+                                <span class="donatbtn">299RM</span>
+                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                            </div>
                             <div class="premiumimgform">
                                 <img src="img/emerald.png" alt="">
                             </div>
@@ -808,7 +815,10 @@
                             <li>EXAMPLE</li>
                         </ul>
                         <div class="imgprice">
-                            <span class="donatbtn">500RM</span>
+                            <div class="podvalDonat">
+                                <span class="donatbtn">500RM</span>
+                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                            </div>
                             <div class="deluxeimgform">
                                 <img src="img/corona.png" alt="">
                             </div>

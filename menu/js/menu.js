@@ -232,9 +232,9 @@ var menu = new Vue({
             } else menu[variable] = value;
             // console.log(this.cars[this.carsPointer].model)  
         },
-        emitToClient: function (...args) {
-            // console.log(...args)
-            if ('alt' in window) alt.emit('emitToClient', ...args)
+        emitToClient: function (eventName, ...args) {
+            // console.log(...args)  
+            if ('alt' in window) alt.emit('emitToClient', eventName, ...args)
         },
         emit: function (value, ...args) {
             // console.log(`emit: ${value} -> ${args[0]}`) 
@@ -253,7 +253,7 @@ var menu = new Vue({
         switchPage(newPage, newSubPage = -1) {
             if (this.subPage === -2) return;
 
-            console.log(`switchPage: ${newPage}; ${this.page}`)
+            console.log(`switchPage: ${newPage}; ${menu.page}`)
             if (newPage === 0 && this.page === 2) {
                 menu.emit('cCar:setCarPreview', false)
                 this.cars[this.carsPointer].color = {
@@ -282,15 +282,16 @@ var menu = new Vue({
                 promise = new Promise(function (resolve) {
                     i = 1.0;
                     intervalID = setInterval(() => {
-                        i -= 0.01;
+                        i -= +0.1;
+                        console.log(i)
                         container.style.opacity = i;
                         if (i < 0.1) {
-                            console.log(`switchPage: ${newPage}; ${this.page}`)
+                            console.log(`switchPage-finish: ${newPage}; ${this.page}`)
                             resolve('result');
                             container.style.opacity = 0.0;
                             clearInterval(intervalID);
                         }
-                    }, 1);
+                    }, 0);
                 });
                 promise.then(async () => {
                     this.page = newPage;
@@ -298,15 +299,15 @@ var menu = new Vue({
                     setTimeout(() => {
                         i = 0.0;
                         intervalID = setInterval(() => {
-                            i += 0.01;
+                            i += +0.1;
                             container.style.opacity = i;
                             if (i > 0.9) {
                                 this.coolDown = false;
                                 container.style.opacity = 1.0;
                                 clearInterval(intervalID);
                             }
-                        }, 1);
-                    }, 10);
+                        }, 0);
+                    }, 1);
                 });
             }
         },
@@ -345,8 +346,8 @@ var menu = new Vue({
             this.myData = myData;
             if(this.page !== 0 || !menu.show) //Если игрок не на главной странице
             {
-                this.emitToClient('notifyI18n', 3, 'menu', 'inviteToLobby', 3000)
-            }
+                this.emitToClient('notifyI18n', '4', 'menu', 'inviteToLobby', '5000');   
+            } 
             else this.switchPage(0, 4);
 
             setTimeout(() => {
@@ -725,10 +726,17 @@ if ('alt' in window) {
         menu.place = data.place;
         menu.placeAll = data.placeAll;
         menu.killsInMatch = data.kills;
-        if(menu.killsInMatch < 0) menu.killsInMatch = 0.
+        if(menu.killsInMatch < 0) menu.killsInMatch = 0;
         menu.plusMoney = data.plusMoney;
         menu.lifeTime = data.lifeTime;
     });
+
+    alt.on('bMenu:reCalcWinScreen', (data) => { 
+        menu.wsWin = data.wsWin;
+        menu.place = data.place;
+        menu.plusMoney += +data.plusMoney;
+    });
+    
     alt.on('bMenu:updateRank', (obj) => {
         menu.elo = obj.elo;
         menu.kills = obj.kills;
@@ -801,7 +809,7 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(0, 1)
+        menu.switchPage(3, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
