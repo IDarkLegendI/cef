@@ -3071,6 +3071,7 @@ a:hover {
           animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
+  border-color: red;
   border-image-slice: 1;
   padding: 0.1vh 0.5vw;
   -webkit-transition: all 1s;
