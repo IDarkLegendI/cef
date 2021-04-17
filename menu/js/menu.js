@@ -240,6 +240,14 @@ var menu = new Vue({
             // console.log(`emit: ${value} -> ${args[0]}`) 
             if ('alt' in window) alt.emit(value, ...args)
         },
+        //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
+        changeVar(...args)
+        {
+            console.log(JSON.stringify(...args))
+            args.forEach(el => {
+                menu[el[0]] = el[1];
+            })
+        },
         saveSettings(page) {
             if (page != -1) this.switchPage(page);
             if ('alt' in window) {
@@ -720,6 +728,7 @@ if ('alt' in window) {
         }]);
     });
 
+    alt.on('bMenu:changeVar', (...args) => menu.changeVar(...args))
     alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
     alt.on('bMenu:updateWinScreen', (data) => {
         menu.wsWin = data.wsWin;
