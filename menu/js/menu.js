@@ -4,6 +4,7 @@ var menu = new Vue({
         show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
+        nextSubPage: -1,
 
         //money
         money: 0,
@@ -271,15 +272,18 @@ var menu = new Vue({
                 }
             }
             // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
-            if (newSubPage != -1) {
+            if (newSubPage != -1 || this.nextSubPage !== -1) {
                 // if(newPage == 0) return this.subPage = newSubPage;
                 this.page = newPage;
-                if (newSubPage != -1) {
-                    this.subPage = -2;
-                    setTimeout(() => {
-                        this.subPage = newSubPage;
-                    }, 350)
-                }
+                this.subPage = -2;
+                setTimeout(() => {
+                    if(this.nextSubPage !== -1)
+                    {
+                        this.subPage = this.nextSubPage;
+                        this.nextSubPage = -1;
+                    }
+                    else this.subPage = newSubPage;
+                }, 350)              
             } else {
                 // console.log('switchPage: ' + newPage); 
                 if (this.coolDown) return;
