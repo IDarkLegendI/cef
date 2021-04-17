@@ -361,6 +361,12 @@
                                                 data-title="Удалить из друзей">
                                                 <img v-on:click="delFriend(friend.name)" src="img/close.png" alt="">
                                             </div>
+                                            <!-- <div class="btnszapros">
+                                                <div class="btnzapros" :id='friend.name' data-title="Пригласить">
+                                                    <img src="img/plusbtn.png" alt=""
+                                                        v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
+                                                </div>
+                                            </div> -->
                                             <div class="btnzapros" data-title="Действия">
                                                 <img v-on:click="showProfileDetails(friend.name)" src="img/dots.png"
                                                     alt="">
@@ -710,123 +716,119 @@
 
         <!-- ДОНАТ -->
         <section v-if="page === 3">
-            <div class="upline">
-                <div class="nameupline">
-                    <span>GTAROYAL.RU</span>
-                </div>
-                <div class="balancemoney">
-                    <div
-                        style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
-                        <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
+            <section v-if="subPage === 0">
+                <div class="upline">
+                    <div class="nameupline">
+                        <span>GTAROYAL.RU</span>
                     </div>
-                </div>
-                <div class="btn" id="mouseFocus">
-                    <span>{{i18n.topap}}</span>
-                </div>
-                <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
-                    <span>{{i18n.btnBack}}</span>
-                </div>
-            </div>
-            <!-- <div class="donateMain">
-                <div class="donateRow1">
-                    <span>
-                        <h1>GOLD</h1>
-                    </span>
-                    <span>
-                        <h1>CONVERTER</h1>
-                    </span>
-                </div>
-                <span class="donateRow2">
-                    <h1>PREMIUM</h1>
-                </span>
-                <span class="donateRow3">
-                    <h1>DELUXE</h1>
-                </span>
-            </div> -->
-            <div class="maindonat">
-                <div class="leftdonat">
-                    <div class="vip donatform leftform">
-                        <h1>VIP</h1>
-                        <ul>
-                            <li>АВТОМОБИЛИ</li>
-                            <li>МНОГО ОДЕЖДЫ</li>
-                            <li>ВСЕ ФУНКЦИИ VIP</li>
-                            <li>EXAMPLE</li>
-                        </ul>
-                        <div class="imgprice">
-                            <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
-                                <span class="donatbtn">150RM</span>
-                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
-                            </div>
-                            <div class="donatimgform">
-                                <img alt="" src="img/gold.png">
-                            </div>
+                    <div class="balancemoney">
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
+                            <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
                         </div>
                     </div>
-                    <div class="calculator leftform">
-                        <h1>КОНВЕРТЕР</h1>
-                        <div class="converterblock">
-                            <div class="inputcalc">
-                                <span>RM</span>
-                                <input type="number" v-model="converterRM"
-                                    v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
-                            </div>
-                            <div class="donatimgform">
-                                <img alt="" src="img/r-arrow.png">
-                            </div>
-                            <div class="inputcalc">
-                                <span>$</span>
-                                <input type="number" v-model="converterD"
-                                    v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
-                            </div>
-                        </div>
-                        <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
+                    <div class="btn" id="mouseFocus">
+                        <span>{{i18n.topap}}</span>
+                    </div>
+                    <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                        <span>{{i18n.btnBack}}</span>
                     </div>
                 </div>
-                <div class="rightdonat">
-                    <div class="premium donatform">
-                        <h1>PREMIUM</h1>
-                        <ul>
-                            <li>АВТОМОБИЛИ</li>
-                            <li>МНОГО ОДЕЖДЫ</li>
-                            <li>ВСЕ ФУНКЦИИ VIP</li>
-                            <li>EXAMPLE</li>
-                            <li>EXAMPLE</li>
-                            <li>EXAMPLE</li>
-                        </ul>
-                        <div class="imgprice">
-                            <div class="podvalDonat">
-                                <span class="donatbtn">299RM</span>
-                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
-                            </div>
-                            <div class="premiumimgform">
-                                <img src="img/emerald.png" alt="">
+                <div class="maindonat">
+                    <div class="leftdonat">
+                        <div class="vip donatform leftform">
+                            <h1>VIP</h1>
+                            <ul>
+                                <li>АВТОМОБИЛИ</li>
+                                <li>МНОГО ОДЕЖДЫ</li>
+                                <li>ВСЕ ФУНКЦИИ VIP</li>
+                                <li>EXAMPLE</li>
+                            </ul>
+                            <div class="imgprice">
+                                <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
+                                    <span class="donatbtn">150RM</span>
+                                    <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
+                                </div>
+                                <div class="donatimgform">
+                                    <img alt="" src="img/gold.png">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="deluxe donatform">
-                        <h1>DELUXE</h1>
-                        <ul>
-                            <li>АВТОМОБИЛИ</li>
-                            <li>МНОГО ОДЕЖДЫ</li>
-                            <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
-                            <li>EXAMPLE</li>
-                            <li>EXAMPLE</li>
-                            <li>EXAMPLE</li>
-                        </ul>
-                        <div class="imgprice">
-                            <div class="podvalDonat">
-                                <span class="donatbtn">500RM</span>
-                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                        <div class="calculator leftform">
+                            <h1>КОНВЕРТЕР</h1>
+                            <div class="converterblock">
+                                <div class="inputcalc">
+                                    <span>RM</span>
+                                    <input type="number" v-model="converterRM"
+                                        v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
+                                </div>
+                                <div class="donatimgform">
+                                    <img alt="" src="img/r-arrow.png">
+                                </div>
+                                <div class="inputcalc">
+                                    <span>$</span>
+                                    <input type="number" v-model="converterD"
+                                        v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
+                                </div>
                             </div>
-                            <div class="deluxeimgform">
-                                <img src="img/corona.png" alt="">
+                            <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
+                        </div>
+                    </div>
+                    <div class="rightdonat">
+                        <div class="premium donatform">
+                            <h1>PREMIUM</h1>
+                            <ul>
+                                <li>АВТОМОБИЛИ</li>
+                                <li>МНОГО ОДЕЖДЫ</li>
+                                <li>ВСЕ ФУНКЦИИ VIP</li>
+                                <li>EXAMPLE</li>
+                                <li>EXAMPLE</li>
+                                <li>EXAMPLE</li>
+                            </ul>
+                            <div class="imgprice">
+                                <div class="podvalDonat">
+                                    <span class="donatbtn">299RM</span>
+                                    <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                </div>
+                                <div class="premiumimgform">
+                                    <img alt="" src="img/emerald.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deluxe donatform">
+                            <h1>DELUXE</h1>
+                            <ul>
+                                <li>АВТОМОБИЛИ</li>
+                                <li>МНОГО ОДЕЖДЫ</li>
+                                <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
+                                <li>EXAMPLE</li>
+                                <li>EXAMPLE</li>
+                                <li>EXAMPLE</li>
+                            </ul>
+                            <div class="imgprice">
+                                <div class="podvalDonat">
+                                    <span class="donatbtn">500RM</span>
+                                    <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                </div>
+                                <div class="deluxeimgform">
+                                    <img alt="" src="img/corona.png">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            <section v-if="subPage === 1">
+                <div class="mainsettings">
+                    <div class="settingsh1">
+                        <h1>ПОДВЕРДИТЕ ДЕЙСТВИЕ</h1>
+                    </div>
+                    <div class="settings">
+                    </div>
+                </div>
+            </section>
         </section>
+
         <!-- БАН -->
         <section v-if="page === 4" id="ban">
             <div class="bancontent">
@@ -844,7 +846,7 @@
         <transition name="custom-classes-transition" enter-active-class="animated bounceInUp">
         <section v-if="page === 5">
             <div class="winMain">
-                <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}" style="display: flex; font-size: 8vh;">{{ wsWin ? i18n.win : i18n.lose}}!</h1>
+                <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}" style="display: flex; font-size: 8vh; justify-content: center;">{{ wsWin ? i18n.win : i18n.lose}}!</h1>
                 <div class="winLine">
                     <div class="winEl">  
                         <h1 class="winText">{{killsInMatch}}</h1>
@@ -885,11 +887,11 @@
                         </div>
                     </div>
                 </div>
-                <button class="exitToMenu" v-on:click="switchPage(0, 0)">
-                    <div style="display: flex; align-items: center;">
+                <div style="display: flex; justify-content: center;">
+                    <button class="exitToMenu" v-on:click="switchPage(0, 0)">
                         <img src="./img/win/enter.png" alt=""> {{i18n.exitToMenu}}
-                    </div>
-                </button>
+                    </button>
+                </div>
             </div>
             <div class="fireworks" v-if="wsWin">
                 <div class="firework">

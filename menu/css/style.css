@@ -2537,11 +2537,11 @@ a:hover {
 .premium .premiumimgform {
   position: relative;
   top: 3vh;
-  left: 5vw;
+  left: 4vw;
 }
 
 .premium img {
-  width: 70%;
+  width: 80%;
   height: 100%;
 }
 
@@ -2619,8 +2619,8 @@ a:hover {
 }
 
 .deluxeimgform img {
-  width: 130%;
-  height: 100%;
+  width: 120%;
+  height: 110%;
 }
 
 .converterblock {
@@ -3040,25 +3040,17 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -ms-flex-item-align: center;
-      align-self: center;
   font-family: 'Oswald';
   text-shadow: 1px 1px 3px #000;
 }
 
 .winLine {
-  padding-top: 5vh;
+  padding-top: 6vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .winEl {
@@ -3077,7 +3069,6 @@ a:hover {
   border-radius: 4px;
   border-image-slice: 1;
   padding: 0.1vh 0.5vw;
-  margin: 1vh 1vw;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -3132,6 +3123,12 @@ a:hover {
   transition: all 1s;
   margin-top: 10vh;
   text-shadow: 1px 1px 1px #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .exitToMenu:hover {
@@ -3147,9 +3144,10 @@ a:hover {
 }
 
 .exitToMenu img {
-  width: 1.5vw;
-  height: 1.5vw;
+  width: 2.5vh;
+  height: 2.5vh;
   padding-right: 0.5vw;
+  padding-top: 0.4vh;
   -webkit-filter: drop-shadow(0 0 1px #000000);
           filter: drop-shadow(0 0 1px #000000);
 }
