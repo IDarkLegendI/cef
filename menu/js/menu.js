@@ -359,6 +359,7 @@ var menu = new Vue({
             if(this.page !== 0 || !menu.show) //Если игрок не на главной странице
             {
                 this.emitToClient('notifyI18n', '4', 'menu', 'inviteToLobby', '5000');   
+                this.nextSubPage = 4;
             } 
             else this.switchPage(0, 4);
 
@@ -822,7 +823,7 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 0)
+        menu.switchPage(5, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
