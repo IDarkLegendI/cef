@@ -3063,14 +3063,48 @@ a:hover {
   -ms-flex-item-align: center;
       align-self: center;
   border-bottom: 1px solid transparent;
-  -o-border-image: linear-gradient(90deg, #d3f800 50%, #ff0000 100%);
-     border-image: -webkit-gradient(linear, left top, right top, color-stop(50%, #d3f800), to(#ff0000));
-     border-image: linear-gradient(90deg, #d3f800 50%, #ff0000 100%);
-  border-radius: 4px;
+  -webkit-animation-name: flash_border;
+          animation-name: flash_border;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
   border-image-slice: 1;
   padding: 0.1vh 0.5vw;
   -webkit-transition: all 1s;
   transition: all 1s;
+}
+
+@-webkit-keyframes flash_border {
+  0% {
+    border-color: #f702d6;
+  }
+  40% {
+    border-color: lime;
+  }
+  80% {
+    border-color: yellow;
+  }
+  100% {
+    border-color: linear-gradient(90deg, #d3f800 50%, #ff0000 100%);
+  }
+}
+
+@keyframes flash_border {
+  0% {
+    border-color: #f702d6;
+  }
+  40% {
+    border-color: lime;
+  }
+  80% {
+    border-color: yellow;
+  }
+  100% {
+    border-color: linear-gradient(90deg, #d3f800 50%, #ff0000 100%);
+  }
 }
 
 .winEl:hover {
