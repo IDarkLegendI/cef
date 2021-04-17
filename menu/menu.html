@@ -847,7 +847,7 @@
         <section v-if="page === 5">
             <div class="winMain">
                 <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}" style="display: flex; font-size: 8vh; justify-content: center;">{{ wsWin ? i18n.win : i18n.lose}}!</h1>
-                <div class="winLine">
+                <div class="winLine animated bounce slower">
                     <div class="winEl">  
                         <h1 class="winText">{{killsInMatch}}</h1>
                         <div class="winElRight">

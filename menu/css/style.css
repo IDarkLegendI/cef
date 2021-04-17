@@ -3045,7 +3045,7 @@ a:hover {
 }
 
 .winLine {
-  padding-top: 6vh;
+  padding-top: 20vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3121,7 +3121,7 @@ a:hover {
   font-family: 'Oswald';
   -webkit-transition: all 1s;
   transition: all 1s;
-  margin-top: 10vh;
+  margin-top: 20vh;
   text-shadow: 1px 1px 1px #000;
   display: -webkit-box;
   display: -ms-flexbox;

@@ -520,7 +520,9 @@ input::-webkit-inner-spin-button {
 }
 
 .fireworks {
-	height: 20vh;
+  position: absolute;
+  top: 10vh;
+	height: 30vh;
 	width: 100vw;
 	display: flex;
 	align-items: center;
@@ -555,7 +557,7 @@ input::-webkit-inner-spin-button {
   transform-origin: top center;
 	will-change: transform;
   animation: explosion 0.7s linear 3s;
-  animation-iteration-count: 10;
+  animation-iteration-count: 15;
 }
 .fireworks .firework .explosion:nth-child(1) {
           transform: rotate(0deg);
