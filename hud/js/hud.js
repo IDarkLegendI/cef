@@ -138,12 +138,11 @@ var hud = new Vue({
                 // console.log(htmlEl.style.opacity)
             }, 500);    
         },
-        fGetAudio(stage = 0)
+        fPlayAudio(name, volume = 0.1)
         {
-            let audio;
-            if(stage === 0) audio = new Audio('./audio/remen.mp3');
+            let audio = new Audio(`./audio/${name}.mp3`);
 
-            audio.volume = 0.1;  
+            audio.volume = volume;   
             audio.play(); 
         },
         getLevel: function(elo = 0) {
@@ -213,7 +212,7 @@ if ('alt' in window) {
     })    
     alt.on('visible', toggle => hud.visible = toggle)    
 
-    alt.on('fGetAudio', (stage) => hud.fGetAudio(stage))       
+    alt.on('fPlayAudio', hud.fPlayAudio)       
   
 }  
 else  
