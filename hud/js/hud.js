@@ -138,7 +138,7 @@ var hud = new Vue({
                 // console.log(htmlEl.style.opacity)
             }, 500);    
         },
-        fPlayAudio(name, volume = 0.1)
+        fPlayAudio(name, volume = 0.1) 
         {
             let audio = new Audio(`./audio/${name}.mp3`);
 
@@ -212,7 +212,7 @@ if ('alt' in window) {
     })    
     alt.on('visible', toggle => hud.visible = toggle)    
 
-    alt.on('fPlayAudio', hud.fPlayAudio)       
+    alt.on('fPlayAudio',(name, volume) => hud.fPlayAudio(name, volume))       
   
 }  
 else  

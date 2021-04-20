@@ -243,8 +243,8 @@ var menu = new Vue({
         },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
         changeVar(...args)
-        {
-            console.log(JSON.stringify(...args))
+        { 
+            //console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => {
                 menu[el[0]] = el[1];
             })
