@@ -168,6 +168,7 @@ var menu = new Vue({
             playingTime: "PLAYING TIME",
             minutes: "MINUTES",
             exitToMenu: "EXIT TO THE MENU",
+            iAgree: "I AGREE",
         },
         avatars: {
             "A": "0",
@@ -541,6 +542,7 @@ var menu = new Vue({
                 playingTime: "ИГРОВОЕ ВРЕМЯ",
                 minutes: "МИНУТ",
                 exitToMenu: "ВЫЙТИ В МЕНЮ",
+                iAgree: "Я СОГЛАСЕН",
             }
         },
         updateCars(list, selected) {
@@ -823,7 +825,7 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(5, 0)
+        menu.switchPage(3, 1)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
