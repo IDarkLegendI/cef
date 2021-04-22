@@ -26,8 +26,8 @@
         <div id="cursor"></div>
         <div id="aura"></div>
         <!-- ГЛАВНАЯ -->
-        <transition name="custom-classes-transition" enter-active-class="animated rotateInUpRight"
-            leave-active-class="animated rotateOutUpLeft" appear>
+        <transition appear enter-active-class="animated rotateInUpRight fast"
+            leave-active-class="animated rotateOutUpLeft fast" name="custom-classes-transition">
             <section v-show="page === 0">
                 <div class="main" id="main">
                     <div class="upper">
@@ -558,8 +558,8 @@
         </transition>
 
         <!-- НАСТРОЙКИ -->
-        <transition name="custom-classes-transition" enter-active-class="animated rotateInUpLeft"
-            leave-active-class="animated rotateOutDownLeft">
+        <transition enter-active-class="animated rotateInUpLeft fast" leave-active-class="animated rotateOutDownLeft fast"
+            name="custom-classes-transition">
             <section v-if="page === 1">
                 <div class="mainsettings">
                     <div class="settingsh1">
@@ -641,8 +641,6 @@
         </transition>
 
         <!-- Автомобили -->
-        <transition name="custom-classes-transition" enter-active-class="animated rotateInUpLeft"
-        leave-active-class="animated rotateOutDownLeft">
         <section v-if="page === 2">
             <div style="display: flex; flex-direction: column;">
                 <div class="upline">
@@ -729,7 +727,6 @@
                 </div>
             </div>
         </section>
-        </transition>
 
         <!-- ДОНАТ -->
         <transition name="custom-classes-transition" enter-active-class="animated rotateInUpLeft"
