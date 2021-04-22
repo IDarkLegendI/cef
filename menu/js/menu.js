@@ -245,10 +245,12 @@ var menu = new Vue({
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
         changeVar(...args)
         { 
-            //console.log(`changeVar: ${JSON.stringify(...args)}`)
+            console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => {
-                menu[el[0]] = el[1];
+                console.log(`changeVar: menu.${el[0]} = ${el[1]}`) 
+                menu[el[0]] = el[1]; 
             })
+            console.log(`changeVar: ${menu[el[0]]}`) 
         },
         saveSettings(page) {
             if (page != -1) this.switchPage(page);
