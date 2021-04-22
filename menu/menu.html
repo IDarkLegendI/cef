@@ -26,10 +26,12 @@
         <div id="cursor"></div>
         <div id="aura"></div>
         <!-- ГЛАВНАЯ -->
-        <section v-show="page === 0">
-            <div class="main" id="main">
-                <div class="upper">
-                    <!-- <div class="maininfo">
+        <transition name="custom-classes-transition" enter-active-class="animated rotateInUpRight"
+            leave-active-class="animated rotateOutUpLeft" appear>
+            <section v-show="page === 0">
+                <div class="main" id="main">
+                    <div class="upper">
+                        <!-- <div class="maininfo">
                         <div class="nameroyale" id="mouseFocus">
                             GTAROYAL.RU
                         </div>
@@ -42,117 +44,97 @@
                             </div>
                         </div> 
                     </div> -->
-                    <div class="maininfo">
-                        <div class="nameroyale" id="mouseFocus">
-                            GTAROYAL.RU
-                        </div>
-                        <div class="hr">
-                            <hr>
-                        </div>
-                        <span style="font-size: 2.8vh;">${{money}}</span>
-                    </div>
-                    <div class="buttons">
-                        <div class="btns1">
-                            <div class="btn" id="mouseFocus">
-                                <span>{{i18n.topap}}</span>
+                        <div class="maininfo">
+                            <div class="nameroyale" id="mouseFocus">
+                                GTAROYAL.RU
                             </div>
-                            <div class="btn" id="mouseFocus" v-if="adminLevel === 0">
-                                <span>{{i18n.managmentSub}}</span>
+                            <div class="hr">
+                                <hr>
                             </div>
-                            <div class="btn" id="mouseFocus" v-else>
-                                <span>АДМИН-ПАНЕЛЬ</span>
+                            <span style="font-size: 2.8vh;">${{money}}</span>
+                        </div>
+                        <div class="buttons">
+                            <div class="btns1">
+                                <div class="btn" id="mouseFocus">
+                                    <span>{{i18n.topap}}</span>
+                                </div>
+                                <div class="btn" id="mouseFocus" v-if="adminLevel === 0">
+                                    <span>{{i18n.managmentSub}}</span>
+                                </div>
+                                <div class="btn" id="mouseFocus" v-else>
+                                    <span>АДМИН-ПАНЕЛЬ</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="warning" id="mouseFocus">
-                        <div class="mainlobby">
-                            <transition-group name="list-complete" tag="div" class="sectionslobby" appear>
-                                <div class="sectionlobby list-complete-item" v-for="(player, index) in lobby"
-                                    v-bind:key="player.name">
-                                    <section v-if="player.ready !== -2">
-                                        <div class="crownimg" v-if="player.ready === -1">
-                                            <img alt="" src="img/Crown.png">
-                                        </div>
-                                        <div class="ready" v-if="player.ready >= 0">
-                                            <span v-show="player.ready === 2">{{i18n.inGame}}</span>
-                                            <span v-show="player.ready === 1">{{i18n.ready}}</span>
-                                            <span class="readynot" v-show="player.ready === 0">{{i18n.notready}}</span>
-                                        </div>
-                                    </section>
-                                    <div :class="{ava: player.ava !== 0}" class="borderlobby"
-                                        v-on:click="fInviteOrProfile(player.ava)">
-                                        <img src="img/plus.png" alt="" v-if="player.ava === 0">
-                                        <!-- <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt="" v-else> -->
-                                        <section v-else>
-                                            <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt=""
-                                                v-if="player.ava < 100">
-                                            <img :id="'player'+index" :src="player.ava" alt="" v-else>
+                        <div class="warning" id="mouseFocus">
+                            <div class="mainlobby">
+                                <transition-group name="list-complete" tag="div" class="sectionslobby" appear>
+                                    <div class="sectionlobby list-complete-item" v-for="(player, index) in lobby"
+                                        v-bind:key="player.name">
+                                        <section v-if="player.ready !== -2">
+                                            <div class="crownimg" v-if="player.ready === -1">
+                                                <img alt="" src="img/Crown.png">
+                                            </div>
+                                            <div class="ready" v-if="player.ready >= 0">
+                                                <span v-show="player.ready === 2">{{i18n.inGame}}</span>
+                                                <span v-show="player.ready === 1">{{i18n.ready}}</span>
+                                                <span class="readynot"
+                                                    v-show="player.ready === 0">{{i18n.notready}}</span>
+                                            </div>
                                         </section>
+                                        <div :class="{ava: player.ava !== 0}" class="borderlobby"
+                                            v-on:click="fInviteOrProfile(player.ava)">
+                                            <img src="img/plus.png" alt="" v-if="player.ava === 0">
+                                            <!-- <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt="" v-else> -->
+                                            <section v-else>
+                                                <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt=""
+                                                    v-if="player.ava < 100">
+                                                <img :id="'player'+index" :src="player.ava" alt="" v-else>
+                                            </section>
+                                        </div>
+                                        <div class="nicklobby">{{player.name.toUpperCase()}}</div>
                                     </div>
-                                    <div class="nicklobby">{{player.name.toUpperCase()}}</div>
-                                </div>
-                            </transition-group>
+                                </transition-group>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="down">
-                    <div class="left">
-                        <div class="upleft">
-                            <!-- УПРАВЛЕНИЕ МАШИНАМИ -->
-                            <div class="car form"
-                                v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1)">
-                                <div class="carContent">
-                                    <div class="textcar" id="mouseFocus">
-                                        <span class="textcar1">{{i18n.personal}}</span>
-                                        <span class="textcar4">{{i18n.managerCars}}</span>
-                                    </div>
-                                    <div>
-                                        <span class="textcar2">{{i18n.transport}}</span>
-                                        <span class="textcar3">{{i18n.control}}</span>
-                                    </div>
-                                    <div class="iconcar">
-                                        <img src="./img/tesla.png" id="mouseFocus" alt="">
+                    <div class="down">
+                        <div class="left">
+                            <div class="upleft">
+                                <!-- УПРАВЛЕНИЕ МАШИНАМИ -->
+                                <div class="car form"
+                                    v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1)">
+                                    <div class="carContent">
+                                        <div class="textcar" id="mouseFocus">
+                                            <span class="textcar1">{{i18n.personal}}</span>
+                                            <span class="textcar4">{{i18n.managerCars}}</span>
+                                        </div>
+                                        <div>
+                                            <span class="textcar2">{{i18n.transport}}</span>
+                                            <span class="textcar3">{{i18n.control}}</span>
+                                        </div>
+                                        <div class="iconcar">
+                                            <img src="./img/tesla.png" id="mouseFocus" alt="">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="stack">
-                                <!-- Если игра не начата -->
-                                <section v-if="!statusGame">
-                                    <!-- Если игрок капитан -->
-                                    <div class="ticket form" id="mouseFocus" v-on:click="emitServer('sMenu:startGame')"
-                                        v-if="lobby[myID].ready <= -1">
-                                        <div class="textticket">
-                                            <div class="textticket1">{{i18n.start}} <span
-                                                    class="textticket2">{{i18n.game}}</span></div>
-                                            <div class="textticket3">{{i18n.status}}: <span
-                                                    class="textticket4">{{textMatch}}</span>
-                                            </div>
-                                            <div class="textticketblock">
-                                                <div class="textticket5">{{i18n.expectation}}: <span
-                                                        class="textticket6">{{countWarmUp}}</span></div>
-                                                <span class="minibtn" v-on:click="fLeaveLobby()"
-                                                    v-if="lobby[myID].ready === -1">{{i18n.leavelobby}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="iconticket">
-                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
-                                        </div>
-                                    </div>
-
-                                    <section v-else>
-                                        <!-- Если игрок не готов -->
-                                        <div class="ticket ticketRed form" id="mouseFocus"
-                                            v-if="lobby[myID].ready === 0"
-                                            v-on:click="emitServer('sLobby:setReady', 1)">
+                                <div class="stack">
+                                    <!-- Если игра не начата -->
+                                    <section v-if="!statusGame">
+                                        <!-- Если игрок капитан -->
+                                        <div class="ticket form" id="mouseFocus"
+                                            v-on:click="emitServer('sMenu:startGame')" v-if="lobby[myID].ready <= -1">
                                             <div class="textticket">
-                                                <div class="textticket1">{{i18n.notready}}</span></div>
-                                                <div class="textticket3">{{i18n.clickready}}
+                                                <div class="textticket1">{{i18n.start}} <span
+                                                        class="textticket2">{{i18n.game}}</span></div>
+                                                <div class="textticket3">{{i18n.status}}: <span
+                                                        class="textticket4">{{textMatch}}</span>
                                                 </div>
                                                 <div class="textticketblock">
                                                     <div class="textticket5">{{i18n.expectation}}: <span
                                                             class="textticket6">{{countWarmUp}}</span></div>
-                                                    <span class="minibtn"
-                                                        v-on:click="fLeaveLobby()">{{i18n.leavelobby}}</span>
+                                                    <span class="minibtn" v-on:click="fLeaveLobby()"
+                                                        v-if="lobby[myID].ready === -1">{{i18n.leavelobby}}</span>
                                                 </div>
                                             </div>
                                             <div class="iconticket">
@@ -160,18 +142,59 @@
                                             </div>
                                         </div>
 
-                                        <!-- Если игрок готов -->
-                                        <div class="ticket form" id="mouseFocus" v-else
-                                            v-on:click="emitServer('sLobby:setReady', 0)">
-                                            <div class="textticket">
-                                                <div class="textticket1">{{i18n.ready}}</span></div>
-                                                <div class="textticket3">{{i18n.clicknotready}}
+                                        <section v-else>
+                                            <!-- Если игрок не готов -->
+                                            <div class="ticket ticketRed form" id="mouseFocus"
+                                                v-if="lobby[myID].ready === 0"
+                                                v-on:click="emitServer('sLobby:setReady', 1)">
+                                                <div class="textticket">
+                                                    <div class="textticket1">{{i18n.notready}}</span></div>
+                                                    <div class="textticket3">{{i18n.clickready}}
+                                                    </div>
+                                                    <div class="textticketblock">
+                                                        <div class="textticket5">{{i18n.expectation}}: <span
+                                                                class="textticket6">{{countWarmUp}}</span></div>
+                                                        <span class="minibtn"
+                                                            v-on:click="fLeaveLobby()">{{i18n.leavelobby}}</span>
+                                                    </div>
                                                 </div>
-                                                <div class="textticketblock">
-                                                    <div class="textticket5">{{i18n.expectation}}: <span
-                                                            class="textticket6">{{countWarmUp}}</span></div>
-                                                    <span class="minibtn"
-                                                        v-on:click="fLeaveLobby()">{{i18n.leavelobby}}</span>
+                                                <div class="iconticket">
+                                                    <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                                </div>
+                                            </div>
+
+                                            <!-- Если игрок готов -->
+                                            <div class="ticket form" id="mouseFocus" v-else
+                                                v-on:click="emitServer('sLobby:setReady', 0)">
+                                                <div class="textticket">
+                                                    <div class="textticket1">{{i18n.ready}}</span></div>
+                                                    <div class="textticket3">{{i18n.clicknotready}}
+                                                    </div>
+                                                    <div class="textticketblock">
+                                                        <div class="textticket5">{{i18n.expectation}}: <span
+                                                                class="textticket6">{{countWarmUp}}</span></div>
+                                                        <span class="minibtn"
+                                                            v-on:click="fLeaveLobby()">{{i18n.leavelobby}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="iconticket">
+                                                    <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </section>
+
+                                    <!-- Если игрок в игре -->
+                                    <section v-else>
+                                        <div class="ticket ticketRed form" id="mouseFocus"
+                                            v-on:click="emitServer('sMenu:endGame')">
+                                            <div class="textticket" style="justify-content: center;">
+                                                <div class="textticket1">{{i18n.stop}} <span
+                                                        class="textticket2">{{i18n.game}}</span>
+                                                </div>
+                                                <div class="textticket3" v-if="lobby[myID].ready !== -2"
+                                                    style="font-size: 0.8vw;">
+                                                    {{i18n.infoStopGame}}
                                                 </div>
                                             </div>
                                             <div class="iconticket">
@@ -179,347 +202,330 @@
                                             </div>
                                         </div>
                                     </section>
-                                </section>
 
-                                <!-- Если игрок в игре -->
-                                <section v-else>
-                                    <div class="ticket ticketRed form" id="mouseFocus"
-                                        v-on:click="emitServer('sMenu:endGame')">
-                                        <div class="textticket" style="justify-content: center;">
-                                            <div class="textticket1">{{i18n.stop}} <span
-                                                    class="textticket2">{{i18n.game}}</span>
-                                            </div>
-                                            <div class="textticket3" v-if="lobby[myID].ready !== -2"
-                                                style="font-size: 0.8vw;">
-                                                {{i18n.infoStopGame}}
-                                            </div>
+                                    <div class="shop form" id="mouseFocus" v-on:click="switchPage(1)">
+                                        <div class="textshop">
+                                            <div class="textshop1">{{i18n.settings}}</div>
                                         </div>
-                                        <div class="iconticket">
-                                            <img src="./img/jostik.png" id="mouseFocus" alt="">
+                                        <div class="iconshop">
+                                            <img src="./img/shop.png" id="mouseFocus" alt="">
                                         </div>
-                                    </div>
-                                </section>
-
-                                <div class="shop form" id="mouseFocus" v-on:click="switchPage(1)">
-                                    <div class="textshop">
-                                        <div class="textshop1">{{i18n.settings}}</div>
-                                    </div>
-                                    <div class="iconshop">
-                                        <img src="./img/shop.png" id="mouseFocus" alt="">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="downleft">
-                            <div class="noob form1" v-on:click="switchPage(3)">
-                                <div class="noobpart1">
-                                    <div id="mouseFocus"
-                                        style="display: flex; color: white; flex-direction: column; justify-content: space-between;">
-                                        <div style="font-size: 3.5vh; font-family: 'Rubik'">
-                                            <div>{{i18n.pack}}</div>
-                                            <div style="font-family: 'Roboto Condensed'">{{i18n.noob}}</div>
-                                        </div>
-                                        <div
-                                            style="font-size: 1.6vh; font-family: 'Roboto Condensed'; display: flex; margin-top: 1vh;">
-                                            <div>{{i18n.left}}:</div>
-                                            <div style="margin-left: 0.3vw;">{{i18n.time}}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noobpart2">
-                                    <div class="noobbtn">
-                                        <span><span class="minibtn" id="mouseFocus">{{i18n.license}}</span> <br> <span
-                                                class="minibtn" id="mouseFocus">{{i18n.money}}</span>
-                                    </div>
-                                    <div class="iconnoob">
-                                        <img src="./img/noob.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="backpack form1">
-                                <div class="rankContent">
-                                    <div class="content">
-                                        <div class="bptext" id="mouseFocus">
-                                            <div class="bpname">
-                                                <span>{{i18n.rank}}</span>
+                            <div class="downleft">
+                                <div class="noob form1" v-on:click="switchPage(3)">
+                                    <div class="noobpart1">
+                                        <div id="mouseFocus"
+                                            style="display: flex; color: white; flex-direction: column; justify-content: space-between;">
+                                            <div style="font-size: 3.5vh; font-family: 'Rubik'">
+                                                <div>{{i18n.pack}}</div>
+                                                <div style="font-family: 'Roboto Condensed'">{{i18n.noob}}</div>
                                             </div>
-                                            <span style="font-size: 0.8vw;
+                                            <div
+                                                style="font-size: 1.6vh; font-family: 'Roboto Condensed'; display: flex; margin-top: 1vh;">
+                                                <div>{{i18n.left}}:</div>
+                                                <div style="margin-left: 0.3vw;">{{i18n.time}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="noobpart2">
+                                        <div class="noobbtn">
+                                            <span><span class="minibtn" id="mouseFocus">{{i18n.license}}</span> <br>
+                                                <span class="minibtn" id="mouseFocus">{{i18n.money}}</span>
+                                        </div>
+                                        <div class="iconnoob">
+                                            <img src="./img/noob.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backpack form1">
+                                    <div class="rankContent">
+                                        <div class="content">
+                                            <div class="bptext" id="mouseFocus">
+                                                <div class="bpname">
+                                                    <span>{{i18n.rank}}</span>
+                                                </div>
+                                                <span style="font-size: 0.8vw;
                                             margin-top: 5%;">{{i18n.backmatch}}:</span>
-                                            <span style="font-size: 0.9vw;"
-                                                :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
-                                            </span>
-                                        </div>
-                                        <div class="bpmaininfo">
-                                            <div class="bpstats">
-                                                <div class="bpstats1">
-                                                    <div class="elo">
-                                                        <span>{{i18n.score}}:</span> <span
-                                                            class="bpscore">{{elo}}</span>
-                                                    </div>
-                                                    <div class="matchs">
-                                                        <span>{{i18n.wins}}:</span> <span class="bpscore">{{wins}} из
-                                                            {{matches}}</span>
-                                                    </div>
-                                                    <div class="kd">
-                                                        <span>K/D:</span> <span class="bpscore">{{getKD()}}</span>
-                                                    </div>
-                                                    <div class="kd">{{i18n.hours}}:
-                                                        <span class="bpscore">
-                                                            {{hours}}</span>
+                                                <span style="font-size: 0.9vw;"
+                                                    :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
+                                                </span>
+                                            </div>
+                                            <div class="bpmaininfo">
+                                                <div class="bpstats">
+                                                    <div class="bpstats1">
+                                                        <div class="elo">
+                                                            <span>{{i18n.score}}:</span> <span
+                                                                class="bpscore">{{elo}}</span>
+                                                        </div>
+                                                        <div class="matchs">
+                                                            <span>{{i18n.wins}}:</span> <span class="bpscore">{{wins}}
+                                                                из
+                                                                {{matches}}</span>
+                                                        </div>
+                                                        <div class="kd">
+                                                            <span>K/D:</span> <span class="bpscore">{{getKD()}}</span>
+                                                        </div>
+                                                        <div class="kd">{{i18n.hours}}:
+                                                            <span class="bpscore">
+                                                                {{hours}}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="img">
+                                            <img :src="`img/levels/${level}.png`" id="mouseFocus" alt="">
+                                        </div>
                                     </div>
-                                    <div class="img">
-                                        <img :src="`img/levels/${level}.png`" id="mouseFocus" alt="">
+                                </div>
+                                <div class="virt form1">
+                                    <div class="virtname">
+                                        <span>{{i18n.awards}}</span>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="virt form1">
-                                <div class="virtname">
-                                    <span>{{i18n.awards}}</span>
-                                </div>
-                                <div class="virttext">
-                                    <span>{{i18n.gifts}}</span>
-                                </div>
-                                <div class="virticon">
-                                    <img alt="" src="img/kor.png">
+                                    <div class="virttext">
+                                        <span>{{i18n.gifts}}</span>
+                                    </div>
+                                    <div class="virticon">
+                                        <img alt="" src="img/kor.png">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <transition name="person-friend">
-                        <div class="right" v-show="subPage === 0">
+                        <transition name="person-friend">
+                            <div class="right" v-show="subPage === 0">
 
-                            <div class="headright">
-                                <span class="headright1">{{i18n.person}}</span>
-                            </div>
-                            <div class="textright">
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="emit('characterOpen', lobby[myID].ready === 1)">{{i18n.custom}}</span>
-                                <br>
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="switchPage(0, 2)">{{i18n.friends}}</span> <br>
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="emit('cClothes:open', lobby[myID].ready === 1)">{{i18n.clothing}}</span>
-                            </div>
-                            <div class="righticon">
-                                <img src="img/character.png" id="mouseFocus" alt="">
-                            </div>
-                        </div>
-                    </transition>
-
-                    <transition name="person-friend2">
-                        <div class="rightNoHover" v-show="subPage === 1">
-                            <div class="friendsh1">
-                                <h1>{{i18n.invite}}</h1>
-                            </div>
-                            <div class="zaprosi">
-                                <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-for="(friend, index) in getOnlineFriend()"
-                                        v-bind:key="friend.name">
-                                        <div class="avatarnickzapros">
-                                            <div class="avatarzapros">
-                                                <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
-                                            </div>
-                                            <div class="nickzapros">{{friend.name}}</div>
-                                        </div>
-                                        <div class="btnszapros">
-                                            <div class="btnzapros" data-title="Пригласить">
-                                                <img src="img/plusbtn.png" alt=""
-                                                    v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </transition-group>
-                            </div>
-                            <div class="btnbackperson">
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="switchPage(0, 0)">{{i18n.person}}</span>
-                            </div>
-                        </div>
-                    </transition>
-                    <transition name="person-friend2">
-                        <div class="rightNoHover" v-show="subPage === 2">
-                            <div class="friendsh1">
-                                <h1>{{i18n.friends}}</h1>
-                            </div>
-                            <div class="zaprosi">
-                                <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-for="(friend, index) in friends"
-                                        v-bind:key="friend.name" v-on:mouseleave="showProfileDetails(friend.name, 0)">
-                                        <div class="avatarnickzapros">
-                                            <div class="avatarzapros" :class="{online: friend.online}">
-                                                <!-- <img src="img/ava.jpg" alt=""> -->
-                                                <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
-                                            </div>
-                                            <div class="nickzapros">{{friend.name}}</div>
-                                        </div>
-                                        <div class="btnszapros">
-                                            <div class="btnzapros profileDetails" :id='friend.name'
-                                                data-title="Удалить из друзей">
-                                                <img v-on:click="delFriend(friend.name)" src="img/close.png" alt="">
-                                            </div>
-                                            <!-- <div class="btnszapros">
-                                                <div class="btnzapros" :id='friend.name' data-title="Пригласить">
-                                                    <img src="img/plusbtn.png" alt=""
-                                                        v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
-                                                </div>
-                                            </div> -->
-                                            <div class="btnzapros" data-title="Действия">
-                                                <img v-on:click="showProfileDetails(friend.name)" src="img/dots.png"
-                                                    alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </transition-group>
-                            </div>
-                            <div class="btnbackperson2">
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="switchPage(0, 0)">{{i18n.person}}</span>
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="switchPage(0, 3)">{{i18n.controlFriends}}</span>
-                            </div>
-                        </div>
-                    </transition>
-                    <!-- ДОБАВИТЬ НОВОГО ДРУГА -->
-                    <transition name="person-friend2">
-                        <div class="rightNoHover" v-show="subPage === 3">
-
-                            <div class="inputaddfriends">
-                                <h1>{{i18n.addFriend}}</h1>
-                                <div class="btnback2">
-                                    <input type="text" placeholder="Input NickName" spellcheck="false"
-                                        v-model="miscInput" maxlength="15" id="inputAddFriend">
-                                    <transition name="custom-classes-transition"
-                                        enter-active-class="animated fadeInLeft"
-                                        leave-active-class="animated fadeOutRight">
-                                        <a v-if="miscInput.length > 3"
-                                            v-on:click="emit('cFriends:addRequest', miscInput, friends, requestsIn, requestsOut)"
-                                            id="mouseFocus" class="btnOnlyBorder">{{i18n.add}}</a>
-                                    </transition>
+                                <div class="headright">
+                                    <span class="headright1">{{i18n.person}}</span>
+                                </div>
+                                <div class="textright">
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="emit('characterOpen', lobby[myID].ready === 1)">{{i18n.custom}}</span>
+                                    <br>
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 2)">{{i18n.friends}}</span> <br>
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="emit('cClothes:open', lobby[myID].ready === 1)">{{i18n.clothing}}</span>
+                                </div>
+                                <div class="righticon">
+                                    <img src="img/character.png" id="mouseFocus" alt="">
                                 </div>
                             </div>
+                        </transition>
 
-                            <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
-                                leave-active-class="animated bounceOutUp">
-                                <div class="zaprosi" :style="{flexBasis: findFriend().length === 1 ? '25%' : '60%'}"
-                                    v-if="miscInput.length > 1 && findFriend().length !== 0">
+                        <transition name="person-friend2">
+                            <div class="rightNoHover" v-show="subPage === 1">
+                                <div class="friendsh1">
+                                    <h1>{{i18n.invite}}</h1>
+                                </div>
+                                <div class="zaprosi">
                                     <transition-group name="list-complete" tag="div">
-                                        <div class="zapros list-complete-item" v-for="(friend, index) in findFriend()"
-                                            v-bind:key="friend">
+                                        <div class="zapros list-complete-item"
+                                            v-for="(friend, index) in getOnlineFriend()" v-bind:key="friend.name">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
-                                                    <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                    <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
                                                 </div>
-                                                <div class="nickzapros">{{friend}}</div>
+                                                <div class="nickzapros">{{friend.name}}</div>
                                             </div>
                                             <div class="btnszapros">
-                                                <div class="btnzapros" data-title="Добавить">
-                                                    <img v-on:click="emit('cFriends:addRequest', friend, friends, requestsIn, requestsOut)"
-                                                        src="img/plusbtn.png" alt="">
+                                                <div class="btnzapros" data-title="Пригласить">
+                                                    <img src="img/plusbtn.png" alt=""
+                                                        v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
                                                 </div>
                                             </div>
                                         </div>
                                     </transition-group>
                                 </div>
-                            </transition>
-
-                            <!-- ВХОДЯЩИЕ ЗАЯВКИ -->
-                            <div class="friendsh1" v-if="requestsIn[0]">
-                                <h1>{{i18n.requestsIn}}</h1>
+                                <div class="btnbackperson">
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 0)">{{i18n.person}}</span>
+                                </div>
                             </div>
-                            <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
-                                leave-active-class="animated bounceOutUp">
-                                <div class="zaprosi" v-if="requestsIn[0]">
+                        </transition>
+                        <transition name="person-friend2">
+                            <div class="rightNoHover" v-show="subPage === 2">
+                                <div class="friendsh1">
+                                    <h1>{{i18n.friends}}</h1>
+                                </div>
+                                <div class="zaprosi">
                                     <transition-group name="list-complete" tag="div">
-                                        <div class="zapros list-complete-item" v-for="(friend, index) in requestsIn"
-                                            v-bind:key="friend">
+                                        <div class="zapros list-complete-item" v-for="(friend, index) in friends"
+                                            v-bind:key="friend.name"
+                                            v-on:mouseleave="showProfileDetails(friend.name, 0)">
                                             <div class="avatarnickzapros">
-                                                <div class="avatarzapros">
-                                                    <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                <div class="avatarzapros" :class="{online: friend.online}">
+                                                    <!-- <img src="img/ava.jpg" alt=""> -->
+                                                    <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
                                                 </div>
-                                                <div class="nickzapros">{{friend}}</div>
+                                                <div class="nickzapros">{{friend.name}}</div>
                                             </div>
                                             <div class="btnszapros">
-                                                <div class="btnzapros" data-title="Принять">
-                                                    <img v-on:click="request(friend, 'requestsIn', 'sFriends:acceptRequest')"
-                                                        src="img/tick.png" alt="">
+                                                <div class="btnzapros profileDetails" :id='friend.name'
+                                                    data-title="Удалить из друзей">
+                                                    <img v-on:click="delFriend(friend.name)" src="img/close.png" alt="">
                                                 </div>
-                                                <div class="btnzapros" data-title="Отклонить">
-                                                    <img v-on:click="request(friend, 'requestsIn')" src="img/close.png"
+                                                <!-- <div class="btnszapros">
+                                                <div class="btnzapros" :id='friend.name' data-title="Пригласить">
+                                                    <img src="img/plusbtn.png" alt=""
+                                                        v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
+                                                </div>
+                                            </div> -->
+                                                <div class="btnzapros" data-title="Действия">
+                                                    <img v-on:click="showProfileDetails(friend.name)" src="img/dots.png"
                                                         alt="">
                                                 </div>
                                             </div>
                                         </div>
                                     </transition-group>
                                 </div>
-                            </transition>
-
-                            <div class="friendsh1" v-if="requestsOut[0]">
-                                <h1>{{i18n.requestsOut}}</h1>
+                                <div class="btnbackperson2">
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 0)">{{i18n.person}}</span>
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 3)">{{i18n.controlFriends}}</span>
+                                </div>
                             </div>
-                            <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
-                                leave-active-class="animated bounceOutUp">
-                                <div class="zaprosi" v-if="requestsOut[0]">
+                        </transition>
+                        <!-- ДОБАВИТЬ НОВОГО ДРУГА -->
+                        <transition name="person-friend2">
+                            <div class="rightNoHover" v-show="subPage === 3">
+
+                                <div class="inputaddfriends">
+                                    <h1>{{i18n.addFriend}}</h1>
+                                    <div class="btnback2">
+                                        <input type="text" placeholder="Input NickName" spellcheck="false"
+                                            v-model="miscInput" maxlength="15" id="inputAddFriend">
+                                        <transition name="custom-classes-transition"
+                                            enter-active-class="animated fadeInLeft"
+                                            leave-active-class="animated fadeOutRight">
+                                            <a v-if="miscInput.length > 3"
+                                                v-on:click="emit('cFriends:addRequest', miscInput, friends, requestsIn, requestsOut)"
+                                                id="mouseFocus" class="btnOnlyBorder">{{i18n.add}}</a>
+                                        </transition>
+                                    </div>
+                                </div>
+
+                                <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
+                                    leave-active-class="animated bounceOutUp">
+                                    <div class="zaprosi" :style="{flexBasis: findFriend().length === 1 ? '25%' : '60%'}"
+                                        v-if="miscInput.length > 1 && findFriend().length !== 0">
+                                        <transition-group name="list-complete" tag="div">
+                                            <div class="zapros list-complete-item"
+                                                v-for="(friend, index) in findFriend()" v-bind:key="friend">
+                                                <div class="avatarnickzapros">
+                                                    <div class="avatarzapros">
+                                                        <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                    </div>
+                                                    <div class="nickzapros">{{friend}}</div>
+                                                </div>
+                                                <div class="btnszapros">
+                                                    <div class="btnzapros" data-title="Добавить">
+                                                        <img v-on:click="emit('cFriends:addRequest', friend, friends, requestsIn, requestsOut)"
+                                                            src="img/plusbtn.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </transition-group>
+                                    </div>
+                                </transition>
+
+                                <!-- ВХОДЯЩИЕ ЗАЯВКИ -->
+                                <div class="friendsh1" v-if="requestsIn[0]">
+                                    <h1>{{i18n.requestsIn}}</h1>
+                                </div>
+                                <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
+                                    leave-active-class="animated bounceOutUp">
+                                    <div class="zaprosi" v-if="requestsIn[0]">
+                                        <transition-group name="list-complete" tag="div">
+                                            <div class="zapros list-complete-item" v-for="(friend, index) in requestsIn"
+                                                v-bind:key="friend">
+                                                <div class="avatarnickzapros">
+                                                    <div class="avatarzapros">
+                                                        <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                    </div>
+                                                    <div class="nickzapros">{{friend}}</div>
+                                                </div>
+                                                <div class="btnszapros">
+                                                    <div class="btnzapros" data-title="Принять">
+                                                        <img v-on:click="request(friend, 'requestsIn', 'sFriends:acceptRequest')"
+                                                            src="img/tick.png" alt="">
+                                                    </div>
+                                                    <div class="btnzapros" data-title="Отклонить">
+                                                        <img v-on:click="request(friend, 'requestsIn')"
+                                                            src="img/close.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </transition-group>
+                                    </div>
+                                </transition>
+
+                                <div class="friendsh1" v-if="requestsOut[0]">
+                                    <h1>{{i18n.requestsOut}}</h1>
+                                </div>
+                                <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
+                                    leave-active-class="animated bounceOutUp">
+                                    <div class="zaprosi" v-if="requestsOut[0]">
+                                        <transition-group name="list-complete" tag="div">
+                                            <div class="zapros list-complete-item"
+                                                v-for="(friend, index) in requestsOut" v-bind:key="friend">
+                                                <div class="avatarnickzapros">
+                                                    <div class="avatarzapros">
+                                                        <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                    </div>
+                                                    <div class="nickzapros">{{friend}}</div>
+                                                </div>
+                                                <div class="btnzapros" data-title="Отменить">
+                                                    <img v-on:click="request(friend, 'requestsOut')" src="img/close.png"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </transition-group>
+                                    </div>
+                                </transition>
+                                <div class="btnbackperson">
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 0)"><span>{{i18n.person}}</span></span>
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 2)"><span>{{i18n.friends}}</span></span>
+                                </div>
+                            </div>
+                        </transition>
+
+                        <!-- ПРИГЛАШЕНИЕ В ЛОББИ -->
+
+                        <transition name="person-friend2">
+                            <div class="rightNoHover" v-show="subPage === 4">
+                                <div class="friendsh1">
+                                    <h1>{{i18n.inviteToLobby + ' №' + lobbyID}}</h1>
+                                </div>
+                                <div class="zaprosi">
                                     <transition-group name="list-complete" tag="div">
-                                        <div class="zapros list-complete-item" v-for="(friend, index) in requestsOut"
-                                            v-bind:key="friend">
+                                        <div class="zapros list-complete-item" v-for="(friend, index) in myData"
+                                            v-bind:key="friend.name"
+                                            v-on:mouseleave="showProfileDetails(friend.name, 0)">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
-                                                    <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                    <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
                                                 </div>
-                                                <div class="nickzapros">{{friend}}</div>
-                                            </div>
-                                            <div class="btnzapros" data-title="Отменить">
-                                                <img v-on:click="request(friend, 'requestsOut')" src="img/close.png"
-                                                    alt="">
+                                                <div class="nickzapros">{{friend.name}}</div>
                                             </div>
                                         </div>
                                     </transition-group>
                                 </div>
-                            </transition>
-                            <div class="btnbackperson">
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="switchPage(0, 0)"><span>{{i18n.person}}</span></span>
-                                <span class="minibtn" id="mouseFocus"
-                                    v-on:click="switchPage(0, 2)"><span>{{i18n.friends}}</span></span>
+                                <div class="btnbackperson2">
+                                    <span class="minibtn red" id="mouseFocus"
+                                        v-on:click="answerInvite(false)">{{i18n.cancel}}</span>
+                                    <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">
+                                        {{i18n.accept}}</span>
+                                </div>
                             </div>
-                        </div>
-                    </transition>
-
-                    <!-- ПРИГЛАШЕНИЕ В ЛОББИ -->
-
-                    <transition name="person-friend2">
-                        <div class="rightNoHover" v-show="subPage === 4">
-                            <div class="friendsh1">
-                                <h1>{{i18n.inviteToLobby + ' №' + lobbyID}}</h1>
-                            </div>
-                            <div class="zaprosi">
-                                <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-for="(friend, index) in myData"
-                                        v-bind:key="friend.name" v-on:mouseleave="showProfileDetails(friend.name, 0)">
-                                        <div class="avatarnickzapros">
-                                            <div class="avatarzapros">
-                                                <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
-                                            </div>
-                                            <div class="nickzapros">{{friend.name}}</div>
-                                        </div>
-                                    </div>
-                                </transition-group>
-                            </div>
-                            <div class="btnbackperson2">
-                                <span class="minibtn red" id="mouseFocus"
-                                    v-on:click="answerInvite(false)">{{i18n.cancel}}</span>
-                                <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">
-                                    {{i18n.accept}}</span>
-                            </div>
-                        </div>
-                    </transition>
+                        </transition>
+                    </div>
                 </div>
-            </div>
-            <!-- <div class="modalwindow">
+                <!-- <div class="modalwindow">
                 <div class="closebtn">
                     <div class="imgcloseform">
                         <img src="../menu/img/cancel.png" alt="">
@@ -548,85 +554,95 @@
                     </div>
                 </div>
             </div> -->
-        </section>
+            </section>
+        </transition>
 
         <!-- НАСТРОЙКИ -->
-        <section v-if="page === 1">
-            <div class="mainsettings">
-                <div class="settingsh1">
-                    <h1>{{i18n.settings}}</h1>
-                </div>
-                <div class="settings">
-                    <div class="checkboxes">
-                        <div class="checkboxtest">
-                            <span>ВЫБОР ЯЗЫКА</span>
-                            <div class="social">
-                                <div class="ru">
-                                    <div class="imgformlang">
-                                        <img src="../menu/img/russia.png" alt="">
+        <transition name="custom-classes-transition" enter-active-class="animated rotateInUpLeft"
+            leave-active-class="animated rotateOutDownLeft">
+            <section v-if="page === 1">
+                <div class="mainsettings">
+                    <div class="settingsh1">
+                        <h1>{{i18n.settings}}</h1>
+                    </div>
+                    <div class="settings">
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>ВЫБОР ЯЗЫКА</span>
+                                <div class="social">
+                                    <div class="ru">
+                                        <div class="imgformlang">
+                                            <img src="../menu/img/russia.png" alt="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="en">
-                                    <div class="imgformlang currentLang">
-                                        <img src="../menu/img/eu.png" alt="">
+                                    <div class="en">
+                                        <div class="imgformlang currentLang">
+                                            <img src="../menu/img/eu.png" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="checkboxes">
-                        <div class="checkboxtest">
-                            <span>{{i18n.tips}}</span>
-                            <input type="checkbox" id="switch" /><label for="switch" id="mouseFocus">Toggle</label>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>{{i18n.tips}}</span>
+                                <input type="checkbox" id="switch" /><label for="switch" id="mouseFocus">Toggle</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="checkboxes">
-                        <div class="checkboxtest">
-                            <span>"VR" - {{i18n.menuMode}}</span>
-                            <input type="checkbox" id="switchVR" v-model='enableVR'
-                                v-on:click="saveSettings(-1)" /><label for="switchVR" id="mouseFocus">Toggle</label>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>"VR" - {{i18n.menuMode}}</span>
+                                <input type="checkbox" id="switchVR" v-model='enableVR'
+                                    v-on:click="saveSettings(-1)" /><label for="switchVR" id="mouseFocus">Toggle</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="checkboxes">
-                        <div class="checkboxtest">
-                            <span>{{i18n.quickWeaponT}}</span>
-                            <input type="checkbox" id="quickWeapon" v-model='quickWeapon'
-                                v-on:click="saveSettings(-1)" /><label for="quickWeapon" id="mouseFocus">Toggle</label>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>{{i18n.quickWeaponT}}</span>
+                                <input type="checkbox" id="quickWeapon" v-model='quickWeapon'
+                                    v-on:click="saveSettings(-1)" /><label for="quickWeapon"
+                                    id="mouseFocus">Toggle</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="binds">
-                        <div class="bind">
-                            <span class="bindname">{{i18n.sit}}</span>
-                            <span class="bindbtn" id="mouseFocus">CTRL</span>
+                        <div class="binds">
+                            <div class="bind">
+                                <span class="bindname">{{i18n.sit}}</span>
+                                <span class="bindbtn" id="mouseFocus">CTRL</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mapchoice1">
-                        <div class="namechoice">
-                            <h1>{{i18n.sizeMap}}</h1>
+                        <div class="mapchoice1">
+                            <div class="namechoice">
+                                <h1>{{i18n.sizeMap}}</h1>
+                            </div>
+                            <div class="mapchoice">
+                                <label>
+                                    <input id="map-0" type="radio" class="option-input radio" value="0"
+                                        v-model="sizeMap">
+                                    <span>{{i18n.small}}</span>
+                                </label>
+                                <label>
+                                    <input id="map-1" type="radio" class="option-input radio" value="1"
+                                        v-model="sizeMap">
+                                    <span>{{i18n.normal}}</span>
+                                </label>
+                                <label>
+                                    <input id="map-2" type="radio" class="option-input radio" value="2"
+                                        v-model="sizeMap">
+                                    <span>{{i18n.big}}</span>
+                                </label>
+                            </div>
                         </div>
-                        <div class="mapchoice">
-                            <label>
-                                <input id="map-0" type="radio" class="option-input radio" value="0" v-model="sizeMap">
-                                <span>{{i18n.small}}</span>
-                            </label>
-                            <label>
-                                <input id="map-1" type="radio" class="option-input radio" value="1" v-model="sizeMap">
-                                <span>{{i18n.normal}}</span>
-                            </label>
-                            <label>
-                                <input id="map-2" type="radio" class="option-input radio" value="2" v-model="sizeMap">
-                                <span>{{i18n.big}}</span>
-                            </label>
+                        <div class="btnback">
+                            <a href="#" v-on:click="saveSettings(0)" id="mouseFocus">{{i18n.btnBack}}</a>
                         </div>
-                    </div>
-                    <div class="btnback">
-                        <a href="#" v-on:click="saveSettings(0)" id="mouseFocus">{{i18n.btnBack}}</a>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </transition>
 
         <!-- Автомобили -->
+        <transition name="custom-classes-transition" enter-active-class="animated rotateInUpLeft"
+        leave-active-class="animated rotateOutDownLeft">
         <section v-if="page === 2">
             <div style="display: flex; flex-direction: column;">
                 <div class="upline">
@@ -713,136 +729,142 @@
                 </div>
             </div>
         </section>
+        </transition>
 
         <!-- ДОНАТ -->
-        <section v-if="page === 3">
-            <section v-if="subPage === 0">
-                <div class="upline">
-                    <div class="nameupline">
-                        <span>GTAROYAL.RU</span>
-                    </div>
-                    <div class="balancemoney">
-                        <div
-                            style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
-                            <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
+        <transition name="custom-classes-transition" enter-active-class="animated rotateInUpLeft"
+            leave-active-class="animated rotateOutDownLeft">
+            <section v-if="page === 3">
+                <section v-if="subPage === 0">
+                    <div class="upline">
+                        <div class="nameupline">
+                            <span>GTAROYAL.RU</span>
+                        </div>
+                        <div class="balancemoney">
+                            <div
+                                style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
+                                <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
+                            </div>
+                        </div>
+                        <div class="btn" id="mouseFocus">
+                            <span>{{i18n.topap}}</span>
+                        </div>
+                        <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                            <span>{{i18n.btnBack}}</span>
                         </div>
                     </div>
-                    <div class="btn" id="mouseFocus">
-                        <span>{{i18n.topap}}</span>
-                    </div>
-                    <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
-                        <span>{{i18n.btnBack}}</span>
-                    </div>
-                </div>
-                <div class="maindonat">
-                    <div class="leftdonat">
-                        <div class="vip donatform leftform">
-                            <h1>VIP</h1>
-                            <ul>
-                                <li>АВТОМОБИЛИ</li>
-                                <li>МНОГО ОДЕЖДЫ</li>
-                                <li>ВСЕ ФУНКЦИИ VIP</li>
-                                <li>EXAMPLE</li>
-                            </ul>
-                            <div class="imgprice">
-                                <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
-                                    <span class="donatbtn">150RM</span>
-                                    <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
+                    <div class="maindonat">
+                        <div class="leftdonat">
+                            <div class="vip donatform leftform">
+                                <h1>VIP</h1>
+                                <ul> 
+                                    <li>АВТОМОБИЛИ</li>
+                                    <li>МНОГО ОДЕЖДЫ</li>
+                                    <li>ВСЕ ФУНКЦИИ VIP</li>
+                                    <li>EXAMPLE</li>
+                                </ul>
+                                <div class="imgprice">
+                                    <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
+                                        <span class="donatbtn">150RM</span>
+                                        <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy"
+                                            style="font-size: 1.5vh;" type="button">
+                                    </div>
+                                    <div class="donatimgform">
+                                        <img alt="" src="img/gold.png">
+                                    </div>
                                 </div>
-                                <div class="donatimgform">
-                                    <img alt="" src="img/gold.png">
+                            </div>
+                            <div class="calculator leftform">
+                                <h1>КОНВЕРТЕР</h1>
+                                <div class="converterblock">
+                                    <div class="inputcalc">
+                                        <span>RM</span>
+                                        <input type="number" v-model="converterRM"
+                                            v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
+                                    </div>
+                                    <div class="donatimgform">
+                                        <img alt="" src="img/r-arrow.png">
+                                    </div>
+                                    <div class="inputcalc">
+                                        <span>$</span>
+                                        <input type="number" v-model="converterD"
+                                            v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
+                                    </div>
+                                </div>
+                                <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy"
+                                    style="font-size: 1.5vh;" type="button">
+                            </div>
+                        </div>
+                        <div class="rightdonat">
+                            <div class="premium donatform">
+                                <h1>PREMIUM</h1>
+                                <ul>
+                                    <li>АВТОМОБИЛИ</li>
+                                    <li>МНОГО ОДЕЖДЫ</li>
+                                    <li>ВСЕ ФУНКЦИИ VIP</li>
+                                    <li>EXAMPLE</li>
+                                    <li>EXAMPLE</li>
+                                    <li>EXAMPLE</li>
+                                </ul>
+                                <div class="imgprice">
+                                    <div class="podvalDonat">
+                                        <span class="donatbtn">299RM</span>
+                                        <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                    </div>
+                                    <div class="premiumimgform">
+                                        <img alt="" src="img/emerald.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="deluxe donatform">
+                                <h1>DELUXE</h1>
+                                <ul>
+                                    <li>АВТОМОБИЛИ</li>
+                                    <li>МНОГО ОДЕЖДЫ</li>
+                                    <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
+                                    <li>EXAMPLE</li>
+                                    <li>EXAMPLE</li>
+                                    <li>EXAMPLE</li>
+                                </ul>
+                                <div class="imgprice">
+                                    <div class="podvalDonat">
+                                        <span class="donatbtn">500RM</span>
+                                        <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                    </div>
+                                    <div class="deluxeimgform">
+                                        <img alt="" src="img/corona.png">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="calculator leftform">
-                            <h1>КОНВЕРТЕР</h1>
-                            <div class="converterblock">
-                                <div class="inputcalc">
-                                    <span>RM</span>
-                                    <input type="number" v-model="converterRM"
-                                        v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
-                                </div>
-                                <div class="donatimgform">
-                                    <img alt="" src="img/r-arrow.png">
-                                </div>
-                                <div class="inputcalc">
-                                    <span>$</span>
-                                    <input type="number" v-model="converterD"
-                                        v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
-                                </div>
-                            </div>
-                            <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy" style="font-size: 1.5vh;" type="button">
+                    </div>
+                </section>
+                <section v-if="subPage === 1">
+                    <div class="mainsettings" style="width: 50vw; text-shadow: 0 0 3px black;">
+                        <div class="settingsh1">
+                            <h1>ПОДВЕРДИТЕ ДЕЙСТВИЕ</h1>
+                        </div>
+                        <div class="settingsh1" style="padding-top: 4vh;">
+                            <h1 style="font-size: 2.5vh">ПОДКЛЮЧЕНИЕ ПРИВИЛЕГИИ "VIP":</h1>
+                        </div>
+                        <div class="settingsh1" style="padding-top: 1vh;">
+                            <h1 style="font-size: 2.5vh">СТОИМОСТЬ: 200 RM</h1>
+                        </div>
+                        <div class="settingsh1" style="padding-top: 1vh;">
+                            <h1 style="font-size: 2.5vh">ВРЕМЯ ДЕЙСТВИЯ: 30 ДНЕЙ</h1>
+                        </div>
+                        <div class="settingsh1" style="padding-top: 3vh;">
+                            <h1 style="font-size: 1vh">Вы соглашаетесь со всеми правилами и условиями офферты</h1>
+                        </div>
+                        <div class="btnback">
+                            <a href="#" v-on:click="switchPage(0, 0)" id="mouseFocus"
+                                style="background: rgba(255, 255, 255, 0.459);">{{i18n.btnBack}}</a>
+                            <a href="#" v-on:click="switchPage(0, 0)" id="mouseFocus">{{i18n.iAgree}}</a>
                         </div>
                     </div>
-                    <div class="rightdonat">
-                        <div class="premium donatform">
-                            <h1>PREMIUM</h1>
-                            <ul>
-                                <li>АВТОМОБИЛИ</li>
-                                <li>МНОГО ОДЕЖДЫ</li>
-                                <li>ВСЕ ФУНКЦИИ VIP</li>
-                                <li>EXAMPLE</li>
-                                <li>EXAMPLE</li>
-                                <li>EXAMPLE</li>
-                            </ul>
-                            <div class="imgprice">
-                                <div class="podvalDonat">
-                                    <span class="donatbtn">299RM</span>
-                                    <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
-                                </div>
-                                <div class="premiumimgform">
-                                    <img alt="" src="img/emerald.png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deluxe donatform">
-                            <h1>DELUXE</h1>
-                            <ul>
-                                <li>АВТОМОБИЛИ</li>
-                                <li>МНОГО ОДЕЖДЫ</li>
-                                <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
-                                <li>EXAMPLE</li>
-                                <li>EXAMPLE</li>
-                                <li>EXAMPLE</li>
-                            </ul>
-                            <div class="imgprice">
-                                <div class="podvalDonat">
-                                    <span class="donatbtn">500RM</span>
-                                    <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
-                                </div>
-                                <div class="deluxeimgform">
-                                    <img alt="" src="img/corona.png">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </section>
             </section>
-            <section v-if="subPage === 1">
-                <div class="mainsettings" style="width: 50vw; text-shadow: 0 0 3px black;"> 
-                    <div class="settingsh1">
-                        <h1>ПОДВЕРДИТЕ ДЕЙСТВИЕ</h1>
-                    </div>
-                    <div class="settingsh1" style="padding-top: 4vh;">
-                        <h1 style="font-size: 2.5vh">ПОДКЛЮЧЕНИЕ ПРИВИЛЕГИИ "VIP":</h1>
-                    </div>
-                    <div class="settingsh1" style="padding-top: 1vh;">
-                        <h1 style="font-size: 2.5vh">СТОИМОСТЬ: 200 RM</h1>
-                    </div>
-                    <div class="settingsh1" style="padding-top: 1vh;">
-                        <h1 style="font-size: 2.5vh">ВРЕМЯ ДЕЙСТВИЯ: 30 ДНЕЙ</h1>
-                    </div>
-                    <div class="settingsh1" style="padding-top: 3vh;">
-                        <h1 style="font-size: 1vh">Вы соглашаетесь со всеми правилами и условиями офферты</h1>
-                    </div>
-                    <div class="btnback">
-                        <a href="#" v-on:click="switchPage(0, 0)" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);">{{i18n.btnBack}}</a>
-                        <a href="#" v-on:click="switchPage(0, 0)" id="mouseFocus">{{i18n.iAgree}}</a>
-                    </div>
-                </div>
-            </section>
-        </section>
-
+        </transition>
         <!-- БАН -->
         <section v-if="page === 4" id="ban">
             <div class="bancontent">
@@ -857,148 +879,263 @@
         </section>
 
         <!-- WinScreen -->
-        <transition name="custom-classes-transition" enter-active-class="animated bounceInUp">
-        <section v-if="page === 5">
-            <div class="winMain">
-                <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}" style="display: flex; font-size: 8vh; justify-content: center;">{{ wsWin ? i18n.win : i18n.lose}}!</h1>
-                <div class="winLine animated bounce slower">
-                    <div class="winEl">  
-                        <h1 class="winText">{{killsInMatch}}</h1>
-                        <div class="winElRight">
-                            <h1>{{i18n.kills}}</h1>
-                            <img src="../hud/img/skull.png" alt="">
+        <transition name="custom-classes-transition" enter-active-class="animated lightSpeedIn delay-1s" leave-active-class="animated rotateOutDownLeft">
+            <section v-if="page === 5">
+                <div class="winMain">
+                    <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}"
+                        style="display: flex; font-size: 8vh; justify-content: center;">
+                        {{ wsWin ? i18n.win : i18n.lose}}!</h1>
+                    <div class="winLine animated bounce slower">
+                        <div class="winEl">
+                            <h1 class="winText">{{killsInMatch}}</h1>
+                            <div class="winElRight">
+                                <h1>{{i18n.kills}}</h1>
+                                <img src="../hud/img/skull.png" alt="">
+                            </div>
+                        </div>
+                        <div class="winEl">
+                            <h1 class="winText">{{place}}</h1>
+                            <h1 style="font-size: 1.8vw;">/{{placeAll}}</h1>
+                            <div class="winElRight">
+                                <h1>{{i18n.place}}</h1>
+                                <img src="./img/win/team.png" alt="">
+                            </div>
+                        </div>
+                        <div class="winEl">
+                            <h1 style="font-size: 2vw;">+$</h1>
+                            <h1 class="winText">{{plusMoney}}</h1>
+                            <div class="winElRight">
+                                <h1>{{i18n.balance.toUpperCase()}}</h1>
+                                <img src="./img/win/money-bag.png" alt="">
+                            </div>
+                        </div>
+                        <div class="winEl">
+                            <h1 :style="{color: lastMatch >= 1 ? 'lime' : lastMatch <= -1 ? 'red' : 'orange'}"
+                                class="winText">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</h1>
+                            <div class="winElRight">
+                                <h1>{{i18n.score}}</h1>
+                                <img src="./img/win/diagram.png" alt="">
+                            </div>
+                        </div>
+                        <div class="winEl">
+                            <h1 class="winText">{{lifeTime}}</h1>
+                            <div class="winElRight">
+                                <h1>{{i18n.playingTime}}</h1>
+                                <h1 style="font-size: 0.5vw;">{{i18n.minutes}}</h1>
+                                <img alt="" src="./img/win/fast-time.png"
+                                    style="width: 2.3vw; height: 2.3vw; padding: 0;">
+                            </div>
                         </div>
                     </div>
-                    <div class="winEl">  
-                        <h1 class="winText">{{place}}</h1>
-                        <h1 style="font-size: 1.8vw;">/{{placeAll}}</h1>
-                        <div class="winElRight">
-                            <h1>{{i18n.place}}</h1>
-                            <img src="./img/win/team.png" alt="">
-                        </div>
-                    </div>
-                    <div class="winEl">  
-                        <h1 style="font-size: 2vw;">+$</h1>
-                        <h1 class="winText">{{plusMoney}}</h1>
-                        <div class="winElRight">
-                            <h1>{{i18n.balance.toUpperCase()}}</h1>
-                            <img src="./img/win/money-bag.png" alt="">
-                        </div>
-                    </div>
-                    <div class="winEl">  
-                        <h1 :style="{color: lastMatch >= 1 ? 'lime' : lastMatch <= -1 ? 'red' : 'orange'}" class="winText">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</h1>
-                        <div class="winElRight">
-                            <h1>{{i18n.score}}</h1>
-                            <img src="./img/win/diagram.png" alt="">
-                        </div>
-                    </div>
-                    <div class="winEl">  
-                        <h1 class="winText">{{lifeTime}}</h1>
-                        <div class="winElRight">
-                            <h1>{{i18n.playingTime}}</h1>
-                            <h1 style="font-size: 0.5vw;">{{i18n.minutes}}</h1>
-                            <img alt="" src="./img/win/fast-time.png" style="width: 2.3vw; height: 2.3vw; padding: 0;">
-                        </div>
+                    <div style="display: flex; justify-content: center;">
+                        <button class="exitToMenu" v-on:click="switchPage(0, 0)">
+                            <img src="./img/win/enter.png" alt=""> {{i18n.exitToMenu}}
+                        </button>
                     </div>
                 </div>
-                <div style="display: flex; justify-content: center;">
-                    <button class="exitToMenu" v-on:click="switchPage(0, 0)">
-                        <img src="./img/win/enter.png" alt=""> {{i18n.exitToMenu}}
-                    </button>
+                <div class="fireworks" v-if="wsWin">
+                    <div class="firework">
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                    </div>
+                    <div class="firework" style="margin-top: -70px">
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                    </div>
+                    <div class="firework">
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                    </div>
+                    <div class="firework" style="margin-top: 70px">
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                    </div>
+                    <div class="firework">
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                    </div>
+                    <div class="firework" style="margin-top: -70px">
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                    </div>
+                    <div class="firework">
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark red"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark blue"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark green"></div>
+                        </div>
+                        <div class="explosion">
+                            <div class="spark yellow"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="fireworks" v-if="wsWin">
-                <div class="firework">
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                </div>
-                <div class="firework" style="margin-top: -70px">
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                </div>
-                <div class="firework">
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                </div>
-                <div class="firework" style="margin-top: 70px">
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                </div>
-                <div class="firework">
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                </div>
-                <div class="firework" style="margin-top: -70px">
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                </div>
-                <div class="firework">
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark red"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                    <div class="explosion"><div class="spark blue"></div></div>
-                    <div class="explosion"><div class="spark green"></div></div>
-                    <div class="explosion"><div class="spark yellow"></div></div>
-                </div>
-            </div>
-        </section>
+            </section>
         </transition>
     </section>
 </body>
 <script>
     const rndColor = () => {
-        const base  = Math.random() * 360 | 0;
+        const base = Math.random() * 360 | 0;
         const color = (275 * (base / 200 | 0)) + base % 200;
         return fac => `hsl(${color}, ${(fac || 1) * 100}%, ${(fac || 1) * 60}%)`;
     };
 
-    class Battery
-    {
+    class Battery {
         constructor(fireworks) {
             this.fireworks = fireworks;
             this.salve = [];
-            this.x     = Math.random();
-            this.t     = 0;
-            this.tmod  = 20 + Math.random() * 20 | 0;
-            this.tmax  = 500 + Math.random() * 1000;
+            this.x = Math.random();
+            this.t = 0;
+            this.tmod = 20 + Math.random() * 20 | 0;
+            this.tmax = 500 + Math.random() * 1000;
 
             this._shot = salve => {
                 // console.log(this.x * this.fireworks.width, salve.y);
@@ -1035,10 +1172,10 @@
 
                 for (let i = 0, max = 32; i < max; i++) {
                     salve.explosion.push({
-                        r : 2 * i / Math.PI,
-                        s : 0.5 + Math.random() * 0.5,
-                        d : 0,
-                        y : 0
+                        r: 2 * i / Math.PI,
+                        s: 0.5 + Math.random() * 0.5,
+                        d: 0,
+                        y: 0
                     });
                 }
 
@@ -1112,8 +1249,7 @@
         }
     }
 
-    class Fireworks
-    {
+    class Fireworks {
         constructor() {
             this.canvas = window.document.querySelector('canvas');
             this.engine = this.canvas.getContext('2d');
@@ -1123,7 +1259,7 @@
         }
 
         resize() {
-            this.width  = window.innerWidth;
+            this.width = window.innerWidth;
             this.height = window.innerHeight;
 
             this.canvas.setAttribute('width', this.width);
@@ -1137,16 +1273,16 @@
         }
 
         addBattery() {
-        const bat = new Battery(this);
-        this.stacks.set(Date.now(), bat);  
+            const bat = new Battery(this);
+            this.stacks.set(Date.now(), bat);
         }
-    
+
         render() {
 
             if (Math.random() < 0.05) {
-            this.addBattery();
+                this.addBattery();
             }
-        
+
             this.clear();
 
             this.stacks.forEach((scene, key) => {
@@ -1162,8 +1298,8 @@
         }
 
         run() {
-            for(let i = 0; i < 5; i++) {
-            this.addBattery();
+            for (let i = 0; i < 5; i++) {
+                this.addBattery();
             }
             window.addEventListener('resize', this.resize.bind(this));
             this.render();
@@ -1172,6 +1308,7 @@
 
     a = new Fireworks();
     a.run();
+
     function load() {
         if (!('alt' in window)) {
             // setTimeout(() => {

@@ -37,7 +37,7 @@ html {
 
 .main {
   width: 90%;
-  height: 90%;
+  height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -216,6 +216,8 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .upleft {
@@ -231,6 +233,8 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .stack {
@@ -1033,7 +1037,7 @@ html {
   width: 30vw;
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 40vh;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   display: -webkit-box;
@@ -2257,7 +2261,7 @@ a:hover {
 
 .maindonat {
   width: 85%;
-  height: 70%;
+  height: 70vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2270,7 +2274,7 @@ a:hover {
           justify-content: space-between;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 50vh;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
@@ -2695,6 +2699,7 @@ a:hover {
 }
 
 .upline {
+  height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

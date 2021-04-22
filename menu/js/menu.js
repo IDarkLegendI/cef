@@ -286,42 +286,45 @@ var menu = new Vue({
                     else this.subPage = newSubPage;
                 }, 350)              
             } else {
-                // console.log('switchPage: ' + newPage); 
+                this.page = newPage;
                 if (this.coolDown) return;
                 this.coolDown = true;
-                const container = document.getElementById('body');
-                // const container2 = document.getElementById('hrLong');
-                let i, intervalID;
-                promise = new Promise(function (resolve) {
-                    i = 1.0;
-                    intervalID = setInterval(() => {
-                        i -= +0.1;
-                        console.log(i)
-                        container.style.opacity = i;
-                        if (i < 0.1) {
-                            console.log(`switchPage-finish: ${newPage}; ${this.page}`)
-                            resolve('result');
-                            container.style.opacity = 0.0;
-                            clearInterval(intervalID);
-                        }
-                    }, 0);
-                });
-                promise.then(async () => {
-                    this.page = newPage;
+                setTimeout(() => this.coolDown = false, 200);
+                // console.log('switchPage: ' + newPage); 
+                // if (this.coolDown) return;
+                // this.coolDown = true;
+                // const container = document.getElementById('body');
+                // // const container2 = document.getElementById('hrLong');
+                // let i, intervalID;
+                // promise = new Promise(function (resolve) {
+                //     i = 1.0;
+                //     intervalID = setInterval(() => {
+                //         i -= +0.1;
+                //         // container.style.opacity = i;
+                //         if (i < 0.1) {
+                //             console.log(`switchPage-finish: ${newPage}; ${this.page}`)
+                //             resolve('result');
+                //             // container.style.opacity = 0.0;
+                //             clearInterval(intervalID);
+                //         }
+                //     }, 0);
+                // });
+                // promise.then(async () => {
+                //     this.page = newPage;
 
-                    setTimeout(() => {
-                        i = 0.0;
-                        intervalID = setInterval(() => {
-                            i += +0.1;
-                            container.style.opacity = i;
-                            if (i > 0.9) {
-                                this.coolDown = false;
-                                container.style.opacity = 1.0;
-                                clearInterval(intervalID);
-                            }
-                        }, 0);
-                    }, 1);
-                });
+                //     setTimeout(() => {
+                //         i = 0.0;
+                //         intervalID = setInterval(() => {
+                //             i += +0.1;
+                //             // container.style.opacity = i;
+                //             if (i > 0.9) {
+                //                 this.coolDown = false;
+                //                 // container.style.opacity = 1.0;
+                //                 clearInterval(intervalID);
+                //             }
+                //         }, 0);
+                //     }, 1);
+                // });
             }
         },
 
@@ -825,7 +828,7 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 1)
+        menu.switchPage(5, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
