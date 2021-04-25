@@ -118,12 +118,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="stack">
+                                <div class="stack"> 
                                     <!-- Если игра не начата -->
                                     <section v-if="!statusGame">
                                         <!-- Если игрок капитан -->
                                         <div class="ticket form" id="mouseFocus"
-                                            v-on:click="emitServer('sMenu:startGame')" v-if="lobby[myID].ready <= -1">
+                                            v-if="lobby[myID].ready <= -1" v-on:click="emitToServerWithWT(1000, 'sMenu:startGame')">
                                             <div class="textticket">
                                                 <div class="textticket1">{{i18n.start}} <span
                                                         class="textticket2">{{i18n.game}}</span></div>
@@ -183,7 +183,7 @@
                                             </div>
                                         </section>
                                     </section>
-
+ 
                                     <!-- Если игрок в игре -->
                                     <section v-else>
                                         <div class="ticket ticketRed form" id="mouseFocus"

@@ -13,7 +13,7 @@ var menu = new Vue({
         enableVR: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         quickWeapon: 0,
-
+ 
         //Block Game 
         textMatch: 'В поиске',
         countWarmUp: 0,
@@ -203,6 +203,10 @@ var menu = new Vue({
         emitServer: function (eventName, ...args) {
             // console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', eventName, ...args)
+        },{
+            emitToServerWithWT: function (wt = 250, eventName, ...args) {
+            // console.log(...args)
+            if ('alt' in window) alt.emit(wt, 'emitToServerWithWT', eventName, ...args)
         },
         waitEmitToServer: function (variable, valueTrue, valueFalse, ...args) {
             // console.log(...args)
