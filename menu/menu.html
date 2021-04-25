@@ -693,7 +693,7 @@
                         <div class="nameauto">
                             <div style="color: #fffb00;" v-show="cars[carsPointer].price > 0">
                                 ${{cars[carsPointer].price}}</div>
-                            <div class="textnameauto">
+                            <div :style="{fontSize: cars[carsPointer].name.length < 10 ? '1.3vw' : '1vw'}" class="textnameauto">
                                 {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}</div>
                         </div>
                         <div class="arrowright">
