@@ -204,9 +204,9 @@ var menu = new Vue({
             // console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', eventName, ...args)
         },
-            emitToServerWithWT: function (wt = 250, eventName, ...args) {
+        emitToServerWithWT: function (wt = 250, eventName, ...args) {
             // console.log(...args)
-            if ('alt' in window) alt.emit(wt, 'emitToServerWithWT', eventName, ...args)
+            if ('alt' in window) alt.emit('emitToServerWithWT', wt, eventName, ...args)
         },
         waitEmitToServer: function (variable, valueTrue, valueFalse, ...args) {
             // console.log(...args)
