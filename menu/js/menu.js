@@ -49,7 +49,7 @@ var menu = new Vue({
         level: '01',
 
         //Cars 
-        cars: [{name: 'None', model: 'none', price: 0}, {name: 'X-80 PROTO', model: 'prototipo', price: 275000}, {name: 'T-20', model: 't20', price: 270000},
+        cars: [{name: 'None', model: 'none', price: 0}, {name: 'Lamborghini Performante 18', model: '18performante', price: 275000}, {name: 'T-20', model: 't20', price: 270000},
         {name: 'Porsche-811', model: 'pfister811', price: 90000}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 54000}, {name: 'Lamborghini Urus', model: 'urus', price: 178000},
         {name: 'Porsche Taycan', model: 'taycan', price: 178000}, {name: 'Tesla Model X', model: 'teslax', price: 185000}, {name: 'Bentley Bentayga', model: 'bentayga17', price: 33000},
         {name: 'RHAPSODY', model: 'rhapsody', price: 15000}, {name: 'ISSI', model: 'issi6', price: 16500}, {name: 'OCELOT', model: 'f620', price: 20000}, {name: 'EXEMPLAR', model: 'exemplar', price: 21500}, {name: 'COGCABRIO', model: 'cogcabrio', price: 21000},
@@ -203,7 +203,7 @@ var menu = new Vue({
         emitServer: function (eventName, ...args) {
             // console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', eventName, ...args)
-        },{
+        },
             emitToServerWithWT: function (wt = 250, eventName, ...args) {
             // console.log(...args)
             if ('alt' in window) alt.emit(wt, 'emitToServerWithWT', eventName, ...args)
