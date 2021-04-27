@@ -19,7 +19,7 @@ body {
     font-family: Oswald, serif;
     font-weight: lighter;
     /* background-color: rgb(146, 145, 145);   */
-    /* background-color: rgb(226, 224, 255); */
+    /* background-color: rgb(226, 224, 255); */ 
     /* background-color: rgb(148, 148, 148);  */
     /* background-image: url(/hud//img/test.jpg); */
     /* background-image: url(/hud//img/bg.jpg);  */
@@ -132,12 +132,14 @@ body {
     font-size: 1.8vh;
 }
 
-.kills {
+/* .kills {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     z-index: 0;
-}
+} */
 
 .killTextplayer {
     color: orange;
@@ -210,19 +212,46 @@ body {
 
 
 .obsCenter {
-    display: flex;
+    display: flex; 
     align-items: center;
     color: #ebebeb;
     font-family: Oswald;
     border-radius: 7%;
     background-color: rgba(0, 0, 0, 0.623);
     width: auto;
+    border: 2px solid;
+    outline: none;
+    box-shadow: 0 0 15px red;
+    animation-name: colorRed;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite; 
+    border-color: red;
+}
+
+@keyframes colorRed 
+{
+    0% 
+    {
+        border-color: red;
+        box-shadow: 0 0 15px red;
+    }   
+    50%  
+    {
+        border-color: rgb(255, 0, 157);
+        box-shadow: 0 0 30px red;
+    }
+    100% 
+    { 
+        border-color: red;
+        box-shadow: 0 0 15px red;
+    }
 }
 
 .obsCenter .avatar {
     width: auto;
     height: auto; 
-    border-radius: 12%;
+    border-radius: 7%;
 }
 
 .obsTexts {
@@ -231,17 +260,21 @@ body {
     align-items: flex-start;
     text-shadow: 1px 1px 1px #0000007e;
     width: auto;
+    /* height: auto; */
     margin-left: 0.5vw;
     padding-right: 0.5vw;
 }
 
 .obsTexts h1 {
-    font-size: 1.4vw;
+    font-size: 1.3vw;
 }
 
 .obsCenter .kills {
+    width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .obsCenter .kills h1 {
@@ -250,17 +283,7 @@ body {
 }
 
 .obsCenter .kills img {
-    width: 1.3vw;
-}
-
-.obsCenter .level {
-    width: 2vw; 
-    height: 2vw; 
-    position: absolute;
-    top: -1.6vh;
-    /* left: 43.55vw; */
-    right: 92%;
-    /* left: calc(1vw + 3vh); */
+    width: 1.6vw;
 }
 
 .vip {

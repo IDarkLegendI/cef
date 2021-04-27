@@ -45,24 +45,26 @@
                                 :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
                             МЕТРОВ
                         </h1>
-                    </div>
+                    </div> 
                 </transition>
             </div>
             <!-- OBSERVER -->
             <transition name="custom-classes-transition3" enter-active-class="animated tada"
                 leave-active-class="animated hinge">
+                <!-- animated infinite pulse slow -->
                 <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0">
-                    <div class="obsCenter animated infinite pulse slow">
+                    <div class="obsCenter"> 
                         <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>
                             <div class="kills">
                                 <img src="./img/skull.png" alt="">
                                 <h1 class="obsKills">{{obs.kills}}</h1>
+                                <hr style="height: 0.5vh;">
+                                <img class="level" :src="`../menu/img/levels/${obs.level}.png`" alt="">
                             </div>
                         </div>
-                        <img class="level" :src="`../menu/img/levels/${obs.level}.png`" alt="">
-                        <img class="vip" :src="`../menu/img/corona.png`" alt="">
+                        <!-- <img class="vip" :src="`../menu/img/corona.png`" alt=""> -->
                     </div>
 
                     <div class="helpObServer animated infinite bounce delay-3s slower">
