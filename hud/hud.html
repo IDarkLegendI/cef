@@ -31,7 +31,7 @@
                         </div>
                     </section>
                 </transition>
-                <transition name="custom-classes-transition2" enter-active-class="animated tada"
+                <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition2"
                     leave-active-class="animated bounceOutRight">
                     <div class="killInfo" v-show="killsBarShow">
                         <img src="./img/blood.png" alt="">
@@ -49,11 +49,11 @@
                 </transition>
             </div>
             <!-- OBSERVER -->
-            <transition name="custom-classes-transition3" enter-active-class="animated tada"
+            <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition3"
                 leave-active-class="animated hinge">
                 <!-- animated infinite pulse slow -->
-                <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0">
-                    <div class="obsCenter"> 
+                <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0"> 
+                    <div :style="{animationName: obs.vip === 1 ? 'colorYellow' : obs.vip === 2 ? 'colorGreen' : obs.vip === 3 ? 'colorRed' : 'none'}" class="obsCenter">
                         <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>

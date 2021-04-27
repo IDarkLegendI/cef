@@ -221,30 +221,81 @@ body {
     width: auto;
     border: 2px solid;
     outline: none;
-    box-shadow: 0 0 15px red;
-    animation-name: colorRed;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.623);
+    /* animation-name: colorRed; */
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite; 
-    border-color: red;
+    border-color: rgba(0, 0, 0, 0.623);
 }
 
 @keyframes colorRed 
 {
     0% 
     {
-        border-color: red;
-        box-shadow: 0 0 15px red;
+        border-color: #e60b0b;
+        box-shadow: 0 0 15px #e60b0b;
+    }   
+    25%  
+    {
+        border-color: #ff0080;
+        box-shadow: 0 0 25px #ff0080; 
+    }
+       
+    50%  
+    {
+        border-color: #ff0055; 
+        box-shadow: 0 0 30px #ff0055;  
+    }
+       
+    75%  
+    {
+        border-color: #ff0040;
+        box-shadow: 0 0 25px #ff0040; 
+    }
+    
+    100% 
+    {  
+        border-color: #e60b0b;
+        box-shadow: 0 0 15px #e60b0b;
+    }
+}
+
+@keyframes colorGreen 
+{
+    0% 
+    {
+        border-color: #47b139;
+        box-shadow: 0 0 10px #47b139;
     }   
     50%  
     {
-        border-color: rgb(255, 0, 157);
-        box-shadow: 0 0 30px red;
+        border-color: #1efd00;
+        box-shadow: 0 0 20px #1dfc00;
     }
     100% 
     { 
-        border-color: red;
-        box-shadow: 0 0 15px red;
+        border-color: #47b139;
+        box-shadow: 0 0 10px #47b139;
+    }
+}
+
+@keyframes colorYellow
+{
+    0% 
+    {
+        border-color: #ffc400;
+        box-shadow: 0 0 5px #ffc400;
+    }   
+    50%  
+    {
+        border-color: #fbff00;
+        box-shadow: 0 0 15px #fbff00;
+    }
+    100% 
+    { 
+        border-color: #ffc400;
+        box-shadow: 0 0 5px #ffc400;
     }
 }
 
@@ -261,8 +312,8 @@ body {
     text-shadow: 1px 1px 1px #0000007e;
     width: auto;
     /* height: auto; */
-    margin-left: 0.5vw;
-    padding-right: 0.5vw;
+    margin-left: 1vw;
+    padding-right: 1vw;
 }
 
 .obsTexts h1 {
@@ -286,13 +337,9 @@ body {
     width: 1.6vw;
 }
 
-.vip {
-    width: 2.5vw; 
-    height: 2.5vw; 
-    position: absolute;
-    top: -2.8vh;
-    left: 92%;
-    transform: rotate(15deg);
+.obsCenter .level {
+    margin-top: 2%;
+    /* border: 1px solid black; */
 }
 
 .helpObServer {
@@ -314,7 +361,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 1vw;
 }
 
 .subHelpOBS div {
@@ -327,6 +373,7 @@ p {
     padding: 0 0.4vw 0 0;  
     border-radius: 4.5em;
     margin-top: 1vh;
+    margin-right: 1vw;
 }
 
 .key {
@@ -472,16 +519,22 @@ p {
 
 .center {
     position: absolute;
-    /* top: 10%; */ 
+    /* top: 10%;  */
     left: 50%; 
     transform: translate(-50%, 0%);
+    /* border: 1px solid black; */
+    transition: all 1s;
 }
 
 .observer  {
     position: absolute;
     top: 20%;
+    /* right: 1%; */
+    /* border: 1px solid black;  */
+    top: 20%;
     left: 50%; 
     transform: translate(-50%, -20%);
+    transition: all 1s;
     display: flex;
     flex-direction: column;
     justify-content: center;

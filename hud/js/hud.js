@@ -6,7 +6,8 @@ var hud = new Vue({
             show: false,
             nick: "1234213",
             level: '06',
-            kills: '0'
+            kills: '0',
+            vip: 3
         },
 
         visible: true,
@@ -15,7 +16,7 @@ var hud = new Vue({
         pulseWUP: false,
         intervalWUP: null,
         
-        showHUD: false,
+        showHUD: false, 
         showLogo: false,
         startPlayers: 0,
         killsHandle: null,
