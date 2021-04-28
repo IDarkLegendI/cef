@@ -568,7 +568,7 @@
                     <div class="settings">
                         <div class="checkboxes">
                             <div class="checkboxtest">
-                                <span>ВЫБОР ЯЗЫКА</span>
+                                <span>{{i18n.language}}</span>
                                 <div class="social">
                                     <div class="ru">
                                         <div class="imgformlang">
@@ -592,15 +592,13 @@
                         <div class="checkboxes">
                             <div class="checkboxtest">
                                 <span>"VR" - {{i18n.menuMode}}</span> 
-                                <input id="switchVR" type="checkbox" v-model='vr'
-                                    v-on:click="saveSettings(-1)" /><label for="switchVR" id="mouseFocus">Toggle</label>
+                                <input id="switchVR" type="checkbox" v-model='vr'/><label for="switchVR" id="mouseFocus">Toggle</label>
                             </div>
                         </div>
                         <div class="checkboxes">
                             <div class="checkboxtest">
                                 <span>{{i18n.quickWeaponT}}</span>
-                                <input type="checkbox" id="quickWeapon" v-model='quickWeapon'
-                                    v-on:click="saveSettings(-1)" /><label for="quickWeapon"
+                                <input id="quickWeapon" type="checkbox" v-model='quickWeapon'/><label for="quickWeapon"
                                     id="mouseFocus">Toggle</label>
                             </div>
                         </div>
@@ -612,7 +610,7 @@
                         </div>
                         <div class="mapchoice1">
                             <div class="namechoice">
-                                <h1>{{i18n.sizeMap}}</h1>
+                                <h1>{{i18n.sizeMap}}</h1> 
                             </div>
                             <div class="mapchoice">
                                 <label>

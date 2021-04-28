@@ -170,6 +170,7 @@ var menu = new Vue({
             minutes: "MINUTES",
             exitToMenu: "EXIT TO THE MENU",
             iAgree: "I AGREE",
+            language: "LANGUAGE",
         },
         avatars: {
             "A": "0",
@@ -259,6 +260,7 @@ var menu = new Vue({
             })  
         },
         saveSettings(page) {
+            console.log(`saveMenu`)
             if (page != -1) this.switchPage(page);
             if ('alt' in window) {
                 alt.emit('saveSettings', {
@@ -558,6 +560,7 @@ var menu = new Vue({
                 minutes: "МИНУТ",
                 exitToMenu: "ВЫЙТИ В МЕНЮ",
                 iAgree: "Я СОГЛАСЕН",
+                language: "ЯЗЫК",
             }
         },
         updateCars(list, selected) {
@@ -715,6 +718,7 @@ if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;
         document.getElementById('fade').style.opacity = toggle ? 1 : 0;
+        if(menu.page === 1) menu.saveSettings(-1); 
     });
     alt.on('getShow', () => alt.emit('keyOpenPressed', menu.show));
     alt.on('bMenu:switchPage', (page = 0, subPage = 0) => menu.switchPage(page, subPage)) 
