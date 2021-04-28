@@ -172,6 +172,7 @@ var menu = new Vue({
             iAgree: "I AGREE",
             language: "LANGUAGE",
         },
+        i18nTemp: null,
         avatars: {
             "A": "0",
             "B": "1",
@@ -487,7 +488,12 @@ var menu = new Vue({
                 online = false;
             })
         },
-        loadRus() {
+        loadLang()
+        {
+            if(this.lang === 'ru') this.loadRu();
+            else this.loadEn();
+        },
+        loadRu() { 
             document.getElementById('inputAddFriend').placeholder = "Введите NickName"
             menu.i18n = {
                 balance: 'Баланс',
@@ -562,6 +568,11 @@ var menu = new Vue({
                 iAgree: "Я СОГЛАСЕН",
                 language: "ЯЗЫК",
             }
+        },
+        loadEn()
+        {
+            document.getElementById('inputAddFriend').placeholder = "Input NickName" 
+            menu.i18n = JSON.parse(menu.i18nTemp);
         },
         updateCars(list, selected) {
             console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
@@ -852,7 +863,8 @@ if ('alt' in window) {
     //     ColorPicker(); 
     // }, 500)
 }
-menu.loadRus()
+menu.i18nTemp = JSON.stringify(menu.i18n);
+menu.loadLang()
 // window.addEventListener('resize', function(){
 //     console.log('resize')
 //   }); 
