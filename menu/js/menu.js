@@ -10,9 +10,10 @@ var menu = new Vue({
         money: 0,
 
         //SETTINGS
-        enableVR: false, //true, чтобы вр подрубить,
+        vr: false, //true, чтобы вр подрубить,
         sizeMap: 0,
-        quickWeapon: 0,
+        quickWeapon: 0, 
+        lang: 'en',
  
         //Block Game 
         textMatch: 'В поиске',
@@ -247,20 +248,21 @@ var menu = new Vue({
             if ('alt' in window) alt.emit(value, ...args)
         },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
-        changeVar(...args)
+        changeVar(...args) 
         { 
             console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => {
-                console.log(`changeVar: menu.${el[0]} = ${el[1]}`) 
+                console.log(`changeVar(0): ${JSON.stringify(el)}`) 
+                console.log(`changeVar(1): menu.${el[0]} = ${el[1]}`) 
                 menu[el[0]] = el[1]; 
-            })
-            console.log(`changeVar: ${menu[el[0]]}`) 
+                console.log(`changeVar: ${menu[el[0]]}`)  
+            })  
         },
         saveSettings(page) {
             if (page != -1) this.switchPage(page);
             if ('alt' in window) {
                 alt.emit('saveSettings', {
-                    vr: this.enableVR,
+                    vr: this.vr,  
                     sizeMap: this.sizeMap,
                     quickWeapon: this.quickWeapon,
                 })
@@ -721,11 +723,6 @@ if ('alt' in window) {
         menu.textMatch = textMatch;
         menu.countWarmUp = countWarmUp;
     });
-
-    alt.on('loadMenu', data => {
-        menu.enableVR = data.vr;
-        menu.sizeMap = data.sizeMap;
-    })
 
     alt.on('getSettings', () => menu.saveSettings(-1));
     alt.on('bMenu:setMyName', async (name) => {
