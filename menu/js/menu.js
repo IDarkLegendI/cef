@@ -13,7 +13,7 @@ var menu = new Vue({
         vr: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         quickWeapon: 0, 
-        lang: 'en',
+        lang: 'ru',
  
         //Block Game 
         textMatch: 'В поиске',
