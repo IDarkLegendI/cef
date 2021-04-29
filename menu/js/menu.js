@@ -173,6 +173,8 @@ var menu = new Vue({
             iAgree: "I AGREE",
             language: "LANGUAGE",
             volume: "VOLUME",
+            quickMarker: "QUICK MARKER",
+            mapSize: "QUICK MAP SIZE CHANGE",
         },
         i18nTemp: null,
         avatars: {
@@ -572,6 +574,8 @@ var menu = new Vue({
                 iAgree: "Я СОГЛАСЕН",
                 language: "ЯЗЫК",
                 volume: "ГРОМКОСТЬ",
+                quickMarker: "БЫСТРАЯ МЕТКА",
+                mapSize: "БЫСТРАЯ СМЕНА РАЗМЕРА КАРТЫ",
             }
         },
         loadEn()
