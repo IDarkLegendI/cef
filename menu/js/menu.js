@@ -419,6 +419,10 @@ var menu = new Vue({
                 console.log(`changeVar: ${menu[el[0]]}`)  
             })  
         },
+        useFunction(name, ...args)
+        {
+            return menu[name](...args); 
+        },
         saveSettings(page) {
             console.log(`saveMenu`)
             if (page != -1) this.switchPage(page);
@@ -928,6 +932,7 @@ if ('alt' in window) {
     });
 
     alt.on('bMenu:changeVar', (...args) => menu.changeVar(...args))
+    alt.on('bMenu:useFunction', (...args) => menu.useFunction(...args))
     alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
     alt.on('bMenu:updateWinScreen', (data) => {
         menu.wsWin = data.wsWin;
