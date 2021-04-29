@@ -1165,10 +1165,11 @@ input[type=checkbox] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 10vh;
+  width: 15vh;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-left: 5vh;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1215,6 +1216,14 @@ input[type=checkbox] {
   background-color: white;
   border-radius: 5px;
   text-shadow: 0px 0px 1px black;
+  -webkit-animation-name: flash;
+          animation-name: flash;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 .mapchoice1 {

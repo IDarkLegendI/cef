@@ -602,19 +602,22 @@
                         <div class="binds">
                             <div class="bind">
                                 <span class="bindname">{{i18n.mapSize}}</span>
-                                <div class="settingCenter"><span class="bindbtn" id="mouseFocus">Z</span></div>
+                                <div class="settingCenter"><span :style="{animationName: recordKey === 'keyMapSize' ? 'flash' : 'none'}" class="bindbtn" id="mouseFocus"
+                                    v-on:click="recordKey = 'keyMapSize'">{{keyCodes[keyMapSize].toUpperCase()}}</span></div>
                             </div>
                         </div>
                         <div class="binds">
                             <div class="bind">
                                 <span class="bindname">{{i18n.quickMarker}}</span>
-                                <div class="settingCenter"><span class="bindbtn" id="mouseFocus">X</span></div>
+                                <div class="settingCenter"><span :style="{animationName: recordKey === 'keyQuickMarker' ? 'flash' : 'none'}" class="bindbtn" id="mouseFocus"
+                                    v-on:click="recordKey = 'keyQuickMarker'">{{keyCodes[keyQuickMarker].toUpperCase()}}</span></div>
                             </div>
                         </div>
                         <div class="binds">
                             <div class="bind">
                                 <span class="bindname">{{i18n.sit}}</span>
-                                <div class="settingCenter"><span class="bindbtn" id="mouseFocus">CTRL</span></div>
+                                <div class="settingCenter"><span :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}" class="bindbtn" id="mouseFocus"
+                                    v-on:click="recordKey = 'keySitDown'">{{keyCodes[keySitDown].toUpperCase()}}</span></div>
                             </div>
                         </div>
                         <div class="checkboxes">
