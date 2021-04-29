@@ -170,7 +170,7 @@ var menu = new Vue({
             lose: "LOSE",
             place: "PLACE",
             kills: "KILLS",
-            playingTime: "PLAYING TIME",
+            playingTime: "PLAYING TIME", 
             minutes: "MINUTES",
             exitToMenu: "EXIT TO THE MENU",
             iAgree: "I AGREE",
@@ -178,6 +178,12 @@ var menu = new Vue({
             volume: "VOLUME",
             quickMarker: "QUICK MARKER",
             mapSize: "QUICK MAP SIZE CHANGE",
+            acceptAction: "CONFIRM THE ACTION",
+            connectPrivileges: "CONNECT PRIVILEGES",
+            pricePrivileges: "COST",
+            timeActions: "VALIDITY TIME",
+            agreeOffer: "You agree to all the terms and conditions of the offer",
+            days: "DAYS",
         },
         i18nTemp: null,
         avatars: {
@@ -738,6 +744,12 @@ var menu = new Vue({
                 volume: "ГРОМКОСТЬ",
                 quickMarker: "БЫСТРАЯ МЕТКА",
                 mapSize: "БЫСТРАЯ СМЕНА РАЗМЕРА КАРТЫ",
+                acceptAction: "ПОДВЕРДИТЕ ДЕЙСТВИЕ",
+                connectPrivileges: "ПОДКЛЮЧЕНИЕ ПРИВИЛЕГИИ",
+                pricePrivileges: "СТОИМОСТЬ",
+                timeActions: "ВРЕМЯ ДЕЙСТВИЯ",
+                agreeOffer: "Вы соглашаетесь со всеми правилами и условиями офферты",
+                days: "ДНЕЙ",
             }
         },
         loadEn()
@@ -1022,7 +1034,7 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(1, 0)
+        menu.switchPage(3, 1)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
@@ -1038,8 +1050,8 @@ if ('alt' in window) {
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
 document.addEventListener('keyup', function(event) {
-    console.log(event.keyCode)
-    console.log(menu.keyCodes[event.keyCode])
+    // console.log(event.keyCode)
+    // console.log(menu.keyCodes[event.keyCode])
     // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
     if (menu.recordKey !== false && menu.keyCodes[event.keyCode] !== undefined) 
     {
