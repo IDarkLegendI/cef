@@ -750,28 +750,30 @@
         <transition name="custom-classes-transition" enter-active-class="animated rotateInUpLeft"
             leave-active-class="animated rotateOutDownLeft">
             <section v-if="page === 3">
-                <section v-if="subPage === 0">
-                    <div class="upline">
-                        <div class="nameupline">
-                            <span>GTAROYAL.RU</span>
-                        </div>
-                        <div class="balancemoney">
-                            <div
-                                style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
-                                <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
-                            </div>
-                        </div>
-                        <div class="btn" id="mouseFocus">
-                            <span>{{i18n.topap}}</span>
-                        </div>
-                        <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
-                            <span>{{i18n.btnBack}}</span>
+                <div class="upline">
+                    <div class="nameupline">
+                        <span>GTAROYAL.RU</span>
+                    </div>
+                    <div class="balancemoney">
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
+                            <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
                         </div>
                     </div>
+                    <div class="btn" id="mouseFocus">
+                        <span>{{i18n.topap}}</span>
+                    </div>
+                    <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                        <span>{{i18n.btnBack}}</span>
+                    </div>
+                </div>
+                <transition enter-active-class="animated rotateInUpLeft" leave-active-class="animated rotateOutDownLeft"
+            name="custom-classes-transition">
+                <section v-if="subPage === 0">
                     <div class="maindonat">
                         <div class="leftdonat">
-                            <div class="vip donatform leftform">
-                                <h1>VIP</h1>
+                            <div class="vip donatform leftform" v-on:click="assortSelected = 'vip'; switchPage(3, 1)">
+                                <h1>VIP</h1> 
                                 <ul> 
                                     <li>АВТОМОБИЛИ</li>
                                     <li>МНОГО ОДЕЖДЫ</li>
@@ -780,7 +782,7 @@
                                 </ul>
                                 <div class="imgprice">
                                     <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
-                                        <span class="donatbtn">150RM</span>
+                                        <span class="donatbtn">{{Math.ceil(assortPriv['vip'].k*+30)}}RM</span>
                                         <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy"
                                             style="font-size: 1.5vh;" type="button">
                                     </div>
@@ -811,7 +813,7 @@
                             </div>
                         </div>
                         <div class="rightdonat">
-                            <div class="premium donatform">
+                            <div class="premium donatform" v-on:click="assortSelected = 'premium'; switchPage(3, 1)">
                                 <h1>PREMIUM</h1>
                                 <ul>
                                     <li>АВТОМОБИЛИ</li>
@@ -823,7 +825,7 @@
                                 </ul>
                                 <div class="imgprice">
                                     <div class="podvalDonat">
-                                        <span class="donatbtn">299RM</span>
+                                        <span class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
                                         <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
                                     </div>
                                     <div class="premiumimgform">
@@ -831,7 +833,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="deluxe donatform">
+                            <div class="deluxe donatform" v-on:click="assortSelected = 'deluxe'; switchPage(3, 1)">
                                 <h1>DELUXE</h1>
                                 <ul>
                                     <li>АВТОМОБИЛИ</li>
@@ -843,7 +845,7 @@
                                 </ul>
                                 <div class="imgprice">
                                     <div class="podvalDonat">
-                                        <span class="donatbtn">500RM</span>
+                                        <span class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
                                         <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
                                     </div>
                                     <div class="deluxeimgform">
@@ -854,16 +856,19 @@
                         </div>
                     </div>
                 </section>
+                </transition>
+                <transition enter-active-class="animated rotateInUpRight" leave-active-class="animated rotateOutDownRight"
+            name="custom-classes-transition">
                 <section v-if="subPage === 1">
-                    <div class="mainsettings" style="width: 50vw; text-shadow: 0 0 3px black;">
+                    <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black;">
                         <div class="settingsh1">
                             <h1>{{i18n.acceptAction}}</h1>
-                        </div>
+                        </div> 
                         <div class="settingsh1" style="padding-top: 4vh;">
-                            <h1 style="font-size: 2.5vh">{{i18n.connectPrivileges}} "VIP":</h1>
+                            <h1 style="font-size: 2.5vh">{{i18n.connectPrivileges}} "{{assortPriv[assortSelected].name}}":</h1>
                         </div>
                         <div class="settingsh1" style="padding-top: 1vh;">
-                            <h1 style="font-size: 2.5vh">{{i18n.pricePrivileges}}: 200 RM</h1>
+                            <h1 style="font-size: 2.5vh">{{i18n.pricePrivileges}}: {{Math.ceil(assortPriv[assortSelected].k * 30)}} RM</h1>
                         </div>
                         <div class="settingsh1" style="padding-top: 1vh;">
                             <h1 style="font-size: 2.5vh">{{i18n.timeActions}}: 30 {{i18n.days}}</h1>
@@ -872,12 +877,13 @@
                             <h1 style="font-size: 1vh">{{i18n.agreeOffer}}</h1>
                         </div>
                         <div class="btnback">
-                            <a href="#" v-on:click="switchPage(0, 0)" id="mouseFocus"
+                            <a href="#" id="mouseFocus" v-on:click="switchPage(3, 0)"
                                 style="background: rgba(255, 255, 255, 0.459);">{{i18n.btnBack}}</a>
-                            <a href="#" v-on:click="switchPage(0, 0)" id="mouseFocus">{{i18n.iAgree}}</a>
+                            <a href="#" id="mouseFocus" v-on:click="switchPage(0, 0); emitServer('sVIP:buy', assortSelected)">{{i18n.iAgree}}</a>
                         </div>
                     </div>
                 </section>
+                </transition>
             </section>
         </transition>
         <!-- БАН -->

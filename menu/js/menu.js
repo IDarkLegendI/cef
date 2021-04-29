@@ -91,6 +91,21 @@ var menu = new Vue({
         moneyRM: 0,
         converterRM: 0,
         converterD: 0,
+        assortPriv: {
+            vip: {
+                name: 'VIP',
+                k: 5,
+            },
+            premium: {
+                name: 'PREMIUM',
+                k: 10,
+            },
+            deluxe: {
+                name: 'DELUXE',
+                k: 16.65,
+            },
+        },
+        assortSelected: 'vip',
 
         //EndGame
         wsWin: true,
@@ -1034,7 +1049,7 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.switchPage(3, 1)
+        menu.switchPage(3, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
