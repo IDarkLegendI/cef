@@ -10,10 +10,11 @@ var menu = new Vue({
         money: 0,
 
         //SETTINGS
+        lang: 'ru',
         vr: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         quickWeapon: 0, 
-        lang: 'ru',
+        volume: 0, 
  
         //Block Game 
         textMatch: 'В поиске',
@@ -171,6 +172,7 @@ var menu = new Vue({
             exitToMenu: "EXIT TO THE MENU",
             iAgree: "I AGREE",
             language: "LANGUAGE",
+            volume: "VOLUME",
         },
         i18nTemp: null,
         avatars: {
@@ -265,9 +267,11 @@ var menu = new Vue({
             if (page != -1) this.switchPage(page);
             if ('alt' in window) {
                 alt.emit('saveSettings', {
-                    vr: this.vr,  
+                    lang: this.lang,  
+                    vr: this.vr,   
                     sizeMap: this.sizeMap,
                     quickWeapon: this.quickWeapon,
+                    volume: this.volume,
                 })
             }
         },
@@ -541,9 +545,9 @@ var menu = new Vue({
                 sit: 'ПРИСЕСТЬ',
                 menuMode: 'РЕЖИМ В МЕНЮ',
                 sizeMap: 'РАЗМЕР КАРТЫ',
-                small: 'Маленькая',
-                normal: 'Средняя',
-                big: 'Большая',
+                small: 'Маленький',
+                normal: 'Средний',
+                big: 'Большой',
                 btnBack: 'НАЗАД',
                 leavelobby: 'ВЫЙТИ',
                 buy: 'КУПИТЬ',
@@ -567,6 +571,7 @@ var menu = new Vue({
                 exitToMenu: "ВЫЙТИ В МЕНЮ",
                 iAgree: "Я СОГЛАСЕН",
                 language: "ЯЗЫК",
+                volume: "ГРОМКОСТЬ",
             }
         },
         loadEn()

@@ -569,7 +569,7 @@
                         <div class="checkboxes">
                             <div class="checkboxtest">
                                 <span>{{i18n.language}}</span>
-                                <div class="social">
+                                <div class="settingCenter">
                                     <div class="imgformlang" v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
                                         <img :src="`../menu/img/${lang}.png`" alt="">
                                     </div>
@@ -584,26 +584,33 @@
                         <div class="checkboxes">
                             <div class="checkboxtest">
                                 <span>{{i18n.tips}}</span>
-                                <input type="checkbox" id="switch" /><label for="switch" id="mouseFocus">Toggle</label>
+                                <div class="settingCenter" style="margin-right: 0.4vw;"><input id="switch" type="checkbox" /><label for="switch" id="mouseFocus"></label></div>
                             </div>
                         </div>
                         <div class="checkboxes">
                             <div class="checkboxtest">
                                 <span>"VR" - {{i18n.menuMode}}</span> 
-                                <input id="switchVR" type="checkbox" v-model='vr'/><label for="switchVR" id="mouseFocus">Toggle</label>
+                                <div class="settingCenter" style="margin-right: 0.4vw;"><input id="switchVR" type="checkbox" v-model='vr'/><label for="switchVR" id="mouseFocus"></label></div>
                             </div>
                         </div>
                         <div class="checkboxes">
                             <div class="checkboxtest">
                                 <span>{{i18n.quickWeaponT}}</span>
-                                <input id="quickWeapon" type="checkbox" v-model='quickWeapon'/><label for="quickWeapon"
-                                    id="mouseFocus">Toggle</label>
+                                <div class="settingCenter" style="margin-right: 0.4vw;"><input id="quickWeapon" type="checkbox" v-model='quickWeapon'/><label for="quickWeapon" id="mouseFocus"></label></div>
                             </div>
                         </div>
                         <div class="binds">
                             <div class="bind">
                                 <span class="bindname">{{i18n.sit}}</span>
-                                <span class="bindbtn" id="mouseFocus">CTRL</span>
+                                <div class="settingCenter"><span class="bindbtn" id="mouseFocus">CTRL</span></div>
+                            </div>
+                        </div>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>{{i18n.volume}}</span>
+                                <div class="settingCenter">
+                                    <input class="settingRange" max="10" min="0" step="0.1" type="range" v-model="volume">
+                                </div>
                             </div>
                         </div>
                         <div class="mapchoice1">
@@ -611,17 +618,17 @@
                                 <h1>{{i18n.sizeMap}}</h1> 
                             </div>
                             <div class="mapchoice">
-                                <label>
+                                <label style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <input id="map-0" type="radio" class="option-input radio" value="0"
                                         v-model="sizeMap">
                                     <span>{{i18n.small}}</span>
                                 </label>
-                                <label>
+                                <label style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <input id="map-1" type="radio" class="option-input radio" value="1"
                                         v-model="sizeMap">
                                     <span>{{i18n.normal}}</span>
                                 </label>
-                                <label>
+                                <label style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <input id="map-2" type="radio" class="option-input radio" value="2"
                                         v-model="sizeMap">
                                     <span>{{i18n.big}}</span>

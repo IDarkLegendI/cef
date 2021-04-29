@@ -1157,6 +1157,23 @@ input[type=checkbox] {
   font-size: 1.5vh;
 }
 
+.settingRange {
+  width: 7.5vh;
+}
+
+.settingCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 10vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .bindname {
   color: white;
   font-size: 1.5vh;
