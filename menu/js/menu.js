@@ -988,7 +988,10 @@ if ('alt' in window) {
         menu.getLevel();
     });
 
-    alt.on('bMenu:updateCash', (cash) => menu.money = cash);
+    alt.on('bMenu:updateCash', (cash, cashRM) => {
+        menu.money = cash;
+        menu.moneyRM = cashRM; 
+    });
 
     // Friends
     alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
