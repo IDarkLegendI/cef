@@ -14,7 +14,7 @@ var menu = new Vue({
         vr: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         quickWeapon: 0, 
-        volume: 0, 
+        volume: 1, 
         keyMapSize: 90,
         keyQuickMarker: 88,
         keySitDown: 17,
@@ -428,7 +428,10 @@ var menu = new Vue({
                     vr: this.vr,   
                     sizeMap: this.sizeMap,
                     quickWeapon: this.quickWeapon,
-                    volume: this.volume,
+                    volume: this.volume,   
+                    keyMapSize: this.keyMapSize,
+                    keyQuickMarker: this.keyQuickMarker,
+                    keySitDown: this.keySitDown,
                 })
             }
         },
