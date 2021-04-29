@@ -1043,8 +1043,17 @@ document.addEventListener('keyup', function(event) {
     // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
     if (menu.recordKey !== false && menu.keyCodes[event.keyCode] !== undefined) 
     {
-        menu[menu.recordKey] = event.keyCode;
-        menu.recordKey = false;
+        let count = 0;
+        if(menu.keySitDown === event.keyCode) count += +1;
+        if(menu.keyQuickMarker === event.keyCode) count += +1;
+        if(menu.keyMapSize === event.keyCode) count += +1;
+
+        if(count > 0) this.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '5000');    
+        else 
+        {
+            menu[menu.recordKey] = event.keyCode;
+            menu.recordKey = false; 
+        }
     } 
 });
 // window.addEventListener('resize', function(){
