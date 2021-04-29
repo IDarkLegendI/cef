@@ -1034,7 +1034,7 @@ html {
 }
 
 .mainsettings {
-  width: 30vw;
+  width: 32vw;
   position: absolute;
   left: 50%;
   top: 40vh;
@@ -1169,7 +1169,7 @@ input[type=checkbox] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-left: 5vh;
+  margin-left: 10vh;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

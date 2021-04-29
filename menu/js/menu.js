@@ -222,7 +222,7 @@ var menu = new Vue({
             20: 'caps lock',
             21: 'hangul',
             25: 'hanja',
-            27: 'escape',
+            // 27: 'escape',
             28: 'conversion',
             29: 'non-conversion',
             32: 'spacebar', 
