@@ -266,7 +266,7 @@ body {
     0% 
     {
         border-color: #47b139;
-        box-shadow: 0 0 10px #47b139;
+        box-shadow: 0 0 5px #47b139;
     }   
     50%  
     {
@@ -276,7 +276,7 @@ body {
     100% 
     { 
         border-color: #47b139;
-        box-shadow: 0 0 10px #47b139;
+        box-shadow: 0 0 5px #47b139;
     }
 }
 
@@ -289,8 +289,8 @@ body {
     }   
     50%  
     {
-        border-color: #fbff00;
-        box-shadow: 0 0 15px #fbff00;
+        border-color: #d9ff00;
+        box-shadow: 0 0 15px #d9ff00;
     }
     100% 
     { 

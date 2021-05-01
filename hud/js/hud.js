@@ -7,7 +7,7 @@ var hud = new Vue({
             nick: "1234213",
             level: '06',
             kills: '0',
-            vip: 'vip'
+            vip: 'deluxe'
         },
 
         visible: true,
@@ -200,7 +200,6 @@ if ('alt' in window) {
 
     alt.on('obServer', data => 
     { 
-        console.log(`hud.js: ${JSON.stringify(data)}`)
         hud.obs = data;  
         hud.obs.level = hud.getLevel(data.level) 
     })
