@@ -44,16 +44,16 @@
                                 class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В <span
                                 :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
                             МЕТРОВ
-                        </h1>
+                        </h1> 
                     </div> 
                 </transition>
             </div>
             <!-- OBSERVER -->
             <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition3"
                 leave-active-class="animated hinge">
-                <!-- animated infinite pulse slow -->
+                <!-- animated infinite pulse slow --> 
                 <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0"> 
-                    <div :style="{animationName: obs.vip === 1 ? 'colorYellow' : obs.vip === 2 ? 'colorGreen' : obs.vip === 3 ? 'colorRed' : 'none'}" class="obsCenter">
+                    <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}" class="obsCenter">
                         <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>

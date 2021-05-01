@@ -1061,8 +1061,8 @@ if ('alt' in window) {
 	})
 
 	alt.on('updateClothes', clothes => app.myClothes = clothes)
-	alt.on('updateCash', value => app.money = value)
-
+	alt.on('updateCash', value => app.money = value.cash)
+ 
 	alt.on('setLang', lang => {
 		console.log(`lang: ${lang}`)
 		if (lang === 'ru') setTimeout(loadRusLang, 500);
