@@ -7,7 +7,7 @@ var hud = new Vue({
             nick: "1234213",
             level: '06',
             kills: '0',
-            vip: 'deluxe'
+            vip: 'none'
         },
 
         visible: true,
