@@ -121,7 +121,7 @@ body {
 .killInfo img {
     position: absolute;
     margin-bottom: 3%; 
-    margin-left: 5%; 
+    margin-left: 3%; 
     width: 20%;
     z-index: -3;
     filter: blur(0.5px); 
@@ -148,6 +148,7 @@ body {
 }
 
 .killsnumber {
+    margin-left: 20%;
     font-size: 8vh;
     font-family: Graffiti; 
     color: #ecab27;
