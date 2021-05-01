@@ -461,6 +461,7 @@ var menu = new Vue({
             }
         },
         switchPage(newPage, newSubPage = -1) {
+            this.resetPage();
             if (this.subPage === -2) return;
 
             console.log(`switchPage: ${newPage}; ${newSubPage}`)
@@ -494,42 +495,12 @@ var menu = new Vue({
                     this.coolDown = false;
                     this.subPage = 0;
                 }, 150);
-                // console.log('switchPage: ' + newPage); 
-                // if (this.coolDown) return;
-                // this.coolDown = true;
-                // const container = document.getElementById('body');
-                // // const container2 = document.getElementById('hrLong');
-                // let i, intervalID;
-                // promise = new Promise(function (resolve) {
-                //     i = 1.0;
-                //     intervalID = setInterval(() => {
-                //         i -= +0.1;
-                //         // container.style.opacity = i;
-                //         if (i < 0.1) {
-                //             console.log(`switchPage-finish: ${newPage}; ${this.page}`)
-                //             resolve('result');
-                //             // container.style.opacity = 0.0;
-                //             clearInterval(intervalID);
-                //         }
-                //     }, 0);
-                // });
-                // promise.then(async () => {
-                //     this.page = newPage;
-
-                //     setTimeout(() => {
-                //         i = 0.0;
-                //         intervalID = setInterval(() => {
-                //             i += +0.1;
-                //             // container.style.opacity = i;
-                //             if (i > 0.9) {
-                //                 this.coolDown = false;
-                //                 // container.style.opacity = 1.0;
-                //                 clearInterval(intervalID);
-                //             }
-                //         }, 0);
-                //     }, 1);
-                // });
             }
+        },
+
+        resetPage()
+        {
+            this.recordKey = false;
         },
 
         //LOBBY
