@@ -100,18 +100,14 @@
                     <transition-group name="list-complete" tag="div">
                             <div class="helpObServer" 
                             v-bind:key="friend.name" v-for="(friend, index) in lobby">
-                                <div class="subHelpOBS" v-if="friend.hp > 0">
+                                <div class="subHelpOBS">
                                     <div>
                                         <p :style="{borderColor: friend.color}" class="key" id="friendName">{{friend.name}}</p>
                                         <p class="textHelp" style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
-                                            <img alt="" src="./img/heart.png" style="height: auto; width: 0.7vw;">
-                                            <p>{{friend.hp}}</p>
+                                            <img :src="`../hud/img/${friend.hp > 0 ? 'heart' : friend.hp === -1 ? 'nosignal' : 'heartb'}.png`" alt=""
+                                            style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 1px red)">
+                                            <p v-if="friend.hp > 0">{{friend.hp}}</p>
                                         </p>
-                                    </div>
-                                </div>
-                                <div class="subHelpOBS" v-else>
-                                    <div style="padding: 0;">
-                                        <p :style="{borderColor: friend.color}" class="key" id="friendName" style="margin: 0;">{{friend.name}}</p>
                                     </div>
                                 </div>
                             </div>

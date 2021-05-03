@@ -239,7 +239,7 @@ else
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)
     let index = 0;
     hud.kills = 1;
-    hud.lobby = {0: {name: 'Vanya', color: '#00FF00', hp: 99}, 1: {name: 'Dark', color: '#FF0000', hp: 0}}
+    hud.lobby = {0: {name: 'Vanya', color: '#00FF00', hp: 99}, 1: {name: 'Dark', color: '#FF0000', hp: -1}}
     // setInterval(() => {
     //     hud.fUpdateKills("OBLIKO", 45)
     //     // hud.fupdateWarmUP('123333333333333', true) 
