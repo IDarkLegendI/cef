@@ -37,6 +37,9 @@ var hud = new Vue({
         ],
         killFeedInterval: null, 
         killFeedHTML: null,
+
+        //Lobby 
+        lobby: {},
         
         help: 0,   
         helpMainMenu: false,
@@ -166,6 +169,13 @@ var hud = new Vue({
             }
             else return this.avatars['A']
         },
+        rgbToHex(red, green, blue)
+        {
+            hex = '#' + 
+            ("0" + (red).toString(16)).slice(-2) + 
+            ("0" + (green).toString(16)).slice(-2) +
+            ("0" + (blue).toString(16)).slice(-2);
+        }
     },
 })
 
@@ -221,7 +231,7 @@ else
     // hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 
-    // hud.help = 2;
+    hud.help = 0;
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
@@ -229,11 +239,12 @@ else
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)
     let index = 0;
     hud.kills = 1;
-    setInterval(() => {
-        hud.fUpdateKills("OBLIKO", 45)
-        // hud.fupdateWarmUP('123333333333333', true) 
-        // hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
-    }, 1100) 
+    hud.lobby = {0: {name: 'Vanya', color: '#00FF00', hp: 99}, 1: {name: 'Dark', color: '#FF0000', hp: 0}}
+    // setInterval(() => {
+    //     hud.fUpdateKills("OBLIKO", 45)
+    //     // hud.fupdateWarmUP('123333333333333', true) 
+    //     // hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
+    // }, 1100) 
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)

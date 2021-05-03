@@ -78,7 +78,7 @@
                 </div>
             </transition>
 
-            <transition name="custom-classes-transition3" enter-active-class="animated tada"
+            <transition enter-active-class="animated bounceInUp" name="custom-classes-transition3"
                 leave-active-class="animated hinge">
                 <div class="observer" v-show="help === 2">
                     <div class="helpObServer animated infinite bounce slow">
@@ -90,6 +90,53 @@
                         </div>
                     </div>
                 </div>
+            </transition>
+
+            <!-- LOBBY PLAYERS -->
+            <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
+                name="custom-classes-transition3">
+                <section v-if="help === 0">
+                    <div class="observer list-complete-item">
+                    <transition-group name="list-complete" tag="div">
+                            <div class="helpObServer" 
+                            v-bind:key="friend.name" v-for="(friend, index) in lobby">
+                                <div class="subHelpOBS" v-if="friend.hp > 0">
+                                    <div>
+                                        <p :style="{borderColor: friend.color}" class="key" id="friendName">{{friend.name}}</p>
+                                        <p class="textHelp" style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
+                                            <img alt="" src="./img/heart.png" style="height: auto; width: 0.7vw;">
+                                            <p>{{friend.hp}}</p>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="subHelpOBS" v-else>
+                                    <div style="padding: 0;">
+                                        <p :style="{borderColor: friend.color}" class="key" id="friendName" style="margin: 0;">{{friend.name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </transition-group>
+                    </div>
+                    <!-- <div class="observer" v-show="lobby[0] !== undefined">
+                        <div class="helpObServer"> 
+                            <div class="subHelpOBS">
+                                <div>
+                                    <p class="key">{{lobby[0].name}}</p>
+                                    <p class="textHelp">menu</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="observer" v-show="lobby[1] !== undefined">
+                        <div class="helpObServer"> 
+                            <div class="subHelpOBS">
+                                <div>
+                                    <p class="key">{{lobby[1].name}}</p>
+                                    <p class="textHelp">menu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </section>
             </transition>
         </section>
         <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft"
@@ -189,7 +236,7 @@
 
             <transition name="gtaRoyalRuAnimate" enter-active-class="animated fadeInLeftBig slow"
                 leave-active-class="animated fadeOutUpBig fast">
-                <div style="position: absolute; bottom: 0.1%; left: 0.5%; opacity: 0.7;" v-show="!showLogo">
+                <div style="position: absolute; bottom: 0%; left: 1%; opacity: 0.7;" v-show="!showLogo">
                     <h1 style="font-size: 1.6vh;" id="gtaRoyalRu">
                         GTAROYAL.RU</h1>
                 </div>
