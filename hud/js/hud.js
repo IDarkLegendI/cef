@@ -171,11 +171,22 @@ var hud = new Vue({
         },
         rgbToHex(red, green, blue)
         {
-            hex = '#' + 
+            return '#' + 
             ("0" + (red).toString(16)).slice(-2) + 
             ("0" + (green).toString(16)).slice(-2) +
             ("0" + (blue).toString(16)).slice(-2);
-        }
+        },
+        //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
+        changeVar(...args) 
+        { 
+            console.log(`changeVar: ${JSON.stringify(...args)}`)
+            args.forEach(el => { 
+                console.log(`changeVar(0): ${JSON.stringify(el)}`) 
+                console.log(`changeVar(1): hud.${el[0]} = ${el[1]}`) 
+                hud[el[0]] = el[1]; 
+                console.log(`changeVar: ${hud[el[0]]}`)  
+            })  
+        },
     },
 })
 
@@ -224,7 +235,7 @@ if ('alt' in window) {
     alt.on('visible', toggle => hud.visible = toggle)    
 
     alt.on('fPlayAudio',(name, volume) => hud.fPlayAudio(name, volume))       
-  
+    alt.on('changeVar', (...args) => hud.changeVar(...args)) 
 }  
 else  
 { 
@@ -239,7 +250,7 @@ else
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)
     let index = 0;
     hud.kills = 1;
-    hud.lobby = {0: {name: 'Vanya', color: '#00FF00', hp: 99}, 1: {name: 'Dark', color: '#FF0000', hp: -1}}
+    hud.lobby = {0: {name: 'Vanya', color: '#00FF00', hp: 99}, 1: {name: 'Dark', color: '#FF0000', hp: 0}}
     // setInterval(() => {
     //     hud.fUpdateKills("OBLIKO", 45)
     //     // hud.fupdateWarmUP('123333333333333', true) 

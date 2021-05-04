@@ -166,12 +166,13 @@ body {
 #gtaRoyalRu {
     font-family: 'Roboto Condensed'; 
     text-shadow: 0 0 0.5px black, 0 0 0.1em black;
-    animation: color 30s infinite ease-in-out;
+    animation: color 5s infinite ease-in-out;
 } 
  
 @keyframes color {
     0% {
       color: white;
+      text-shadow: 0 0 1px black, 0 0 0.1em #ff0683;
     }
     50% { 
       color: rgb(30, 255, 0);
