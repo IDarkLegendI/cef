@@ -82,7 +82,7 @@
 
             <transition enter-active-class="animated bounceInUp" name="custom-classes-transition3"
                 leave-active-class="animated hinge">
-                <div class="observer" v-show="help === 2">
+                <div class="observer" v-show="help === 2 && !showLogo">
                     <div style="width: 100%;">
                         <div class="helpObServer animated infinite bounce slow">
                             <div class="subHelpOBS">
@@ -98,7 +98,7 @@
 
             <!-- LOBBY PLAYERS -->
             <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
-                name="custom-classes-transition3"> 
+                name="custom-classes-transition4"> 
                 <section v-if="help !== 2">
                     <div class="observer list-complete-item">
                     <transition-group name="list-complete" style="width: 100%;" tag="div">
@@ -117,25 +117,6 @@
                             </div>
                     </transition-group>
                     </div>
-                    <!-- <div class="observer" v-show="lobby[0] !== undefined">
-                        <div class="helpObServer"> 
-                            <div class="subHelpOBS">
-                                <div>
-                                    <p class="key">{{lobby[0].name}}</p>
-                                    <p class="textHelp">menu</p>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="observer" v-show="lobby[1] !== undefined">
-                        <div class="helpObServer"> 
-                            <div class="subHelpOBS">
-                                <div>
-                                    <p class="key">{{lobby[1].name}}</p>
-                                    <p class="textHelp">menu</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </section>
             </transition>
         </section>
