@@ -179,12 +179,12 @@ var hud = new Vue({
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
         changeVar(...args) 
         { 
-            console.log(`changeVar: ${JSON.stringify(...args)}`)
+            // console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => { 
-                console.log(`changeVar(0): ${JSON.stringify(el)}`) 
-                console.log(`changeVar(1): hud.${el[0]} = ${el[1]}`) 
+                // console.log(`changeVar(0): ${JSON.stringify(el)}`) 
+                // console.log(`changeVar(1): hud.${el[0]} = ${el[1]}`) 
                 hud[el[0]] = el[1]; 
-                console.log(`changeVar: ${hud[el[0]]}`)  
+                // console.log(`changeVar: ${hud[el[0]]}`)  
             })  
         },
     },
@@ -239,7 +239,7 @@ if ('alt' in window) {
 }  
 else  
 { 
-    // hud.obs.show = true;
+    hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 
     hud.help = 0;
@@ -250,12 +250,12 @@ else
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000)
     let index = 0;
     hud.kills = 1;
-    hud.lobby = {0: {name: 'Vanya', color: '#00FF00', hp: 99}, 1: {name: 'Dark', color: '#FF0000', hp: 0}}
-    // setInterval(() => {
-    //     hud.fUpdateKills("OBLIKO", 45)
-    //     // hud.fupdateWarmUP('123333333333333', true) 
-    //     // hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
-    // }, 1100) 
+    hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99}, 1: {name: 'DarkLegend', color: '#FF0000', hp: 0}}
+    setInterval(() => {
+        // hud.fUpdateKills("OBLIKO", 45)
+        // hud.fupdateWarmUP('123333333333333', true) 
+        // hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
+    }, 1100) 
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)

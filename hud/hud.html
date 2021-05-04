@@ -52,7 +52,18 @@
             <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition3"
                 leave-active-class="animated hinge">
                 <!-- animated infinite pulse slow --> 
-                <div class="observer" v-show="obs.show && !killsBarShow && obs.nick.length != 0"> 
+
+                <div class="observer" style="padding-top: 21vh;" v-show="obs.show && !killsBarShow && obs.nick.length != 0">
+                    <div style="width: 100%;">
+                        <div class="helpObServer animated infinite bounce delay-3s slower">
+                            <div class="subHelpOBS">
+                                <div>
+                                    <p class="key">ESC</p>
+                                    <p class="textHelp">выход</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}" class="obsCenter">
                         <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
                         <div class="obsTexts">
@@ -66,26 +77,19 @@
                         </div>
                         <!-- <img class="vip" :src="`../menu/img/corona.png`" alt=""> -->
                     </div>
-
-                    <div class="helpObServer animated infinite bounce delay-3s slower">
-                        <div class="subHelpOBS">
-                            <div>
-                                <p class="key">ESC</p>
-                                <p class="textHelp">выход</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </transition>
 
             <transition enter-active-class="animated bounceInUp" name="custom-classes-transition3"
                 leave-active-class="animated hinge">
                 <div class="observer" v-show="help === 2">
-                    <div class="helpObServer animated infinite bounce slow">
-                        <div class="subHelpOBS">
-                            <div>
-                                <p class="key">F1</p>
-                                <p class="textHelp">menu</p>
+                    <div style="width: 100%;">
+                        <div class="helpObServer animated infinite bounce slow">
+                            <div class="subHelpOBS">
+                                <div>
+                                    <p class="key">F1</p>
+                                    <p class="textHelp">menu</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -94,10 +98,10 @@
 
             <!-- LOBBY PLAYERS -->
             <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
-                name="custom-classes-transition3">
-                <section v-if="help === 0">
+                name="custom-classes-transition3"> 
+                <section v-if="help !== 2">
                     <div class="observer list-complete-item">
-                    <transition-group name="list-complete" tag="div">
+                    <transition-group name="list-complete" style="width: 100%;" tag="div">
                             <div class="helpObServer" 
                             v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
@@ -232,7 +236,7 @@
 
             <transition name="gtaRoyalRuAnimate" enter-active-class="animated fadeInLeftBig slow"
                 leave-active-class="animated fadeOutUpBig fast">
-                <div style="position: absolute; bottom: 0%; left: 2%; opacity: 0.7;" v-show="!showLogo">
+                <div style="position: absolute; bottom: 0%; left: 1.8%; opacity: 0.7;" v-show="!showLogo">
                     <h1 style="font-size: 1.6vh;" id="gtaRoyalRu">
                         GTAROYAL.RU</h1>
                 </div>

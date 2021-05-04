@@ -352,9 +352,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    /* align-items: flex-end; */
     color: #ebebeb;
     font-family: Oswald, serif;
-    margin-left: 95vw;
+    /* border: 1px solid black; */
 }
  
 p {
@@ -367,6 +368,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    /* border: 1px solid black; */
 }
 
 .subHelpOBS div {
@@ -534,18 +536,19 @@ p {
 
 .observer  {
     position: absolute;
-    top: 20%;
+    /* top: 20%; */
     /* right: 1%; */
     /* border: 1px solid black;  */
-    top: 20%;
-    left: 50%; 
-    transform: translate(-50%, -20%);
+    /* top: 20%; */
+    /* left: 50%;  */
+    /* transform: translate(-50%, -20%); */
     transition: all 1s;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     /* background-color: rgba(0, 128, 0, 0.24); */
+    width: 100%;
     margin-top: 60vh;
 }
 
