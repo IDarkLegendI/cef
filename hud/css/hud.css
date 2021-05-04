@@ -172,13 +172,13 @@ body {
 @keyframes color {
     0% {
       color: white;
-      text-shadow: 0 0 1px black, 0 0 0.1em #ff0683;
     }
-    50% { 
+    50% {  
       color: rgb(30, 255, 0);
+      text-shadow: 0 0 0.5px rgb(30, 255, 0), 0 0 0.1em black;
     } 
     100% {
-        color: white;
+        color: white; 
     }
   }
 
