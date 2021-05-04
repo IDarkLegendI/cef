@@ -239,10 +239,10 @@ if ('alt' in window) {
 }  
 else  
 { 
-    // hud.obs.show = true;
-    // hud.obs.nick = 'DarkLegend'
-    // hud.showHUD = true; 
-    hud.showLogo = true;
+    hud.obs.show = true;
+    hud.obs.nick = 'DarkLegend'
+    hud.showHUD = true; 
+    // hud.showLogo = true;
     hud.help = 2;
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)
