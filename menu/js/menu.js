@@ -108,7 +108,7 @@ var menu = new Vue({
         assortSelected: 'vip',
 
         //EndGame
-        wsWin: true,
+        wsWin: false,
         killsInMatch: 0,
         // elo: 0, 
         place: 0,
@@ -461,7 +461,7 @@ var menu = new Vue({
             }
         },
         switchPage(newPage, newSubPage = -1) {
-            this.resetPage();
+            this.resetPage(newPage, newSubPage);
             if (this.subPage === -2) return;
 
             console.log(`switchPage: ${newPage}; ${newSubPage}`)
@@ -498,9 +498,10 @@ var menu = new Vue({
             }
         },
 
-        resetPage()
+        resetPage(newPage, newSubPage)
         {
             this.recordKey = false;
+            if(this.page === 5 && newPage === 0) this.wsWin = false
         },
 
         //LOBBY
@@ -1023,6 +1024,7 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
+        menu.wsWin = true
         menu.switchPage(5, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
