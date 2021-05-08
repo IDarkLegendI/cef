@@ -570,8 +570,8 @@
                             <div class="checkboxtest">
                                 <span>{{i18n.language}}</span>
                                 <div class="settingCenter">
-                                    <div class="imgformlang" v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
-                                        <img :src="`../menu/img/${lang}.png`" alt="">
+                                    <div class="imgformlang">
+                                        <img :src="`../menu/img/${lang}.png`" alt="" v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
                                     </div>
                                     <!-- <div class="elSocial"> 
                                         <div class="imgformlang" :class="{currentLang: lang === 'en'}" v-on:click="lang = 'en'">
