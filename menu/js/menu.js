@@ -116,6 +116,14 @@ var menu = new Vue({
         plusMoney: 0,
         lifeTime: 0, //Минут
 
+        //VIP
+        vip: 'deluxe',
+
+        //Misc
+        anyVar: null,
+        anyVarSecond: null,
+        anyVarС: null,
+
         //i18n
         i18n: {
             // balance: 'Balance',
@@ -381,6 +389,11 @@ var menu = new Vue({
             179: 'play/pause',
             180: 'e-mail',
         }, 
+        jetPackSkins: {
+            'vip': [0, 36, 35, 34, 33, 32, 28, 27, 25, 23, 22, 20, 19, 16, 14, 12, 11, 10, 4, 1, 2],
+            'premium': [37, 31, 29, 24, 21, 17, 15, 9, 8, 7, 6, 5, 3],
+            'deluxe': [40, 39, 38, 30, 26] 
+        }
     },
     methods: {
         emitServer: function (eventName, ...args) {
@@ -461,47 +474,96 @@ var menu = new Vue({
             }
         },
         switchPage(newPage, newSubPage = -1) {
-            this.resetPage(newPage, newSubPage);
-            if (this.subPage === -2) return;
+            this.resetPage(newPage, newSubPage).then(() => {
+                if (this.subPage === -2) return;
 
-            console.log(`switchPage: ${newPage}; ${newSubPage}`)
-            if (newPage === 0 && this.page === 2) {
-                menu.emit('cCar:setCarPreview', false)
-                this.cars[this.carsPointer].color = {
-                    r: this.oldColor[0],
-                    g: this.oldColor[1],
-                    b: this.oldColor[2]
-                }
-            }
-            // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
-            if (newSubPage != -1 || this.nextSubPage !== -1) {
-                // if(newPage == 0) return this.subPage = newSubPage;
-                this.page = newPage;
-                this.subPage = -2;
-                setTimeout(() => {
-                    if(this.nextSubPage !== -1)
+                console.log(`switchPage: ${newPage}; ${newSubPage}`)
+                // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
+                if (newSubPage != -1 || this.nextSubPage !== -1) {
+                    // if(newPage == 0) return this.subPage = newSubPage;
+                    this.page = newPage;
+                    this.subPage = -2;
+                    setTimeout(() => {
+                        if(this.nextSubPage !== -1)
+                        {
+                            this.subPage = this.nextSubPage;
+                            this.nextSubPage = -1;
+                        }
+                        else this.subPage = newSubPage;
+                    }, 350)              
+                } else {
+                    this.page = newPage;
+                    if (this.coolDown) return;
+                    this.coolDown = true;
+                    setTimeout(() => 
                     {
-                        this.subPage = this.nextSubPage;
-                        this.nextSubPage = -1;
-                    }
-                    else this.subPage = newSubPage;
-                }, 350)              
-            } else {
-                this.page = newPage;
-                if (this.coolDown) return;
-                this.coolDown = true;
-                setTimeout(() => 
-                {
-                    this.coolDown = false;
-                    this.subPage = 0;
-                }, 150);
-            }
+                        this.coolDown = false;
+                        this.subPage = 0;
+                    }, 150);
+                }
+            })
         },
 
-        resetPage(newPage, newSubPage)
+        async resetPage(newPage, newSubPage)
         {
+            if(this.page === 2 && newPage === 0)
+            {
+                menu.emit('cCar:setCarPreview', false);
+                if(this.subPage === 0)
+                {
+                    this.cars[this.carsPointer].color = {
+                        r: this.oldColor[0],
+                        g: this.oldColor[1],
+                        b: this.oldColor[2]
+                    }
+                }
+                // else // this.subPage === 1
+                // {
+                //     this.emitToClient('cJetPack:exit', this.anyVarC, this.anyVar); 
+                // }
+            } 
+
+            if(newPage === 2 && newSubPage === 1) 
+            {
+                this.anyVarSecond = menu.fGetJPSkins(); // this.anyVarSecond - возможные скины игрока
+                console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
+                console.log(this.anyVarSecond.length)
+                this.emitToClient('cJetPack:update'); // this.anyVar - выбранный скин джетпака
+            }
+            // else  
+            // { 
+            //     this.anyVar = null;
+            //     this.anyVarSecond = null;
+            //     this.anyVarC = null;
+            // }
             this.recordKey = false;
             if(this.page === 5 && newPage === 0) this.wsWin = false
+        },
+
+        fLoadJP(selected)
+        {
+            this.anyVar = this.anyVarC = selected;
+
+            if(this.anyVarSecond.length > 0) 
+            {
+                this.carsPointer = this.anyVarSecond.findIndex(el => el === this.anyVar)
+                console.log(this.carsPointer) 
+            }
+            menu.emitServer('sCar:preview', {
+                model: 'thruster',
+                color: null,
+            }, 48, this.anyVarSecond[this.carsPointer]); 
+        },
+
+        fGetJPSkins()
+        {
+            switch(this.vip)
+            {
+                case 'none': return []; 
+                case 'vip': return this.jetPackSkins.vip
+                case 'premium': return this.jetPackSkins.vip.concat(this.jetPackSkins.premium)
+                case 'deluxe': return this.jetPackSkins.vip.concat(this.jetPackSkins.premium.concat(this.jetPackSkins.deluxe))
+            }
         },
 
         //LOBBY
@@ -819,24 +881,43 @@ var menu = new Vue({
                 colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
             }, 100)
         },
-        previewCar(plus) {
+        previewCar(plus, name = 'cars') {
             // if(!this.fCoolDown()) return;
             let valueFalse = this.carsPointer,
                 valueTrue;
-            if (plus) this.carsPointer === this.cars.length - 1 ? valueTrue = this.cars.length - 1 : valueTrue = this.carsPointer + 1;
+            if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
             else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
 
-            // console.log(this.cars[this.carsPointer].model) 
+            console.log(this.carsPointer)
             if (valueFalse === valueTrue) return;
-            if (!this.cars[valueTrue].color) this.cars[valueTrue].color = {
-                r: 255,
-                g: 255,
-                b: 255
+            // console.log(this.cars[this.carsPointer].model) 
+            if(name === 'cars')
+            {
+                if (!this.cars[valueTrue].color) this.cars[valueTrue].color = {
+                    r: 255,
+                    g: 255,
+                    b: 255
+                }
+                this.waitEmitToServer(50, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {
+                    model: this.cars[valueTrue].model,
+                    color: this.cars[valueTrue].color
+                });
             }
-            this.waitEmitToServer(50, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {
-                model: this.cars[valueTrue].model,
-                color: this.cars[valueTrue].color
-            });
+            else {
+                console.log(`${valueTrue} | ${valueFalse} | ${this.anyVarSecond[valueTrue]}`)
+                // if(valueTrue === valueFalse) this.carsPointer = -1
+                // else this.carsPointer = valueTrue
+                
+                this.carsPointer = valueTrue;
+                menu.emitServer('sCar:preview', {
+                    model: 'thruster',
+                    color: null,
+                }, 48, this.anyVarSecond[valueTrue]);  
+                // this.waitEmitToServer(50, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {
+                //     model: 'thruster',
+                //     color: null 
+                // }, 48, this.anyVarSecond[valueTrue]);
+            }
         },
         fApplyTuning(car) {
             console.log(`fApplyTuning: ${JSON.stringify(car)}`)
@@ -1024,8 +1105,8 @@ if ('alt' in window) {
             ready: 1
         }])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
-        menu.wsWin = true
-        menu.switchPage(5, 0)
+        // menu.wsWin = true
+        // menu.switchPage(2, 1)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
@@ -1033,6 +1114,7 @@ if ('alt' in window) {
     document.body.style.cursor = "default"
     menu.placeAll = 3;
     menu.place = 2;
+    // menu.anyVar = 34 //УБРАТЬ!
     //     setTimeout(() => {
     //     initColor();
     //     ColorPicker(); 

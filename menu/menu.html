@@ -214,8 +214,8 @@
                                 </div>
                             </div>
                             <div class="downleft">
-                                <div class="noob form1" v-on:click="switchPage(3)">
-                                    <div class="noobpart1">
+                                <div class="noob form1">
+                                    <div class="noobpart1" v-on:click="switchPage(3)">
                                         <div id="mouseFocus"
                                             style="display: flex; color: white; flex-direction: column; justify-content: space-between;">
                                             <div style="font-size: 3.5vh; font-family: 'Rubik'">
@@ -231,14 +231,14 @@
                                     </div>
                                     <div class="noobpart2">
                                         <div class="noobbtn">
-                                            <span><span class="minibtn" id="mouseFocus">{{i18n.license}}</span> <br>
+                                            <span><span class="minibtn" id="mouseFocus" v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1, 'jp')">{{i18n.license}}</span> <br>
                                                 <span class="minibtn" id="mouseFocus">{{i18n.money}}</span>
                                         </div>
                                         <div class="iconnoob">
                                             <img src="./img/noob.png" alt="">
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="backpack form1">
                                     <div class="rankContent">
                                         <div class="content">
@@ -669,17 +669,11 @@
                         <div class="balancemoney">
                             <span>БАЛАНС <br> <span class="rub">${{money}}</span></span>
                         </div>
-                        <!-- <div class="buttonsupline">
-                        <div class="btnupline">
-                            <span v-on:click="saveSettings(0)">{{i18n.btnBack}}</span>
-                        </div>
-                    </div> -->
                     </div>
                     <div class="rotation">
                         <input @input="changeCamRotation" max="360" min="-180" step="1" type="range"
                             v-model.number="camRotation">
                     </div>
-                    <!-- v-on:mouseleave="setPreviewCar(carsPointer)" -->
                     <div class="colorPicker" v-show="cars[carsPointer].model !== 'none'">
                         <div class="color-picker-panel" id="colorpicker">
                             <div class=" panel-row">
@@ -728,7 +722,7 @@
                                 v-if="cars[carsPointer].price <= 0">
                                 <a id="changeColorCar"
                                     v-on:click="emitServer('sCar:applyTuning', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
-                                    v-show="updateTuning && cars[carsPointer].model !== 'none'">{{i18n.applyTuning}}($200)</a>
+                                    v-show="updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">{{i18n.applyTuning}}($200)</a>
     
                                 <a id="mouseFocus" style="background-color: #ffffff81"
                                     v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
@@ -743,6 +737,52 @@
                                     v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
                             </section>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section v-if="subPage === 1">
+                <div style="display: flex; flex-direction: column;">
+                    <div class="upline">
+                        <div class="nameupline">
+                            <span>GTAROYAL.RU</span>
+                        </div>
+                    </div>
+                    <div class="rotation"> 
+                        <input @input="changeCamRotation" max="360" min="-180" step="1" type="range"
+                            v-model.number="camRotation">
+                    </div>
+
+                    <div class="mainauto">
+                        <div class="switchauto">  
+                            <div class="arrowleft">
+                                <img src="./img/arrowLeft.png" v-if="carsPointer > 0" v-on:click="previewCar(false, 'anyVarSecond')">
+                                <img src="./img/arrowLeft.png" style="filter: grayscale(100%); transform: scale(1.0);"
+                                    v-else>
+                            </div>
+                            <div class="nameauto">
+                                <div class="textnameauto">
+                                    {{anyVarSecond[carsPointer] === 0 ? i18n.none : anyVarSecond[carsPointer]}}</div>
+                            </div>
+                            <div class="arrowright"> 
+                                <img src="./img/arrowRight.png" v-if="carsPointer < anyVarSecond.length-1"
+                                    v-on:click="previewCar(true, 'anyVarSecond')">
+                                <img src="./img/arrowRight.png" style="filter: grayscale(100%); transform: scale(1.0);"
+                                    v-else>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnback" style="display: flex; align-items: center;">
+                        <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
+                        <section id="mouseFocus" style="display: flex; align-items: center; justify-content: center;">
+
+                            <a id="mouseFocus" style="background-color: #ffffff81"
+                                v-if="anyVarSecond[carsPointer] === anyVar">{{i18n.selected}}</a>
+
+                            <section style="display: flex; align-items: center; justify-content: center;" v-else>
+                                <a id="mouseFocus"
+                                    v-on:click="emitToClient('cJetPack:set', anyVarSecond[carsPointer])">{{i18n.select}}</a>
+                            </section>
+                        </section>
                     </div>
                 </div>
             </section>
