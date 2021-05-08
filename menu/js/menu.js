@@ -13,12 +13,12 @@ var menu = new Vue({
         lang: 'ru',
         vr: false, //true, чтобы вр подрубить,
         sizeMap: 0,
-        quickWeapon: 0, 
-        volume: 1, 
+        quickWeapon: 0,
+        volume: 1,
         keyMapSize: 90,
         keyQuickMarker: 88,
         keySitDown: 17,
- 
+
         //Block Game 
         textMatch: 'В поиске',
         countWarmUp: 0,
@@ -54,24 +54,249 @@ var menu = new Vue({
         level: '01',
 
         //Cars 
-        cars: [{name: 'None', model: 'none', price: 0}, {name: 'Lamborghini Performante 18', model: '18performante', price: 275000}, {name: 'T-20', model: 't20', price: 270000},
-        {name: 'Porsche-811', model: 'pfister811', price: 90000}, {name: 'Dubsta 6x6', model: 'dubsta3', price: 54000}, {name: 'Lamborghini Urus', model: 'urus', price: 178000},
-        {name: 'Porsche Taycan', model: 'taycan', price: 178000}, {name: 'Tesla Model X', model: 'teslax', price: 185000}, {name: 'Bentley Bentayga', model: 'bentayga17', price: 33000},
-        {name: 'RHAPSODY', model: 'rhapsody', price: 15000}, {name: 'ISSI', model: 'issi6', price: 16500}, {name: 'OCELOT', model: 'f620', price: 20000}, {name: 'EXEMPLAR', model: 'exemplar', price: 21500}, {name: 'COGCABRIO', model: 'cogcabrio', price: 21000},
-        {name: 'SENTINEL', model: 'felon2', price: 20000}, {name: 'FBI', model: 'fbi', price: 36500}, {name: 'COQUETTE', model: 'coquette3', price: 17950}, {name: 'DOMINATOR', model: 'dominator3', price: 45000}, {name: 'HERMES', model: 'hermes', price: 28000},
-        {name: 'DUBSTA', model: 'dubsta2', price: 49000}, {name: 'BANSHEE', model: 'banshee', price: 50000}, {name: 'Nissan GT-R', model: '17r35', price: 52000},
-        {name: 'COQUETTE', model: 'coquette4', price: 70000}, {name: 'DEVESTE', model: 'deveste', price: 170000}, {name: 'ELEGY', model: 'elegy2', price: 28500},
-        {name: 'HOTRING', model: 'hotring', price: 65000}, {name: 'ITALI', model: 'italigto', price: 90000}, {name: 'NEON', model: 'neon', price: 275000}, {name: 'NINEF', model: 'ninef2', price: 130000},
-        {name: 'OMNIS', model: 'omnis', price: 30000}, {name: 'SCHLAGEN', model: 'schlagen', price: 120000}, {name: 'SENTINEL', model: 'sentinel3', price: 23000},
-        {name: 'SPECTER', model: 'specter2', price: 125000}, {name: 'VERLIERER', model: 'verlierer2', price: 85000},
-        {name: 'SAVESTRA', model: 'savestra', price: 35000}, {name: 'SWINGER', model: 'swinger', price: 135000}, {name: 'TURISMO', model: 'turismo2', price: 115000},
-        {name: 'ADDER', model: 'adder', price: 190000}, {name: 'CYCLONE', model: 'cyclone', price: 210000}, {name: 'ENTITYXF', model: 'entityxf', price: 200000},
-        {name: 'FMJ', model: 'fmj', price: 230000}, {name: 'ITALIGTD', model: 'italigtb2', price: 245000}, {name: 'NERO', model: 'nero2', price: 255000},
-        {name: 'REAPER', model: 'reaper', price: 260000}, {name: 'TEMPESTA', model: 'tempesta', price: 262000}, {name: 'SHEAVA', model: 'sheava', price: 220000},
-        {name: 'TYRUS', model: 'tyrus', price: 235000}, {name: 'XA-21', model: 'xa21', price: 270000}, {name: 'TROPHYTRUCK', model: 'trophytruck', price: 70000},
-        {name: 'ZENTORNO', model: 'zentorno', price: 220000}, {name: 'SHOTARO', model: 'shotaro', price: 280000},
-        {name: 'SANCTUS', model: 'sanctus', price: 80000}, {name: 'VORTEX', model: 'vortex', price: 110000},
-        {name: 'ENDURO', model: 'enduro', price: 29000}, {name: 'BATI', model: 'bati', price: 47500}, {name: 'Porsche Turismo', model: 'pturismo', price: 300000}, ].sort((a, b) => a.price - b.price),
+        cars: [{
+                name: 'None',
+                model: 'none',
+                price: 0
+            }, {
+                name: 'Lamborghini Performante 18',
+                model: '18performante',
+                price: 275000
+            }, {
+                name: 'T-20',
+                model: 't20',
+                price: 270000
+            },
+            {
+                name: 'Porsche-811',
+                model: 'pfister811',
+                price: 90000
+            }, {
+                name: 'Dubsta 6x6',
+                model: 'dubsta3',
+                price: 54000
+            }, {
+                name: 'Lamborghini Urus',
+                model: 'urus',
+                price: 178000
+            },
+            {
+                name: 'Porsche Taycan',
+                model: 'taycan',
+                price: 178000
+            }, {
+                name: 'Tesla Model X',
+                model: 'teslax',
+                price: 185000
+            }, {
+                name: 'Bentley Bentayga',
+                model: 'bentayga17',
+                price: 33000
+            },
+            {
+                name: 'RHAPSODY',
+                model: 'rhapsody',
+                price: 15000
+            }, {
+                name: 'ISSI',
+                model: 'issi6',
+                price: 16500
+            }, {
+                name: 'OCELOT',
+                model: 'f620',
+                price: 20000
+            }, {
+                name: 'EXEMPLAR',
+                model: 'exemplar',
+                price: 21500
+            }, {
+                name: 'COGCABRIO',
+                model: 'cogcabrio',
+                price: 21000
+            },
+            {
+                name: 'SENTINEL',
+                model: 'felon2',
+                price: 20000
+            }, {
+                name: 'FBI',
+                model: 'fbi',
+                price: 36500
+            }, {
+                name: 'COQUETTE',
+                model: 'coquette3',
+                price: 17950
+            }, {
+                name: 'DOMINATOR',
+                model: 'dominator3',
+                price: 45000
+            }, {
+                name: 'HERMES',
+                model: 'hermes',
+                price: 28000
+            },
+            {
+                name: 'DUBSTA',
+                model: 'dubsta2',
+                price: 49000
+            }, {
+                name: 'BANSHEE',
+                model: 'banshee',
+                price: 50000
+            }, {
+                name: 'Nissan GT-R',
+                model: '17r35',
+                price: 52000
+            },
+            {
+                name: 'COQUETTE',
+                model: 'coquette4',
+                price: 70000
+            }, {
+                name: 'DEVESTE',
+                model: 'deveste',
+                price: 170000
+            }, {
+                name: 'ELEGY',
+                model: 'elegy2',
+                price: 28500
+            },
+            {
+                name: 'HOTRING',
+                model: 'hotring',
+                price: 65000
+            }, {
+                name: 'ITALI',
+                model: 'italigto',
+                price: 90000
+            }, {
+                name: 'NEON',
+                model: 'neon',
+                price: 275000
+            }, {
+                name: 'NINEF',
+                model: 'ninef2',
+                price: 130000
+            },
+            {
+                name: 'OMNIS',
+                model: 'omnis',
+                price: 30000
+            }, {
+                name: 'SCHLAGEN',
+                model: 'schlagen',
+                price: 120000
+            }, {
+                name: 'SENTINEL',
+                model: 'sentinel3',
+                price: 23000
+            },
+            {
+                name: 'SPECTER',
+                model: 'specter2',
+                price: 125000
+            }, {
+                name: 'VERLIERER',
+                model: 'verlierer2',
+                price: 85000
+            },
+            {
+                name: 'SAVESTRA',
+                model: 'savestra',
+                price: 35000
+            }, {
+                name: 'SWINGER',
+                model: 'swinger',
+                price: 135000
+            }, {
+                name: 'TURISMO',
+                model: 'turismo2',
+                price: 115000
+            },
+            {
+                name: 'ADDER',
+                model: 'adder',
+                price: 190000
+            }, {
+                name: 'CYCLONE',
+                model: 'cyclone',
+                price: 210000
+            }, {
+                name: 'ENTITYXF',
+                model: 'entityxf',
+                price: 200000
+            },
+            {
+                name: 'FMJ',
+                model: 'fmj',
+                price: 230000
+            }, {
+                name: 'ITALIGTD',
+                model: 'italigtb2',
+                price: 245000
+            }, {
+                name: 'NERO',
+                model: 'nero2',
+                price: 255000
+            },
+            {
+                name: 'REAPER',
+                model: 'reaper',
+                price: 260000
+            }, {
+                name: 'TEMPESTA',
+                model: 'tempesta',
+                price: 262000
+            }, {
+                name: 'SHEAVA',
+                model: 'sheava',
+                price: 220000
+            },
+            {
+                name: 'TYRUS',
+                model: 'tyrus',
+                price: 235000
+            }, {
+                name: 'XA-21',
+                model: 'xa21',
+                price: 270000
+            }, {
+                name: 'TROPHYTRUCK',
+                model: 'trophytruck',
+                price: 70000
+            },
+            {
+                name: 'ZENTORNO',
+                model: 'zentorno',
+                price: 220000
+            }, {
+                name: 'SHOTARO',
+                model: 'shotaro',
+                price: 280000
+            },
+            {
+                name: 'SANCTUS',
+                model: 'sanctus',
+                price: 80000
+            }, {
+                name: 'VORTEX',
+                model: 'vortex',
+                price: 110000
+            },
+            {
+                name: 'ENDURO',
+                model: 'enduro',
+                price: 29000
+            }, {
+                name: 'BATI',
+                model: 'bati',
+                price: 47500
+            }, {
+                name: 'Porsche Turismo',
+                model: 'pturismo',
+                price: 300000
+            },
+        ].sort((a, b) => a.price - b.price),
         carsPointer: 0,
         myCar: 'none',
         camRotation: 0,
@@ -193,7 +418,7 @@ var menu = new Vue({
             lose: "LOSE",
             place: "PLACE",
             kills: "KILLS",
-            playingTime: "PLAYING TIME", 
+            playingTime: "PLAYING TIME",
             minutes: "MINUTES",
             exitToMenu: "EXIT TO THE MENU",
             iAgree: "I AGREE",
@@ -254,14 +479,14 @@ var menu = new Vue({
             // 27: 'escape',
             28: 'conversion',
             29: 'non-conversion',
-            32: 'spacebar', 
+            32: 'spacebar',
             33: 'page up',
             34: 'page down',
             35: 'end',
             36: 'home',
             37: 'left arrow',
             38: 'up arrow',
-            39: 'right arrow', 
+            39: 'right arrow',
             40: 'down arrow',
             41: 'select',
             42: 'print',
@@ -388,11 +613,11 @@ var menu = new Vue({
             178: 'stop',
             179: 'play/pause',
             180: 'e-mail',
-        }, 
+        },
         jetPackSkins: {
             'vip': [0, 36, 35, 34, 33, 32, 28, 27, 25, 23, 22, 20, 19, 16, 14, 12, 11, 10, 4, 1, 2],
             'premium': [37, 31, 29, 24, 21, 17, 15, 9, 8, 7, 6, 5, 3],
-            'deluxe': [40, 39, 38, 30, 26] 
+            'deluxe': [40, 39, 38, 30, 26]
         }
     },
     methods: {
@@ -443,30 +668,28 @@ var menu = new Vue({
             if ('alt' in window) alt.emit(value, ...args)
         },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
-        changeVar(...args) 
-        { 
+        changeVar(...args) {
             console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => {
-                console.log(`changeVar(0): ${JSON.stringify(el)}`) 
-                console.log(`changeVar(1): menu.${el[0]} = ${el[1]}`) 
-                menu[el[0]] = el[1]; 
-                console.log(`changeVar: ${menu[el[0]]}`)  
-            })  
+                console.log(`changeVar(0): ${JSON.stringify(el)}`)
+                console.log(`changeVar(1): menu.${el[0]} = ${el[1]}`)
+                menu[el[0]] = el[1];
+                console.log(`changeVar: ${menu[el[0]]}`)
+            })
         },
-        useFunction(name, ...args)
-        {
-            return menu[name](...args); 
+        useFunction(name, ...args) {
+            return menu[name](...args);
         },
         saveSettings(page) {
             console.log(`saveMenu`)
             if (page != -1) this.switchPage(page);
             if ('alt' in window) {
                 alt.emit('saveSettings', {
-                    lang: this.lang,  
-                    vr: this.vr,   
+                    lang: this.lang,
+                    vr: this.vr,
                     sizeMap: this.sizeMap,
                     quickWeapon: this.quickWeapon,
-                    volume: this.volume,   
+                    volume: this.volume,
                     keyMapSize: this.keyMapSize,
                     keyQuickMarker: this.keyQuickMarker,
                     keySitDown: this.keySitDown,
@@ -484,19 +707,16 @@ var menu = new Vue({
                     this.page = newPage;
                     this.subPage = -2;
                     setTimeout(() => {
-                        if(this.nextSubPage !== -1)
-                        {
+                        if (this.nextSubPage !== -1) {
                             this.subPage = this.nextSubPage;
                             this.nextSubPage = -1;
-                        }
-                        else this.subPage = newSubPage;
-                    }, 350)              
+                        } else this.subPage = newSubPage;
+                    }, 350)
                 } else {
                     this.page = newPage;
                     if (this.coolDown) return;
                     this.coolDown = true;
-                    setTimeout(() => 
-                    {
+                    setTimeout(() => {
                         this.coolDown = false;
                         this.subPage = 0;
                     }, 150);
@@ -504,13 +724,10 @@ var menu = new Vue({
             })
         },
 
-        async resetPage(newPage, newSubPage)
-        {
-            if(this.page === 2 && newPage === 0)
-            {
+        async resetPage(newPage, newSubPage) {
+            if (this.page === 2 && newPage === 0) {
                 menu.emit('cCar:setCarPreview', false);
-                if(this.subPage === 0)
-                {
+                if (this.subPage === 0) {
                     this.cars[this.carsPointer].color = {
                         r: this.oldColor[0],
                         g: this.oldColor[1],
@@ -521,13 +738,12 @@ var menu = new Vue({
                 // {
                 //     this.emitToClient('cJetPack:exit', this.anyVarC, this.anyVar); 
                 // }
-            } 
+            }
 
-            if(newPage === 2 && newSubPage === 1) 
-            {
+            if (newPage === 2 && newSubPage === 1) {
                 this.anyVarSecond = menu.fGetJPSkins(); // this.anyVarSecond - возможные скины игрока
-                console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
-                console.log(this.anyVarSecond.length)
+                // console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
+                // console.log(this.anyVarSecond.length)
                 this.emitToClient('cJetPack:update'); // this.anyVar - выбранный скин джетпака
             }
             // else  
@@ -537,39 +753,51 @@ var menu = new Vue({
             //     this.anyVarC = null;
             // }
             this.recordKey = false;
-            if(this.page === 5 && newPage === 0) this.wsWin = false
+            if (this.page === 5 && newPage === 0) this.wsWin = false
         },
 
-        fLoadJP(selected)
-        {
-            this.anyVar = this.anyVarC = selected;
+        fLoadJP(selected) {
+            this.anyVar = selected[0];
+            this.anyVarC = selected;
 
-            if(this.anyVarSecond.length > 0) 
-            {
+            if (this.anyVarSecond.length > 0) {
                 this.carsPointer = this.anyVarSecond.findIndex(el => el === this.anyVar)
-                console.log(this.carsPointer) 
+                console.log(this.carsPointer)
             }
-            menu.emitServer('sCar:preview', {
-                model: 'thruster',
-                color: null,
-            }, 48, this.anyVarSecond[this.carsPointer]); 
+            if(this.anyVarC[0] === this.anyVarSecond[this.carsPointer] && this.anyVarC[1].r !== this.anyVarC[2].r)  
+            {
+                menu.emitServer('sCar:preview', { 
+                    model: 'thruster',
+                    color: this.anyVarC[1],
+                    color2: this.anyVarC[2],  
+                }, 48, this.anyVarSecond[this.carsPointer]);
+            }
+            else
+            {
+                menu.emitServer('sCar:preview', {
+                    model: 'thruster',
+                    color: null,
+                }, 48, this.anyVarSecond[this.carsPointer]);
+            }
         },
 
-        fGetJPSkins()
-        {
-            switch(this.vip)
-            {
-                case 'none': return []; 
-                case 'vip': return this.jetPackSkins.vip
-                case 'premium': return this.jetPackSkins.vip.concat(this.jetPackSkins.premium)
-                case 'deluxe': return this.jetPackSkins.vip.concat(this.jetPackSkins.premium.concat(this.jetPackSkins.deluxe))
+        fGetJPSkins() {
+            switch (this.vip) {
+                case 'none':
+                    return [];
+                case 'vip':
+                    return this.jetPackSkins.vip
+                case 'premium':
+                    return this.jetPackSkins.vip.concat(this.jetPackSkins.premium)
+                case 'deluxe':
+                    return this.jetPackSkins.vip.concat(this.jetPackSkins.premium.concat(this.jetPackSkins.deluxe))
             }
         },
 
         //LOBBY
         fUpdateLobby(data) {
             console.log(JSON.stringify(data))
-            if (data[0].name && data[0].name !== menu.myName) { 
+            if (data[0].name && data[0].name !== menu.myName) {
                 let index = data.findIndex(el => el.name === menu.myName);
                 if (index !== -1) {
                     let client = data.find(el => el.name === menu.myName);
@@ -578,7 +806,7 @@ var menu = new Vue({
                 }
             }
 
-            data.forEach(async (player, index) => { 
+            data.forEach(async (player, index) => {
                 if (player.name === menu.myName) {
                     myID = index;
                     return player.ava = menu.myAvatar;
@@ -598,12 +826,11 @@ var menu = new Vue({
         fInviteToLobby(lobbyID, myData) {
             this.lobbyID = lobbyID;
             this.myData = myData;
-            if(this.page !== 0 || !menu.show) //Если игрок не на главной странице
+            if (this.page !== 0 || !menu.show) //Если игрок не на главной странице
             {
-                this.emitToClient('notifyI18n', '4', 'menu', 'inviteToLobby', '5000');   
+                this.emitToClient('notifyI18n', '4', 'menu', 'inviteToLobby', '5000');
                 this.nextSubPage = 4;
-            } 
-            else this.switchPage(0, 4);
+            } else this.switchPage(0, 4);
 
             setTimeout(() => {
                 if (this.lobbyID === lobbyID && this.myData === myData) {
@@ -631,10 +858,9 @@ var menu = new Vue({
         },
 
         //Кнопка сверху справа в лобби
-        fInviteOrProfile(ava)
-        {
-            this.switchPage(0, ava === 0 ? 1 : 0); 
-        }, 
+        fInviteOrProfile(ava) {
+            this.switchPage(0, ava === 0 ? 1 : 0);
+        },
 
         //FRIENDS
         getPhoto(avatar, name = this.myName) {
@@ -711,12 +937,11 @@ var menu = new Vue({
                 online = false;
             })
         },
-        loadLang()
-        {
-            if(this.lang === 'ru') this.loadRu();
+        loadLang() {
+            if (this.lang === 'ru') this.loadRu();
             else this.loadEn();
         },
-        loadRu() { 
+        loadRu() {
             document.getElementById('inputAddFriend').placeholder = "Введите NickName"
             menu.i18n = {
                 balance: 'Баланс',
@@ -801,9 +1026,8 @@ var menu = new Vue({
                 days: "ДНЕЙ",
             }
         },
-        loadEn()
-        {
-            document.getElementById('inputAddFriend').placeholder = "Input NickName" 
+        loadEn() {
+            document.getElementById('inputAddFriend').placeholder = "Input NickName"
             menu.i18n = JSON.parse(menu.i18nTemp);
         },
         updateCars(list, selected) {
@@ -891,8 +1115,7 @@ var menu = new Vue({
             console.log(this.carsPointer)
             if (valueFalse === valueTrue) return;
             // console.log(this.cars[this.carsPointer].model) 
-            if(name === 'cars')
-            {
+            if (name === 'cars') {
                 if (!this.cars[valueTrue].color) this.cars[valueTrue].color = {
                     r: 255,
                     g: 255,
@@ -902,17 +1125,40 @@ var menu = new Vue({
                     model: this.cars[valueTrue].model,
                     color: this.cars[valueTrue].color
                 });
-            }
-            else {
+            } else {
                 console.log(`${valueTrue} | ${valueFalse} | ${this.anyVarSecond[valueTrue]}`)
                 // if(valueTrue === valueFalse) this.carsPointer = -1
                 // else this.carsPointer = valueTrue
-                
-                this.carsPointer = valueTrue;
-                menu.emitServer('sCar:preview', {
-                    model: 'thruster',
-                    color: null,
-                }, 48, this.anyVarSecond[valueTrue]);  
+
+                this.carsPointer = valueTrue; 
+                console.log(`this.anyVarSecond: ${this.anyVarSecond[valueTrue]}; ${this.anyVarC[0] === this.anyVarSecond[valueTrue]}; ${this.anyVarC[1].r === this.anyVarC[2].r}`)
+                if (this.anyVarSecond[valueTrue] === 2 || this.anyVarSecond[valueTrue] === 21 || this.anyVarSecond[valueTrue] === 37) {
+                    if(this.anyVarC[0] === this.anyVarSecond[valueTrue] && this.anyVarC[1].r !== this.anyVarC[2].r)  
+                    {
+                        menu.emitServer('sCar:preview', {  
+                            model: 'thruster',
+                            color: this.anyVarC[1],
+                            color2: this.anyVarC[2], 
+                        }, 48, this.anyVarSecond[valueTrue]); 
+                    }
+                    else
+                    {
+                        let color = {r: this.getRandomInt(255), g: this.getRandomInt(255), b: this.getRandomInt(255)}, color2 = {r: this.getRandomInt(255), g: this.getRandomInt(255), b: this.getRandomInt(255)};
+                        this.anyVarC = [this.anyVarSecond[valueTrue], color, color2];
+                        menu.emitServer('sCar:preview', {
+                            model: 'thruster',
+                            color: color,
+                            color2: color2,
+                        }, 48, this.anyVarSecond[valueTrue]);
+                    }
+                }
+                else 
+                {
+                    menu.emitServer('sCar:preview', {
+                        model: 'thruster',
+                        color: null,
+                    }, 48, this.anyVarSecond[valueTrue]);
+                }
                 // this.waitEmitToServer(50, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {
                 //     model: 'thruster',
                 //     color: null 
@@ -965,9 +1211,9 @@ var menu = new Vue({
             //     if(this.myName && el) el.toLowerCase() === this.myName.toLowerCase() 
             // })  
         },
-        changeCamRotation: function () {
+        changeCamRotation: function (value = this.camRotation) {
             // console.log(this.camRotation)  
-            this.emit('cCar:rotation', this.camRotation);
+            this.emit('cCar:rotation', value);
             // mp.trigger("cChangeHeading", this.camRotation);
         },
         changeConverter: function (nameOut, nameIn, k) {
@@ -980,10 +1226,10 @@ if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;
         document.getElementById('fade').style.opacity = toggle ? 1 : 0;
-        if(menu.page === 1) menu.saveSettings(-1); 
+        if (menu.page === 1) menu.saveSettings(-1);
     });
     alt.on('getShow', () => alt.emit('keyOpenPressed', menu.show));
-    alt.on('bMenu:switchPage', (page = 0, subPage = 0) => menu.switchPage(page, subPage)) 
+    alt.on('bMenu:switchPage', (page = 0, subPage = 0) => menu.switchPage(page, subPage))
     alt.on('changeStatusGame', toggle => menu.statusGame = toggle);
     alt.on('update', (textMatch, countWarmUp) => {
         menu.textMatch = textMatch;
@@ -1019,17 +1265,17 @@ if ('alt' in window) {
         menu.place = data.place;
         menu.placeAll = data.placeAll;
         menu.killsInMatch = data.kills;
-        if(menu.killsInMatch < 0) menu.killsInMatch = 0;
+        if (menu.killsInMatch < 0) menu.killsInMatch = 0;
         menu.plusMoney = data.plusMoney;
         menu.lifeTime = data.lifeTime;
     });
 
-    alt.on('bMenu:reCalcWinScreen', (data) => { 
+    alt.on('bMenu:reCalcWinScreen', (data) => {
         menu.wsWin = data.wsWin;
         menu.place = data.place;
         menu.plusMoney += +data.plusMoney;
     });
-    
+
     alt.on('bMenu:updateRank', (obj) => {
         menu.elo = obj.elo;
         menu.kills = obj.kills;
@@ -1043,7 +1289,7 @@ if ('alt' in window) {
 
     alt.on('bMenu:updateCash', (cash, cashRM) => {
         menu.money = cash;
-        menu.moneyRM = cashRM; 
+        menu.moneyRM = cashRM;
     });
 
     // Friends
@@ -1072,7 +1318,7 @@ if ('alt' in window) {
     alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))
 
     alt.on('bMenu:applyTuning', (car) => menu.fApplyTuning(car))
- 
+
     //EMIT 
     alt.on('bMenu:callBackEmitToServer', (variable, value) => menu.callBackEmitToServer(variable, value))
 } else {
@@ -1083,27 +1329,29 @@ if ('alt' in window) {
         menu.getLevel();
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
         menu.friends = [{
-            name: 'DARKLEGEND',
-            online: true
-        }, {
-            name: 'Vanya',
-            online: true
-        },
-        {
-            name: 'Dima',
-            online: true
-        }]
+                name: 'DARKLEGEND',
+                online: true
+            }, {
+                name: 'Vanya',
+                online: true
+            },
+            {
+                name: 'Dima',
+                online: true
+            }
+        ]
         // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
-            name: "DARKLEGEND",
-            ready: 2
-        },
-        {
-            name: "Dima",
-            ready: 1
-        }])
+                name: "DARKLEGEND",
+                ready: 2
+            },
+            {
+                name: "Dima",
+                ready: 1
+            }
+        ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
         // menu.switchPage(2, 1)
@@ -1122,28 +1370,25 @@ if ('alt' in window) {
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
-document.addEventListener('keyup', function(event) {
+document.addEventListener('keyup', function (event) {
     // console.log(event.keyCode)
     // console.log(menu.keyCodes[event.keyCode])
     // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
-    if (menu.recordKey !== false) 
-    {
-        if(event.keyCode === 27) return menu.recordKey = false;
-        if(menu.keyCodes[event.keyCode] !== undefined)
-        {
+    if (menu.recordKey !== false) {
+        if (event.keyCode === 27) return menu.recordKey = false;
+        if (menu.keyCodes[event.keyCode] !== undefined) {
             let count = 0;
-            if(menu.keySitDown === event.keyCode) count += +1;
-            if(menu.keyQuickMarker === event.keyCode) count += +1;
-            if(menu.keyMapSize === event.keyCode) count += +1;
+            if (menu.keySitDown === event.keyCode) count += +1;
+            if (menu.keyQuickMarker === event.keyCode) count += +1;
+            if (menu.keyMapSize === event.keyCode) count += +1;
 
-            if(count > 0) this.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '5000');    
-            else 
-            {
+            if (count > 0) this.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '5000');
+            else {
                 menu[menu.recordKey] = event.keyCode;
-                menu.recordKey = false; 
+                menu.recordKey = false;
             }
         }
-    } 
+    }
 });
 // window.addEventListener('resize', function(){
 //     console.log('resize')

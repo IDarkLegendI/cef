@@ -671,7 +671,7 @@
                         </div>
                     </div>
                     <div class="rotation">
-                        <input @input="changeCamRotation" max="360" min="-180" step="1" type="range"
+                        <input @input="changeCamRotation()" max="360" min="-180" step="1" type="range"
                             v-model.number="camRotation">
                     </div>
                     <div class="colorPicker" v-show="cars[carsPointer].model !== 'none'">
@@ -748,7 +748,7 @@
                         </div>
                     </div>
                     <div class="rotation"> 
-                        <input @input="changeCamRotation" max="360" min="-180" step="1" type="range"
+                        <input @input="changeCamRotation()" max="360" min="-180" step="1" type="range"
                             v-model.number="camRotation">
                     </div>
 
@@ -780,7 +780,7 @@
 
                             <section style="display: flex; align-items: center; justify-content: center;" v-else>
                                 <a id="mouseFocus"
-                                    v-on:click="emitToClient('cJetPack:set', anyVarSecond[carsPointer])">{{i18n.select}}</a>
+                                    v-on:click="emitToClient('cJetPack:set', anyVarSecond[carsPointer], [anyVarC[1], anyVarC[2]])">{{i18n.select}}</a>
                             </section>
                         </section>
                     </div>
