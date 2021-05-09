@@ -43,6 +43,8 @@ var hud = new Vue({
         
         help: 0,   
         helpMainMenu: false,
+        //Misc
+        audio: null,
         avatars: {
             "A": "0",
             "B": "1",
@@ -144,10 +146,11 @@ var hud = new Vue({
         },
         fPlayAudio(name, volume = 0.1) 
         {
-            let audio = new Audio(`./audio/${name}.mp3`);
+            if(this.audio !== null) this.audio.pause();
+            this.audio = new Audio(`./audio/${name}.mp3`);
 
-            audio.volume = volume;   
-            audio.play(); 
+            this.audio.volume = volume;   
+            this.audio.play();  
         },
         getLevel: function(elo = 0) {
             if(elo < 800) return '01';
