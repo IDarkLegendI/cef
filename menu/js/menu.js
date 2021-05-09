@@ -1131,8 +1131,9 @@ var menu = new Vue({
                 // else this.carsPointer = valueTrue
 
                 this.carsPointer = valueTrue; 
+                let speicalSkins = [2, 21, 37, 1, 4, 11, 12, 10]
                 console.log(`this.anyVarSecond: ${this.anyVarSecond[valueTrue]}; ${this.anyVarC[0] === this.anyVarSecond[valueTrue]}; ${this.anyVarC[1].r === this.anyVarC[2].r}`)
-                if (this.anyVarSecond[valueTrue] === 2 || this.anyVarSecond[valueTrue] === 21 || this.anyVarSecond[valueTrue] === 37) {
+                if (speicalSkins.some(el => el === this.anyVarSecond[valueTrue])) { 
                     if(this.anyVarC[0] === this.anyVarSecond[valueTrue] && this.anyVarC[1].r !== this.anyVarC[2].r)  
                     {
                         menu.emitServer('sCar:preview', {  
