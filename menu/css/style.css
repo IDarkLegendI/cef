@@ -1052,9 +1052,9 @@ html {
   width: 35vw;
   position: absolute;
   left: 50%;
-  top: 40vh;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  top: 10vh;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
