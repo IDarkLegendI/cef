@@ -54,6 +54,8 @@ var menu = new Vue({
         level: '01',
 
         //Cars 
+        minSort: 0,
+        maxSort: 1000000,
         cars: [{
                 name: 'None',
                 model: 'none',
@@ -432,6 +434,10 @@ var menu = new Vue({
             timeActions: "VALIDITY TIME",
             agreeOffer: "You agree to all the terms and conditions of the offer",
             days: "DAYS",
+            sortByPrice: "SORT BY PRICE",
+            minValue: "MINIMUM",
+            maxValue: "MAXIMUM",
+            infoSort: "TO SEE YOUR CARS SET THE MINIMUM PRICE TO ZERO"
         },
         i18nTemp: null,
         avatars: {
@@ -1024,6 +1030,10 @@ var menu = new Vue({
                 timeActions: "ВРЕМЯ ДЕЙСТВИЯ",
                 agreeOffer: "Вы соглашаетесь со всеми правилами и условиями офферты",
                 days: "ДНЕЙ",
+                sortByPrice: "СОРТИРОВКА ПО ЦЕНЕ",
+                minValue: "МИНИМАЛЬНАЯ",
+                maxValue: "МАКСИМАЛЬНАЯ",
+                infoSort: "ЧТОБЫ ВИДЕТЬ СВОИ МАШИНЫ ПОСТАВЬТЕ МИНИМАЛЬНУЮ ЦЕНУ НА НОЛЬ",
             }
         },
         loadEn() {
@@ -1105,12 +1115,121 @@ var menu = new Vue({
                 colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
             }, 100)
         },
+        sortLiveCar(plus)
+        {
+            let result = this.carsPointer;
+            if(+this.maxSort < +this.minSort) this.minSort = this.maxSort-1
+            if(plus)
+            {
+                if(result > this.cars.length) return result;
+                result += +1;
+                while(this.cars[result].price > this.maxSort) 
+                {
+                    if(this.cars[result].price === -1) break;
+                    console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                    if(result === this.cars.length-1) break;
+                    console.log(`result(maxSort): ${result}`)
+                    result -= +1;
+                }
+                while(this.cars[result].price < this.minSort)
+                {
+                    if(this.cars[result].price === -1) break;
+                    console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                    if(result === this.cars.length-1) break;
+                    console.log(`result(minSort): ${result}`)
+                    result += +1;
+                }
+            }
+            else 
+            {
+                if(this.cars[result-+1].price > this.maxSort) 
+                {
+                    // result -= +1;
+                    while(this.cars[result].price > this.maxSort) 
+                    {
+                        console.log(`${this.cars[result].price === -1}`)
+                        if(this.cars[result].price === -1) break;
+                        console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                        if(result === this.cars.length-1) break;
+                        console.log(`result(maxSort): ${result}`)
+                        result -= +1;
+                    }
+                }
+                result -= 1;
+                console.log(`${this.cars[result].price} | ${this.minSort}`)
+                if(this.cars[result].price < this.minSort) 
+                { 
+                    // result += +1;
+                    while(this.cars[result].price < this.minSort) 
+                    {
+                        console.log(`${this.cars[result].price === -1}`)
+                        if(this.cars[result].price === -1) break;
+                        console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                        if(result === this.cars.length-1) break;
+                        console.log(`result(minSort): ${result}`)
+                        result += +1;
+                    }
+                }
+            }
+            console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
+            if(this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
+
+            return result;
+        },
         previewCar(plus, name = 'cars') {
             // if(!this.fCoolDown()) return;
+            if(!('alt' in window))
+            { 
+                if(name === 'cars') this.sortLiveCar(plus)
+                // console.log(`${this.maxSort} | ${this.minSort}`)
+                // if(+this.maxSort < +this.minSort) this.minSort = 0
+                // if(plus) 
+                // {
+                //     if(this.cars[this.carsPointer+1].price > this.maxSort) 
+                //     {
+                //         this.carsPointer -= +1;
+                //         while(this.cars[this.carsPointer].price > this.maxSort) 
+                //         {
+                //             console.log(`this.carsPointer: ${this.carsPointer}`)
+                //             this.carsPointer -= +1;
+                //         }
+                //     }
+                //     this.carsPointer += +1;
+                //     while(this.cars[this.carsPointer].price < this.minSort) 
+                //     {
+                //         console.log(`this.carsPointer: ${this.carsPointer}`)
+                //         this.carsPointer += +1;
+                //     }
+                // }
+                // else 
+                // {
+                //     if(this.cars[this.carsPointer-+1].price > this.maxSort) 
+                //     {
+                //         this.carsPointer -= +1;
+                //         while(this.cars[this.carsPointer].price > this.maxSort) 
+                //         {
+                //             console.log(`this.carsPointer: ${this.carsPointer}`)
+                //             this.carsPointer -= +1;
+                //         }
+                //     }
+                //     this.carsPointer -= 1;
+                //     console.log(`${this.cars[this.carsPointer].price} | ${this.minSort}`)
+                //     if(this.cars[this.carsPointer].price < this.minSort) 
+                //     { 
+                //         this.carsPointer += +1;
+                //         while(this.cars[this.carsPointer].price < this.minSort) 
+                //         {
+                //             console.log(`this.carsPointer: ${this.carsPointer}`)
+                //             this.carsPointer += +1;
+                //         }
+                //     }
+                // }
+                return;
+            }
             let valueFalse = this.carsPointer,
-                valueTrue;
-            if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
-            else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
+                valueTrue = this.sortLiveCar(plus);
+            // if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
+            // else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
 
             console.log(this.carsPointer)
             if (valueFalse === valueTrue) return;
@@ -1355,7 +1474,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(1, 0)
+        menu.switchPage(2, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
@@ -1364,10 +1483,10 @@ if ('alt' in window) {
     menu.placeAll = 3;
     menu.place = 2;
     // menu.anyVar = 34 //УБРАТЬ!
-    //     setTimeout(() => {
-    //     initColor();
-    //     ColorPicker(); 
-    // }, 500)
+        setTimeout(() => {
+        initColor();
+        ColorPicker(); 
+    }, 800)
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();

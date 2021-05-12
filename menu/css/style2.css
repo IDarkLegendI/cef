@@ -136,9 +136,9 @@ input[type=checkbox] {
   height: 24vh;
   border-radius: 8px;
   border: 2px solid #364347;
-  position: absolute;
-  top: 71.8%;
-  left: 2.5%;
+  position: absolute; 
+  top: 71.8%; 
+  left: 2.5%; 
   /* transform: translate(-50%, -50%); */
 }
 
@@ -188,9 +188,9 @@ input[type=checkbox] {
 }
 .color-cursor#hue-cursor {
   top: 0;
-  left: -25%;
-  height: 20px;
-  width: 20px;
+  left: -35%;
+  height: 1.2vw;
+  width: 1.2vw;
   pointer-events: none;
   margin-top: -10px;
 }

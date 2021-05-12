@@ -1665,7 +1665,7 @@ a:hover {
 }
 
 .rotation {
-  height: 70vh;
+  height: 69vh;
   z-index: 1;
 }
 
@@ -1676,6 +1676,7 @@ a:hover {
 .rotation input[type=range] {
   -webkit-appearance: none;
   width: 99%;
+  height: 100%;
   background: url(transparent.png);
 }
 
@@ -3081,6 +3082,10 @@ a:hover {
   100% {
     color: white;
   }
+}
+
+.priceRange {
+  width: 35%;
 }
 
 .winMain {
