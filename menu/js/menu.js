@@ -301,7 +301,7 @@ var menu = new Vue({
         ].sort((a, b) => a.price - b.price),
         carsPointer: 0,
         myCar: 'none',
-        camRotation: 0,
+        camRotation: -90,
         oldColor: [0, 0, 0, 'none'],
         updateTuning: false,
 
@@ -1178,62 +1178,16 @@ var menu = new Vue({
         },
         previewCar(plus, name = 'cars') {
             // if(!this.fCoolDown()) return;
-            if(!('alt' in window))
-            { 
-                if(name === 'cars') this.sortLiveCar(plus)
-                // console.log(`${this.maxSort} | ${this.minSort}`)
-                // if(+this.maxSort < +this.minSort) this.minSort = 0
-                // if(plus) 
-                // {
-                //     if(this.cars[this.carsPointer+1].price > this.maxSort) 
-                //     {
-                //         this.carsPointer -= +1;
-                //         while(this.cars[this.carsPointer].price > this.maxSort) 
-                //         {
-                //             console.log(`this.carsPointer: ${this.carsPointer}`)
-                //             this.carsPointer -= +1;
-                //         }
-                //     }
-                //     this.carsPointer += +1;
-                //     while(this.cars[this.carsPointer].price < this.minSort) 
-                //     {
-                //         console.log(`this.carsPointer: ${this.carsPointer}`)
-                //         this.carsPointer += +1;
-                //     }
-                // }
-                // else 
-                // {
-                //     if(this.cars[this.carsPointer-+1].price > this.maxSort) 
-                //     {
-                //         this.carsPointer -= +1;
-                //         while(this.cars[this.carsPointer].price > this.maxSort) 
-                //         {
-                //             console.log(`this.carsPointer: ${this.carsPointer}`)
-                //             this.carsPointer -= +1;
-                //         }
-                //     }
-                //     this.carsPointer -= 1;
-                //     console.log(`${this.cars[this.carsPointer].price} | ${this.minSort}`)
-                //     if(this.cars[this.carsPointer].price < this.minSort) 
-                //     { 
-                //         this.carsPointer += +1;
-                //         while(this.cars[this.carsPointer].price < this.minSort) 
-                //         {
-                //             console.log(`this.carsPointer: ${this.carsPointer}`)
-                //             this.carsPointer += +1;
-                //         }
-                //     }
-                // }
-                return;
-            }
+            console.log(`previewCar: ${plus}; ${name}; this.carsPointer: ${this.carsPointer};`) 
             let valueFalse = this.carsPointer,
-                valueTrue = this.sortLiveCar(plus);
-            // if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
-            // else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
-
-            console.log(this.carsPointer)
+                valueTrue;
+            if((name === 'cars')) valueTrue = this.sortLiveCar(plus)
+            else {
+                if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
+                else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1 
+            }
+            console.log
             if (valueFalse === valueTrue) return;
-            // console.log(this.cars[this.carsPointer].model) 
             if (name === 'cars') {
                 if (!this.cars[valueTrue].color) this.cars[valueTrue].color = {
                     r: 255,
@@ -1249,7 +1203,7 @@ var menu = new Vue({
                 // if(valueTrue === valueFalse) this.carsPointer = -1
                 // else this.carsPointer = valueTrue
 
-                this.carsPointer = valueTrue; 
+                this.carsPointer = valueTrue;  
                 let speicalSkins = [2, 21, 37, 1, 4, 11, 12, 10]
                 console.log(`this.anyVarSecond: ${this.anyVarSecond[valueTrue]}; ${this.anyVarC[0] === this.anyVarSecond[valueTrue]}; ${this.anyVarC[1].r === this.anyVarC[2].r}`)
                 if (speicalSkins.some(el => el === this.anyVarSecond[valueTrue])) { 
@@ -1272,7 +1226,7 @@ var menu = new Vue({
                         }, 48, this.anyVarSecond[valueTrue]);
                     }
                 }
-                else 
+                else  
                 {
                     menu.emitServer('sCar:preview', {
                         model: 'thruster',
