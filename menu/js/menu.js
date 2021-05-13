@@ -438,7 +438,8 @@ var menu = new Vue({
             sortByPrice: "SORT BY PRICE",
             minValue: "MINIMUM",
             maxValue: "MAXIMUM",
-            infoSort: "TO SEE YOUR CARS SET THE MINIMUM PRICE TO ZERO"
+            infoSort: "TO SEE YOUR CARS SET THE MINIMUM PRICE TO ZERO",
+            onlyMyCars: "ONLY MY CARS"
         },
         i18nTemp: null,
         avatars: {
@@ -1035,6 +1036,7 @@ var menu = new Vue({
                 minValue: "МИНИМАЛЬНАЯ",
                 maxValue: "МАКСИМАЛЬНАЯ",
                 infoSort: "ЧТОБЫ ВИДЕТЬ СВОИ МАШИНЫ ПОСТАВЬТЕ МИНИМАЛЬНУЮ ЦЕНУ НА НОЛЬ",
+                onlyMyCars: "ТОЛЬКО МОИ МАШИНЫ",
             }
         },
         loadEn() {

@@ -785,16 +785,9 @@
                                         @change="previewCar(false)" v-model="maxSort">
                                 </div>
                             </div>
-                            <!-- <div class="checkboxes">
+                            <div class="checkboxes" style="transform: scale(0.8);">
                                 <div class="checkboxtest">
-                                    <span>ТОЛЬКО МОИ МАШИНЫ</span>
-                                    <div class="settingCenter"><input id="onlyMyCars" type="checkbox" v-model='onlyMyCars' @change="previewCar(false)" /><label for="onlyMyCars"
-                                            id="mouseFocus"></label></div>
-                                </div>
-                            </div> -->
-                            <div class="checkboxes">
-                                <div class="checkboxtest">
-                                    <span>ТОЛЬКО МОИ МАШИНЫ</span>
+                                    <span>{{i18n.onlyMyCars}}</span>
                                     <div class="settingCenter"><input @change="previewCar(true, 'cars', 3)" id="onlyMyCars" type="checkbox"
                                             v-model='onlyMyCars' /><label for="onlyMyCars" id="mouseFocus"></label></div>
                                 </div>
