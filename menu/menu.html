@@ -736,7 +736,7 @@
                                         style="filter: grayscale(100%); transform: scale(1.0);" v-else>
                                 </div>
                             </div>
-                            <div class="btnback" style="display: flex; align-items: center;">
+                            <div class="btnback" style="display: flex; align-items: center;" v-if="cars[carsPointer] !== undefined">
                                 <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
                                 <section id="mouseFocus"
                                     style="display: flex; align-items: center; justify-content: center;"
@@ -770,19 +770,19 @@
                                     style="display: flex; flex-direction: column; align-items: center;">
                                     <h1 style="font-size: 0.6vw;">{{i18n.minValue}}</h1>
                                     <input max="900000" min="0" step="1000" style="margin: 1vh 0;" type="range"
-                                        v-model="minSort">
+                                        @change="carsSort()" v-model="minSort">
                                     <input style="width: 94%;  border-radius: 4px; background-color: #fff; text-align: center;"
                                         type="text"
-                                        v-model="minSort">
+                                        @change="carsSort()" v-model="minSort">
                                 </div>
                                 <div class="priceRange"
                                     style="display: flex; flex-direction: column; align-items: center;">
                                     <h1 style="font-size: 0.6vw;">{{i18n.maxValue}}</h1>
                                     <input max="1000000" min="16000" step="1000" style="margin: 1vh 0;"
-                                        type="range" v-model="maxSort">
+                                        @change="carsSort()" type="range" v-model="maxSort">
                                     <input style="width: 94%;  border-radius: 4px; background-color: #fff; text-align: center;"
                                         type="text"
-                                        v-model="maxSort">
+                                        @change="carsSort()" v-model="maxSort">
                                 </div>
                             </div>
                             <transition enter-active-class="animated fadeInUp" 

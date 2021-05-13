@@ -56,7 +56,7 @@ var menu = new Vue({
         //Cars 
         minSort: 0,
         maxSort: 1000000,
-        cars: [{
+        carsSource: [{
                 name: 'None',
                 model: 'none',
                 price: 0
@@ -299,7 +299,13 @@ var menu = new Vue({
                 price: 300000
             },
         ].sort((a, b) => a.price - b.price),
+        cars: [{
+            name: 'None',
+            model: 'none',
+            price: 0
+        },],
         carsPointer: 0,
+        addPointer: 1,
         myCar: 'none',
         camRotation: 0,
         oldColor: [0, 0, 0, 'none'],
@@ -746,11 +752,17 @@ var menu = new Vue({
                 // }
             }
 
-            if (newPage === 2 && newSubPage === 1) {
-                this.anyVarSecond = menu.fGetJPSkins(); // this.anyVarSecond - возможные скины игрока
-                // console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
-                // console.log(this.anyVarSecond.length)
-                this.emitToClient('cJetPack:update'); // this.anyVar - выбранный скин джетпака
+            if (newPage === 2) {
+                if (newSubPage === 0) {
+                    this.carsSort(true);
+                }
+                else if(newSubPage === 1)
+                {
+                    this.anyVarSecond = menu.fGetJPSkins(); // this.anyVarSecond - возможные скины игрока
+                    // console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
+                    // console.log(this.anyVarSecond.length)
+                    this.emitToClient('cJetPack:update'); // this.anyVar - выбранный скин джетпака
+                }
             }
             // else  
             // { 
@@ -775,7 +787,7 @@ var menu = new Vue({
                 menu.emitServer('sCar:preview', { 
                     model: 'thruster',
                     color: this.anyVarC[1],
-                    color2: this.anyVarC[2],  
+                    color2: this.anyVarC[2],   
                 }, 48, this.anyVarSecond[this.carsPointer]);
             }
             else
@@ -1046,37 +1058,41 @@ var menu = new Vue({
             //     model: string,  
             //     color: iRGB,
             // }
-            let carSelected = this.cars[this.carsPointer].model,
-                foundIndex = this.cars.findIndex(el => el.price === -1);
+            let carSelected = this.carsSource[this.carsPointer].model,
+                foundIndex = this.carsSource.findIndex(el => el.price === -1);
             //Сбрасываем старый выбор
-            if (foundIndex !== -1) this.cars[foundIndex].price = 0;
+            if (foundIndex !== -1) this.carsSource[foundIndex].price = 0;
 
             //Добавляем новые машины
             list.forEach((carOfList) => {
-                let found = this.cars.findIndex(car => car.model === carOfList.model);
+                let found = this.carsSource.findIndex(car => car.model === carOfList.model);
                 if (found != -1) {
-                    this.cars[found].price = 0;
-                    this.cars[found].color = carOfList.color;
+                    this.carsSource[found].price = 0;
+                    this.carsSource[found].color = carOfList.color;
                 }
             })
 
             //Выставляем новый выбор
-            foundIndex = this.cars.findIndex(el => el.model === selected.model);
+            foundIndex = this.carsSource.findIndex(el => el.model === selected.model);
             console.log(`foundIndex: ${foundIndex}; ${selected.model}`)
-            if (foundIndex !== -1) this.cars[foundIndex].price = -1;
+            if (foundIndex !== -1) this.carsSource[foundIndex].price = -1;
 
             //Чтобы "не выбрано" всегда было в начале списка
             let value;
-            foundIndex = this.cars.findIndex(el => el.model === 'none');
+            foundIndex = this.carsSource.findIndex(el => el.model === 'none');
             if (foundIndex !== -1) {
-                value = this.cars[foundIndex].price;
-                this.cars[foundIndex].price = -2;
+                value = this.carsSource[foundIndex].price;
+                this.carsSource[foundIndex].price = -2;
             }
-            this.cars.sort((a, b) => a.price - b.price)
-            if (foundIndex !== -1) this.cars[foundIndex].price = value;
+            this.carsSource.sort((a, b) => a.price - b.price)
+            if (foundIndex !== -1) this.carsSource[foundIndex].price = value;
 
-            this.carsPointer = this.cars.findIndex(el => el.model === carSelected);
+            this.carsPointer = this.carsSource.findIndex(el => el.model === carSelected);
             if (this.page === 2) this.setPreviewCar(this.carsPointer);
+            this.addPointer = 1;
+            this.carsSource.forEach(el => {
+                if(el.price === 0) this.addPointer += +1;
+            })
         },
         setPreviewCar(pointer = null) {
             if (pointer === null) {
@@ -1084,152 +1100,154 @@ var menu = new Vue({
                 if (pointer === -1) pointer = 0;
                 this.carsPointer = pointer;
             }
+
             menu.emitServer('sCar:preview', {
-                model: this.cars[pointer].model,
+                model: this.cars[pointer].model, 
                 color: this.cars[pointer].color
             });
-            // console.log(`setPreviewCar: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
-            if (this.cars[this.carsPointer].model !== this.oldColor[3]) {
-                menu.oldColor = [this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b,
-                    this.cars[this.carsPointer].model
+            console.log(`setPreviewCar: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.carsSource[this.carsPointer].model !== this.oldColor[3]}`) 
+            console.log(`this.carsSource[this.carsPointer].color: ${this.carsSource[this.carsPointer].color}`)
+            if (this.carsSource[this.carsPointer].model !== this.oldColor[3]) {
+                menu.oldColor = [this.carsSource[this.carsPointer].color.r, this.carsSource[this.carsPointer].color.g, this.carsSource[this.carsPointer].color.b,
+                    this.carsSource[this.carsPointer].model
                 ];
                 this.updateTuning = false;
-            } else if (menu.oldColor[0] !== this.cars[this.carsPointer].color.r ||
-                menu.oldColor[1] !== this.cars[this.carsPointer].color.g ||
-                menu.oldColor[2] !== this.cars[this.carsPointer].color.b) {
+            } else if (menu.oldColor[0] !== this.carsSource[this.carsPointer].color.r ||
+                menu.oldColor[1] !== this.carsSource[this.carsPointer].color.g ||
+                menu.oldColor[2] !== this.carsSource[this.carsPointer].color.b) { 
                 this.updateTuning = true;
                 let el = document.getElementById('changeColorCar');
-                if (el) el.style.backgroundColor = 'rgb(' + this.cars[this.carsPointer].color.r + ',' + this.cars[this.carsPointer].color.g + ',' + this.cars[this.carsPointer].color.b + ')';
+                if (el) el.style.backgroundColor = 'rgb(' + this.carsSource[this.carsPointer].color.r + ',' + this.carsSource[this.carsPointer].color.g + ',' + this.carsSource[this.carsPointer].color.b + ')';
             }
 
-            // console.log(`this.updateTuning: ${this.updateTuning}`)  
+            console.log(`this.updateTuning: ${this.updateTuning}`)   
 
             setTimeout(() => {
                 initColor();
                 ColorPicker();
-                if (!this.cars[pointer].color) this.cars[pointer].color = {
+                if (!this.carsSource[pointer].color) this.carsSource[pointer].color = {
                     r: 255,
                     g: 255,
                     b: 255
                 }
-                colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
+                colorToPos('rgb ' + this.carsSource[pointer].color.r + ' ' + this.carsSource[pointer].color.g + ' ' + this.carsSource[pointer].color.b)
             }, 100)
         },
-        sortLiveCar(plus)
-        {
-            let result = this.carsPointer;
-            if(+this.maxSort < +this.minSort) this.minSort = this.maxSort-1
-            if(plus)
-            {
-                if(result > this.cars.length) return result;
-                result += +1;
-                while(this.cars[result].price > this.maxSort) 
-                {
-                    if(this.cars[result].price === -1) break;
-                    console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                    if(result === this.cars.length-1) break;
-                    console.log(`result(maxSort): ${result}`)
-                    result -= +1;
-                }
-                while(this.cars[result].price < this.minSort)
-                {
-                    if(this.cars[result].price === -1) break;
-                    console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                    if(result === this.cars.length-1) break;
-                    console.log(`result(minSort): ${result}`)
-                    result += +1;
-                }
-            }
-            else 
-            {
-                if(this.cars[result-+1].price > this.maxSort) 
-                {
-                    // result -= +1;
-                    while(this.cars[result].price > this.maxSort) 
-                    {
-                        console.log(`${this.cars[result].price === -1}`)
-                        if(this.cars[result].price === -1) break;
-                        console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                        if(result === this.cars.length-1) break;
-                        console.log(`result(maxSort): ${result}`)
-                        result -= +1;
-                    }
-                }
-                result -= 1;
-                console.log(`${this.cars[result].price} | ${this.minSort}`)
-                if(this.cars[result].price < this.minSort) 
-                { 
-                    // result += +1;
-                    while(this.cars[result].price < this.minSort) 
-                    {
-                        console.log(`${this.cars[result].price === -1}`)
-                        if(this.cars[result].price === -1) break;
-                        console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                        if(result === this.cars.length-1) break;
-                        console.log(`result(minSort): ${result}`)
-                        result += +1;
-                    }
-                }
-            }
-            console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
-            if(this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
+        // sortLiveCar(plus)
+        // {
+        //     let result = this.carsPointer;
+        //     if(+this.maxSort < +this.minSort) this.minSort = this.maxSort-1
+        //     if(plus)
+        //     {
+        //         if(result > this.cars.length) return result;
+        //         result += +1;
+        //         while(this.cars[result].price > this.maxSort) 
+        //         {
+        //             if(this.cars[result].price === -1) break;
+        //             console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+        //             if(result === this.cars.length-1) break;
+        //             console.log(`result(maxSort): ${result}`)
+        //             result -= +1;
+        //         }
+        //         while(this.cars[result].price < this.minSort)
+        //         {
+        //             if(this.cars[result].price === -1) break;
+        //             console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+        //             if(result === this.cars.length-1) break;
+        //             console.log(`result(minSort): ${result}`)
+        //             result += +1;
+        //         }
+        //     }
+        //     else 
+        //     {
+        //         if(this.cars[result-+1].price > this.maxSort) 
+        //         {
+        //             // result -= +1;
+        //             while(this.cars[result].price > this.maxSort) 
+        //             {
+        //                 console.log(`${this.cars[result].price === -1}`)
+        //                 if(this.cars[result].price === -1) break;
+        //                 console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+        //                 if(result === this.cars.length-1) break;
+        //                 console.log(`result(maxSort): ${result}`)
+        //                 result -= +1;
+        //             }
+        //         }
+        //         result -= 1;
+        //         console.log(`${this.cars[result].price} | ${this.minSort}`)
+        //         if(this.cars[result].price < this.minSort) 
+        //         { 
+        //             // result += +1;
+        //             while(this.cars[result].price < this.minSort) 
+        //             {
+        //                 console.log(`${this.cars[result].price === -1}`)
+        //                 if(this.cars[result].price === -1) break;
+        //                 console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+        //                 if(result === this.cars.length-1) break;
+        //                 console.log(`result(minSort): ${result}`)
+        //                 result += +1;
+        //             }
+        //         }
+        //     }
+        //     console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
+        //     if(this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
 
-            return result;
-        },
-        previewCar(plus, name = 'cars') {
-            // if(!this.fCoolDown()) return;
-            if(!('alt' in window))
-            { 
-                if(name === 'cars') this.sortLiveCar(plus)
-                // console.log(`${this.maxSort} | ${this.minSort}`)
-                // if(+this.maxSort < +this.minSort) this.minSort = 0
-                // if(plus) 
+        //     return result;
+        // },
+        carsSort(bFisrt = false)
+        {
+            this.cars = this.carsSource.filter(el => (el.price > this.minSort && el.price < this.maxSort) || el.price === -1 || el.price === 0)
+            if(!bFisrt) 
+            {
+                this.carsPointer = this.addPointer;
+                console.log(`test: ${this.carsPointer}; ${JSON.stringify(this.cars[this.carsPointer])}`)
+                // if(this.cars[this.carsPointer] === undefined)
                 // {
-                //     if(this.cars[this.carsPointer+1].price > this.maxSort) 
-                //     {
-                //         this.carsPointer -= +1;
-                //         while(this.cars[this.carsPointer].price > this.maxSort) 
-                //         {
-                //             console.log(`this.carsPointer: ${this.carsPointer}`)
-                //             this.carsPointer -= +1;
-                //         }
-                //     }
-                //     this.carsPointer += +1;
-                //     while(this.cars[this.carsPointer].price < this.minSort) 
-                //     {
-                //         console.log(`this.carsPointer: ${this.carsPointer}`)
-                //         this.carsPointer += +1;
-                //     }
+                //     // this.cars = this.carsSource[this.carsSource.findIndex(el => el.model === 'none')]
+                //     this.cars = [{
+                //         name: 'None',
+                //         model: 'none', 
+                //         price: 0
+                //     },]
+                //     this.cars[0].price = this.carsSource[this.carsSource.findIndex(el => el.model === 'none')].price
+                //     this.carsPointer = 0;
+                //     menu.emitServer('sCar:preview', {
+                //         model: 'none',
+                //         color: null,  
+                //     });
+                //     console.log(`this.cars: ${JSON.stringify(this.cars)} | ${this.cars[this.cars.findIndex(el => el.model === 'none')]}`)
                 // }
-                // else 
-                // {
-                //     if(this.cars[this.carsPointer-+1].price > this.maxSort) 
-                //     {
-                //         this.carsPointer -= +1;
-                //         while(this.cars[this.carsPointer].price > this.maxSort) 
-                //         {
-                //             console.log(`this.carsPointer: ${this.carsPointer}`)
-                //             this.carsPointer -= +1;
-                //         }
-                //     }
-                //     this.carsPointer -= 1;
-                //     console.log(`${this.cars[this.carsPointer].price} | ${this.minSort}`)
-                //     if(this.cars[this.carsPointer].price < this.minSort) 
-                //     { 
-                //         this.carsPointer += +1;
-                //         while(this.cars[this.carsPointer].price < this.minSort) 
-                //         {
-                //             console.log(`this.carsPointer: ${this.carsPointer}`)
-                //             this.carsPointer += +1;
-                //         }
-                //     }
-                // }
-                return;
+                console.log(`carsSort: ${this.cars.length - +this.addPointer} | ${this.cars.length - +this.addPointer <= 0}`)
+                if(this.cars.length - +this.addPointer <= 0)
+                {
+                    this.minSort = 0;
+                    this.maxSort = 1000000; 
+                    this.carsSort()
+                }
+                else 
+                {  
+                    console.log(this.carsSource.findIndex(el => el.name === this.cars[this.carsPointer].name))
+                    this.setPreviewCar(this.carsSource.findIndex(el => el.name === this.cars[this.carsPointer].name));
+                }
             }
+        },
+        // Указываем pointer, при необходимости переключить на определенный поинтер
+        previewCar(plus, name = 'cars', pointer = null) {
+            // if(!this.fCoolDown()) return;
             let valueFalse = this.carsPointer,
-                valueTrue = this.sortLiveCar(plus);
-            // if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
-            // else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
+                valueTrue;
+            if(pointer !== null)
+            {
+                valueFalse = valueTrue = pointer;
+            }
+            {
+                if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
+                else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
+            }
+            if(!('alt' in window))
+            {
+                this.carsPointer = valueTrue
+            }
 
             console.log(this.carsPointer)
             if (valueFalse === valueTrue) return;
