@@ -56,6 +56,7 @@ var menu = new Vue({
         //Cars 
         minSort: 0,
         maxSort: 1000000,
+        onlyMyCars: false,
         cars: [{
                 name: 'None',
                 model: 'none',
@@ -1115,10 +1116,31 @@ var menu = new Vue({
                 colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
             }, 100)
         },
-        sortLiveCar(plus)
+        sortLiveCar(plus, onlyMyCarsClick)
         {
+            console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
+            if(onlyMyCarsClick === 3)
+            {
+                if(this.onlyMyCars) this.minSort = this.maxSort = 0
+                else 
+                {
+                    this.minSort = 1000;
+                    this.maxSort = 500000;
+                }
+            }
+            else if(this.onlyMyCars && onlyMyCarsClick === 1) this.onlyMyCars = false; 
             let result = this.carsPointer;
-            if(+this.maxSort < +this.minSort) this.minSort = this.maxSort-1
+            if(+this.maxSort < +this.minSort) 
+            {
+                if(this.maxSort === 0)
+                {
+                    this.minSort = 1000;
+                    this.maxSort = 500000;
+                }
+                else {
+                    this.minSort = this.maxSort-1
+                }
+            }
             if(plus)
             {
                 if(result > this.cars.length) return result;
@@ -1174,19 +1196,18 @@ var menu = new Vue({
             console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
             if(this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
 
-            return result;
+            return result; 
         },
-        previewCar(plus, name = 'cars') {
+        previewCar(plus, name = 'cars', onlyMyCarsClick = 1) {
             // if(!this.fCoolDown()) return;
             console.log(`previewCar: ${plus}; ${name}; this.carsPointer: ${this.carsPointer};`) 
             let valueFalse = this.carsPointer,
                 valueTrue;
-            if((name === 'cars')) valueTrue = this.sortLiveCar(plus)
+            if((name === 'cars')) valueTrue = this.sortLiveCar(plus, onlyMyCarsClick)
             else {
                 if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
                 else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1 
             }
-            console.log
             if (valueFalse === valueTrue) return;
             if (name === 'cars') {
                 if (!this.cars[valueTrue].color) this.cars[valueTrue].color = {

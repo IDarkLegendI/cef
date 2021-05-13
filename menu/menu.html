@@ -719,7 +719,7 @@
                             <div class="switchauto">
                                 <div class="arrowleft">
                                     <img src="./img/arrowLeft.png" v-if="carsPointer !== 0"
-                                        v-on:click="previewCar(false)">
+                                        v-on:click="previewCar(false, 'cars', 2)">
                                     <img src="./img/arrowLeft.png"
                                         style="filter: grayscale(100%); transform: scale(1.0);" v-else>
                                 </div>
@@ -731,7 +731,7 @@
                                 </div>
                                 <div class="arrowright">
                                     <img src="./img/arrowRight.png" v-if="carsPointer < cars.length-1"
-                                        v-on:click="previewCar(true)">
+                                        v-on:click="previewCar(true, 'cars', 2)">
                                     <img src="./img/arrowRight.png"
                                         style="filter: grayscale(100%); transform: scale(1.0);" v-else>
                                 </div>
@@ -775,7 +775,7 @@
                                         @change="previewCar(false)"
                                         type="text" v-model="minSort">
                                 </div>
-                                <div class="priceRange"
+                                <div class="priceRange" 
                                     style="display: flex; flex-direction: column; align-items: center;">
                                     <h1 style="font-size: 0.6vw;">{{i18n.maxValue}}</h1>
                                     <input @change="previewCar(false)" max="500000" min="0" step="1000"
@@ -785,10 +785,24 @@
                                         @change="previewCar(false)" v-model="maxSort">
                                 </div>
                             </div>
-                            <transition enter-active-class="animated fadeInUp" 
+                            <!-- <div class="checkboxes">
+                                <div class="checkboxtest">
+                                    <span>ТОЛЬКО МОИ МАШИНЫ</span>
+                                    <div class="settingCenter"><input id="onlyMyCars" type="checkbox" v-model='onlyMyCars' @change="previewCar(false)" /><label for="onlyMyCars"
+                                            id="mouseFocus"></label></div>
+                                </div>
+                            </div> -->
+                            <div class="checkboxes">
+                                <div class="checkboxtest">
+                                    <span>ТОЛЬКО МОИ МАШИНЫ</span>
+                                    <div class="settingCenter"><input @change="previewCar(true, 'cars', 3)" id="onlyMyCars" type="checkbox"
+                                            v-model='onlyMyCars' /><label for="onlyMyCars" id="mouseFocus"></label></div>
+                                </div>
+                            </div>
+                            <!-- <transition enter-active-class="animated fadeInUp" 
                             leave-active-class="animated fadeOutDown"> 
                                 <h1 style="font-size: 0.5vw; padding-top: 1vh; color: #fff; text-shadow: 0 0 3px black;" v-show="minSort > 0">{{i18n.infoSort}}</h1>
-                            </transition>
+                            </transition> -->
                         </div>
                     </div>
                 </div>
