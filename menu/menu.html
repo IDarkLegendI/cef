@@ -1012,9 +1012,12 @@
             name="custom-classes-transition">
             <section v-if="page === 5">
                 <div class="winMain">
-                    <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}"
-                        style="display: flex; font-size: 8vh; justify-content: center;">
+                    <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                        <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}"
+                        style="font-size: 8vh;">
                         {{ wsWin ? i18n.win : i18n.lose}}!</h1>
+                        <h1 style="padding-top: 2vh; font-style: oblique; font-size: 2vh;">{{phrase}}</h1>
+                    </div>
                     <div class="winLine animated bounce slower">
                         <div class="winEl">
                             <h1 class="winText">{{killsInMatch}}</h1>

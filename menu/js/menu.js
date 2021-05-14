@@ -337,6 +337,7 @@ var menu = new Vue({
 
         //EndGame
         wsWin: false,
+        phrase: '«Я требую продолжения банкета!»',
         killsInMatch: 0,
         // elo: 0, 
         place: 0,
@@ -1451,7 +1452,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(2, 0)
+        menu.switchPage(5, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
@@ -1461,8 +1462,9 @@ if ('alt' in window) {
     menu.place = 2;
     // menu.anyVar = 34 //УБРАТЬ!
         setTimeout(() => {
-        initColor();
-        ColorPicker(); 
+            if(menu.page !== 2) return;
+            initColor();
+            ColorPicker(); 
     }, 800)
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
