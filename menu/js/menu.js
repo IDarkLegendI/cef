@@ -1135,7 +1135,7 @@ var menu = new Vue({
             let result = this.carsPointer;
             if(+this.maxSort < +this.minSort) 
             {
-                if(this.maxSort === 0)
+                if(this.maxSort <= 0)
                 {
                     this.minSort = 1000;
                     this.maxSort = 500000;
