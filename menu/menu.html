@@ -1034,9 +1034,9 @@
                                 <img src="./img/win/team.png" alt="">
                             </div>
                         </div>
-                        <div class="winEl">
-                            <h1 style="font-size: 2vw;">+$</h1>
-                            <h1 class="winText">{{plusMoney}}</h1>
+                        <div class="winEl" v-if="plusMoney !== 0">
+                            <h1 style="font-size: 2vw;">{{plusMoney > 0 ? "+" : "-"}}$</h1>
+                            <h1 class="winText">{{plusMoney < 0 ? plusMoney.toString().slice(1, 10000000) : plusMoney}}</h1>
                             <h1 class="winText" v-if="bonusMoney > 0">+{{bonusMoney}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.balance.toUpperCase()}}</h1>
