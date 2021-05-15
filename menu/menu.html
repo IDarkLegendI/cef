@@ -1037,6 +1037,7 @@
                         <div class="winEl">
                             <h1 style="font-size: 2vw;">+$</h1>
                             <h1 class="winText">{{plusMoney}}</h1>
+                            <h1 class="winText" v-if="bonusMoney > 0">+{{bonusMoney}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.balance.toUpperCase()}}</h1>
                                 <img src="./img/win/money-bag.png" alt="">

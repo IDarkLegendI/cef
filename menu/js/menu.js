@@ -343,6 +343,7 @@ var menu = new Vue({
         place: 0,
         placeAll: 0,
         plusMoney: 0,
+        bonusMoney: 0,
         lifeTime: 0, //Минут
 
         //VIP
@@ -1372,6 +1373,7 @@ if ('alt' in window) {
         menu.wsWin = data.wsWin;
         menu.place = data.place;
         menu.plusMoney += +data.plusMoney;
+        menu.bonusMoney += +data.bonusMoney;
     });
 
     alt.on('bMenu:updateRank', (obj) => {
