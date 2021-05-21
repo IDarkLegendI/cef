@@ -1054,14 +1054,14 @@ function loadRusLang() {
 }
 
 if ('alt' in window) {
-	alt.on('setSex', sex => {
+	alt.on('setSex', sex => { 
 		// console.log(`sex: ${sex}`) 
 		if (sex) loadMans();
 		else loadWomans();
 	})
 
 	alt.on('updateClothes', clothes => app.myClothes = clothes)
-	alt.on('updateCash', value => app.money = value.cash)
+	alt.on('updateCash', value => app.money = value)
  
 	alt.on('setLang', lang => {
 		console.log(`lang: ${lang}`)
