@@ -567,3 +567,15 @@ p {
 {
     transition: all 0.8s;
 } 
+
+@keyframes friendTalking{
+	0%{
+		border: 1px solid;
+	}
+	50%{
+		border: 2px solid;
+	}
+	100%{
+		border: 1px solid;
+	}
+}

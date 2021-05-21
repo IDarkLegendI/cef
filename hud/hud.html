@@ -105,13 +105,15 @@
                             <div class="helpObServer" 
                             v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
-                                    <div>
+                                    <div :style="{animationName: friend.mic ? 'pulse' : 'none'}" class="animated infinite pulse slow">
                                         <p :style="{borderColor: friend.color}" class="key" id="friendName">{{friend.name}}</p>
                                         <p class="textHelp" style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
-                                            <img :src="`../hud/img/${friend.hp > 0 ? 'heart' : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`" alt="" 
-                                            style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 1px red)">
+                                            <img :src="`../hud/img/${friend.hp > 0 ? 'heart' : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`"
+                                            style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 1px red)">  
                                             <p v-if="friend.hp > 0">{{friend.hp}}</p>
                                         </p>
+                                        <!-- <img class="animated infinite flash slower" src="./img/mic.png" v-if="friend.mic" 
+                                        style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 2px green)" :style="{paddingLeft: friend.hp > 0 ? '0.25vw' : 0}"> -->
                                     </div>
                                 </div>
                             </div>
