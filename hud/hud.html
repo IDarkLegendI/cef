@@ -68,11 +68,11 @@
                         <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>
-                            <div class="kills">
+                            <div class="kills" style="padding-top: 0.5vh;">
                                 <img src="./img/skull.png" alt="">
                                 <h1 class="obsKills">{{obs.kills}}</h1>
-                                <hr style="height: 0vh; opacity: 0.5;">
-                                <img class="level" :src="`../menu/img/levels/${obs.level}.png`" alt="">
+                                <hr style="height: 0vh; opacity: 0;">
+                                <img :src="`../menu/img/levels/${obs.level}.png`" alt="" class="level" style="width: 1.4vw;">
                             </div>
                         </div>
                         <!-- <img class="vip" :src="`../menu/img/corona.png`" alt=""> -->
