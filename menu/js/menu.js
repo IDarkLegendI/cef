@@ -1445,11 +1445,13 @@ if ('alt' in window) {
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
                 name: "DARKLEGEND",
-                ready: 0
+                ready: 0,
+                mic: false
             },
             {
                 name: "Dima",
-                ready: 1
+                ready: 1,
+                mic: true
             }
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
