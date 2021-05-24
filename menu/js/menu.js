@@ -845,6 +845,7 @@ var menu = new Vue({
         //
         fUpdateLobbyMic(data)
         {
+            console.log(`fUpdateLobbyMic: ${JSON.stringify(data)}`)
             Object.keys(data).forEach(el => {
                 el = el.toLocaleUpperCase(); 
                 let index = menu.lobby.findIndex(player => player.name === el)
