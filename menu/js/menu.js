@@ -1366,6 +1366,7 @@ if ('alt' in window) {
     });
 
     alt.on('bMenu:changeVar', (...args) => menu.changeVar(...args))
+    alt.on('bMenu:changeArgument', (...args) => menu.changeArgument(...args))
     alt.on('bMenu:useFunction', (...args) => menu.useFunction(...args))
     alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
     alt.on('bMenu:updateWinScreen', (data) => {
@@ -1460,7 +1461,7 @@ if ('alt' in window) {
             {
                 name: "Dima",
                 ready: 1,
-                mic: true
+                mic: false
             }
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
