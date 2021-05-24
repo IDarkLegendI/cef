@@ -144,7 +144,7 @@
 
                                         <section v-else>
                                             <!-- Если игрок не готов -->
-                                            <div class="ticket ticketRed form" id="mouseFocus"
+                                            <div class="ticket form" id="mouseFocus"
                                                 v-if="lobby[myID].ready === 0"
                                                 v-on:click="emitServer('sLobby:setReady', 1)">
                                                 <div class="textticket">
@@ -164,7 +164,7 @@
                                             </div>
 
                                             <!-- Если игрок готов -->
-                                            <div class="ticket form" id="mouseFocus" v-else
+                                            <div class="ticket ticketRed form" id="mouseFocus" v-else
                                                 v-on:click="emitServer('sLobby:setReady', 0)">
                                                 <div class="textticket">
                                                     <div class="textticket1">{{i18n.ready}}</span></div>

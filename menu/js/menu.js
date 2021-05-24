@@ -31,7 +31,7 @@ var menu = new Vue({
             ready: -2
         }],
         /* -2 = без лобби, -1 = капитан, 0 = не готов, 1 = готов */
-        myName: "Player",
+        myName: "DARKLEGEND",
         myAvatar: "",
         myID: 0,
         lobbyID: 0,
@@ -1445,7 +1445,7 @@ if ('alt' in window) {
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
                 name: "DARKLEGEND",
-                ready: 2
+                ready: 0
             },
             {
                 name: "Dima",
@@ -1454,7 +1454,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(5, 0)
+        menu.switchPage(0, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
