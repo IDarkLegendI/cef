@@ -72,7 +72,66 @@ var hud = new Vue({
             "X": "23",
             "Y": "24",
             "Z": "25"
-          },
+        },
+        lang: 'en',
+        i18n: {
+            kill: {
+                ru: 'УБИЙСТВО',
+                en: 'MURDER'
+            },
+            kills: {
+                ru: 'УБИЙСТВА',
+                en: 'MURDERS'
+            },
+            kill2: {
+                ru: 'УБИЙСТВ', 
+                en: 'MURDERS'
+            },
+            ukilled: {
+                ru: 'ВЫ УБИЛИ ИГРОКА', 
+                en: 'YOU KILLED THE PLAYER'
+            },
+            distance: {
+                ru: 'С РАССТОЯНИЯ В', 
+                en: 'FROM A DISTANCE OF IN'
+            },
+            meters: {
+                ru: 'МЕТРОВ', 
+                en: 'METERS'
+            },
+            exit: {
+                ru: 'выход', 
+                en: 'exit'
+            },
+            menu: {
+                ru: 'меню', 
+                en: 'menu'
+            },
+            enemy: {
+                ru: 'ВРАГ', 
+                en: 'ENEMY'
+            },
+            enemies: {
+                ru: 'ВРАГОВ', 
+                en: 'ENEMIES'
+            },
+            player: {
+                ru: 'ИГРОК', 
+                en: 'PLAYER'
+            },
+            players: {
+                ru: 'ИГРОКОВ', 
+                en: 'PLAYERS'
+            },
+            management: {
+                ru: 'управление', 
+                en: 'management'
+            },
+        },
+        getText(name)
+        {
+            return this.i18n[name][this.lang]
+        }
     }, 
     methods: {
         fUpdateKills(name, dist)
@@ -242,7 +301,7 @@ if ('alt' in window) {
 }  
 else  
 { 
-    hud.obs.show = true;
+    hud.obs.show = false;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 
     // hud.showLogo = true;
@@ -256,7 +315,7 @@ else
     hud.kills = 1;
     hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
     setInterval(() => {
-        // hud.fUpdateKills("OBLIKO", 45)
+        hud.fUpdateKills("OBLIKO", 45)
         // hud.fupdateWarmUP('123333333333333', true) 
         // hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
     }, 1100) 

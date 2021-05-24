@@ -38,12 +38,12 @@
                         <div class="kills">
                             <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
                             <h1 id="killInfo" class="killText2">
-                                {{kills === 1 ? "УБИЙСТВО" : kills < 5 ? "УБИЙСТВА" : "УБИЙСТВ"}}</h1>
+                                {{kills === 1 ? getText('kill') : kills < 5 ? getText('kills') : getText('kill2')}}</h1>
                         </div>
-                        <h1 id="killInfo" class="killText">ВЫ УБИЛИ ИГРОКА <span
-                                class="killTextplayer">{{killsBar[0]}}</span> С РАССТОЯНИЯ В <span
+                        <h1 class="killText" id="killInfo">{{getText('ukilled')}} <span
+                                class="killTextplayer">{{killsBar[0]}}</span> {{getText('distance')}} <span
                                 :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
-                            МЕТРОВ
+                                {{getText('meters')}}
                         </h1> 
                     </div> 
                 </transition>
@@ -59,7 +59,7 @@
                             <div class="subHelpOBS">
                                 <div>
                                     <p class="key">ESC</p>
-                                    <p class="textHelp">выход</p>
+                                    <p class="textHelp">{{getText('exit')}}</p>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             <div class="subHelpOBS">
                                 <div>
                                     <p class="key">F1</p>
-                                    <p class="textHelp">menu</p>
+                                    <p class="textHelp">{{getText('menu')}}</p>
                                 </div>
                             </div>
                         </div>
@@ -130,13 +130,13 @@
                         <div class="alive" v-show="!obs.show">
                             <div class="numberAlive" id="alive"
                                 :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
-                            <div class="textAlive" id="alive">УБИЙСТВ</div>
+                            <div class="textAlive" id="alive">{{getText('kill2')}}</div>
                         </div>
                         <div class="alive" v-show="!obs.show">
                             <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ВРАГ" : "ВРАГОВ"}}</div> 
+                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div> 
                         </div>
-                        <div class="alive" v-show="!obs.show">
+                        <div class="alive" v-show="!obs.show"> 
                             <div class="numberAlive" id="alive">
                                 <p>{{ammo[0]}}</p>
                                 <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
@@ -147,7 +147,7 @@
                         <!-- OBSERVER HUD -->
                         <div class="alive" v-show="obs.show">
                             <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? "ИГРОК" : "ИГРОКОВ"}}</div>
+                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? getText('player') : getText('players')}}</div>
                         </div>
                     </div>
                     <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
@@ -186,7 +186,7 @@
                                             <img src="./img/plus.png" alt="" id="plus">
                                             <img src="./img/computer-mouse.png" alt="" id="pcMouse">
                                         </p>
-                                        <p class="textHelp">управление</p>
+                                        <p class="textHelp">{{getText('management')}}</p>
                                     </div>
                                 </div>
                                 <div class="subHelp">
@@ -196,7 +196,7 @@
                                             <img src="./img/plus.png" alt="" id="plus">
                                             <img src="./img/numKeyBoard.png" alt="">
                                         </p>
-                                        <p class="textHelp">управление</p>
+                                        <p class="textHelp">{{getText('management')}}</p>
                                     </div>
                                 </div>
                             </div>
