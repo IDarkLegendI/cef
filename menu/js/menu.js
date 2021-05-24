@@ -842,6 +842,17 @@ var menu = new Vue({
             menu.lobby = data;
         },
 
+        //
+        fUpdateLobbyMic(data)
+        {
+            Object.keys(data).forEach(el => {
+                el = el.toLocaleUpperCase(); 
+                let index = menu.lobby.findIndex(player => player.name === el)
+                if(index === -1) return;
+                menu.lobby[index].mic = data[el]
+            })  
+        },
+
         fInviteToLobby(lobbyID, myData) {
             this.lobbyID = lobbyID;
             this.myData = myData;
