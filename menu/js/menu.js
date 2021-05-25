@@ -1,7 +1,7 @@
 var menu = new Vue({
     el: '#body',
     data: {
-        show: false,
+        // show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
         nextSubPage: -1,
@@ -380,7 +380,6 @@ var menu = new Vue({
             left: 'left until the end of the discount',
             time: '13 hours',
             license: 'LICENSE',
-            money: 'MONEY',
             rank: 'RANK',
             backmatch: 'For the previous match',
             score: 'SCORE',
@@ -847,10 +846,14 @@ var menu = new Vue({
         {
             console.log(`fUpdateLobbyMic: ${JSON.stringify(data)}`)
             Object.keys(data).forEach(el => {
-                el = el.toLocaleUpperCase(); 
-                let index = menu.lobby.findIndex(player => player.name === el)
+                // el = el.toLocaleUpperCase(); 
+                let index = menu.lobby.findIndex(player => {
+                    console.log(`fUpdateLobbyMic: ${player.name} === ${el} => ${player.name === el}`); 
+                    return player.name === el
+                })
                 if(index === -1) return;
-                menu.lobby[index].mic = data[el]
+                Vue.set(menu.lobby[index], 'mic', data[el])
+                // menu.lobby[index].mic = data[el]
             })  
         },
 
@@ -998,7 +1001,6 @@ var menu = new Vue({
                 left: 'Осталось до конца скидки',
                 time: '13 ЧАСОВ',
                 license: 'ЛИЦЕНЗИИ',
-                money: 'ДЕНЬГИ',
                 rank: 'РАНГ',
                 backmatch: 'За предыдущий матч',
                 score: 'ОЧКИ',

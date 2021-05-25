@@ -77,15 +77,15 @@ var hud = new Vue({
         i18n: {
             kill: {
                 ru: 'УБИЙСТВО',
-                en: 'MURDER'
+                en: 'KILL'
             },
             kills: {
                 ru: 'УБИЙСТВА',
-                en: 'MURDERS'
+                en: 'KILLS'
             },
             kill2: {
                 ru: 'УБИЙСТВ', 
-                en: 'MURDERS'
+                en: 'KILLS'
             },
             ukilled: {
                 ru: 'ВЫ УБИЛИ ИГРОКА', 
