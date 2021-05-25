@@ -116,8 +116,8 @@
 <script>
 	const app = new Vue({
 		el: '#app',
-		data: {
-			koef: 2,
+		data: { 
+			k: 2,
 			money: 0,
 
 			bMan: true,
@@ -172,15 +172,15 @@
 			showSale: function () {
 				if (this.currentArr) {
 					return Math.round(this.currentArr[this.myClothes[this.currentTitle].number].price / +this
-						.koef);
+						.k);
 				}
 
 				return 0
 			},
 			showPrice: function () {
-				// console.log(`showPrice: ${this.currentCloth.price} -> ${this.currentArr[this.myClothes[this.currentTitle].number].price / +this.koef}`)
+				// console.log(`showPrice: ${this.currentCloth.price} -> ${this.currentArr[this.myClothes[this.currentTitle].number].price / +this.k}`)
 				let sale = this.currentCloth.price - this.currentArr[this.myClothes[this.currentTitle].number]
-					.price / +this.koef;
+					.price / +this.k;
 				if (sale === +0) sale = `${this.selectText}`
 				else if (sale < +0) {
 					sale *= -1;
@@ -349,8 +349,8 @@
 			changeVar(...args) {
 				// console.log(`changeVar: ${JSON.stringify(...args)}`)
 				args.forEach(el => {
-					// console.log(`changeVar(0): ${JSON.stringify(el)}`) 
-					// console.log(`changeVar(1): hud.${el[0]} = ${el[1]}`) 
+					console.log(`changeVar(0): ${JSON.stringify(el)}`)  
+					console.log(`changeVar(1): app.${el[0]} = ${el[1]}`) 
 					app[el[0]] = el[1];
 					// console.log(`changeVar: ${hud[el[0]]}`)  
 				})
@@ -5162,6 +5162,10 @@
 			console.log(`lang: ${lang}`)
 			if (lang === 'ru') setTimeout(loadRusLang, 500);
 		})
-		alt.on('changeVar', (...args) => app.changeVar(...args))
+		alt.on('changeVar', (...args) => 
+		{
+			app.changeVar(...args)
+			console.log(`changeVar: ${JSON.stringify(...args)}`)
+		})
 	}
 </script>
