@@ -249,6 +249,9 @@ var hud = new Vue({
                 // console.log(`changeVar: ${hud[el[0]]}`)  
             })  
         },
+        useFunction(name, ...args) {
+            return hud[name](...args);
+        },
     },
 })
 
