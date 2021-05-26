@@ -449,8 +449,8 @@ html
     height: 4.5vh
     .minibtn
         // padding: 0
-        padding-top: 0vh
-        padding-bottom: 0vh
+        padding-top: 0
+        padding-bottom: 0
 
 .rightNoHover:hover
     background-color: #00b15000
@@ -632,7 +632,7 @@ html
     font-size: 1.6vh
     // margin-top: 1vh
     // margin-left: 3vh
-
+ 
 .minibtn
     transition: 0.2s ease-out
     border: 0.11em solid #e0e0e0  
@@ -860,7 +860,7 @@ input[type=checkbox]
     padding: 0.6vh 0.5vw
     background-color: white
     border-radius: 5px
-    text-shadow: 0px 0px 1px black
+    text-shadow: 0 0 1px black
     animation-name: flash
     animation-duration: 2s
     animation-timing-function: linear
@@ -1001,7 +1001,7 @@ a:active
 
 a:hover
     text-decoration: none
-    color: none
+    //color: none
     box-shadow: 0px 0px 15px #ffffff
 
 .social
@@ -1163,7 +1163,7 @@ a:hover
     -webkit-appearance: none
     width: 99%
     height: 100%
-    background: url(transparent.png)
+    background: none
 
 .rotation input[type=range]::-webkit-slider-runnable-track
     height: 69vh
@@ -1279,7 +1279,7 @@ a:hover
     flex-basis: 80% 
     // max-height: 25vh
     overflow-y: auto
-    overflow-x: none
+    overflow-x: hidden
 
     transition: all 1.0s ease-in-out
 
@@ -2128,7 +2128,7 @@ a:hover
     // align-content: center
     // align-self: center
     font-family: 'Oswald'
-    text-shadow: 1px 1px 3px #000;
+    text-shadow: 1px 1px 3px #000
 
 .winLine
     padding-top: 20vh
@@ -2136,7 +2136,7 @@ a:hover
     justify-content: space-evenly
 
 .winEl 
-    display: flex;
+    display: flex
     align-items: center
     align-self: center
     border-bottom: 1px solid transparent
@@ -2161,11 +2161,12 @@ a:hover
   80%  
     border-color: yellow
 
-  100% 
-    border-color: linear-gradient(90deg, #d3f800 50%, #ff0000 100%)
-  
+  100%
+    border-color: red
+//      linear-gradient(90deg, #d3f800 50%, #ff0000 100%)
+
 .winEl:hover
-    filter: hue-rotate(90deg);
+    filter: hue-rotate(90deg)
     transform: scale(1.1)
     transition: all 1s
 
@@ -2182,15 +2183,15 @@ a:hover
     // right: 5vw
     width: 2.5vw
     height: 2.5vw
-    padding-top: 0.6vh  
-    filter: drop-shadow(0 0 1px #000000);  
+    padding-top: 0.6vh
+    filter: drop-shadow(0 0 1px #000000) 
 
-.winText 
+.winText
     font-size: 5vw
 
 
 .exitToMenu
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0)
     font-size: 2vh
     border-radius: 5px
     padding: 1vh 0.5vw
@@ -2199,7 +2200,7 @@ a:hover
     color: white
     font-family: 'Oswald'
     transition: all 1s
-    margin-top: 20vh
+    margin-top: 20vh 
     text-shadow: 1px 1px 1px #000
     display: flex
     justify-content: center
@@ -2208,17 +2209,17 @@ a:hover
     background-color: white
     color: black
     transition: all 1s
-    text-shadow: 1px 1px 1px #ffffff;
+    text-shadow: 1px 1px 1px #ffffff
 
 .exitToMenu:focus
-   outline: none;
+   outline: none
 
 .exitToMenu img
     width: 2.5vh
     height: 2.5vh
     padding-right: 0.5vw 
     padding-top: 0.4vh
-    filter: drop-shadow(0 0 1px #000000);
+    filter: drop-shadow(0 0 1px #000000)
 
 input[type="button" i]:focus, .button :focus, .button :active 
-   outline: none;
+   outline: none

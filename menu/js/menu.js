@@ -1,4 +1,4 @@
-var menu = new Vue({
+let menu = new Vue({
     el: '#body',
     data: {
         // show: false,
@@ -57,7 +57,8 @@ var menu = new Vue({
         minSort: 0,
         maxSort: 1000000,
         onlyMyCars: false,
-        cars: [{
+         cars: [
+            {
                 name: 'None',
                 model: 'none',
                 price: 0
@@ -700,7 +701,7 @@ var menu = new Vue({
         },
         saveSettings(page) {
             console.log(`saveMenu`)
-            if (page != -1) this.switchPage(page);
+            if (page !== -1) this.switchPage(page);
             if ('alt' in window) {
                 alt.emit('saveSettings', {
                     lang: this.lang,
@@ -1082,7 +1083,7 @@ var menu = new Vue({
             //Добавляем новые машины
             list.forEach((carOfList) => {
                 let found = this.cars.findIndex(car => car.model === carOfList.model);
-                if (found != -1) {
+                if (found !== -1) {
                     this.cars[found].price = 0;
                     this.cars[found].color = carOfList.color;
                 }
@@ -1480,7 +1481,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(0, 0)
+        menu.switchPage(5, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)

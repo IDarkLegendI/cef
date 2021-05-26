@@ -1450,7 +1450,6 @@ a:active {
 
 a:hover {
   text-decoration: none;
-  color: none;
   -webkit-box-shadow: 0px 0px 15px #ffffff;
           box-shadow: 0px 0px 15px #ffffff;
 }
@@ -1677,7 +1676,7 @@ a:hover {
   -webkit-appearance: none;
   width: 99%;
   height: 100%;
-  background: url(transparent.png);
+  background: none;
 }
 
 .rotation input[type=range]::-webkit-slider-runnable-track {
@@ -1828,7 +1827,7 @@ a:hover {
   -ms-flex-preferred-size: 80%;
       flex-basis: 80%;
   overflow-y: auto;
-  overflow-x: none;
+  overflow-x: hidden;
   -webkit-transition: all 1.0s ease-in-out;
   transition: all 1.0s ease-in-out;
 }
@@ -3147,7 +3146,7 @@ a:hover {
     border-color: yellow;
   }
   100% {
-    border-color: linear-gradient(90deg, #d3f800 50%, #ff0000 100%);
+    border-color: red;
   }
 }
 
@@ -3162,7 +3161,7 @@ a:hover {
     border-color: yellow;
   }
   100% {
-    border-color: linear-gradient(90deg, #d3f800 50%, #ff0000 100%);
+    border-color: red;
   }
 }
 

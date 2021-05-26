@@ -220,8 +220,9 @@
                                     <div class="noobpart2">
                                         <div class="noobbtn">
                                             <span class="minibtn" id="mouseFocus"
-                                            v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1, 'jp')">{{i18n.license}}</span>
-                                            <span class="minibtn" id="mouseFocus" v-on:click="switchPage(3,1)">{{i18n.control}}</span>
+                                                v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1, 'jp')">{{i18n.license}}</span>
+                                            <span class="minibtn" id="mouseFocus"
+                                                v-on:click="switchPage(4)">{{i18n.control}}</span>
                                         </div>
                                         <div class="iconnoob">
                                             <img src="./img/noob.png" alt="">
@@ -282,7 +283,7 @@
                                 </div>
                             </div>
                         </div>
-                        <transition name="person-friend"> 
+                        <transition name="person-friend">
                             <div class="right" v-show="subPage === 0">
 
                                 <div class="headright">
@@ -666,7 +667,7 @@
                                     v-on:click="setPreviewCar(carsPointer)">{{i18n.applyColor}}</button>
                             </div>
                             <div class="panel-row">
-                                <span class="color-indicator" id="color-indicator">
+                                <span class="color-indicator" id="color-indicator"></span>
                             </div>
                         </div>
                     </div>
@@ -731,18 +732,18 @@
                                     <h1 style="font-size: 0.6vw;">{{i18n.minValue}}</h1>
                                     <input @change="previewCar(false)" max="500000" min="0" step="1000"
                                         style="margin: 1vh 0;" type="range" v-model="minSort">
-                                    <input
-                                        @change="previewCar(false)"
-                                        style="width: 94%;  border-radius: 4px; background-color: #fff; text-align: center;" type="text" v-model="minSort">
+                                    <input @change="previewCar(false)"
+                                        style="width: 94%;  border-radius: 4px; background-color: #fff; text-align: center;"
+                                        type="text" v-model="minSort">
                                 </div>
                                 <div class="priceRange"
                                     style="display: flex; flex-direction: column; align-items: center;">
                                     <h1 style="font-size: 0.6vw;">{{i18n.maxValue}}</h1>
                                     <input @change="previewCar(false)" max="500000" min="0" step="1000"
                                         style="margin: 1vh 0;" type="range" v-model="maxSort">
-                                    <input
-                                        @change="previewCar(false)"
-                                        style="width: 94%;  border-radius: 4px; background-color: #fff; text-align: center;" type="text" v-model="maxSort">
+                                    <input @change="previewCar(false)"
+                                        style="width: 94%;  border-radius: 4px; background-color: #fff; text-align: center;"
+                                        type="text" v-model="maxSort">
                                 </div>
                             </div>
                             <div class="checkboxes" style="transform: scale(0.8);">
@@ -815,262 +816,258 @@
             leave-active-class="animated rotateOutDownLeft">
             <section v-if="page === 3">
                 <!-- Магазин доната -->
-                <section v-if="subPage === 0">
-                    <div class="upline">
-                        <div class="nameupline">
-                            <span>GTAROYAL.RU</span>
-                        </div>
-                        <div class="balancemoney">
-                            <div
-                                style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
-                                <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
-                            </div>
-                        </div>
-                        <div class="btn" id="mouseFocus">
-                            <span>{{i18n.topap}}</span>
-                        </div>
-                        <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
-                            <span>{{i18n.btnBack}}</span>
+                <div class="upline">
+                    <div class="nameupline">
+                        <span>GTAROYAL.RU</span>
+                    </div>
+                    <div class="balancemoney">
+                        <div
+                            style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
+                            <span class="rub" id="RMMoney" style="margin-top: 0.2vh;">{{moneyRM}} RM</span>
                         </div>
                     </div>
-                    <transition enter-active-class="animated rotateInUpLeft"
-                        leave-active-class="animated rotateOutDownLeft" name="custom-classes-transition">
-                        <section v-if="subPage === 0">
-                            <div class="maindonat">
-                                <div class="leftdonat">
-                                    <div class="vip donatform leftform"
-                                        v-on:click="assortSelected = 'vip'; switchPage(3, 1)">
-                                        <h1>VIP</h1>
-                                        <ul>
-                                            <li>АВТОМОБИЛИ</li>
-                                            <li>МНОГО ОДЕЖДЫ</li>
-                                            <li>ВСЕ ФУНКЦИИ VIP</li>
-                                            <li>EXAMPLE</li>
-                                        </ul>
-                                        <div class="imgprice">
-                                            <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
-                                                <span class="donatbtn">{{Math.ceil(assortPriv['vip'].k*+30)}}RM</span>
-                                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy"
-                                                    style="font-size: 1.5vh;" type="button">
-                                            </div>
-                                            <div class="donatimgform">
-                                                <img alt="" src="img/gold.png">
-                                            </div>
+                    <div class="btn" id="mouseFocus">
+                        <span>{{i18n.topap}}</span>
+                    </div>
+                    <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                        <span>{{i18n.btnBack}}</span>
+                    </div>
+                </div>
+                <transition enter-active-class="animated rotateInUpLeft" leave-active-class="animated rotateOutDownLeft"
+                    name="custom-classes-transition">
+                    <section v-if="subPage === 0">
+                        <div class="maindonat">
+                            <div class="leftdonat">
+                                <div class="vip donatform leftform"
+                                    v-on:click="assortSelected = 'vip'; switchPage(3, 1)">
+                                    <h1>VIP</h1>
+                                    <ul>
+                                        <li>АВТОМОБИЛИ</li>
+                                        <li>МНОГО ОДЕЖДЫ</li>
+                                        <li>ВСЕ ФУНКЦИИ VIP</li>
+                                        <li>EXAMPLE</li>
+                                    </ul>
+                                    <div class="imgprice">
+                                        <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
+                                            <span class="donatbtn">{{Math.ceil(assortPriv['vip'].k*+30)}}RM</span>
+                                            <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy"
+                                                style="font-size: 1.5vh;" type="button">
                                         </div>
-                                    </div>
-                                    <div class="calculator leftform">
-                                        <h1>КОНВЕРТЕР</h1>
-                                        <div class="converterblock">
-                                            <div class="inputcalc">
-                                                <span>RM</span>
-                                                <input type="number" v-model="converterRM"
-                                                    v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
-                                            </div>
-                                            <div class="donatimgform">
-                                                <img alt="" src="img/r-arrow.png">
-                                            </div>
-                                            <div class="inputcalc">
-                                                <span>$</span>
-                                                <input type="number" v-model="converterD"
-                                                    v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
-                                            </div>
+                                        <div class="donatimgform">
+                                            <img alt="" src="img/gold.png">
                                         </div>
-                                        <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy"
-                                            style="font-size: 1.5vh;" type="button">
                                     </div>
                                 </div>
-                                <div class="rightdonat">
-                                    <div class="premium donatform"
-                                        v-on:click="assortSelected = 'premium'; switchPage(3, 1)">
-                                        <h1>PREMIUM</h1>
-                                        <ul>
-                                            <li>АВТОМОБИЛИ</li>
-                                            <li>МНОГО ОДЕЖДЫ</li>
-                                            <li>ВСЕ ФУНКЦИИ VIP</li>
-                                            <li>EXAMPLE</li>
-                                            <li>EXAMPLE</li>
-                                            <li>EXAMPLE</li>
-                                        </ul>
-                                        <div class="imgprice">
-                                            <div class="podvalDonat">
-                                                <span
-                                                    class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
-                                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy"
-                                                    type="button">
-                                            </div>
-                                            <div class="premiumimgform">
-                                                <img alt="" src="img/emerald.png">
-                                            </div>
+                                <div class="calculator leftform">
+                                    <h1>КОНВЕРТЕР</h1>
+                                    <div class="converterblock">
+                                        <div class="inputcalc">
+                                            <span>RM</span>
+                                            <input type="number" v-model="converterRM"
+                                                v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
+                                        </div>
+                                        <div class="donatimgform">
+                                            <img alt="" src="img/r-arrow.png">
+                                        </div>
+                                        <div class="inputcalc">
+                                            <span>$</span>
+                                            <input type="number" v-model="converterD"
+                                                v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
                                         </div>
                                     </div>
-                                    <div class="deluxe donatform"
-                                        v-on:click="assortSelected = 'deluxe'; switchPage(3, 1)">
-                                        <h1>DELUXE</h1>
-                                        <ul>
-                                            <li>АВТОМОБИЛИ</li>
-                                            <li>МНОГО ОДЕЖДЫ</li>
-                                            <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
-                                            <li>EXAMPLE</li>
-                                            <li>EXAMPLE</li>
-                                            <li>EXAMPLE</li>
-                                        </ul>
-                                        <div class="imgprice">
-                                            <div class="podvalDonat">
-                                                <span
-                                                    class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
-                                                <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy"
-                                                    type="button">
-                                            </div>
-                                            <div class="deluxeimgform">
-                                                <img alt="" src="img/corona.png">
-                                            </div>
+                                    <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy"
+                                        style="font-size: 1.5vh;" type="button">
+                                </div>
+                            </div>
+                            <div class="rightdonat">
+                                <div class="premium donatform"
+                                    v-on:click="assortSelected = 'premium'; switchPage(3, 1)">
+                                    <h1>PREMIUM</h1>
+                                    <ul>
+                                        <li>АВТОМОБИЛИ</li>
+                                        <li>МНОГО ОДЕЖДЫ</li>
+                                        <li>ВСЕ ФУНКЦИИ VIP</li>
+                                        <li>EXAMPLE</li>
+                                        <li>EXAMPLE</li>
+                                        <li>EXAMPLE</li>
+                                    </ul>
+                                    <div class="imgprice">
+                                        <div class="podvalDonat">
+                                            <span class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
+                                            <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                        </div>
+                                        <div class="premiumimgform">
+                                            <img alt="" src="img/emerald.png">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="deluxe donatform" v-on:click="assortSelected = 'deluxe'; switchPage(3, 1)">
+                                    <h1>DELUXE</h1>
+                                    <ul>
+                                        <li>АВТОМОБИЛИ</li>
+                                        <li>МНОГО ОДЕЖДЫ</li>
+                                        <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
+                                        <li>EXAMPLE</li>
+                                        <li>EXAMPLE</li>
+                                        <li>EXAMPLE</li>
+                                    </ul>
+                                    <div class="imgprice">
+                                        <div class="podvalDonat">
+                                            <span class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
+                                            <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                        </div>
+                                        <div class="deluxeimgform">
+                                            <img alt="" src="img/corona.png">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </transition>
-                    <transition enter-active-class="animated rotateInUpRight"
-                        leave-active-class="animated rotateOutDownRight" name="custom-classes-transition">
-                        <section v-if="subPage === 1">
-                            <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black;">
-                                <div class="settingsh1">
-                                    <h1>{{i18n.acceptAction}}</h1>
-                                </div>
-                                <div class="settingsh1" style="padding-top: 4vh;">
-                                    <h1 style="font-size: 2.5vh">{{i18n.connectPrivileges}}
-                                        "{{assortPriv[assortSelected].name}}":</h1>
-                                </div>
-                                <div class="settingsh1" style="padding-top: 1vh;">
-                                    <h1 style="font-size: 2.5vh">{{i18n.pricePrivileges}}:
-                                        {{Math.ceil(assortPriv[assortSelected].k * 30)}} RM</h1>
-                                </div>
-                                <div class="settingsh1" style="padding-top: 1vh;">
-                                    <h1 style="font-size: 2.5vh">{{i18n.timeActions}}: 30 {{i18n.days}}</h1>
-                                </div>
-                                <div class="settingsh1" style="padding-top: 3vh;">
-                                    <h1 style="font-size: 1vh">{{i18n.agreeOffer}}</h1>
-                                </div>
-                                <div class="btnback">
-                                    <a href="#" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);"
-                                        v-on:click="switchPage(3, 0)">{{i18n.btnBack}}</a>
-                                    <a href="#" id="mouseFocus"
-                                        v-on:click="switchPage(0, 0); emitServer('sVIP:buy', assortSelected)">{{i18n.iAgree}}</a>
-                                </div>
-                            </div>
-                        </section>
-                    </transition>
-                </section>
-                <!-- УПРАВЛЕНИЕ ДОНАТОМ -->
-                <section v-if="subPage === 1">
-                    <div class="mainsettings">
-                        <div class="settingsh1">
-                            <h1>{{i18n.settings}}</h1>
                         </div>
-                        <div class="settings">
-                            <div class="checkboxes">
-                                <div class="checkboxtest">
-                                    <span>{{i18n.language}}</span>
-                                    <div class="settingCenter">
-                                        <div class="imgformlang">
-                                            <img :src="`../menu/img/${lang}.png`" alt=""
-                                                v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
-                                        </div>
+                    </section>
+                </transition>
+                <transition enter-active-class="animated rotateInUpRight"
+                    leave-active-class="animated rotateOutDownRight" name="custom-classes-transition">
+                    <section v-if="subPage === 1">
+                        <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black;">
+                            <div class="settingsh1">
+                                <h1>{{i18n.acceptAction}}</h1>
+                            </div>
+                            <div class="settingsh1" style="padding-top: 4vh;">
+                                <h1 style="font-size: 2.5vh">{{i18n.connectPrivileges}}
+                                    "{{assortPriv[assortSelected].name}}":</h1>
+                            </div>
+                            <div class="settingsh1" style="padding-top: 1vh;">
+                                <h1 style="font-size: 2.5vh">{{i18n.pricePrivileges}}:
+                                    {{Math.ceil(assortPriv[assortSelected].k * 30)}} RM</h1>
+                            </div>
+                            <div class="settingsh1" style="padding-top: 1vh;">
+                                <h1 style="font-size: 2.5vh">{{i18n.timeActions}}: 30 {{i18n.days}}</h1>
+                            </div>
+                            <div class="settingsh1" style="padding-top: 3vh;">
+                                <h1 style="font-size: 1vh">{{i18n.agreeOffer}}</h1>
+                            </div>
+                            <div class="btnback">
+                                <a href="#" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);"
+                                    v-on:click="switchPage(3, 0)">{{i18n.btnBack}}</a>
+                                <a href="#" id="mouseFocus"
+                                    v-on:click="switchPage(0, 0); emitServer('sVIP:buy', assortSelected)">{{i18n.iAgree}}</a>
+                            </div>
+                        </div>
+                    </section>
+                </transition>
+            </section>
+        </transition>
+        <!-- УПРАВЛЕНИЕ ДОНАТОМ -->
+        <transition enter-active-class="animated rotateInUpLeft fast"
+            leave-active-class="animated rotateOutDownLeft fast" name="custom-classes-transition">
+            <section v-if="page === 4">
+                <div class="mainsettings">
+                    <div class="settingsh1">
+                        <h1>{{i18n.settings}}</h1>
+                    </div>
+                    <div class="settings">
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>{{i18n.language}}</span>
+                                <div class="settingCenter">
+                                    <div class="imgformlang">
+                                        <img :src="`../menu/img/${lang}.png`" alt=""
+                                            v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkboxes">
-                                <div class="checkboxtest">
-                                    <span>{{i18n.tips}}</span>
-                                    <div class="settingCenter"><input id="switch" type="checkbox" /><label for="switch"
-                                            id="mouseFocus"></label></div>
+                        </div>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>{{i18n.tips}}</span>
+                                <div class="settingCenter"><input id="switch" type="checkbox" /><label for="switch"
+                                        id="mouseFocus"></label></div>
+                            </div>
+                        </div>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>"VR" - {{i18n.menuMode}}</span>
+                                <div class="settingCenter"><input id="switchVR" type="checkbox" v-model='vr' /><label
+                                        for="switchVR" id="mouseFocus"></label>
                                 </div>
                             </div>
-                            <div class="checkboxes">
-                                <div class="checkboxtest">
-                                    <span>"VR" - {{i18n.menuMode}}</span>
-                                    <div class="settingCenter"><input id="switchVR" type="checkbox" v-model='vr' /><label
-                                            for="switchVR" id="mouseFocus"></label>
-                                    </div>
+                        </div>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>{{i18n.quickWeaponT}}</span>
+                                <div class="settingCenter"><input id="quickWeapon" type="checkbox"
+                                        v-model='quickWeapon' /><label for="quickWeapon" id="mouseFocus"></label></div>
+                            </div>
+                        </div>
+                        <div class="binds">
+                            <div class="bind">
+                                <span class="bindname">{{i18n.mapSize}}</span>
+                                <div class="settingCenter"><span
+                                        :style="{animationName: recordKey === 'keyMapSize' ? 'flash' : 'none'}"
+                                        class="bindbtn" id="mouseFocus"
+                                        v-on:click="recordKey === 'keyMapSize' ? recordKey = false : recordKey = 'keyMapSize'">{{keyCodes[keyMapSize].toUpperCase()}}</span>
                                 </div>
                             </div>
-                            <div class="checkboxes">
-                                <div class="checkboxtest">
-                                    <span>{{i18n.quickWeaponT}}</span>
-                                    <div class="settingCenter"><input id="quickWeapon" type="checkbox"
-                                            v-model='quickWeapon' /><label for="quickWeapon" id="mouseFocus"></label></div>
+                        </div>
+                        <div class="binds">
+                            <div class="bind">
+                                <span class="bindname">{{i18n.quickMarker}}</span>
+                                <div class="settingCenter"><span
+                                        :style="{animationName: recordKey === 'keyQuickMarker' ? 'flash' : 'none'}"
+                                        class="bindbtn" id="mouseFocus"
+                                        v-on:click="recordKey === 'keyQuickMarker' ? recordKey = false : recordKey = 'keyQuickMarker'">{{keyCodes[keyQuickMarker].toUpperCase()}}</span>
                                 </div>
                             </div>
-                            <div class="binds">
-                                <div class="bind">
-                                    <span class="bindname">{{i18n.mapSize}}</span>
-                                    <div class="settingCenter"><span
-                                            :style="{animationName: recordKey === 'keyMapSize' ? 'flash' : 'none'}"
-                                            class="bindbtn" id="mouseFocus"
-                                            v-on:click="recordKey === 'keyMapSize' ? recordKey = false : recordKey = 'keyMapSize'">{{keyCodes[keyMapSize].toUpperCase()}}</span>
-                                    </div>
+                        </div>
+                        <div class="binds">
+                            <div class="bind">
+                                <span class="bindname">{{i18n.sit}}</span>
+                                <div class="settingCenter"><span
+                                        :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}"
+                                        class="bindbtn" id="mouseFocus"
+                                        v-on:click="recordKey === 'keySitDown' ? recordKey = false : recordKey = 'keySitDown'">{{keyCodes[keySitDown].toUpperCase()}}</span>
                                 </div>
                             </div>
-                            <div class="binds">
-                                <div class="bind">
-                                    <span class="bindname">{{i18n.quickMarker}}</span>
-                                    <div class="settingCenter"><span
-                                            :style="{animationName: recordKey === 'keyQuickMarker' ? 'flash' : 'none'}"
-                                            class="bindbtn" id="mouseFocus"
-                                            v-on:click="recordKey === 'keyQuickMarker' ? recordKey = false : recordKey = 'keyQuickMarker'">{{keyCodes[keyQuickMarker].toUpperCase()}}</span>
-                                    </div>
+                        </div>
+                        <div class="checkboxes">
+                            <div class="checkboxtest">
+                                <span>{{i18n.volume}}</span>
+                                <div class="settingCenter">
+                                    <input max="0.5" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range"
+                                        v-model="volume">
                                 </div>
                             </div>
-                            <div class="binds">
-                                <div class="bind">
-                                    <span class="bindname">{{i18n.sit}}</span>
-                                    <div class="settingCenter"><span
-                                            :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}"
-                                            class="bindbtn" id="mouseFocus"
-                                            v-on:click="recordKey === 'keySitDown' ? recordKey = false : recordKey = 'keySitDown'">{{keyCodes[keySitDown].toUpperCase()}}</span>
-                                    </div>
+                            <div class="mapchoice1" style="padding-top: 2vh;">
+                                <div class="namechoice">
+                                    <h1>{{i18n.sizeMap}}</h1>
+                                </div>
+                                <div class="mapchoice">
+                                    <label
+                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <input class="option-input radio" id="map-0" type="radio" v-model="sizeMap"
+                                            value="0">
+                                        <span>{{i18n.small}}</span>
+                                    </label>
+                                    <label
+                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <input class="option-input radio" id="map-1" type="radio" v-model="sizeMap"
+                                            value="1">
+                                        <span>{{i18n.normal}}</span>
+                                    </label>
+                                    <label
+                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <input class="option-input radio" id="map-2" type="radio" v-model="sizeMap"
+                                            value="2">
+                                        <span>{{i18n.big}}</span>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="checkboxes">
-                                <div class="checkboxtest">
-                                    <span>{{i18n.volume}}</span>
-                                    <div class="settingCenter">
-                                        <input max="0.5" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range"
-                                            v-model="volume">
-                                    </div>
-                                </div>
-                                <div class="mapchoice1" style="padding-top: 2vh;">
-                                    <div class="namechoice">
-                                        <h1>{{i18n.sizeMap}}</h1>
-                                    </div>
-                                    <div class="mapchoice">
-                                        <label
-                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                            <input class="option-input radio" id="map-0" type="radio" v-model="sizeMap"
-                                                value="0">
-                                            <span>{{i18n.small}}</span>
-                                        </label>
-                                        <label
-                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                            <input class="option-input radio" id="map-1" type="radio" v-model="sizeMap"
-                                                value="1">
-                                            <span>{{i18n.normal}}</span>
-                                        </label>
-                                        <label
-                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                            <input class="option-input radio" id="map-2" type="radio" v-model="sizeMap"
-                                                value="2">
-                                            <span>{{i18n.big}}</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="btnback">
-                                    <a href="#" id="mouseFocus" v-on:click="saveSettings(0)">{{i18n.btnBack}}</a>
-                                </div>
+                            <div class="btnback">
+                                <a href="#" id="mouseFocus" v-on:click="saveSettings(0)">{{i18n.btnBack}}</a>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </section>
         </transition>
         <!-- БАН -->
