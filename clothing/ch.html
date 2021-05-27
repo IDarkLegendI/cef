@@ -179,8 +179,8 @@
 			},
 			showPrice: function () {
 				// console.log(`showPrice: ${this.currentCloth.price} -> ${this.currentArr[this.myClothes[this.currentTitle].number].price / +this.k}`)
-				let sale = this.currentCloth.price - this.currentArr[this.myClothes[this.currentTitle].number]
-					.price / +this.k;
+				let sale = Math.ceil(this.currentCloth.price - this.currentArr[this.myClothes[this.currentTitle].number]
+					.price / +this.k); 
 				if (sale === +0) sale = `${this.selectText}`
 				else if (sale < +0) {
 					sale *= -1;
