@@ -5,6 +5,7 @@ let menu = new Vue({
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
         nextSubPage: -1,
+        lastPage: 0,
 
         //money
         money: 0,
@@ -739,6 +740,14 @@ let menu = new Vue({
                         } else this.subPage = newSubPage;
                     }, 350)
                 } else {
+                    //При закрывании страницы
+                    if(newPage === -2) 
+                    {
+                        menu.lastPage = this.page;
+                        newPage = 0;
+                    }
+                    //При открывании страницы, если надо ластовую
+                    if(newPage === -1) newPage = menu.lastPage;
                     this.page = newPage;
                     if (this.coolDown) return;
                     this.coolDown = true;
