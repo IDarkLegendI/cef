@@ -982,8 +982,8 @@
                            letter-spacing: -1px;    
                            color: #000000;
                            background-color: #fff;
-                           padding-left: 1%;
-                           padding-right: 1%;
+                           padding-left: 0.5vw;
+                           padding-right:  0.5vw;
                            border-radius: 5px;
                            text-shadow: none;">{{i18n.control}}</span>
                             </div>
@@ -999,8 +999,8 @@
                            letter-spacing: -1px;    
                            color: #000000;
                            background-color: #fff;
-                           padding-left: 1%;
-                           padding-right: 1%;
+                           padding-left:  0.5vw;
+                           padding-right:  0.5vw;
                            border-radius: 5px;
                            text-shadow: none;">{{gait === 'Normal' ? i18n.none2 : gait.toUpperCase()}}</span>
                             </div>
@@ -1010,9 +1010,9 @@
                                 </div>
                                 <div class="iconJetPack">
                                     <img alt="" src="./img/donate/runner.png" style="height: 22vh; width: 14vw;">
-                                </div>
+                                </div> 
                                 <div style="display: flex; align-items: center;">
-                                    <div class="arrowright vipArrow" style="margin-left: 1vw;"> 
+                                    <div class="arrowright vipArrow" style="margin-left: 1vw;">  
                                         <img src="./img/arrowRightRed.png" style="height: 5vh; width: 3vw;" v-on:click="emit('cWalking:change', gait, true)">
                                     </div>
                                 </div>
