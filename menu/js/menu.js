@@ -690,7 +690,7 @@ let menu = new Vue({
             args.forEach(el => {
                 console.log(`changeVar(0): ${JSON.stringify(el)}`)
                 console.log(`changeVar(1): menu.${el[0]} = ${el[1]}`)
-                menu[el[0]] = el[1];
+                Vue.set(menu, el[0], el[1])
                 console.log(`changeVar: ${menu[el[0]]}`)
             })
         },
