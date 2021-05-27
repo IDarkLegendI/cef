@@ -338,6 +338,8 @@ let menu = new Vue({
             },
         },
         assortSelected: 'vip',
+        //Manage VIP
+        gait: 'Normal',
 
         //EndGame
         wsWin: false,
@@ -414,6 +416,7 @@ let menu = new Vue({
             select: 'SELECT',
             selected: 'SELECTED',
             none: 'NOT SELECTED',
+            none2: 'NOT SELECTED',
             inviteToLobby: 'INVITATION TO THE LOBBY',
             accept: 'ACCEPT',
             cancel: 'DENY',
@@ -444,7 +447,8 @@ let menu = new Vue({
             minValue: "MINIMUM",
             maxValue: "MAXIMUM",
             infoSort: "TO SEE YOUR CARS SET THE MINIMUM PRICE TO ZERO",
-            onlyMyCars: "ONLY MY CARS"
+            onlyMyCars: "ONLY MY CARS",
+            gait: "GAIT"
         },
         i18nTemp: null,
         avatars: {
@@ -1035,6 +1039,7 @@ let menu = new Vue({
                 select: 'ВЫБРАТЬ',
                 selected: 'ВЫБРАНО',
                 none: 'НЕ ВЫБРАНО',
+                none2: 'НЕ ВЫБРАНА',
                 inviteToLobby: 'ПРИГЛАШЕНИЕ В ЛОББИ',
                 accept: 'ПРИНЯТЬ',
                 cancel: 'ОТКАЗАТЬСЯ',
@@ -1067,6 +1072,7 @@ let menu = new Vue({
                 infoSort: "ЧТОБЫ ВИДЕТЬ СВОИ МАШИНЫ ПОСТАВЬТЕ МИНИМАЛЬНУЮ ЦЕНУ НА НОЛЬ",
                 onlyMyCars: "ТОЛЬКО МОИ МАШИНЫ",
                 privileges: "ПРИВИЛЕГИЕЙ",
+                gait: "ПОХОДКА",
             }
         },
         loadEn() {
