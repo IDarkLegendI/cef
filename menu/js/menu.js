@@ -336,7 +336,7 @@ let menu = new Vue({
                 name: 'DELUXE',
                 k: 16.65,
                 bonus: 1.7,
-            },
+            }, 
         },
         assortSelected: 'vip',
         //Manage VIP
