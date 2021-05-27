@@ -5159,7 +5159,7 @@
 		alt.on('updateCash', value => app.money = value)
 
 		alt.on('setLang', lang => {
-			console.log(`lang: ${lang}`)
+			console.log(`ch.lang: ${lang}`)
 			if (lang === 'ru') setTimeout(loadRusLang, 500);
 		})
 		alt.on('changeVar', (...args) => 
