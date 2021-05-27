@@ -24,7 +24,7 @@
     <!-- <canvas style="z-index: 99;"></canvas> -->
     <section id="body">
         <div id="cursor"></div>
-        <div id="aura"></div> 
+        <div id="aura"></div>
         <!-- ГЛАВНАЯ -->
         <transition appear enter-active-class="animated rotateInUpRight fast"
             leave-active-class="animated rotateOutUpLeft fast" name="custom-classes-transition">
@@ -641,7 +641,7 @@
                             <span>GTAROYAL.RU</span>
                         </div>
                         <div class="balancemoney">
-                            <span>БАЛАНС <br> <span class="rub">${{money}}</span></span>
+                            <span>{{i18n.balance}} <br> <span class="rub">${{money}}</span></span>
                         </div>
                     </div>
                     <div class="rotation">
@@ -961,109 +961,75 @@
         <transition enter-active-class="animated rotateInUpLeft fast"
             leave-active-class="animated rotateOutDownLeft fast" name="custom-classes-transition">
             <section v-if="page === 4">
-                <div class="mainsettings">
-                    <div class="settingsh1">
-                        <h1>{{i18n.settings}}</h1>
+                <div style="display: flex; flex-direction: column;">
+                    <div class="upline">
+                        <div class="nameupline">
+                            <span>GTAROYAL.RU</span>
+                        </div>
+                        <span style="font-size: 3vh;">{{i18n.control}} {{i18n.privileges}}</span>
+                        <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                            <span>{{i18n.btnBack}}</span>
+                        </div>
                     </div>
-                    <div class="settings">
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span>{{i18n.language}}</span>
-                                <div class="settingCenter">
-                                    <div class="imgformlang">
-                                        <img :src="`../menu/img/${lang}.png`" alt=""
-                                            v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
+                </div>
+
+                <div style="display: flex; justify-content: space-around;">
+                    <div class="donateMain"
+                        style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-around;">
+                        <div class="elDonateBlock form">
+                            <div style="display: flex; justify-content: space-evenly; align-items: center;">
+                                <h1>JETPACK</h1>
+                                <span style="font-family: 'Rubik', sans-serif; 
+                           letter-spacing: -1px;    
+                           color: #000000;
+                           background-color: #fff;
+                           padding-left: 1%;
+                           padding-right: 1%;
+                           border-radius: 5px;
+                           text-shadow: none;">{{i18n.control}}</span>
+                            </div>
+                            <div class="iconJetPack">
+                                <img alt="" src="./img/donate/jetpack.png">
+                            </div>
+                        </div>
+
+                        <div class="elDonateBlock form">
+                            <div style="display: flex; justify-content: space-around; align-items: center;">
+                                <h1>ПОХОДКА</h1>
+                                <span style="font-family: 'Rubik', sans-serif; 
+                           letter-spacing: -1px;    
+                           color: #000000;
+                           background-color: #fff;
+                           padding-left: 1%;
+                           padding-right: 1%;
+                           border-radius: 5px;
+                           text-shadow: none;">GANGSTER</span>
+                            </div>
+                            <div style="display: flex;">
+                                <div class="arrowleft" style="margin-right: 1vw;">
+                                    <img alt="" src="./img/arrowLeftRed.png" style="height: 5vh; width: 3vw;"> </div>
+                                <div class="iconJetPack">
+                                    <img alt="" src="./img/donate/runner.png" style="height: 22vh; width: 14vw;">
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <div class="arrowright" style="margin-left: 1vw;">
+                                        <img alt="" src="./img/arrowRightRed.png" style="height: 5vh; width: 3vw;">
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span>{{i18n.tips}}</span>
-                                <div class="settingCenter"><input id="switch" type="checkbox" /><label for="switch"
-                                        id="mouseFocus"></label></div>
-                            </div>
-                        </div>
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span>"VR" - {{i18n.menuMode}}</span>
-                                <div class="settingCenter"><input id="switchVR" type="checkbox" v-model='vr' /><label
-                                        for="switchVR" id="mouseFocus"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span>{{i18n.quickWeaponT}}</span>
-                                <div class="settingCenter"><input id="quickWeapon" type="checkbox"
-                                        v-model='quickWeapon' /><label for="quickWeapon" id="mouseFocus"></label></div>
-                            </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.mapSize}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keyMapSize' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keyMapSize' ? recordKey = false : recordKey = 'keyMapSize'">{{keyCodes[keyMapSize].toUpperCase()}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.quickMarker}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keyQuickMarker' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keyQuickMarker' ? recordKey = false : recordKey = 'keyQuickMarker'">{{keyCodes[keyQuickMarker].toUpperCase()}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.sit}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keySitDown' ? recordKey = false : recordKey = 'keySitDown'">{{keyCodes[keySitDown].toUpperCase()}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span>{{i18n.volume}}</span>
-                                <div class="settingCenter">
-                                    <input max="0.5" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range"
-                                        v-model="volume">
-                                </div>
-                            </div>
-                            <div class="mapchoice1" style="padding-top: 2vh;">
-                                <div class="namechoice">
-                                    <h1>{{i18n.sizeMap}}</h1>
-                                </div>
-                                <div class="mapchoice">
-                                    <label
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <input class="option-input radio" id="map-0" type="radio" v-model="sizeMap"
-                                            value="0">
-                                        <span>{{i18n.small}}</span>
-                                    </label>
-                                    <label
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <input class="option-input radio" id="map-1" type="radio" v-model="sizeMap"
-                                            value="1">
-                                        <span>{{i18n.normal}}</span>
-                                    </label>
-                                    <label
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <input class="option-input radio" id="map-2" type="radio" v-model="sizeMap"
-                                            value="2">
-                                        <span>{{i18n.big}}</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="btnback">
-                                <a href="#" id="mouseFocus" v-on:click="saveSettings(0)">{{i18n.btnBack}}</a>
+                    </div>
+                    <div class="donateMain"
+                        style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-evenly;">
+                        <div :class="vip" class="elDonateBlock donatform form" style="height: 55.5vh; flex-basis: auto">
+                            <h1 class="infoHeading">{{vip.toUpperCase()}}</h1>
+                            <div class="infoDonate"> 
+                                <ul>
+                                    <li>НА {{(assortPriv[vip].bonus * +100) - +100}}% БОЛЬШЕ ДЕНЕГ В КОНЦЕ ИГРЫ</li>
+                                    <li>EXAMPLE</li>
+                                    <li>EXAMPLE</li>
+                                    <li>EXAMPLE</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1116,7 +1082,7 @@
                             </h1>
                             <h1 class="winText" v-if="bonusMoney > 0">+{{bonusMoney}}</h1>
                             <div class="winElRight">
-                                <h1>{{i18n.balance.toUpperCase()}}</h1>
+                                <h1>{{i18n.balance}}</h1>
                                 <img src="./img/win/money-bag.png" alt="">
                             </div>
                         </div>

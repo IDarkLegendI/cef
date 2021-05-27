@@ -673,8 +673,8 @@ html {
 }
 
 .btnbackperson2 .minibtn {
-  padding-top: 0vh;
-  padding-bottom: 0vh;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .rightNoHover:hover {
@@ -1228,7 +1228,7 @@ input[type=checkbox] {
   padding: 0.6vh 0.5vw;
   background-color: white;
   border-radius: 5px;
-  text-shadow: 0px 0px 1px black;
+  text-shadow: 0 0 1px black;
   -webkit-animation-name: flash;
           animation-name: flash;
   -webkit-animation-duration: 2s;
@@ -3246,5 +3246,57 @@ a:hover {
 
 input[type="button" i]:focus, .button :focus, .button :active {
   outline: none;
+}
+
+.donateMain {
+  height: 80vh;
+  padding: 0 5vw;
+  font-weight: 700;
+  font-size: 1.8vw;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.elDonateBlock {
+  height: 20vh;
+  padding: 3vh 1.5vw;
+  border-radius: 10% 10%;
+}
+
+.elDonateBlock:hover h1 {
+  color: black;
+}
+
+.elDonateBlock:hover div {
+  color: black;
+}
+
+.iconJetPack {
+  position: relative;
+  top: 4vh;
+}
+
+.iconJetPack img {
+  width: 19vw;
+  height: 22vh;
+}
+
+.infoHeading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 900;
+  text-shadow: 0px 0px 5px #ff0000;
+  font-size: 4vh;
+}
+
+.infoDonate {
+  margin-top: 1vh;
+}
+
+.infoDonate ul {
+  padding-left: 1vw;
 }
 /*# sourceMappingURL=style.css.map */

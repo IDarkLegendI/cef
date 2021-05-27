@@ -57,7 +57,7 @@ let menu = new Vue({
         minSort: 0,
         maxSort: 1000000,
         onlyMyCars: false,
-         cars: [
+        cars: [
             {
                 name: 'None',
                 model: 'none',
@@ -324,14 +324,17 @@ let menu = new Vue({
             vip: {
                 name: 'VIP',
                 k: 5,
+                bonus: 1.3,
             },
             premium: {
                 name: 'PREMIUM',
                 k: 10,
+                bonus: 1.5,
             },
             deluxe: {
                 name: 'DELUXE',
                 k: 16.65,
+                bonus: 1.7,
             },
         },
         assortSelected: 'vip',
@@ -348,7 +351,7 @@ let menu = new Vue({
         lifeTime: 0, //Минут
 
         //VIP
-        vip: 'deluxe',
+        vip: 'premium',
 
         //Misc
         anyVar: null,
@@ -357,7 +360,7 @@ let menu = new Vue({
 
         //i18n
         i18n: {
-            // balance: 'Balance',
+            // balance: 'Balance', 
             balance: 'BALANCE',
             personal: 'PRIVATE',
             managerCars: 'Manage your cars',
@@ -979,7 +982,7 @@ let menu = new Vue({
         loadRu() {
             document.getElementById('inputAddFriend').placeholder = "Введите NickName"
             menu.i18n = {
-                balance: 'Баланс',
+                balance: 'БАЛАНС',
                 personal: 'ЛИЧНЫЙ',
                 managerCars: 'Управляйте своими машинами',
                 transport: 'ТРАНСПОРТ',
@@ -1063,6 +1066,7 @@ let menu = new Vue({
                 maxValue: "МАКСИМАЛЬНАЯ",
                 infoSort: "ЧТОБЫ ВИДЕТЬ СВОИ МАШИНЫ ПОСТАВЬТЕ МИНИМАЛЬНУЮ ЦЕНУ НА НОЛЬ",
                 onlyMyCars: "ТОЛЬКО МОИ МАШИНЫ",
+                privileges: "ПРИВИЛЕГИЕЙ",
             }
         },
         loadEn() {
@@ -1341,6 +1345,10 @@ let menu = new Vue({
         },
         changeConverter: function (nameOut, nameIn, k) {
             this[nameOut] = Math.round(this[nameIn] * +k);
+        },
+        getVipColor()
+        {
+            return this.vip === 'deluxe' ? '#ff0000' : this.vip === 'premium' ? '#47b139' : '#ffc400'
         }
     },
 });
@@ -1481,7 +1489,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(5, 0)
+        menu.switchPage(4, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
