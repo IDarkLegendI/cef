@@ -219,8 +219,7 @@
                                     </div>
                                     <div class="noobpart2">
                                         <div class="noobbtn">
-                                            <span class="minibtn" id="mouseFocus"
-                                                v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1, 'jp')">{{i18n.license}}</span>
+                                            <span class="minibtn" id="mouseFocus">{{i18n.license}}</span>
                                             <span class="minibtn" id="mouseFocus"
                                                 v-on:click="switchPage(4)">{{i18n.control}}</span>
                                         </div>
@@ -976,7 +975,7 @@
                 <div style="display: flex; justify-content: space-around;">
                     <div class="donateMain"
                         style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-around;">
-                        <div class="elDonateBlock form">
+                        <div class="elDonateBlock form" id="mouseFocus" v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1, 'jp')">
                             <div style="display: flex; justify-content: space-evenly; align-items: center;">
                                 <h1>JETPACK</h1>
                                 <span style="font-family: 'Rubik', sans-serif; 
@@ -993,7 +992,7 @@
                             </div>
                         </div>
 
-                        <div class="elDonateBlock form">
+                        <div class="elDonateBlock form" style="height: auto;">
                             <div style="display: flex; justify-content: space-around; align-items: center;">
                                 <h1>{{i18n.gait}}</h1>
                                 <span style="font-family: 'Rubik', sans-serif; 

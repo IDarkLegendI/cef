@@ -3299,4 +3299,20 @@ input[type="button" i]:focus, .button :focus, .button :active {
 .infoDonate ul {
   padding-left: 1vw;
 }
+
+.vipArrow:hover img, .vipArrow:hover img {
+  -webkit-filter: hue-rotate(90deg);
+          filter: hue-rotate(90deg);
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.vipArrow:active img, .vipArrow:active img {
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
 /*# sourceMappingURL=style.css.map */
