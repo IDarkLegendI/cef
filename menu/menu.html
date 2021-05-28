@@ -991,17 +991,17 @@
                                 <span :style="{color: gait.vipLevel === 0 ? 'black' : gait.vipLevel === 1 ? 'orange' : gait.vipLevel === 2 ? '#47b139' : '#ff0000'}">
                                     {{gait.name === 'Normal' ? i18n.none2 : gait.name.toUpperCase()}}
                                 </span>
-                            </div>
+                            </div> 
                             <div style="display: flex;">
                                 <div class="arrowleft vipArrow" style="margin-right: 1vw;">
-                                    <img src="./img/arrowLeftRed.png" style="height: 5vh; width: 3vw;" v-on:click="emit('cWalking:change', gait, false)">
+                                    <img src="./img/arrowLeftRed.png" style="height: 5vh; width: 3vw;" v-on:click="emit('cWalking:change', gait.name, false)">
                                 </div>
                                 <div class="iconJetPack">
                                     <img alt="" src="./img/donate/runner.png" style="height: 22vh; width: 14vw;">
                                 </div> 
                                 <div style="display: flex; align-items: center;">
                                     <div class="arrowright vipArrow" style="margin-left: 1vw;">  
-                                        <img src="./img/arrowRightRed.png" style="height: 5vh; width: 3vw;" v-on:click="emit('cWalking:change', gait, true)">
+                                        <img src="./img/arrowRightRed.png" style="height: 5vh; width: 3vw;" v-on:click="emit('cWalking:change', gait.name, true)">
                                     </div>
                                 </div>
                             </div> 

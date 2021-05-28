@@ -698,6 +698,15 @@ let menu = new Vue({
                 console.log(`changeVar: ${menu[el[0]]}`)
             })
         },
+        //Изменяет необходимые аргументы. Входные данные: ['nameVar', 'nameVar2', value], ...
+        changeVar2(...args) {
+            console.log(`changeVar: ${JSON.stringify(...args)}`)
+            args.forEach(el => {
+                console.log(`changeVar(0): ${JSON.stringify(el)}`)
+                console.log(`changeVar(1): menu.${el[0]}.${el[1]} = ${el[2]}`)
+                Vue.set(menu[el[0]], el[1], el[2])
+            })
+        },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', index, 'nameArg', value], ...
         changeArgument(...args) {
             console.log(`changeArgument: ${JSON.stringify(...args)}`)
@@ -763,7 +772,7 @@ let menu = new Vue({
         },
 
         async resetPage(newPage, newSubPage) {
-            if (this.page === 2 && newPage === 0) {
+            if (this.page === 2 && (newPage === 0 || newPage === 4)) {
                 menu.emit('cCar:setCarPreview', false);
                 if (this.subPage === 0) {
                     this.cars[this.carsPointer].color = {
@@ -1407,6 +1416,7 @@ if ('alt' in window) {
     });
 
     alt.on('bMenu:changeVar', (...args) => menu.changeVar(...args))
+    alt.on('bMenu:changeVar2', (...args) => menu.changeVar2(...args))
     alt.on('bMenu:changeArgument', (...args) => menu.changeArgument(...args))
     alt.on('bMenu:useFunction', (...args) => menu.useFunction(...args))
     alt.on('bMenu:fUpdateLobby', async (data) => menu.fUpdateLobby(data));
