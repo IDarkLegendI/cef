@@ -43,17 +43,18 @@
                         <h1 class="killText" id="killInfo">{{getText('ukilled')}} <span
                                 class="killTextplayer">{{killsBar[0]}}</span> {{getText('distance')}} <span
                                 :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
-                                {{getText('meters')}}
-                        </h1> 
-                    </div> 
+                            {{getText('meters')}}
+                        </h1>
+                    </div>
                 </transition>
             </div>
             <!-- OBSERVER -->
             <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition3"
                 leave-active-class="animated hinge">
-                <!-- animated infinite pulse slow --> 
+                <!-- animated infinite pulse slow -->
 
-                <div class="observer" style="padding-top: 21vh;" v-show="obs.show && !killsBarShow && obs.nick.length != 0">
+                <div class="observer" style="padding-top: 21vh;"
+                    v-show="obs.show && !killsBarShow && obs.nick.length != 0">
                     <div style="width: 100%;">
                         <div class="helpObServer animated infinite bounce delay-3s slower">
                             <div class="subHelpOBS">
@@ -64,7 +65,8 @@
                             </div>
                         </div>
                     </div>
-                    <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}" class="obsCenter">
+                    <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}"
+                        class="obsCenter">
                         <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>
@@ -72,28 +74,46 @@
                                 <img src="./img/skull.png" alt="">
                                 <h1 class="obsKills">{{obs.kills}}</h1>
                                 <hr style="height: 0vh; opacity: 0;">
-                                <img :src="`../menu/img/levels/${obs.level}.png`" alt="" class="level" style="width: 1.4vw;">
+                                <img :src="`../menu/img/levels/${obs.level}.png`" alt="" class="level"
+                                    style="width: 1.4vw;">
                             </div>
                         </div>
                         <!-- <img class="vip" :src="`../menu/img/corona.png`" alt=""> -->
                     </div>
                 </div>
             </transition>
+            <transition enter-active-class="animated bounceInUp" leave-active-class="animated hinge"
+                name="custom-classes-transition3">
+                <div class="observer" v-show="help === 2 && !showLogo && !lobby[1]">
+                    <div style="width: 100%;">
+                        <div class="helpObServer animated infinite bounce slow">
+                            <div class="subHelpOBS">
+                                <div>
+                                    <p class="key">F1</p>
+                                    <p class="textHelp">{{getText('menu')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
 
             <!-- LOBBY PLAYERS -->
             <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
-                name="custom-classes-transition4"> 
+                name="custom-classes-transition4">
                 <section>
                     <div class="observer list-complete-item">
-                    <transition-group name="list-complete" style="width: 100%;" tag="div">
-                            <div class="helpObServer" 
-                            v-bind:key="friend.name" v-for="(friend, index) in lobby">
+                        <transition-group name="list-complete" style="width: 100%;" tag="div">
+                            <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
-                                    <div :style="{animationName: friend.mic ? 'flash' : 'none'}" class="animated infinite flash slower">
-                                        <p :style="{borderColor: friend.color}" class="key" id="friendName">{{friend.name}}</p>
-                                        <p class="textHelp" style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
+                                    <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
+                                        class="animated infinite flash slower">
+                                        <p :style="{borderColor: friend.color}" class="key" id="friendName">
+                                            {{friend.name}}</p>
+                                        <p class="textHelp"
+                                            style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
                                             <img :src="`../hud/img/${friend.hp > 0 ? 'heart' : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`"
-                                            style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 1px red)">  
+                                                style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 1px red)">
                                             <p v-if="friend.hp > 0">{{friend.hp}}</p>
                                         </p>
                                         <!-- <img class="animated infinite flash slower" src="./img/mic.png" v-if="friend.mic" 
@@ -101,19 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                    </transition-group>
-                    <div class="observer" style="margin-bottom: 5vh;" v-show="help === 2 && !showLogo">
-                        <div style="width: 100%;">
-                            <div class="helpObServer animated infinite bounce slow">
-                                <div class="subHelpOBS">
-                                    <div>
-                                        <p class="key">F1</p>
-                                        <p class="textHelp">{{getText('menu')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </transition-group>
                     </div>
                 </section>
             </transition>
@@ -130,9 +138,10 @@
                         </div>
                         <div class="alive" v-show="!obs.show">
                             <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div> 
+                            <div class="textAlive" id="alive">
+                                {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
                         </div>
-                        <div class="alive" v-show="!obs.show"> 
+                        <div class="alive" v-show="!obs.show">
                             <div class="numberAlive" id="alive">
                                 <p>{{ammo[0]}}</p>
                                 <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
@@ -143,7 +152,8 @@
                         <!-- OBSERVER HUD -->
                         <div class="alive" v-show="obs.show">
                             <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                            <div class="textAlive" id="alive">{{alivePlayers === 1 ? getText('player') : getText('players')}}</div>
+                            <div class="textAlive" id="alive">
+                                {{alivePlayers === 1 ? getText('player') : getText('players')}}</div>
                         </div>
                     </div>
                     <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
@@ -216,7 +226,8 @@
             <transition name="gtaRoyalRuAnimate" enter-active-class="animated fadeInLeftBig slow"
                 leave-active-class="animated fadeOutUpBig fast">
                 <div style="position: absolute; bottom: 0%; opacity: 0.9; width: 100%; padding: 0;" v-show="!showLogo">
-                    <h1 id="gtaRoyalRu" style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
+                    <h1 id="gtaRoyalRu"
+                        style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
                         GTAROYAL.RU</h1>
                 </div>
             </transition>
