@@ -340,7 +340,10 @@ let menu = new Vue({
         },
         assortSelected: 'vip',
         //Manage VIP
-        gait: 'Normal',
+        gait: {
+            name: 'Normal',
+            vipLevel: 0
+        },
 
         //EndGame
         wsWin: false,

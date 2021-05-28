@@ -3315,4 +3315,27 @@ input[type="button" i]:focus, .button :focus, .button :active {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
 }
+
+.elDonateBlockContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.elDonateBlockContent span {
+  font-family: 'Rubik', sans-serif;
+  letter-spacing: -1px;
+  color: #000000;
+  background-color: #fff;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  border-radius: 5px;
+  text-shadow: none;
+}
 /*# sourceMappingURL=style.css.map */
