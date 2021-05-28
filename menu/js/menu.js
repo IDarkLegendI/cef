@@ -804,7 +804,7 @@ let menu = new Vue({
             }
             if(this.anyVarC[0] === this.anyVarSecond[this.carsPointer] && this.anyVarC[1].r !== this.anyVarC[2].r)  
             {
-                menu.emitServer('sCar:preview', { 
+                menu.emitToServerWithWT(0, 'sCar:preview', { 
                     model: 'thruster',
                     color: this.anyVarC[1],
                     color2: this.anyVarC[2],  
@@ -812,7 +812,7 @@ let menu = new Vue({
             }
             else
             {
-                menu.emitServer('sCar:preview', {
+                menu.emitToServerWithWT(0, 'sCar:preview', {
                     model: 'thruster',
                     color: null,
                 }, 48, this.anyVarSecond[this.carsPointer]);
