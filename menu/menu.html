@@ -1296,12 +1296,14 @@
             // }, 10)
             return document.getElementById('fade').style.opacity = 1;
         }
-        a = new Fireworks();
-        a.run();
         // else setTimeout(() => document.getElementById('fade').style.opacity = 1, 300); 
         // setTimeout(() => {
         //     document.getElementById('fade').style.opacity = 1;
         // }, 1000);
+        document.addEventListener('DOMContentLoaded', function() {
+            a = new Fireworks();
+            a.run();
+        }, false);
     }
 </script>
 <script src='./js/tinycolor.min.js'></script>
