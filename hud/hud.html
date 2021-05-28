@@ -80,26 +80,10 @@
                 </div>
             </transition>
 
-            <transition enter-active-class="animated bounceInUp" name="custom-classes-transition3"
-                leave-active-class="animated hinge">
-                <div class="observer" v-show="help === 2 && !showLogo">
-                    <div style="width: 100%;">
-                        <div class="helpObServer animated infinite bounce slow">
-                            <div class="subHelpOBS">
-                                <div>
-                                    <p class="key">F1</p>
-                                    <p class="textHelp">{{getText('menu')}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </transition>
-
             <!-- LOBBY PLAYERS -->
             <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
                 name="custom-classes-transition4"> 
-                <section v-if="help !== 2">
+                <section>
                     <div class="observer list-complete-item">
                     <transition-group name="list-complete" style="width: 100%;" tag="div">
                             <div class="helpObServer" 
@@ -118,6 +102,18 @@
                                 </div>
                             </div>
                     </transition-group>
+                    <div class="observer" style="margin-bottom: 5vh;" v-show="help === 2 && !showLogo">
+                        <div style="width: 100%;">
+                            <div class="helpObServer animated infinite bounce slow">
+                                <div class="subHelpOBS">
+                                    <div>
+                                        <p class="key">F1</p>
+                                        <p class="textHelp">{{getText('menu')}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </section>
             </transition>

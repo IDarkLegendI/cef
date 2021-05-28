@@ -304,11 +304,11 @@ if ('alt' in window) {
 }  
 else  
 { 
-    hud.obs.show = false;
+    hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 
     // hud.showLogo = true;
-    hud.help = 1;
+    hud.help = 0;
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
@@ -318,7 +318,7 @@ else
     hud.kills = 1;
     hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
     setInterval(() => {
-        hud.fUpdateKills("OBLIKO", 45)
+        // hud.fUpdateKills("OBLIKO", 45)
         // hud.fupdateWarmUP('123333333333333', true) 
         // hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
     }, 1100) 
