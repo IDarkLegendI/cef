@@ -452,6 +452,7 @@ let menu = new Vue({
             maxValue: "MAXIMUM",
             infoSort: "TO SEE YOUR CARS SET THE MINIMUM PRICE TO ZERO",
             onlyMyCars: "ONLY MY CARS",
+            privileges: "MANAGING A PRIVILEGE",
             gait: "GAIT"
         },
         i18nTemp: null,

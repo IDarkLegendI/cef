@@ -965,7 +965,7 @@
                         <div class="nameupline">
                             <span>GTAROYAL.RU</span>
                         </div>
-                        <span style="font-size: 3vh;">{{i18n.control}} {{i18n.privileges}}</span>
+                        <span style="font-size: 3vh;">{{lang === 'ru' ? i18n.control : ''}} {{i18n.privileges}}</span>
                         <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
                             <span>{{i18n.btnBack}}</span>
                         </div>
