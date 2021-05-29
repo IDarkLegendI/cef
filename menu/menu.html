@@ -591,7 +591,10 @@
                         </div>
                         <div class="checkboxes">
                             <div class="checkboxtest">
-                                <span>{{i18n.volume}}</span>
+                                <span style="display: flex; align-items: center;">
+                                    {{i18n.volume}}
+                                    <img class="settingsSound" src="./img/sound.png" style="width: 1.3vw; padding-left: 1vw;" v-on:click="emit('cAudio:test', 'zone', volume)">
+                                </span> 
                                 <div class="settingCenter">
                                     <input max="0.5" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range"
                                         v-model="volume">

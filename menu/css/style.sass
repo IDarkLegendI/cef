@@ -36,7 +36,7 @@ html
     flex-direction: column
     // border: 3px solid red
     position: absolute
-    left: 50% 
+    left: 50%
     top: 10%
     transform: translate(-50%, -50%)
 
@@ -2265,18 +2265,31 @@ input[type="button" i]:focus, .button :focus, .button :active
 
 .vipArrow:active img, .vipArrow:active img
     transition: 0.2s all
-    transform: scale(0.90)    
+    transform: scale(0.90)
 
 .elDonateBlockContent
     display: flex
     justify-content: space-evenly
-    align-items: center;
+    align-items: center
     span
-        font-family: 'Rubik', sans-serif 
-        letter-spacing: -1px    
+        font-family: 'Rubik', sans-serif
+        letter-spacing: -1px
         color: #000000
         background-color: #fff
-        padding-left:  0.5vw
-        padding-right:  0.5vw
+        padding-left: 0.5vw
+        padding-right: 0.5vw
         border-radius: 5px
-        text-shadow: none    
+        text-shadow: none
+
+.settingsSound
+    transition: 0.2s all
+    filter: invert(90%)
+.settingsSound:hover
+    transition: 0.2s all
+    transform: scale(1.5)
+    filter: invert(10%)
+    
+.settingsSound:active
+    transition: 0.2s all
+    transform: scale(0.9)
+    filter: invert(10%)

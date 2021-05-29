@@ -3338,4 +3338,29 @@ input[type="button" i]:focus, .button :focus, .button :active {
   border-radius: 5px;
   text-shadow: none;
 }
+
+.settingsSound {
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  -webkit-filter: invert(90%);
+          filter: invert(90%);
+}
+
+.settingsSound:hover {
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-filter: invert(10%);
+          filter: invert(10%);
+}
+
+.settingsSound:active {
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-filter: invert(10%);
+          filter: invert(10%);
+}
 /*# sourceMappingURL=style.css.map */
