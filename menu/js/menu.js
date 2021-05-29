@@ -453,7 +453,9 @@ let menu = new Vue({
             infoSort: "TO SEE YOUR CARS SET THE MINIMUM PRICE TO ZERO",
             onlyMyCars: "ONLY MY CARS",
             privileges: "MANAGING A PRIVILEGE",
-            gait: "GAIT"
+            gait: "GAIT",
+            actions: "ACTIONS",
+            delFriend: "REMOVE FROM FRIENDS",
         },
         i18nTemp: null,
         avatars: {
@@ -751,6 +753,15 @@ let menu = new Vue({
                             this.subPage = this.nextSubPage;
                             this.nextSubPage = -1;
                         } else this.subPage = newSubPage;
+
+                        if(this.subPage === 2)
+                        {
+                            if(document.getElementById('i18nActions')) document.getElementById('i18nActions').setAttribute('data-title', menu.i18n.actions);
+                            menu.friends.forEach(el => {
+                                if(document.getElementById(el.name)) document.getElementById(el.name).setAttribute('data-title', menu.i18n.delFriend);
+                            })
+                        }
+                        else if(this.subPage === 1 && document.getElementById('i18nInvite')) document.getElementById('i18nInvite').setAttribute('data-title', menu.i18n.inviteText);
                     }, 350)
                 } else {
                     //При закрывании страницы
@@ -762,6 +773,9 @@ let menu = new Vue({
                     //При открывании страницы, если надо ластовую
                     if(newPage === -1) newPage = menu.lastPage;
                     this.page = newPage;
+                    let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
+                    Vue.set(objInvite, 'name', menu.i18n.inviteText) 
+
                     if (this.coolDown) return;
                     this.coolDown = true;
                     setTimeout(() => {
@@ -1095,6 +1109,8 @@ let menu = new Vue({
                 onlyMyCars: "ТОЛЬКО МОИ МАШИНЫ",
                 privileges: "ПРИВИЛЕГИЕЙ",
                 gait: "ПОХОДКА",
+                actions: "ДЕЙСТВИЯ",
+                delFriend: "УДАЛИТЬ ИЗ ДРУЗЕЙ",
             }
         },
         loadEn() {
@@ -1518,7 +1534,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(4, 0)
+        menu.switchPage(0, 2)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)

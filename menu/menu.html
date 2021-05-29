@@ -319,7 +319,7 @@
                                                 <div class="nickzapros">{{friend.name}}</div>
                                             </div>
                                             <div class="btnszapros">
-                                                <div class="btnzapros" data-title="Пригласить">
+                                                <div class="btnzapros" data-title="Пригласить" id='i18nInvite'>
                                                     <img src="img/plusbtn.png" alt=""
                                                         v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
                                                 </div>
@@ -351,7 +351,7 @@
                                                 <div class="nickzapros">{{friend.name}}</div>
                                             </div>
                                             <div class="btnszapros">
-                                                <div class="btnzapros profileDetails" :id='friend.name'
+                                                <div :id='friend.name' class="btnzapros profileDetails i18nDelete"
                                                     data-title="Удалить из друзей">
                                                     <img v-on:click="delFriend(friend.name)" src="img/close.png" alt="">
                                                 </div>
@@ -361,7 +361,7 @@
                                                         v-on:click="emitServer('sLobby:inviteToLobby', friend.name)">
                                                 </div>
                                             </div> -->
-                                                <div class="btnzapros" data-title="Действия">
+                                                <div class="btnzapros" data-title="Действия" id="i18nActions">
                                                     <img v-on:click="showProfileDetails(friend.name)" src="img/dots.png"
                                                         alt="">
                                                 </div>
