@@ -1015,8 +1015,10 @@ let menu = new Vue({
                 online = false;
             })
         },
-        loadLang() {
-            if (this.lang === 'ru') this.loadRu();
+        loadLang(lang = this.lang) { 
+            if(lang !== this.lang) this.lang = lang;
+            
+            if (lang === 'ru') this.loadRu();
             else this.loadEn();
         },
         loadRu() {
