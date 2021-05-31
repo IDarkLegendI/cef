@@ -42,13 +42,13 @@
 					</div>
 				</div>
 				<div class="sandwiches" v-if="currentTitle">
-					<!-- <div class="sandwiches">  -->
+				<!-- <div class="sandwiches"> -->  
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom">
 							<img @click="prevColor" src="./img/arrowLeft.png" width="30vw">
 						</div>
-						<div class="namecustom">
-							<div class="textnamecustom">{{ colorText }} {{ currentCloth.color + 1}} {{ ofText }}
+						<div class="namecustom" style="min-width: 7vw;">
+							<div class="textnamecustom" style="max-width: 7vw;">{{ colorText }} {{ currentCloth.color + 1}} {{ ofText }}
 								{{currentCloth.colors[currentCloth.colors.length-1] + 1}}</div>
 							<!-- <div class="textnamecustom">1 из 2</div> -->
 						</div>
@@ -57,15 +57,16 @@
 						<div class="arrowrightcustom">
 							<img @click="nextColor" src="./img/arrowRight.png" width="30vw">
 						</div>
-					</div>
+					</div> 
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom">
 							<img @click="prevCloth" src="./img/arrowLeft.png" width="30vw">
 						</div>
-						<div class="namecustom">
-							<div class="textnamecustom">{{ currentCloth.name }}</div>
-							<!-- <div class="textnamecustom">Pink Pig</div> -->
-						</div>
+						<div class="namecustom" style="min-width: 7vw;">    
+							<!-- <div class="textnamecustom" style="max-width: 7vw;">{{ currentCloth.name.length > 17 ? currentCloth.name.substring(0, 16) : currentCloth.name }}</div> -->
+							<div class="textnamecustom" style="max-width: 7vw;">{{ currentCloth.name }}</div>  
+							<!-- <div class="textnamecustom" style="max-width: 7vw;">Pink </div> -->
+						</div> 
 						<div class="textnamecustom"><input :value='currentNum' class="inputForNumber"
 								onchange="app.changeNum(this.value, true)" type="text"></div>
 						<div class="arrowrightcustom">
@@ -116,7 +117,7 @@
 <script>
 	const app = new Vue({
 		el: '#app',
-		data: { 
+		data: {
 			k: 2,
 			money: 0,
 
@@ -179,8 +180,9 @@
 			},
 			showPrice: function () {
 				// console.log(`showPrice: ${this.currentCloth.price} -> ${this.currentArr[this.myClothes[this.currentTitle].number].price / +this.k}`)
-				let sale = Math.ceil(this.currentCloth.price - this.currentArr[this.myClothes[this.currentTitle].number]
-					.price / +this.k); 
+				let sale = Math.ceil(this.currentCloth.price - this.currentArr[this.myClothes[this
+						.currentTitle].number]
+					.price / +this.k);
 				if (sale === +0) sale = `${this.selectText}`
 				else if (sale < +0) {
 					sale *= -1;
@@ -349,18 +351,14 @@
 			changeVar(...args) {
 				// console.log(`changeVar: ${JSON.stringify(...args)}`)
 				args.forEach(el => {
-					console.log(`changeVar(0): ${JSON.stringify(el)}`)  
-					console.log(`changeVar(1): app.${el[0]} = ${el[1]}`) 
+					console.log(`changeVar(0): ${JSON.stringify(el)}`)
+					console.log(`changeVar(1): app.${el[0]} = ${el[1]}`)
 					app[el[0]] = el[1];
 					// console.log(`changeVar: ${hud[el[0]]}`)  
 				})
 			},
 		}
 	});
-
-	if (!('alt' in window)) {
-		app.currentTitle = 'Masks'
-	}
 
 	function loadMans() {
 		app.bMan = true;
@@ -5162,10 +5160,9 @@
 			console.log(`ch.lang: ${lang}`)
 			if (lang === 'ru') setTimeout(loadRusLang, 500);
 		})
-		alt.on('changeVar', (...args) => 
-		{
+		alt.on('changeVar', (...args) => {
 			app.changeVar(...args)
 			console.log(`changeVar: ${JSON.stringify(...args)}`)
-		})
+		}) 
 	}
 </script>
