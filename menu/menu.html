@@ -402,7 +402,7 @@
                                         v-if="miscInput.length > 1 && findFriend().length !== 0">
                                         <transition-group name="list-complete" tag="div">
                                             <div class="zapros list-complete-item"
-                                                v-for="(friend, index) in findFriend()" v-bind:key="friend">
+                                                v-bind:key="friend" v-for="(friend, index) in findFriend()">
                                                 <div class="avatarnickzapros">
                                                     <div class="avatarzapros">
                                                         <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
@@ -410,7 +410,7 @@
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
                                                 <div class="btnszapros">
-                                                    <div class="btnzapros" data-title="Добавить">
+                                                    <div class="btnzapros" data-title="Добавить" id="i18nAdd">
                                                         <img v-on:click="emit('cFriends:addRequest', friend, friends, requestsIn, requestsOut)"
                                                             src="img/plusbtn.png" alt="">
                                                     </div>

@@ -722,6 +722,32 @@ let menu = new Vue({
         useFunction(name, ...args) {
             return menu[name](...args);
         },
+
+        translateSubPages()
+        {
+            if(this.subPage === 1) this.transleteById('i18nInvite', 'inviteText')
+            else if(this.subPage === 2)
+            {
+                this.transleteById('i18nActions', 'actions')
+                menu.friends.forEach(el => {
+                    if(document.getElementById(el.name)) document.getElementById(el.name).setAttribute('data-title', menu.i18n.delFriend);
+                })
+            }
+            else if(this.subPage === 3) 
+            {
+                this.transleteById('i18nAdd', 'add')
+                this.transleteById('i18nAccept', 'accept')
+                this.transleteById('i18nCancel', 'cancel')
+            }
+        },
+
+        transleteById(id, text)
+        {
+            document.querySelectorAll(`[id=${id}]`).forEach(el => {
+                el.setAttribute('data-title', menu.i18n[text]);
+            })
+        },
+
         saveSettings(page) {
             console.log(`saveMenu`)
             if (page !== -1) this.switchPage(page);
@@ -755,7 +781,7 @@ let menu = new Vue({
                             this.nextSubPage = -1;
                         } else this.subPage = newSubPage;
 
-                        this.transleteSubPages()
+                        this.translateSubPages() 
                     }, 350)
                 } else {
                     //При закрывании страницы
@@ -810,30 +836,6 @@ let menu = new Vue({
             // }
             this.recordKey = false;
             if (this.page === 5 && newPage === 0) this.wsWin = false
-        },
-
-        transleteSubPages()
-        {
-            if(this.subPage === 1) this.transleteById('i18nInvite', 'inviteText')
-            else if(this.subPage === 2)
-            {
-                this.transleteById('i18nActions', 'actions')
-                menu.friends.forEach(el => {
-                    if(document.getElementById(el.name)) document.getElementById(el.name).setAttribute('data-title', menu.i18n.delFriend);
-                })
-            }
-            else if(this.subPage === 3) 
-            {
-                this.transleteById('i18nAccept', 'accept')
-                this.transleteById('i18nCancel', 'cancel')
-            }
-        },
-
-        transleteById(id, text)
-        {
-            document.querySelectorAll(`[id=${id}]`).forEach(el => {
-                el.setAttribute('data-title', menu.i18n[text]);
-            })
         },
 
         fLoadJP(selected) {
@@ -1504,7 +1506,7 @@ if ('alt' in window) {
         console.log(`updateFriends: ${JSON.stringify(menu.friends)}`)
         if (requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);
         if (requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);
-        this.transleteSubPages()
+        this.translateSubPages()
         console.log(`menu.requestsOut: ${menu.requestsOut}`)
         // menu.updateOnline(allPlayers); 
     })
