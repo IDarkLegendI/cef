@@ -751,6 +751,7 @@ let menu = new Vue({
                     setTimeout(() => {
                         if (this.nextSubPage !== -1) {
                             this.subPage = this.nextSubPage;
+                            if(this.page <= -1) this.page = 0;  
                             this.nextSubPage = -1;
                         } else this.subPage = newSubPage;
 
@@ -771,7 +772,7 @@ let menu = new Vue({
                         newPage = 0;
                     }
                     //При открывании страницы, если надо ластовую
-                    if(newPage === -1) newPage = menu.lastPage;
+                    if(newPage === -1 && menu.lastPage >= 0) newPage = menu.lastPage; 
                     this.page = newPage;
                     let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
                     Vue.set(objInvite, 'name', menu.i18n.inviteText) 
