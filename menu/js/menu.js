@@ -662,7 +662,7 @@ let menu = new Vue({
                 this.cars[this.carsPointer].color = {
                     r: this.oldColor[0],
                     g: this.oldColor[1],
-                    b: this.oldColor[2]
+                    b: this.oldColor[2] 
                 }
                 menu[variable] = value;
                 console.log(`callBackEmitToServer: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
@@ -1017,7 +1017,7 @@ let menu = new Vue({
         },
         loadLang(lang = this.lang) { 
             if(lang !== this.lang) this.lang = lang;
-            
+
             if (lang === 'ru') this.loadRu();
             else this.loadEn();
         },
@@ -1178,9 +1178,13 @@ let menu = new Vue({
                 menu.oldColor[2] !== this.cars[this.carsPointer].color.b) {
                 this.updateTuning = true;
                 let el = document.getElementById('changeColorCar');
-                if (el) el.style.backgroundColor = 'rgb(' + this.cars[this.carsPointer].color.r + ',' + this.cars[this.carsPointer].color.g + ',' + this.cars[this.carsPointer].color.b + ')';
+                if (el) 
+                {
+                    el.style.backgroundColor = 'rgb(' + this.cars[this.carsPointer].color.r + ',' + this.cars[this.carsPointer].color.g + ',' + this.cars[this.carsPointer].color.b + ')';
+                    // console.log(`carColor: ${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}`)
+                    el.style.color = `#${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}` 
+                } 
             }
-
             // console.log(`this.updateTuning: ${this.updateTuning}`)  
 
             setTimeout(() => {
@@ -1536,7 +1540,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(1, 0)
+        menu.switchPage(2, 0)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
