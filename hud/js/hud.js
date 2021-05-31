@@ -304,7 +304,7 @@ if ('alt' in window) {
 }  
 else  
 { 
-    hud.obs.show = false;
+    hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 
     // hud.showLogo = true;

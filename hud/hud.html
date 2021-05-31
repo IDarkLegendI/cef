@@ -84,7 +84,7 @@
             </transition>
             <transition enter-active-class="animated bounceInUp" leave-active-class="animated hinge"
                 name="custom-classes-transition3">
-                <div class="observer" v-show="help === 2 && !showLogo && !lobby[1]">
+                <div class="observer" v-show="help === 2 && !showLogo && Object.keys(lobby).length === 0">   
                     <div style="width: 100%;">
                         <div class="helpObServer animated infinite bounce slow">
                             <div class="subHelpOBS">
