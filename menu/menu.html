@@ -437,11 +437,11 @@
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
                                                 <div class="btnszapros">
-                                                    <div class="btnzapros" data-title="Принять">
+                                                    <div class="btnzapros" data-title="Принять" id="i18nAccept">
                                                         <img v-on:click="request(friend, 'requestsIn', 'sFriends:acceptRequest')"
                                                             src="img/tick.png" alt="">
                                                     </div>
-                                                    <div class="btnzapros" data-title="Отклонить">
+                                                    <div class="btnzapros" data-title="Отклонить" id="i18nCancel">
                                                         <img v-on:click="request(friend, 'requestsIn')"
                                                             src="img/close.png" alt="">
                                                     </div>
@@ -466,7 +466,7 @@
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
-                                                <div class="btnzapros" data-title="Отменить">
+                                                <div class="btnzapros" data-title="Отменить" id="i18nCancel">
                                                     <img v-on:click="request(friend, 'requestsOut')" src="img/close.png"
                                                         alt="">
                                                 </div>

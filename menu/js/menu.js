@@ -11,7 +11,7 @@ let menu = new Vue({
         money: 0,
 
         //SETTINGS
-        lang: 'ru',
+        lang: 'en',
         vr: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         quickWeapon: 0,
@@ -755,14 +755,7 @@ let menu = new Vue({
                             this.nextSubPage = -1;
                         } else this.subPage = newSubPage;
 
-                        if(this.subPage === 2)
-                        {
-                            if(document.getElementById('i18nActions')) document.getElementById('i18nActions').setAttribute('data-title', menu.i18n.actions);
-                            menu.friends.forEach(el => {
-                                if(document.getElementById(el.name)) document.getElementById(el.name).setAttribute('data-title', menu.i18n.delFriend);
-                            })
-                        }
-                        else if(this.subPage === 1 && document.getElementById('i18nInvite')) document.getElementById('i18nInvite').setAttribute('data-title', menu.i18n.inviteText);
+                        this.transleteSubPages()
                     }, 350)
                 } else {
                     //При закрывании страницы
@@ -817,6 +810,30 @@ let menu = new Vue({
             // }
             this.recordKey = false;
             if (this.page === 5 && newPage === 0) this.wsWin = false
+        },
+
+        transleteSubPages()
+        {
+            if(this.subPage === 1) this.transleteById('i18nInvite', 'inviteText')
+            else if(this.subPage === 2)
+            {
+                this.transleteById('i18nActions', 'actions')
+                menu.friends.forEach(el => {
+                    if(document.getElementById(el.name)) document.getElementById(el.name).setAttribute('data-title', menu.i18n.delFriend);
+                })
+            }
+            else if(this.subPage === 3) 
+            {
+                this.transleteById('i18nAccept', 'accept')
+                this.transleteById('i18nCancel', 'cancel')
+            }
+        },
+
+        transleteById(id, text)
+        {
+            document.querySelectorAll(`[id=${id}]`).forEach(el => {
+                el.setAttribute('data-title', menu.i18n[text]);
+            })
         },
 
         fLoadJP(selected) {
@@ -1487,6 +1504,7 @@ if ('alt' in window) {
         console.log(`updateFriends: ${JSON.stringify(menu.friends)}`)
         if (requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);
         if (requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);
+        this.transleteSubPages()
         console.log(`menu.requestsOut: ${menu.requestsOut}`)
         // menu.updateOnline(allPlayers); 
     })
@@ -1523,10 +1541,14 @@ if ('alt' in window) {
             {
                 name: 'Dima',
                 online: true
+            },
+            {
+                name: 'Dima2',
+                online: true
             }
         ]
-        // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
-        // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
+        menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
+        menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
                 name: "DARKLEGEND",
@@ -1541,7 +1563,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(2, 0)
+        menu.switchPage(0, 1)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
