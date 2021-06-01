@@ -574,7 +574,7 @@ let menu = new Vue({
             98: 'n. 2',
             99: 'n. 3',
             100: 'n. 4',
-            101: 'n. 5',
+            101: 'n. 5', 
             102: 'n. 6',
             103: 'n. 7',
             104: 'n. 8',
@@ -1427,7 +1427,31 @@ let menu = new Vue({
         getVipColor()
         {
             return this.vip === 'deluxe' ? '#ff0000' : this.vip === 'premium' ? '#47b139' : '#ffc400'
-        }
+        },
+        fKeyDown(keyCode)
+        {
+            console.log(keyCode) 
+            console.log(menu.keyCodes[keyCode]) 
+            console.log(menu.recordKey)  
+            // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
+            if (menu.recordKey !== false) { 
+                if (keyCode === 27) return menu.recordKey = false;
+                if (menu.keyCodes[keyCode] !== undefined) { 
+                    let count = 0;
+                    if (menu.keySitDown === keyCode) count += +1;
+                    if (menu.keyQuickMarker === keyCode) count += +1;
+                    if (menu.keyMapSize === keyCode) count += +1;
+                    if (menu.keyFingerPointing === keyCode) count += +1;
+                    if (menu.keyMenu === keyCode) count += +1; 
+         
+                    if (count > 0) menu.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '2500');
+                    else {
+                        menu[menu.recordKey] = keyCode;
+                        menu.recordKey = false;
+                    }
+                }
+            }
+        },
     },
 });
 
@@ -1582,7 +1606,7 @@ if ('alt' in window) {
     menu.placeAll = 3;
     menu.place = 2;
     // menu.anyVar = 34 //УБРАТЬ!
-        setTimeout(() => {
+        setTimeout(() => { 
             if(menu.page !== 2) return;
             initColor();
             ColorPicker(); 
@@ -1590,28 +1614,9 @@ if ('alt' in window) {
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
-document.addEventListener('keyup', function (event) {
-    // console.log(event.keyCode)
-    // console.log(menu.keyCodes[event.keyCode])
-    // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
-    if (menu.recordKey !== false) {
-        if (event.keyCode === 27) return menu.recordKey = false;
-        if (menu.keyCodes[event.keyCode] !== undefined) {
-            let count = 0;
-            if (menu.keySitDown === event.keyCode) count += +1;
-            if (menu.keyQuickMarker === event.keyCode) count += +1;
-            if (menu.keyMapSize === event.keyCode) count += +1;
-            if (menu.keyFingerPointing === event.keyCode) count += +1;
-            if (menu.keyMenu === event.keyCode) count += +1;
-
-            if (count > 0) this.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '5000');
-            else {
-                menu[menu.recordKey] = event.keyCode;
-                menu.recordKey = false;
-            }
-        }
-    }
-});
+document.addEventListener('keydown', function (event) {
+    menu.fKeyDown(event.keyCode) 
+}); 
 // window.addEventListener('resize', function(){
 //     console.log('resize')
 //   }); 
