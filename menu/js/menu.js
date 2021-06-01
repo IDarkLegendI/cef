@@ -11,7 +11,7 @@ let menu = new Vue({
         money: 0,
 
         //SETTINGS
-        lang: 'en',
+        lang: 'ru',
         vr: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         quickWeapon: 0,
@@ -19,6 +19,8 @@ let menu = new Vue({
         keyMapSize: 90,
         keyQuickMarker: 88,
         keySitDown: 17,
+        keyFingerPointing: 66,
+        keyMenu: 112,
 
         //Block Game 
         textMatch: 'В поиске',
@@ -409,6 +411,8 @@ let menu = new Vue({
             addFriend: 'ADD FRIEND',
             tips: 'TIPS',
             sit: 'SIT',
+            keyMenu: 'MENU',
+            keyFingerPointing: 'POINT YOUR FINGER',
             menuMode: 'MODE IN MENU',
             sizeMap: 'SIZE MAP',
             small: 'Small',
@@ -761,6 +765,8 @@ let menu = new Vue({
                     keyMapSize: this.keyMapSize,
                     keyQuickMarker: this.keyQuickMarker,
                     keySitDown: this.keySitDown,
+                    keyFingerPointing: this.keyFingerPointing,
+                    keyMenu: this.keyMenu,
                 })
             }
         },
@@ -1086,6 +1092,8 @@ let menu = new Vue({
                 addFriend: 'ДОБАВИТЬ ДРУГА',
                 tips: 'ПОДСКАЗКИ',
                 sit: 'ПРИСЕСТЬ',
+                keyMenu: 'МЕНЮ',
+                keyFingerPointing: 'УКАЗЫВАТЬ ПАЛЬЦЕМ',
                 menuMode: 'РЕЖИМ В МЕНЮ',
                 sizeMap: 'РАЗМЕР КАРТЫ',
                 small: 'Маленький',
@@ -1565,7 +1573,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(0, 1)
+        menu.switchPage(1, 1)
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
@@ -1593,6 +1601,8 @@ document.addEventListener('keyup', function (event) {
             if (menu.keySitDown === event.keyCode) count += +1;
             if (menu.keyQuickMarker === event.keyCode) count += +1;
             if (menu.keyMapSize === event.keyCode) count += +1;
+            if (menu.keyFingerPointing === event.keyCode) count += +1;
+            if (menu.keyMenu === event.keyCode) count += +1;
 
             if (count > 0) this.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '5000');
             else {

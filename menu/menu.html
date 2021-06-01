@@ -583,6 +583,26 @@
                             <div class="bind">
                                 <span class="bindname">{{i18n.sit}}</span>
                                 <div class="settingCenter"><span
+                                        :style="{animationName: recordKey === 'keyFingerPointing' ? 'flash' : 'none'}"
+                                        class="bindbtn" id="mouseFocus"
+                                        v-on:click="recordKey === 'keyFingerPointing' ? recordKey = false : recordKey = 'keyFingerPointing'">{{keyCodes[keyFingerPointing].toUpperCase()}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="binds">
+                            <div class="bind">
+                                <span class="bindname">{{i18n.sit}}</span>
+                                <div class="settingCenter"><span
+                                        :style="{animationName: recordKey === 'keySitkeyMenuDown' ? 'flash' : 'none'}"
+                                        class="bindbtn" id="mouseFocus"
+                                        v-on:click="recordKey === 'keyMenu' ? recordKey = false : recordKey = 'keyMenu'">{{keyCodes[keyMenu].toUpperCase()}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="binds">
+                            <div class="bind">
+                                <span class="bindname">{{i18n.sit}}</span>
+                                <div class="settingCenter"><span
                                         :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}"
                                         class="bindbtn" id="mouseFocus"
                                         v-on:click="recordKey === 'keySitDown' ? recordKey = false : recordKey = 'keySitDown'">{{keyCodes[keySitDown].toUpperCase()}}</span>
