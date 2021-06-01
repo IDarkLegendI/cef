@@ -1072,7 +1072,7 @@
                         <h1 style="padding-top: 2vh; font-style: oblique; font-size: 2vh;">{{phrase}}</h1>
                     </div>
                     <div class="winLine animated bounce slower">
-                        <div class="winEl">
+                        <div class="winEl" v-if="kills !== 0">
                             <h1 class="winText">{{killsInMatch}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.kills}}</h1>
@@ -1087,22 +1087,32 @@
                                 <img src="./img/win/team.png" alt="">
                             </div>
                         </div>
-                        <div class="winEl" v-if="plusMoney !== 0">
-                            <h1 style="font-size: 2vw;">{{plusMoney > 0 ? "+" : "-"}}$</h1>
-                            <h1 class="winText">{{plusMoney < 0 ? plusMoney.toString().slice(1, 10000000) : plusMoney}}
-                            </h1>
-                            <h1 class="winText" v-if="bonusMoney > 0">+{{bonusMoney}}</h1>
-                            <div class="winElRight">
-                                <h1>{{i18n.balance}}</h1>
-                                <img src="./img/win/money-bag.png" alt="">
+                        <!-- <div style="display: flex; flex-direction: column; height: 20vh; justify-content: space-between;"> -->
+                            <div class="winEl" v-if="plusMoney !== 0">
+                                <h1 style="font-size: 2vw;">{{plusMoney > 0 ? "+" : "-"}}$</h1>
+                                <h1 class="winText">{{plusMoney < 0 ? plusMoney.toString().slice(1, 10000000) : plusMoney}}
+                                </h1>
+                                <div class="winElRight">
+                                    <h1>{{i18n.balance}}</h1>
+                                    <img alt="" src="./img/win/money-bag.png">
+                                </div>
                             </div>
-                        </div>
+                        <!-- </div> -->
+                        <div class="winEl" v-if="bonusMoney !== 0">
+                            <h1 style="font-size: 2vw;">{{bonusMoney > 0 ? "+" : "-"}}$</h1>
+                            <h1 class="winText">{{bonusMoney < 0 ? bonusMoney.toString().slice(1, 10000000) : bonusMoney}}
+                            </h1>
+                            <div class="winElRight">
+                                <h1>{{i18n.bonus}}</h1>
+                                <img alt="" src="./img/win/vip.png">
+                            </div>
+                        </div> 
                         <div class="winEl">
                             <h1 :style="{color: lastMatch >= 1 ? 'lime' : lastMatch <= -1 ? 'red' : 'orange'}"
                                 class="winText">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.score}}</h1>
-                                <img src="./img/win/diagram.png" alt="">
+                                <img :src="`./img/win/${lastMatch < 0 ? 'diagramMinus' : 'diagramPlus'}.png`" alt="">
                             </div>
                         </div>
                         <div class="winEl">

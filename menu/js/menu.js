@@ -460,6 +460,7 @@ let menu = new Vue({
             gait: "GAIT",
             actions: "ACTIONS",
             delFriend: "REMOVE FROM FRIENDS",
+            bonus: "BONUS",
         },
         i18nTemp: null,
         avatars: {
@@ -1141,6 +1142,7 @@ let menu = new Vue({
                 gait: "ПОХОДКА",
                 actions: "ДЕЙСТВИЯ",
                 delFriend: "УДАЛИТЬ ИЗ ДРУЗЕЙ",
+                bonus: "БОНУС",
             }
         },
         loadEn() {
@@ -1597,7 +1599,9 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(1, 1)
+        menu.switchPage(5, 0)
+        menu.plusMoney = 5
+        menu.bonusMoney = 5
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)
