@@ -581,7 +581,7 @@
                         </div>
                         <div class="binds">
                             <div class="bind">
-                                <span class="bindname">{{i18n.sit}}</span>
+                                <span class="bindname">{{i18n.keyFingerPointing}}</span>
                                 <div class="settingCenter"><span
                                         :style="{animationName: recordKey === 'keyFingerPointing' ? 'flash' : 'none'}"
                                         class="bindbtn" id="mouseFocus"
@@ -591,9 +591,9 @@
                         </div>
                         <div class="binds">
                             <div class="bind">
-                                <span class="bindname">{{i18n.keyFingerPointing}}</span>
+                                <span class="bindname">{{i18n.keyMenu}}</span>
                                 <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keySitkeyMenuDown' ? 'flash' : 'none'}"
+                                        :style="{animationName: recordKey === 'keyMenu' ? 'flash' : 'none'}"
                                         class="bindbtn" id="mouseFocus"
                                         v-on:click="recordKey === 'keyMenu' ? recordKey = false : recordKey = 'keyMenu'">{{keyCodes[keyMenu].toUpperCase()}}</span>
                                 </div>
@@ -601,7 +601,7 @@
                         </div>
                         <div class="binds">
                             <div class="bind">
-                                <span class="bindname">{{i18n.keyMenu}}</span>
+                                <span class="bindname">{{i18n.sit}}</span>
                                 <div class="settingCenter"><span
                                         :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}"
                                         class="bindbtn" id="mouseFocus"
