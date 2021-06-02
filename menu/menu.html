@@ -1038,9 +1038,9 @@
                             <div class="infoDonate"> 
                                 <ul>
                                     <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}% {{i18n.moreMoneyEndGame}}</li>
-                                    <li>EXAMPLE</li>
-                                    <li>EXAMPLE</li>
-                                    <li>EXAMPLE</li>
+                                    <li>{{i18n.tuning}} {{vipLevel}} {{i18n.level}}</li>
+                                    <li>{{i18n.reloadQuickMarker}} {{(2 - +assortPriv[vip].bonus) * 10}} {{i18n.second}}</li>
+                                    <li>{{(100 / +(2/assortPriv[vip].bonus)).toFixed(0)}}% {{i18n.cashBackVIP}}</li>
                                 </ul>
                             </div>
                         </div>

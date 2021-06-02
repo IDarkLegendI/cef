@@ -360,6 +360,7 @@ let menu = new Vue({
 
         //VIP
         vip: 'premium',
+        vipLevel: 2,
         myEndTime: Date.now() + 40000,
 
         //Misc
@@ -466,7 +467,12 @@ let menu = new Vue({
             moreMoneyEndGame: "MORE MONEY AT THE END OF THE GAME",
             na: "ON",
             endPriv: "UNTIL THE END OF THE SUBSCRIPTION:",
-            comingSoon: "THIS SECTION WILL BE AVAILABLE SOON!"
+            comingSoon: "THIS SECTION WILL BE AVAILABLE SOON!",
+            level: "LEVEL",
+            tuning: "TUNING OF PERSONAL TRANSPORT", 
+            second: "SECONDS",
+            reloadQuickMarker: "RELOADING THE QUICK MARK FOR",
+            cashBackVIP: "CASHBACK FOR SELLING OLD CLOTHES",
         },
         i18nTemp: null,
         avatars: {
@@ -1154,6 +1160,11 @@ let menu = new Vue({
                 na: "НА",
                 endPriv: "ДО ОКОНЧАНИЯ ПОДПИСКИ:",
                 comingSoon: "ЭТОТ РАЗДЕЛ СКОРО СТАНЕТ ДОСТУПЕН!",
+                level: "УРОВНЯ",
+                tuning: "ТЮНИНГ ЛИЧНОГО ТРАНСПОРТА",
+                second: "СЕКУНД",
+                reloadQuickMarker: "ПЕРЕЗАРЯДКА БЫСТРОЙ МЕТКИ ЗА",
+                cashBackVIP: "CASHBACK ЗА ПРОДАЖУ СТАРОЙ ОДЕЖДЫ",
             }
         },
         loadEn() {
@@ -1463,11 +1474,15 @@ let menu = new Vue({
 
             return left
         },
+        // getVipLevel(vip = menu.vip)
+        // {
+        //     return vip === 'deluxe' ? 3 : vip === 'premium' ? 2 : vip === 'vip' ? 1 : 0
+        // },
         fKeyDown(keyCode)
         {
-            console.log(keyCode) 
-            console.log(menu.keyCodes[keyCode]) 
-            console.log(menu.recordKey)  
+            // console.log(keyCode) 
+            // console.log(menu.keyCodes[keyCode]) 
+            // console.log(menu.recordKey)  
             // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
             if (menu.recordKey !== false) { 
                 if (keyCode === 27) return menu.recordKey = false;
