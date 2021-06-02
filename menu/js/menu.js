@@ -463,6 +463,10 @@ let menu = new Vue({
             actions: "ACTIONS",
             delFriend: "REMOVE FROM FRIENDS",
             bonus: "BONUS",
+            moreMoneyEndGame: "MORE MONEY AT THE END OF THE GAME",
+            na: "ON",
+            endPriv: "UNTIL THE END OF THE SUBSCRIPTION:",
+            comingSoon: "THIS SECTION WILL BE AVAILABLE SOON!"
         },
         i18nTemp: null,
         avatars: {
@@ -1081,6 +1085,7 @@ let menu = new Vue({
                 score: 'ОЧКИ',
                 wins: 'ПОБЕД',
                 hours: 'НАИГРАНО ЧАСОВ',
+                hours2: 'ЧАСОВ',
                 awards: 'НАГРАДЫ',
                 gifts: 'Получай подарки',
                 person: 'ПЕРСОНАЖ',
@@ -1145,6 +1150,10 @@ let menu = new Vue({
                 actions: "ДЕЙСТВИЯ",
                 delFriend: "УДАЛИТЬ ИЗ ДРУЗЕЙ",
                 bonus: "БОНУС",
+                moreMoneyEndGame: "БОЛЬШЕ ДЕНЕГ В КОНЦЕ ИГРЫ",
+                na: "НА",
+                endPriv: "ДО ОКОНЧАНИЯ ПОДПИСКИ:",
+                comingSoon: "ЭТОТ РАЗДЕЛ СКОРО СТАНЕТ ДОСТУПЕН!",
             }
         },
         loadEn() {
@@ -1431,6 +1440,28 @@ let menu = new Vue({
         getVipColor()
         {
             return this.vip === 'deluxe' ? '#ff0000' : this.vip === 'premium' ? '#47b139' : '#ffc400'
+        },
+        getVipEndTime()
+        {
+            let left = this.myEndTime - +Date.now()
+            if(+left > +86400000)
+            {
+                left /= +86400000;
+                left = `${left.toFixed(0)} ${this.i18n.days}`
+            }
+            else if(+left > +3600000)
+            {
+                left /= +3600000;
+                left = `${left.toFixed(0)} ${this.i18n.hours2}`
+            }
+            else if(+left > +60000)
+            {
+                left /= +60000;
+                left = `${left.toFixed(0)} ${this.i18n.minutes}`
+            }
+            else left = `<1 ${this.i18n.minutes}`
+
+            return left
         },
         fKeyDown(keyCode)
         {
