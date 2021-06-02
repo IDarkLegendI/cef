@@ -1034,6 +1034,7 @@
                         style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-evenly;">
                         <div :class="vip" class="elDonateBlock donatform form" style="height: 55.5vh; flex-basis: auto">
                             <h1 class="infoHeading">{{vip.toUpperCase()}}</h1>
+                            <h2 style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.5vh;">{{i18n.endPriv}}: {{getVipEndTime()}}</h2>
                             <div class="infoDonate"> 
                                 <ul>
                                     <li>НА {{(assortPriv[vip].bonus * +100) - +100}}% БОЛЬШЕ ДЕНЕГ В КОНЦЕ ИГРЫ</li>

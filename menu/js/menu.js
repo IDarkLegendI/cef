@@ -360,6 +360,7 @@ let menu = new Vue({
 
         //VIP
         vip: 'premium',
+        myEndTime: Date.now() + 40000,
 
         //Misc
         anyVar: null,
@@ -397,6 +398,7 @@ let menu = new Vue({
             score: 'SCORE',
             wins: 'WINS',
             hours: 'PLAYED HOURS',
+            hours2: 'HOURS',
             awards: 'AWARDS',
             gifts: 'Get gifts',
             person: 'THE CHARACTER',
