@@ -219,7 +219,7 @@
                                     </div>
                                     <div class="noobpart2">
                                         <div class="noobbtn">
-                                            <span class="minibtn" id="mouseFocus">{{i18n.license}}</span>
+                                            <span class="minibtn" id="mouseFocus" v-on:click="emit('customNotify', 3, i18n.comingSoon)">ROYALPASS</span>
                                             <span class="minibtn" id="mouseFocus"
                                                 v-on:click="switchPage(4)">{{i18n.control}}</span>
                                         </div>
@@ -1037,7 +1037,7 @@
                             <h2 style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.5vh;">{{i18n.endPriv}}: {{getVipEndTime()}}</h2>
                             <div class="infoDonate"> 
                                 <ul>
-                                    <li>НА {{(assortPriv[vip].bonus * +100) - +100}}% БОЛЬШЕ ДЕНЕГ В КОНЦЕ ИГРЫ</li>
+                                    <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}% {{i18n.moreMoneyEndGame}}</li>
                                     <li>EXAMPLE</li>
                                     <li>EXAMPLE</li>
                                     <li>EXAMPLE</li>
