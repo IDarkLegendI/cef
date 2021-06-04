@@ -1031,7 +1031,7 @@
                         </div>
                     </div>
                     <div class="donateMain"
-                        style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-evenly;">
+                        style="flex-basis: 35%; display: flex; flex-direction: column; justify-content: space-evenly;">
                         <div :class="vip" class="elDonateBlock donatform form" style="height: 55.5vh; flex-basis: auto">
                             <h1 class="infoHeading">{{vip.toUpperCase()}}</h1>
                             <h1 style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.5vh; font-weight: 100; letter-spacing: 0">{{i18n.endPriv}}: {{getVipEndTime()}}</h1>
@@ -1039,8 +1039,10 @@
                                 <ul>
                                     <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}% {{i18n.moreMoneyEndGame}}</li>
                                     <li>{{i18n.tuning}} {{vipLevel}} {{i18n.level}}</li>
-                                    <li>{{i18n.reloadQuickMarker}} {{i18n.second}}: {{((2 - +assortPriv[vip].bonus) * 10).toFixed(0)}}</li>
+                                    <li>{{i18n.reloadQuickMarker}} {{((2 - +assortPriv[vip].bonus) * 10).toFixed(0)}} {{i18n.second}}{{lang === 'ru' ? assortPriv[vip].bonus === 1.7 ? "Ы" : "" : ""}}</li>
                                     <li>CASHBACK {{(100 / +(2/assortPriv[vip].bonus)).toFixed(0)}}% {{i18n.cashBackVIP}}</li>
+                                    <li>{{i18n.componentsVIP}} {{(100 * +assortPriv[vip].bonus) - +100}}%</li>
+                                    <li>{{i18n.armourVIP}}: {{(2 * +assortPriv[vip].k).toFixed(0)}}</li>
                                 </ul>
                             </div>
                         </div>

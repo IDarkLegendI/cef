@@ -473,6 +473,8 @@ let menu = new Vue({
             second: "SECONDS",
             reloadQuickMarker: "RELOADING THE QUICK MARK FOR",
             cashBackVIP: "FOR SELLING OLD CLOTHES",
+            componentsVIP: "INCREASED CHANCE OF DROPPING MODIFICATIONS FOR HEAVY SNIPER BY",
+            armourVIP: "ARMOR AT THE START OF THE MATCH",
         },
         i18nTemp: null,
         avatars: {
@@ -1165,6 +1167,8 @@ let menu = new Vue({
                 second: "СЕКУНД",
                 reloadQuickMarker: "ПЕРЕЗАРЯДКА БЫСТРОЙ МЕТКИ ЗА",
                 cashBackVIP: "ЗА ПРОДАЖУ СТАРОЙ ОДЕЖДЫ",
+                componentsVIP: "ПОВЫШЕННЫЙ ШАНС ВЫПАДЕНИЯ МОДИФИКАЦИЙ ДЛЯ HEAVY SNIPER НА",
+                armourVIP: "БРОНЯ ПРИ НАЧАЛЕ МАТЧА",
             }
         },
         loadEn() {
