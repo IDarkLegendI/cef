@@ -1034,13 +1034,13 @@
                         style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-evenly;">
                         <div :class="vip" class="elDonateBlock donatform form" style="height: 55.5vh; flex-basis: auto">
                             <h1 class="infoHeading">{{vip.toUpperCase()}}</h1>
-                            <h2 style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.5vh;">{{i18n.endPriv}}: {{getVipEndTime()}}</h2>
+                            <h1 style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.5vh; font-weight: 100; letter-spacing: 0">{{i18n.endPriv}}: {{getVipEndTime()}}</h1>
                             <div class="infoDonate"> 
                                 <ul>
                                     <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}% {{i18n.moreMoneyEndGame}}</li>
                                     <li>{{i18n.tuning}} {{vipLevel}} {{i18n.level}}</li>
-                                    <li>{{i18n.reloadQuickMarker}} {{(2 - +assortPriv[vip].bonus) * 10}} {{i18n.second}}</li>
-                                    <li>{{(100 / +(2/assortPriv[vip].bonus)).toFixed(0)}}% {{i18n.cashBackVIP}}</li>
+                                    <li>{{i18n.reloadQuickMarker}} {{i18n.second}}: {{((2 - +assortPriv[vip].bonus) * 10).toFixed(0)}}</li>
+                                    <li>CASHBACK {{(100 / +(2/assortPriv[vip].bonus)).toFixed(0)}}% {{i18n.cashBackVIP}}</li>
                                 </ul>
                             </div>
                         </div>

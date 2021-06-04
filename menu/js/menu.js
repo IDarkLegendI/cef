@@ -466,13 +466,13 @@ let menu = new Vue({
             bonus: "BONUS",
             moreMoneyEndGame: "MORE MONEY AT THE END OF THE GAME",
             na: "ON",
-            endPriv: "UNTIL THE END OF THE SUBSCRIPTION:",
+            endPriv: "UNTIL THE END OF THE SUBSCRIPTION", 
             comingSoon: "THIS SECTION WILL BE AVAILABLE SOON!",
             level: "LEVEL",
             tuning: "TUNING OF PERSONAL TRANSPORT", 
             second: "SECONDS",
             reloadQuickMarker: "RELOADING THE QUICK MARK FOR",
-            cashBackVIP: "CASHBACK FOR SELLING OLD CLOTHES",
+            cashBackVIP: "FOR SELLING OLD CLOTHES",
         },
         i18nTemp: null,
         avatars: {
@@ -1158,13 +1158,13 @@ let menu = new Vue({
                 bonus: "БОНУС",
                 moreMoneyEndGame: "БОЛЬШЕ ДЕНЕГ В КОНЦЕ ИГРЫ",
                 na: "НА",
-                endPriv: "ДО ОКОНЧАНИЯ ПОДПИСКИ:",
+                endPriv: "ДО ОКОНЧАНИЯ ПОДПИСКИ",
                 comingSoon: "ЭТОТ РАЗДЕЛ СКОРО СТАНЕТ ДОСТУПЕН!",
                 level: "УРОВНЯ",
                 tuning: "ТЮНИНГ ЛИЧНОГО ТРАНСПОРТА",
                 second: "СЕКУНД",
                 reloadQuickMarker: "ПЕРЕЗАРЯДКА БЫСТРОЙ МЕТКИ ЗА",
-                cashBackVIP: "CASHBACK ЗА ПРОДАЖУ СТАРОЙ ОДЕЖДЫ",
+                cashBackVIP: "ЗА ПРОДАЖУ СТАРОЙ ОДЕЖДЫ",
             }
         },
         loadEn() {
@@ -1455,6 +1455,7 @@ let menu = new Vue({
         getVipEndTime()
         {
             let left = this.myEndTime - +Date.now()
+            console.log(`getVipEndTime: ${this.myEndTime}; left: ${left}`)
             if(+left > +86400000)
             {
                 left /= +86400000;
