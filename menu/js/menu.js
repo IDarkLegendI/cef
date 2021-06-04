@@ -1589,7 +1589,9 @@ if ('alt' in window) {
         console.log(`updateFriends: ${JSON.stringify(menu.friends)}`)
         if (requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);
         if (requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);
-        this.translateSubPages()
+        setTimeout(() => {
+            menu.translateSubPages()
+        }, 100)
         console.log(`menu.requestsOut: ${menu.requestsOut}`)
         // menu.updateOnline(allPlayers); 
     })

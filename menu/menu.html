@@ -410,7 +410,7 @@
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
                                                 <div class="btnszapros">
-                                                    <div class="btnzapros" data-title="Добавить" id="i18nAdd">
+                                                    <div class="btnzapros" id="i18nAdd">
                                                         <img v-on:click="emit('cFriends:addRequest', friend, friends, requestsIn, requestsOut)"
                                                             src="img/plusbtn.png" alt="">
                                                     </div>
@@ -466,7 +466,7 @@
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
-                                                <div class="btnzapros" data-title="Отменить" id="i18nCancel">
+                                                <div class="btnzapros" id="i18nCancel"> 
                                                     <img v-on:click="request(friend, 'requestsOut')" src="img/close.png"
                                                         alt="">
                                                 </div>
