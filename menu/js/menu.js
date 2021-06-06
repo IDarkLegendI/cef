@@ -341,6 +341,7 @@ let menu = new Vue({
             }, 
         },
         assortSelected: 'vip',
+        assortDays: '30',
         //Manage VIP
         gait: {
             name: 'Normal',
@@ -1478,6 +1479,12 @@ let menu = new Vue({
             else left = `<1 ${this.i18n.minutes}`
 
             return left
+        },
+        getVipPrice()
+        {
+            let value = this.assortPriv[this.assortSelected].k * this.assortDays
+            if(this.assortDays > 30) value -= +((this.assortDays/+30) * +25)
+            return Math.ceil(value)
         },
         // getVipLevel(vip = menu.vip)
         // {

@@ -960,10 +960,16 @@
                             </div>
                             <div class="settingsh1" style="padding-top: 1vh;">
                                 <h1 style="font-size: 2.5vh">{{i18n.pricePrivileges}}:
-                                    {{Math.ceil(assortPriv[assortSelected].k * 30)}} RM</h1>
+                                    {{getVipPrice()}} RM</h1>
                             </div>
                             <div class="settingsh1" style="padding-top: 1vh;">
-                                <h1 style="font-size: 2.5vh">{{i18n.timeActions}}: 30 {{i18n.days}}</h1>
+                                <h1 style="font-size: 2.5vh">{{i18n.timeActions}}: {{assortDays}} {{i18n.days}}</h1>
+                            </div>
+                            <div class="settingsh1" style="padding-top: 1vh;">
+                                <span :class="{minibtnRed: +assortDays === +30}" class="minibtn" v-on:click="assortDays = 30">30</span>
+                                <span :class="{minibtnRed: +assortDays === +60}" class="minibtn" v-on:click="assortDays = 60">60</span>
+                                <span :class="{minibtnRed: +assortDays === +90}" class="minibtn" v-on:click="assortDays = 90">90</span>
+                                <span :class="{minibtnRed: +assortDays === +120}" class="minibtn" v-on:click="assortDays = 120">120</span>
                             </div>
                             <div class="settingsh1" style="padding-top: 3vh;">
                                 <h1 style="font-size: 1vh">{{i18n.agreeOffer}}</h1>
@@ -972,7 +978,7 @@
                                 <a href="#" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);"
                                     v-on:click="switchPage(3, 0)">{{i18n.btnBack}}</a>
                                 <a href="#" id="mouseFocus"
-                                    v-on:click="switchPage(0, 0); emitServer('sVIP:buy', assortSelected)">{{i18n.iAgree}}</a>
+                                    v-on:click="switchPage(0, 0); emitServer('sVIP:buy', assortSelected, assortDays)">{{i18n.iAgree}}</a>
                             </div>
                         </div>
                     </section>
