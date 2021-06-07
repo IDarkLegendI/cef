@@ -856,6 +856,7 @@ let menu = new Vue({
             //     this.anyVarSecond = null;
             //     this.anyVarC = null;
             // }
+            this.updateTuning = false;
             this.recordKey = false;
             if (this.page === 5 && newPage === 0) this.wsWin = false
         },
