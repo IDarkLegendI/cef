@@ -286,11 +286,12 @@ var hud = new Vue({
         }
     }, 
     methods: {
-        fUpdateKills(name, dist)
+        fUpdateKills(name, dist, kills = 1)
         {
-            this.kills += 1;
+            this.kills += kills;
+            if(kills === -1) return
             this.killsBar = [name, dist];
-            if(this.killsHandle != null) clearTimeout(this.killsHandle);
+            if(this.killsHandle !== null) clearTimeout(this.killsHandle);
 
             this.killsBarShow = true;
             this.killsHandle = setTimeout(() => { 
@@ -429,7 +430,7 @@ if ('alt' in window) {
     alt.on('updateAlive', count => { 
         hud.alivePlayers = count; 
     }) 
-    alt.on('giveKill', hud.fUpdateKills)
+    // alt.on('giveKill', hud.fUpdateKills)
 
     alt.on('toggleLoad', toggle => hud.showLogo = toggle)
  
@@ -453,6 +454,7 @@ if ('alt' in window) {
 
     alt.on('fPlayAudio',(name, volume) => hud.fPlayAudio(name, volume))       
     alt.on('changeVar', (...args) => hud.changeVar(...args)) 
+    alt.on('useFunction', (...args) => hud.useFunction(...args))  
 }  
 else  
 { 
