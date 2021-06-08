@@ -187,7 +187,7 @@ html {
 }
 
 .down {
-  width: 100%;
+  width: 90vw;
   height: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -220,7 +220,7 @@ html {
 }
 
 .upleft {
-  width: 100%;
+  width: 64.4vw;
   height: 45vh;
   display: -webkit-box;
   display: -ms-flexbox;
