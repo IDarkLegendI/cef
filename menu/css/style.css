@@ -345,8 +345,8 @@ html {
   border-color: #c48f00;
   -webkit-box-shadow: 0 0 10px #c48f00, inset 0 0 10px #c48f00;
           box-shadow: 0 0 10px #c48f00, inset 0 0 10px #c48f00;
-  -webkit-transition: .2s ease-out;
-  transition: .2s ease-out;
+  -webkit-transition: .4s ease-out;
+  transition: .4s ease-out;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -357,7 +357,12 @@ html {
 }
 
 .noob:hover {
-  background-color: #c48f00;
+  background-color: #ffd9008e;
+  border-color: #ffd900;
+  -webkit-box-shadow: 0 0 15px #ffd900, inset 0 0 5px #ffd900;
+          box-shadow: 0 0 15px #ffd900, inset 0 0 5px #ffd900;
+  -webkit-transition: .4s ease-out;
+  transition: .4s ease-out;
 }
 
 .noob:hover span {
@@ -423,6 +428,20 @@ html {
 
 .backpack:hover {
   background-color: #fc0c04;
+}
+
+.noneBackGround:hover {
+  background-color: #ffffff00;
+}
+
+.superHoverRed:hover {
+  color: #ffffff;
+  background-color: #f835352c;
+  border-color: #f80c03;
+  -webkit-box-shadow: 0 0 15px #f80c03, inset 0 0 5px #f80c03;
+          box-shadow: 0 0 15px #f80c03, inset 0 0 5px #f80c03;
+  -webkit-transition: .4s ease-out;
+  transition: .4s ease-out;
 }
 
 .rankContent {
