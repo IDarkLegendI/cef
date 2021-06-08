@@ -436,7 +436,7 @@ html {
 
 .superHoverRed:hover {
   color: #ffffff;
-  background-color: #f835352c;
+  background-color: #f80b0385;
   border-color: #f80c03;
   -webkit-box-shadow: 0 0 15px #f80c03, inset 0 0 5px #f80c03;
           box-shadow: 0 0 15px #f80c03, inset 0 0 5px #f80c03;
@@ -562,8 +562,8 @@ html {
   border-color: #0092be;
   -webkit-box-shadow: 0 0 5px #00c3ff, inset 0 0 5px #00ace0;
           box-shadow: 0 0 5px #00c3ff, inset 0 0 5px #00ace0;
-  -webkit-transition: .2s ease-out;
-  transition: .2s ease-out;
+  -webkit-transition: .4s ease-out;
+  transition: .4s ease-out;
 }
 
 .virtname {
@@ -581,7 +581,12 @@ html {
 }
 
 .virt:hover {
-  background-color: #0092be;
+  background-color: #04c4ff9c;
+  border-color: #04c4ff;
+  -webkit-box-shadow: 0 0 15px #04c4ff, inset 0 0 5px #04c4ff;
+          box-shadow: 0 0 15px #04c4ff, inset 0 0 5px #04c4ff;
+  -webkit-transition: .4s ease-out;
+  transition: .4s ease-out;
 }
 
 .virticon {
