@@ -963,6 +963,7 @@ let menu = new Vue({
         },
 
         answerInvite(value) {
+            if(this.myData === null) return;
             this.emitServer('sLobby:answerInvite', value, this.lobbyID)
             this.lobbyID = 0;
             this.myData = null;
