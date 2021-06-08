@@ -786,13 +786,15 @@ let menu = new Vue({
                 })
             }
         },
+        //Page = -3 -> игнорирование запроса о смене страницы
         switchPage(newPage, newSubPage = -1) {
+            if(newPage === -3) return;
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 
                 console.log(`switchPage: ${newPage}; ${newSubPage}`)
                 // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
-                if (newSubPage != -1 || this.nextSubPage !== -1) {
+                if (newSubPage !== -1 || this.nextSubPage !== -1) {
                     // if(newPage == 0) return this.subPage = newSubPage;
                     this.page = newPage;
                     this.subPage = -2;
@@ -809,7 +811,7 @@ let menu = new Vue({
                     //При закрывании страницы
                     if(newPage === -2) 
                     {
-                        menu.lastPage = this.page;
+                        menu.lastPage = this.page; 
                         newPage = 0;
                     }
                     //При открывании страницы, если надо ластовую
@@ -1662,7 +1664,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(3, 1)
+        menu.switchPage(0, 4)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])

@@ -175,7 +175,7 @@
                                     <!-- Если игрок в игре -->
                                     <section v-else>
                                         <div class="ticket ticketRed form" id="mouseFocus"
-                                            v-on:click="emitServer('sMenu:endGame')">
+                                            v-on:click="emitServer('sMenu:endGame', -3)">
                                             <div class="textticket" style="justify-content: center;">
                                                 <div class="textticket1">{{i18n.stop}} <span
                                                         class="textticket2">{{i18n.game}}</span>
