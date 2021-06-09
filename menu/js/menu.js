@@ -819,6 +819,7 @@ let menu = new Vue({
                     this.page = newPage;
                     let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
                     Vue.set(objInvite, 'name', menu.i18n.inviteText) 
+                    this.resetPageAfter();
 
                     if (this.coolDown) return;
                     this.coolDown = true;
@@ -860,6 +861,10 @@ let menu = new Vue({
             // }
             this.updateTuning = false;
             this.recordKey = false;
+        },
+
+        resetPageAfter()
+        {
             if (this.page === 5 && newPage === 0) this.wsWin = false
         },
 
