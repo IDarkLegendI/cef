@@ -313,7 +313,8 @@ let menu = new Vue({
         //Admin
         adminLevel: 0,
 
-        //Inventory
+        //Bell
+        news: null,
 
         //Misc
         miscInput: '',
@@ -364,6 +365,9 @@ let menu = new Vue({
         vipLevel: 2,
         myEndTime: Date.now() + 40000,
 
+        //Report
+        reportType: -1,
+
         //Misc
         anyVar: null,
         anyVarSecond: null,
@@ -380,7 +384,7 @@ let menu = new Vue({
             notready: 'NOT READY',
             inGame: 'IN GAME',
             topap: 'TOP UP YOUR BALANCE',
-            managmentSub: 'MANAGE SUBSCRIPTIONS',
+            managmentSub: 'REPORT SYSTEM',
             control: 'MANAGE',
             start: 'START',
             game: 'GAME',
@@ -476,6 +480,7 @@ let menu = new Vue({
             cashBackVIP: "FOR SELLING OLD CLOTHES",
             componentsVIP: "INCREASED CHANCE OF DROPPING MODIFICATIONS FOR HEAVY SNIPER BY",
             armourVIP: "ARMOR AT THE BEGINNING OF THE MATCH",
+            bell: "NOTIFICATIONS",
         },
         i18nTemp: null,
         avatars: {
@@ -579,7 +584,7 @@ let menu = new Vue({
             86: 'v',
             87: 'w',
             88: 'x',
-            89: 'y',
+            // 89: 'y', 
             90: 'z',
             91: 'Win Key',
             92: 'r. Win Key',
@@ -867,7 +872,6 @@ let menu = new Vue({
         {
             if (this.page === 5 && newPage === 0) this.wsWin = false
         },
-
         fLoadJP(selected) {
             this.anyVar = selected[0];
             this.anyVarC = selected;
@@ -970,6 +974,7 @@ let menu = new Vue({
         answerInvite(value) {
             if(this.myData === null) return;
             this.emitServer('sLobby:answerInvite', value, this.lobbyID)
+            if(this.nextSubPage === 4) this.nextSubPage = 0; 
             this.lobbyID = 0;
             this.myData = null;
             this.switchPage(0, 0);
@@ -1083,7 +1088,7 @@ let menu = new Vue({
                 notready: 'НЕ ГОТОВ',
                 inGame: 'В ИГРЕ',
                 topap: 'ПОПОЛНИТЬ БАЛАНС',
-                managmentSub: 'УПРАВЛЕНИЕ ПОДПИСКАМИ',
+                managmentSub: 'СВЯЗЬ С АДМИНИСТРАЦИЕЙ',
                 control: 'УПРАВЛЕНИЕ',
                 start: 'НАЧАТЬ',
                 game: 'ИГРУ',
@@ -1179,6 +1184,7 @@ let menu = new Vue({
                 cashBackVIP: "ЗА ПРОДАЖУ СТАРОЙ ОДЕЖДЫ",
                 componentsVIP: "ПОВЫШЕННЫЙ ШАНС ВЫПАДЕНИЯ МОДИФИКАЦИЙ ДЛЯ HEAVY SNIPER НА",
                 armourVIP: "БРОНЯ В НАЧАЛЕ МАТЧА",
+                bell: "УВЕДОМЛЕНИЯ",
             }
         },
         loadEn() {
@@ -1670,9 +1676,11 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.switchPage(0, 4)
+        menu.news = [{name: "1111111111111111112224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
+        menu.switchPage(0, 5)
         menu.plusMoney = 5
         menu.bonusMoney = 5
+        menu.wsWin = true
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
     }, 100)

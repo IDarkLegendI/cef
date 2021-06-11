@@ -46,7 +46,7 @@
                                     <span>{{i18n.topap}}</span>
                                 </div>
                                 <div class="btn" id="mouseFocus" v-if="adminLevel === 0">
-                                    <span>{{i18n.managmentSub}}</span>
+                                    <span v-on:click="switchPage(6,0)">{{i18n.managmentSub}}</span>
                                 </div>
                                 <div class="btn" id="mouseFocus" v-else>
                                     <span>АДМИНИСТРИРОВАНИЕ</span>
@@ -219,7 +219,8 @@
                                     </div>
                                     <div class="noobpart2">
                                         <div class="noobbtn">
-                                            <span class="minibtn" id="mouseFocus" v-on:click="emit('customNotify', 3, i18n.comingSoon)">ROYALPASS</span>
+                                            <span class="minibtn" id="mouseFocus"
+                                                v-on:click="emit('customNotify', 3, i18n.comingSoon)">ROYALPASS</span>
                                             <span class="minibtn" id="mouseFocus"
                                                 v-on:click="switchPage(4)">{{i18n.control}}</span>
                                         </div>
@@ -287,6 +288,9 @@
 
                                 <div class="headright">
                                     <span class="headright1">{{i18n.person}}</span>
+                                    <div class="headrightImg">  
+                                        <img :class="{'animated infinite wobble slower active': news !== null}" :src="`./img/${news === null ? 'bell3' : 'bellActive'}.png`" style="width: 2vw;" v-on:click="switchPage(0,5)">
+                                    </div>    
                                 </div>
                                 <div class="textright">
                                     <span class="minibtn" id="mouseFocus"
@@ -401,8 +405,8 @@
                                     <div class="zaprosi" :style="{flexBasis: findFriend().length === 1 ? '25%' : '60%'}"
                                         v-if="miscInput.length > 1 && findFriend().length !== 0">
                                         <transition-group name="list-complete" tag="div">
-                                            <div class="zapros list-complete-item"
-                                                v-bind:key="friend" v-for="(friend, index) in findFriend()">
+                                            <div class="zapros list-complete-item" v-bind:key="friend"
+                                                v-for="(friend, index) in findFriend()">
                                                 <div class="avatarnickzapros">
                                                     <div class="avatarzapros">
                                                         <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
@@ -422,7 +426,7 @@
 
                                 <!-- ВХОДЯЩИЕ ЗАЯВКИ -->
                                 <div class="friendsh1" v-if="requestsIn[0]">
-                                    <h1>{{i18n.requestsIn}}</h1>
+                                    <h1 style="font-size: 1.8vw">{{i18n.requestsIn}}</h1>
                                 </div>
                                 <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
                                     leave-active-class="animated bounceOutUp">
@@ -452,7 +456,7 @@
                                 </transition>
 
                                 <div class="friendsh1" v-if="requestsOut[0]">
-                                    <h1>{{i18n.requestsOut}}</h1>
+                                    <h1 style="font-size: 1.8vw">{{i18n.requestsOut}}</h1>
                                 </div>
                                 <transition name="custom-classes-transition" enter-active-class="animated bounceInUp"
                                     leave-active-class="animated bounceOutUp">
@@ -466,7 +470,7 @@
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
-                                                <div class="btnzapros" id="i18nCancel"> 
+                                                <div class="btnzapros" id="i18nCancel">
                                                     <img v-on:click="request(friend, 'requestsOut')" src="img/close.png"
                                                         alt="">
                                                 </div>
@@ -484,10 +488,9 @@
                         </transition>
 
                         <!-- ПРИГЛАШЕНИЕ В ЛОББИ -->
-
                         <transition name="person-friend2">
                             <div class="rightNoHover" v-show="subPage === 4">
-                                <div class="friendsh1">
+                                <div class="friendsh1" style="font-size: 1.5vw;">
                                     <h1>{{i18n.inviteToLobby + ' №' + lobbyID}}</h1>
                                 </div>
                                 <div class="zaprosi">
@@ -509,6 +512,34 @@
                                         v-on:click="answerInvite(false)">{{i18n.cancel}}</span>
                                     <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">
                                         {{i18n.accept}}</span>
+                                </div>
+                            </div>
+                        </transition>
+
+                        <!-- НОВОСТИ -->
+                        <transition name="person-friend2">
+                            <div class="rightNoHover" v-show="subPage === 5">
+                                <div class="friendsh1">
+                                    <h1>{{i18n.bell}}</h1>
+                                </div>
+                                <div class="zaprosi">
+                                    <transition-group name="list-complete" tag="div">
+                                        <div class="zapros list-complete-item" v-bind:key="friend.name"
+                                            v-for="(friend, index) in news">
+                                            <div class="avatarnickzapros">
+                                                <div class="avatarzapros">
+                                                    <!-- 0 - error, 1 - ok -->
+                                                    <img src="../menu/img/accepted.png" v-if="friend.type">
+                                                    <img src="../menu/img/no.png" v-else>
+                                                </div>
+                                                <div class="nickzapros"><h1>{{friend.name}}</h1></div>
+                                            </div>
+                                        </div>
+                                    </transition-group>
+                                </div>
+                                <div class="btnbackperson">
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 0)"><span>{{i18n.person}}</span></span>
                                 </div>
                             </div>
                         </transition>
@@ -613,10 +644,12 @@
                             <div class="checkboxtest">
                                 <span style="display: flex; align-items: center;">
                                     {{i18n.volume}}
-                                    <img class="settingsSound" src="./img/sound.png" style="width: 1.3vw; padding-left: 1vw;" v-on:click="emit('cAudio:play', 'prison_alarm_01', volume)">
-                                </span> 
+                                    <img class="settingsSound" src="./img/sound.png"
+                                        style="width: 1.3vw; padding-left: 1vw;"
+                                        v-on:click="emit('cAudio:play', 'prison_alarm_01', volume)">
+                                </span>
                                 <div class="settingCenter">
-                                    <input max="1" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range" 
+                                    <input max="1" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range"
                                         v-model="volume">
                                 </div>
                             </div>
@@ -625,20 +658,17 @@
                                     <h1>{{i18n.sizeMap}}</h1>
                                 </div>
                                 <div class="mapchoice">
-                                    <label
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                    <label>
                                         <input class="option-input radio" id="map-0" type="radio" v-model="sizeMap"
                                             value="0">
                                         <span>{{i18n.small}}</span>
                                     </label>
-                                    <label
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                    <label>
                                         <input class="option-input radio" id="map-1" type="radio" v-model="sizeMap"
                                             value="1">
                                         <span>{{i18n.normal}}</span>
                                     </label>
-                                    <label
-                                        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                    <label>
                                         <input class="option-input radio" id="map-2" type="radio" v-model="sizeMap"
                                             value="2">
                                         <span>{{i18n.big}}</span>
@@ -676,7 +706,7 @@
                             <div class="panel-row">
                                 <div class="spectrum-map">
                                     <button class="color-cursor" id="spectrum-cursor"></button>
-                                    <canvas id="spectrum-canvas"></canvas> 
+                                    <canvas id="spectrum-canvas"></canvas>
                                 </div>
                                 <div class="hue-map">
                                     <button class="color-cursor" id="hue-cursor"></button>
@@ -738,7 +768,7 @@
                                     </section>
                                 </section>
                                 <section style="display: flex; align-items: center;" v-else>
-                                    <a id="mouseFocus" style="background-color: #fffb00"
+                                    <a id="mouseFocus" style="background-color: #fffb00; color: black"
                                         v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
                                 </section>
                             </div>
@@ -966,10 +996,14 @@
                                 <h1 style="font-size: 2.5vh">{{i18n.timeActions}}: {{assortDays}} {{i18n.days}}</h1>
                             </div>
                             <div class="settingsh1" style="padding-top: 1vh;">
-                                <span :class="{minibtnRed: +assortDays === +30}" class="minibtn" v-on:click="assortDays = 30">30</span>
-                                <span :class="{minibtnRed: +assortDays === +60}" class="minibtn" v-on:click="assortDays = 60">60</span>
-                                <span :class="{minibtnRed: +assortDays === +90}" class="minibtn" v-on:click="assortDays = 90">90</span>
-                                <span :class="{minibtnRed: +assortDays === +120}" class="minibtn" v-on:click="assortDays = 120">120</span>
+                                <span :class="{minibtnRed: +assortDays === +30}" class="minibtn"
+                                    v-on:click="assortDays = 30">30</span>
+                                <span :class="{minibtnRed: +assortDays === +60}" class="minibtn"
+                                    v-on:click="assortDays = 60">60</span>
+                                <span :class="{minibtnRed: +assortDays === +90}" class="minibtn"
+                                    v-on:click="assortDays = 90">90</span>
+                                <span :class="{minibtnRed: +assortDays === +120}" class="minibtn"
+                                    v-on:click="assortDays = 120">120</span>
                             </div>
                             <div class="settingsh1" style="padding-top: 3vh;">
                                 <h1 style="font-size: 1vh">{{i18n.agreeOffer}}</h1>
@@ -1004,9 +1038,10 @@
                 <div style="display: flex; justify-content: space-around;">
                     <div class="donateMain"
                         style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-around;">
-                        <div class="elDonateBlock form" id="mouseFocus" v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1, 'jp')">
+                        <div class="elDonateBlock form" id="mouseFocus"
+                            v-on:click="emit('cCar:setCarPreview', true, lobby[myID].ready === 1, 'jp')">
                             <div class="elDonateBlockContent">
-                                <h1>JETPACK</h1> 
+                                <h1>JETPACK</h1>
                                 <span>{{i18n.control}}</span>
                             </div>
                             <div class="iconJetPack">
@@ -1017,38 +1052,48 @@
                         <div class="elDonateBlock form" style="height: auto;">
                             <div class="elDonateBlockContent">
                                 <h1>{{i18n.gait}}</h1>
-                                <span :style="{color: gait.vipLevel === 0 ? 'black' : gait.vipLevel === 1 ? 'orange' : gait.vipLevel === 2 ? '#47b139' : '#ff0000'}">
+                                <span
+                                    :style="{color: gait.vipLevel === 0 ? 'black' : gait.vipLevel === 1 ? 'orange' : gait.vipLevel === 2 ? '#47b139' : '#ff0000'}">
                                     {{gait.name === 'Normal' ? i18n.none2 : gait.name.toUpperCase()}}
                                 </span>
-                            </div> 
+                            </div>
                             <div style="display: flex;">
                                 <div class="arrowleft vipArrow" style="margin-right: 1vw;">
-                                    <img src="./img/arrowLeftRed.png" style="height: 5vh; width: 3vw;" v-on:click="emit('cWalking:change', gait.name, false)">
+                                    <img src="./img/arrowLeftRed.png" style="height: 5vh; width: 3vw;"
+                                        v-on:click="emit('cWalking:change', gait.name, false)">
                                 </div>
                                 <div class="iconJetPack">
                                     <img alt="" src="./img/donate/runner.png" style="height: 22vh; width: 14vw;">
-                                </div> 
+                                </div>
                                 <div style="display: flex; align-items: center;">
-                                    <div class="arrowright vipArrow" style="margin-left: 1vw;">  
-                                        <img src="./img/arrowRightRed.png" style="height: 5vh; width: 3vw;" v-on:click="emit('cWalking:change', gait.name, true)">
+                                    <div class="arrowright vipArrow" style="margin-left: 1vw;">
+                                        <img src="./img/arrowRightRed.png" style="height: 5vh; width: 3vw;"
+                                            v-on:click="emit('cWalking:change', gait.name, true)">
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                     <div class="donateMain"
                         style="flex-basis: 35%; display: flex; flex-direction: column; justify-content: space-evenly;">
                         <div :class="vip" class="elDonateBlock donatform form" style="height: 55.5vh; flex-basis: auto">
                             <h1 class="infoHeading">{{vip.toUpperCase()}}</h1>
-                            <h1 style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.5vh; font-weight: 100; letter-spacing: 0">{{i18n.endPriv}}: {{getVipEndTime()}}</h1>
-                            <div class="infoDonate"> 
+                            <h1
+                                style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.5vh; font-weight: 100; letter-spacing: 0">
+                                {{i18n.endPriv}}: {{getVipEndTime()}}</h1>
+                            <div class="infoDonate">
                                 <ul>
-                                    <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}% {{i18n.moreMoneyEndGame}}</li>
+                                    <li>{{i18n.armourVIP}}: {{(2 * +assortPriv[vip].k).toFixed(0)}}%</li>
+                                    <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}%
+                                        {{i18n.moreMoneyEndGame}}</li>
                                     <li>{{i18n.tuning}} {{vipLevel}} {{i18n.level}}</li>
-                                    <li>{{i18n.reloadQuickMarker}} {{((2 - +assortPriv[vip].bonus) * 10).toFixed(0)}} {{i18n.second}}{{lang === 'ru' ? assortPriv[vip].bonus === 1.7 ? "Ы" : "" : ""}}</li>
-                                    <li>CASHBACK {{(100 / +(2/assortPriv[vip].bonus)).toFixed(0)}}% {{i18n.cashBackVIP}}</li>
-                                    <li>{{i18n.componentsVIP}} {{(100 * +assortPriv[vip].bonus) - +100}}%</li>
-                                    <li>{{i18n.armourVIP}}: {{(2 * +assortPriv[vip].k).toFixed(0)}}</li>
+                                    <li>{{i18n.reloadQuickMarker}} {{((2 - +assortPriv[vip].bonus) * 10).toFixed(0)}}
+                                        {{i18n.second}}{{lang === 'ru' ? assortPriv[vip].bonus === 1.7 ? "Ы" : "" : ""}}
+                                    </li>
+                                    <li>CASHBACK {{(100 / +(2/assortPriv[vip].bonus)).toFixed(0)}}% {{i18n.cashBackVIP}}
+                                    </li>
+                                    <li style="font-size: 0.8vw;">{{i18n.componentsVIP}}
+                                        {{(100 * +assortPriv[vip].bonus) - +100}}%</li>
                                 </ul>
                             </div>
                         </div>
@@ -1097,25 +1142,26 @@
                             </div>
                         </div>
                         <!-- <div style="display: flex; flex-direction: column; height: 20vh; justify-content: space-between;"> -->
-                            <div class="winEl" v-if="plusMoney !== 0">
-                                <h1 style="font-size: 2vw;">{{plusMoney > 0 ? "+" : "-"}}$</h1>
-                                <h1 class="winText">{{plusMoney < 0 ? plusMoney.toString().slice(1, 10000000) : plusMoney}}
-                                </h1>
-                                <div class="winElRight">
-                                    <h1>{{i18n.balance}}</h1>
-                                    <img alt="" src="./img/win/money-bag.png">
-                                </div>
+                        <div class="winEl" v-if="plusMoney !== 0">
+                            <h1 style="font-size: 2vw;">{{plusMoney > 0 ? "+" : "-"}}$</h1>
+                            <h1 class="winText">{{plusMoney < 0 ? plusMoney.toString().slice(1, 10000000) : plusMoney}}
+                            </h1>
+                            <div class="winElRight">
+                                <h1>{{i18n.balance}}</h1>
+                                <img alt="" src="./img/win/money-bag.png">
                             </div>
+                        </div>
                         <!-- </div> -->
                         <div class="winEl" v-if="bonusMoney !== 0">
                             <h1 style="font-size: 2vw;">{{bonusMoney > 0 ? "+" : "-"}}$</h1>
-                            <h1 class="winText">{{bonusMoney < 0 ? bonusMoney.toString().slice(1, 10000000) : bonusMoney}}
+                            <h1 class="winText">
+                                {{bonusMoney < 0 ? bonusMoney.toString().slice(1, 10000000) : bonusMoney}}
                             </h1>
                             <div class="winElRight">
                                 <h1>{{i18n.bonus}}</h1>
                                 <img alt="" src="./img/win/vip.png">
                             </div>
-                        </div> 
+                        </div>
                         <div class="winEl">
                             <h1 :style="{color: lastMatch >= 1 ? 'lime' : lastMatch <= -1 ? 'red' : 'orange'}"
                                 class="winText">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}</h1>
@@ -1138,6 +1184,53 @@
                         <button class="exitToMenu" v-on:click="switchPage(0, 0)">
                             <img src="./img/win/enter.png" alt=""> {{i18n.exitToMenu}}
                         </button>
+                    </div>
+                </div>
+            </section>
+        </transition>
+        <!-- Связь с администрацией -->
+        <transition enter-active-class="animated lightSpeedIn delay-1s" leave-active-class="animated rotateOutDownLeft"
+            name="custom-classes-transition">
+            <section v-if="page === 6">
+                <div style="display: flex; flex-direction: column;">
+                    <div class="upline">
+                        <div class="nameupline">
+                            <span>GTAROYAL.RU</span>
+                        </div>
+                        <span style="font-size: 3vh;">{{i18n.managmentSub}}</span>
+                        <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                            <span>{{i18n.btnBack}}</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;">
+                            <div class="mapchoice">
+                                <label>
+                                    <input class="option-input radio" id="map-0" type="radio" v-model="reportType"
+                                        value="0">
+                                    <span>ВОПРОС</span>
+                                </label>
+                                <label>
+                                    <input class="option-input radio" id="map-1" type="radio" v-model="reportType"
+                                        value="1">
+                                    <span>ЖАЛОБА</span>
+                                </label>
+                                <label>
+                                    <input class="option-input radio" id="map-2" type="radio" v-model="reportType"
+                                        value="2">
+                                    <span>ПРЕДЛОЖЕНИЕ</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="reportType === '0'">
+                        <h1>0</h1>
+                    </div>
+                    <div v-if="reportType === '1'">
+                        <h1>1</h1>
+                    </div>
+                    <div v-if="reportType === '2'">
+                        <h1>2</h1>
                     </div>
                 </div>
             </section>
@@ -1342,7 +1435,7 @@
         // setTimeout(() => {
         //     document.getElementById('fade').style.opacity = 1;
         // }, 1000);
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             let a = new Fireworks();
             a.run();
         }, false);
