@@ -368,6 +368,8 @@ let menu = new Vue({
         //Report
         reportType: -1,
         reportReason: -1,
+        reportInput: '',
+        reportPlayers: [],
 
         //Misc
         anyVar: null,
@@ -489,6 +491,8 @@ let menu = new Vue({
             useBugs: "USING BUGS",
             insult: "INSULT",
             intruderID: "Intruder ID",
+            questionInput: "Write your question", 
+            improvementInput: "Write your suggestion",
             send: "SEND",
         },
         i18nTemp: null,
@@ -759,7 +763,11 @@ let menu = new Vue({
 
         translateSubPages()
         {
-            if(this.subPage === 1) this.transleteById('i18nInvite', 'inviteText')
+            if(this.subPage === 1) 
+            {
+                this.transleteById('i18nInvite', 'inviteText')
+                this.transleteById('i18nSelect', 'select')
+            }
             else if(this.subPage === 2)
             {
                 this.transleteById('i18nActions', 'actions')
@@ -881,6 +889,12 @@ let menu = new Vue({
         {
             if (this.page === 5 && newPage === 0) this.wsWin = false
         },
+
+        setTimeout(nameFunction, time)
+        {
+            setTimeout(nameFunction, time)
+        },
+
         fLoadJP(selected) {
             this.anyVar = selected[0];
             this.anyVarC = selected;
@@ -1201,6 +1215,8 @@ let menu = new Vue({
                 useBugs: "ИСПОЛЬЗОВАНИЕ БАГОВ",
                 insult: "ОСКОРБЛЕНИЕ",
                 intruderID: "Идентификатор нарушителя",
+                questionInput: "Напишите Ваш вопрос",
+                improvementInput: "Напишите Ваше предложение",
                 send: "ОТПРАВИТЬ",
             }
         },
@@ -1677,6 +1693,7 @@ if ('alt' in window) {
                 online: true
             }
         ]
+        menu.reportPlayers = [{name: 'DARKLEGEND', id: 17}, {name: 'Vanya', id: 27}]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
