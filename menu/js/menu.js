@@ -2,7 +2,7 @@ let menu = new Vue({
     el: '#body',
     data: {
         // show: false,
-        page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
+        page: 6, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
         nextSubPage: -1,
         lastPage: 0,
@@ -367,6 +367,7 @@ let menu = new Vue({
 
         //Report
         reportType: -1,
+        reportReason: -1,
 
         //Misc
         anyVar: null,
@@ -1677,7 +1678,8 @@ if ('alt' in window) {
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
         menu.news = [{name: "1111111111111111112224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
-        menu.switchPage(0, 5)
+        // menu.switchPage(6, 0)
+        menu.page = 6
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true

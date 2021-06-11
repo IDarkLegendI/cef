@@ -3461,4 +3461,77 @@ input[type="button" i]:focus, .button :focus, .button :active {
   outline: 0;
   outline-offset: 0;
 }
+
+.group {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 1.5vw;
+}
+
+.inputText {
+  background: none;
+  font-size: 16px;
+  padding: 10px 0px;
+  display: block;
+  width: 28vw;
+  border: none;
+  border-bottom: 1px solid #999;
+  -webkit-filter: drop-shadow(0 0 5px black);
+          filter: drop-shadow(0 0 5px black);
+  color: white;
+}
+
+.inputText:focus {
+  outline: none;
+}
+
+.labelText {
+  color: #999;
+  font-size: 0.95vw;
+  position: absolute;
+  pointer-events: none;
+  -webkit-filter: drop-shadow(0 0 1px black);
+          filter: drop-shadow(0 0 1px black);
+  top: 15px;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+.inputText:focus ~ label,
+.inputText:valid ~ label {
+  top: -15px;
+  font-size: 0.8vw;
+  color: #ffffff;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 28vw;
+}
+
+.bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #ffffff;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+.inputText:focus ~ .bar:before,
+.inputText:focus ~ .bar:after {
+  width: 50%;
+}
 /*# sourceMappingURL=style.css.map */

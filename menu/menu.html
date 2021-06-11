@@ -288,9 +288,11 @@
 
                                 <div class="headright">
                                     <span class="headright1">{{i18n.person}}</span>
-                                    <div class="headrightImg">  
-                                        <img :class="{'animated infinite wobble slower active': news !== null}" :src="`./img/${news === null ? 'bell3' : 'bellActive'}.png`" style="width: 2vw;" v-on:click="switchPage(0,5)">
-                                    </div>    
+                                    <div class="headrightImg">
+                                        <img :class="{'animated infinite wobble slower active': news !== null}"
+                                            :src="`./img/${news === null ? 'bell3' : 'bellActive'}.png`"
+                                            style="width: 2vw;" v-on:click="switchPage(0,5)">
+                                    </div>
                                 </div>
                                 <div class="textright">
                                     <span class="minibtn" id="mouseFocus"
@@ -532,7 +534,9 @@
                                                     <img src="../menu/img/accepted.png" v-if="friend.type">
                                                     <img src="../menu/img/no.png" v-else>
                                                 </div>
-                                                <div class="nickzapros"><h1>{{friend.name}}</h1></div>
+                                                <div class="nickzapros">
+                                                    <h1>{{friend.name}}</h1>
+                                                </div>
                                             </div>
                                         </div>
                                     </transition-group>
@@ -1126,7 +1130,7 @@
                         <h1 style="padding-top: 2vh; font-style: oblique; font-size: 2vh;">{{phrase}}</h1>
                     </div>
                     <div class="winLine animated bounce slower">
-                        <div class="winEl" v-if="+kills > +0"> 
+                        <div class="winEl" v-if="+kills > +0">
                             <h1 class="winText">{{killsInMatch}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.kills}}</h1>
@@ -1222,15 +1226,38 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <div v-if="reportType === '0'">
-                        <h1>0</h1>
-                    </div>
-                    <div v-if="reportType === '1'">
-                        <h1>1</h1>
-                    </div>
-                    <div v-if="reportType === '2'">
-                        <h1>2</h1>
+                        <section>
+                            
+                        </section>
+                        <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;" v-if="reportType === '1'">
+                            <div class="mapchoice">
+                                <label>
+                                    <input class="option-input radio" id="map-0" type="radio" v-model="reportReason"
+                                        value="0">
+                                    <span>СТОРОННЕЕ ПО</span>
+                                </label>
+                                <label>
+                                    <input class="option-input radio" id="map-1" type="radio" v-model="reportReason"
+                                        value="1">
+                                    <span>ИСПОЛЬЗОВАНИЕ БАГОВ</span>
+                                </label>
+                                <label>
+                                    <input class="option-input radio" id="map-2" type="radio" v-model="reportReason"
+                                        value="2">
+                                    <span>ОСКОРБЛЕНИЕ</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div style="padding-top: 2vh;"  v-if="reportType === '1' && reportReason !== -1">
+                            <div class="group">      
+                                <input class="inputText" required type="text">
+                                <span class="bar"></span>
+                                <label class="labelText">Идентификатор нарушителя</label>
+                            </div>
+                        </div>
+                        <!-- <div style="padding-top: 5vh;">
+                            <input type="text">
+                        </div> -->
                     </div>
                 </div>
             </section>
