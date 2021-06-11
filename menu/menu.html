@@ -1212,17 +1212,17 @@
                                 <label>
                                     <input class="option-input radio" id="map-0" type="radio" v-model="reportType"
                                         value="0">
-                                    <span>ВОПРОС</span>
+                                    <span>{{i18n.question}}</span>
                                 </label>
                                 <label>
                                     <input class="option-input radio" id="map-1" type="radio" v-model="reportType"
                                         value="1">
-                                    <span>ЖАЛОБА</span>
+                                    <span>{{i18n.complaint}}</span>
                                 </label>
                                 <label>
                                     <input class="option-input radio" id="map-2" type="radio" v-model="reportType"
                                         value="2">
-                                    <span>ПРЕДЛОЖЕНИЕ</span>
+                                    <span>{{i18n.suggestion}}</span>
                                 </label>
                             </div>
                         </div>
@@ -1234,27 +1234,35 @@
                                 <label>
                                     <input class="option-input radio" id="map-0" type="radio" v-model="reportReason"
                                         value="0">
-                                    <span>СТОРОННЕЕ ПО</span>
+                                    <span>{{i18n.cheats}}</span>
                                 </label>
                                 <label>
                                     <input class="option-input radio" id="map-1" type="radio" v-model="reportReason"
                                         value="1">
-                                    <span>ИСПОЛЬЗОВАНИЕ БАГОВ</span>
+                                    <span>{{i18n.useBugs}}</span>
                                 </label>
                                 <label>
                                     <input class="option-input radio" id="map-2" type="radio" v-model="reportReason"
                                         value="2">
-                                    <span>ОСКОРБЛЕНИЕ</span>
+                                    <span>{{i18n.insult}}</span>
                                 </label>
                             </div>
                         </div>
-                        <div style="padding-top: 2vh;"  v-if="reportType === '1' && reportReason !== -1">
+                        <div style="padding-top: 2vh; display: flex; align-items: center; justify-content: space-between;" 
+                        v-if="reportType !== -1 && reportType !== '1' || (reportReason !== -1 && reportType === '1')">
+                        <!-- <div style="padding-top: 2vh; display: flex; align-items: center; justify-content: space-between;"> -->
                             <div class="group">      
                                 <input class="inputText" required type="text">
                                 <span class="bar"></span>
-                                <label class="labelText">Идентификатор нарушителя</label>
+                                <label class="labelText">{{reportType === '0' ? "Напишите Ваш вопрос" : reportType === '1' ? i18n.intruderID : "Напишите ваше предложение"}}</label>
+                            </div>
+                            <div class="headrightImg" style="width: 3.5vw; display: flex; justify-content: flex-end; margin-bottom: 1.5vh;" v-if="reportType === '1'">
+                                <img src="./img/selection.png" style="width: 2vw;">
                             </div>
                         </div>
+                        <!-- <div class="btnback">
+                            <a href="#" id="mouseFocus" v-on:click="saveSettings(0)">{{i18n.send}}</a>
+                        </div> -->
                         <!-- <div style="padding-top: 5vh;">
                             <input type="text">
                         </div> -->

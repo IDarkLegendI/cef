@@ -482,6 +482,14 @@ let menu = new Vue({
             componentsVIP: "INCREASED CHANCE OF DROPPING MODIFICATIONS FOR HEAVY SNIPER BY",
             armourVIP: "ARMOR AT THE BEGINNING OF THE MATCH",
             bell: "NOTIFICATIONS",
+            question: "QUESTION",
+            complaint: "COMPLAINT",
+            suggestion: "SUGGESTION",
+            cheats: "THIRD-PARTY SOFTWARE", 
+            useBugs: "USING BUGS",
+            insult: "INSULT",
+            intruderID: "Intruder ID",
+            send: "SEND",
         },
         i18nTemp: null,
         avatars: {
@@ -1186,6 +1194,14 @@ let menu = new Vue({
                 componentsVIP: "ПОВЫШЕННЫЙ ШАНС ВЫПАДЕНИЯ МОДИФИКАЦИЙ ДЛЯ HEAVY SNIPER НА",
                 armourVIP: "БРОНЯ В НАЧАЛЕ МАТЧА",
                 bell: "УВЕДОМЛЕНИЯ",
+                question: "ВОПРОС",
+                complaint: "ЖАЛОБА",
+                suggestion: "ПРЕДЛОЖЕНИЕ",
+                cheats: "СТОРОННЕЕ ПО",
+                useBugs: "ИСПОЛЬЗОВАНИЕ БАГОВ",
+                insult: "ОСКОРБЛЕНИЕ",
+                intruderID: "Идентификатор нарушителя",
+                send: "ОТПРАВИТЬ",
             }
         },
         loadEn() {
@@ -1677,7 +1693,7 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.news = [{name: "1111111111111111112224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
+        menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
         // menu.switchPage(6, 0)
         menu.page = 6
         menu.plusMoney = 5
