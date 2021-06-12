@@ -1259,8 +1259,8 @@
                                     </div>
                                     <div class="headrightImg"
                                         style="width: 3.5vw; display: flex; justify-content: flex-end; margin-bottom: 2.0vh;"
-                                        v-if="reportType === '1'">
-                                        <img src="./img/selection.png" style="width: 2vw;" v-on:click="switchPage(6,1); setTimeout(translateSubPages, 1000)">
+                                        v-if="reportType === '1'"> 
+                                        <img src="./img/selection.png" style="width: 2vw;" v-on:click="switchPage(6,1); emit('cMenu:loadLastPlayers') setTimeout(translateSubPages, 1000)">
                                     </div>
                                 </div>
                             </transition>
