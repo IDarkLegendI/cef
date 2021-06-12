@@ -42,8 +42,8 @@
                         </div>
                         <div class="buttons">
                             <div class="btns1">
-                                <div class="btn" id="mouseFocus">
-                                    <span>{{i18n.topap}}</span>
+                                <div class="btn" id="mouseFocus" v-on:click="emit('cMenu:DiscordInvite')">
+                                    <span>OUR DISCORD</span>
                                 </div>
                                 <div class="btn" id="mouseFocus" v-if="adminLevel === 0"  v-on:click="switchPage(6,0)">
                                     <span>{{i18n.managmentSub}}</span>

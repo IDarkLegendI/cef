@@ -2,7 +2,7 @@ let menu = new Vue({
     el: '#body',
     data: {
         // show: false,
-        page: 6, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
+        page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
         nextSubPage: -1,
         lastPage: 0,
