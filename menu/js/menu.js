@@ -98,7 +98,7 @@ let menu = new Vue({
             }, {
                 name: 'Bentley Bentayga',
                 model: 'bentayga17',
-                price: 33000
+                price: 43000
             },
             {
                 name: 'RHAPSODY',
@@ -303,6 +303,7 @@ let menu = new Vue({
                 model: 'pturismo',
                 price: 300000
             },
+            {name: 'BMW M5', model: 'bmci', price: 270000}, 
         ].sort((a, b) => a.price - b.price),
         carsPointer: 0,
         myCar: 'none',
@@ -965,11 +966,11 @@ let menu = new Vue({
         //
         fUpdateLobbyMic(data)
         {
-            console.log(`fUpdateLobbyMic: ${JSON.stringify(data)}`)
+            // console.log(`fUpdateLobbyMic: ${JSON.stringify(data)}`)
             Object.keys(data).forEach(el => {
                 // el = el.toLocaleUpperCase(); 
                 let index = menu.lobby.findIndex(player => {
-                    console.log(`fUpdateLobbyMic: ${player.name} === ${el} => ${player.name === el}`); 
+                    // console.log(`fUpdateLobbyMic: ${player.name} === ${el} => ${player.name === el}`); 
                     return player.name === el
                 })
                 if(index === -1) return;
