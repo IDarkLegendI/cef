@@ -745,6 +745,8 @@
                                         ${{cars[carsPointer].price}}</div>
                                     <div class="textnameauto">
                                         {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}</div>
+                                    <div class="textnameauto" style="font-size: 0.8vw">
+                                        ~{{maxSpeed}} KM\H</div>
                                 </div>
                                 <div class="arrowright">
                                     <img src="./img/arrowRight.png" v-if="carsPointer < cars.length-1"

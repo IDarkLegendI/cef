@@ -59,6 +59,7 @@ let menu = new Vue({
         //Cars 
         minSort: 0,
         maxSort: 1000000,
+        maxSpeed: 180,
         onlyMyCars: false,
         cars: [
             {
@@ -1712,7 +1713,7 @@ if ('alt' in window) {
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
-        // menu.switchPage(4, 0)
+        menu.switchPage(2, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
