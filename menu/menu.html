@@ -1132,7 +1132,7 @@
                         <h1 style="padding-top: 2vh; font-style: oblique; font-size: 2vh;">{{phrase}}</h1>
                     </div>
                     <div class="winLine animated bounce slower">
-                        <div class="winEl" v-if="+kills > +0">
+                        <div class="winEl" v-if="kills !== 0"> 
                             <h1 class="winText">{{killsInMatch}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.kills}}</h1>
@@ -1158,7 +1158,7 @@
                             </div>
                         </div>
                         <!-- </div> -->
-                        <div class="winEl" v-if="bonusMoney !== 0">
+                        <div class="winEl" v-if="bonusMoney !== 0 && !isNaN(bonusMoney)"> 
                             <h1 style="font-size: 2vw;">{{bonusMoney > 0 ? "+" : "-"}}$</h1>
                             <h1 class="winText">
                                 {{bonusMoney < 0 ? bonusMoney.toString().slice(1, 10000000) : bonusMoney}}
