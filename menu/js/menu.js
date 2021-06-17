@@ -984,10 +984,15 @@ let menu = new Vue({
         {
             Object.keys(data).forEach(el => {
                 let index = menu.lobby.findIndex(player => {
-                    return player.name === el
+                    return player.name.toLowerCase() === el.toLowerCase()
                 })
                 if(index === -1) return;
-                Vue.set(menu.lobby[index], 'inGame', data[el])
+                // home + noReady
+                if(data[el] && (menu.lobby[index].ready === 0 || menu.lobby[index].ready === -1))
+                {
+                    Vue.set(menu.lobby[index], 'inGame', data[el])
+                }
+                else Vue.set(menu.lobby[index], 'inGame', false)
             })  
         },
 
