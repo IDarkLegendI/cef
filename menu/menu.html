@@ -787,6 +787,9 @@
                                     </section>
                                 </section>
                                 <section style="display: flex; align-items: center;" v-else>
+                                    <a id="mouseFocus" style="background-color: #ffffffdc; color: black"
+                                        v-on:click="emitServer('sCar:testDrive', {model: cars[carsPointer].model, color: cars[carsPointer].color})">TEST DRIVE</a>
+
                                     <a id="mouseFocus" style="background-color: #fffb00; color: black"
                                         v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
                                 </section>

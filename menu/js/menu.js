@@ -1321,6 +1321,10 @@ let menu = new Vue({
                 colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
             }, 100)
         },
+        initColor() {
+            initColor();
+            ColorPicker(); 
+        },
         sortLiveCar(plus, onlyMyCarsClick)
         {
             console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
@@ -1745,8 +1749,7 @@ if ('alt' in window) {
     // menu.anyVar = 34 //УБРАТЬ!
         setTimeout(() => { 
             if(menu.page !== 2) return;
-            initColor();
-            ColorPicker(); 
+            menu.initColor()
     }, 800)
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
