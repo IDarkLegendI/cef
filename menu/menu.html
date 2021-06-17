@@ -45,7 +45,7 @@
                                 <div class="btn" id="mouseFocus" v-on:click="emit('cMenu:DiscordInvite')">
                                     <span>OUR DISCORD</span>
                                 </div>
-                                <div class="btn" id="mouseFocus" v-if="adminLevel === 0"  v-on:click="switchPage(6,0)">
+                                <div class="btn" id="mouseFocus" v-if="adminLevel === 0" v-on:click="switchPage(6,0)">
                                     <span>{{i18n.managmentSub}}</span>
                                 </div>
                                 <div class="btn" id="mouseFocus" v-else>
@@ -59,15 +59,26 @@
                                     <div class="sectionlobby list-complete-item" v-for="(player, index) in lobby"
                                         v-bind:key="player.name">
                                         <section v-if="player.ready !== -2">
-                                            <div class="crownimg" v-if="player.ready === -1">
-                                                <img alt="" src="img/Crown.png">
-                                            </div>
-                                            <div class="ready" v-if="player.ready >= 0">
-                                                <span v-show="player.ready === 2">{{i18n.inGame}}</span>
-                                                <span v-show="player.ready === 1">{{i18n.ready}}</span>
-                                                <span class="readynot"
-                                                    v-show="player.ready === 0">{{i18n.notready}}</span>
-                                            </div>
+                                            <section v-if="player.inGame">
+                                                <div class="ready" style="display: flex; align-items: center;">
+                                                    <div class="crownimg" style="margin: 0; width: 0.75vw; padding-right: 0.25vw;"
+                                                     v-if="player.ready === -1">
+                                                        <img alt="" src="img/Crown.png">
+                                                    </div>
+
+                                                    <span>{{i18n.inGame}}</span>
+                                                </div>
+                                            </section>
+                                            <section v-else>
+                                                <div class="crownimg" v-if="player.ready === -1">
+                                                    <img alt="" src="img/Crown.png">
+                                                </div>
+                                                <div class="ready" v-if="player.ready >= 0">
+                                                    <span v-show="player.ready === 1">{{i18n.ready}}</span>
+                                                    <span class="readynot"
+                                                        v-show="player.ready === 0">{{i18n.notready}}</span>
+                                                </div>
+                                            </section>
                                         </section>
                                         <div :class="{ava: player.ava !== 0}"
                                             :style="{animationName: player.mic ? 'flash' : 'none'}"
@@ -571,7 +582,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <!-- </div>
+                            <!-- </div>
                         <div class="checkboxes">
                             <div class="checkboxtest">
                                 <span>{{i18n.tips}}</span>
@@ -579,112 +590,113 @@
                                         id="mouseFocus"></label></div>
                             </div>
                         </div> -->
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span>"VR" - {{i18n.menuMode}}</span>
-                                <div class="settingCenter"><input id="switchVR" type="checkbox" v-model='vr' /><label
-                                        for="switchVR" id="mouseFocus"></label>
+                            <div class="checkboxes">
+                                <div class="checkboxtest">
+                                    <span>"VR" - {{i18n.menuMode}}</span>
+                                    <div class="settingCenter"><input id="switchVR" type="checkbox"
+                                            v-model='vr' /><label for="switchVR" id="mouseFocus"></label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span>{{i18n.quickWeaponT}}</span>
-                                <div class="settingCenter"><input id="quickWeapon" type="checkbox"
-                                        v-model='quickWeapon' /><label for="quickWeapon" id="mouseFocus"></label></div>
-                            </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.mapSize}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keyMapSize' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keyMapSize' ? recordKey = false : recordKey = 'keyMapSize'">{{keyCodes[keyMapSize].toUpperCase()}}</span>
+                            <div class="checkboxes">
+                                <div class="checkboxtest">
+                                    <span>{{i18n.quickWeaponT}}</span>
+                                    <div class="settingCenter"><input id="quickWeapon" type="checkbox"
+                                            v-model='quickWeapon' /><label for="quickWeapon" id="mouseFocus"></label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.quickMarker}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keyQuickMarker' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keyQuickMarker' ? recordKey = false : recordKey = 'keyQuickMarker'">{{keyCodes[keyQuickMarker].toUpperCase()}}</span>
+                            <div class="binds">
+                                <div class="bind">
+                                    <span class="bindname">{{i18n.mapSize}}</span>
+                                    <div class="settingCenter"><span
+                                            :style="{animationName: recordKey === 'keyMapSize' ? 'flash' : 'none'}"
+                                            class="bindbtn" id="mouseFocus"
+                                            v-on:click="recordKey === 'keyMapSize' ? recordKey = false : recordKey = 'keyMapSize'">{{keyCodes[keyMapSize].toUpperCase()}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.keyFingerPointing}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keyFingerPointing' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keyFingerPointing' ? recordKey = false : recordKey = 'keyFingerPointing'">{{keyCodes[keyFingerPointing].toUpperCase()}}</span>
+                            <div class="binds">
+                                <div class="bind">
+                                    <span class="bindname">{{i18n.quickMarker}}</span>
+                                    <div class="settingCenter"><span
+                                            :style="{animationName: recordKey === 'keyQuickMarker' ? 'flash' : 'none'}"
+                                            class="bindbtn" id="mouseFocus"
+                                            v-on:click="recordKey === 'keyQuickMarker' ? recordKey = false : recordKey = 'keyQuickMarker'">{{keyCodes[keyQuickMarker].toUpperCase()}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.keyMenu}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keyMenu' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keyMenu' ? recordKey = false : recordKey = 'keyMenu'">{{keyCodes[keyMenu].toUpperCase()}}</span>
+                            <div class="binds">
+                                <div class="bind">
+                                    <span class="bindname">{{i18n.keyFingerPointing}}</span>
+                                    <div class="settingCenter"><span
+                                            :style="{animationName: recordKey === 'keyFingerPointing' ? 'flash' : 'none'}"
+                                            class="bindbtn" id="mouseFocus"
+                                            v-on:click="recordKey === 'keyFingerPointing' ? recordKey = false : recordKey = 'keyFingerPointing'">{{keyCodes[keyFingerPointing].toUpperCase()}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="binds">
-                            <div class="bind">
-                                <span class="bindname">{{i18n.sit}}</span>
-                                <div class="settingCenter"><span
-                                        :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}"
-                                        class="bindbtn" id="mouseFocus"
-                                        v-on:click="recordKey === 'keySitDown' ? recordKey = false : recordKey = 'keySitDown'">{{keyCodes[keySitDown].toUpperCase()}}</span>
+                            <div class="binds">
+                                <div class="bind">
+                                    <span class="bindname">{{i18n.keyMenu}}</span>
+                                    <div class="settingCenter"><span
+                                            :style="{animationName: recordKey === 'keyMenu' ? 'flash' : 'none'}"
+                                            class="bindbtn" id="mouseFocus"
+                                            v-on:click="recordKey === 'keyMenu' ? recordKey = false : recordKey = 'keyMenu'">{{keyCodes[keyMenu].toUpperCase()}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="checkboxes">
-                            <div class="checkboxtest">
-                                <span style="display: flex; align-items: center;">
-                                    {{i18n.volume}}
-                                    <img class="settingsSound" src="./img/sound.png"
-                                        style="width: 1.3vw; padding-left: 1vw;"
-                                        v-on:click="emit('cAudio:play', 'prison_alarm_01', volume)">
-                                </span>
-                                <div class="settingCenter">
-                                    <input max="1" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range"
-                                        v-model="volume">
+                            <div class="binds">
+                                <div class="bind">
+                                    <span class="bindname">{{i18n.sit}}</span>
+                                    <div class="settingCenter"><span
+                                            :style="{animationName: recordKey === 'keySitDown' ? 'flash' : 'none'}"
+                                            class="bindbtn" id="mouseFocus"
+                                            v-on:click="recordKey === 'keySitDown' ? recordKey = false : recordKey = 'keySitDown'">{{keyCodes[keySitDown].toUpperCase()}}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mapchoice1" style="padding-top: 2vh;">
-                                <div class="namechoice">
-                                    <h1>{{i18n.sizeMap}}</h1>
+                            <div class="checkboxes">
+                                <div class="checkboxtest">
+                                    <span style="display: flex; align-items: center;">
+                                        {{i18n.volume}}
+                                        <img class="settingsSound" src="./img/sound.png"
+                                            style="width: 1.3vw; padding-left: 1vw;"
+                                            v-on:click="emit('cAudio:play', 'prison_alarm_01', volume)">
+                                    </span>
+                                    <div class="settingCenter">
+                                        <input max="1" min="0" step="0.01" style="width: 10vh; margin: 0;" type="range"
+                                            v-model="volume">
+                                    </div>
                                 </div>
-                                <div class="mapchoice">
-                                    <label>
-                                        <input class="option-input radio" id="map-0" type="radio" v-model="sizeMap"
-                                            value="0">
-                                        <span>{{i18n.small}}</span>
-                                    </label>
-                                    <label>
-                                        <input class="option-input radio" id="map-1" type="radio" v-model="sizeMap"
-                                            value="1">
-                                        <span>{{i18n.normal}}</span>
-                                    </label>
-                                    <label>
-                                        <input class="option-input radio" id="map-2" type="radio" v-model="sizeMap"
-                                            value="2">
-                                        <span>{{i18n.big}}</span>
-                                    </label>
+                                <div class="mapchoice1" style="padding-top: 2vh;">
+                                    <div class="namechoice">
+                                        <h1>{{i18n.sizeMap}}</h1>
+                                    </div>
+                                    <div class="mapchoice">
+                                        <label>
+                                            <input class="option-input radio" id="map-0" type="radio" v-model="sizeMap"
+                                                value="0">
+                                            <span>{{i18n.small}}</span>
+                                        </label>
+                                        <label>
+                                            <input class="option-input radio" id="map-1" type="radio" v-model="sizeMap"
+                                                value="1">
+                                            <span>{{i18n.normal}}</span>
+                                        </label>
+                                        <label>
+                                            <input class="option-input radio" id="map-2" type="radio" v-model="sizeMap"
+                                                value="2">
+                                            <span>{{i18n.big}}</span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="btnback">
-                                <a href="#" id="mouseFocus" v-on:click="saveSettings(0)">{{i18n.btnBack}}</a>
+                                <div class="btnback">
+                                    <a href="#" id="mouseFocus" v-on:click="saveSettings(0)">{{i18n.btnBack}}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
         </transition>
 
@@ -745,7 +757,8 @@
                                         ${{cars[carsPointer].price}}</div>
                                     <div class="textnameauto">
                                         {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}</div>
-                                    <div class="textnameauto" style="font-size: 0.8vw" v-show="cars[carsPointer].name !== 'None'">
+                                    <div class="textnameauto" style="font-size: 0.8vw"
+                                        v-show="cars[carsPointer].name !== 'None'">
                                         ~{{maxSpeed}} KM\H</div>
                                 </div>
                                 <div class="arrowright">
@@ -1132,7 +1145,7 @@
                         <h1 style="padding-top: 2vh; font-style: oblique; font-size: 2vh;">{{phrase}}</h1>
                     </div>
                     <div class="winLine animated bounce slower">
-                        <div class="winEl" v-if="+kills !== +0">  
+                        <div class="winEl" v-if="+kills !== +0">
                             <h1 class="winText">{{killsInMatch}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.kills}}</h1>
@@ -1158,7 +1171,7 @@
                             </div>
                         </div>
                         <!-- </div> -->
-                        <div class="winEl" v-if="bonusMoney !== 0 && !isNaN(bonusMoney)"> 
+                        <div class="winEl" v-if="bonusMoney !== 0 && !isNaN(bonusMoney)">
                             <h1 style="font-size: 2vw;">{{bonusMoney > 0 ? "+" : "-"}}$</h1>
                             <h1 class="winText">
                                 {{bonusMoney < 0 ? bonusMoney.toString().slice(1, 10000000) : bonusMoney}}
@@ -1249,8 +1262,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <transition enter-active-class="animated zoomInUp"
-                                leave-active-class="animated zoomOut">
+                            <transition enter-active-class="animated zoomInUp" leave-active-class="animated zoomOut">
                                 <div style="padding-top: 4vh; display: flex; align-items: center; justify-content: space-between;"
                                     v-if="reportType !== -1 && reportType !== '1' || (reportReason !== -1 && reportType === '1')">
                                     <div class="group">
@@ -1261,8 +1273,9 @@
                                     </div>
                                     <div class="headrightImg"
                                         style="width: 3.5vw; display: flex; justify-content: flex-end; margin-bottom: 2.0vh;"
-                                        v-if="reportType === '1'"> 
-                                        <img src="./img/selection.png" style="width: 2vw; height: 2vw;" v-on:click="switchPage(6,1); emit('cMenu:loadLastPlayers'); setTimeout(translateSubPages, 1000)">
+                                        v-if="reportType === '1'">
+                                        <img src="./img/selection.png" style="width: 2vw; height: 2vw;"
+                                            v-on:click="switchPage(6,1); emit('cMenu:loadLastPlayers'); setTimeout(translateSubPages, 1000)">
                                     </div>
                                 </div>
                             </transition>
@@ -1270,7 +1283,8 @@
                                 leave-active-class="animated slideOutRight faster">
                                 <div class="btnback"
                                     v-show="(reportInput.length > 0 && reportType === '1') || reportInput.length > 6">
-                                    <a id="mouseFocus" v-on:click="switchPage(0,0); reportInput = ''; reportReason = reportType = -1;">{{i18n.send}}</a>
+                                    <a id="mouseFocus"
+                                        v-on:click="switchPage(0,0); reportInput = ''; reportReason = reportType = -1;">{{i18n.send}}</a>
                                 </div>
                             </transition>
                         </div>
@@ -1306,7 +1320,8 @@
                                             <div class="nickzapros">{{player.name}}</div>
                                         </div>
                                         <div class="btnzapros" data-title="SELECT" id="i18nSelect">
-                                            <img alt="" src="img/tick.png" v-on:click="changeVar(['reportInput', player.id.toString()]); switchPage(6,0)">
+                                            <img alt="" src="img/tick.png"
+                                                v-on:click="changeVar(['reportInput', player.id.toString()]); switchPage(6,0)">
                                         </div>
                                     </div>
                             </div>

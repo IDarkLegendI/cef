@@ -980,6 +980,17 @@ let menu = new Vue({
             })  
         },
 
+        fUpdateLobbyInGame(data)
+        {
+            Object.keys(data).forEach(el => {
+                let index = menu.lobby.findIndex(player => {
+                    return player.name === el
+                })
+                if(index === -1) return;
+                Vue.set(menu.lobby[index], 'inGame', data[el])
+            })  
+        },
+
         fInviteToLobby(lobbyID, myData) {
             this.lobbyID = lobbyID;
             this.myData = myData;
@@ -1701,12 +1712,14 @@ if ('alt' in window) {
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
                 name: "DARKLEGEND",
-                ready: 0,
+                ready: -1,
+                inGame: true,
                 mic: false
             },
             {
                 name: "Dima",
                 ready: 1,
+                inGame: true,
                 mic: false
             }
         ])
