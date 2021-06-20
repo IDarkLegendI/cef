@@ -1001,7 +1001,7 @@ let menu = new Vue({
             this.myData = myData;
             if (this.page !== 0 || !menu.show) //Если игрок не на главной странице
             {
-                this.emitToClient('notifyI18n', '4', 'menu', 'inviteToLobby', '5000');
+                this.emitToClient('cMenu:inviteToLobbyNotify'); 
                 this.nextSubPage = 4;
             } else this.switchPage(0, 4);
 
@@ -1018,7 +1018,13 @@ let menu = new Vue({
             if(this.nextSubPage === 4) this.nextSubPage = 0; 
             this.lobbyID = 0;
             this.myData = null;
-            this.switchPage(0, 0);
+
+            if(this.subPage === 4)
+            {
+
+                if(this.page !== 0) this.subPage = 0;
+                else this.switchPage(0, 0) 
+            }
         },
 
         fLeaveLobby(onServer = false) {
