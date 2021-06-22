@@ -1147,7 +1147,7 @@
                     <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                         <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}"
                             style="font-size: 8vh;">
-                            {{ wsWin ? i18n.win : i18n.lose}}!</h1>
+                            {{ wsWin ? i18n.win : i18n.lose}}!{{emitToClient('cAudio:play', wsWin ? 'win' : 'DirectedByROBERT')}}</h1>
                         <h1 style="padding-top: 2vh; font-style: oblique; font-size: 2vh;">{{phrase}}</h1>
                     </div>
                     <div class="winLine animated bounce slower">
