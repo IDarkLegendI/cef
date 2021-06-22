@@ -271,6 +271,11 @@ let menu = new Vue({
             questionInput: "Write your question", 
             improvementInput: "Write your suggestion",
             send: "SEND",
+            discord: "OUR DISCORD",
+            clearAll: "CLEAR ALL",
+            victimLP: "WAS KILLED BY YOU",
+            killerLP: "KILLED YOU",
+            obsLP: "YOU WATCHED HIM",
         },
         i18nTemp: null,
         avatars: {
@@ -1018,6 +1023,11 @@ let menu = new Vue({
                 questionInput: "Напишите Ваш вопрос",
                 improvementInput: "Напишите Ваше предложение",
                 send: "ОТПРАВИТЬ",
+                discord: "НАШ DISCORD",
+                clearAll: "ОЧИСТИТЬ ВСЕ",
+                victimLP: "БЫЛ УБИТ ВАМИ",
+                killerLP: "УБИЛ ВАС",
+                obsLP: "ВЫ НАБЛЮДАЛИ ЗА НИМ",
             }
         },
         loadEn() {
@@ -1517,7 +1527,7 @@ if ('alt' in window) {
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
-        menu.switchPage(2, 0)
+        menu.switchPage(6, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true

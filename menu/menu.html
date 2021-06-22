@@ -1323,7 +1323,10 @@
                                             <div class="avatarzapros" style="border: 2px solid #ff0000">
                                                 <img :src="`../menu/img/avatars/${getAvatar(player.name)}.jpg`">
                                             </div>
-                                            <div class="nickzapros">{{player.name}}</div>
+                                            <div style="display: flex; align-items: center; justify-content: space-between; width: 30vw;">
+                                                <div class="nickzapros">{{player.name}}({{player.id}})</div>
+                                                <div class="nickzapros typeLP">{{player.type === 0 ? i18n.killerLP : player.type === 1 ? i18n.obsLP : i18n.victimLP}}</div>
+                                            </div>
                                         </div>
                                         <div class="btnzapros" data-title="SELECT" id="i18nSelect">
                                             <img alt="" src="img/tick.png"
