@@ -43,7 +43,7 @@
                         <div class="buttons">
                             <div class="btns1">
                                 <div class="btn" id="mouseFocus" v-on:click="emit('cMenu:DiscordInvite')">
-                                    <span>OUR DISCORD</span>
+                                    <span>{{i18n.discord}}</span>
                                 </div>
                                 <div class="btn" id="mouseFocus" v-if="adminLevel === 0" v-on:click="switchPage(6,0)">
                                     <span>{{i18n.managmentSub}}</span>
@@ -307,12 +307,13 @@
                                 </div>
                                 <div class="textright">
                                     <span class="minibtn" id="mouseFocus"
-                                        v-on:click="emit('characterOpen', lobby[myID].ready === 1)">{{i18n.custom}}</span>
-                                    <br>
-                                    <span class="minibtn" id="mouseFocus"
                                         v-on:click="switchPage(0, 2)">{{i18n.friends}}</span> <br>
                                     <span class="minibtn" id="mouseFocus"
-                                        v-on:click="emit('cClothes:open', lobby[myID].ready === 1)">{{i18n.clothing}}</span>
+                                        v-on:click="emit('cClothes:open', lobby[myID].ready === 1)">{{i18n.clothing}}</span> 
+                                        
+                                    <br>
+                                    <span class="minibtn" id="mouseFocus"
+                                    v-on:click="emit('characterOpen', lobby[myID].ready === 1)">{{i18n.custom}}</span>
                                 </div>
                                 <div class="righticon">
                                     <img src="img/character.png" id="mouseFocus" alt="">
@@ -537,7 +538,7 @@
                                 </div>
                                 <div class="zaprosi">
                                     <transition-group name="list-complete" tag="div">
-                                        <div class="zapros list-complete-item" v-bind:key="friend.name"
+                                        <div class="zapros zaprosNews list-complete-item" v-bind:key="friend.name"
                                             v-for="(friend, index) in news">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
@@ -555,6 +556,8 @@
                                 <div class="btnbackperson">
                                     <span class="minibtn" id="mouseFocus"
                                         v-on:click="switchPage(0, 0)"><span>{{i18n.person}}</span></span>
+                                    <span class="minibtn" id="mouseFocus"
+                                        v-on:click="switchPage(0, 0)"><span>{{i18n.clearAll}}</span></span>
                                 </div>
                             </div>
                         </transition>
