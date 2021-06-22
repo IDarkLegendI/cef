@@ -134,7 +134,7 @@
                                                     <div class="textticket5">{{i18n.expectation}}: <span
                                                             class="textticket6">{{countWarmUp}}</span></div>
                                                     <span class="minibtn" v-on:click="fLeaveLobby()"
-                                                        v-if="lobby[myID].ready === -1">{{i18n.leavelobby}}</span>
+                                                        style="height: auto;" v-if="lobby[myID].ready === -1">{{i18n.leavelobby}}</span>
                                                 </div>
                                             </div>
                                             <div class="iconticket">
@@ -853,20 +853,20 @@
 
                     <div class="mainauto">
                         <div class="switchauto">
-                            <div class="arrowleft">
-                                <img src="./img/arrowLeft.png" v-if="carsPointer > 0"
+                            <div class="arrowleft vipArrow">
+                                <img src="./img/arrowLeftRed.png" v-if="carsPointer > 0"
                                     v-on:click="previewCar(false, 'anyVarSecond')">
-                                <img src="./img/arrowLeft.png" style="filter: grayscale(100%); transform: scale(1.0);"
+                                <img src="./img/arrowLeftRed.png" style="filter: grayscale(100%); transform: scale(1.0);"
                                     v-else>
                             </div>
                             <div class="nameauto">
                                 <div class="textnameauto">
                                     {{anyVarSecond[carsPointer] === 0 ? i18n.none : anyVarSecond[carsPointer]}}</div>
                             </div>
-                            <div class="arrowright">
-                                <img src="./img/arrowRight.png" v-if="carsPointer < anyVarSecond.length-1"
+                            <div class="arrowright vipArrow">
+                                <img src="./img/arrowRightRed.png" v-if="carsPointer < anyVarSecond.length-1"
                                     v-on:click="previewCar(true, 'anyVarSecond')">
-                                <img src="./img/arrowRight.png" style="filter: grayscale(100%); transform: scale(1.0);"
+                                <img src="./img/arrowRightRed.png" style="filter: grayscale(500%); transform: scale(1.0);"
                                     v-else>
                             </div>
                         </div>

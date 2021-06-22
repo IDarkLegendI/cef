@@ -138,7 +138,7 @@ let menu = new Vue({
         lifeTime: 0, //Минут
 
         //VIP
-        vip: 'premium',
+        vip: 'none',
         vipLevel: 2,
         myEndTime: Date.now() + 40000,
 
@@ -276,6 +276,7 @@ let menu = new Vue({
             victimLP: "WAS KILLED BY YOU",
             killerLP: "KILLED YOU",
             obsLP: "YOU WATCHED HIM",
+            notAvailable: "This section is not available to you",
         },
         i18nTemp: null,
         avatars: {
@@ -593,6 +594,7 @@ let menu = new Vue({
         //Page = -3 -> игнорирование запроса о смене страницы
         switchPage(newPage, newSubPage = -1) {
             if(newPage === -3) return;
+            if(newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, i18n.notAvailable)
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 
@@ -1028,6 +1030,7 @@ let menu = new Vue({
                 victimLP: "БЫЛ УБИТ ВАМИ",
                 killerLP: "УБИЛ ВАС",
                 obsLP: "ВЫ НАБЛЮДАЛИ ЗА НИМ",
+                notAvailable: "Этот раздел вам недоступен",
             }
         },
         loadEn() {
@@ -1527,7 +1530,7 @@ if ('alt' in window) {
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
-        menu.switchPage(2, 0)
+        menu.switchPage(0, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
