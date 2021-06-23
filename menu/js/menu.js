@@ -1538,7 +1538,7 @@ if ('alt' in window) {
         // menu.statusGame = true;
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)"
-    document.body.style.cursor = "default"
+    // document.body.style.cursor = "default"
     menu.placeAll = 3;
     menu.place = 2;
     // menu.anyVar = 34 //УБРАТЬ!

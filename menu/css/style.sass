@@ -734,14 +734,14 @@ html
 #cursor, #aura
     position: absolute
     border-radius: 100%
-    transition: .5s cubic-bezier(.75,-1.27,.3,2.33) transform, .2s cubic-bezier(.75,-1.27,.3,2.33) opacity
+    transition: .5s cubic-bezier(.75, -1.27,.3,2.33) transform, .5s cubic-bezier(.75,-1.27,.3,2.33) width, .5s cubic-bezier(.75, -1.27,.3,2.33) height, .2s cubic-bezier(.75,-1.27,.3,2.33) opacity
     user-select: none
     pointer-events: none
     z-index: 10000
 
 #cursor
-    width: 8px
-    height: 8px
+    width: 0.42vw
+    height: 0.42vw
     background-color: rgba(#fff, .5)
     border: 1px solid rgba(#000000, .4)
     transform: scale(1)
@@ -750,17 +750,19 @@ html
         transform: scale(0)
 
 #aura
-    width: 46px
-    height: 46px
+    width: 2.40vw
+    height: 2.40vw
     border: 1px solid rgba(#8a8a8a, .4)
     background-color: rgba(#fff, .4)
     filter: drop-shadow(0 0 10px #00000080)
 
-    transform: translate(5px, 5px)
+    transform: translate(-0.98vw, -0.98vw)   
     &.active
         border: 1.2px solid rgba(#fff, .33)
         background-color: rgba(#8a8a8a, .4)
-        transform: scale(1.5)
+        width: 3.6vw
+        height: 3.6vw
+        transform: translate(-2vw, -2vw)   
 
 #aura.hidden,
 #cursor.hidden

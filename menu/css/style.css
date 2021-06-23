@@ -1046,10 +1046,10 @@ html {
 #cursor, #aura {
   position: absolute;
   border-radius: 100%;
-  -webkit-transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
-  transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
-  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
-  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  -webkit-transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) width, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) height, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) width, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) height, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) width, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) height, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) width, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) height, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -1059,8 +1059,8 @@ html {
 }
 
 #cursor {
-  width: 8px;
-  height: 8px;
+  width: 0.42vw;
+  height: 0.42vw;
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.4);
   -webkit-transform: scale(1);
@@ -1074,21 +1074,23 @@ html {
 }
 
 #aura {
-  width: 46px;
-  height: 46px;
+  width: 2.40vw;
+  height: 2.40vw;
   border: 1px solid rgba(138, 138, 138, 0.4);
   background-color: rgba(255, 255, 255, 0.4);
   -webkit-filter: drop-shadow(0 0 10px #00000080);
           filter: drop-shadow(0 0 10px #00000080);
-  -webkit-transform: translate(5px, 5px);
-          transform: translate(5px, 5px);
+  -webkit-transform: translate(-0.98vw, -0.98vw);
+          transform: translate(-0.98vw, -0.98vw);
 }
 
 #aura.active {
   border: 1.2px solid rgba(255, 255, 255, 0.33);
   background-color: rgba(138, 138, 138, 0.4);
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  width: 3.6vw;
+  height: 3.6vw;
+  -webkit-transform: translate(-2vw, -2vw);
+          transform: translate(-2vw, -2vw);
 }
 
 #aura.hidden,
