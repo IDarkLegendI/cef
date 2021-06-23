@@ -1,11 +1,12 @@
 let menu = new Vue({
     el: '#body',
     data: {
-        // show: false,
+        show: false,
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
         nextSubPage: -1,
         lastPage: 0,
+        cursorWhile: undefined,
 
         //money
         money: 0,
@@ -1384,7 +1385,9 @@ let menu = new Vue({
 
 if ('alt' in window) {
     alt.on('toggle', toggle => {
-        menu.show = toggle;
+        menu.show = toggle;  
+        if(toggle) menu.cursorWhile.play()
+        else menu.cursorWhile.pause()
         document.getElementById('fade').style.opacity = toggle ? 1 : 0;
         if (menu.page === 1) menu.saveSettings(-1);
     });
