@@ -565,7 +565,7 @@ let menu = new Vue({
             {
                 this.transleteById('i18nAdd', 'add')
                 this.transleteById('i18nAccept', 'accept')
-                this.transleteById('i18nCancel', 'cancel')
+                this.transleteById('i18nCancel', 'cancel') 
             }
         },
 
@@ -595,9 +595,10 @@ let menu = new Vue({
             }
         },
         //Page = -3 -> игнорирование запроса о смене страницы
-        switchPage(newPage, newSubPage = -1) {
-            if(newPage === -3) return;
+        switchPage(newPage, newSubPage = -1) { 
+            if(newPage === -3) return; 
             if(newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, i18n.notAvailable)
+            if(newPage === 5) setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000) 
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 
@@ -628,7 +629,7 @@ let menu = new Vue({
                     this.page = newPage;
                     let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
                     Vue.set(objInvite, 'name', menu.i18n.inviteText) 
-                    this.resetPageAfter();
+                    this.resetPageAfter(newPage);
 
                     if (this.coolDown) return;
                     this.coolDown = true;
@@ -673,7 +674,7 @@ let menu = new Vue({
             this.recordKey = false;
         },
 
-        resetPageAfter()
+        resetPageAfter(newPage)
         {
             if (this.page === 5 && newPage === 0) this.wsWin = false
         },
@@ -1388,7 +1389,7 @@ let menu = new Vue({
 if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;  
-        menu.fToggleCursor(toggle)
+        setTimeout(() => menu.fToggleCursor(toggle), 50)
         if(toggle && menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
         else 
         {
@@ -1477,7 +1478,7 @@ if ('alt' in window) {
         if (requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);
         setTimeout(() => {
             menu.translateSubPages()
-        }, 100)
+        }, 1000)
         console.log(`menu.requestsOut: ${menu.requestsOut}`)
         // menu.updateOnline(allPlayers); 
     })
