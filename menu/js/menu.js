@@ -6,7 +6,9 @@ let menu = new Vue({
         subPage: 0, //
         nextSubPage: -1,
         lastPage: 0,
-        cursorWhile: undefined,
+        cursorWhile: 0,
+        fCursoring: undefined,
+        fToggleCursor: undefined,
 
         //money
         money: 0,
@@ -1386,8 +1388,13 @@ let menu = new Vue({
 if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;  
-        if(toggle) menu.cursorWhile.play()
-        else menu.cursorWhile.pause()
+        menu.fToggleCursor(toggle)
+        if(toggle && menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
+        else 
+        {
+            clearInterval(menu.cursorWhile)
+            menu.cursorWhile = null;
+        }
         document.getElementById('fade').style.opacity = toggle ? 1 : 0;
         if (menu.page === 1) menu.saveSettings(-1);
     });
@@ -1513,7 +1520,7 @@ if ('alt' in window) {
                 online: true
             }
         ]
-        menu.reportPlayers = [{name: 'DARKLEGEND', id: 17}, {name: 'Vanya', id: 27}]
+        menu.reportPlayers = [{name: 'DARKLEGEND', id: 17, type: 0}, {name: 'Vanya', id: 27, type: 1}]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
@@ -1541,7 +1548,7 @@ if ('alt' in window) {
         // menu.statusGame = true;
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)"
-    // document.body.style.cursor = "default"
+    document.body.style.cursor = "default"
     menu.placeAll = 3;
     menu.place = 2;
     // menu.anyVar = 34 //УБРАТЬ!

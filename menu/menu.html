@@ -1147,7 +1147,7 @@
                     <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                         <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}"
                             style="font-size: 8vh;">
-                            {{ wsWin ? i18n.win : i18n.lose}}!{{emitToClient('cAudio:play', wsWin ? 'win' : 'DirectedByROBERT')}}</h1>
+                            {{ wsWin ? i18n.win : i18n.lose}}!</h1>
                         <h1 style="padding-top: 2vh; font-style: oblique; font-size: 2vh;">{{phrase}}</h1>
                     </div>
                     <div class="winLine animated bounce slower">
@@ -1231,7 +1231,7 @@
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;">
-                                <div class="mapchoice" v-on:click="reportType = reportReason = -1">
+                                <div class="mapchoice" v-on:click="reportType = reportReason = -1; reportInput = ''">
                                     <label>
                                         <input class="option-input radio" id="map-0" type="radio" v-model="reportType"
                                             value="0">
@@ -1324,8 +1324,8 @@
                                                 <img :src="`../menu/img/avatars/${getAvatar(player.name)}.jpg`">
                                             </div>
                                             <div style="display: flex; align-items: center; justify-content: space-between; width: 30vw;">
-                                                <div class="nickzapros">{{player.name}}({{player.id}})</div>
-                                                <div class="nickzapros typeLP">{{player.type === 0 ? i18n.killerLP : player.type === 1 ? i18n.obsLP : i18n.victimLP}}</div>
+                                                <div class="nickzapros">{{player.name}}</div> 
+                                                <div class="nickzapros typeLP">{{player.type === 0 ? i18n.victimLP : player.type === 1 ? i18n.obsLP : i18n.killerLP}}</div>
                                             </div>
                                         </div>
                                         <div class="btnzapros" data-title="SELECT" id="i18nSelect">

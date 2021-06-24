@@ -1076,21 +1076,23 @@ html {
 #aura {
   width: 2.40vw;
   height: 2.40vw;
+  max-width: 3.6vw;
+  max-height: 3.6vw;
   border: 1px solid rgba(138, 138, 138, 0.4);
   background-color: rgba(255, 255, 255, 0.4);
   -webkit-filter: drop-shadow(0 0 10px #00000080);
           filter: drop-shadow(0 0 10px #00000080);
-  -webkit-transform: translate(-0.98vw, -0.98vw);
-          transform: translate(-0.98vw, -0.98vw);
+  -webkit-transform: translate(0.26vw, 0.26vw);
+          transform: translate(0.26vw, 0.26vw);
 }
 
 #aura.active {
   border: 1.2px solid rgba(255, 255, 255, 0.33);
   background-color: rgba(138, 138, 138, 0.4);
-  width: 3.6vw;
-  height: 3.6vw;
-  -webkit-transform: translate(-2vw, -2vw);
-          transform: translate(-2vw, -2vw);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  max-width: 3.6vw;
+  max-height: 3.6vw;
 }
 
 #aura.hidden,
