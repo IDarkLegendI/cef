@@ -547,6 +547,12 @@ let menu = new Vue({
             return menu[name](...args);
         },
 
+        // Срабатывает, когда человек "открывает" меню
+        eventOpen()
+        {
+            // 
+        },
+
         translateSubPages()
         {
             if(this.subPage === 1) 
@@ -1025,9 +1031,9 @@ let menu = new Vue({
                 cheats: "СТОРОННЕЕ ПО",
                 useBugs: "ИСПОЛЬЗОВАНИЕ БАГОВ",
                 insult: "ОСКОРБЛЕНИЕ",
-                intruderID: "Идентификатор нарушителя",
-                questionInput: "Напишите Ваш вопрос",
-                improvementInput: "Напишите Ваше предложение",
+                intruderID: "Укажите идентификатор нарушителя",
+                questionInput: "Какой у Вас вопрос?",
+                improvementInput: "Какое у Вас предложение?",
                 send: "ОТПРАВИТЬ",
                 discord: "НАШ DISCORD",
                 clearAll: "ОЧИСТИТЬ ВСЕ",
@@ -1390,7 +1396,11 @@ if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;  
         setTimeout(() => menu.fToggleCursor(toggle), 50)
-        if(toggle && menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
+        if(toggle) 
+        {
+            if(menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
+            menu.eventOpen();
+        }
         else 
         {
             clearInterval(menu.cursorWhile)
@@ -1541,7 +1551,7 @@ if ('alt' in window) {
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
-        menu.switchPage(0, 0)
+        menu.switchPage(6, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -1556,6 +1566,7 @@ if ('alt' in window) {
         setTimeout(() => { 
             if(menu.page !== 2) return;
             menu.initColor()
+            menu.reportReason = 1
     }, 800)
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);

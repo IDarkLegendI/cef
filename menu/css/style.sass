@@ -988,6 +988,20 @@ input[type=checkbox]
 
 .option-input:checked
     background: #036de6
+    
+.option-input-red:hover
+    background: #b68e8e
+    cursor: none
+
+.option-input-red:checked
+    background: #e60303
+    
+.option-input-green:hover
+    background: #91b68e
+    cursor: none
+
+.option-input-green:checked
+    background: #1de603
 
 .option-input:checked::before
     height: 4vh
@@ -2397,20 +2411,27 @@ input[type="button" i]:focus, .button :focus, .button :active
 
 .labelText
     color: #e7e4e4
-    font-size: 0.95vw
+    font-size: 1.6vh
     position: absolute
     pointer-events: none
     filter: drop-shadow(0 0 1px black)
     // left: 10px
-    top: 15px
+    top: 1.3888888888888888vh
     transition: 0.2s ease all
+    font-family: 'Roboto Condensed', sans-serif
+    font-weight: 500
 
 .inputText
     &:focus ~ label,
     &:valid ~ label
-        top: -15px
-        font-size: 0.8vw
-        color: #0072f5
+        top: -1.3888888888888888vh
+        font-size: 1.4vh
+        color: #1de603
+
+.inputTextRed
+    &:focus ~ label,
+    &:valid ~ label
+        color: #f51d00
 
 .bar
     position: relative
@@ -2419,11 +2440,11 @@ input[type="button" i]:focus, .button :focus, .button :active
     &:before, 
     &:after
         content: ''
-        height: 2px
+        height: 0.18518518518518517vh
         width: 0
         bottom: 0
         position: absolute
-        background: #0072f5
+        background: #1de603
         transition: 0.2s ease all
         -moz-transition: 0.2s ease all
         -webkit-transition: 0.2s ease all
@@ -2431,6 +2452,11 @@ input[type="button" i]:focus, .button :focus, .button :active
         left: 50%
     &:after
         right: 50%
+
+.barRed
+    &:before, 
+    &:after
+        background: #f51d00
 
 .inputText:focus 
     ~ .bar:before,

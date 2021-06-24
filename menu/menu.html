@@ -1233,17 +1233,17 @@
                             <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;">
                                 <div class="mapchoice" v-on:click="reportType = reportReason = -1; reportInput = ''">
                                     <label>
-                                        <input class="option-input radio" id="map-0" type="radio" v-model="reportType"
+                                        <input class="option-input option-input-green radio" id="map-0" type="radio" v-model="reportType"
                                             value="0">
                                         <span>{{i18n.question}}</span>
                                     </label>
                                     <label>
-                                        <input class="option-input radio" id="map-1" type="radio" v-model="reportType"
+                                        <input class="option-input option-input-red radio" id="map-1" type="radio" v-model="reportType"
                                             value="1">
                                         <span>{{i18n.complaint}}</span>
                                     </label>
                                     <label>
-                                        <input class="option-input radio" id="map-2" type="radio" v-model="reportType"
+                                        <input class="option-input option-input-green radio" id="map-2" type="radio" v-model="reportType"
                                             value="2">
                                         <span>{{i18n.suggestion}}</span>
                                     </label>
@@ -1252,17 +1252,17 @@
                             <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;" v-if="reportType === '1'">
                                 <div class="mapchoice">
                                     <label>
-                                        <input class="option-input radio" id="map-0" type="radio" v-model="reportReason"
+                                        <input class="option-input option-input-red radio" id="map-0" type="radio" v-model="reportReason"
                                             value="0">
                                         <span>{{i18n.cheats}}</span>
                                     </label>
                                     <label>
-                                        <input class="option-input radio" id="map-1" type="radio" v-model="reportReason"
+                                        <input class="option-input option-input-red radio" id="map-1" type="radio" v-model="reportReason"
                                             value="1">
                                         <span>{{i18n.useBugs}}</span>
                                     </label>
                                     <label>
-                                        <input class="option-input radio" id="map-2" type="radio" v-model="reportReason"
+                                        <input class="option-input option-input-red radio" id="map-2" type="radio" v-model="reportReason"
                                             value="2">
                                         <span>{{i18n.insult}}</span>
                                     </label>
@@ -1272,8 +1272,8 @@
                                 <div style="padding-top: 4vh; display: flex; align-items: center; justify-content: space-between;"
                                     v-if="reportType !== -1 && reportType !== '1' || (reportReason !== -1 && reportType === '1')">
                                     <div class="group">
-                                        <input class="inputText" required type="text" v-model="reportInput">
-                                        <span class="bar"></span>
+                                        <input :class="{inputTextRed: reportType === '1'}" class="inputText" required type="text" v-model="reportInput">
+                                        <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                         <label
                                             class="labelText">{{reportType === '0' ? i18n.questionInput : reportType === '1' ? i18n.intruderID : i18n.improvementInput}}</label>
                                     </div>
