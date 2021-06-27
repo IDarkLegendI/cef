@@ -510,8 +510,7 @@
                                 <div class="zaprosi">
                                     <transition-group name="list-complete" tag="div">
                                         <div class="zapros list-complete-item" v-for="(friend, index) in myData"
-                                            v-bind:key="friend.name"
-                                            v-on:mouseleave="showProfileDetails(friend.name, 0)">
+                                            v-bind:key="friend.name">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
                                                     <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
@@ -536,18 +535,18 @@
                                 <div class="friendsh1">
                                     <h1>{{i18n.bell}}</h1>
                                 </div>
-                                <div class="zaprosi">
+                                <div class="zaprosi" style="margin-left: 0.5vw; margin-right: 0.5vw; padding-top: 0">
                                     <transition-group name="list-complete" tag="div">
-                                        <div class="zapros zaprosNews list-complete-item" v-bind:key="friend.name"
-                                            v-for="(friend, index) in news">
+                                        <div class="zapros zaprosNews list-complete-item" oncontextmenu="menu.fRightClick()"
+                                            v-bind:key="item.name" v-for="(item, index) in news">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
                                                     <!-- 0 - error, 1 - ok -->
-                                                    <img src="../menu/img/accepted.png" v-if="friend.type">
+                                                    <img src="../menu/img/accepted.png" v-if="item.type">
                                                     <img src="../menu/img/no.png" v-else>
                                                 </div>
                                                 <div class="nickzapros">
-                                                    <h1>{{friend.name}}</h1>
+                                                    <h1>{{item.name}}</h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -576,7 +575,7 @@
                     </div>
                     <div class="settings">
                         <div class="checkboxes">
-                            <div class="checkboxtest">
+                            <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                 <span>{{i18n.language}}</span>
                                 <div class="settingCenter">
                                     <div class="imgformlang">
@@ -594,18 +593,26 @@
                             </div>
                         </div> -->
                             <div class="checkboxes">
-                                <div class="checkboxtest">
+                                <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                     <span>"VR" - {{i18n.menuMode}}</span>
                                     <div class="settingCenter"><input id="switchVR" type="checkbox"
-                                            v-model='vr' /><label for="switchVR" id="mouseFocus"></label>
+                                            v-model='vr' /><label :style="{cursor: disableCursor ? 'pointer' : 'none'}" for="switchVR"></label>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkboxes">
-                                <div class="checkboxtest">
+                                <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
+                                    <span>{{i18n.disableCursor}}</span>
+                                    <div class="settingCenter"><input id="disableCursor" type="checkbox"
+                                            v-model='disableCursor' v-on:click="fCheckCursor(this.value)" /><label :style="{cursor: disableCursor ? 'pointer' : 'none'}" for="disableCursor"></label>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="checkboxes">
+                                <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                     <span>{{i18n.quickWeaponT}}</span>
                                     <div class="settingCenter"><input id="quickWeapon" type="checkbox"
-                                            v-model='quickWeapon' /><label for="quickWeapon" id="mouseFocus"></label>
+                                            v-model='quickWeapon' /><label :style="{cursor: disableCursor ? 'pointer' : 'none'}" for="quickWeapon"></label>
                                     </div>
                                 </div>
                             </div>
@@ -660,7 +667,7 @@
                                 </div>
                             </div>
                             <div class="checkboxes">
-                                <div class="checkboxtest">
+                                <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                     <span style="display: flex; align-items: center;">
                                         {{i18n.volume}}
                                         <img class="settingsSound" src="./img/sound.png"
@@ -677,19 +684,19 @@
                                         <h1>{{i18n.sizeMap}}</h1>
                                     </div>
                                     <div class="mapchoice">
-                                        <label>
+                                        <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                             <input class="option-input radio" id="map-0" type="radio" v-model="sizeMap"
-                                                value="0">
+                                                :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="0">
                                             <span>{{i18n.small}}</span>
                                         </label>
-                                        <label>
+                                        <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                             <input class="option-input radio" id="map-1" type="radio" v-model="sizeMap"
-                                                value="1">
+                                                :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="1">
                                             <span>{{i18n.normal}}</span>
                                         </label>
-                                        <label>
+                                        <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                             <input class="option-input radio" id="map-2" type="radio" v-model="sizeMap"
-                                                value="2">
+                                                :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="2">
                                             <span>{{i18n.big}}</span>
                                         </label>
                                     </div>
@@ -1231,39 +1238,39 @@
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;">
-                                <div class="mapchoice" v-on:click="reportType = reportReason = -1; reportInput = ''">
-                                    <label>
+                                <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="mapchoice" v-on:click="reportType = reportReason = -1; reportInput = ''">
+                                    <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input class="option-input option-input-green radio" id="map-0" type="radio" v-model="reportType"
-                                            value="0">
+                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="0">
                                         <span>{{i18n.question}}</span>
                                     </label>
-                                    <label>
+                                    <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input class="option-input option-input-red radio" id="map-1" type="radio" v-model="reportType"
-                                            value="1">
+                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="1">
                                         <span>{{i18n.complaint}}</span>
                                     </label>
-                                    <label>
+                                    <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input class="option-input option-input-green radio" id="map-2" type="radio" v-model="reportType"
-                                            value="2">
+                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="2">
                                         <span>{{i18n.suggestion}}</span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;" v-if="reportType === '1'">
+                            <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="mapchoice1" style="padding-top: 2vh; width: 35vw;" v-if="reportType === '1'">
                                 <div class="mapchoice">
-                                    <label>
+                                    <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input class="option-input option-input-red radio" id="map-0" type="radio" v-model="reportReason"
-                                            value="0">
+                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="0">
                                         <span>{{i18n.cheats}}</span>
                                     </label>
-                                    <label>
+                                    <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input class="option-input option-input-red radio" id="map-1" type="radio" v-model="reportReason"
                                             value="1">
                                         <span>{{i18n.useBugs}}</span>
                                     </label>
-                                    <label>
+                                    <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input class="option-input option-input-red radio" id="map-2" type="radio" v-model="reportReason"
-                                            value="2">
+                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="2">
                                         <span>{{i18n.insult}}</span>
                                     </label>
                                 </div>

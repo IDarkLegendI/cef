@@ -1170,7 +1170,6 @@ input[type=checkbox] {
 }
 
 .checkboxtest label {
-  cursor: pointer;
   text-indent: -9999px;
   width: 3.3vw;
   height: 3.2vh;
@@ -1178,10 +1177,6 @@ input[type=checkbox] {
   display: block;
   border-radius: 100px;
   position: relative;
-}
-
-.checkboxtest label:hover {
-  cursor: none;
 }
 
 .checkboxtest label:after {
@@ -1422,7 +1417,6 @@ input[type=checkbox] {
   background: #cbd1d8;
   border: none;
   color: #fff;
-  cursor: pointer;
   display: inline-block;
   margin-right: 0.5rem;
   outline: none;
@@ -1432,7 +1426,6 @@ input[type=checkbox] {
 
 .option-input:hover {
   background: #9faab7;
-  cursor: none;
 }
 
 .option-input:checked {
@@ -1441,7 +1434,6 @@ input[type=checkbox] {
 
 .option-input-red:hover {
   background: #b68e8e;
-  cursor: none;
 }
 
 .option-input-red:checked {
@@ -1450,7 +1442,6 @@ input[type=checkbox] {
 
 .option-input-green:hover {
   background: #91b68e;
-  cursor: none;
 }
 
 .option-input-green:checked {
@@ -2047,9 +2038,9 @@ a:hover {
 }
 
 .avatarzapros {
-  width: 2.1vw;
-  min-width: 2.1vw;
-  height: 2.1vw;
+  width: 2.4vw;
+  min-width: 2.4vw;
+  height: 2.4vw;
   border-radius: 50%;
 }
 
@@ -2065,7 +2056,7 @@ a:hover {
 
 .zaprosi::-webkit-scrollbar {
   -webkit-appearance: none;
-  width: 7px;
+  width: 0.36vw;
 }
 
 .zaprosi::-webkit-scrollbar-thumb {

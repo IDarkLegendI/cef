@@ -16,6 +16,7 @@ let menu = new Vue({
         //SETTINGS
         lang: 'ru',
         vr: false, //true, чтобы вр подрубить,
+        disableCursor: false, //true, чтобы вр подрубить,
         sizeMap: 0,
         quickWeapon: 0,
         volume: 0.1,
@@ -255,6 +256,7 @@ let menu = new Vue({
             small: 'SMALL',
             normal: 'NORMAL',
             big: 'BIG',
+            disableCursor: 'DISABLING A CUSTOM CURSOR',
             btnBack: 'BACK',
             leavelobby: 'LEAVY LOBBY',
             buy: 'BUY',
@@ -637,6 +639,7 @@ let menu = new Vue({
                     vr: this.vr,
                     sizeMap: this.sizeMap,
                     quickWeapon: this.quickWeapon,
+                    disableCursor: this.disableCursor,
                     volume: this.volume,
                     keyMapSize: this.keyMapSize,
                     keyQuickMarker: this.keyQuickMarker,
@@ -957,6 +960,13 @@ let menu = new Vue({
                 online = false;
             })
         },
+        fRightClick()
+        {
+            //Удаление новости
+            console.log('11') 
+            if('alt' in window) return false
+        },
+
         loadLang(lang = this.lang) { 
             if(lang !== this.lang) this.lang = lang;
 
@@ -1016,6 +1026,7 @@ let menu = new Vue({
                 small: 'МАЛЕНЬКИЙ',
                 normal: 'СРЕДНИЙ',
                 big: 'БОЛЬШОЙ',
+                disableCursor: 'ОТКЛЮЧЕНИЕ КАСТОМНОГО КУРСОРА',
                 btnBack: 'НАЗАД',
                 leavelobby: 'ВЫЙТИ',
                 buy: 'КУПИТЬ',
@@ -1435,22 +1446,44 @@ let menu = new Vue({
                 }
             }
         },
+        fCheckCursor() 
+        {
+            if(!menu.disableCursor) //Положение "true"
+            {
+                menu.fToggleCursor(false)
+                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+                document.body.style.cursor = "auto"
+            }
+            else
+            {
+                menu.fToggleCursor(true)
+                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+                menu.cursorWhile = setInterval(menu.fCursoring, 0)
+                document.body.style.cursor = 'none'
+            }
+        }
     },
 });
 
 if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;  
-        setTimeout(() => menu.fToggleCursor(toggle), 50)
+        if(!menu.disableCursor) setTimeout(() => menu.fToggleCursor(toggle), 50)
         if(toggle) 
         {
-            if(menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
+            if(menu.disableCursor) document.body.style.cursor = "auto"
+            else {
+                if(menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
+            }
             menu.eventOpen();
         }
         else 
         {
-            clearInterval(menu.cursorWhile)
-            menu.cursorWhile = null;
+            if(menu.disableCursor) document.body.style.cursor = 'none' 
+            else {
+                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+                menu.cursorWhile = null;
+            }
         }
         document.getElementById('fade').style.opacity = toggle ? 1 : 0;
         if (menu.page === 1) menu.saveSettings(-1);
@@ -1596,8 +1629,9 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
-        menu.switchPage(0, 5)
+        menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
+        {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
+        menu.switchPage(1, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -1614,6 +1648,7 @@ if ('alt' in window) {
             menu.initColor()
     }, 800)
 }
+menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
 document.addEventListener('keydown', function (event) {
