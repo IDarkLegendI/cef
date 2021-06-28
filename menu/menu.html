@@ -61,8 +61,9 @@
                                         <section v-if="player.ready !== -2">
                                             <section v-if="player.inGame">
                                                 <div class="ready" style="display: flex; align-items: center;">
-                                                    <div class="crownimg" style="margin: 0; width: 0.75vw; padding-right: 0.25vw;"
-                                                     v-if="player.ready === -1">
+                                                    <div class="crownimg"
+                                                        style="margin: 0; width: 0.75vw; padding-right: 0.25vw;"
+                                                        v-if="player.ready === -1">
                                                         <img alt="" src="img/Crown.png">
                                                     </div>
 
@@ -134,7 +135,8 @@
                                                     <div class="textticket5">{{i18n.expectation}}: <span
                                                             class="textticket6">{{countWarmUp}}</span></div>
                                                     <span class="minibtn" v-on:click="fLeaveLobby()"
-                                                        style="height: auto;" v-if="lobby[myID].ready === -1">{{i18n.leavelobby}}</span>
+                                                        style="height: auto;"
+                                                        v-if="lobby[myID].ready === -1">{{i18n.leavelobby}}</span>
                                                 </div>
                                             </div>
                                             <div class="iconticket">
@@ -309,11 +311,11 @@
                                     <span class="minibtn" id="mouseFocus"
                                         v-on:click="switchPage(0, 2)">{{i18n.friends}}</span> <br>
                                     <span class="minibtn" id="mouseFocus"
-                                        v-on:click="emit('cClothes:open', lobby[myID].ready === 1)">{{i18n.clothing}}</span> 
-                                        
+                                        v-on:click="emit('cClothes:open', lobby[myID].ready === 1)">{{i18n.clothing}}</span>
+
                                     <br>
                                     <span class="minibtn" id="mouseFocus"
-                                    v-on:click="emit('characterOpen', lobby[myID].ready === 1)">{{i18n.custom}}</span>
+                                        v-on:click="emit('characterOpen', lobby[myID].ready === 1)">{{i18n.custom}}</span>
                                 </div>
                                 <div class="righticon">
                                     <img src="img/character.png" id="mouseFocus" alt="">
@@ -537,8 +539,9 @@
                                 </div>
                                 <div class="zaprosi" style="margin-left: 0.5vw; margin-right: 0.5vw; padding-top: 0">
                                     <transition-group name="list-complete" tag="div">
-                                        <div class="zapros zaprosNews list-complete-item" oncontextmenu="menu.fRightClick()"
-                                            v-bind:key="item.name" v-for="(item, index) in news">
+                                        <div class="zapros zaprosNews list-complete-item"
+                                            oncontextmenu="menu.fRightClick()" v-bind:key="item.name"
+                                            v-for="(item, index) in news">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
                                                     <!-- 0 - error, 1 - ok -->
@@ -596,7 +599,8 @@
                                 <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                     <span>"VR" - {{i18n.menuMode}}</span>
                                     <div class="settingCenter"><input id="switchVR" type="checkbox"
-                                            v-model='vr' /><label :style="{cursor: disableCursor ? 'pointer' : 'none'}" for="switchVR"></label>
+                                            v-model='vr' /><label :style="{cursor: disableCursor ? 'pointer' : 'none'}"
+                                            for="switchVR"></label>
                                     </div>
                                 </div>
                             </div>
@@ -604,15 +608,19 @@
                                 <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                     <span>{{i18n.disableCursor}}</span>
                                     <div class="settingCenter"><input id="disableCursor" type="checkbox"
-                                            v-model='disableCursor' v-on:click="fCheckCursor(this.value)" /><label :style="{cursor: disableCursor ? 'pointer' : 'none'}" for="disableCursor"></label>
+                                            v-model='disableCursor' v-on:click="fCheckCursor(this.value)" /><label
+                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}"
+                                            for="disableCursor"></label>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="checkboxes">
                                 <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                     <span>{{i18n.quickWeaponT}}</span>
                                     <div class="settingCenter"><input id="quickWeapon" type="checkbox"
-                                            v-model='quickWeapon' /><label :style="{cursor: disableCursor ? 'pointer' : 'none'}" for="quickWeapon"></label>
+                                            v-model='quickWeapon' /><label
+                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}"
+                                            for="quickWeapon"></label>
                                     </div>
                                 </div>
                             </div>
@@ -780,9 +788,11 @@
                             </div>
                             <div class="btnback" style="display: flex; align-items: center;">
                                 <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
-                                 
-                                <a id="mouseFocus" style="background-color: #ffffffdc; color: black" v-on:click="emitServer('sCar:testDrive', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
-                                v-show="!updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">TEST DRIVE</a>
+
+                                <a id="mouseFocus" style="background-color: #ffffffdc; color: black"
+                                    v-on:click="emitServer('sCar:testDrive', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
+                                    v-show="!updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">TEST
+                                    DRIVE</a>
                                 <section id="mouseFocus"
                                     style="display: flex; align-items: center; justify-content: center;"
                                     v-if="cars[carsPointer].price <= 0">
@@ -863,8 +873,8 @@
                             <div class="arrowleft vipArrow">
                                 <img src="./img/arrowLeftRed.png" v-if="carsPointer > 0"
                                     v-on:click="previewCar(false, 'anyVarSecond')">
-                                <img src="./img/arrowLeftRed.png" style="filter: grayscale(100%); transform: scale(1.0);"
-                                    v-else>
+                                <img src="./img/arrowLeftRed.png"
+                                    style="filter: grayscale(100%); transform: scale(1.0);" v-else>
                             </div>
                             <div class="nameauto">
                                 <div class="textnameauto">
@@ -873,8 +883,8 @@
                             <div class="arrowright vipArrow">
                                 <img src="./img/arrowRightRed.png" v-if="carsPointer < anyVarSecond.length-1"
                                     v-on:click="previewCar(true, 'anyVarSecond')">
-                                <img src="./img/arrowRightRed.png" style="filter: grayscale(500%); transform: scale(1.0);"
-                                    v-else>
+                                <img src="./img/arrowRightRed.png"
+                                    style="filter: grayscale(500%); transform: scale(1.0);" v-else>
                             </div>
                         </div>
                     </div>
@@ -1238,39 +1248,46 @@
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="mapchoice1" style="padding-top: 2vh; width: 35vw;">
-                                <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="mapchoice" v-on:click="reportType = reportReason = -1; reportInput = ''">
+                                <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="mapchoice"
+                                    v-on:click="reportType = reportReason = -1; reportInput = ''">
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                        <input class="option-input option-input-green radio" id="map-0" type="radio" v-model="reportType"
-                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="0">
+                                        <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input option-input-green radio" id="map-0"
+                                            type="radio" v-model="reportType"
+                                            value="0">
                                         <span>{{i18n.question}}</span>
                                     </label>
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                        <input class="option-input option-input-red radio" id="map-1" type="radio" v-model="reportType"
-                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="1">
+                                        <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input option-input-red radio" id="map-1"
+                                            type="radio" v-model="reportType"
+                                            value="1">
                                         <span>{{i18n.complaint}}</span>
                                     </label>
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                        <input class="option-input option-input-green radio" id="map-2" type="radio" v-model="reportType"
-                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="2">
+                                        <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input option-input-green radio" id="map-2"
+                                            type="radio" v-model="reportType"
+                                            value="2">
                                         <span>{{i18n.suggestion}}</span>
                                     </label>
                                 </div>
                             </div>
-                            <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="mapchoice1" style="padding-top: 2vh; width: 35vw;" v-if="reportType === '1'">
+                            <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="mapchoice1"
+                                style="padding-top: 2vh; width: 35vw;" v-if="reportType === '1'">
                                 <div class="mapchoice">
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                        <input class="option-input option-input-red radio" id="map-0" type="radio" v-model="reportReason"
-                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="0">
+                                        <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input option-input-red radio" id="map-0"
+                                            type="radio" v-model="reportReason"
+                                            value="0">
                                         <span>{{i18n.cheats}}</span>
                                     </label>
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                        <input class="option-input option-input-red radio" id="map-1" type="radio" v-model="reportReason"
-                                            value="1">
+                                        <input class="option-input option-input-red radio" id="map-1" type="radio"
+                                            v-model="reportReason" value="1">
                                         <span>{{i18n.useBugs}}</span>
                                     </label>
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                        <input class="option-input option-input-red radio" id="map-2" type="radio" v-model="reportReason"
-                                            :style="{cursor: disableCursor ? 'pointer' : 'none'}" value="2">
+                                        <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input option-input-red radio" id="map-2"
+                                            type="radio" v-model="reportReason"
+                                            value="2">
                                         <span>{{i18n.insult}}</span>
                                     </label>
                                 </div>
@@ -1279,7 +1296,8 @@
                                 <div style="padding-top: 4vh; display: flex; align-items: center; justify-content: space-between;"
                                     v-if="reportType !== -1 && reportType !== '1' || (reportReason !== -1 && reportType === '1')">
                                     <div class="group">
-                                        <input :class="{inputTextRed: reportType === '1'}" class="inputText" required type="text" v-model="reportInput">
+                                        <input :class="{inputTextRed: reportType === '1'}" class="inputText" required
+                                            type="text" v-model="reportInput">
                                         <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                         <label
                                             class="labelText">{{reportType === '0' ? i18n.questionInput : reportType === '1' ? i18n.intruderID : i18n.improvementInput}}</label>
@@ -1330,9 +1348,12 @@
                                             <div class="avatarzapros" style="border: 2px solid #ff0000">
                                                 <img :src="`../menu/img/avatars/${getAvatar(player.name)}.jpg`">
                                             </div>
-                                            <div style="display: flex; align-items: center; justify-content: space-between; width: 30vw;">
-                                                <div class="nickzapros">{{player.name}}</div> 
-                                                <div class="nickzapros typeLP">{{player.type === 0 ? i18n.victimLP : player.type === 1 ? i18n.obsLP : i18n.killerLP}}</div>
+                                            <div
+                                                style="display: flex; align-items: center; justify-content: space-between; width: 30vw;">
+                                                <div class="nickzapros">{{player.name}}</div>
+                                                <div class="nickzapros typeLP">
+                                                    {{player.type === 0 ? i18n.victimLP : player.type === 1 ? i18n.obsLP : i18n.killerLP}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="btnzapros" data-title="SELECT" id="i18nSelect">
@@ -1340,8 +1361,12 @@
                                                 v-on:click="changeVar(['reportInput', player.id.toString()]); switchPage(6,0)">
                                         </div>
                                     </div>
+                                </transition-group>
                             </div>
-                            </transition-group>
+                            <div class="list-complete-item" v-if="reportPlayers.length === 0">
+                                <span
+                                style="font-size: 2vh; font-family: 'Roboto Condensed', cursive; color: #fff; text-shadow: 1px 1px 2px #0000007e;">{{lang === 'ru' ? "СЕЙЧАС ЭТОТ СПИСОК ПУСТ" : "NOW THIS LIST IS EMPTY"}}</span>
+                            </div>
                         </div>
                     </div>
                     </div>
