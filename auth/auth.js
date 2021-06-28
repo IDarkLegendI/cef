@@ -1,6 +1,10 @@
 if ('alt' in window) {
     alt.on('showPage', step => auth.showPage(step));
     alt.on('showAuth', toggle => auth.fOnLoad(toggle));
+    alt.on('setLang', lang => {
+        console.log(`auth.lang: ${lang}`)
+        auth.lang = lang;
+    })
 } else setTimeout(() => auth.fOnLoad(true), 10);
 
 let auth = new Vue({
