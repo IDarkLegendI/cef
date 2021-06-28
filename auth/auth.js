@@ -26,7 +26,8 @@ let auth = new Vue({
 
     },
     methods: {
-        fOnLoad: function(toggle) {
+        fOnLoad: function(toggle, name) {
+            this.enteredName = name
             setTimeout(() => {
                 const container = document.getElementById('fade');
                 if (toggle) {
