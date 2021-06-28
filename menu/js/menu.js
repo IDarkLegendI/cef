@@ -1453,6 +1453,7 @@ let menu = new Vue({
                 menu.fToggleCursor(false)
                 if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
                 document.body.style.cursor = "auto"
+                menu.emit('showCursor', true)
             }
             else
             {
@@ -1460,6 +1461,7 @@ let menu = new Vue({
                 if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
                 menu.cursorWhile = setInterval(menu.fCursoring, 0)
                 document.body.style.cursor = 'none'
+                menu.emit('showCursor', false) 
             }
         }
     },
@@ -1471,15 +1473,26 @@ if ('alt' in window) {
         if(!menu.disableCursor) setTimeout(() => menu.fToggleCursor(toggle), 50)
         if(toggle) 
         {
-            if(menu.disableCursor) document.body.style.cursor = "auto"
+            if(menu.disableCursor) 
+            {
+                menu.fToggleCursor(false)
+                document.body.style.cursor = "auto"
+                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+                menu.cursorWhile = null; 
+            }
             else {
+                menu.fToggleCursor(true)
                 if(menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
             }
             menu.eventOpen();
         }
         else 
         {
-            if(menu.disableCursor) document.body.style.cursor = 'none' 
+            menu.fToggleCursor(false)
+            if(menu.disableCursor) 
+            {
+                menu.emit('showCursor', false)
+            }
             else {
                 if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
                 menu.cursorWhile = null;
