@@ -607,7 +607,7 @@ input {
 	transform: scale(1);
 }
 
-.social{
+.social {
 	display: flex;
 	flex-direction: row;
 	width: 13vh;
@@ -617,10 +617,19 @@ input {
 	top: 4vh;
 }
 
-.currentLang{ 
-    border-bottom: 2px solid #ffffff;
+.currentLang {
+	transform: scale(0.6);
 }
 
-.imgform img{
-    width: 6vh;
+.imgform {
+	transition: all .5s;
+}
+
+.imgform img {
+	width: 6vh;
+}
+
+.imgform:hover {
+	transform: scale(1.2);
+	transition: all .5s;
 }

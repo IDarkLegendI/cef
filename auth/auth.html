@@ -21,46 +21,40 @@
             <b id="particles-js"></b>
             <span class="forms login" v-show="page == 0">
                 <form action="#">
-                    <h1>Авторизация</h1>
-                    <span>Используйте ваш аккаунт</span>
+                    <h1>{{lang === 'ru' ? "Авторизация" : "Authorization"}}</h1>
+                    <span>{{lang === 'ru' ? "Используйте ваш аккаунт" : "Use your account"}}</span>
                     <div class="input-div">
                         <input type="text" name="email" autocomplete="off" required spellcheck="false"
                             v-model="enteredLoginMail">
                         <label for="email" class="label-name">
-                            <span class="content-name">
-                                E-mail
-                            </span>
+                            <span class="content-name">E-mail</span>
                         </label>
                     </div>
                     <div class="input-div">
                         <input type="password" name="pass" autocomplete="off" required spellcheck="false"
                             v-model="enteredLoginPass">
                         <label for="email" class="label-name">
-                            <span class="content-name">
-                                Пароль
-                            </span>
+                            <span class="content-name">{{lang === 'ru' ? "Пароль" : "Password"}}</span>
                         </label>
                     </div>
-                    <a v-on:click="page = 3" id="forgotpass">Забыли пароль?</a>
+                    <a id="forgotpass" v-on:click="page = 3">{{lang === 'ru' ? "Забыли пароль?" : "Forgot your password?"}}</a>
                     <!-- <div class="checkbox" id="autologin">
                         <input type="checkbox" id="checkbox" v-model="autologin">
                         <label for="checkbox">Включить автологин</label>
                     </div> -->
-                    <button v-on:click="sumbitData(0)" :disabled="!verifyAuth" type="button">Авторизоваться</button>
+                    <button :disabled="!verifyAuth" type="button" v-on:click="sumbitData(0)">{{lang === 'ru' ? "Авторизоваться" : "Log in"}}</button>
                 </form>
             </span>
             <span class="forms reg step1">
                 <form action="" v-if="page == 1">
-                    <h1>Регистрация</h1>
-                    <span>Используйте ваш E-mail и пароль</span>
+                    <h1>{{lang === 'ru' ? "Регистрация" : "Registration"}}</h1>
+                    <span>{{lang === 'ru' ? "Используйте ваш E-mail и пароль" : "Use your E-mail and password"}}</span>
                     <div class="input-div" :class="{ error: (enteredMail && !isEmailValid) }">
                         <input type="text" name="emailreg" autocomplete="off" required spellcheck="false"
                             v-model="enteredMail"
                             :class="{ checked: (enteredMail && isEmailValid), error: (enteredMail && !isEmailValid) }">
                         <label for="emailreg" class="label-name">
-                            <span class="content-name">
-                                E-mail
-                            </span>
+                            <span class="content-name">E-mail</span>
                         </label>
                         <!-- <span v-show="enteredMail && !isEmailValid">Неправильный E-mail</span> -->
                     </div>
@@ -71,9 +65,7 @@
                             :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid) }"
                             @input="verifyPass">
                         <label for="passreg" class="label-name">
-                            <span class="content-name">
-                                Придумайте пароль
-                            </span>
+                            <span class="content-name">{{lang === 'ru' ? "Придумайте пароль" : "Come up with a password"}}</span>
                         </label>
                         <!-- <span v-show="enteredPass1 && !isPassword1Valid">Пароль содержит запрещающие символы</span> -->
                     </div>
@@ -83,18 +75,15 @@
                             v-model="enteredPass2" @input="verifyPass"
                             :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid) }">
                         <label for="passreg2" class="label-name">
-                            <span class="content-name">
-                                Повторите пароль
-                            </span>
+                            <span class="content-name">{{lang === 'ru' ? "Повторите пароль" : "Repeat the password"}}</span>
                         </label>
                         <!-- <span v-show="enteredPass2 && !isPassword2Valid">Пароль содержит запрещающие символы</span> -->
                     </div>
-                    <button v-on:click="page = 2" :disabled="!verifyStep" type="button"
-                        id="btnreg">Зарегистрироваться</button>
+                    <button :disabled="!verifyStep" id="btnreg" type="button" v-on:click="page = 2">{{lang === 'ru' ? "Зарегистрироваться" : "Register"}}</button>
                 </form>
                 <form action="" v-if="page === 3">
-                    <h1>Восстановление пароля</h1>
-                    <span>Введите E-Mail от аккаунта</span>
+                    <h1>{{lang === 'ru' ? "Восстановление пароля" : "Password Recovery"}}</h1>
+                    <span>{{lang === 'ru' ? "Введите E-Mail от аккаунта" : "Enter the E-Mail from the account"}}</span>
                     <div class="input-div">
                         <input type="text" name="RecEmail" autocomplete="off" required spellcheck="false"
                             v-model="enteredLoginMail"
@@ -105,26 +94,24 @@
                             </span>
                         </label>
                     </div>
-                    <button v-on:click="sumbitData(1)" :disabled="!verifyForgotStep" type="button">Восстановить</button>
+                    <button :disabled="!verifyForgotStep" type="button" v-on:click="sumbitData(1)">{{lang === 'ru' ? "Восстановить" : "Recover"}}</button>
                 </form>
             </span>
             <span class="forms reg step2" v-if="page === 2">
                 <form action="#">
-                    <h1>Как будут звать вашего персонажа?</h1>
+                    <h1>{{lang === 'ru' ? "Как будут звать вашего персонажа?" : "What will your character's name be?"}}</h1>
                     <div class="input-div" :class="{ error: (enteredName && !isNameValid) }">
                         <input type="text" name="name" autocomplete="off" required spellcheck="false"
                             v-model="enteredName"
                             :class="{ checked: (enteredName && isNameValid), error: (enteredName && !isNameValid) }">
                         <label for="NamePerson" class="label-name">
-                            <span class="content-name">
-                                Имя
-                            </span>
+                            <span class="content-name">{{lang === 'ru' ? "Имя" : "Name"}}</span>
                         </label>
                     </div>
-                    <p style="color: white">Длина игрового имени должна быть больше трех символов</p>
+                    <p style="color: white">{{lang === 'ru' ? "Длина игрового имени должна быть больше трех символов" : "The length of the game name must be more than three characters"}}</p>
                     <div class="checkbox" id="agreebox">
                         <input type="checkbox" id="checkbox" v-model="agree">
-                        <label for="checkbox">Вы согласны с правилами проекта?</label>
+                        <label for="checkbox">{{lang === 'ru' ? "Вы согласны с правилами проекта?" : "Do you agree with the project rules?"}}</label>
                     </div>
                     <!-- <p>Пол:</p>
                     <input type="radio" id="man" value="man" v-model="enteredFloor">
@@ -132,7 +119,7 @@
                     <br>
                     <input type="radio" id="woman" value="woman" v-model="enteredFloor">
                     <label for="woman">Женский</label> -->
-                    <button v-on:click="sumbitData(2)" :disabled="!verifySecondStep" type="button">Продолжить</button>
+                    <button :disabled="!verifySecondStep" type="button" v-on:click="sumbitData(2)">{{lang === 'ru' ? "Продолжить" : "Continue"}}</button>
                 </form>
                 <!-- <div class="character">
                     <div class="center">
@@ -143,23 +130,23 @@
             <span class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left" v-show="page == 1 || page == 2 || page == 3">
-                        <h1>Вернуться к авторизации</h1>
-                        <p>У вас уже есть аккаунт? <br> В таком случае вернитесь!</p>
-                        <button class="ghost" id="login" v-on:click="page = 0" type="button">Авторизация</button>
+                        <h1>{{lang === 'ru' ? "Вернуться к авторизации" : "Go back to authorization"}}</h1>
+                        <p>{{lang === 'ru' ? "У вас уже есть аккаунт?" : "Do you already have an account?"}} <br> {{lang === 'ru' ? "В таком случае вернитесь!" : "In that case, come back!"}}</p>
+                        <button class="ghost" id="login" type="button" v-on:click="page = 0">{{lang === 'ru' ? "Авторизация" : "Authorization"}}</button>
                     </div>
                     <div class="overlay-panel overlay-right" v-show="page == 0">
-                        <h1>Добро пожаловать!</h1>
-                        <p>Нет аккаунта? <br> Самое время его создать!</p>
-                        <button class="ghost" id="register" v-on:click="page = 1" type="button">Регистрация</button>
+                        <h1>{{lang === 'ru' ? "Добро пожаловать!" : "Welcome!"}}</h1>
+                        <p>{{lang === 'ru' ? "Нет аккаунта?" : "No account?"}} <br>{{lang === 'ru' ? "Самое время его создать!" : "It's time to create it!"}}</p>
+                        <button class="ghost" id="register" type="button" v-on:click="page = 1">{{lang === 'ru' ? "Регистрация" : "Registration"}}</button>
                         <div class="social">
                             <div class="ru">
-                                <div class="imgform">
-                                    <img src="russia.png" alt="">
+                                <div :class="{currentLang: lang === 'en'}" class="imgform" v-on:click="lang = 'ru'">
+                                    <img alt="" src=".././menu/img/ru.png">
                                 </div>
                             </div>
                             <div class="en">
-                                <div class="imgform currentLang">
-                                    <img src="eu.png" alt="">
+                                <div :class="{currentLang: lang === 'ru'}" class="imgform" v-on:click="lang = 'en'">
+                                    <img alt="" src=".././menu/img/en.png">
                                 </div>
                             </div>
                         </div>

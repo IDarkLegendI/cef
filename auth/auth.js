@@ -21,7 +21,9 @@ let auth = new Vue({
         // character: [0, 0, -1],
         methodSpawn: [1, 0, 0],
         // activeCharacter: 0,
-        tab: '0'
+        tab: '0',
+        lang: 'ru',
+
     },
     methods: {
         fOnLoad: function(toggle) {
@@ -58,7 +60,7 @@ let auth = new Vue({
                 let i = 0;
                 while (i++ < 3) this.methodSpawn[i] = downloadableSpawn[i];
             } else this.page = step;
-        },
+        }, 
         sumbitData: function(step) {
             if ('alt' in window) {
                 if (step < 0) {
