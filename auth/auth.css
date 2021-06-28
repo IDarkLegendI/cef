@@ -85,7 +85,7 @@ button {
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 	transition: 0.3s;
-	margin-top: 10%;
+	/* margin-top: 10%; */
 }
 
 .step1 button {
@@ -322,7 +322,6 @@ svg {
 	text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.4);
 	font-size: 14px;
 	text-decoration: none;
-	margin: 15px 0;
 	transition: 0.4s;
 	opacity: 0.6;
 }
