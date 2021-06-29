@@ -605,6 +605,15 @@
                                 </div>
                             </div>
                             <div class="checkboxes">
+                                <div :style="{cursor: autoLogin ? 'pointer' : 'none'}" class="checkboxtest">
+                                    <span>{{i18n.autoLogin}}</span>
+                                    <div class="settingCenter"><input id="autoLogin" type="checkbox"
+                                            v-model='autoLogin' /><label :style="{cursor: autoLogin ? 'pointer' : 'none'}"
+                                            for="autoLogin"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkboxes">
                                 <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                     <span>{{i18n.disableCursor}}</span>
                                     <div class="settingCenter"><input id="disableCursor" type="checkbox"
