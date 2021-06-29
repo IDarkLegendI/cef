@@ -43,7 +43,7 @@
                             v-on:click="page = 3">{{lang === 'ru' ? "Забыли пароль?" : "Forgot your password?"}}</a>
                         </div>
                         <div class="checkbox" style="padding-top: 2vh; padding-right: 1vw;">
-                            <input id="checkbox" type="checkbox" v-model="autologin">
+                            <input id="checkbox" type="checkbox" v-model="autoLogin">
                             <label for="checkbox">{{lang === 'ru' ? "Автоматический вход" : "Automatic login"}}</label>
                         </div>
                     </div>
@@ -119,13 +119,16 @@
                             <span class="content-name">{{lang === 'ru' ? "Имя" : "Name"}}</span>
                         </label>
                     </div>
-                    <p style="color: white">
-                        {{lang === 'ru' ? "Длина игрового имени должна быть больше трех символов" : "The length of the game name must be more than three characters"}}
-                    </p>
-                    <div class="checkbox" id="agreebox">
-                        <input type="checkbox" id="checkbox" v-model="agree">
-                        <label
-                            for="checkbox">{{lang === 'ru' ? "Вы согласны с правилами проекта?" : "Do you agree with the project rules?"}}</label>
+                    <div style="display: flex; justify-content: center; margin: 15px 0; align-items: center; flex-direction: column;">
+                        <div>
+                            <p style="color: white;">
+                                {{lang === 'ru' ? "Длина игрового имени должна быть больше трех символов" : "The length of the game name must be more than three characters"}}
+                            </p>
+                        </div>
+                        <div class="checkbox" style="padding-top: 2vh; padding-right: 1vw;">
+                            <input id="agree" type="checkbox" v-model="agree">
+                            <label for="agree">{{lang === 'ru' ? "Вы согласны с правилами проекта?" : "Do you agree with the project rules?"}}</label>
+                        </div>
                     </div>
                     <!-- <p>Пол:</p>
                     <input type="radio" id="man" value="man" v-model="enteredFloor">

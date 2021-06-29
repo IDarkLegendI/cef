@@ -1,6 +1,6 @@
 if ('alt' in window) {
     alt.on('showPage', step => auth.showPage(step));
-    alt.on('showAuth', toggle => auth.fOnLoad(toggle));
+    alt.on('showAuth', (toggle, name) => auth.fOnLoad(toggle, name));
     alt.on('setLang', lang => {
         console.log(`auth.lang: ${lang}`)
         auth.lang = lang;
@@ -12,7 +12,7 @@ let auth = new Vue({
     data: { 
         page: 0,
         agree: 0,
-        autologin: 0,
+        autoLogin: 0,
         enteredLoginMail: '',
         enteredLoginPass: '',
         enteredMail: '',
@@ -30,8 +30,8 @@ let auth = new Vue({
 
     },
     methods: {
-        fOnLoad: function(toggle, name) {
-            this.enteredName = name
+        fOnLoad: function(toggle, name = '') {
+            this.enteredName = name; 
             setTimeout(() => {
                 const container = document.getElementById('fade');
                 if (toggle) {
@@ -76,11 +76,14 @@ let auth = new Vue({
                         alt.emit('emitToServer', 'choiceSpawn', step);
                     }
                 } else if (step == 0) {
-                    alt.emit('emitToServer', 'loginInUser', {
+                    // alt.emit('emitToServer', 'loginInUser', {
+                    //     email: auth.enteredLoginMail,
+                    //     password: auth.enteredLoginPass,
+                    // }, false);
+                    alt.emit('emitToClient', 'clientLoginInUser', {
                         email: auth.enteredLoginMail,
                         password: auth.enteredLoginPass,
-                        autologin: auth.autologin
-                    });
+                    }, auth.autoLogin)
                 } else if (step == 1) {
                     alt.emit(
                         'emitToServer',
