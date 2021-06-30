@@ -258,7 +258,7 @@ let menu = new Vue({
             normal: 'NORMAL',
             big: 'BIG',
             disableCursor: 'DISABLING A CUSTOM CURSOR',
-            autoLogin: 'AUTOMATIC LOGIN',
+            autoLogin: 'AUTOMATIC LOGIN TO THE SERVER',
             btnBack: 'BACK',
             leavelobby: 'LEAVY LOBBY',
             buy: 'BUY',
@@ -330,6 +330,11 @@ let menu = new Vue({
             killerLP: "KILLED YOU",
             obsLP: "YOU WATCHED HIM",
             notAvailable: "This section is not available to you",
+            changePassword: "CHANGE PASSWORD",
+            currentPassword: "YOUR CURRENT PASSWORD",
+            newPassword: "YOUR NEW PASSWORD",
+            newPassword2: "REPEAT YOUR NEW PASSWORD",
+            apply: "APPLY",
         },
         i18nTemp: null,
         avatars: {
@@ -519,6 +524,10 @@ let menu = new Vue({
         }
     },
     methods: {
+        log(args)
+        {
+            console.log(...args)
+        },
         emitServer: function (eventName, ...args) {
             console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', eventName, ...args)
@@ -632,9 +641,9 @@ let menu = new Vue({
             })
         },
 
-        saveSettings(page) {
+        saveSettings(page, subPage = 0) {
             console.log(`saveMenu`)
-            if (page !== -1) this.switchPage(page);
+            if (page !== -1) this.switchPage(page, subPage);
             if ('alt' in window) {
                 alt.emit('saveSettings', {
                     lang: this.lang,
@@ -1030,7 +1039,7 @@ let menu = new Vue({
                 normal: 'СРЕДНИЙ',
                 big: 'БОЛЬШОЙ',
                 disableCursor: 'ОТКЛЮЧЕНИЕ КАСТОМНОГО КУРСОРА',
-                autoLogin: 'АВТОМАТИЧЕСКИЙ ВХОД',
+                autoLogin: 'АВТОМАТИЧЕСКИЙ ВХОД НА СЕРВЕР',
                 btnBack: 'НАЗАД',
                 leavelobby: 'ВЫЙТИ',
                 buy: 'КУПИТЬ',
@@ -1102,6 +1111,11 @@ let menu = new Vue({
                 killerLP: "УБИЛ ВАС",
                 obsLP: "ВЫ НАБЛЮДАЛИ ЗА НИМ",
                 notAvailable: "Этот раздел вам недоступен",
+                changePassword: "ИЗМЕНИТЬ ПАРОЛЬ",
+                currentPassword: "ВАШ ТЕКУЩИЙ ПАРОЛЬ",
+                newPassword: "ВАШ НОВЫЙ ПАРОЛЬ",
+                newPassword2: "ПОВТОРИТЕ ВАШ НОВЫЙ ПАРОЛЬ",
+                apply: "ПРИМЕНИТЬ",
             }
         },
         loadEn() {
@@ -1648,7 +1662,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(1, 0)
+        menu.switchPage(1, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true

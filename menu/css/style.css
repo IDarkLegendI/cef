@@ -1120,7 +1120,7 @@ html {
   width: 35vw;
   position: absolute;
   left: 50%;
-  top: 10vh;
+  top: 7.5vh;
   -webkit-transform: translate(-50%, 0%);
           transform: translate(-50%, 0%);
   display: -webkit-box;
@@ -3585,5 +3585,19 @@ input[type="button" i]:focus, .button :focus, .button :active {
   opacity: 1;
   -webkit-transition: all .5s ease-out;
   transition: all .5s ease-out;
+}
+
+.changePassword {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 28.5vw;
+}
+
+.changePassword div {
+  margin-top: 2vh;
 }
 /*# sourceMappingURL=style.css.map */
