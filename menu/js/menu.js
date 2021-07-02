@@ -5,8 +5,8 @@ let menu = new Vue({
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
         nextSubPage: -1,
-        lastPage: 0,
-        cursorWhile: 0,
+        lastPage: 0, 
+        cursorWhile: null,
         fCursoring: undefined,
         fToggleCursor: undefined,
 
