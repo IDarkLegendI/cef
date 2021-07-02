@@ -116,7 +116,7 @@
                         <label for="NamePerson" class="label-name">
                             <span class="content-name" v-if="enteredName && !isNameValid">{{lang === 'ru' ? "Имя содержит запрещающие символы" : "The name contains forbidding characters"}}</span>
                             <section v-else>
-                                <span class="content-name" v-if="enteredName && enteredName.length < 4">{{lang === 'ru' ? "Имя должно быть больше трех символов" : "Name must be more than three characters long"}}</span>
+                                <span class="content-name" v-if="enteredName && enteredName.length < 4">{{lang === 'ru' ? "Имя должно быть больше трех символов" : "The name must be longer"}}</span>
                                 <span class="content-name" v-else>{{lang === 'ru' ? "Имя" : "Name"}}</span>
                             </section>
                         </label>
