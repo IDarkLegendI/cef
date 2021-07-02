@@ -92,7 +92,7 @@ let auth = new Vue({
                     alt.emit('emitToClient', 'clientLoginInUser', {
                         email: auth.enteredLoginMail,
                         password: auth.enteredLoginPass,
-                    }, auth.autoLogin)
+                    }, auth.autoLogin, auth.lang)
                 } else if (step == 1) {
                     alt.emit(
                         'emitToServer',
