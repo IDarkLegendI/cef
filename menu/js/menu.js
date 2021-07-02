@@ -338,6 +338,7 @@ let menu = new Vue({
             newPassDontMatch: "The new passwords don't match",
             newPassDontValid: "The password contains forbidden characters. Use A-Z and numbers",
             newPassTooLong: "The new password is too long. The password must be up to 20 characters",
+            newPassSameCurrent: "The new password must be different from the old one",
             changedPassword: "The password was successfully changed!",
         },
         i18nTemp: null,
@@ -643,16 +644,17 @@ let menu = new Vue({
 
         changePassword(current, newPass, newPass2)
         {
-            if(newPass !== newPass2) return menu.emit('customNotify', 1, i18n.newPassDontMatch)
-            if(/[^A-Z-a-z-0-9]/g.test(newPass)) return menu.emit('customNotify', 1, i18n.newPassDontValid)
-            if(newPass.length > 20) return menu.emit('customNotify', 1, i18n.newPassTooLong)
-            menu.emitToServerWithWT(1000, 'sLogin:changePassword', current, newPass);
+            if(newPass !== newPass2) return menu.emit('customNotify', 1, menu.i18n.newPassDontMatch)
+            if(/[^A-Z-a-z-0-9]/g.test(newPass)) return menu.emit('customNotify', 1, menu.i18n.newPassDontValid)
+            if(newPass.length > 20) return menu.emit('customNotify', 1, menu.i18n.newPassTooLong)
+            if(newPass === current) return menu.emit('customNotify', 1, menu.i18n.newPassSameCurrent)
+            menu.emitToServerWithWT(1000, 'sLogin:changePassword', current, newPass); 
         }, 
         changedPassword()
         {
             let cP = document.getElementById('currentPass'), nP = document.getElementById('newPass'), nP2 = document.getElementById('newPass2')
             if(cP && nP && nP2) cP = nP = nP2 = ""
-            menu.emit('customNotify', 2, i18n.changedPassword) 
+            menu.emit('customNotify', 2, menu.i18n.changedPassword) 
             menu.switchPage(1, 0)
         },
 
@@ -1134,6 +1136,7 @@ let menu = new Vue({
                 newPassDontMatch: "Новые пароли не совпадают",
                 newPassDontValid: "Пароль содержит запрещенные символы. Используйте A-Z и цифры",
                 newPassTooLong: "Новый пароль слишком длинный. Пароль должен быть до 20 символов",
+                newPassSameCurrent: "Новый пароль должен отличаться от старого",
                 changedPassword: "Пароль успешно изменен!",
             }
         },
@@ -1679,7 +1682,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(6, 0)
+        menu.switchPage(1, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
