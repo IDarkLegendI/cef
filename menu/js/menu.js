@@ -335,6 +335,10 @@ let menu = new Vue({
             newPassword: "YOUR NEW PASSWORD",
             newPassword2: "REPEAT YOUR NEW PASSWORD",
             apply: "APPLY",
+            newPassDontMatch: "The new passwords don't match",
+            newPassDontValid: "The password contains forbidden characters. Use A-Z and numbers",
+            newPassTooLong: "The new password is too long. The password must be up to 20 characters",
+            changedPassword: "The password was successfully changed!",
         },
         i18nTemp: null,
         avatars: {
@@ -524,10 +528,6 @@ let menu = new Vue({
         }
     },
     methods: {
-        log(args)
-        {
-            console.log(...args)
-        },
         emitServer: function (eventName, ...args) {
             console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', eventName, ...args)
@@ -639,6 +639,21 @@ let menu = new Vue({
             document.querySelectorAll(`[id=${id}]`).forEach(el => {
                 el.setAttribute('data-title', menu.i18n[text]);
             })
+        },
+
+        changePassword(current, newPass, newPass2)
+        {
+            if(newPass !== newPass2) return menu.emit('customNotify', 1, i18n.newPassDontMatch)
+            if(/[^A-Z-a-z-0-9]/g.test(newPass)) return menu.emit('customNotify', 1, i18n.newPassDontValid)
+            if(newPass.length > 20) return menu.emit('customNotify', 1, i18n.newPassTooLong)
+            menu.emitToServerWithWT(1000, 'sLogin:changePassword', current, newPass);
+        }, 
+        changedPassword()
+        {
+            let cP = document.getElementById('currentPass'), nP = document.getElementById('newPass'), nP2 = document.getElementById('newPass2')
+            if(cP && nP && nP2) cP = nP = nP2 = ""
+            menu.emit('customNotify', 2, i18n.changedPassword) 
+            menu.switchPage(1, 0)
         },
 
         saveSettings(page, subPage = 0) {
@@ -1116,6 +1131,10 @@ let menu = new Vue({
                 newPassword: "ВАШ НОВЫЙ ПАРОЛЬ",
                 newPassword2: "ПОВТОРИТЕ ВАШ НОВЫЙ ПАРОЛЬ",
                 apply: "ПРИМЕНИТЬ",
+                newPassDontMatch: "Новые пароли не совпадают",
+                newPassDontValid: "Пароль содержит запрещенные символы. Используйте A-Z и цифры",
+                newPassTooLong: "Новый пароль слишком длинный. Пароль должен быть до 20 символов",
+                changedPassword: "Пароль успешно изменен!",
             }
         },
         loadEn() {

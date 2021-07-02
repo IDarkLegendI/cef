@@ -758,13 +758,13 @@
                                     <label class="labelText">{{i18n.currentPassword}}</label>
                                 </div>
                                 <div class="group" style="padding-left: 0;">
-                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" required
+                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass" required
                                         type="text">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.newPassword}}</label>
                                 </div>
                                 <div class="group" style="padding-left: 0;">
-                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" required
+                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass2" required
                                         type="text">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.newPassword2}}</label>
@@ -777,7 +777,7 @@
                                 <div class="btnback">
                                     <!-- <a href="#" id="mouseFocus" v-on:click="emitToServerWithWT(1000, 'sLogin:changePassword', document.getElementById('currentPass').value)">{{i18n.apply}}</a> -->
                                     <a href="#" id="mouseFocus"
-                                        v-on:click="log(document.getElementById('currentPass').value)">{{i18n.apply}}</a>
+                                        onclick="menu.changePassword(document.getElementById('currentPass').value, document.getElementById('newPass').value, document.getElementById('newPass2').value)">{{i18n.apply}}</a>
                                 </div>
                             </div>
                         </div>
