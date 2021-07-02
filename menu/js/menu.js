@@ -1488,8 +1488,8 @@ let menu = new Vue({
 if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;  
-        if(!menu.disableCursor) setTimeout(() => menu.fToggleCursor(toggle), 50)
-        if(toggle) 
+        document.body.style.cursor = 'none'
+        if(toggle)
         {
             if(menu.disableCursor) 
             {
@@ -1499,20 +1499,18 @@ if ('alt' in window) {
                 menu.cursorWhile = null; 
             }
             else {
-                menu.fToggleCursor(true)
+                setTimeout(() => menu.fToggleCursor(toggle), 50)
                 if(menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
             }
+
             menu.eventOpen();
-        }
+        } 
         else 
         {
             menu.fToggleCursor(false)
-            if(menu.disableCursor) 
+            if(menu.cursorWhile !== null) 
             {
-                menu.emit('showCursor', false)
-            }
-            else {
-                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+                clearInterval(menu.cursorWhile)
                 menu.cursorWhile = null;
             }
         }
@@ -1670,7 +1668,7 @@ if ('alt' in window) {
         // menu.statusGame = true;
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)"
-    document.body.style.cursor = "default"
+    document.body.style.cursor = "auto"
     menu.placeAll = 3;
     menu.place = 2;
     // menu.anyVar = 34 //УБРАТЬ!
