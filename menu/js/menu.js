@@ -320,9 +320,9 @@ let menu = new Vue({
             cheats: "THIRD-PARTY SOFTWARE", 
             useBugs: "USING BUGS",
             insult: "INSULT",
-            intruderID: "Intruder ID",
-            questionInput: "Write your question", 
-            improvementInput: "Write your suggestion",
+            intruderID: "SPECIFY THE ID OF THE VIOLATOR",
+            questionInput: "DESCRIBE YOUR QUESTION", 
+            improvementInput: "DESCRIBE YOUR PROPOSAL",
             send: "SEND",
             discord: "OUR DISCORD",
             clearAll: "CLEAR ALL",
@@ -677,7 +677,7 @@ let menu = new Vue({
             }
         },
         //Page = -3 -> игнорирование запроса о смене страницы
-        switchPage(newPage, newSubPage = -1) { 
+        switchPage(newPage, newSubPage = -1) {  
             if(newPage === -3) return; 
             if(newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, i18n.notAvailable)
             if(newPage === 5) setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000) 
@@ -1116,9 +1116,9 @@ let menu = new Vue({
                 cheats: "СТОРОННЕЕ ПО",
                 useBugs: "ИСПОЛЬЗОВАНИЕ БАГОВ",
                 insult: "ОСКОРБЛЕНИЕ",
-                intruderID: "Укажите идентификатор нарушителя",
-                questionInput: "Какой у Вас вопрос?",
-                improvementInput: "Какое у Вас предложение?",
+                intruderID: "УКАЖИТЕ ИДЕНТИФИКАТОР НАРУШИТЕЛЯ",
+                questionInput: "ОПИШИТЕ ВАШ ВОПРОС",
+                improvementInput: "ОПИШИТЕ ВАШЕ ПРЕДЛОЖЕНИЕ",
                 send: "ОТПРАВИТЬ",
                 discord: "НАШ DISCORD",
                 clearAll: "ОЧИСТИТЬ ВСЕ",
@@ -1679,7 +1679,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(1, 1)
+        menu.switchPage(6, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
