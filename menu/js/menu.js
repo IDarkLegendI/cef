@@ -679,7 +679,7 @@ let menu = new Vue({
         //Page = -3 -> игнорирование запроса о смене страницы
         switchPage(newPage, newSubPage = -1) {  
             if(newPage === -3) return; 
-            if(newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, i18n.notAvailable)
+            if(newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, menu.i18n.notAvailable)
             if(newPage === 5) setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000) 
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
