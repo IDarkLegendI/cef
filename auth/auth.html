@@ -19,7 +19,7 @@
     <div id="auth">
         <div id="auth1" v-show="tab == 0">
             <b id="particles-js"></b>
-            <span class="forms login" v-show="page == 0">
+            <span class="forms login" v-show="page === 0">
                 <form action="#">
                     <h1>{{lang === 'ru' ? "Авторизация" : "Authorization"}}</h1>
                     <span>{{lang === 'ru' ? "Используйте ваш аккаунт" : "Use your account"}}</span>
@@ -52,7 +52,7 @@
                 </form>
             </span>
             <span class="forms reg step1">
-                <form action="" v-if="page == 1">
+                <form action="" v-if="page === 1">
                     <h1>{{lang === 'ru' ? "Регистрация" : "Registration"}}</h1>
                     <span>{{lang === 'ru' ? "Используйте ваш E-mail и пароль" : "Use your E-mail and password"}}</span>
                     <div class="input-div" :class="{ error: (enteredMail && !isEmailValid) }">
@@ -60,9 +60,9 @@
                             v-model="enteredMail"
                             :class="{ checked: (enteredMail && isEmailValid), error: (enteredMail && !isEmailValid) }">
                         <label for="emailreg" class="label-name">
-                            <span class="content-name">E-mail</span>
+                            <span class="content-name" v-if="enteredMail && !isEmailValid">{{lang === 'ru' ? "E-mail содержит запрещающие символы" : "The e-mail contains forbidding characters"}}</span>
+                            <span class="content-name" v-else>E-mail</span>
                         </label>
-                        <!-- <span v-show="enteredMail && !isEmailValid">Неправильный E-mail</span> -->
                     </div>
                     <div class="input-div"
                         :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid) }">
@@ -71,10 +71,9 @@
                             :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid) }"
                             @input="verifyPass">
                         <label for="passreg" class="label-name">
-                            <span
-                                class="content-name">{{lang === 'ru' ? "Придумайте пароль" : "Come up with a password"}}</span>
+                            <span class="content-name" v-if="enteredPass1 && !isPassword1Valid">{{lang === 'ru' ? "Пароль содержит запрещающие символы" : "The password contains forbidding characters"}}</span>
+                            <span class="content-name" v-else>{{lang === 'ru' ? "Придумайте пароль" : "Come up with a password"}}</span>
                         </label>
-                        <!-- <span v-show="enteredPass1 && !isPassword1Valid">Пароль содержит запрещающие символы</span> -->
                     </div>
                     <div class="input-div"
                         :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid) }">
@@ -82,10 +81,9 @@
                             v-model="enteredPass2" @input="verifyPass"
                             :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid) }">
                         <label for="passreg2" class="label-name">
-                            <span
-                                class="content-name">{{lang === 'ru' ? "Повторите пароль" : "Repeat the password"}}</span>
+                            <span class="content-name" v-if="enteredPass2 && !isPassword2Valid">{{lang === 'ru' ? "Пароль содержит запрещающие символы" : "The password contains forbidding characters"}}</span>
+                            <span class="content-name" v-else>{{lang === 'ru' ? "Повторите пароль" : "Repeat the password"}}</span>
                         </label>
-                        <!-- <span v-show="enteredPass2 && !isPassword2Valid">Пароль содержит запрещающие символы</span> -->
                     </div>
                     <button :disabled="!verifyStep" id="btnreg" type="button"
                         v-on:click="page = 2">{{lang === 'ru' ? "Зарегистрироваться" : "Register"}}</button>
@@ -111,20 +109,19 @@
                 <form action="#">
                     <h1>{{lang === 'ru' ? "Как будут звать вашего персонажа?" : "What will your character's name be?"}}
                     </h1>
-                    <div class="input-div" :class="{ error: (enteredName && !isNameValid) }">
+                    <div :class="{ error: (enteredName && !isNameValid), warning: (enteredName && enteredName.length < 4 && isNameValid) }" class="input-div">
                         <input type="text" name="name" autocomplete="off" required spellcheck="false"
                             v-model="enteredName"
-                            :class="{ checked: (enteredName && isNameValid), error: (enteredName && !isNameValid) }">
+                            :class="{ checked: (enteredName && isNameValid), error: (enteredName && !isNameValid), warning: (enteredName && enteredName.length < 4 && isNameValid) }">
                         <label for="NamePerson" class="label-name">
-                            <span class="content-name">{{lang === 'ru' ? "Имя" : "Name"}}</span>
+                            <span class="content-name" v-if="enteredName && !isNameValid">{{lang === 'ru' ? "Имя содержит запрещающие символы" : "The name contains forbidding characters"}}</span>
+                            <section v-else>
+                                <span class="content-name" v-if="enteredName && enteredName.length < 4">{{lang === 'ru' ? "Имя должно быть больше трех символов" : "Name must be more than three characters long"}}</span>
+                                <span class="content-name" v-else>{{lang === 'ru' ? "Имя" : "Name"}}</span>
+                            </section>
                         </label>
                     </div>
                     <div style="display: flex; justify-content: center; margin: 15px 0; align-items: center; flex-direction: column;">
-                        <div>
-                            <p style="color: white;">
-                                {{lang === 'ru' ? "Длина игрового имени должна быть больше трех символов" : "The length of the game name must be more than three characters"}}
-                            </p>
-                        </div>
                         <div class="checkbox" style="padding-top: 2vh; padding-right: 1vw;">
                             <input id="agree" type="checkbox" v-model="agree">
                             <label for="agree">{{lang === 'ru' ? "Вы согласны с правилами проекта?" : "Do you agree with the project rules?"}}</label>
@@ -175,7 +172,7 @@
                     </div>
                 </div>
             </span>
-        </div>
+        </div> 
     </div>
 </body>
 

@@ -5,7 +5,16 @@ if ('alt' in window) {
         console.log(`auth.lang: ${lang}`)
         auth.lang = lang;
     })
-} else setTimeout(() => auth.fOnLoad(true), 10);
+} else 
+{
+    setTimeout(() => 
+    {
+        auth.fOnLoad(true)
+        auth.page = 2
+        container.classList.add('right-panel-active');
+        // auth.showPage(3)
+    }, 10);
+}
 
 let auth = new Vue({
     el: '#auth',

@@ -16,6 +16,10 @@
 	color: #ea2027;
 }
 
+.warning {
+	color: orange;
+}
+
 #fade {
 	opacity: 0;
 }
@@ -257,7 +261,7 @@ form {
 
 .input-div {
 	/*Блок инпута*/
-	height: 60px;
+	height: 5.6vh;
 	width: 100%;
 	margin-top: 15px;
 	position: relative;
@@ -470,6 +474,20 @@ input {
 /*Отвечает за красный цвет label*/
 .error input:valid+.label-name .content-name {
 	color: #ea2027;
+	text-shadow: 0px 0px 1px #ea2027;
+}
+
+.warning input:focus+.label-name::after,
+/*Красная подсветка*/
+.warning input:valid+.label-name::after {
+	border-color: orange;
+}
+
+.warning input:focus+.label-name .content-name,
+/*Отвечает за красный цвет label*/
+.warning input:valid+.label-name .content-name {
+	color: orange;
+	text-shadow: 0px 0px 1px orange;
 }
 
 #auth {
