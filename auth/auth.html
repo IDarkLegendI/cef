@@ -65,21 +65,24 @@
                         </label>
                     </div>
                     <div class="input-div"
-                        :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid) }">
+                        :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid), warning: (enteredPass1 && enteredPass1.length < 4 && isPassword1Valid) }">
                         <input type="password" name="passreg" autocomplete="off" required spellcheck="false"
                             v-model="enteredPass1"
-                            :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid) }"
+                            :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid),  warning: (enteredPass1 && enteredPass1.length < 4 && isPassword1Valid) }"
                             @input="verifyPass">
                         <label for="passreg" class="label-name">
                             <span class="content-name" v-if="enteredPass1 && !isPassword1Valid">{{lang === 'ru' ? "Пароль содержит запрещающие символы" : "The password contains forbidding characters"}}</span>
-                            <span class="content-name" v-else>{{lang === 'ru' ? "Придумайте пароль" : "Come up with a password"}}</span>
-                        </label>
+                            <section v-else>
+                                <span class="content-name" v-if="enteredPass1 && enteredPass1.length < 4">{{lang === 'ru' ? "Пароль должен быть больше трех символов" : "The password must be longer"}}</span>
+                                <span class="content-name" v-else>{{lang === 'ru' ? "Придумайте пароль" : "Come up with a password"}}</span>
+                            </section>
+                        </label> 
                     </div>
                     <div class="input-div"
-                        :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid) }">
+                        :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid), warning: (enteredPass2 && enteredPass2.length < 4 && isPassword2Valid) }">
                         <input type="password" name="passreg2" autocomplete="off" required spellcheck="false"
                             v-model="enteredPass2" @input="verifyPass"
-                            :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid) }">
+                            :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid),  warning: (enteredPass2 && enteredPass2.length < 4 && isPassword2Valid) }">
                         <label for="passreg2" class="label-name">
                             <span class="content-name" v-if="enteredPass2 && !isPassword2Valid">{{lang === 'ru' ? "Пароль содержит запрещающие символы" : "The password contains forbidding characters"}}</span>
                             <span class="content-name" v-else>{{lang === 'ru' ? "Повторите пароль" : "Repeat the password"}}</span>

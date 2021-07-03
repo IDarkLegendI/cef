@@ -141,7 +141,7 @@ let auth = new Vue({
             return !/[^A-Z-a-z-0-9]/g.test(this.enteredPass2);
         },
         verifyStep() {
-            if (this.passChecked && this.isEmailValid && this.enteredMail) return true;
+            if (this.passChecked && this.isEmailValid && this.enteredMail && this.enteredPass1.length > 3) return true;
             else return false;
         },
         verifyAuth() {
