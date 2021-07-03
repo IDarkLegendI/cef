@@ -571,7 +571,7 @@
         <!-- НАСТРОЙКИ  | SETTINGS -->
         <transition enter-active-class="animated rotateInUpLeft fast"
             leave-active-class="animated rotateOutDownLeft fast">
-            <section v-if="page === 1"> 
+            <section v-if="page === 1">
                 <transition enter-active-class="animated rotateInUpLeft fast"
                     leave-active-class="animated rotateOutDownLeft fast">
                     <section v-if="subPage === 0">
@@ -708,20 +708,20 @@
                                             </div>
                                             <div class="mapchoice">
                                                 <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                                    <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input radio" id="map-0"
-                                                        type="radio"
+                                                    <input :style="{cursor: disableCursor ? 'pointer' : 'none'}"
+                                                        class="option-input radio" id="map-0" type="radio"
                                                         v-model="sizeMap" value="0">
                                                     <span>{{i18n.small}}</span>
                                                 </label>
                                                 <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                                    <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input radio" id="map-1"
-                                                        type="radio"
+                                                    <input :style="{cursor: disableCursor ? 'pointer' : 'none'}"
+                                                        class="option-input radio" id="map-1" type="radio"
                                                         v-model="sizeMap" value="1">
                                                     <span>{{i18n.normal}}</span>
                                                 </label>
                                                 <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
-                                                    <input :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="option-input radio" id="map-2"
-                                                        type="radio"
+                                                    <input :style="{cursor: disableCursor ? 'pointer' : 'none'}"
+                                                        class="option-input radio" id="map-2" type="radio"
                                                         v-model="sizeMap" value="2">
                                                     <span>{{i18n.big}}</span>
                                                 </label>
@@ -752,20 +752,20 @@
                                 {{i18n.changePassword}}</h1>
                             <div class="settings changePassword">
                                 <div class="group" style="padding-left: 0;">
-                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="currentPass"
-                                        required type="password">
+                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText"
+                                        id="currentPass" required type="password">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.currentPassword}}</label>
                                 </div>
                                 <div class="group" style="padding-left: 0;">
-                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass" required
-                                        type="password">
+                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass"
+                                        required type="password">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.newPassword}}</label>
                                 </div>
                                 <div class="group" style="padding-left: 0;">
-                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass2" required
-                                        type="password">
+                                    <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass2"
+                                        required type="password">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.newPassword2}}</label>
                                 </div>
@@ -786,142 +786,149 @@
         </transition>
         <!-- Автомобили -->
         <section v-if="page === 2">
-            <section v-if="subPage === 0">
-                <div style="display: flex; flex-direction: column;">
-                    <div class="upline">
-                        <div class="nameupline">
-                            <span>GTAROYAL.RU</span>
-                        </div>
-                        <div class="balancemoney">
-                            <span>{{i18n.balance}} <br> <span class="rub">${{money}}</span></span>
-                        </div>
-                    </div>
-                    <div class="rotation">
-                        <input @input="changeCamRotation()" max="360" min="-180" step="1" type="range"
-                            style="opacity: 0;" v-model.number="camRotation">
-                    </div>
-                    <div :style="{opacity: cars[carsPointer].model === 'none' ? 0 : 1}" class="colorPicker"
-                        style="padding-left: 2.5%;">
-                        <div class="color-picker-panel" id="colorpicker">
-                            <div class="panel-row">
-                                <div class="spectrum-map">
-                                    <button class="color-cursor" id="spectrum-cursor"></button>
-                                    <canvas id="spectrum-canvas"></canvas>
-                                </div>
-                                <div class="hue-map">
-                                    <button class="color-cursor" id="hue-cursor"></button>
-                                    <canvas id="hue-canvas"></canvas>
-                                </div>
+            <transition enter-active-class="animated rotateInUpLeft fast"
+                leave-active-class="animated rotateOutDownLeft fast">
+                <section v-if="subPage === 0">
+                    <div style="display: flex; flex-direction: column;">
+                        <div class="upline">
+                            <div class="nameupline">
+                                <span>GTAROYAL.RU</span>
                             </div>
-
-                            <div class="panel-row">
-                                <button class="button mode-toggle" id="mode-toggle mouseFocus"
-                                    v-on:click="setPreviewCar(carsPointer); emit('cAudio:play', 'coloring')">{{i18n.applyColor}}</button>
-                            </div>
-                            <div class="panel-row">
-                                <span class="color-indicator" id="color-indicator"></span>
+                            <div class="balancemoney">
+                                <span>{{i18n.balance}} <br> <span class="rub">${{money}}</span></span>
                             </div>
                         </div>
-                    </div>
-                    <!--  border: 1px solid red -->
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div style="flex-basis: 20%; display: flex; ">
-
+                        <div class="rotation">
+                            <input @input="changeCamRotation()" max="360" min="-180" step="1" style="opacity: 0;"
+                                type="range" v-model.number="camRotation">
                         </div>
-                        <div class="mainauto">
-                            <div class="switchauto">
-                                <div class="arrowleft">
-                                    <img src="./img/arrowLeft.png" v-if="carsPointer !== 0"
-                                        v-on:click="previewCar(false, 'cars', 2)">
-                                    <img src="./img/arrowLeft.png"
-                                        style="filter: grayscale(100%); transform: scale(1.0);" v-else>
+                        <div :style="{opacity: cars[carsPointer].model === 'none' ? 0 : 1}" class="colorPicker"
+                            style="padding-left: 2.5%;">
+                            <div class="color-picker-panel" id="colorpicker">
+                                <div class="panel-row">
+                                    <div class="spectrum-map">
+                                        <button class="color-cursor" id="spectrum-cursor"></button>
+                                        <canvas id="spectrum-canvas"></canvas>
+                                    </div>
+                                    <div class="hue-map">
+                                        <button class="color-cursor" id="hue-cursor"></button>
+                                        <canvas id="hue-canvas"></canvas>
+                                    </div>
                                 </div>
-                                <div class="nameauto">
-                                    <div style="color: #fffb00;" v-show="cars[carsPointer].price > 0">
-                                        ${{cars[carsPointer].price}}</div>
-                                    <div class="textnameauto">
-                                        {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}</div>
-                                    <div class="textnameauto" style="font-size: 0.8vw"
-                                        v-show="cars[carsPointer].name !== 'None'">
-                                        ~{{maxSpeed}} KM\H</div>
+
+                                <div class="panel-row">
+                                    <button class="button mode-toggle" id="mode-toggle mouseFocus"
+                                        v-on:click="setPreviewCar(carsPointer); emit('cAudio:play', 'coloring')">{{i18n.applyColor}}</button>
                                 </div>
-                                <div class="arrowright">
-                                    <img src="./img/arrowRight.png" v-if="carsPointer < cars.length-1"
-                                        v-on:click="previewCar(true, 'cars', 2)">
-                                    <img src="./img/arrowRight.png"
-                                        style="filter: grayscale(100%); transform: scale(1.0);" v-else>
+                                <div class="panel-row">
+                                    <span class="color-indicator" id="color-indicator"></span>
                                 </div>
                             </div>
-                            <div class="btnback" style="display: flex; align-items: center;">
-                                <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
+                        </div>
+                        <!--  border: 1px solid red -->
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="flex-basis: 20%; display: flex; ">
 
-                                <a id="mouseFocus" style="background-color: #ffffffdc; color: black"
-                                    v-on:click="emitServer('sCar:testDrive', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
-                                    v-show="!updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">TEST
-                                    DRIVE</a>
-                                <section id="mouseFocus"
-                                    style="display: flex; align-items: center; justify-content: center;"
-                                    v-if="cars[carsPointer].price <= 0">
-                                    <a id="changeColorCar"
-                                        v-on:click="emitServer('sCar:applyTuning', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
-                                        v-show="updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">{{i18n.applyTuning}}($200)</a>
+                            </div>
+                            <div class="mainauto">
+                                <div class="switchauto">
+                                    <div class="arrowleft">
+                                        <img src="./img/arrowLeft.png" v-if="carsPointer !== 0"
+                                            v-on:click="previewCar(false, 'cars', 2)">
+                                        <img src="./img/arrowLeft.png"
+                                            style="filter: grayscale(100%); transform: scale(1.0);" v-else>
+                                    </div>
+                                    <div class="nameauto">
+                                        <div style="color: #fffb00;" v-show="cars[carsPointer].price > 0">
+                                            ${{cars[carsPointer].price}}</div>
+                                        <div class="textnameauto">
+                                            {{cars[carsPointer].name === 'None' ? i18n.none : cars[carsPointer].name}}
+                                        </div>
+                                        <div class="textnameauto" style="font-size: 0.8vw"
+                                            v-show="cars[carsPointer].name !== 'None'">
+                                            ~{{maxSpeed}} KM\H</div>
+                                    </div>
+                                    <div class="arrowright">
+                                        <img src="./img/arrowRight.png" v-if="carsPointer < cars.length-1"
+                                            v-on:click="previewCar(true, 'cars', 2)">
+                                        <img src="./img/arrowRight.png"
+                                            style="filter: grayscale(100%); transform: scale(1.0);" v-else>
+                                    </div>
+                                </div>
+                                <div class="btnback" style="display: flex; align-items: center;">
+                                    <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
 
-                                    <a id="mouseFocus" style="background-color: #ffffff81"
-                                        v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
+                                    <a id="mouseFocus" style="background-color: #ffffffdc; color: black"
+                                        v-on:click="emitServer('sCar:testDrive', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
+                                        v-show="!updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">TEST
+                                        DRIVE</a>
+                                    <section id="mouseFocus"
+                                        style="display: flex; align-items: center; justify-content: center;"
+                                        v-if="cars[carsPointer].price <= 0">
+                                        <a id="changeColorCar"
+                                            v-on:click="emitServer('sCar:applyTuning', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
+                                            v-show="updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">{{i18n.applyTuning}}($200)</a>
 
-                                    <section style="display: flex; align-items: center; justify-content: center;"
-                                        v-else>
-                                        <a id="mouseFocus"
-                                            v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
+                                        <a id="mouseFocus" style="background-color: #ffffff81"
+                                            v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
+
+                                        <section style="display: flex; align-items: center; justify-content: center;"
+                                            v-else>
+                                            <a id="mouseFocus" style="background-color: rgba(255, 255, 255, 0.863)"
+                                                v-on:click="subPage = 2">{{i18n.sellCar}}</a>
+
+                                            <a id="mouseFocus"
+                                                v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
+                                        </section>
                                     </section>
-                                </section>
-                                <section style="display: flex; align-items: center;" v-else>
-                                    <a id="mouseFocus" style="background-color: #fffb00; color: black"
-                                        v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
-                                </section>
+                                    <section style="display: flex; align-items: center;" v-else>
+                                        <a id="mouseFocus" style="background-color: #fffb00; color: black"
+                                            v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
+                                    </section>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            style="padding-right: 2.5%; width: 17vw; height: 15vh; right: 2.5%; bottom: 7vh; font-family: 'Oswald'; 
+                            <div
+                                style="padding-right: 2.5%; width: 17vw; height: 15vh; right: 2.5%; bottom: 7vh; font-family: 'Oswald'; 
                             color: #efefefea; font-size: 1.3vw; display: flex; flex-direction: column; align-items: center;">
-                            <h1>{{i18n.sortByPrice}}</h1>
-                            <hr style="width: 100%; height: 0;">
-                            <div style="display: flex; justify-content: space-between;">
-                                <div class="priceRange"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <h1 style="font-size: 0.8vw;">{{i18n.minValue}}</h1>
-                                    <input @change="previewCar(false)" max="500000" min="0" step="1000"
-                                        style="margin: 1vh 0; height: 1vw" type="range" v-model="minSort">
-                                    <input @change="previewCar(false)"
-                                        style="width: 94%;  border-radius: 0.4em; background-color: #fff; text-align: center; font-size: 0.9vw;"
-                                        type="text" v-model="minSort">
+                                <h1>{{i18n.sortByPrice}}</h1>
+                                <hr style="width: 100%; height: 0;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div class="priceRange"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <h1 style="font-size: 0.8vw;">{{i18n.minValue}}</h1>
+                                        <input @change="previewCar(false)" max="500000" min="0" step="1000"
+                                            style="margin: 1vh 0; height: 1vw" type="range" v-model="minSort">
+                                        <input @change="previewCar(false)"
+                                            style="width: 94%;  border-radius: 0.4em; background-color: #fff; text-align: center; font-size: 0.9vw;"
+                                            type="text" v-model="minSort">
+                                    </div>
+                                    <div class="priceRange"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <h1 style="font-size: 0.8vw;">{{i18n.maxValue}}</h1>
+                                        <input @change="previewCar(false)" max="500000" min="0" step="1000"
+                                            style="margin: 1vh 0; height: 1vw" type="range" v-model="maxSort">
+                                        <input @change="previewCar(false)"
+                                            style="width: 94%;  border-radius: 0.4em; background-color: #fff; text-align: center; font-size: 0.9vw;"
+                                            type="text" v-model="maxSort">
+                                    </div>
                                 </div>
-                                <div class="priceRange"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <h1 style="font-size: 0.8vw;">{{i18n.maxValue}}</h1>
-                                    <input @change="previewCar(false)" max="500000" min="0" step="1000"
-                                        style="margin: 1vh 0; height: 1vw" type="range" v-model="maxSort">
-                                    <input @change="previewCar(false)"
-                                        style="width: 94%;  border-radius: 0.4em; background-color: #fff; text-align: center; font-size: 0.9vw;"
-                                        type="text" v-model="maxSort">
+                                <div class="checkboxes" style="transform: scale(0.8);">
+                                    <div class="checkboxtest">
+                                        <span>{{i18n.onlyMyCars}}</span>
+                                        <div class="settingCenter"><input @change="previewCar(true, 'cars', 3)"
+                                                id="onlyMyCars" type="checkbox" v-model='onlyMyCars' /><label
+                                                for="onlyMyCars" id="mouseFocus"></label></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="checkboxes" style="transform: scale(0.8);">
-                                <div class="checkboxtest">
-                                    <span>{{i18n.onlyMyCars}}</span>
-                                    <div class="settingCenter"><input @change="previewCar(true, 'cars', 3)"
-                                            id="onlyMyCars" type="checkbox" v-model='onlyMyCars' /><label
-                                            for="onlyMyCars" id="mouseFocus"></label></div>
-                                </div>
-                            </div>
-                            <!-- <transition enter-active-class="animated fadeInUp" 
+                                <!-- <transition enter-active-class="animated fadeInUp" 
                             leave-active-class="animated fadeOutDown"> 
                                 <h1 style="font-size: 0.5vw; padding-top: 1vh; color: #fff; text-shadow: 0 0 3px black;" v-show="minSort > 0">{{i18n.infoSort}}</h1>
                             </transition> -->
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </transition>
             <section v-if="subPage === 1">
                 <div style="display: flex; flex-direction: column;">
                     <div class="upline">
@@ -962,13 +969,48 @@
                                 v-if="anyVarSecond[carsPointer] === anyVar">{{i18n.selected}}</a>
 
                             <section style="display: flex; align-items: center; justify-content: center;" v-else>
-                                <a id="mouseFocus"
+                                <a id="mouseFocus" 
                                     v-on:click="emitToClient('cJetPack:set', anyVarSecond[carsPointer], [anyVarC[1], anyVarC[2]])">{{i18n.select}}</a>
                             </section>
                         </section>
                     </div>
                 </div>
             </section>
+            <transition enter-active-class="animated rotateInUpLeft fast"
+                leave-active-class="animated rotateOutDownLeft fast">
+                <section v-if="subPage === 2">
+                    <div style="display: flex; flex-direction: column;">
+                        <div class="upline">
+                            <div class="nameupline">
+                                <span>GTAROYAL.RU</span>
+                            </div>
+                            <div class="balancemoney">
+                                <span>{{i18n.balance}} <br> <span class="rub">${{money}}</span></span>
+                            </div>
+                        </div>
+                        <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black;">
+                            <div class="settingsh1">
+                                <h1>{{i18n.acceptAction}}</h1>
+                            </div>
+                            <div class="settingsh1" style="padding-top: 4vh;">
+                                <h1 style="font-size: 2.5vh">{{i18n.toSellCar}} "{{cars[carsPointer].name}}"</h1>
+                            </div>
+                            <div class="settingsh1" style="padding-top: 1vh;">
+                                <h1 style="font-size: 2.5vh">
+                                    {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}:
+                                    ${{cars[carsPointer].price2}}</h1>
+                            </div>
+
+                            <div class="btnback">
+                                <a href="#" id="mouseFocus"
+                                    v-on:click="subPage = 0; setTimeout(initColor, 500)">{{i18n.btnBack}}</a>
+                                <a href="#" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);"
+                                    v-on:click="switchPage(0, 0); emitServer('sVIP:buy', assortSelected, assortDays)">{{i18n.iAgree}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </transition>
         </section>
 
         <!-- ДОНАТ -->
