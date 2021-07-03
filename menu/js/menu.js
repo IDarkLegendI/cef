@@ -650,7 +650,7 @@ let menu = new Vue({
             if(newPass !== newPass2) return menu.emit('customNotify', 1, menu.i18n.newPassDontMatch)
             if(/[^A-Z-a-z-0-9]/g.test(newPass)) return menu.emit('customNotify', 1, menu.i18n.newPassDontValid)
             if(newPass.length > 20) return menu.emit('customNotify', 1, menu.i18n.newPassTooLong)
-            if(newPass.length < 3) return menu.emit('customNotify', 1, menu.i18n.newPassTooShort)
+            if(newPass.length < 4) return menu.emit('customNotify', 1, menu.i18n.newPassTooShort)
             if(newPass === current) return menu.emit('customNotify', 1, menu.i18n.newPassSameCurrent)
             menu.emitToServerWithWT(1000, 'sLogin:changePassword', current, newPass); 
         }, 
