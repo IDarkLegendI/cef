@@ -753,19 +753,19 @@
                             <div class="settings changePassword">
                                 <div class="group" style="padding-left: 0;">
                                     <input :class="{inputTextRed: reportType === '1'}" class="inputText"
-                                        id="currentPass" required type="password">
+                                        id="currentPass" onkeyup="this.value=this.value.replace(/\s+/gi,'')" required type="password">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.currentPassword}}</label>
                                 </div>
                                 <div class="group" style="padding-left: 0;">
                                     <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass"
-                                        required type="password">
+                                        onkeyup="this.value=this.value.replace(/\s+/gi,'')" required type="password">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.newPassword}}</label>
                                 </div>
                                 <div class="group" style="padding-left: 0;">
                                     <input :class="{inputTextRed: reportType === '1'}" class="inputText" id="newPass2"
-                                        required type="password">
+                                        onkeyup="this.value=this.value.replace(/\s+/gi,'')" required type="password">
                                     <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                     <label class="labelText">{{i18n.newPassword2}}</label>
                                 </div>
