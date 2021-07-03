@@ -338,6 +338,7 @@ let menu = new Vue({
             newPassDontMatch: "The new passwords don't match",
             newPassDontValid: "The password contains forbidden characters. Use A-Z and numbers",
             newPassTooLong: "The new password is too long. The password must be up to 20 characters",
+            newPassTooShort: "The new password is too short.",
             newPassSameCurrent: "The new password must be different from the old one",
             changedPassword: "The password was successfully changed!",
             sellCar: "TO SELL",
@@ -649,6 +650,7 @@ let menu = new Vue({
             if(newPass !== newPass2) return menu.emit('customNotify', 1, menu.i18n.newPassDontMatch)
             if(/[^A-Z-a-z-0-9]/g.test(newPass)) return menu.emit('customNotify', 1, menu.i18n.newPassDontValid)
             if(newPass.length > 20) return menu.emit('customNotify', 1, menu.i18n.newPassTooLong)
+            if(newPass.length < 3) return menu.emit('customNotify', 1, menu.i18n.newPassTooShort)
             if(newPass === current) return menu.emit('customNotify', 1, menu.i18n.newPassSameCurrent)
             menu.emitToServerWithWT(1000, 'sLogin:changePassword', current, newPass); 
         }, 
@@ -1138,6 +1140,7 @@ let menu = new Vue({
                 newPassDontMatch: "Новые пароли не совпадают",
                 newPassDontValid: "Пароль содержит запрещенные символы. Используйте A-Z и цифры",
                 newPassTooLong: "Новый пароль слишком длинный. Пароль должен быть до 20 символов",
+                newPassTooShort: "Новый пароль слишком короткий",
                 newPassSameCurrent: "Новый пароль должен отличаться от старого",
                 changedPassword: "Пароль успешно изменен!",
                 sellCar: "ПРОДАТЬ",
