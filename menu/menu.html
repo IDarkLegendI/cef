@@ -875,7 +875,7 @@
                                         <section style="display: flex; align-items: center; justify-content: center;"
                                             v-else>
                                             <a id="mouseFocus" style="background-color: rgba(255, 255, 255, 0.863)"
-                                                v-on:click="subPage = 2">{{i18n.sellCar}}</a>
+                                                v-if="+cars[carsPointer].price2 !== +0" v-on:click="subPage = 2">{{i18n.sellCar}}</a>
 
                                             <a id="mouseFocus"
                                                 v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
@@ -998,14 +998,14 @@
                             <div class="settingsh1" style="padding-top: 1vh;">
                                 <h1 style="font-size: 2.5vh">
                                     {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}:
-                                    ${{cars[carsPointer].price2}}</h1>
+                                    ${{Math.round(cars[carsPointer].price2 / +2).toFixed(0)}}</h1>
                             </div>
 
                             <div class="btnback">
                                 <a href="#" id="mouseFocus"
                                     v-on:click="subPage = 0; setTimeout(initColor, 500)">{{i18n.btnBack}}</a>
                                 <a href="#" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);"
-                                    v-on:click="switchPage(0, 0); emitServer('sVIP:buy', assortSelected, assortDays)">{{i18n.iAgree}}</a>
+                                    v-on:click="switchPage(0, 0); emitServer('sCar:sell', cars[carsPointer].model)">{{i18n.iAgree}}</a>
                             </div>
                         </div>
                     </div>
