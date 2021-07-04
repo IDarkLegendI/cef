@@ -896,17 +896,22 @@
                                     <div class="priceRange"
                                         style="display: flex; flex-direction: column; align-items: center; width: 10vw;"> 
                                         <div style="flex-basis: 20%;"><h1 style="font-size: 0.8vw;">{{i18n.minValue}}</h1></div>
+
                                         <div style="flex-basis: 25%;"><input @change="previewCar(false)" 
                                             max="500000" min="0" step="1000" style="width: 6vw;" type="range" v-model="minSort"></div>
+
                                         <div style="flex-basis: 30%;"><input @change="previewCar(false)"
                                             onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.minSort = 0"
                                             style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;" type="text" v-model="minSort"></div>
                                     </div>
+
                                     <div class="priceRange"
                                         style="display: flex; flex-direction: column; align-items: center; width: 10vw;">
                                         <div style="flex-basis: 20%;"><h1 style="font-size: 0.8vw;">{{i18n.maxValue}}</h1></div>
+
                                         <div style="flex-basis: 25%;"><input @change="previewCar(false)" 
                                             max="500000" min="0" step="1000" style="width: 6vw;" type="range" v-model="maxSort"></div>
+                                            
                                         <div style="flex-basis: 30%;"><input @change="previewCar(false)"
                                             onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.maxSort = 0"
                                             style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;" type="text" v-model="maxSort"></div>
