@@ -25,16 +25,16 @@
                     <span>{{lang === 'ru' ? "Используйте ваш аккаунт" : "Use your account"}}</span>
                     <div class="input-div">
                         <input type="text" name="email" autocomplete="off" required spellcheck="false"
-                            v-model="enteredLoginMail">
+                            onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredLoginMail">
                         <label for="email" class="label-name">
                             <span class="content-name">E-mail</span>
                         </label>
                     </div>
                     <div class="input-div">
                         <input type="password" name="pass" autocomplete="off" required spellcheck="false"
-                            v-model="enteredLoginPass">
+                            onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredLoginPass">
                         <label for="email" class="label-name">
-                            <span class="content-name">{{lang === 'ru' ? "Пароль" : "Password"}}</span>
+                            <span class="content-name">{{lang === 'ru' ? "Пароль" : "Password"}}</span> 
                         </label>
                     </div>
                     <div style="display: flex; justify-content: center; margin: 15px 0; align-items: center; flex-direction: column;">
@@ -57,7 +57,7 @@
                     <span>{{lang === 'ru' ? "Используйте ваш E-mail и пароль" : "Use your E-mail and password"}}</span>
                     <div class="input-div" :class="{ error: (enteredMail && !isEmailValid) }">
                         <input type="text" name="emailreg" autocomplete="off" required spellcheck="false"
-                            v-model="enteredMail"
+                            onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredMail"
                             :class="{ checked: (enteredMail && isEmailValid), error: (enteredMail && !isEmailValid) }">
                         <label for="emailreg" class="label-name">
                             <span class="content-name" v-if="enteredMail && !isEmailValid">{{lang === 'ru' ? "E-mail содержит запрещающие символы" : "The e-mail contains forbidding characters"}}</span>
@@ -67,7 +67,7 @@
                     <div class="input-div"
                         :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid), warning: (enteredPass1 && enteredPass1.length < 4 && isPassword1Valid) }">
                         <input type="password" name="passreg" autocomplete="off" required spellcheck="false"
-                            v-model="enteredPass1"
+                            onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredPass1"
                             :class="{ checked: passChecked, error: (enteredPass1 && !isPassword1Valid),  warning: (enteredPass1 && enteredPass1.length < 4 && isPassword1Valid) }"
                             @input="verifyPass">
                         <label for="passreg" class="label-name">
@@ -81,7 +81,7 @@
                     <div class="input-div"
                         :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid), warning: (enteredPass2 && enteredPass2.length < 4 && isPassword2Valid) }">
                         <input type="password" name="passreg2" autocomplete="off" required spellcheck="false"
-                            v-model="enteredPass2" @input="verifyPass"
+                            @input="verifyPass" onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredPass2"
                             :class="{ checked: passChecked, error: (enteredPass2 && !isPassword2Valid),  warning: (enteredPass2 && enteredPass2.length < 4 && isPassword2Valid) }">
                         <label for="passreg2" class="label-name">
                             <span class="content-name" v-if="enteredPass2 && !isPassword2Valid">{{lang === 'ru' ? "Пароль содержит запрещающие символы" : "The password contains forbidding characters"}}</span>
@@ -96,7 +96,7 @@
                     <span>{{lang === 'ru' ? "Введите E-Mail от аккаунта" : "Enter the E-Mail from the account"}}</span>
                     <div class="input-div">
                         <input type="text" name="RecEmail" autocomplete="off" required spellcheck="false"
-                            v-model="enteredLoginMail"
+                            onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredLoginMail"
                             :class="{ checked: (enteredLoginMail && verifyForgotStep), error: (enteredLoginMail && !verifyForgotStep) }">
                         <label for="RecEmail" class="label-name">
                             <span class="content-name">
@@ -114,7 +114,7 @@
                     </h1>
                     <div :class="{ error: (enteredName && !isNameValid), warning: (enteredName && enteredName.length < 4 && isNameValid) }" class="input-div">
                         <input type="text" name="name" autocomplete="off" required spellcheck="false"
-                            v-model="enteredName"
+                            onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredName"
                             :class="{ checked: (enteredName && isNameValid), error: (enteredName && !isNameValid), warning: (enteredName && enteredName.length < 4 && isNameValid) }">
                         <label for="NamePerson" class="label-name">
                             <span class="content-name" v-if="enteredName && !isNameValid">{{lang === 'ru' ? "Имя содержит запрещающие символы" : "The name contains forbidding characters"}}</span>
