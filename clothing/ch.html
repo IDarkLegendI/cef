@@ -54,11 +54,11 @@
 							<!-- <div class="textnamecustom">1 из 2</div> -->
 						</div>
 						<div class="textnamecustom"><input :value='+currentColorNum + +1' class="inputForNumber"
-								onchange="app.changeNum(+this.value - +1, false)" type="text"></div>
+								onchange="app.changeNum(+this.value - +1, false)" onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) {this.value = 0; app.changeNum(+this.value - +1, false)}" type="text"></div>
 						<div class="arrowrightcustom">
 							<img @click="nextColor" src="./img/arrowRight.png" width="30vw">
 						</div>
-					</div>
+					</div> 
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom">
 							<img @click="prevCloth" src="./img/arrowLeft.png" width="30vw">
@@ -69,7 +69,7 @@
 							<!-- <div class="textnamecustom" style="max-width: 7vw;">Pink </div> -->
 						</div>
 						<div class="textnamecustom"><input :value='currentNum' class="inputForNumber"
-								onchange="app.changeNum(this.value, true)" type="text"></div>
+								onchange="app.changeNum(this.value, true)" onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) {this.value = 0; app.changeNum(+this.value - +1, false)}" type="text"></div>
 						<div class="arrowrightcustom">
 							<img @click="nextCloth" src="./img/arrowRight.png" width="30vw">
 						</div>
