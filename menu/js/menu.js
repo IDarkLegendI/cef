@@ -1248,7 +1248,7 @@ let menu = new Vue({
                 if(this.onlyMyCars) this.minSort = this.maxSort = 0
                 else 
                 {
-                    this.minSort = 1000;
+                    this.minSort = 0;
                     this.maxSort = 500000;
                 }
             }
@@ -1258,7 +1258,7 @@ let menu = new Vue({
             {
                 if(this.maxSort <= 0)
                 {
-                    this.minSort = 1000;
+                    this.minSort = 0;
                     this.maxSort = 500000;
                 }
                 else {
@@ -1695,7 +1695,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(1, 1)
+        menu.switchPage(2, 2)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
