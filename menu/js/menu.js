@@ -1387,12 +1387,21 @@ let menu = new Vue({
         fApplyTuning(car) {
             console.log(`fApplyTuning: ${JSON.stringify(car)}`)
             let found = this.cars.findIndex(veh => veh.model === car.model)
-            if (!found) return;
+            if (found === -1) return;
             console.log(`fApplyTuning: found: ${found}`);
             this.cars[found].color = car.color;
             this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
             this.updateTuning = false;
 
+        },
+        fSellCar(model) 
+        {
+            let found = this.cars.findIndex(veh => veh.model === model)
+            if (found === -1) return;
+            this.cars[found].price = this.cars[found].price2;
+            this.cars[found].color = {r: 255, g: 255, b: 255}; 
+            this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
+            this.updateTuning = false;
         },
         request(friend, type, event = 'sFriends:rejectRequest') {
             if (type === 'friends') this[type] = this[type].filter(el => el.name !== friend)

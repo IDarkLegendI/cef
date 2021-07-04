@@ -988,7 +988,7 @@
                                 <span>{{i18n.balance}} <br> <span class="rub">${{money}}</span></span>
                             </div>
                         </div>
-                        <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black;">
+                        <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black; height: 70vh; display: flex; justify-content: center;">
                             <div class="settingsh1">
                                 <h1>{{i18n.acceptAction}}</h1>
                             </div>
@@ -1005,7 +1005,7 @@
                                 <a href="#" id="mouseFocus"
                                     v-on:click="subPage = 0; setTimeout(initColor, 500)">{{i18n.btnBack}}</a>
                                 <a href="#" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);"
-                                    v-on:click="switchPage(0, 0); emitServer('sCar:sell', cars[carsPointer].model)">{{i18n.iAgree}}</a>
+                                    v-on:click="emitToServerWithWT(1000, 'sCar:sell', cars[carsPointer].model)">{{i18n.iAgree}}</a> 
                             </div>
                         </div>
                     </div>
