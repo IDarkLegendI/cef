@@ -1507,9 +1507,10 @@ let menu = new Vue({
                 }
             }
         },
-        fCheckCursor() 
+        fCheckCursor(value = menu.disableCursor) 
         {
-            if(!menu.disableCursor) //Положение "true"
+            console.log(value)
+            if(value) //Положение "true"
             {
                 menu.fToggleCursor(false)
                 if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
@@ -1703,7 +1704,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(2, 0)
+        menu.switchPage(1, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -1712,6 +1713,7 @@ if ('alt' in window) {
     }, 100)
     document.getElementById('body').style.backgroundImage = "url(./img/fon.png)"
     document.body.style.cursor = "auto"
+    menu.disableCursor = true
     menu.placeAll = 3;
     menu.place = 2;
     // menu.cars[1].price = 0
@@ -1727,7 +1729,6 @@ menu.loadLang();
 document.addEventListener('keydown', function (event) {
     menu.fKeyDown(event.keyCode) 
 }); 
-
 menu.cars.forEach((el, index) => {
     menu.cars[index].price2 = JSON.stringify(el.price)
 })
