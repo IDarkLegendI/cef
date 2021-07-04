@@ -10,7 +10,7 @@ if ('alt' in window) {
     setTimeout(() => 
     {
         auth.fOnLoad(true)
-        auth.page = 2
+        auth.page = 1
         container.classList.add('right-panel-active');
         // auth.showPage(3)
     }, 10);
@@ -25,6 +25,7 @@ let auth = new Vue({
         enteredLoginMail: '',
         enteredLoginPass: '',
         enteredMail: '',
+        eMailFocused: false,
         enteredPass1: '',
         enteredPass2: '',
         enteredName: '',

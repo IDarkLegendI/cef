@@ -55,12 +55,13 @@
                 <form action="" v-if="page === 1">
                     <h1>{{lang === 'ru' ? "Регистрация" : "Registration"}}</h1>
                     <span>{{lang === 'ru' ? "Используйте ваш E-mail и пароль" : "Use your E-mail and password"}}</span>
-                    <div class="input-div" :class="{ error: (enteredMail && !isEmailValid) }">
+                    <div :class="{ error: (enteredMail && !isEmailValid && !eMailFocused) }" class="input-div">
                         <input type="text" name="emailreg" autocomplete="off" required spellcheck="false"
                             onkeyup="this.value=this.value.replace(/\s+/gi,'')" v-model="enteredMail"
-                            :class="{ checked: (enteredMail && isEmailValid), error: (enteredMail && !isEmailValid) }">
+                            :class="{ checked: (enteredMail && isEmailValid), error: (enteredMail && !isEmailValid && !eMailFocused) }"
+                            @blur="eMailFocused = false" @focus="eMailFocused = true">
                         <label for="emailreg" class="label-name">
-                            <span class="content-name" v-if="enteredMail && !isEmailValid">{{lang === 'ru' ? "E-mail содержит запрещающие символы" : "The e-mail contains forbidding characters"}}</span>
+                            <span class="content-name" v-if="enteredMail && !isEmailValid && !eMailFocused">{{lang === 'ru' ? "E-mail содержит запрещающие символы" : "The e-mail contains forbidding characters"}}</span>
                             <span class="content-name" v-else>E-mail</span>
                         </label>
                     </div>
