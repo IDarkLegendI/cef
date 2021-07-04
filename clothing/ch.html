@@ -42,13 +42,14 @@
 					</div>
 				</div>
 				<div class="sandwiches" v-if="currentTitle">
-				<!-- <div class="sandwiches"> -->  
+					<!-- <div class="sandwiches"> -->
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom">
 							<img @click="prevColor" src="./img/arrowLeft.png" width="30vw">
 						</div>
 						<div class="namecustom" style="min-width: 7vw;">
-							<div class="textnamecustom" style="max-width: 7vw;">{{ colorText }} {{ currentCloth.color + 1}} {{ ofText }}
+							<div class="textnamecustom" style="max-width: 7vw;">{{ colorText }}
+								{{ currentCloth.color + 1}} {{ ofText }}
 								{{currentCloth.colors[currentCloth.colors.length-1] + 1}}</div>
 							<!-- <div class="textnamecustom">1 из 2</div> -->
 						</div>
@@ -57,16 +58,16 @@
 						<div class="arrowrightcustom">
 							<img @click="nextColor" src="./img/arrowRight.png" width="30vw">
 						</div>
-					</div> 
+					</div>
 					<div class="sandwichcustom">
 						<div class="arrowleftcustom">
 							<img @click="prevCloth" src="./img/arrowLeft.png" width="30vw">
 						</div>
-						<div class="namecustom" style="min-width: 7vw;">    
+						<div class="namecustom" style="min-width: 7vw;">
 							<!-- <div class="textnamecustom" style="max-width: 7vw;">{{ currentCloth.name.length > 17 ? currentCloth.name.substring(0, 16) : currentCloth.name }}</div> -->
-							<div class="textnamecustom" style="max-width: 7vw;">{{ currentCloth.name }}</div>  
+							<div class="textnamecustom" style="max-width: 7vw;">{{ currentCloth.name }}</div>
 							<!-- <div class="textnamecustom" style="max-width: 7vw;">Pink </div> -->
-						</div> 
+						</div>
 						<div class="textnamecustom"><input :value='currentNum' class="inputForNumber"
 								onchange="app.changeNum(this.value, true)" type="text"></div>
 						<div class="arrowrightcustom">
@@ -2640,6 +2641,7 @@
 	function loadWomans() {
 		app.bMan = false;
 		// app.masks | app.watch | app.hats | app.glasses | app.tops | app.legs | app.feet
+
 		app.masks = [{
 				id: 0,
 				name: "Without mask",
@@ -4280,17 +4282,6 @@
 				underColors: [0],
 			},
 			{
-				id: 71,
-				name: "Gold Geo Print Sweater",
-				color: 0,
-				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-				price: 2590,
-				torso: 1,
-				undershirt: 5,
-				underColor: 0,
-				underColors: [0],
-			},
-			{
 				id: 65,
 				name: "Red Leather Fur Jacket",
 				color: 0,
@@ -4302,34 +4293,12 @@
 				underColors: [0],
 			},
 			{
-				id: 68,
-				name: "Pegasus T-Shirt",
-				color: 0,
-				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-				price: 2590,
-				torso: 14,
-				undershirt: 5,
-				underColor: 0,
-				underColors: [0],
-			},
-			{
 				id: 118,
 				name: "White Rolled Tee",
 				color: 0,
 				colors: [0, 1, 2],
 				price: 2590,
 				torso: 12,
-				undershirt: 5,
-				underColor: 0,
-				underColors: [0],
-			},
-			{
-				id: 74,
-				name: "White Loose Tank",
-				color: 0,
-				colors: [0, 1, 2],
-				price: 2590,
-				torso: 15,
 				undershirt: 5,
 				underColor: 0,
 				underColors: [0],
@@ -4374,17 +4343,6 @@
 				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
 				price: 2590,
 				torso: 3,
-				undershirt: 5,
-				underColor: 0,
-				underColors: [0],
-			},
-			{
-				id: 88,
-				name: "Beige T-Shirt",
-				color: 0,
-				colors: [0, 1],
-				price: 2590,
-				torso: 14,
 				undershirt: 5,
 				underColor: 0,
 				underColors: [0],
@@ -4455,7 +4413,6 @@
 				underColor: 0,
 				underColors: [0],
 			},
-
 		];
 
 		app.legs = [{
@@ -4501,13 +4458,6 @@
 				price: 1400,
 			},
 			{
-				id: 32,
-				name: "Black Heist Pants",
-				color: 0,
-				colors: [0],
-				price: 1400,
-			},
-			{
 				id: 44,
 				name: "Black Skinny Cuts",
 				color: 0,
@@ -4541,13 +4491,6 @@
 				color: 0,
 				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 				price: 1532,
-			},
-			{
-				id: 90,
-				name: "Blue Digital Cargo",
-				color: 0,
-				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-				price: 1992,
 			},
 			{
 				id: 98,
@@ -4603,14 +4546,7 @@
 				name: "Rust Leather Zippers",
 				color: 0,
 				colors: [0, 1, 2, 3, 4, 5, 6, 7],
-				price: 799,
-			},
-			{
-				id: 100,
-				name: "Zippers",
-				color: 0,
-				colors: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
-				price: 799,
+				price: 1500,
 			},
 			{
 				id: 62,
@@ -5163,6 +5099,6 @@
 		alt.on('changeVar', (...args) => {
 			app.changeVar(...args)
 			console.log(`changeVar: ${JSON.stringify(...args)}`)
-		}) 
+		})
 	}
 </script>
