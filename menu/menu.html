@@ -888,33 +888,34 @@
                                 </div>
                             </div>
                             <div
-                                style="padding-right: 2.5%; width: 17vw; height: 15vh; right: 2.5%; bottom: 7vh; font-family: 'Oswald'; 
-                            color: #efefefea; font-size: 1.3vw; display: flex; flex-direction: column; align-items: center;">
+                                style="padding-right: 2.5%; width: 17vw; height: 19.2vh; right: 2.5%; font-family: 'Oswald'; 
+                            color: #efefefea; font-size: 1.3vw; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
                                 <h1>{{i18n.sortByPrice}}</h1>
-                                <hr style="width: 100%; height: 0;">
-                                <div style="display: flex; justify-content: space-between;">
+                                <hr style="width: 100%; height: 0;"> 
+                                <div style="display: flex; justify-content: space-between; height: 10vh; align-items: center;"> 
                                     <div class="priceRange"
-                                        style="display: flex; flex-direction: column; align-items: center;">
-                                        <h1 style="font-size: 0.8vw;">{{i18n.minValue}}</h1>
-                                        <input @change="previewCar(false)" max="500000" min="0" step="1000"
-                                            style="margin: 1vh 0; height: 2vh" type="range" v-model="minSort">
-                                        <input @change="previewCar(false)"
-                                            style="width: 94%;  border-radius: 0.4em; background-color: #fff; text-align: center; font-size: 0.9vw;"
-                                            type="text" v-model="minSort">
+                                        style="display: flex; flex-direction: column; align-items: center; width: 10vw;"> 
+                                        <div style="flex-basis: 20%;"><h1 style="font-size: 0.8vw;">{{i18n.minValue}}</h1></div>
+                                        <div style="flex-basis: 25%;"><input @change="previewCar(false)" 
+                                            max="500000" min="0" step="1000" style="width: 6vw;" type="range" v-model="minSort"></div>
+                                        <div style="flex-basis: 25%;"><input @change="previewCar(false)"
+                                            onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.minSort = 0"
+                                            style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;" type="text" v-model="minSort"></div>
                                     </div>
                                     <div class="priceRange"
-                                        style="display: flex; flex-direction: column; align-items: center;">
-                                        <h1 style="font-size: 0.8vw;">{{i18n.maxValue}}</h1>
-                                        <input @change="previewCar(false)" max="500000" min="0" step="1000"
-                                            style="margin: 1vh 0; height: 2vh" type="range" v-model="maxSort">
-                                        <input @change="previewCar(false)"
-                                            style="width: 94%;  border-radius: 0.4em; background-color: #fff; text-align: center; font-size: 0.9vw;"
-                                            type="text" v-model="maxSort">
+                                        style="display: flex; flex-direction: column; align-items: center; width: 10vw;">
+                                        <div style="flex-basis: 20%;"><h1 style="font-size: 0.8vw;">{{i18n.maxValue}}</h1></div>
+                                        <div style="flex-basis: 25%;"><input @change="previewCar(false)" 
+                                            max="500000" min="0" step="1000" style="width: 6vw;" type="range" v-model="maxSort"></div>
+                                        <div style="flex-basis: 25%;"><input @change="previewCar(false)"
+                                            onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.maxSort = 0"
+                                            style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;" type="text" v-model="maxSort"></div>
                                     </div>
                                 </div>
-                                <div class="checkboxes" style="transform: scale(0.8);">
-                                    <div class="checkboxtest">
-                                        <span>{{i18n.onlyMyCars}}</span>
+
+                                <div class="checkboxes" style="transform: scale(0.8); margin: 0;">
+                                    <div class="checkboxtest" style="margin: 0;"> 
+                                        <span style="text-shadow: 0 0 3px black;">{{i18n.onlyMyCars}}</span>
                                         <div class="settingCenter"><input @change="previewCar(true, 'cars', 3)"
                                                 id="onlyMyCars" type="checkbox" v-model='onlyMyCars' /><label
                                                 for="onlyMyCars" id="mouseFocus"></label></div>

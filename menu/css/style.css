@@ -3193,6 +3193,7 @@ a:hover {
 
 .priceRange {
   width: 40%;
+  height: 10vh;
 }
 
 .priceRange input {
