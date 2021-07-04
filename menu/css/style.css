@@ -3493,14 +3493,14 @@ input[type="button" i]:focus, .button :focus, .button :active {
 
 .group {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 2.08vw;
   padding-left: 1.5vw;
 }
 
 .inputText {
   background: none;
-  font-size: 16px;
-  padding: 10px 0px;
+  font-size: 0.83vw;
+  padding: 0.52vw 0px;
   display: block;
   width: 28vw;
   border: none;
@@ -3516,12 +3516,12 @@ input[type="button" i]:focus, .button :focus, .button :active {
 
 .labelText {
   color: #e7e4e4;
-  font-size: 1.6vh;
+  font-size: 1vw;
   position: absolute;
   pointer-events: none;
   -webkit-filter: drop-shadow(0 0 1px black);
           filter: drop-shadow(0 0 1px black);
-  top: 1.3888888888888888vh;
+  top: 0.8vw;
   -webkit-transition: 0.2s ease all;
   transition: 0.2s ease all;
   font-family: 'Roboto Condensed', sans-serif;
