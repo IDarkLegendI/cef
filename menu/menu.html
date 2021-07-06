@@ -818,8 +818,8 @@
 
                                 <div class="panel-row">
                                     <button class="button mode-toggle" id="mode-toggle mouseFocus"
-                                        v-on:click="setPreviewCar(carsPointer); emit('cAudio:play', 'coloring')">{{i18n.applyColor}}</button>
-                                </div>
+                                        v-on:click="setPreviewCar(carsPointer, true); emit('cAudio:play', 'coloring')">{{i18n.applyColor}}</button>
+                                </div> 
                                 <div class="panel-row">
                                     <span class="color-indicator" id="color-indicator"></span>
                                 </div>

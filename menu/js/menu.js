@@ -1194,16 +1194,16 @@ let menu = new Vue({
             this.carsPointer = this.cars.findIndex(el => el.model === carSelected);
             if (this.page === 2) this.setPreviewCar(this.carsPointer);
         },
-        setPreviewCar(pointer = null) {
+        setPreviewCar(pointer = null, onlyColoring = false) {
             if (pointer === null) {
                 pointer = this.cars.findIndex(el => el.price === -1)
-                if (pointer === -1) pointer = 0;
+                if (pointer === -1) pointer = 0; 
                 this.carsPointer = pointer;
             }
             menu.emitServer('sCar:preview', {
                 model: this.cars[pointer].model,
                 color: this.cars[pointer].color
-            });
+            }, null, 0, onlyColoring);
             // console.log(`setPreviewCar: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
             if (this.cars[this.carsPointer].model !== this.oldColor[3]) {
                 menu.oldColor = [this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b,
