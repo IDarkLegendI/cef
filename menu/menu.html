@@ -995,7 +995,7 @@
                                 <span>{{i18n.balance}} <br> <span class="rub">${{money}}</span></span>
                             </div>
                         </div>
-                        <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black; height: 70vh; display: flex; justify-content: center;">
+                        <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black; height: 50vh; display: flex; justify-content: center;">
                             <div class="settingsh1">
                                 <h1>{{i18n.acceptAction}}</h1>
                             </div>
@@ -1007,11 +1007,16 @@
                                     {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}:
                                     ${{Math.round(cars[carsPointer].price2 / +2).toFixed(0)}}</h1>
                             </div>
+                            <div class="settingsh1" style="padding-top: 1vh;">
+                                <h1 style="font-size: 2.5vh"> 
+                                    CASHBACK:
+                                    ${{(((Math.round(cars[carsPointer].price2 / +2) * (+assortPriv[vip].bonus - 1.0)) / +1.5).toFixed(0))}}</h1>
+                            </div>
 
                             <div class="btnback">
                                 <a href="#" id="mouseFocus"
                                     v-on:click="subPage = 0; setTimeout(initColor, 500)">{{i18n.btnBack}}</a>
-                                <a href="#" id="mouseFocus" style="background: rgba(255, 255, 255, 0.459);"
+                                <a href="#" id="mouseFocus" style="background: rgba(255, 110, 110, 0.459);"
                                     v-on:click="emitToServerWithWT(1000, 'sCar:sell', cars[carsPointer])">{{i18n.iAgree}}</a> 
                             </div>
                         </div>
@@ -1689,6 +1694,7 @@
         //     document.getElementById('fade').style.opacity = 1;
         // }, 1000);
         document.addEventListener('DOMContentLoaded', function () {
+            menu.fCheckCursor(); 
             let a = new Fireworks();
             a.run();
         }, false);
