@@ -14,6 +14,7 @@ function initColor()
   colorIndicator = document.getElementById('color-indicator');
 
   spectrumCanvas = document.getElementById('spectrum-canvas');
+  if(!spectrumCanvas) return false
   spectrumCtx = spectrumCanvas.getContext('2d');
   spectrumCursor = document.getElementById('spectrum-cursor'); 
   spectrumRect = spectrumCanvas.getBoundingClientRect();
@@ -36,6 +37,7 @@ function initColor()
   green = document.getElementById('green'); 
   hex = document.getElementById('hex');
 
+  return true
   // primaryBut = document.getElementById("primaryBut");
   // secondaryBut = document.getElementById("secondaryBut");
   // primaryBut.disabled = "disabled";

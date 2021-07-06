@@ -69,7 +69,7 @@ let menu = new Vue({
         cars: [{ name: 'None', model: 'none', price: 0, s100: '0', s200: '0' },
         { name: 'Lamborghini Performante 18', model: '18performante', price: 265000, s100: '3.7', s200: '0' },
         { name: 'T-20', model: 't20', price: 270000, s100: '3.7', s200: '0' },
-        { name: 'Porsche-811', model: 'pfister811', price: 100200, s100: '3.9', s200: '0' },
+        { name: 'Pfister-811', model: 'pfister811', price: 135000, s100: '3.9', s200: '0' },
         { name: 'Dubsta 6x6', model: 'dubsta3', price: 66000, s100: '7.2', s200: '0' },
         { name: 'Lamborghini Urus', model: 'urus', price: 178000, s100: '3.9', s200: '0' },
         { name: 'Porsche Taycan', model: 'taycan', price: 275000, s100: '2.6', s200: '0' },
@@ -80,30 +80,30 @@ let menu = new Vue({
         /*{name: 'ISSI', model: 'issi6', price: 26500, s100: '6.3', s200: '0'},*/
         { name: 'OCELOT', model: 'f620', price: 23600, s100: '6.2', s200: '0' },
         { name: 'EXEMPLAR', model: 'exemplar', price: 23650, s100: '7.3', s200: '0' },
-        { name: 'COGCABRIO', model: 'cogcabrio', price: 22200, s100: '9.8', s200: '0' },
-        { name: 'SENTINEL', model: 'felon2', price: 24500, s100: '7.7', s200: '0' },
+        { name: 'COGCABRIO', model: 'cogcabrio', price: 24500, s100: '9.8', s200: '0' },
+        { name: 'SENTINEL', model: 'felon2', price: 22200, s100: '7.7', s200: '0' },
         { name: 'FBI', model: 'fbi', price: 25500, s100: '8.3', s200: '0'},
         { name: 'COQUETTE star', model: 'coquette3', price: 17950, s100: '10.3', s200: '0' },
         { name: 'DOMINATOR', model: 'dominator3', price: 26000, s100: '7.3', s200: '0' },
         { name: 'HERMES', model: 'hermes', price: 14000, s100: '11.1', s200: '0' },
         { name: 'DUBSTA', model: 'dubsta2', price: 26000, s100: '12.5', s200: '0' },
-        { name: 'BANSHEE', model: 'banshee', price: 40500, s100: '5.8', s200: '0' },
-        { name: 'Nissan GT-R', model: '17r35', price: 43500, s100: '5.3', s200: '0' },
-        { name: 'COQUETTE', model: 'coquette4', price: 60000, s100: '5.7', s200: '0' },
+        { name: 'BANSHEE', model: 'banshee', price: 61500, s100: '5.8', s200: '0' },
+        { name: 'Nissan GT-R', model: '17r35', price: 63500, s100: '5.3', s200: '0' },
+        { name: 'COQUETTE', model: 'coquette4', price: 84500, s100: '5.7', s200: '0' },
         { name: 'DEVESTE', model: 'deveste', price: 170000, s100: '8.0', s200: '0' },
         { name: 'ELEGY', model: 'elegy2', price: 30050, s100: '5.6', s200: '0' },
         { name: 'HOTRING', model: 'hotring', price: 28500, s100: '5.4', s200: '0' },
-        { name: 'ITALI', model: 'italigto', price: 100000, s100: '3.4', s200: '0' },
+        { name: 'ITALI', model: 'italigto', price: 130000, s100: '3.4', s200: '0' },
         { name: 'NEON', model: 'neon', price: 240000, s100: '2.8', s200: '0' },
-        { name: 'NINEF', model: 'ninef2', price: 130000, s100: '5.5', s200: '0' },
+        { name: 'NINEF', model: 'ninef2', price: 100500, s100: '5.5', s200: '0' },
         /*{name: 'OMNIS', model: 'omnis', price: 30000, s100: '5.1', s200: '0'},*/
-        { name: 'SCHLAGEN', model: 'schlagen', price: 110000, s100: '4.4', s200: '0' },
+        { name: 'SCHLAGEN', model: 'schlagen', price: 125500, s100: '4.4', s200: '0' },
         /*{name: 'SENTINEL', model: 'sentinel3', price: 23000, s100: '9.4', s200: '0'},*/
-        { name: 'SPECTER', model: 'specter2', price: 95000, s100: '8.0', s200: '0' },
-        { name: 'VERLIERER', model: 'verlierer2', price: 95000, s100: '5.0', s200: '0' },
+        { name: 'SPECTER', model: 'specter2', price: 91200, s100: '8.0', s200: '0' },
+        { name: 'VERLIERER', model: 'verlierer2', price: 91200, s100: '5.0', s200: '0' },
         { name: 'SAVESTRA', model: 'savestra', price: 19500, s100: '9.9', s200: '0' },
-        { name: 'SWINGER', model: 'swinger', price: 135000, s100: '5.3', s200: '0' },
-        { name: 'TURISMO', model: 'turismo2', price: 100000, s100: '4.9', s200: '0' },
+        { name: 'SWINGER', model: 'swinger', price: 100000, s100: '5.3', s200: '0' },
+        { name: 'TURISMO', model: 'turismo2', price: 130000, s100: '4.9', s200: '0' },
         { name: 'ADDER', model: 'adder', price: 190000, s100: '5.0', s200: '0' },
         { name: 'CYCLONE', model: 'cyclone', price: 210000, s100: '5.3', s200: '0' },
         { name: 'ENTITYXF', model: 'entityxf', price: 200000, s100: '6.3', s200: '0' },
@@ -118,25 +118,25 @@ let menu = new Vue({
         { name: 'TROPHYTRUCK', model: 'trophytruck', price: 70000, s100: '4.6', s200: '0' },
         { name: 'ZENTORNO', model: 'zentorno', price: 220000, s100: '3.9', s200: '0' },
         { name: 'SHOTARO', model: 'shotaro', price: 230000, s100: '3.8', s200: '0' },
-        { name: 'SANCTUS', model: 'sanctus', price: 50000, s100: '5.4', s200: '0' },
-        { name: 'VORTEX', model: 'vortex', price: 66000, s100: '4.0', s200: '0' },
+        { name: 'SANCTUS', model: 'sanctus', price: 44000, s100: '5.4', s200: '0' },
+        { name: 'VORTEX', model: 'vortex', price: 42000, s100: '4.0', s200: '0' },
         { name: 'ENDURO', model: 'enduro', price: 29000, s100: '5.6', s200: '0' },
-        { name: 'BATI', model: 'bati', price: 47500, s100: '5.0', s200: '0' },
+        { name: 'BATI', model: 'bati', price: 42100, s100: '5.0', s200: '0' },
         { name: 'Tesla S', model: 'teslapd', price: 200000, s100: '3.7', s200: '0' },
         { name: 'Porsche Panamera', model: 'panamera17turbo', price: 300000, s100: '2.3', s200: '4.1' },
         { name: 'BMW M5', model: 'bmci', price: 200000, s100: '3.9', s200: '11.2' },
         { name: 'AUDI RS7', model: 'rs7c8', price: 285000,  s100: '3.9', s200: '11.2'},
         { name: 'PORSCHE 911R', model: '911r', price: 270000, s100: '3.9', s200: '11.2'},
-        { name: 'tdf', model: 'tdf', price: 240000,  s100: '3.9', s200: '11.2'},
-        { name: '19raptor', model: '19raptor', price: 155200,  s100: '3.9', s200: '11.2'}, 
+        { name: 'F12 TDF', model: 'tdf', price: 240000,  s100: '3.9', s200: '11.2'},
+        { name: 'Ford F-150 Raptor', model: '19raptor', price: 155200,  s100: '3.9', s200: '11.2'}, 
         { name: 'LADA NIVA', model: 'urban', price: 20000,  s100: '3.9', s200: '11.2'},  
-        { name: '4runner', model: '4runner', price: 39900,  s100: '3.9', s200: '11.2'},
+        { name: 'Toyota 4Runner', model: '4runner', price: 39900,  s100: '3.9', s200: '11.2'},
         { name: 'GAUNTLET', model: 'GAUNTLET', price: 39900,  s100: '0', s200: '0'},
-        { name: 'paragon', model: 'paragon', price: 82500,  s100: '0', s200: '0'},
-        { name: 'khamelion', model: 'khamelion', price: 81500,  s100: '0', s200: '0'},
-        { name: 'yosemite3', model: 'yosemite3', price: 27500, s100: '0', s200: '0'},
+        { name: 'PARAGON', model: 'paragon', price: 62000,  s100: '0', s200: '0'},
+        { name: 'KHAMELION', model: 'khamelion', price: 81500,  s100: '0', s200: '0'},
+        { name: 'YOSEMITE', model: 'yosemite3', price: 27500, s100: '0', s200: '0'},
         { name: 'brawler', model: 'brawler', price: 55600, s100: '0', s200: '0'},
-        { name: 'jugular', model: 'jugular', price: 91000,  s100: '0', s200: '0'},].sort((a, b) => a.price - b.price), 
+        { name: 'JUGULAR', model: 'jugular', price: 95000,  s100: '0', s200: '0'},].sort((a, b) => a.price - b.price), 
         carsPointer: 0,
         myCar: 'none',
         camRotation: -90,
@@ -565,11 +565,9 @@ let menu = new Vue({
                     this.updateTuning = false;
                 }
                 // console.log(`callBackEmitToServer: ${JSON.stringify(this.oldColor)}; model: ${this.cars[this.carsPointer].model}; this.updateTuning: ${this.updateTuning}`)
-                initColor();
-                ColorPicker();
+                menu.initColor();
                 setTimeout(() => {
-                    initColor();
-                    ColorPicker();
+                    menu.initColor(); 
                     colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b)
                 }, 100)
             } else menu[variable] = value;
@@ -1225,8 +1223,7 @@ let menu = new Vue({
             // console.log(`this.updateTuning: ${this.updateTuning}`)  
 
             setTimeout(() => {
-                initColor();
-                ColorPicker();
+                menu.initColor();
                 if (!this.cars[pointer].color) this.cars[pointer].color = {
                     r: 255,
                     g: 255,
@@ -1236,8 +1233,7 @@ let menu = new Vue({
             }, 100)
         },
         initColor() {
-            initColor();
-            ColorPicker(); 
+            if(initColor()) ColorPicker(); 
         },
         sortLiveCar(plus, onlyMyCarsClick)
         {
@@ -1393,15 +1389,25 @@ let menu = new Vue({
             this.updateTuning = false;
 
         },
-        fSellCar(model) 
+        fSellCar(car) 
         {
-            let found = this.cars.findIndex(veh => veh.model === model)
+            console.log(`fSellCar`)
+            let found = this.cars.findIndex(veh => veh.model === car.model)
             if (found === -1) return;
+            console.log(`fSellCar.found: ${found}`) 
             this.cars[found].price = this.cars[found].price2;
             this.cars[found].color = {r: 255, g: 255, b: 255}; 
             this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
             this.updateTuning = false;
-            this.cars.sort((a, b) => a.price - b.price)
+            menu.cars.sort((a, b) => a.price - b.price)
+            this.setTimeout(() => { 
+                console.log(`fSellCar.finish: ${this.cars[menu.carsPointer].model}`) 
+                menu.emitServer('sCar:preview', {
+                    model: menu.cars[menu.carsPointer].model,
+                    color: menu.cars[menu.carsPointer].color
+                }, null, 0, false);  
+                menu.initColor() 
+            }, 1000) 
         },
         request(friend, type, event = 'sFriends:rejectRequest') {
             if (type === 'friends') this[type] = this[type].filter(el => el.name !== friend)
