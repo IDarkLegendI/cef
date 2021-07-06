@@ -273,6 +273,7 @@ function updateCarColor(color){
 function setCurrentColor(color){
 
   color = tinycolor(color);
+  if(!colorIndicator) return
   colorIndicator.style.backgroundColor = color;
   spectrumCursor.style.backgroundColor = color; 
   hueCursor.style.backgroundColor = 'hsl('+ color.toHsl().h +', 100%, 50%)';

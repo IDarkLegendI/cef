@@ -554,7 +554,7 @@ let menu = new Vue({
                 this.cars[this.carsPointer].color = {
                     r: this.oldColor[0],
                     g: this.oldColor[1],
-                    b: this.oldColor[2] 
+                    b: this.oldColor[2]  
                 }
                 menu[variable] = value;
                 console.log(`callBackEmitToServer: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
@@ -567,8 +567,9 @@ let menu = new Vue({
                 // console.log(`callBackEmitToServer: ${JSON.stringify(this.oldColor)}; model: ${this.cars[this.carsPointer].model}; this.updateTuning: ${this.updateTuning}`)
                 menu.initColor();
                 setTimeout(() => {
-                    menu.initColor(); 
-                    colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b)
+                    if(menu.initColor()) colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b)
+                    
+                else menu.setTimeout(() => colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b), 100)
                 }, 100)
             } else menu[variable] = value;
             // console.log(this.cars[this.carsPointer].model)  
@@ -1192,13 +1193,14 @@ let menu = new Vue({
             this.carsPointer = this.cars.findIndex(el => el.model === carSelected);
             if (this.page === 2) this.setPreviewCar(this.carsPointer);
         },
+
         setPreviewCar(pointer = null, onlyColoring = false) {
             if (pointer === null) {
                 pointer = this.cars.findIndex(el => el.price === -1)
                 if (pointer === -1) pointer = 0; 
                 this.carsPointer = pointer;
             }
-            menu.emitServer('sCar:preview', {
+            menu.emitToServerWithWT(0, 'sCar:preview', { 
                 model: this.cars[pointer].model,
                 color: this.cars[pointer].color
             }, null, 0, onlyColoring);
@@ -1221,20 +1223,25 @@ let menu = new Vue({
                 } 
             }
             // console.log(`this.updateTuning: ${this.updateTuning}`)  
-
-            setTimeout(() => {
-                menu.initColor();
-                if (!this.cars[pointer].color) this.cars[pointer].color = {
-                    r: 255,
-                    g: 255,
-                    b: 255
-                }
-                colorToPos('rgb ' + this.cars[pointer].color.r + ' ' + this.cars[pointer].color.g + ' ' + this.cars[pointer].color.b)
-            }, 100)
+             
+            if (!this.cars[pointer].color) this.cars[pointer].color = {
+                r: 255,
+                g: 255,
+                b: 255
+            }
+            if(menu.initColor()) colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b)
+            menu.setTimeout(() => 
+            {
+                if(menu.initColor()) colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b) 
+            }, 700)    
         },
+        
         initColor() {
-            if(initColor()) ColorPicker(); 
+            if(!initColor()) return false
+            ColorPicker(); 
+            return true;
         },
+
         sortLiveCar(plus, onlyMyCarsClick)
         {
             console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
@@ -1391,23 +1398,20 @@ let menu = new Vue({
         },
         fSellCar(car) 
         {
-            console.log(`fSellCar`)
             let found = this.cars.findIndex(veh => veh.model === car.model)
             if (found === -1) return;
-            console.log(`fSellCar.found: ${found}`) 
             this.cars[found].price = this.cars[found].price2;
             this.cars[found].color = {r: 255, g: 255, b: 255}; 
             this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
             this.updateTuning = false;
             menu.cars.sort((a, b) => a.price - b.price)
             this.setTimeout(() => { 
-                console.log(`fSellCar.finish: ${this.cars[menu.carsPointer].model}`) 
-                menu.emitServer('sCar:preview', {
+                menu.emitToServerWithWT(0, 'sCar:preview', { 
                     model: menu.cars[menu.carsPointer].model,
                     color: menu.cars[menu.carsPointer].color
                 }, null, 0, false);  
-                menu.initColor() 
-            }, 1000) 
+                if(!menu.initColor()) menu.setTimeout(() => menu.initColor(), 500) 
+            }, 200)   
         },
         request(friend, type, event = 'sFriends:rejectRequest') {
             if (type === 'friends') this[type] = this[type].filter(el => el.name !== friend)
