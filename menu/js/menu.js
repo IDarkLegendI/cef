@@ -1401,6 +1401,7 @@ let menu = new Vue({
             this.cars[found].color = {r: 255, g: 255, b: 255}; 
             this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
             this.updateTuning = false;
+            this.cars.sort((a, b) => a.price - b.price)
         },
         request(friend, type, event = 'sFriends:rejectRequest') {
             if (type === 'friends') this[type] = this[type].filter(el => el.name !== friend)
