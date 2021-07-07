@@ -348,6 +348,8 @@ let menu = new Vue({
             changedPassword: "The password was successfully changed!",
             sellCar: "TO SELL",
             toSellCar: "CAR SALES",
+            cashBackCAR: "FOR THE SALE OF CARS",
+            upTo: "UP TO",
         },
         i18nTemp: null,
         avatars: {
@@ -1149,6 +1151,8 @@ let menu = new Vue({
                 changedPassword: "Пароль успешно изменен!",
                 sellCar: "ПРОДАТЬ",
                 toSellCar: "ПРОДАЖА АВТОМОБИЛЯ",
+                cashBackCAR: "ЗА ПРОДАЖУ МАШИН",
+                upTo: "ДО",
             }
         },
         loadEn() {
@@ -1715,7 +1719,8 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(2, 2)
+        // menu.switchPage(2, 2)
+        menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -1728,7 +1733,7 @@ if ('alt' in window) {
     menu.placeAll = 3;
     menu.place = 2;
     menu.vip = 'deluxe'
-    menu.carsPointer = 67
+    menu.carsPointer = 6
     // menu.cars[1].price = 0
     // menu.anyVar = 34 //УБРАТЬ!
         setTimeout(() => { 

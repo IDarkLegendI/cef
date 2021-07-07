@@ -1010,7 +1010,7 @@
                             <div class="settingsh1" style="padding-top: 1vh;">
                                 <h1 style="font-size: 2.5vh"> 
                                     CASHBACK:
-                                    ${{(((Math.round(cars[carsPointer].price2 / +2) * (+assortPriv[vip].bonus - 1.0)) / +1.5).toFixed(0))}}</h1>
+                                    ${{(((Math.round(cars[carsPointer].price2) * (+assortPriv[vip].k)) / 70).toFixed(0))}}</h1>
                             </div>
 
                             <div class="btnback">
@@ -1253,6 +1253,7 @@
                                         {{i18n.second}}{{lang === 'ru' ? assortPriv[vip].bonus === 1.7 ? "Ы" : "" : ""}}
                                     </li>
                                     <li>CASHBACK {{(100 / +(2/assortPriv[vip].bonus)).toFixed(0)}}% {{i18n.cashBackVIP}}
+                                    <li>CASHBACK {{i18n.upTo}} {{Math.round(+assortPriv[vip].k*2.8).toFixed(0)}}% {{i18n.cashBackCAR}}
                                     </li>
                                     <li style="font-size: 0.8vw;">{{i18n.componentsVIP}}
                                         {{(100 * +assortPriv[vip].bonus) - +100}}%</li>
