@@ -721,6 +721,7 @@ let menu = new Vue({
                     //При открывании страницы, если надо ластовую
                     if(newPage === -1 && menu.lastPage >= 0) newPage = menu.lastPage; 
                     this.page = newPage;
+                    alt.emit('changeVarOnClient', ['page', menu.page])
                     let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
                     Vue.set(objInvite, 'name', menu.i18n.inviteText) 
                     this.resetPageAfter(newPage);
@@ -1674,7 +1675,8 @@ if ('alt' in window) {
     alt.on('bMenu:applyTuning', (car) => menu.fApplyTuning(car))
 
     //EMIT 
-    alt.on('bMenu:callBackEmitToServer', (variable, value) => menu.callBackEmitToServer(variable, value))
+    alt.on('bMenu:callBackEmitToServer', (variable, value) => menu.callBackEmitToServer(variable, value));
+    alt.emit('changeVarOnClient', ['page', menu.page])
 } else {
     menu.show = true;
     menu.carsPointer = 1;

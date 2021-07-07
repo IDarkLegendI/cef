@@ -409,8 +409,8 @@ var hud = new Vue({
 })
 
 if ('alt' in window) {
-    alt.on('customNotify', (notifyType, text, time) => {
-        notify(notifyType, 9, text, time);
+    alt.on('customNotify', (notifyType, text, time, pos = 9) => {
+        notify(notifyType, pos, text, time);
         // console.log(`${notifyType}, 9, ${text}, ${time}`);
     });
 
