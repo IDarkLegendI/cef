@@ -696,6 +696,8 @@ let menu = new Vue({
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 
+                
+                if(('alt' in window)) alt.emit('changeVarOnClient', ['page', newPage]) 
                 console.log(`switchPage: ${newPage}; ${newSubPage}`)
                 // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
                 if (newSubPage !== -1 || (this.nextSubPage !== -1 && this.page !== 2)) {
@@ -721,7 +723,6 @@ let menu = new Vue({
                     //При открывании страницы, если надо ластовую
                     if(newPage === -1 && menu.lastPage >= 0) newPage = menu.lastPage; 
                     this.page = newPage;
-                    alt.emit('changeVarOnClient', ['page', menu.page])
                     let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
                     Vue.set(objInvite, 'name', menu.i18n.inviteText) 
                     this.resetPageAfter(newPage);
@@ -1525,7 +1526,7 @@ let menu = new Vue({
         },
         fCheckCursor(value = menu.disableCursor) 
         {
-            console.log(value)
+            console.log(`fCheckCursor: ${value}`)
             if(value) //Положение "true"
             {
                 menu.fToggleCursor(false)
@@ -1539,7 +1540,7 @@ let menu = new Vue({
                 if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
                 menu.cursorWhile = setInterval(menu.fCursoring, 0)
                 document.body.style.cursor = 'none'
-                menu.emit('showCursor', false) 
+                menu.emit('showCursor', false)   
             }
         }
     },
@@ -1548,32 +1549,46 @@ let menu = new Vue({
 if ('alt' in window) {
     alt.on('toggle', toggle => {
         menu.show = toggle;  
-        document.body.style.cursor = 'none'
+        // document.body.style.cursor = "auto" 
+        // document.body.style.cursor = 'none' 
         if(toggle)
         {
-            if(menu.disableCursor) 
-            {
-                menu.fToggleCursor(false)
-                document.body.style.cursor = "auto"
-                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
-                menu.cursorWhile = null; 
-            }
-            else {
-                setTimeout(() => menu.fToggleCursor(toggle), 50)
-                if(menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
-            }
-
+            menu.fCheckCursor()
             menu.eventOpen();
-        } 
-        else 
+        }
+        else
         {
-            menu.fToggleCursor(false)
             if(menu.cursorWhile !== null) 
             {
                 clearInterval(menu.cursorWhile)
                 menu.cursorWhile = null;
             }
+            menu.emit('showCursor', false)    
         }
+        // if(toggle)
+        // { 
+        //     menu.fToggleCursor(menu.disableCursor)
+        //     if(menu.disableCursor) 
+        //     {
+        //         if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+        //         menu.cursorWhile = null; 
+        //     }
+        //     else { 
+        //         setTimeout(() => menu.fToggleCursor(toggle), 50)
+        //         if(menu.cursorWhile === null) menu.cursorWhile = setInterval(menu.fCursoring, 0)
+        //     }
+
+        //     menu.eventOpen();
+        // } 
+        // else 
+        // {
+        //     menu.fToggleCursor(false) 
+        //     if(menu.cursorWhile !== null) 
+        //     {
+        //         clearInterval(menu.cursorWhile)
+        //         menu.cursorWhile = null;
+        //     }
+        // }
         document.getElementById('fade').style.opacity = toggle ? 1 : 0;
         if (menu.page === 1) menu.saveSettings(-1);
     });
@@ -1721,8 +1736,8 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        // menu.switchPage(2, 2)
-        menu.switchPage(4, 1)
+        menu.switchPage(2, 2) 
+        // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
