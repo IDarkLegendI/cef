@@ -880,7 +880,7 @@
                                                 v-else>
                                                 <a id="mouseFocus" style="background-color: rgba(255, 255, 255, 0.863)"
                                                     v-if="+cars[carsPointer].price2 !== +0"
-                                                    v-on:click="subPage = 2">{{i18n.sellCar}}</a>
+                                                    v-on:click="switchPage(2,2)">{{i18n.sellCar}}</a>
 
                                                 <a id="mouseFocus"
                                                     v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
@@ -1008,7 +1008,7 @@
                 <transition enter-active-class="animated rotateInUpLeft fast"
                     leave-active-class="animated rotateOutDownLeft fast">
                     <section v-if="subPage === 2"> 
-                        <div style="display: flex; flex-direction: column; height: 100vh; width: 100vw; background-color: rgba(0, 0, 0, 0.26);"> 
+                        <div style="display: flex; flex-direction: column; height: 100vh; width: 100vw"> 
                             <div class="upline">
                                 <div class="nameupline">
                                     <span>GTAROYAL.RU</span>
@@ -1040,7 +1040,7 @@
                                 <div class="btnback">
                                     <a href="#" id="mouseFocus"
                                         v-on:click="subPage = 0; setTimeout(initColor, 500)">{{i18n.btnBack}}</a>
-                                    <a href="#" id="mouseFocus" style="background: rgba(255, 110, 110, 0.459);"
+                                    <a class="acceptRed" href="#" id="mouseFocus"
                                         v-on:click="emitToServerWithWT(1000, 'sCar:sell', cars[carsPointer])">{{i18n.iAgree}}</a>
                                 </div>
                             </div>

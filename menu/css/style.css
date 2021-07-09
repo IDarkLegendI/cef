@@ -3601,4 +3601,14 @@ input[type="button" i]:focus, .button :focus, .button :active {
 .changePassword div {
   margin-top: 2vh;
 }
+
+.btnback .acceptRed {
+  background: rgba(252, 64, 64, 0.726);
+}
+
+.btnback .acceptRed:hover {
+  background: #d82626;
+  -webkit-box-shadow: 0 0 10px red;
+          box-shadow: 0 0 10px red;
+}
 /*# sourceMappingURL=style.css.map */
