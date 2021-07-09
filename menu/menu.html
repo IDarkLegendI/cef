@@ -237,7 +237,7 @@
                                             <span class="minibtn" id="mouseFocus"
                                                 v-on:click="switchPage(4)">{{i18n.control}}</span>
                                         </div>
-                                        <div class="iconnoob">
+                                        <div class="iconnoob" v-on:click="switchPage(3)">
                                             <img src="./img/noob.png" alt="">
                                         </div>
                                     </div>
@@ -589,15 +589,7 @@
                                                     v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- </div>
-                            <div class="checkboxes">
-                                <div class="checkboxtest">
-                                    <span>{{i18n.tips}}</span>
-                                    <div class="settingCenter"><input id="switch" type="checkbox" /><label for="switch"
-                                            id="mouseFocus"></label></div>
-                                </div>
-                            </div> -->
+                                    </div> 
                                     <div class="checkboxes">
                                         <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                             <span>"VR" - {{i18n.menuMode}}</span>
@@ -618,7 +610,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="checkboxes">
+                                    <!-- <div class="checkboxes">
                                         <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                             <span>{{i18n.disableCursor}}</span>
                                             <div class="settingCenter"><input id="disableCursor" type="checkbox"
@@ -627,8 +619,8 @@
                                                     :style="{cursor: disableCursor ? 'pointer' : 'none'}"
                                                     for="disableCursor"></label>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </div>   
+                                    </div> -->
                                     <div class="checkboxes">
                                         <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                             <span>{{i18n.quickWeaponT}}</span>
@@ -1019,18 +1011,18 @@
                             </div>
                             <div class="agreePage"
                                 style="width: 50vw; text-shadow: 0 0 3px black; height: 50vh; display: flex; justify-content: center;">
-                                <div class="settingsh1">
+                                <div class="settingsh1" id="sellCar">
                                     <h1>{{i18n.acceptAction}}</h1>
                                 </div>
-                                <div class="settingsh1" style="padding-top: 4vh;">
+                                <div class="settingsh1" id="sellCar" style="padding-top: 4vh;">
                                     <h1 style="font-size: 2.5vh">{{i18n.toSellCar}} "{{cars[carsPointer].name}}"</h1>
                                 </div>
-                                <div class="settingsh1" style="padding-top: 1vh;">
+                                <div class="settingsh1" id="sellCar" style="padding-top: 1vh;">
                                     <h1 style="font-size: 2.5vh">
                                         {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}:
                                         ${{Math.round(cars[carsPointer].price2 / +2).toFixed(0)}}</h1>
                                 </div>
-                                <div class="settingsh1" style="padding-top: 1vh;" v-if="vip !== 'none'">
+                                <div class="settingsh1" id="sellCar" style="padding-top: 1vh;" v-if="vip !== 'none'">
                                     <h1 style="font-size: 2.5vh">
                                         CASHBACK:
                                         ${{Math.round(cars[carsPointer].price2 * (+assortPriv[vip].k / +70)).toFixed(0)}}

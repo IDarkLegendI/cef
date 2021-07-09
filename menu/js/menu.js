@@ -1524,7 +1524,7 @@ let menu = new Vue({
                 }
             }
         },
-        fCheckCursor(value = menu.disableCursor) 
+        fCheckCursor(value = false) 
         {
             console.log(`fCheckCursor: ${value}`)
             if(value) //Положение "true"
@@ -1562,11 +1562,12 @@ if ('alt' in window) {
             {
                 clearInterval(menu.cursorWhile)
                 menu.cursorWhile = null;
-            }
+            } 
+            document.body.style.cursor = 'none'
             menu.emit('showCursor', false)    
         }
         // if(toggle)
-        // { 
+        // {  
         //     menu.fToggleCursor(menu.disableCursor)
         //     if(menu.disableCursor) 
         //     {
@@ -1736,7 +1737,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
         {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(2, 2) 
+        menu.switchPage(0, 0) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5
@@ -1764,7 +1765,19 @@ menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
 document.addEventListener('keydown', function (event) {
     menu.fKeyDown(event.keyCode) 
-}); 
+});
+
+// document.addEventListener('mousedown', e => {
+//     if(e.button === 2) console.log(`mousedown: CLICK!`) 
+//   });
+// document.addEventListener('mouseup', e => {
+//     if(e.button === 2) 
+//     {
+//         menu.emit('showCursor', false)  
+//         console.log(`mouseup: CLICK!`)
+//         menu.fCheckCursor()
+//     }
+//   });
 menu.cars.forEach((el, index) => {
     menu.cars[index].price2 = JSON.stringify(el.price)
 })
