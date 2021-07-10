@@ -1435,8 +1435,8 @@
                                 <div style="padding-top: 4vh; display: flex; align-items: center; justify-content: space-between;"
                                     v-if="reportType !== -1 && reportType !== '1' || (reportReason !== -1 && reportType === '1')">
                                     <div class="group">
-                                        <input :class="{inputTextRed: reportType === '1'}" class="inputText" required
-                                            type="text" v-model="reportInput">
+                                        <input class="inputText inputTextRed" required type="number" v-if="reportType === '1'" v-model="reportInput">
+                                        <input class="inputText" required type="text" v-else v-model="reportInput">
                                         <span :class="{barRed: reportType === '1'}" class="bar"></span>
                                         <label
                                             class="labelText">{{reportType === '0' ? i18n.questionInput : reportType === '1' ? i18n.intruderID : i18n.improvementInput}}</label>
