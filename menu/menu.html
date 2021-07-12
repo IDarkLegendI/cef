@@ -1398,19 +1398,19 @@
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input :style="{cursor: disableCursor ? 'pointer' : 'none'}"
                                             class="option-input option-input-red radio" id="map-1" type="radio"
-                                            v-model="reportType" value="1">
+                                            v-model="reportType" value="2">
                                         <span>{{i18n.complaint}}</span>
                                     </label>
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input :style="{cursor: disableCursor ? 'pointer' : 'none'}"
                                             class="option-input option-input-green radio" id="map-2" type="radio"
-                                            v-model="reportType" value="2">
+                                            v-model="reportType" value="1">
                                         <span>{{i18n.suggestion}}</span>
                                     </label>
                                 </div>
                             </div>
                             <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="mapchoice1"
-                                style="padding-top: 2vh; width: 35vw;" v-if="reportType === '1'">
+                                style="padding-top: 2vh; width: 35vw;" v-if="reportType === '2'">
                                 <div class="mapchoice">
                                     <label :style="{cursor: disableCursor ? 'pointer' : 'none'}">
                                         <input :style="{cursor: disableCursor ? 'pointer' : 'none'}"
@@ -1429,21 +1429,21 @@
                                             v-model="reportReason" value="2">
                                         <span>{{i18n.insult}}</span>
                                     </label>
-                                </div>
+                                </div> 
                             </div>
                             <transition enter-active-class="animated zoomInUp" leave-active-class="animated zoomOut">
                                 <div style="padding-top: 4vh; display: flex; align-items: center; justify-content: space-between;"
-                                    v-if="reportType !== -1 && reportType !== '1' || (reportReason !== -1 && reportType === '1')">
+                                    v-if="reportType !== -1 && reportType !== '2' || (reportReason !== -1 && reportType === '2')">
                                     <div class="group">
-                                        <input class="inputText inputTextRed" required type="number" v-if="reportType === '1'" v-model="reportInput">
+                                        <input class="inputText inputTextRed" required type="number" v-if="reportType === '2'" v-model="reportInput">
                                         <input class="inputText" required type="text" v-else v-model="reportInput">
-                                        <span :class="{barRed: reportType === '1'}" class="bar"></span>
+                                        <span :class="{barRed: reportType === '2'}" class="bar"></span>
                                         <label
-                                            class="labelText">{{reportType === '0' ? i18n.questionInput : reportType === '1' ? i18n.intruderID : i18n.improvementInput}}</label>
+                                            class="labelText">{{reportType === '0' ? i18n.questionInput : reportType === '2' ? i18n.intruderID : i18n.improvementInput}}</label>
                                     </div>
                                     <div class="headrightImg"
                                         style="width: 3.5vw; display: flex; justify-content: flex-end; margin-bottom: 2.0vh;"
-                                        v-if="reportType === '1'">
+                                        v-if="reportType === '2'">
                                         <img src="./img/selection.png" style="width: 2vw; height: 2vw;"
                                             v-on:click="switchPage(6,1); emit('cMenu:loadLastPlayers'); setTimeout(translateSubPages, 1000)">
                                     </div>
@@ -1452,7 +1452,7 @@
                             <transition enter-active-class="animated slideInLeft faster"
                                 leave-active-class="animated slideOutRight faster">
                                 <div class="btnback"
-                                    v-show="(reportInput.length > 0 && reportType === '1') || reportInput.length > 6">
+                                    v-show="(reportInput.length > 0 && reportType === '2') || reportInput.length > 6">
                                     <a id="mouseFocus"
                                         v-on:click="switchPage(0,0); reportInput = ''; reportReason = reportType = -1;">{{i18n.send}}</a>
                                 </div>

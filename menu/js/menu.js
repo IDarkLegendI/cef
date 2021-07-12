@@ -152,6 +152,7 @@ let menu = new Vue({
         //Misc
         miscInput: '',
         coolDown: false,
+        superCoolDown: false,
 
         //Shop
         moneyRM: 0,
@@ -350,6 +351,8 @@ let menu = new Vue({
             toSellCar: "CAR SALES",
             cashBackCAR: "FOR THE SALE OF CARS",
             upTo: "UP TO",
+            stopFlood: "Stop flooding!",
+            notValid: "You are using forbidden characters. Remove them, and try again",
         },
         i18nTemp: null,
         avatars: {
@@ -666,6 +669,25 @@ let menu = new Vue({
             if(cP && nP && nP2) cP = nP = nP2 = ""
             menu.emit('customNotify', 2, menu.i18n.changedPassword) 
             menu.switchPage(1, 0)
+        },
+
+        reportSend(text = menu.reportInput)
+        {
+            if(!menu.textValid(text)) return menu.emit('customNotify', 1, menu.i18n.notValid)
+            if(!menu.superCoolDown) return menu.emit('customNotify', 1, menu.i18n.notValid)
+  
+
+            alt.emitToServerWithWT(250, 'sReport:new', text, menu.reportType, menu.reportReason) 
+            menu.superCoolDown = true
+            menu.setTimeout(() => {
+                menu.superCoolDown = false
+            }, 5000)
+        },
+
+        //Возвращает true, если текст проходит проверку на A-Z, А-Я, 0-9
+        textValid(text)
+        {
+            return !(/[^A-Z-a-z-0-9-а-я-А-Я,ёЁ ]/g.test(text))
         },
 
         saveSettings(page, subPage = 0) {
@@ -1155,6 +1177,8 @@ let menu = new Vue({
                 toSellCar: "ПРОДАЖА АВТОМОБИЛЯ",
                 cashBackCAR: "ЗА ПРОДАЖУ МАШИН",
                 upTo: "ДО",
+                stopFlood: "Прекратите флудить!",
+                notValid: "Вы используете запрещенные символы. Уберите их, и попробуйте еще раз",
             }
         },
         loadEn() {
@@ -1426,7 +1450,7 @@ let menu = new Vue({
         },
         fCoolDown() {
             if (this.coolDown) {
-                this.emit('customNotify', 4, 'Прекратите флудить!')
+                this.emit('customNotify', 4, menu.i18n.stopFlood)
                 return false;
             }
             this.coolDown = true;
