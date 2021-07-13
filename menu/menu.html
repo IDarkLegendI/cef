@@ -1454,7 +1454,8 @@
                                 <div class="btnback"
                                     v-show="(reportInput.length > 0 && reportType === '2') || reportInput.length > 6">
                                     <a id="mouseFocus"
-                                        v-on:click="switchPage(0,0); reportInput = ''; reportReason = reportType = -1;">{{i18n.send}}</a>
+                                        v-on:click="reportSend()">{{i18n.send}}</a>
+                                        <!-- switchPage(0,0); reportInput = ''; reportReason = reportType = -1; -->
                                 </div>
                             </transition>
                         </div>

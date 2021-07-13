@@ -673,21 +673,35 @@ let menu = new Vue({
 
         reportSend(text = menu.reportInput)
         {
-            if(!menu.textValid(text)) return menu.emit('customNotify', 1, menu.i18n.notValid)
-            if(!menu.superCoolDown) return menu.emit('customNotify', 1, menu.i18n.notValid)
+            if(!menu.textValid(text)) return menu.emit('customNotify', 1, menu.i18n.notValid) 
+            if(menu.superCoolDown) return menu.emit('customNotify', 1, menu.i18n.stopFlood) 
   
-
-            alt.emitToServerWithWT(250, 'sReport:new', text, menu.reportType, menu.reportReason) 
+ 
+            let reason = menu.reportType;
+            if(menu.reportType === 2)
+            {
+                reason = 3 + +menu.reportReason
+            } 
+            menu.emitToServerWithWT(250, 'sReport:new', reason, text)  
             menu.superCoolDown = true
             menu.setTimeout(() => {
                 menu.superCoolDown = false
             }, 5000)
         },
 
+        reportSent() 
+        {
+            menu.switchPage(0,0); 
+            menu.reportInput = ''; 
+            menu.reportReason = 
+            menu.reportType = -1;   
+            menu.emitToClient('notifyI18n', '2', 'report', 'send', '3500');
+        },
+
         //Возвращает true, если текст проходит проверку на A-Z, А-Я, 0-9
         textValid(text)
         {
-            return !(/[^A-Z-a-z-0-9-а-я-А-Я,ёЁ ]/g.test(text))
+            return !(/[^A-Z-a-z-0-9-а-я-А-Я,ёЁ?! ]/g.test(text))
         },
 
         saveSettings(page, subPage = 0) {
