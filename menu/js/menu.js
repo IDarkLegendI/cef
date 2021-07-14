@@ -1037,11 +1037,10 @@ let menu = new Vue({
                 online = false;
             })
         },
-        fRightClick()
+        fRightClick(index)
         {
-            //Удаление новости
-            console.log('11') 
-            if('alt' in window) return false
+            //Удаление новости 
+            menu.emitToClient('bell:delete', index)
         },
 
         loadLang(lang = this.lang) { 
