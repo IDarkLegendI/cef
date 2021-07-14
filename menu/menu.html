@@ -302,8 +302,8 @@
                                 <div class="headright">
                                     <span class="headright1">{{i18n.person}}</span>
                                     <div class="headrightImg">
-                                        <img :class="{'animated infinite wobble slower active': news !== null}"
-                                            :src="`./img/${news === null ? 'bell3' : 'bellActive'}.png`"
+                                        <img :class="{'animated infinite wobble slower active': bell !== null}"
+                                            :src="`./img/${bell === null ? 'bell3' : 'bellActive'}.png`" 
                                             style="width: 2vw;" v-on:click="switchPage(0,5)">
                                     </div>
                                 </div>
@@ -528,7 +528,7 @@
                                     <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">
                                         {{i18n.accept}}</span>
                                 </div>
-                            </div>
+                            </div> 
                         </transition>
 
                         <!-- НОВОСТИ -->
@@ -539,17 +539,16 @@
                                 </div>
                                 <div class="zaprosi" style="margin-left: 0.5vw; margin-right: 0.5vw; padding-top: 0">
                                     <transition-group name="list-complete" tag="div">
-                                        <div class="zapros zaprosNews list-complete-item"
-                                            oncontextmenu="menu.fRightClick()" v-bind:key="item.name"
-                                            v-for="(item, index) in news">
-                                            <div class="avatarnickzapros">
+                                        <div @contextmenu="fRightClick(index)" class="zapros zaprosNews list-complete-item"
+                                            v-bind:key="item.msg" v-for="(item, index) in bell">
+                                            <div class="avatarnickzapros">  
                                                 <div class="avatarzapros">
                                                     <!-- 0 - error, 1 - ok -->
                                                     <img src="../menu/img/accepted.png" v-if="item.type">
                                                     <img src="../menu/img/no.png" v-else>
                                                 </div>
                                                 <div class="nickzapros">
-                                                    <h1>{{item.name}}</h1>
+                                                    <h1>{{item.msg}}</h1> 
                                                 </div>
                                             </div>
                                         </div>
@@ -559,7 +558,7 @@
                                     <span class="minibtn" id="mouseFocus"
                                         v-on:click="switchPage(0, 0)"><span>{{i18n.person}}</span></span>
                                     <span class="minibtn" id="mouseFocus"
-                                        v-on:click="switchPage(0, 0)"><span>{{i18n.clearAll}}</span></span>
+                                        v-on:click="emitToClient('bell:deleteAll')"><span>{{i18n.clearAll}}</span></span>
                                 </div>
                             </div>
                         </transition>

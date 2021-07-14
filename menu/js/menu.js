@@ -147,7 +147,7 @@ let menu = new Vue({
         adminLevel: 0,
 
         //Bell
-        news: null,
+        bell: null,
 
         //Misc
         miscInput: '',
@@ -1200,8 +1200,8 @@ let menu = new Vue({
             menu.i18n = JSON.parse(menu.i18nTemp);
         },
         updateCars(list, selected) {
-            console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
-            // {
+            // console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
+            // { 
             //     model: string,  
             //     color: iRGB,
             // }
@@ -1705,7 +1705,7 @@ if ('alt' in window) {
             name: el,
             online: false
         }));
-        console.log(`updateFriends: ${JSON.stringify(menu.friends)}`)
+        // console.log(`updateFriends: ${JSON.stringify(menu.friends)}`)
         if (requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);
         if (requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);
         setTimeout(() => {
@@ -1773,12 +1773,12 @@ if ('alt' in window) {
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
-        {name: "Вам поступил запрос в друзья", type: false},{name: "Вам поступил запрос в друзь2", type: false},{name: "Вам поступил запрос в друзь3", type: false},{name: "Вам поступил запрос в друзь4", type: false},{name: "Вам поступил запрос в друзь5", type: false},{name: "Вам поступил запрос в друзь6", type: false},{name: "Вам поступил запрос в друзь7", type: false},{name: "Вам поступил запрос в друзь8", type: false},{name: "Вам поступил запрос в друзь9", type: false},]
-        menu.switchPage(6, 0) 
+        menu.bell = [{msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
+        {msg: "Вам поступил запрос в друзья", type: false},{msg: "Вам поступил запрос в друзь2", type: false},{msg: "Вам поступил запрос в друзь3", type: false},{msg: "Вам поступил запрос в друзь4", type: false},{msg: "Вам поступил запрос в друзь5", type: false},{msg: "Вам поступил запрос в друзь6", type: false},{msg: "Вам поступил запрос в друзь7", type: false},{msg: "Вам поступил запрос в друзь8", type: false},{msg: "Вам поступил запрос в друзь9", type: false},]
+        menu.switchPage(0, 5) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
-        menu.bonusMoney = 5
+        menu.bonusMoney = 5 
         menu.wsWin = true
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
@@ -1797,8 +1797,7 @@ if ('alt' in window) {
             if(menu.page !== 2) return;
             menu.initColor()
     }, 800)
-}
-menu.news = [{name: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, {name: "Вам поступил запрос в друзья", type: false}]
+} 
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
 document.addEventListener('keydown', function (event) {
