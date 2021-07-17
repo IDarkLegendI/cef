@@ -148,6 +148,7 @@ let menu = new Vue({
 
         //Bell
         bell: null,
+        hoverBell: false,
 
         //Misc
         miscInput: '',
@@ -1560,7 +1561,7 @@ let menu = new Vue({
                     }
                 }
             }
-        },
+        }, 
         fCheckCursor(value = false) 
         {
             console.log(`fCheckCursor: ${value}`)

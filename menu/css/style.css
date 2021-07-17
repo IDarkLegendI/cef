@@ -678,6 +678,8 @@ html {
       justify-content: space-around;
   margin-bottom: 2vh;
   height: 4.5vh;
+  min-height: 4.5vh;
+  max-height: 4.5vh;
 }
 
 .btnbackperson .minibtn {

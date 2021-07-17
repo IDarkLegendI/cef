@@ -303,7 +303,7 @@
                                     <span class="headright1">{{i18n.person}}</span>
                                     <div class="headrightImg">
                                         <img :class="{'animated infinite wobble slower active': bell !== null}"
-                                            :src="`./img/${bell === null ? 'bell3' : 'bellActive'}.png`" 
+                                            :src="`./img/${bell === null ? 'bell3' : 'bellActive'}.png`"
                                             style="width: 2vw;" v-on:click="switchPage(0,5)">
                                     </div>
                                 </div>
@@ -528,7 +528,7 @@
                                     <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">
                                         {{i18n.accept}}</span>
                                 </div>
-                            </div> 
+                            </div>
                         </transition>
 
                         <!-- НОВОСТИ -->
@@ -539,16 +539,17 @@
                                 </div>
                                 <div class="zaprosi" style="margin-left: 0.5vw; margin-right: 0.5vw; padding-top: 0">
                                     <transition-group name="list-complete" tag="div">
-                                        <div @contextmenu="fRightClick(index)" class="zapros zaprosNews list-complete-item"
+                                        <div @contextmenu="fRightClick(index)" @mouseleave="hoverBell = false"
+                                            @mouseover="hoverBell = true" class="zapros zaprosNews list-complete-item"
                                             v-bind:key="item.msg" v-for="(item, index) in bell">
-                                            <div class="avatarnickzapros">  
+                                            <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
                                                     <!-- 0 - error, 1 - ok -->
                                                     <img src="../menu/img/accepted.png" v-if="item.type">
                                                     <img src="../menu/img/no.png" v-else>
                                                 </div>
                                                 <div class="nickzapros">
-                                                    <h1>{{item.msg}}</h1> 
+                                                    <h1>{{item.msg}}</h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -566,6 +567,9 @@
                 </div>
             </section>
         </transition>
+        <!-- <div style="position: absolute; bottom: 2vh; right: 9vw; color: wheat; font-family: 'Roboto Condensed'; font-size: 1vw;">
+            <h1>Нажмите правую кнопку для удаления</h1>
+        </div> -->
 
         <!-- НАСТРОЙКИ  | SETTINGS -->
         <transition enter-active-class="animated rotateInUpLeft fast"
@@ -588,7 +592,7 @@
                                                     v-on:click="lang === 'ru' ? lang = 'en' : lang = 'ru'; loadLang()">
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="checkboxes">
                                         <div :style="{cursor: disableCursor ? 'pointer' : 'none'}" class="checkboxtest">
                                             <span>"VR" - {{i18n.menuMode}}</span>
@@ -998,8 +1002,8 @@
                 <!-- ПРОДАЖА АВТО -->
                 <transition enter-active-class="animated rotateInUpLeft fast"
                     leave-active-class="animated rotateOutDownLeft fast">
-                    <section v-if="subPage === 2"> 
-                        <div style="display: flex; flex-direction: column; height: 100vh; width: 100vw"> 
+                    <section v-if="subPage === 2">
+                        <div style="display: flex; flex-direction: column; height: 100vh; width: 100vw">
                             <div class="upline">
                                 <div class="nameupline">
                                     <span>GTAROYAL.RU</span>
@@ -1428,13 +1432,14 @@
                                             v-model="reportReason" value="2">
                                         <span>{{i18n.insult}}</span>
                                     </label>
-                                </div> 
+                                </div>
                             </div>
                             <transition enter-active-class="animated zoomInUp" leave-active-class="animated zoomOut">
                                 <div style="padding-top: 4vh; display: flex; align-items: center; justify-content: space-between;"
                                     v-if="reportType !== -1 && reportType !== '2' || (reportReason !== -1 && reportType === '2')">
                                     <div class="group">
-                                        <input class="inputText inputTextRed" required type="number" v-if="reportType === '2'" v-model="reportInput">
+                                        <input class="inputText inputTextRed" required type="number"
+                                            v-if="reportType === '2'" v-model="reportInput">
                                         <input class="inputText" required type="text" v-else v-model="reportInput">
                                         <span :class="{barRed: reportType === '2'}" class="bar"></span>
                                         <label
@@ -1452,9 +1457,8 @@
                                 leave-active-class="animated slideOutRight faster">
                                 <div class="btnback"
                                     v-show="(reportInput.length > 0 && reportType === '2') || reportInput.length > 6">
-                                    <a id="mouseFocus"
-                                        v-on:click="reportSend()">{{i18n.send}}</a>
-                                        <!-- switchPage(0,0); reportInput = ''; reportReason = reportType = -1; -->
+                                    <a id="mouseFocus" v-on:click="reportSend()">{{i18n.send}}</a>
+                                    <!-- switchPage(0,0); reportInput = ''; reportReason = reportType = -1; -->
                                 </div>
                             </transition>
                         </div>
