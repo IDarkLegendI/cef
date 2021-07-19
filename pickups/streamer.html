@@ -29,27 +29,27 @@
                         object.created = false;
                         alt.emit("removeObject", name);
                     }
-                }
-                // console.log(`OBJECTS: ${JSON.stringify(OBJECTS)}`)
+                } 
+                // //console.log(`OBJECTS: ${JSON.stringify(OBJECTS)}`)
                 if(iLength > 70)
                 {
                     STREAM_RANGE = 10;
-                    // console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
+                    // //console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
                 }
                 else if(iLength > 40)
                 {
                     STREAM_RANGE = 50;
-                    // console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
+                    // //console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
                 }
                 else if(iLength > 20)
                 {
                     STREAM_RANGE = 100;
-                    // console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
+                    // //console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
                 }
                 else
                 {
                     STREAM_RANGE = 200;
-                    // console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
+                    // //console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
                 }
             }
             const addObject = (name, model, x, y, z) => {

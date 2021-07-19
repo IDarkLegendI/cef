@@ -251,7 +251,7 @@ function updateCarColor(color){
   // // }
   if(!color["_a"]) return
   let rgbColor = color.toRgb();
-  // console.log(JSON.stringify(rgbColor))
+  // //console.log(JSON.stringify(rgbColor))
   menu.cars[menu.carsPointer].color = {r: rgbColor.r, g: rgbColor.g, b: rgbColor.b}
   // if(checkedSecondary === "setSek" && checkedPrimary === "setPrim"){
   //   alt.emit("setCarColorLive:ClientSide", checkedPrimary, checkedSecondary, color.toRgb());
@@ -378,7 +378,7 @@ function closeCP() {
 // }
 
 function setPearlColor(){
-  console.log(slider.value);
+  //console.log(slider.value);
   alt.emit("setPearlColor:ClientSide", slider.value);
 }
 

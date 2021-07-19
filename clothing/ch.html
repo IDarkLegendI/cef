@@ -158,9 +158,9 @@
 		},
 		computed: {
 			colorCloth() {
-				// console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
-				// console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
-				// console.log(`this.myClothes[this.currentTitle]: ${this.myClothes[this.currentTitle]}`) 
+				// //console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
+				// //console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
+				// //console.log(`this.myClothes[this.currentTitle]: ${this.myClothes[this.currentTitle]}`) 
 				return this.myClothes[this.currentTitle].color === this.currentCloth.color && this.currentArr[this
 					.myClothes[this.currentTitle].number] === this.currentCloth
 			}
@@ -180,7 +180,7 @@
 				return 0
 			},
 			showPrice: function () {
-				// console.log(`showPrice: ${this.currentCloth.price} -> ${this.currentArr[this.myClothes[this.currentTitle].number].price / +this.k}`)
+				// //console.log(`showPrice: ${this.currentCloth.price} -> ${this.currentArr[this.myClothes[this.currentTitle].number].price / +this.k}`)
 				let sale = Math.ceil(this.currentCloth.price - this.currentArr[this.myClothes[this
 						.currentTitle].number]
 					.price / +this.k);
@@ -196,7 +196,7 @@
 				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
 			},
 			setCurrentStartSettings: function () {
-				// console.log(`this.myClothes: ${JSON.stringify(this.myClothes)}`) 
+				// //console.log(`this.myClothes: ${JSON.stringify(this.myClothes)}`) 
 				this.currentNum = this.myClothes[this.currentTitle].number;
 				this.currentCloth = this.currentArr[this.myClothes[this.currentTitle].number];
 				this.currentCloth.color = this.myClothes[this.currentTitle].color;
@@ -269,7 +269,7 @@
 
 
 			setColor: function (num) {
-				console.log(`setColor: ${num}`)
+				//console.log(`setColor: ${num}`)
 				this.currentColorNum = num;
 				this.currentCloth.color = this.currentCloth.colors[num];
 				this.setClothToPlayer();
@@ -309,14 +309,14 @@
 			},
 
 			buy: function () {
-				// console.log(`buy start -----------------> `) 
+				// //console.log(`buy start -----------------> `) 
 				const obj = {
 					title: this.currentTitle,
 					number: this.currentNum,
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
 				}
-				// console.log(`buy ----------------->	${JSON.stringify(obj)}`) 
+				// //console.log(`buy ----------------->	${JSON.stringify(obj)}`) 
 				alt.emit('emitToServer', 'sClothing:buy', obj);
 			},
 
@@ -326,7 +326,7 @@
 				alt.emit('emitToServer', 'sClothing:reloadClothes');
 			},
 			changeCamRotation: function () {
-				// console.log(this.camRotation) 
+				// //console.log(this.camRotation) 
 				alt.emit('emitToClient', 'cChangeHeading', this.camRotation);
 			},
 			exit: function () {
@@ -350,12 +350,12 @@
 
 			//Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
 			changeVar(...args) {
-				// console.log(`changeVar: ${JSON.stringify(...args)}`)
+				// //console.log(`changeVar: ${JSON.stringify(...args)}`)
 				args.forEach(el => {
-					console.log(`changeVar(0): ${JSON.stringify(el)}`)
-					console.log(`changeVar(1): app.${el[0]} = ${el[1]}`)
+					//console.log(`changeVar(0): ${JSON.stringify(el)}`)
+					//console.log(`changeVar(1): app.${el[0]} = ${el[1]}`)
 					app[el[0]] = el[1];
-					// console.log(`changeVar: ${hud[el[0]]}`)  
+					// //console.log(`changeVar: ${hud[el[0]]}`)  
 				})
 			},
 		}
@@ -5084,7 +5084,7 @@
 
 	if ('alt' in window) {
 		alt.on('setSex', sex => {
-			// console.log(`sex: ${sex}`) 
+			// //console.log(`sex: ${sex}`) 
 			if (sex) loadMans();
 			else loadWomans();
 		})
@@ -5093,12 +5093,12 @@
 		alt.on('updateCash', value => app.money = value)
 
 		alt.on('setLang', lang => {
-			console.log(`ch.lang: ${lang}`)
+			//console.log(`ch.lang: ${lang}`)
 			if (lang === 'ru') setTimeout(loadRusLang, 500);
 		})
 		alt.on('changeVar', (...args) => {
 			app.changeVar(...args)
-			console.log(`changeVar: ${JSON.stringify(...args)}`)
+			//console.log(`changeVar: ${JSON.stringify(...args)}`)
 		})
 	}
 </script>

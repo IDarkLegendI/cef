@@ -1956,7 +1956,7 @@ a:hover {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 2vh;
-  border-radius: 20px;
+  border-radius: 25px;
   -webkit-transition: .3s ease-in-out;
   transition: .3s ease-in-out;
 }
@@ -2055,6 +2055,15 @@ a:hover {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.avatarNews {
+  border-radius: 0%;
+  padding-left: 0.4vw;
+}
+
+.avatarNews img {
+  border-radius: 0%;
 }
 
 .online {

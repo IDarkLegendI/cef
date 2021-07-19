@@ -330,7 +330,7 @@ var hud = new Vue({
         {  
             if(this.killFeed[2]) 
             {
-                console.log(`${this.killFeed[2]}; ${this.killFeed.splice(0, 1)}`)
+                //console.log(`${this.killFeed[2]}; ${this.killFeed.splice(0, 1)}`)
                 return setTimeout(() => this.fKillFeedUpdate(text), 50) 
             }
             this.killFeed.push(text);
@@ -353,7 +353,7 @@ var hud = new Vue({
                     this.killFeed = [];
                 }
                 htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
-                // console.log(htmlEl.style.opacity)
+                // //console.log(htmlEl.style.opacity)
             }, 500);    
         },
         fPlayAudio(name, volume = 0.1) 
@@ -394,12 +394,12 @@ var hud = new Vue({
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
         changeVar(...args) 
         { 
-            // console.log(`changeVar: ${JSON.stringify(...args)}`)
+            // //console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => { 
-                // console.log(`changeVar(0): ${JSON.stringify(el)}`) 
-                // console.log(`changeVar(1): hud.${el[0]} = ${el[1]}`) 
+                // //console.log(`changeVar(0): ${JSON.stringify(el)}`) 
+                // //console.log(`changeVar(1): hud.${el[0]} = ${el[1]}`) 
                 hud[el[0]] = el[1]; 
-                // console.log(`changeVar: ${hud[el[0]]}`)  
+                // //console.log(`changeVar: ${hud[el[0]]}`)  
             })  
         },
         useFunction(name, ...args) {
@@ -411,7 +411,7 @@ var hud = new Vue({
 if ('alt' in window) {
     alt.on('customNotify', (notifyType, text, time, pos = 9) => {
         notify(notifyType, pos, text, time);
-        // console.log(`${notifyType}, 9, ${text}, ${time}`);
+        // //console.log(`${notifyType}, 9, ${text}, ${time}`);
     });
 
     alt.on('toggleHud', (toggle, players = -1) => {

@@ -14,7 +14,7 @@ class Battery {
         this.tmax = 500 + Math.random() * 1000;
 
         this._shot = salve => {
-            // console.log(this.x * this.fireworks.width, salve.y);
+            // //console.log(this.x * this.fireworks.width, salve.y);
             if (salve.y < salve.ym) {
                 salve.cb = this._prepareExplosion;
             }

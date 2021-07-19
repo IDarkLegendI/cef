@@ -544,15 +544,15 @@ let menu = new Vue({
     },
     methods: {
         emitServer: function (eventName, ...args) {
-            console.log(...args)
+            //console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', eventName, ...args)
         },
         emitToServerWithWT: function (wt = 250, eventName, ...args) {
-            // console.log(...args)
+            // //console.log(...args)
             if ('alt' in window) alt.emit('emitToServerWithWT', wt, eventName, ...args)
         },
         waitEmitToServer: function (variable, valueTrue, valueFalse, ...args) {
-            // console.log(...args)
+            // //console.log(...args)
             if ('alt' in window) alt.emit('waitEmitToServer', variable, valueTrue, valueFalse, ...args)
         },
         callBackEmitToServer: function (variable, value) {
@@ -563,14 +563,14 @@ let menu = new Vue({
                     b: this.oldColor[2]  
                 }
                 menu[variable] = value;
-                console.log(`callBackEmitToServer: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
+                //console.log(`callBackEmitToServer: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
                 if (this.cars[this.carsPointer].model !== this.oldColor[3]) {
                     menu.oldColor = [this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b,
                         this.cars[this.carsPointer].model
                     ];
                     this.updateTuning = false;
                 }
-                // console.log(`callBackEmitToServer: ${JSON.stringify(this.oldColor)}; model: ${this.cars[this.carsPointer].model}; this.updateTuning: ${this.updateTuning}`)
+                // //console.log(`callBackEmitToServer: ${JSON.stringify(this.oldColor)}; model: ${this.cars[this.carsPointer].model}; this.updateTuning: ${this.updateTuning}`)
                 menu.initColor();
                 setTimeout(() => {
                     if(menu.initColor()) colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b)
@@ -578,41 +578,41 @@ let menu = new Vue({
                 else menu.setTimeout(() => colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b), 100)
                 }, 100)
             } else menu[variable] = value;
-            // console.log(this.cars[this.carsPointer].model)  
+            // //console.log(this.cars[this.carsPointer].model)  
         },
         emitToClient: function (eventName, ...args) {
-            // console.log(...args)  
+            // //console.log(...args)  
             if ('alt' in window) alt.emit('emitToClient', eventName, ...args)
         },
         emit: function (value, ...args) {
-            // console.log(`emit: ${value} -> ${args[0]}`) 
+            // //console.log(`emit: ${value} -> ${args[0]}`) 
             if ('alt' in window) alt.emit(value, ...args)
         },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
         changeVar(...args) {
-            console.log(`changeVar: ${JSON.stringify(...args)}`)
+            //console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => {
-                console.log(`changeVar(0): ${JSON.stringify(el)}`)
-                console.log(`changeVar(1): menu.${el[0]} = ${el[1]}`)
+                //console.log(`changeVar(0): ${JSON.stringify(el)}`)
+                //console.log(`changeVar(1): menu.${el[0]} = ${el[1]}`)
                 Vue.set(menu, el[0], el[1])
-                console.log(`changeVar: ${menu[el[0]]}`)
+                //console.log(`changeVar: ${menu[el[0]]}`)
             })
         },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', 'nameVar2', value], ...
         changeVar2(...args) {
-            console.log(`changeVar: ${JSON.stringify(...args)}`)
+            //console.log(`changeVar: ${JSON.stringify(...args)}`)
             args.forEach(el => {
-                console.log(`changeVar(0): ${JSON.stringify(el)}`)
-                console.log(`changeVar(1): menu.${el[0]}.${el[1]} = ${el[2]}`)
+                //console.log(`changeVar(0): ${JSON.stringify(el)}`)
+                //console.log(`changeVar(1): menu.${el[0]}.${el[1]} = ${el[2]}`)
                 Vue.set(menu[el[0]], el[1], el[2])
             })
         },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', index, 'nameArg', value], ...
         changeArgument(...args) {
-            console.log(`changeArgument: ${JSON.stringify(...args)}`)
+            //console.log(`changeArgument: ${JSON.stringify(...args)}`)
             args.forEach(el => {
-                console.log(el)
-                console.log(`changeArgument(1): menu[${el[0]}][${el[1]}][${el[2]}] = ${el[3]}`)
+                //console.log(el)
+                //console.log(`changeArgument(1): menu[${el[0]}][${el[1]}][${el[2]}] = ${el[3]}`)
                 menu[el[0]][el[1]][el[2]] = el[3];
             }) 
         },
@@ -706,7 +706,7 @@ let menu = new Vue({
         },
 
         saveSettings(page, subPage = 0) {
-            console.log(`saveMenu`)
+            //console.log(`saveMenu`)
             if (page !== -1) this.switchPage(page, subPage);
             if ('alt' in window) {
                 alt.emit('saveSettings', {
@@ -735,7 +735,7 @@ let menu = new Vue({
 
                 
                 if(('alt' in window)) alt.emit('changeVarOnClient', ['page', newPage]) 
-                console.log(`switchPage: ${newPage}; ${newSubPage}`)
+                //console.log(`switchPage: ${newPage}; ${newSubPage}`)
                 // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
                 if (newSubPage !== -1 || (this.nextSubPage !== -1 && this.page !== 2)) {
                     // if(newPage == 0) return this.subPage = newSubPage;
@@ -769,7 +769,7 @@ let menu = new Vue({
                     setTimeout(() => {
                         this.coolDown = false;
                         this.subPage = 0;
-                        console.log(`swithPage(after): ${this.page}; ${this.subPage}`)
+                        //console.log(`swithPage(after): ${this.page}; ${this.subPage}`)
                     }, 150);
                 }
             })
@@ -793,8 +793,8 @@ let menu = new Vue({
 
             if (newPage === 2 && newSubPage === 1) {
                 this.anyVarSecond = menu.fGetJPSkins(); // this.anyVarSecond - возможные скины игрока
-                // console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
-                // console.log(this.anyVarSecond.length)
+                // //console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
+                // //console.log(this.anyVarSecond.length)
                 this.emitToClient('cJetPack:update'); // this.anyVar - выбранный скин джетпака
             }
             // else  
@@ -823,7 +823,7 @@ let menu = new Vue({
 
             if (this.anyVarSecond.length > 0) {
                 this.carsPointer = this.anyVarSecond.findIndex(el => el === this.anyVar)
-                console.log(this.carsPointer)
+                //console.log(this.carsPointer)
             }
             if(this.anyVarC[0] === this.anyVarSecond[this.carsPointer] && this.anyVarC[1].r !== this.anyVarC[2].r)  
             {
@@ -857,7 +857,7 @@ let menu = new Vue({
 
         //LOBBY
         fUpdateLobby(data) {
-            console.log(JSON.stringify(data))
+            //console.log(JSON.stringify(data))
             if (data[0].name && data[0].name !== menu.myName) {
                 let index = data.findIndex(el => el.name === menu.myName);
                 if (index !== -1) {
@@ -887,11 +887,11 @@ let menu = new Vue({
         //
         fUpdateLobbyMic(data)
         {
-            // console.log(`fUpdateLobbyMic: ${JSON.stringify(data)}`)
+            // //console.log(`fUpdateLobbyMic: ${JSON.stringify(data)}`)
             Object.keys(data).forEach(el => {
                 // el = el.toLocaleUpperCase(); 
                 let index = menu.lobby.findIndex(player => {
-                    // console.log(`fUpdateLobbyMic: ${player.name} === ${el} => ${player.name === el}`); 
+                    // //console.log(`fUpdateLobbyMic: ${player.name} === ${el} => ${player.name === el}`); 
                     return player.name === el
                 })
                 if(index === -1) return;
@@ -1024,7 +1024,7 @@ let menu = new Vue({
             return this.friends.filter(el => el.online).filter(el => !this.lobby.some(player => player.name === el.name)) //.toUpperCase()
         },
         updateOnline: function (allPlayers) {
-            // console.log(`allPlayers: ${allPlayers}`)
+            // //console.log(`allPlayers: ${allPlayers}`)
             let online = false;
             this.allPlayers = allPlayers;
             this.friends.forEach(el => {
@@ -1200,7 +1200,7 @@ let menu = new Vue({
             menu.i18n = JSON.parse(menu.i18nTemp);
         },
         updateCars(list, selected) {
-            // console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
+            // //console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
             // { 
             //     model: string,  
             //     color: iRGB,
@@ -1221,7 +1221,7 @@ let menu = new Vue({
 
             //Выставляем новый выбор
             foundIndex = this.cars.findIndex(el => el.model === selected.model);
-            console.log(`foundIndex: ${foundIndex}; ${selected.model}`)
+            //console.log(`foundIndex: ${foundIndex}; ${selected.model}`)
             if (foundIndex !== -1) this.cars[foundIndex].price = -1;
 
             //Чтобы "не выбрано" всегда было в начале списка
@@ -1248,7 +1248,7 @@ let menu = new Vue({
                 model: this.cars[pointer].model,
                 color: this.cars[pointer].color
             }, null, 0, onlyColoring);
-            // console.log(`setPreviewCar: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
+            // //console.log(`setPreviewCar: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
             if (this.cars[this.carsPointer].model !== this.oldColor[3]) {
                 menu.oldColor = [this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b,
                     this.cars[this.carsPointer].model
@@ -1262,11 +1262,11 @@ let menu = new Vue({
                 if (el) 
                 {
                     el.style.backgroundColor = 'rgb(' + this.cars[this.carsPointer].color.r + ',' + this.cars[this.carsPointer].color.g + ',' + this.cars[this.carsPointer].color.b + ')';
-                    // console.log(`carColor: ${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}`)
+                    // //console.log(`carColor: ${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}`)
                     el.style.color = `#${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}` 
                 } 
             }
-            // console.log(`this.updateTuning: ${this.updateTuning}`)  
+            // //console.log(`this.updateTuning: ${this.updateTuning}`)  
              
             if (!this.cars[pointer].color) this.cars[pointer].color = {
                 r: 255,
@@ -1288,7 +1288,7 @@ let menu = new Vue({
 
         sortLiveCar(plus, onlyMyCarsClick)
         {
-            console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
+            //console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
             if(onlyMyCarsClick === 3)
             {
                 if(this.onlyMyCars) this.minSort = this.maxSort = 0
@@ -1318,17 +1318,17 @@ let menu = new Vue({
                 while(this.cars[result].price > this.maxSort) 
                 {
                     if(this.cars[result].price === -1) break;
-                    console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                    //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
                     if(result === this.cars.length-1) break;
-                    console.log(`result(maxSort): ${result}`)
+                    //console.log(`result(maxSort): ${result}`)
                     result -= +1;
                 }
                 while(this.cars[result].price < this.minSort)
                 {
                     if(this.cars[result].price === -1) break;
-                    console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                    //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
                     if(result === this.cars.length-1) break;
-                    console.log(`result(minSort): ${result}`)
+                    //console.log(`result(minSort): ${result}`)
                     result += +1;
                 }
             }
@@ -1339,38 +1339,38 @@ let menu = new Vue({
                     // result -= +1;
                     while(this.cars[result].price > this.maxSort) 
                     {
-                        console.log(`${this.cars[result].price === -1}`)
+                        //console.log(`${this.cars[result].price === -1}`)
                         if(this.cars[result].price === -1) break;
-                        console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                        //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
                         if(result === this.cars.length-1) break;
-                        console.log(`result(maxSort): ${result}`)
+                        //console.log(`result(maxSort): ${result}`)
                         result -= +1;
                     }
                 }
                 result -= 1;
-                console.log(`${this.cars[result].price} | ${this.minSort}`)
+                //console.log(`${this.cars[result].price} | ${this.minSort}`)
                 if(this.cars[result].price < this.minSort) 
                 { 
                     // result += +1;
                     while(this.cars[result].price < this.minSort) 
                     {
-                        console.log(`${this.cars[result].price === -1}`)
+                        //console.log(`${this.cars[result].price === -1}`)
                         if(this.cars[result].price === -1) break;
-                        console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                        //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
                         if(result === this.cars.length-1) break;
-                        console.log(`result(minSort): ${result}`)
+                        //console.log(`result(minSort): ${result}`)
                         result += +1;
                     }
                 }
             }
-            console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
+            //console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
             if(this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
 
             return result; 
         },
         previewCar(plus, name = 'cars', onlyMyCarsClick = 1) {
             // if(!this.fCoolDown()) return;
-            console.log(`previewCar: ${plus}; ${name}; this.carsPointer: ${this.carsPointer};`) 
+            //console.log(`previewCar: ${plus}; ${name}; this.carsPointer: ${this.carsPointer};`) 
             let valueFalse = this.carsPointer,
                 valueTrue;
             if((name === 'cars')) valueTrue = this.sortLiveCar(plus, onlyMyCarsClick)
@@ -1390,13 +1390,13 @@ let menu = new Vue({
                     color: this.cars[valueTrue].color
                 });
             } else {
-                console.log(`${valueTrue} | ${valueFalse} | ${this.anyVarSecond[valueTrue]}`)
+                //console.log(`${valueTrue} | ${valueFalse} | ${this.anyVarSecond[valueTrue]}`)
                 // if(valueTrue === valueFalse) this.carsPointer = -1
                 // else this.carsPointer = valueTrue
 
                 this.carsPointer = valueTrue;  
                 let speicalSkins = [2, 21, 37, 1, 4, 11, 12, 10]
-                console.log(`this.anyVarSecond: ${this.anyVarSecond[valueTrue]}; ${this.anyVarC[0] === this.anyVarSecond[valueTrue]}; ${this.anyVarC[1].r === this.anyVarC[2].r}`)
+                //console.log(`this.anyVarSecond: ${this.anyVarSecond[valueTrue]}; ${this.anyVarC[0] === this.anyVarSecond[valueTrue]}; ${this.anyVarC[1].r === this.anyVarC[2].r}`)
                 if (speicalSkins.some(el => el === this.anyVarSecond[valueTrue])) { 
                     if(this.anyVarC[0] === this.anyVarSecond[valueTrue] && this.anyVarC[1].r !== this.anyVarC[2].r)  
                     {
@@ -1431,10 +1431,10 @@ let menu = new Vue({
             }
         },
         fApplyTuning(car) {
-            console.log(`fApplyTuning: ${JSON.stringify(car)}`)
+            //console.log(`fApplyTuning: ${JSON.stringify(car)}`)
             let found = this.cars.findIndex(veh => veh.model === car.model)
             if (found === -1) return;
-            console.log(`fApplyTuning: found: ${found}`);
+            //console.log(`fApplyTuning: found: ${found}`);
             this.cars[found].color = car.color;
             this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
             this.updateTuning = false;
@@ -1474,16 +1474,16 @@ let menu = new Vue({
             return true;
         },
         findFriend() {
-            // console.log(`allPlayers: ${this.allPlayers}`)
-            // console.log(`requestsOut: ${this.requestsOut}`)
-            // console.log(`myName: ${this.myName}`)
-            // console.log(`this.friends: ${JSON.stringify(this.friends)}`)
+            // //console.log(`allPlayers: ${this.allPlayers}`)
+            // //console.log(`requestsOut: ${this.requestsOut}`)
+            // //console.log(`myName: ${this.myName}`)
+            // //console.log(`this.friends: ${JSON.stringify(this.friends)}`)
             return this.allPlayers.filter(el => {
                     let count = 0;
                     for (let i = 0; i < this.miscInput.length; i++) {
                         if (el[i].toLowerCase() === this.miscInput[i].toLowerCase()) count++;
                     }
-                    // console.log(`count: ${count} === ${this.miscInput.length}`)
+                    // //console.log(`count: ${count} === ${this.miscInput.length}`)
                     return count === this.miscInput.length
                 })
                 .filter(el => !this.friends.some(el2 => el2.name.toLowerCase() === el.toLowerCase()))
@@ -1494,7 +1494,7 @@ let menu = new Vue({
             // })  
         },
         changeCamRotation: function (value = this.camRotation) {
-            // console.log(this.camRotation)  
+            // //console.log(this.camRotation)  
             this.emit('cCar:rotation', value);
             // mp.trigger("cChangeHeading", this.camRotation);
         },
@@ -1508,7 +1508,7 @@ let menu = new Vue({
         getVipEndTime()
         {
             let left = this.myEndTime - +Date.now()
-            console.log(`getVipEndTime: ${this.myEndTime}; left: ${left}`)
+            //console.log(`getVipEndTime: ${this.myEndTime}; left: ${left}`)
             if(+left > +86400000)
             {
                 left /= +86400000;
@@ -1540,9 +1540,9 @@ let menu = new Vue({
         // },
         fKeyDown(keyCode)
         {
-            // console.log(keyCode) 
-            // console.log(menu.keyCodes[keyCode]) 
-            // console.log(menu.recordKey)  
+            // //console.log(keyCode) 
+            // //console.log(menu.keyCodes[keyCode]) 
+            // //console.log(menu.recordKey)  
             // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
             if (menu.recordKey !== false) { 
                 if (keyCode === 27) return menu.recordKey = false;
@@ -1564,7 +1564,7 @@ let menu = new Vue({
         }, 
         fCheckCursor(value = false) 
         {
-            console.log(`fCheckCursor: ${value}`)
+            //console.log(`fCheckCursor: ${value}`)
             if(value) //Положение "true"
             {
                 menu.fToggleCursor(false)
@@ -1641,7 +1641,7 @@ if ('alt' in window) {
 
     alt.on('getSettings', () => menu.saveSettings(-1));
     alt.on('bMenu:setMyName', async (name) => {
-        // console.log(name)
+        // //console.log(name)
         menu.myName = name;
         menu.fUpdateLobby([{
             name: menu.myName,
@@ -1651,7 +1651,7 @@ if ('alt' in window) {
     });
 
     alt.on('bMenu:setMyAvatar', async (avatar) => {
-        // console.log(`bMenu:setMyAvatar: ${avatar}`)  
+        // //console.log(`bMenu:setMyAvatar: ${avatar}`)  
         menu.myAvatar = await menu.getPhoto(avatar)
         menu.fUpdateLobby([{
             name: menu.myName,
@@ -1705,18 +1705,18 @@ if ('alt' in window) {
             name: el,
             online: false
         }));
-        // console.log(`updateFriends: ${JSON.stringify(menu.friends)}`)
+        // //console.log(`updateFriends: ${JSON.stringify(menu.friends)}`)
         if (requestsIn != null) menu.requestsIn = JSON.parse(requestsIn);
         if (requestsOut != null) menu.requestsOut = JSON.parse(requestsOut);
         setTimeout(() => {
             menu.translateSubPages()
         }, 1000)
-        console.log(`menu.requestsOut: ${menu.requestsOut}`)
+        //console.log(`menu.requestsOut: ${menu.requestsOut}`)
         // menu.updateOnline(allPlayers); 
     })
 
     alt.on('bFriends:remove', (variable, nickName) => {
-        console.log(`bFriends:remove: ${variable}; ${nickName}`)
+        //console.log(`bFriends:remove: ${variable}; ${nickName}`)
         menu[variable] = menu[variable].filter(el => el !== nickName);
     });
 
@@ -1768,13 +1768,13 @@ if ('alt' in window) {
                 name: "Dima",
                 ready: 1,
                 inGame: true,
-                mic: false
+                mic: false 
             }
-        ])
+        ]) 
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.bell = [{msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: true}, 
-        {msg: "Вам поступил запрос в друзья", type: false},{msg: "Вам поступил запрос в друзь2", type: false},{msg: "Вам поступил запрос в друзь3", type: false},{msg: "Вам поступил запрос в друзь4", type: false},{msg: "Вам поступил запрос в друзь5", type: false},{msg: "Вам поступил запрос в друзь6", type: false},{msg: "Вам поступил запрос в друзь7", type: false},{msg: "Вам поступил запрос в друзь8", type: false},{msg: "Вам поступил запрос в друзь9", type: false},]
+        menu.bell = [{msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: 2}, 
+        {msg: "Вам поступил запрос в друзья", type: 0},{msg: "Вам поступил запрос в друзь2", type: 3},{msg: "Вам поступил запрос в друзь3", type: 4},{msg: "Вам поступил запрос в друзь4", type: 1},{msg: "Вам поступил запрос в друзь5", type: 1},{msg: "Вам поступил запрос в друзь6", type: 1},{msg: "Вам поступил запрос в друзь7", type: 1},{msg: "Вам поступил запрос в друзь8", type: 1},{msg: "Вам поступил запрос в друзь9", type: 1},]
         menu.switchPage(0, 5) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
@@ -1805,13 +1805,13 @@ document.addEventListener('keydown', function (event) {
 });
 
 // document.addEventListener('mousedown', e => {
-//     if(e.button === 2) console.log(`mousedown: CLICK!`) 
+//     if(e.button === 2) //console.log(`mousedown: CLICK!`) 
 //   });
 // document.addEventListener('mouseup', e => {
 //     if(e.button === 2) 
 //     {
 //         menu.emit('showCursor', false)  
-//         console.log(`mouseup: CLICK!`)
+//         //console.log(`mouseup: CLICK!`)
 //         menu.fCheckCursor()
 //     }
 //   });
@@ -1819,5 +1819,5 @@ menu.cars.forEach((el, index) => {
     menu.cars[index].price2 = JSON.stringify(el.price)
 })
 // window.addEventListener('resize', function(){
-//     console.log('resize')
+//     //console.log('resize')
 //   }); 

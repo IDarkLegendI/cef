@@ -543,10 +543,13 @@
                                             @mouseover="hoverBell = true" class="zapros zaprosNews list-complete-item"
                                             v-bind:key="item.msg" v-for="(item, index) in bell">
                                             <div class="avatarnickzapros">
-                                                <div class="avatarzapros">
+                                                <div class="avatarzapros avatarNews">
                                                     <!-- 0 - error, 1 - ok -->
-                                                    <img src="../menu/img/accepted.png" v-if="item.type">
-                                                    <img src="../menu/img/no.png" v-else>
+                                                    <img src="../menu/img/no.png" v-if="item.type === 0">
+                                                    <img src="../menu/img/accepted.png" v-if="item.type === 1">
+                                                    <img src="../menu/img/justice-scale.png" v-if="item.type === 2">
+                                                    <img src="../menu/img/team.png" v-if="item.type === 3">
+                                                    <img src="../menu/img/cigar.png" v-if="item.type === 4">
                                                 </div>
                                                 <div class="nickzapros">
                                                     <h1>{{item.msg}}</h1>

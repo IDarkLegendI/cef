@@ -2,7 +2,7 @@ if ('alt' in window) {
     alt.on('showPage', step => auth.showPage(step));
     alt.on('showAuth', (toggle, name) => auth.fOnLoad(toggle, name));
     alt.on('setLang', lang => {
-        console.log(`auth.lang: ${lang}`)
+        //console.log(`auth.lang: ${lang}`)
         auth.lang = lang;
     })
 } else 
@@ -59,7 +59,7 @@ let auth = new Vue({
                     let intervalID = setInterval(() => {
                         i -= 0.01;
                         container.style.opacity = i;
-                        // console.log(i)
+                        // //console.log(i)
                         if (i < 0.1) {
                             container.style.opacity = 0.0;
                             clearInterval(intervalID);
