@@ -145,6 +145,8 @@ let menu = new Vue({
 
         //Admin
         adminLevel: 0,
+        adminType: 0,
+        adminAny: 0,
 
         //Bell
         bell: null,
@@ -1580,7 +1582,23 @@ let menu = new Vue({
                 document.body.style.cursor = 'none'
                 menu.emit('showCursor', false)   
             }
-        }
+        },
+        //ADMIN
+        //+10, -10, 0(update)
+        fGetReport(diff = 0)
+        {
+            let nextLimit = menu.adminAny + +diff
+            menu.emitServer('sReport:get', menu.adminType, menu.adminAny, nextLimit)
+            menu.adminAny = nextLimit
+        },
+        fDateToText(ms)
+        { 
+            let result="", d = new Date(ms);
+            result += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate() + 
+                      " "+ d.getHours()+":"+d.getMinutes()+":"+
+                      d.getSeconds();
+            return result;
+        },
     },
 });
 
@@ -1754,7 +1772,7 @@ if ('alt' in window) {
                 online: true
             }
         ]
-        // menu.reportPlayers = [{name: 'DARKLEGEND', id: 17, type: 0}, {name: 'Vanya', id: 27, type: 1}]
+        menu.reportPlayers = [{id: 17, playerID: 17, type: 1, msg: 'DARKLEGEND', dateCreate: 1626731216981, result: 0}, {id: 18, playerID: 17, type: 0, msg: 'DARKLEGEND', dateCreate: 1626731216981,  result: 0},]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
@@ -1775,7 +1793,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.bell = [{msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: 2}, 
         {msg: "Вам поступил запрос в друзья", type: 0},{msg: "Вам поступил запрос в друзь2", type: 3},{msg: "Вам поступил запрос в друзь3", type: 4},{msg: "Вам поступил запрос в друзь4", type: 1},{msg: "Вам поступил запрос в друзь5", type: 1},{msg: "Вам поступил запрос в друзь6", type: 1},{msg: "Вам поступил запрос в друзь7", type: 1},{msg: "Вам поступил запрос в друзь8", type: 1},{msg: "Вам поступил запрос в друзь9", type: 1},]
-        menu.switchPage(0, 5) 
+        menu.switchPage(7, 1 ) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5 
@@ -1797,6 +1815,7 @@ if ('alt' in window) {
             if(menu.page !== 2) return;
             menu.initColor()
     }, 800)
+    menu.adminLevel = 1
 } 
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
