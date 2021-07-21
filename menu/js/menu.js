@@ -147,6 +147,7 @@ let menu = new Vue({
         adminLevel: 0,
         adminType: 0,
         adminAny: 0,
+        adminAny2: 0,
 
         //Bell
         bell: null,
@@ -1587,9 +1588,12 @@ let menu = new Vue({
         //+10, -10, 0(update)
         fGetReport(diff = 0)
         {
-            let nextLimit = menu.adminAny + +diff
-            menu.emitServer('sReport:get', menu.adminType, menu.adminAny, nextLimit)
-            menu.adminAny = nextLimit
+            if(diff !== 0) 
+            {
+                menu.adminAny += +diff
+                menu.adminAny2 += +diff
+            }
+            menu.emitServer('sReport:get', menu.adminType, menu.adminAny, menu.adminAny2) 
         },
         fDateToText(ms)
         { 
