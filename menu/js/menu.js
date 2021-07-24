@@ -148,6 +148,7 @@ let menu = new Vue({
         adminType: 0,
         adminAny: 0,
         adminAny2: 0,
+        adminCurrentReport: 0,
 
         //Bell
         bell: null,
@@ -1593,15 +1594,40 @@ let menu = new Vue({
                 menu.adminAny += +diff
                 menu.adminAny2 += +diff
             }
+            if(menu.adminAny < 0) menu.adminAny = 0
+            if(menu.adminAny2 < 10) menu.adminAny2 = 10 
+
             menu.emitServer('sReport:get', menu.adminType, menu.adminAny, menu.adminAny2) 
         },
-        fDateToText(ms)
+        // fGetReportManual(start, stop)
+        // {
+        //     menu.emitServer('sReport:get', menu.adminType, start, stop)  
+        // },
+        fDateToText(ms) 
         { 
             let result="", d = new Date(+ms); 
             result += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate() + 
                       " "+ d.getHours()+":"+d.getMinutes()+":"+
                       d.getSeconds();
             return result;
+        },
+        fGetReportReason(number)
+        {
+            let reason = [
+                'ИСПОЛЬЗОВАНИЕ ЗАПРЕЩЕНОГО ПО',
+                'ИСПОЛЬЗОВАНИЕ БАГОВ',
+                'ОСКОРБИТЕЛЬНОЕ ПОВЕДЕНИЕ'] 
+
+            return reason[number-2].toUpperCase()
+        },
+        fGetReportReasonShort(number)
+        {
+            let reason = [
+                'cheats',
+                'bugs',
+                'insult']  
+
+            return reason[number-2].toUpperCase()
         },
     },
 });
@@ -1776,7 +1802,8 @@ if ('alt' in window) {
                 online: true
             }
         ]
-        menu.reportPlayers = [{id: 17, playerID: 17, type: 1, msg: 'DARKLEGEND', dateCreate: 1626731216981, result: 0}, {id: 18, playerID: 17, type: 0, msg: 'DARKLEGEND', dateCreate: 1626731216981,  result: 0},]
+        menu.adminCurrentReport = {id: 17, playerID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}
+        menu.reportPlayers = [{id: 17, playerID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 25, playerID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 35, playerID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 45, playerID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 22, playerID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 18, playerID: 17, type: 0, msg: '12113333333333333333333333333333333333333333', dateCreate: 1626731216981,  result: 0},]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
@@ -1797,7 +1824,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.bell = [{msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: 2}, 
         {msg: "Вам поступил запрос в друзья", type: 0},{msg: "Вам поступил запрос в друзь2", type: 3},{msg: "Вам поступил запрос в друзь3", type: 4},{msg: "Вам поступил запрос в друзь4", type: 1},{msg: "Вам поступил запрос в друзь5", type: 1},{msg: "Вам поступил запрос в друзь6", type: 1},{msg: "Вам поступил запрос в друзь7", type: 1},{msg: "Вам поступил запрос в друзь8", type: 1},{msg: "Вам поступил запрос в друзь9", type: 1},]
-        menu.switchPage(7, 1 ) 
+        menu.switchPage(7, 1) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5 
