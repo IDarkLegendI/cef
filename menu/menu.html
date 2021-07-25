@@ -1664,22 +1664,33 @@
                                 <span :class="{minibtnRed: +assortDays === +60}" class="minibtn"
                                     v-on:click="assortDays = 60">ЕСТЬ ПОДОЗРЕНИЯ</span>
                                 <span :class="{minibtnRed: +assortDays === +90}" class="minibtn"
-                                    v-on:click="assortDays = 90">ИГРОК НАРУШИЛ ПРАВИЛА ПРОЕКТА</span>
+                                    v-on:click="assortDays = 90; place = 3">ИГРОК НАРУШИЛ ПРАВИЛА ПРОЕКТА</span>
+                            </div>                           
+                            
+                            <div class="settingsh1" style="padding-top: 4vh;" v-if="assortDays === 90">
+                                <span :class="{minibtnRed: +place === +0}" class="minibtn"
+                                    v-on:click="place = 0">ИСПОЛЬЗОВАЛ СТОРОНЕЕ ПО</span>
+                                <span :class="{minibtnRed: +place === +1}" class="minibtn"
+                                    v-on:click="place = 1">СПАМИЛ</span>
+                                <span :class="{minibtnRed: +place === +2}" class="minibtn"
+                                    v-on:click="place = 2">DDOS</span>
+                                <span :class="{minibtnRed: +place === +3}" class="minibtn"
+                                    v-on:click="place = 3">ДРУГОЕ</span>
                             </div>
 
                             <div class="settings changePassword" style="width: 100%; display: flex; justify-content: center; align-items: center; padding-top: 2vh" v-if="+assortDays === +90">
                                 <div class="group" style="margin-right: 0; width: 38vw;">
-                                    <input class="inputText"
+                                    <input class="inputText inputTextRed"
                                         id="reportMSG" required
                                         style="width: 38vw;" type="text">
-                                    <span class="bar" style="width: 38vw;"></span>
+                                    <span class="bar barRed" style="width: 38vw;"></span>
                                     <label class="labelText">УКАЖИТЕ НАСКОЛЬКО ЧАСОВ ЗАБАНИТЬ ИГРОКА</label>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: center;" v-show="assortDays !== +120">
                                 <div class="btnback">
                                     <a href="#" id="mouseFocus"
-                                        onclick="menu.emitServer('sReport:edit', menu.assortDays === +90 ? document.getElementById('reportMSG').value : null, menu.assortDays/+30, menu.adminCurrentReport.id)">ПРИМЕНИТЬ ИЗМЕНЕНИЯ</a>
+                                        onclick="menu.emitServer('sReport:edit', menu.assortDays === +90 ? document.getElementById('reportMSG').value : null, menu.assortDays/+30, menu.adminCurrentReport.id, adminCurrentReport.msg)">ПРИМЕНИТЬ ИЗМЕНЕНИЯ</a>
                                 </div>
                             </div>
                         </section>
