@@ -1597,7 +1597,7 @@ let menu = new Vue({
             if(menu.adminAny < 0) menu.adminAny = 0
             if(menu.adminAny2 < 10) menu.adminAny2 = 10 
 
-            menu.emitServer('sReport:get', menu.adminType, menu.adminAny, menu.adminAny2) 
+            menu.emitToServerWithWT(0, 'sReport:get', menu.adminType, menu.adminAny, menu.adminAny2) 
         },
         // fGetReportManual(start, stop)
         // {
