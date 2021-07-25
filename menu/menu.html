@@ -1598,7 +1598,7 @@
                                                             v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,2);">
                                                     </div>
                                                     <div class="btnzapros" data-title="НАБЛЮДАТЬ" style="margin-right: 0;" v-if="ticket.type >= 2 && ticket.online">
-                                                        <img alt="" src="img/eye.png">
+                                                        <img alt="" src="img/eye.png" v-on:click="emitServer('sAdmin:recon', [ticket.msg])">  
                                                     </div>
                                                     <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1">
                                                         <img alt="" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id)"> 
