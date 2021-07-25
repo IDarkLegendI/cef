@@ -1613,6 +1613,9 @@ let menu = new Vue({
         },
         fGetReportReason(number)
         {
+            
+            console.log(`fGetReportReason: ${number}`) 
+            if(+number > +4) return 'НЕИЗВЕСТНО' 
             let reason = [
                 'ИСПОЛЬЗОВАНИЕ ЗАПРЕЩЕНОГО ПО',
                 'ИСПОЛЬЗОВАНИЕ БАГОВ',
@@ -1622,6 +1625,8 @@ let menu = new Vue({
         },
         fGetReportReasonShort(number)
         {
+            console.log(`fGetReportReasonShort: ${number}`)
+            if(+number > +4) return 'НЕИЗВЕСТНО'  
             let reason = [
                 'cheats',
                 'bugs',

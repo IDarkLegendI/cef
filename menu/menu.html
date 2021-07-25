@@ -1582,9 +1582,9 @@
                                                     АВТОР ID: {{ticket.playerID}} 
                                                 </div>
                                                 <div class="nickzapros reportZapros" style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw" v-if="ticket.type >= 2">
-                                                    ПРОВЕРИТЬ ИГРОКА ID:{{ticket.msg}} НА ПРЕДМЕТ {{fGetReportReasonShort(adminCurrentReport.type)}}</div>
+                                                    ПРОВЕРИТЬ ИГРОКА ID:{{ticket.msg}} НА ПРЕДМЕТ {{fGetReportReasonShort(ticket.type)}}</div>
                                                 <div class="nickzapros reportZapros" style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw" v-else>
-                                                    MSG: {{ticket.msg}}</div>
+                                                    MSG: {{ticket.msg}}</div> 
                                                 <div class="nickzapros reportZapros typeLP" style="min-width: 9vw; max-width: 9vw;">
                                                     {{fDateToText(ticket.dateCreate)}}
                                                 </div>
