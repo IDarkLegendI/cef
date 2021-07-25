@@ -1592,16 +1592,16 @@
                                                     {{ticket.result === 0 ? "РАССМОТРЕНИЕ" : ticket.result === 1 ? "ЗАКРЫТ" : ticket.result === 2 ? "ОТКЛОНЕН" : "ПРОСРОЧЕННЫЙ"}} 
                                                     {{(ticket.result === 1 || ticket.result === 2) && ticket.adminID ? `BY ${ticket.adminID}` : ""}} 
                                                 </div>
-                                                <div style="display: flex;">
-                                                    <div class="btnzapros" data-title="ПРИНЯТЬ РЕШЕНИЕ">
-                                                        <img alt="" src="img/tick.png" 
+                                                <div style="display: flex; justify-content: space-around; min-width: 5vw;">
+                                                    <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ" style="margin-right: 0;">
+                                                        <img alt="" src="img/pencil.png" 
                                                             v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,2);">
                                                     </div>
-                                                    <div class="btnzapros" data-title="НАБЛЮДАТЬ">
+                                                    <div class="btnzapros" data-title="НАБЛЮДАТЬ" style="margin-right: 0;" v-if="ticket.type >= 2 && ticket.online">
                                                         <img alt="" src="img/eye.png">
                                                     </div>
-                                                    <div class="btnzapros" data-title="ОТКЛОНИТЬ">
-                                                        <img alt="" src="img/close.png">
+                                                    <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1">
+                                                        <img alt="" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id)"> 
                                                     </div>
                                                 </div>
                                             </div>
