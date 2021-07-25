@@ -1522,13 +1522,18 @@
             <transition enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
                 <section v-if="subPage === 0">
                     <div style="display: flex; flex-direction: column;  height: 100vh;">
-                        <div class="upline">
+                        <div class="upline" style="height: 10vh; ">
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <span style="font-size: 3vh;">ПАНЕЛЬ АДМИНИСТРАТОРА {{adminLevel}} УРОВНЯ</span>
-                            <div class="nameupline">
-                                <span>{{myName}}</span>
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; height: 10vh;">
+                                <span style="font-size: 3vh;">ПАНЕЛЬ АДМИНИСТРАТОРА {{adminLevel}} УРОВНЯ</span>
+                                <div class="nameupline">
+                                    <span>{{myName}}</span>
+                                </div>
+                            </div>
+                            <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                                <span>{{i18n.btnBack}}</span>
                             </div>
                         </div>
                         <div style="display: flex; justify-content: center;">
@@ -1539,7 +1544,7 @@
                             <button class="exitToMenu adminButton"
                                 v-on:click="adminAny = 0; adminAny2 = 10; adminType = 1; fGetReport('0'); switchPage(7, 1)"> 
                                 <img alt="" src="./img/gavel.png"> УПРАВЛЕНИЕ ЖАЛОБАМИ
-                            </button>
+                            </button> 
                             <button class="exitToMenu adminButton" v-on:click="switchPage(0, 0)">
                                 <img alt="" src="./img/win/enter.png"> {{i18n.exitToMenu}}
                             </button>
