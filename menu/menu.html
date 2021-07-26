@@ -1581,10 +1581,10 @@
                                                 style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                                                 <div class="nickzapros reportZapros typeLP" style="min-width: 6vw;  max-width: 6vw;">
                                                     {{ticket.type === 0 ? "ВОПРОС" : ticket.type === 1 ? "ИДЕЯ" : "ЖАЛОБА"}}
-                                                    ID:{{ticket.id}}
+                                                    ID:{{ticket.id}} 
                                                 </div>
                                                 <div class="nickzapros reportZapros typeLP" style="min-width: 5vw;  max-width: 5vw;">
-                                                    АВТОР ID: {{ticket.playerID}} 
+                                                    АВТОР ID: {{ticket.authorID}} 
                                                 </div>
                                                 <div class="nickzapros reportZapros" style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw" v-if="ticket.type >= 2">
                                                     ПРОВЕРИТЬ ИГРОКА ID:{{ticket.msg}} НА ПРЕДМЕТ {{fGetReportReasonShort(ticket.type)}}</div>
@@ -1606,7 +1606,7 @@
                                                         <img alt="" src="img/eye.png" v-on:click="emitServer('sAdmin:recon', [ticket.msg])">  
                                                     </div>
                                                     <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1">
-                                                        <img alt="" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id)"> 
+                                                        <img alt="" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID)"> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -1656,7 +1656,7 @@
                             <div style="display: flex; justify-content: center;">
                                 <div class="btnback">
                                     <a href="#" id="mouseFocus"
-                                        onclick="menu.emitServer('sReport:edit', document.getElementById('reportMSG').value, 0, menu.adminCurrentReport.id)">ОТПРАВИТЬ СООБЩЕНИЕ И ЗАКРЫТЬ ЗАЯВКУ</a>
+                                        onclick="menu.emitServer('sReport:edit', document.getElementById('reportMSG').value, 0, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID)">ОТПРАВИТЬ СООБЩЕНИЕ И ЗАКРЫТЬ ЗАЯВКУ</a>
                                 </div>
                             </div>
                         </div>
@@ -1696,7 +1696,7 @@
                                 <div class="btnback"> 
                                     <a href="#" id="mouseFocus"
                                         onclick="menu.emitServer('sReport:edit', menu.assortDays === +90 ? document.getElementById('reportMSG').value : null, 
-                                        menu.assortDays/+30, menu.adminCurrentReport.id, menu.adminCurrentReport.msg, menu.place); setTimeout(() => menu.fGetReport('0'), 100)">ПРИМЕНИТЬ ИЗМЕНЕНИЯ</a> 
+                                        menu.assortDays/+30, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, menu.adminCurrentReport.msg, menu.place); setTimeout(() => menu.fGetReport('0'), 100)">ПРИМЕНИТЬ ИЗМЕНЕНИЯ</a> 
                                 </div>
                             </div>
                         </section>
