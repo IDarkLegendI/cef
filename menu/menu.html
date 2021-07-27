@@ -1656,7 +1656,7 @@
                             <div style="display: flex; justify-content: center;">
                                 <div class="btnback">
                                     <a href="#" id="mouseFocus"
-                                        onclick="menu.emitServer('sReport:edit', document.getElementById('reportMSG').value, 0, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID)">ОТПРАВИТЬ СООБЩЕНИЕ И ЗАКРЫТЬ ЗАЯВКУ</a>
+                                        onclick="menu.emitServer('sReport:edit', document.getElementById('reportMSG').value, 0, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, menu.adminCurrentReport.msg); setTimeout(() => menu.fGetReport('0'), 250)">ОТПРАВИТЬ СООБЩЕНИЕ И ЗАКРЫТЬ ЗАЯВКУ</a>
                                 </div>
                             </div>
                         </div>
@@ -1695,8 +1695,8 @@
                             <div style="display: flex; justify-content: center;" v-show="assortDays !== +120">
                                 <div class="btnback"> 
                                     <a href="#" id="mouseFocus"
-                                        onclick="menu.emitServer('sReport:edit', menu.assortDays === +90 ? document.getElementById('reportMSG').value : null, 
-                                        menu.assortDays/+30, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, menu.adminCurrentReport.msg, menu.place); setTimeout(() => menu.fGetReport('0'), 100)">ПРИМЕНИТЬ ИЗМЕНЕНИЯ</a> 
+                                        onclick="menu.emitServer('sReport:edit', menu.assortDays === +90 ? document.getElementById('reportMSG').value : null,  
+                                        menu.assortDays/+30, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, null, menu.adminCurrentReport.msg, menu.place); setTimeout(() => menu.fGetReport('0'), 250)">ПРИМЕНИТЬ ИЗМЕНЕНИЯ</a> 
                                 </div>
                             </div>
                         </section>
