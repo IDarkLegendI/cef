@@ -1645,13 +1645,16 @@
                             <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="settings changePassword" style="width: 100%">
-                                <div class="group" style="margin-right: 0; width: 38vw;">
+                                <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
+                                    {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}} {{adminCurrentReport.msg}}
+                                </span> 
+                                <div class="group" style="margin-right: 0; width: 38vw; margin-top: 4vh;">
                                     <input class="inputText"
                                         id="reportMSG" required
                                         style="width: 38vw;" type="text">
                                     <span class="bar" style="width: 38vw;"></span>
                                     <label class="labelText">ОТВЕТ ДЛЯ ИГРОКА</label>
-                                </div>
+                                </div> 
                             </div>
                             <div style="display: flex; justify-content: center;">
                                 <div class="btnback">
