@@ -1646,14 +1646,10 @@
                             <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
                                 {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}} {{adminCurrentReport.msg}}
                             </span> 
-                            <span style="font-size: 2.5vh; color: rgb(202, 15, 15); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw; padding-top: 2vh;" 
+                            <span style="font-size: 2.5vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw; padding-top: 2vh;" 
                             v-if="adminCurrentReport.adminID !== null">
-                                АДМИНИСТРАТОР#{{adminCurrentReport.adminID}} {{adminCurrentReport.type >=2  
-                                ? 
-                                    `${adminCurrentReport.result === 0 ? "РАССМАТРИВАЛ" : adminCurrentReport.result === 1 ? "ЗАКРЫЛ" : adminCurrentReport.result === 2 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 4 ? "ОТЛОЖИЛ" : "ПРОСРОЧИЛ"}` 
-                                :
-                                    `${adminCurrentReport.resultMsg === null ? 'ПРОИЗВЕЛ ПОСЛЕДНИЕ ДЕЙСТВИЕ' : 'ОТВЕТИЛ: ' + adminCurrentReport.resultMsg}`
-                                }}
+                                АДМИНИСТРАТОР#{{adminCurrentReport.adminID}} 
+                                {{`${adminCurrentReport.resultMsg === null ? 'ПРОИЗВЕЛ ПОСЛЕДНИЕ ДЕЙСТВИЕ' : 'ОТВЕТИЛ: ' + adminCurrentReport.resultMsg}`}}
                             </span> 
                             <div class="settings changePassword" style="width: 100%">
                                 <div class="group" style="margin-right: 0; width: 38vw; margin-top: 4vh;">
@@ -1661,7 +1657,7 @@
                                         id="reportMSG" required
                                         style="width: 38vw;" type="text">
                                     <span class="bar" style="width: 38vw;"></span>
-                                    <label class="labelText">{{adminCurrentReport.adminID === null ? "ОТВЕТ ДЛЯ ИГРОКА" : "НЕ СОГЛАСНЫ С ПРОШЛЫМ ОТВЕТОМ? ВАШ ОТВЕТ ЗАМЕНИТ СТАРЫЙ"}}</label>
+                                    <label class="labelText">{{adminCurrentReport.adminID === null ? "ОТВЕТ ДЛЯ ИГРОКА" : "НЕ СОГЛАСНЫ С ПРЕДЫДУЩИМ ОТВЕТОМ? ВАШ ОТВЕТ ЗАМЕНИТ СТАРЫЙ"}}</label>
                                 </div> 
                             </div>
                             <div style="display: flex; justify-content: center;">
@@ -1673,7 +1669,16 @@
                         </div>
                         </section>
                         <section style="display: flex; flex-direction: column; justify-content: center; align-items: center;" v-if="adminCurrentReport.type >= 2">
-                            <span style="font-size: 3vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;">ЖАЛОБА НА ИГРОКА {{adminCurrentReport.msg}} ЗА {{fGetReportReason(adminCurrentReport.type)}}</span>
+                            <span style="font-size: 3vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;">
+                                ЖАЛОБА НА ИГРОКА {{adminCurrentReport.msg}} ЗА {{fGetReportReason(adminCurrentReport.type)}}
+                            </span>
+                            <span style="font-size: 3vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;">
+                                ПОСЛЕДНЕЕ ДЕЙСТВИЕ ОТ ADMIN#{{adminCurrentReport.adminID}}: 
+                                {{
+                                    adminCurrentReport.result === 0 ? "РАССМАТРИВАЛ" : adminCurrentReport.result === 1 ? "ЗАКРЫЛ" : 
+                                    adminCurrentReport.result === 2 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 4 ? "ОТЛОЖИЛ" : "ПРОСРОЧИЛ"
+                                }} РЕПОРТ
+                            </span>
                             <div class="settingsh1" style="padding-top: 4vh;">
                                 <span :class="{minibtnRed: +assortDays === +30}" class="minibtn"
                                     v-on:click="assortDays = 30">НАРУШЕНИЙ НЕ ОБНАРУЖЕНО</span>
