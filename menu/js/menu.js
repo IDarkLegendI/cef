@@ -1807,7 +1807,7 @@ if ('alt' in window) {
                 online: true
             }
         ]
-        menu.adminCurrentReport = {id: 21, authorID: 17, type: 1, msg: '18', dateCreate: 1626731216981, result: 1, resultMsg: null, adminID: 17}
+        menu.adminCurrentReport = {id: 21, authorID: 17, type: 1, msg: '18', dateCreate: 1626731216981, result: 1, resultMsg: null, adminID: null}
         menu.reportPlayers = [{id: 17, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 25, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 35, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 45, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 22, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 18, authorID: 17, type: 0, msg: '12113333333333333333333333333333333333333333', dateCreate: 1626731216981,  result: 0},]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
@@ -1827,9 +1827,9 @@ if ('alt' in window) {
         ]) 
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.bell = [{msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: 1}, 
-        {msg: "Вам поступил запрос в друзья", type: 0},{msg: "Вам поступил запрос в друзь2", type: 3},{msg: "Вам поступил запрос в друзь3", type: 4},{msg: "Вам поступил запрос в друзь4", type: 1},{msg: "Вам поступил запрос в друзь5", type: 1},{msg: "Вам поступил запрос в друзь6", type: 1},{msg: "Вам поступил запрос в друзь7", type: 1},{msg: "Вам поступил запрос в друзь8", type: 1},{msg: "Вам поступил запрос в друзь9", type: 1},]
-        menu.switchPage(7, 1) 
+        menu.bell = [{id: 1, msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: 1}, 
+        {id: 2, msg: "Вам поступил запрос в друзья", type: 0},{id: 4, msg: "Вам поступил запрос в друзь2", type: 3},{id: 3, msg: "Вам поступил запрос в друзь3", type: 4},]
+        menu.switchPage(7, 2) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5 
