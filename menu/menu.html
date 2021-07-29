@@ -1702,7 +1702,7 @@
                             <div class="settings changePassword" style="width: 100%; display: flex; justify-content: center; align-items: center; padding-top: 2vh" v-if="+assortDays === +90">
                                 <div class="group" style="margin-right: 0; width: 38vw;">
                                     <input class="inputText inputTextRed"
-                                        id="reportMSG" required
+                                        id="reportMSG" onkeyup="this.value=this.value.replace(/\s+/gi,'')" required
                                         style="width: 38vw;" type="text">
                                     <span class="bar barRed" style="width: 38vw;"></span>
                                     <label class="labelText">УКАЖИТЕ НАСКОЛЬКО ЧАСОВ ЗАБАНИТЬ ИГРОКА</label>
