@@ -1646,8 +1646,9 @@
                             <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
                                 {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}} {{adminCurrentReport.msg}}
                             </span> 
-                            <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw; padding-top: 2vh;" v-if="adminCurrentReport.adminID !== null">
-                                АДМИНИСТРАТОР#{{adminCurrentReport.adminID}} {{adminCurrentReport.type >=2 
+                            <span style="font-size: 2.5vh; color: rgb(202, 15, 15); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw; padding-top: 2vh;" 
+                            v-if="adminCurrentReport.adminID !== null">
+                                АДМИНИСТРАТОР#{{adminCurrentReport.adminID}} {{adminCurrentReport.type >=2  
                                 ? 
                                     `${adminCurrentReport.result === 0 ? "РАССМАТРИВАЛ" : adminCurrentReport.result === 1 ? "ЗАКРЫЛ" : adminCurrentReport.result === 2 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 4 ? "ОТЛОЖИЛ" : "ПРОСРОЧИЛ"}` 
                                 :
@@ -1660,7 +1661,7 @@
                                         id="reportMSG" required
                                         style="width: 38vw;" type="text">
                                     <span class="bar" style="width: 38vw;"></span>
-                                    <label class="labelText">ОТВЕТ ДЛЯ ИГРОКА</label>
+                                    <label class="labelText">{{adminCurrentReport.adminID === null ? "ОТВЕТ ДЛЯ ИГРОКА" : "НЕ СОГЛАСНЫ С ПРОШЛЫМ ОТВЕТОМ? ВАШ ОТВЕТ ЗАМЕНИТ СТАРЫЙ"}}</label>
                                 </div> 
                             </div>
                             <div style="display: flex; justify-content: center;">

@@ -1807,7 +1807,7 @@ if ('alt' in window) {
                 online: true
             }
         ]
-        menu.adminCurrentReport = {id: 21, authorID: 17, type: 1, msg: '18', dateCreate: 1626731216981, result: 1, resultMsg: null, adminID: null}
+        menu.adminCurrentReport = {id: 21, authorID: 17, type: 1, msg: '18', dateCreate: 1626731216981, result: 1, resultMsg: null, adminID: 17}
         menu.reportPlayers = [{id: 17, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 25, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 35, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 45, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 22, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 18, authorID: 17, type: 0, msg: '12113333333333333333333333333333333333333333', dateCreate: 1626731216981,  result: 0},]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
