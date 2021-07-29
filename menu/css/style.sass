@@ -1422,8 +1422,13 @@ a:hover
     margin-left: 0.5vw
     margin-right: 0.5vw
     max-width: 20vw
-    word-break: break-all
-    // background-color: black
+    // word-break: break-all
+    p
+        hyphens: auto;
+        hyphenate-limit-chars: 6 3 3
+        hyphenate-limit-lines: 2
+        hyphenate-limit-last: always
+        hyphenate-limit-zone: 8%
 
 .reportZapros
     max-width: 40vw

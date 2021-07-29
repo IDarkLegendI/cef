@@ -1827,9 +1827,9 @@ if ('alt' in window) {
         ]) 
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.bell = [{id: 1, msg: "111111111111111112222222222222222222222222222222222222222222222222222222212224", type: 1}, 
+        menu.bell = [{id: 1, msg: "TICKET#7: 'Не открывать сервер': С такими предложениями мы посылаем нахуй", type: 1}, 
         {id: 2, msg: "Вам поступил запрос в друзья", type: 0},{id: 4, msg: "Вам поступил запрос в друзь2", type: 3},{id: 3, msg: "Вам поступил запрос в друзь3", type: 4},]
-        menu.switchPage(7, 2) 
+        menu.switchPage(0, 5) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5 
