@@ -1637,9 +1637,9 @@
                                 <span>GTAROYAL.RU</span>
                             </div>
                             <span style="font-size: 3vh;">РЕДАКТИРОВАНИЕ ЗАЯВКИ</span>
-                            <div class="btn" id="mouseFocus" v-on:click="switchPage(7,1); fGetReport('0');">
+                            <div @contextmenu="switchPage(7,0)" class="btn" id="mouseFocus" v-on:click="switchPage(7,1); fGetReport('0');">
                                 <span>{{i18n.btnBack}}</span>
-                            </div>
+                            </div> 
                         </div>
                         <section style="display: flex; justify-content: center; align-items: center;height: 30vh;" v-if="adminCurrentReport.type <= 1">
                             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
