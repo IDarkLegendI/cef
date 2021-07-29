@@ -1641,16 +1641,20 @@
                                 <span>{{i18n.btnBack}}</span>
                             </div>
                         </div>
-                        <section style="display: flex; justify-content: center; align-items: center; " v-if="adminCurrentReport.type <= 1">
-                            <div
-                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <section style="display: flex; justify-content: center; align-items: center;height: 30vh;" v-if="adminCurrentReport.type <= 1">
+                            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
+                                {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}} {{adminCurrentReport.msg}}
+                            </span> 
+                            <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw; padding-top: 2vh;">
+                                АДМИНИСТРАТОР#{{adminCurrentReport.adminID}} {{adminCurrentReport.type >=2 
+                                ? 
+                                    `${adminCurrentReport.result === 0 ? "РАССМАТРИВАЛ" : adminCurrentReport.result === 1 ? "ЗАКРЫЛ" : adminCurrentReport.result === 2 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 4 ? "ОТЛОЖИЛ" : "ПРОСРОЧИЛ"}` 
+                                :
+                                    `${adminCurrentReport.resultMsg === null ? 'ПРОИЗВЕЛ ПОСЛЕДНИЕ ДЕЙСТВИЕ' : 'ОТВЕТИЛ: ' + adminCurrentReport.resultMsg}`
+                                }}
+                            </span> 
                             <div class="settings changePassword" style="width: 100%">
-                                <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
-                                    {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}} {{adminCurrentReport.msg}}
-                                </span> 
-                                <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
-                                    {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}} {{adminCurrentReport.msg}}
-                                </span> 
                                 <div class="group" style="margin-right: 0; width: 38vw; margin-top: 4vh;">
                                     <input class="inputText"
                                         id="reportMSG" required
@@ -1709,6 +1713,10 @@
                     </div>
                 </section>
             </transition>
+        </section>
+        <!-- НАГРАДЫ -->
+        <section v-if="page === 8">
+
         </section>
         <section>
             <div class="fireworks" v-if="wsWin && page === 5">
