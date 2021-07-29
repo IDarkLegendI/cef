@@ -1593,8 +1593,8 @@
                                                 <div class="nickzapros reportZapros typeLP" style="min-width: 9vw; max-width: 9vw;">
                                                     {{fDateToText(ticket.dateCreate)}}
                                                 </div>  
-                                                <div class="nickzapros reportZapros typeLP" style="min-width: 6.5vw;  max-width: 6.5vw;">  
-                                                    {{ticket.result === 0 ? "РАССМОТРЕНИЕ" : ticket.result === 1 ? "ЗАКРЫТ" : ticket.result === 2 ? "ОТКЛОНЕН" : ticket.result === 4 ? "ОТЛОЖЕННЫЙ" : "ПРОСРОЧЕННЫЙ"}} 
+                                                <div class="nickzapros reportZapros typeLP" style="min-width: 5vw;  max-width: 5vw; display: flex; justify-content: center;">  
+                                                    {{ticket.result === 0 ? "НОВЫЙ" : ticket.result === 1 ? "ЗАКРЫТ" : ticket.result === 2 ? "ОТКЛОНЕН" : ticket.result === 4 ? "ОТЛОЖЕННЫЙ" : "ПРОСРОЧЕННЫЙ"}} 
                                                     {{(ticket.result === 1 || ticket.result === 2) && ticket.adminID ? `BY ${ticket.adminID}` : ""}} 
                                                 </div>
                                                 <div style="display: flex; justify-content: space-around; min-width: 5vw;">  
