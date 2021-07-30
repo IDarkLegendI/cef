@@ -1592,10 +1592,10 @@
                                                     MSG: {{ticket.msg}}</div> 
                                                 <div class="nickzapros reportZapros typeLP" style="min-width: 9vw; max-width: 9vw;">
                                                     {{fDateToText(ticket.dateCreate)}}
-                                                </div>  
+                                                </div>   
                                                 <div class="nickzapros reportZapros typeLP" style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">  
-                                                    {{ticket.result === 0 ? "НОВЫЙ" : ticket.result === 1 ? "ЗАКРЫТ" : ticket.result === 2 ? "ОТКЛОНЕН" : ticket.result === 4 ? "ОТЛОЖЕННЫЙ" : "ПРОСРОЧЕННЫЙ"}} 
-                                                    {{(ticket.result === 1 || ticket.result === 2) && ticket.adminID ? `BY ${ticket.adminID}` : ""}} 
+                                                    {{ticket.result === 0 ? "НОВЫЙ" : ticket.result === 1 ? "ОТЛОЖЕННЫЙ" : ticket.result === 3 ? "ОТКЛОНЕН" : ticket.result === 2 ? "ЗАКРЫТ" : "ПРОСРОЧЕННЫЙ"}} 
+                                                    {{(ticket.result === 2 || ticket.result === 3) && ticket.adminID ? `BY ${ticket.adminID}` : ""}}   
                                                 </div>
                                                 <div style="display: flex; justify-content: space-around; min-width: 5vw;">  
                                                     <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ" style="margin-right: 0;">
@@ -1672,11 +1672,11 @@
                             <span style="font-size: 3vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;">
                                 ЖАЛОБА НА ИГРОКА {{adminCurrentReport.msg}} ЗА {{fGetReportReason(adminCurrentReport.type)}}
                             </span>
-                            <span style="font-size: 3vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;">
+                            <span style="font-size: 3vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;" v-if="adminCurrentReport.adminID !== null">
                                 ПОСЛЕДНЕЕ ДЕЙСТВИЕ ОТ ADMIN#{{adminCurrentReport.adminID}}: 
                                 {{
-                                    adminCurrentReport.result === 0 ? "РАССМАТРИВАЛ" : adminCurrentReport.result === 1 ? "ЗАКРЫЛ" : 
-                                    adminCurrentReport.result === 2 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 4 ? "ОТЛОЖИЛ" : "ПРОСРОЧИЛ"
+                                    adminCurrentReport.result === 0 ? "РАССМАТРИВАЛ" : adminCurrentReport.result === 1 ? "ОТЛОЖИЛ" :  
+                                    adminCurrentReport.result === 3 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 2 ? "ЗАКРЫЛ" : "ПРОСРОЧИЛ" 
                                 }} РЕПОРТ
                             </span>
                             <div class="settingsh1" style="padding-top: 4vh;">
