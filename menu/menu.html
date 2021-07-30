@@ -868,19 +868,19 @@
                                                 v-on:click="emitServer('sCar:applyTuning', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
                                                 v-show="updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">{{i18n.applyTuning}}($200)</a>
 
-                                            <a id="mouseFocus" style="background-color: #ffffff81"
-                                                v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
-
                                             <section
-                                                style="display: flex; align-items: center; justify-content: center;"
-                                                v-else>
-                                                <a id="mouseFocus" style="background-color: rgba(255, 255, 255, 0.863)"
+                                                style="display: flex; align-items: center; justify-content: center;">
+                                                <a id="mouseFocus" style="background-color: rgba(255, 255, 255, 0.863);"
                                                     v-if="+cars[carsPointer].price2 !== +0"
                                                     v-on:click="switchPage(2,2)">{{i18n.sellCar}}</a>
 
-                                                <a id="mouseFocus"
+                                                <a id="mouseFocus" v-if="cars[carsPointer].price !== -1" 
                                                     v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
                                             </section>
+
+                                            
+                                            <a id="mouseFocus" style="background-color: #ffffff81"
+                                                v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
                                         </section>
                                         <section style="display: flex; align-items: center;" v-else>
                                             <a id="mouseFocus" style="background-color: #fffb00; color: black"
