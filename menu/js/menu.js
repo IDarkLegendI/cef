@@ -733,7 +733,11 @@ let menu = new Vue({
         switchPage(newPage, newSubPage = -1) {  
             if(newPage === -3) return; 
             if(newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, menu.i18n.notAvailable)
-            if(newPage === 5) setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000) 
+            if(newPage === 5) 
+            {
+                if(menu.playingTime === -1) menu.switchPage(7,2) //Если из наблюдения вышел админ в режиме recon
+                setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000) 
+            }
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 

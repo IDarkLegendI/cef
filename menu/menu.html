@@ -24,9 +24,9 @@
     <!-- <canvas style="z-index: 99;"></canvas> -->
     <section id="body">
         <div id="cursor"></div>
-        <div id="aura"></div>
+        <div id="aura"></div> 
         <!-- ГЛАВНАЯ -->
-        <transition enter-active-class="animated rotateInUpRight fast"
+        <transition appear enter-active-class="animated zoomInUp fast"
             leave-active-class="animated rotateOutUpLeft fast" name="custom-classes-transition">
             <section v-show="page === 0">
                 <div class="main" id="main">
@@ -1602,8 +1602,8 @@
                                                         <img alt="" src="img/pencil.png" 
                                                             v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,2);">
                                                     </div>
-                                                    <div class="btnzapros" data-title="НАБЛЮДАТЬ" style="margin-right: 0;" v-if="ticket.type >= 2 && ticket.online">
-                                                        <img alt="" src="img/eye.png" v-on:click="emitServer('sAdmin:recon', [ticket.msg], true)">  
+                                                    <div class="btnzapros" data-title="НАБЛЮДАТЬ" style="margin-right: 0;" v-if="ticket.type >= 2 && ticket.online"> 
+                                                        <img alt="" src="img/eye.png" v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); playingTime = -1; adminCurrentReport = reportPlayers[index]; assortDays = 120;">  
                                                     </div>
                                                     <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1 && ticket.result === 0"> 
                                                         <img alt="" onclick="setTimeout(() => menu.fGetReport('0'), 250)" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
