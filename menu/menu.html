@@ -1532,7 +1532,7 @@
                                     <span>{{myName}}</span>
                                 </div>
                             </div>
-                            <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                            <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
                                 <span>{{i18n.btnBack}}</span>
                             </div>
                         </div>
@@ -1561,7 +1561,7 @@
                             </div>
                             <span style="font-size: 3vh;">УПРАВЛЕНИЕ
                                 {{adminType === 0 ? "ВОПРОСАМИ" : "ЖАЛОБАМИ"}}</span>
-                            <div @contextmenu="switchPage(7,0)" class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                            <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus" v-on:click="switchPage(7,0)"> 
                                 <span>{{i18n.btnBack}}</span>
                             </div>
                         </div>  
