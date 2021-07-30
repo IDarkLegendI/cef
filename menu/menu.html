@@ -1567,7 +1567,7 @@
                         </div>  
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <div class="zaprosi" style="width: 65vw; min-height: 60vh; max-height: 60vh;">
+                            <div class="zaprosi" style="width: 65vw; min-height: 63vh; max-height: 63vh;">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-bind:key="ticket.id"
                                         v-for="(ticket, index) in reportPlayers">
@@ -1593,7 +1593,7 @@
                                                 <div class="nickzapros reportZapros typeLP" style="min-width: 9vw; max-width: 9vw;">
                                                     {{fDateToText(ticket.dateCreate)}}
                                                 </div>  
-                                                <div class="nickzapros reportZapros typeLP" style="min-width: 5vw;  max-width: 5vw; display: flex; justify-content: center;">  
+                                                <div class="nickzapros reportZapros typeLP" style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">  
                                                     {{ticket.result === 0 ? "НОВЫЙ" : ticket.result === 1 ? "ЗАКРЫТ" : ticket.result === 2 ? "ОТКЛОНЕН" : ticket.result === 4 ? "ОТЛОЖЕННЫЙ" : "ПРОСРОЧЕННЫЙ"}} 
                                                     {{(ticket.result === 1 || ticket.result === 2) && ticket.adminID ? `BY ${ticket.adminID}` : ""}} 
                                                 </div>
@@ -1606,7 +1606,7 @@
                                                         <img alt="" src="img/eye.png" v-on:click="emitServer('sAdmin:recon', [ticket.msg])">  
                                                     </div>
                                                     <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1 && ticket.result === 0">
-                                                        <img alt="" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID)"> 
+                                                        <img alt="" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID); setTimeout(() => menu.fGetReport('0'), 250)"> 
                                                     </div>
                                                 </div>
                                             </div>
