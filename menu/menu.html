@@ -1561,13 +1561,13 @@
                             </div>
                             <span style="font-size: 3vh;">УПРАВЛЕНИЕ
                                 {{adminType === 0 ? "ВОПРОСАМИ" : "ЖАЛОБАМИ"}}</span>
-                            <div @contextmenu="switchPage(7,0)" class="btn" id="mouseFocus" v-on:click="switchPage(7,0)">
+                            <div @contextmenu="switchPage(7,0)" class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
                                 <span>{{i18n.btnBack}}</span>
                             </div>
                         </div>  
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <div class="zaprosi" style="width: 65vw; min-height: 63vh; max-height: 63vh;">
+                            <div class="zaprosi" style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-bind:key="ticket.id"
                                         v-for="(ticket, index) in reportPlayers">
@@ -1605,8 +1605,8 @@
                                                     <div class="btnzapros" data-title="НАБЛЮДАТЬ" style="margin-right: 0;" v-if="ticket.type >= 2 && ticket.online">
                                                         <img alt="" src="img/eye.png" v-on:click="emitServer('sAdmin:recon', [ticket.msg])">  
                                                     </div>
-                                                    <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1 && ticket.result === 0">
-                                                        <img alt="" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID); setTimeout(() => menu.fGetReport('0'), 250)"> 
+                                                    <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1 && ticket.result === 0"> 
+                                                        <img alt="" onclick="setTimeout(() => menu.fGetReport('0'), 250)" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
                                                     </div>
                                                 </div>
                                             </div>
