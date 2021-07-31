@@ -43,7 +43,7 @@
                         <div class="buttons"> 
                             <div class="btns1">
                                 <div :style="{order: adminLevel}" class="btn" id="mouseFocus"
-                                    v-on:click="adminLevel === 0 ? emit('cMenu:DiscordInvite') : switchPage(7,0)">
+                                    v-on:click="adminLevel === 0 ? emit('cMenu:DiscordInvite') : switchPage(7,0); adminBell = false">
                                     <span>{{adminLevel === 0 ? i18n.discord : "АДМИН ПАНЕЛЬ"}}</span> 
                                     <img alt="" src="./img/record.png" style="width: 0.8vw; height: 0.8vw; margin-left: 0.25vw;" v-if="adminBell">
                                 </div>
@@ -1094,7 +1094,7 @@
                                         </div>
                                     </div> 
                                 </div>
-                                <div @contextmenu="menu['converterD'] < 10 ? menu['converterD'] = 10 : '';  menu['converterRM'] < 1 ? menu['converterRM'] = 1 : '';    
+                                <div @contextmenu="converterD < 10 ? converterD = 10 : '';  converterRM < 1 ? converterRM = 1 : '';     
                                 converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)" class="calculator leftform">
                                     <h1>КОНВЕРТЕР</h1>
                                     <div class="converterblock">
