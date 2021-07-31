@@ -1092,9 +1092,9 @@
                                         <div class="donatimgform">
                                             <img alt="" src="img/gold.png">
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
-                                <div class="calculator leftform">
+                                <div @contextmenu="converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)" class="calculator leftform">
                                     <h1>КОНВЕРТЕР</h1>
                                     <div class="converterblock">
                                         <div class="inputcalc">

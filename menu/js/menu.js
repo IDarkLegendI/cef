@@ -361,6 +361,7 @@ let menu = new Vue({
             notValid: "You are using forbidden characters. Remove them, and try again",
             clickForConnect: "CLICK TO CONNECT",
             rClickForConvert: "RIGHT CLICK TO CONVERT",
+            noMoney: "You don't have enough funds. Top up your balance and try again", 
         },
         i18nTemp: null,
         avatars: {
@@ -550,6 +551,10 @@ let menu = new Vue({
         }
     },
     methods: {
+        log(...any)
+        {
+            console.log(any)
+        },
         emitServer: function (eventName, ...args) {
             //console.log(...args)
             if ('alt' in window) alt.emit('emitToServer', eventName, ...args)
@@ -1206,6 +1211,7 @@ let menu = new Vue({
                 notValid: "Вы используете запрещенные символы. Уберите их, и попробуйте еще раз",
                 clickForConnect: "НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ",
                 rClickForConvert: "НАЖМИТЕ ПРАВОЙ КНОПКОЙ, ЧТОБЫ КОНВЕРТИРОВАТЬ",
+                noMoney: "У вас не хватает средств. Пополните баланс и повторите попытку",
             }
         },
         loadEn() {
