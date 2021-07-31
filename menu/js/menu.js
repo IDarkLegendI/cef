@@ -1305,6 +1305,10 @@ let menu = new Vue({
             return true;
         },
 
+        initColorToPos() {  
+            if(menu.initColor()) colorToPos('rgb ' + menu.cars[menu.carsPointer].color.r + ' ' + menu.cars[menu.carsPointer].color.g + ' ' + menu.cars[menu.carsPointer].color.b) 
+        },
+
         sortLiveCar(plus, onlyMyCarsClick)
         {
             //console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
