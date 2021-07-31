@@ -1094,21 +1094,22 @@
                                         </div>
                                     </div> 
                                 </div>
-                                <div @contextmenu="converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)" class="calculator leftform">
+                                <div @contextmenu="menu['converterD'] < 10 ? menu['converterD'] = 10 : '';  menu['converterRM'] < 1 ? menu['converterRM'] = 1 : '';    
+                                converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)" class="calculator leftform">
                                     <h1>КОНВЕРТЕР</h1>
                                     <div class="converterblock">
                                         <div class="inputcalc">
                                             <span>RM</span>
-                                            <input type="number" v-model="converterRM"
-                                                v-on:keyup="changeConverter('converterD', 'converterRM', 2)">
+                                            <input max="1000000000" min="1" type="number" v-model="converterRM"
+                                                v-on:keyup="changeConverter('converterD', 'converterRM', 10)">
                                         </div>
                                         <div class="donatimgform">
                                             <img alt="" src="img/shop/bounce.png">
-                                        </div>
+                                        </div> 
                                         <div class="inputcalc">
                                             <span>$</span>
-                                            <input type="number" v-model="converterD"
-                                                v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
+                                            <input max="1000000000" min="10" type="number" v-model="converterD"
+                                                v-on:keyup="changeConverter('converterRM', 'converterD', 0.1)">
                                         </div>
                                     </div>
                                     <input :value="i18n.rClickForConvert" class="buttonBuy"

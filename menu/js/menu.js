@@ -162,8 +162,8 @@ let menu = new Vue({
 
         //Shop
         moneyRM: 0,
-        converterRM: 0,
-        converterD: 0,
+        converterRM: 1,
+        converterD: 10,
         assortPriv: {
             vip: {
                 name: 'VIP',
@@ -1518,7 +1518,9 @@ let menu = new Vue({
             // mp.trigger("cChangeHeading", this.camRotation);
         },
         changeConverter: function (nameOut, nameIn, k) {
-            this[nameOut] = Math.round(this[nameIn] * +k);
+            // if(menu['converterD'] < 10) menu['converterD'] = 10  
+            this[nameOut] = Math.ceil(this[nameIn] * +k);
+            if(menu['converterRM'] < 1) menu['converterRM'] = 1  
         },
         getVipColor()
         {
