@@ -1086,7 +1086,7 @@
                                     <div class="imgprice">
                                         <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
                                             <span class="donatbtn">{{Math.ceil(assortPriv['vip'].k*+30)}}RM</span>
-                                            <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy"
+                                            <input :value="i18n.clickForConnect" class="buttonBuy"
                                                 style="font-size: 1.5vh;" type="button">
                                         </div>
                                         <div class="donatimgform">
@@ -1111,14 +1111,14 @@
                                                 v-on:keyup="changeConverter('converterRM', 'converterD', 0.5)">
                                         </div>
                                     </div>
-                                    <input :value="`НАЖМИТЕ, ЧТОБЫ КОНВЕРТИРОВАТЬ`" class="buttonBuy"
-                                        style="font-size: 1.5vh;" type="button">
+                                    <input :value="i18n.rClickForConvert" class="buttonBuy"
+                                        style="font-size: 1.3vh;" type="button">
                                 </div>
                             </div>
                             <div class="rightdonat">
                                 <div class="premium donatform"
                                     v-on:click="assortSelected = 'premium'; switchPage(3, 1)">
-                                    <h1>PREMIUM</h1>
+                                    <h1>PREMIUM</h1> 
                                     <ul>
                                         <li>АВТОМОБИЛИ</li>
                                         <li>МНОГО ОДЕЖДЫ</li>
@@ -1130,7 +1130,7 @@
                                     <div class="imgprice">
                                         <div class="podvalDonat">
                                             <span class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
-                                            <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                            <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
                                         </div>
                                         <div class="premiumimgform">
                                             <img alt="" src="img/emerald.png">
@@ -1150,7 +1150,7 @@
                                     <div class="imgprice">
                                         <div class="podvalDonat">
                                             <span class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
-                                            <input :value="`НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ`" class="buttonBuy" type="button">
+                                            <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
                                         </div>
                                         <div class="deluxeimgform">
                                             <img alt="" src="img/corona.png">
