@@ -1520,7 +1520,7 @@ let menu = new Vue({
         changeConverter: function (nameOut, nameIn, k) {
             // if(menu['converterD'] < 10) menu['converterD'] = 10  
             this[nameOut] = Math.ceil(this[nameIn] * +k);
-            if(menu['converterRM'] < 1) menu['converterRM'] = 1  
+            // if(menu['converterRM'] < 1) menu['converterRM'] = 1   
         },
         getVipColor()
         {
