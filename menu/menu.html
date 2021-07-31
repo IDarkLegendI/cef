@@ -40,11 +40,12 @@
                             </div>
                             <span style="font-size: 2.8vh;">${{money.toFixed(0)}}</span>
                         </div>
-                        <div class="buttons">
+                        <div class="buttons"> 
                             <div class="btns1">
                                 <div :style="{order: adminLevel}" class="btn" id="mouseFocus"
                                     v-on:click="adminLevel === 0 ? emit('cMenu:DiscordInvite') : switchPage(7,0)">
-                                    <span>{{adminLevel === 0 ? i18n.discord : "АДМИН ПАНЕЛЬ"}}</span>
+                                    <span>{{adminLevel === 0 ? i18n.discord : "АДМИН ПАНЕЛЬ"}}</span> 
+                                    <img alt="" src="./img/record.png" style="width: 0.8vw; height: 0.8vw; margin-left: 0.25vw;" v-if="adminBell">
                                 </div>
                                 <div class="btn" id="mouseFocus" v-on:click="switchPage(6,0)">
                                     <span>{{i18n.managmentSub}}</span>

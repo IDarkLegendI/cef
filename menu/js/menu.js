@@ -149,6 +149,7 @@ let menu = new Vue({
         adminAny: 0,
         adminAny2: 0,
         adminCurrentReport: 0,
+        adminBell: false,
 
         //Bell
         bell: null,
