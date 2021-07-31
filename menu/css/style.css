@@ -263,7 +263,10 @@ html {
 }
 
 .form:hover {
-  background-color: #ffc400;
+  background-color: #ffc400bb;
+  border-color: #ffc400;
+  -webkit-box-shadow: 0 0 15px #ffc400, inset 0 0 5px #ffc400;
+          box-shadow: 0 0 15px #ffc400, inset 0 0 5px #ffc400;
   text-shadow: none;
 }
 
@@ -286,7 +289,10 @@ html {
 }
 
 .ticket:hover {
-  background-color: #5aa800;
+  background-color: #5aa800c5;
+  border-color: #6fce03;
+  -webkit-box-shadow: 0 0 15px #6fce03, inset 0 0 5px #6fce03;
+          box-shadow: 0 0 15px #6fce03, inset 0 0 5px #6fce03;
 }
 
 .ticketRed {
@@ -296,21 +302,27 @@ html {
 }
 
 .ticketRed:hover {
-  background-color: #f70303;
+  background-color: #f70303b7;
+  border-color: #f70303;
+  -webkit-box-shadow: 0 0 15px #f70303, inset 0 0 5px #f70303;
+          box-shadow: 0 0 15px #f70303, inset 0 0 5px #f70303;
 }
 
 .shop {
   width: 100%;
   height: 21vh;
-  border-color: #8700c5;
-  -webkit-box-shadow: 0 0 5px #9200d6, inset 0 0 5px #8f00d1;
-          box-shadow: 0 0 5px #9200d6, inset 0 0 5px #8f00d1;
+  border-color: #9e00be;
+  -webkit-box-shadow: 0 0 5px #9e00be, inset 0 0 5px #9e00be;
+          box-shadow: 0 0 5px #9e00be, inset 0 0 5px #9e00be;
   -webkit-transition: .2s ease-out;
   transition: .2s ease-out;
 }
 
 .shop:hover {
-  background-color: #8700c5;
+  background-color: #8700c5bd;
+  border-color: #bb04f3;
+  -webkit-box-shadow: 0 0 15px #9700c5, inset 0 0 5px #9700c5;
+          box-shadow: 0 0 15px #9700c5, inset 0 0 5px #9700c5;
 }
 
 .downleft {
