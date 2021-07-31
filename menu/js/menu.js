@@ -1833,7 +1833,7 @@ if ('alt' in window) {
         // menu.wsWin = true
         menu.bell = [{id: 1, msg: "TICKET#7: 'Не открывать сервер': С такими предложениями мы посылаем нахуй", type: 1}, 
         {id: 2, msg: "Вам поступил запрос в друзья", type: 0},{id: 4, msg: "Вам поступил запрос в друзь2", type: 3},{id: 3, msg: "Вам поступил запрос в друзь3", type: 4},]
-        menu.switchPage(2, 0) 
+        menu.switchPage(0, 0) 
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5 
