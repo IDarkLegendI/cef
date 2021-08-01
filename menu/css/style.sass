@@ -7,7 +7,7 @@
     src: url('../fonts/price.ttf')
 
 body
-    cursor: none 
+    cursor: none
     user-select: none
     padding: 0
     margin: 0
@@ -69,7 +69,7 @@ html
 
 .money
     display: flex
-    flex-direction: column 
+    flex-direction: column
     align-content: center
     color: white
 
@@ -111,6 +111,13 @@ html
     border: 2px solid #e0e0e0
     border-radius: 35px
     transition: 0.2s ease-out
+
+.btnRed
+    border: 2px solid red
+
+.btnRed:hover
+    background: red
+    color: #03001a
 
 .warning
     // flex-basis: 25%
@@ -183,7 +190,7 @@ html
     background-color: #ffc400bb
     border-color: #ffc400
     box-shadow: 0 0 15px #ffc400, inset 0 0 5px #ffc400
-    text-shadow: none 
+    text-shadow: none
     span
         color: black
     div
@@ -207,9 +214,9 @@ html
 
 .ticketRed:hover
     background-color: #f70303b7
-    border-color: #f70303 
+    border-color: #f70303
     box-shadow: 0 0 15px #f70303, inset 0 0 5px #f70303
- 
+
 .shop
     width: 100%
     height: 21vh
@@ -306,7 +313,7 @@ html
     background-color: #ffffff00
 
 .superHoverRed:hover
-    color: #ffffff 
+    color: #ffffff
     background-color: #f80b0385
     border-color: #f80c03
     box-shadow: 0 0 15px #f80c03, inset 0 0 5px #f80c03
@@ -682,9 +689,9 @@ html
     color: black
     // border: none
 
-.minibtnRed 
+.minibtnRed
     transition: 0.2s ease-out
-    border: 0.11em solid red 
+    border: 0.11em solid red
     padding: 0.3vh 2vh
     // flex-basis: 25%
     border-radius: 0.5em
@@ -712,7 +719,7 @@ html
 
 .headrightImg
     transition: .4s ease-out
-    
+
 .headrightImg:hover
     transition: .4s ease-out
     transform: scale(1.3)
@@ -773,7 +780,7 @@ html
     background-color: rgba(#fff, .4)
     filter: drop-shadow(0 0 10px #00000080)
 
-    transform: translate(0.26vw, 0.26vw) 
+    transform: translate(0.26vw, 0.26vw)
     &.active
         border: 1.2px solid rgba(#fff, .33)
         background-color: rgba(#8a8a8a, .4)
@@ -1002,13 +1009,13 @@ input[type=checkbox]
 
 .option-input:checked
     background: #036de6
-    
+
 .option-input-red:hover
     background: #b68e8e
 
 .option-input-red:checked
     background: #e60303
-    
+
 .option-input-green:hover
     background: #91b68e
 
@@ -1383,12 +1390,11 @@ a:hover
     transition: .3s ease-in-out
     // background-color: blue
 
-.zapros:hover 
+.zapros:hover
     transition: .3s ease-in-out
     background: #00000077
 
-
-.zaprosNews:hover 
+.zaprosNews:hover
     transition: .3s ease-in-out
     padding: 0.8vh 0
 
@@ -1435,7 +1441,7 @@ a:hover
     max-width: 20vw
     // word-break: break-all
     p
-        hyphens: auto;
+        hyphens: auto
         hyphenate-limit-chars: 6 3 3
         hyphenate-limit-lines: 2
         hyphenate-limit-last: always
@@ -1881,7 +1887,7 @@ a:hover
     .donatbtn
         // border-color: #ffc400
         // box-shadow: 0 0 10px #ffc400, inset 0 0 10px #ffc400
- 
+
 .donatform:hover
     background-color: #ff000088
     box-shadow: 0 0 20px #ff0000, inset 0 0 20px #ff0000
@@ -2228,7 +2234,7 @@ a:hover
     width: 40%
     height: 10vh
     input
-        height: 1vw  
+        height: 1vw
 
 .inputRange
     height: 1vw
@@ -2337,7 +2343,7 @@ a:hover
     margin-left: 0.5vw
     border: 0 solid white
     transition: all .5s
-    
+
 .adminButton:hover
     background: none
 
@@ -2345,10 +2351,9 @@ a:hover
     filter: drop-shadow(0 0 1px #ff0000)
     transition: all .5s
 
-#adminButton img 
-    padding-right: 0 
+#adminButton img
+    padding-right: 0
     transition: all .5s
-
 
 input[type="button" i]:focus, .button :focus, .button :active
     outline: none
@@ -2422,20 +2427,19 @@ input[type="button" i]:focus, .button :focus, .button :active
     transition: 0.2s all
     transform: scale(1.5)
     filter: invert(10%)
-    
+
 .settingsSound:active
     transition: 0.2s all
     transform: scale(0.9)
     filter: invert(10%)
 
-
 .invisibleInput
-    background: #ffffff00 
+    background: #ffffff00
     border: none
 
 .invisibleInput:focus
-    outline: 0 
-    outline-offset: 0    
+    outline: 0
+    outline-offset: 0
 
 .group
     position: relative
@@ -2454,7 +2458,6 @@ input[type="button" i]:focus, .button :focus, .button :active
     color: white
     &:focus
         outline: none
-    
 
 .labelText
     color: #e7e4e4
@@ -2484,7 +2487,7 @@ input[type="button" i]:focus, .button :focus, .button :active
     position: relative
     display: block
     width: 28vw
-    &:before, 
+    &:before,
     &:after
         content: ''
         height: 0.18518518518518517vh
@@ -2501,14 +2504,14 @@ input[type="button" i]:focus, .button :focus, .button :active
         right: 50%
 
 .barRed
-    &:before, 
+    &:before,
     &:after
         background: #f51d00
 
-.inputText:focus 
+.inputText:focus
     ~ .bar:before,
     ~ .bar:after
-        width: 50%    
+        width: 50%
 
 .typeLP
     font-size: 0.8vw
@@ -2524,11 +2527,127 @@ input[type="button" i]:focus, .button :focus, .button :active
     justify-content: center
     width: 28.5vw
     div
-        margin-top: 2vh    
- 
+        margin-top: 2vh
+
 .btnback .acceptRed
-    background: rgba(252, 64, 64, 0.726)  
+    background: rgba(252, 64, 64, 0.726)
 
 .btnback .acceptRed:hover
     background: rgb(216, 38, 38)
     box-shadow: 0 0 10px red
+
+.progressAwards
+    img
+        width: 2.5vw
+        transition: .4s ease-out
+        filter: drop-shadow(0 0 2px #00000080)
+
+.progressAwardsImgActive
+    transition: .4s ease-out
+    transform: scale(1.5)
+    filter: drop-shadow(0 0 10px #00000080)
+
+.progressMain
+    display: flex
+    justify-content: space-around
+    width: 80vw
+
+.progressTitles
+    font-size: 1vw
+    font-family: 'Roboto Condensed', sans-serif
+    margin-top: 0.5vw
+    div
+        display: flex
+        justify-content: center
+        // background-color: red
+        min-width: 3.5vw
+
+.progressTitleActive
+    font-size: 1.5vw
+    color: #fff
+
+$var1: #211ee0
+$var2: #e01ea6
+$var3: #86e01e
+$var4: #f2d31b
+$var5: #f2b01e
+$var6: #f63a0f
+$var7: #f63a0f
+
+.container
+    width: 80vw
+    text-align: center
+    transition: .4s ease-out
+    .progress
+        margin: 0 auto
+        width: 71vw
+        transition: .4s ease-out
+
+.progress
+    padding: 0.21vw
+    background: rgba(0, 0, 0, 0.25)
+    border-radius: 0.31vw
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08)
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08)
+    &-bar
+        height: 0.83vw
+        border-radius: 0.21vw
+        background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05))
+        background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05))
+        background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05))
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05))
+        -webkit-transition: 0.4s linear
+        -moz-transition: 0.4s linear
+        -o-transition: 0.4s linear
+        transition: 0.4s linear
+        -webkit-transition-property: width, background-color
+        -moz-transition-property: width, background-color
+        -o-transition-property: width, background-color
+        transition-property: width, background-color
+        -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1)
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1)
+
+/*
+ * Note: using adjacent or general sibling selectors combined with
+ *       pseudo classes doesn't work in Safari 5.0 and Chrome 12.
+ *       See this article for more info and a potential fix:
+ *       https://css-tricks.com/webkit-sibling-bug/
+ */
+
+#progress1
+    width: 1.3vw
+    background-color: $var1 
+
+#progress2
+    width: 12.7vw
+    background-color: $var2
+
+#progress3
+    width: 24.25vw
+    background-color: $var3
+
+#progress4
+    width: 35.6vw
+    background-color: $var4
+
+#progress5
+    width: 47.0vw
+    background-color: $var5
+
+#progress6
+    width: 58.5vw
+    background-color: $var6
+
+#progress7
+    width: 71vw
+    background-color: $var7
+
+.radio
+    display: none
+    &:checked + .label
+        color: white
+        background: rgba(0, 0, 0, 0.25)
+
+.progressTitles
+    display: flex
+    justify-content: space-around

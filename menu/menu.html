@@ -282,7 +282,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="virt form1">
+                                <div class="virt form1" v-on:click="switchPage(8)">
                                     <div class="virtname">
                                         <span>{{i18n.awards}}</span>
                                     </div>
@@ -1723,9 +1723,95 @@
             </transition>
         </section>
         <!-- НАГРАДЫ -->
-        <section v-if="page === 8">
+        <transition enter-active-class="animated rotateInUpLeft" leave-active-class="animated rotateOutDownLeft"
+            name="custom-classes-transition">
+            <section v-if="page === 8">
+                <!-- Магазин доната -->
+                <div class="upline">
+                    <div class="nameupline">
+                        <span>GTAROYAL.RU</span>
+                    </div>
+                    <span style="font-size: 3vh;">{{i18n.awards}}</span>
+                    <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                        <span>{{i18n.btnBack}}</span>
+                    </div>
+                </div>
 
-        </section>
+                <div style="display: flex; flex-direction: column; align-items: center; margin-top: 2vh;">
+                    <div class="progressMain">
+                        <div class="progressAwards">
+                            <img :class="{progressAwardsImgActive: currentAwards === 1}"
+                            src="./img/awards/Money Emoji [Free Download Money Face Emoji].png">
+                        </div>
+                        <div class="progressAwards"> 
+                            <img :class="{progressAwardsImgActive: currentAwards === 2}"
+                            src="./img/awards/Sunglasses Emoji [Free Download Cool Emoji].png">
+                        </div>
+                        <div class="progressAwards">
+                            <img :class="{progressAwardsImgActive: currentAwards === 3}"
+                            src="./img/awards/Drooling Emoji [Download iPhone Emojis].png">
+                        </div>
+                        <div class="progressAwards">
+                            <img :class="{progressAwardsImgActive: currentAwards === 4}"
+                            src="./img/awards/Crying Sad Emoji.png">
+                        </div>
+                        <div class="progressAwards">
+                            <img :class="{progressAwardsImgActive: currentAwards === 5}"
+                            src="./img/awards/Smile Emoji With Hearts.png">
+                        </div>
+                        <div class="progressAwards">
+                            <img :class="{progressAwardsImgActive: currentAwards === 6}"
+                            src="./img/awards/Party Face Emoji.png">
+                        </div>
+                        <div class="progressAwards">
+                            <img :class="{progressAwardsImgActive: currentAwards === 7}"
+                            src="./img/awards/Hot Emoji.png">
+                        </div>
+                    </div>
+
+                    <div :style="{marginTop: currentAwards !== 0 ? '1vw' : '0'}" class="container">
+                        <div class="progress">
+                          <div :id="'progress' + currentAwards" class="progress-bar"></div>
+                        </div>
+                    </div>      
+                    <div :style="{color: currentAwards !== 0 ? '#ffffff9d' : '#fff'}" class="progressMain progressTitles">
+                        <div :class="{progressTitleActive: currentAwards === 1}">25$</div>
+                        <div :class="{progressTitleActive: currentAwards === 2}">50$</div>
+                        <div :class="{progressTitleActive: currentAwards === 3}">75$</div>
+                        <div :class="{progressTitleActive: currentAwards === 4}">100$</div>
+                        <div :class="{progressTitleActive: currentAwards === 5}">200$</div>
+                        <div :class="{progressTitleActive: currentAwards === 6}">300$</div>
+                        <div :class="{progressTitleActive: currentAwards === 7}">400$</div>
+                    </div>      
+                    
+                    <div>
+                        <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
+                        font-family: 'Roboto Condensed', cursive;
+                        text-shadow: 1px 1px 2px #0000007e;
+                        margin-top: 4vh;"
+                        v-if="Date.now() - lastDateAwards > 86400000" v-on:click="switchPage(0,0)">
+                            <span>{{i18n.getAdward}}</span>
+                        </div>
+                        
+                        <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
+                        font-family: 'Roboto Condensed', cursive;
+                        text-shadow: 1px 1px 2px #0000007e;
+                        margin-top: 4vh; color: #ffffff "
+                        v-else v-on:click="switchPage(0,0)">
+                            <span>{{i18n.getNextAdward}}: {{timeLeftAwards}}</span>
+                        </div>
+
+                        <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2vh;
+                        font-family: 'Roboto Condensed', cursive;
+                        text-shadow: 1px 1px 2px #0000007e;
+                        margin-top: 4vh;"
+                        v-if="adminLevel > 0" v-on:click="currentAwards > 6 ? currentAwards = 0 : currentAwards += 1">
+                            <span>ТЕСТ КНОПКА ДЛЯ АДМИНОВ</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </transition>
         <section>
             <div class="fireworks" v-if="wsWin && page === 5">
                 <div class="firework">

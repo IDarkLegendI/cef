@@ -5,7 +5,7 @@ let menu = new Vue({
         page: 0, //НЕ МЕНЯЙ ТУТ НИХУЯ, ИДИ ВНИЗ СТРАНИЦЫ
         subPage: 0, //
         nextSubPage: -1,
-        lastPage: 0, 
+        lastPage: 0,
         cursorWhile: null,
         fCursoring: undefined,
         fToggleCursor: undefined,
@@ -16,8 +16,8 @@ let menu = new Vue({
         //SETTINGS
         lang: 'ru',
         vr: false, //true, чтобы вр подрубить,
-        disableCursor: false, 
-        autoLogin: false, 
+        disableCursor: false,
+        autoLogin: false,
         sizeMap: 0,
         quickWeapon: 0,
         volume: 0.1,
@@ -66,77 +66,486 @@ let menu = new Vue({
         maxSort: 1000000,
         maxSpeed: 180,
         onlyMyCars: false,
-        cars: [{ name: 'None', model: 'none', price: 0, s100: '0', s200: '0' },
-        { name: 'Lamborghini Performante 18', model: '18performante', price: 265000, s100: '3.7', s200: '0' },
-        { name: 'T-20', model: 't20', price: 270000, s100: '3.7', s200: '0' },
-        { name: 'Pfister-811', model: 'pfister811', price: 135000, s100: '3.9', s200: '0' },
-        { name: 'Dubsta 6x6', model: 'dubsta3', price: 66000, s100: '7.2', s200: '0' },
-        { name: 'Lamborghini Urus', model: 'urus', price: 178000, s100: '3.9', s200: '0' },
-        { name: 'Porsche Taycan', model: 'taycan', price: 275000, s100: '2.6', s200: '0' },
-        { name: 'Tesla Model X', model: 'teslax', price: 280000, s100: '2.9', s200: '6.0' },
-        { name: 'Bentley Bentayga', model: 'bentayga17', price: 145000, s100: '4.1', s200: '14.0' },
-        { name: 'RHAPSODY', model: 'rhapsody', price: 10000, s100: '9.8', s200: '0' },
-        { name: 'PRIMO', model: 'PRIMO', price: 12300, s100: '9.8', s200: '0' },
-        /*{name: 'ISSI', model: 'issi6', price: 26500, s100: '6.3', s200: '0'},*/
-        { name: 'OCELOT', model: 'f620', price: 23600, s100: '6.2', s200: '0' },
-        { name: 'EXEMPLAR', model: 'exemplar', price: 23650, s100: '7.3', s200: '0' },
-        { name: 'COGCABRIO', model: 'cogcabrio', price: 24500, s100: '9.8', s200: '0' },
-        { name: 'SENTINEL', model: 'felon2', price: 22200, s100: '7.7', s200: '0' },
-        { name: 'FBI', model: 'fbi', price: 25500, s100: '8.3', s200: '0'},
-        { name: 'COQUETTE star', model: 'coquette3', price: 17950, s100: '10.3', s200: '0' },
-        { name: 'DOMINATOR', model: 'dominator3', price: 26000, s100: '7.3', s200: '0' },
-        { name: 'HERMES', model: 'hermes', price: 14000, s100: '11.1', s200: '0' },
-        { name: 'DUBSTA', model: 'dubsta2', price: 26000, s100: '12.5', s200: '0' },
-        { name: 'BANSHEE', model: 'banshee', price: 61500, s100: '5.8', s200: '0' },
-        { name: 'Nissan GT-R', model: '17r35', price: 63500, s100: '5.3', s200: '0' },
-        { name: 'COQUETTE', model: 'coquette4', price: 84500, s100: '5.7', s200: '0' },
-        { name: 'DEVESTE', model: 'deveste', price: 170000, s100: '8.0', s200: '0' },
-        { name: 'ELEGY', model: 'elegy2', price: 30050, s100: '5.6', s200: '0' },
-        { name: 'HOTRING', model: 'hotring', price: 28500, s100: '5.4', s200: '0' },
-        { name: 'ITALI', model: 'italigto', price: 130000, s100: '3.4', s200: '0' },
-        { name: 'NEON', model: 'neon', price: 240000, s100: '2.8', s200: '0' },
-        { name: 'NINEF', model: 'ninef2', price: 100500, s100: '5.5', s200: '0' },
-        /*{name: 'OMNIS', model: 'omnis', price: 30000, s100: '5.1', s200: '0'},*/
-        { name: 'SCHLAGEN', model: 'schlagen', price: 125500, s100: '4.4', s200: '0' },
-        /*{name: 'SENTINEL', model: 'sentinel3', price: 23000, s100: '9.4', s200: '0'},*/
-        { name: 'SPECTER', model: 'specter2', price: 91200, s100: '8.0', s200: '0' },
-        { name: 'VERLIERER', model: 'verlierer2', price: 91200, s100: '5.0', s200: '0' },
-        { name: 'SAVESTRA', model: 'savestra', price: 19500, s100: '9.9', s200: '0' },
-        { name: 'SWINGER', model: 'swinger', price: 100000, s100: '5.3', s200: '0' },
-        { name: 'TURISMO', model: 'turismo2', price: 130000, s100: '4.9', s200: '0' },
-        { name: 'ADDER', model: 'adder', price: 190000, s100: '5.0', s200: '0' },
-        { name: 'CYCLONE', model: 'cyclone', price: 210000, s100: '5.3', s200: '0' },
-        { name: 'ENTITYXF', model: 'entityxf', price: 200000, s100: '6.3', s200: '0' },
-        { name: 'FMJ', model: 'fmj', price: 190000, s100: '4.5', s200: '0' },
-        { name: 'ITALIGTD', model: 'italigtb2', price: 245000, s100: '4.1', s200: '0' },
-        { name: 'NERO', model: 'nero2', price: 255000, s100: '4.8', s200: '0' },
-        { name: 'REAPER', model: 'reaper', price: 260000, s100: '8.2', s200: '0' },
-        { name: 'TEMPESTA', model: 'tempesta', price: 262000, s100: '7.3', s200: '0' },
-        { name: 'SHEAVA', model: 'sheava', price: 135000, s100: '4.9', s200: '0' },
-        { name: 'TYRUS', model: 'tyrus', price: 235000, s100: '4.2', s200: '0' },
-        { name: 'XA-21', model: 'xa21', price: 270000, s100: '3.8', s200: '0' },
-        { name: 'TROPHYTRUCK', model: 'trophytruck', price: 70000, s100: '4.6', s200: '0' },
-        { name: 'ZENTORNO', model: 'zentorno', price: 220000, s100: '3.9', s200: '0' },
-        { name: 'SHOTARO', model: 'shotaro', price: 230000, s100: '3.8', s200: '0' },
-        { name: 'SANCTUS', model: 'sanctus', price: 44000, s100: '5.4', s200: '0' },
-        { name: 'VORTEX', model: 'vortex', price: 42000, s100: '4.0', s200: '0' },
-        { name: 'ENDURO', model: 'enduro', price: 29000, s100: '5.6', s200: '0' },
-        { name: 'BATI', model: 'bati', price: 42100, s100: '5.0', s200: '0' },
-        { name: 'Tesla S', model: 'teslapd', price: 200000, s100: '3.7', s200: '0' },
-        { name: 'Porsche Panamera', model: 'panamera17turbo', price: 300000, s100: '2.3', s200: '4.1' },
-        { name: 'BMW M5', model: 'bmci', price: 200000, s100: '3.9', s200: '11.2' },
-        { name: 'AUDI RS7', model: 'rs7c8', price: 285000,  s100: '3.9', s200: '11.2'},
-        { name: 'PORSCHE 911R', model: '911r', price: 270000, s100: '3.9', s200: '11.2'},
-        { name: 'F12 TDF', model: 'tdf', price: 240000,  s100: '3.9', s200: '11.2'},
-        { name: 'Ford F-150 Raptor', model: '19raptor', price: 155200,  s100: '3.9', s200: '11.2'}, 
-        { name: 'LADA NIVA', model: 'urban', price: 20000,  s100: '3.9', s200: '11.2'},  
-        { name: 'Toyota 4Runner', model: '4runner', price: 39900,  s100: '3.9', s200: '11.2'},
-        { name: 'GAUNTLET', model: 'GAUNTLET', price: 39900,  s100: '0', s200: '0'},
-        { name: 'PARAGON', model: 'paragon', price: 62000,  s100: '0', s200: '0'},
-        { name: 'KHAMELION', model: 'khamelion', price: 81500,  s100: '0', s200: '0'},
-        { name: 'YOSEMITE', model: 'yosemite3', price: 27500, s100: '0', s200: '0'},
-        { name: 'brawler', model: 'brawler', price: 55600, s100: '0', s200: '0'},
-        { name: 'JUGULAR', model: 'jugular', price: 95000,  s100: '0', s200: '0'},].sort((a, b) => a.price - b.price), 
+        cars: [{
+                name: 'None',
+                model: 'none',
+                price: 0,
+                s100: '0',
+                s200: '0'
+            },
+            {
+                name: 'Lamborghini Performante 18',
+                model: '18performante',
+                price: 265000,
+                s100: '3.7',
+                s200: '0'
+            },
+            {
+                name: 'T-20',
+                model: 't20',
+                price: 270000,
+                s100: '3.7',
+                s200: '0'
+            },
+            {
+                name: 'Pfister-811',
+                model: 'pfister811',
+                price: 135000,
+                s100: '3.9',
+                s200: '0'
+            },
+            {
+                name: 'Dubsta 6x6',
+                model: 'dubsta3',
+                price: 66000,
+                s100: '7.2',
+                s200: '0'
+            },
+            {
+                name: 'Lamborghini Urus',
+                model: 'urus',
+                price: 178000,
+                s100: '3.9',
+                s200: '0'
+            },
+            {
+                name: 'Porsche Taycan',
+                model: 'taycan',
+                price: 275000,
+                s100: '2.6',
+                s200: '0'
+            },
+            {
+                name: 'Tesla Model X',
+                model: 'teslax',
+                price: 280000,
+                s100: '2.9',
+                s200: '6.0'
+            },
+            {
+                name: 'Bentley Bentayga',
+                model: 'bentayga17',
+                price: 145000,
+                s100: '4.1',
+                s200: '14.0'
+            },
+            {
+                name: 'RHAPSODY',
+                model: 'rhapsody',
+                price: 10000,
+                s100: '9.8',
+                s200: '0'
+            },
+            {
+                name: 'PRIMO',
+                model: 'PRIMO',
+                price: 12300,
+                s100: '9.8',
+                s200: '0'
+            },
+            /*{name: 'ISSI', model: 'issi6', price: 26500, s100: '6.3', s200: '0'},*/
+            {
+                name: 'OCELOT',
+                model: 'f620',
+                price: 23600,
+                s100: '6.2',
+                s200: '0'
+            },
+            {
+                name: 'EXEMPLAR',
+                model: 'exemplar',
+                price: 23650,
+                s100: '7.3',
+                s200: '0'
+            },
+            {
+                name: 'COGCABRIO',
+                model: 'cogcabrio',
+                price: 24500,
+                s100: '9.8',
+                s200: '0'
+            },
+            {
+                name: 'SENTINEL',
+                model: 'felon2',
+                price: 22200,
+                s100: '7.7',
+                s200: '0'
+            },
+            {
+                name: 'FBI',
+                model: 'fbi',
+                price: 25500,
+                s100: '8.3',
+                s200: '0'
+            },
+            {
+                name: 'COQUETTE star',
+                model: 'coquette3',
+                price: 17950,
+                s100: '10.3',
+                s200: '0'
+            },
+            {
+                name: 'DOMINATOR',
+                model: 'dominator3',
+                price: 26000,
+                s100: '7.3',
+                s200: '0'
+            },
+            {
+                name: 'HERMES',
+                model: 'hermes',
+                price: 14000,
+                s100: '11.1',
+                s200: '0'
+            },
+            {
+                name: 'DUBSTA',
+                model: 'dubsta2',
+                price: 26000,
+                s100: '12.5',
+                s200: '0'
+            },
+            {
+                name: 'BANSHEE',
+                model: 'banshee',
+                price: 61500,
+                s100: '5.8',
+                s200: '0'
+            },
+            {
+                name: 'Nissan GT-R',
+                model: '17r35',
+                price: 63500,
+                s100: '5.3',
+                s200: '0'
+            },
+            {
+                name: 'COQUETTE',
+                model: 'coquette4',
+                price: 84500,
+                s100: '5.7',
+                s200: '0'
+            },
+            {
+                name: 'DEVESTE',
+                model: 'deveste',
+                price: 170000,
+                s100: '8.0',
+                s200: '0'
+            },
+            {
+                name: 'ELEGY',
+                model: 'elegy2',
+                price: 30050,
+                s100: '5.6',
+                s200: '0'
+            },
+            {
+                name: 'HOTRING',
+                model: 'hotring',
+                price: 28500,
+                s100: '5.4',
+                s200: '0'
+            },
+            {
+                name: 'ITALI',
+                model: 'italigto',
+                price: 130000,
+                s100: '3.4',
+                s200: '0'
+            },
+            {
+                name: 'NEON',
+                model: 'neon',
+                price: 240000,
+                s100: '2.8',
+                s200: '0'
+            },
+            {
+                name: 'NINEF',
+                model: 'ninef2',
+                price: 100500,
+                s100: '5.5',
+                s200: '0'
+            },
+            /*{name: 'OMNIS', model: 'omnis', price: 30000, s100: '5.1', s200: '0'},*/
+            {
+                name: 'SCHLAGEN',
+                model: 'schlagen',
+                price: 125500,
+                s100: '4.4',
+                s200: '0'
+            },
+            /*{name: 'SENTINEL', model: 'sentinel3', price: 23000, s100: '9.4', s200: '0'},*/
+            {
+                name: 'SPECTER',
+                model: 'specter2',
+                price: 91200,
+                s100: '8.0',
+                s200: '0'
+            },
+            {
+                name: 'VERLIERER',
+                model: 'verlierer2',
+                price: 91200,
+                s100: '5.0',
+                s200: '0'
+            },
+            {
+                name: 'SAVESTRA',
+                model: 'savestra',
+                price: 19500,
+                s100: '9.9',
+                s200: '0'
+            },
+            {
+                name: 'SWINGER',
+                model: 'swinger',
+                price: 100000,
+                s100: '5.3',
+                s200: '0'
+            },
+            {
+                name: 'TURISMO',
+                model: 'turismo2',
+                price: 130000,
+                s100: '4.9',
+                s200: '0'
+            },
+            {
+                name: 'ADDER',
+                model: 'adder',
+                price: 190000,
+                s100: '5.0',
+                s200: '0'
+            },
+            {
+                name: 'CYCLONE',
+                model: 'cyclone',
+                price: 210000,
+                s100: '5.3',
+                s200: '0'
+            },
+            {
+                name: 'ENTITYXF',
+                model: 'entityxf',
+                price: 200000,
+                s100: '6.3',
+                s200: '0'
+            },
+            {
+                name: 'FMJ',
+                model: 'fmj',
+                price: 190000,
+                s100: '4.5',
+                s200: '0'
+            },
+            {
+                name: 'ITALIGTD',
+                model: 'italigtb2',
+                price: 245000,
+                s100: '4.1',
+                s200: '0'
+            },
+            {
+                name: 'NERO',
+                model: 'nero2',
+                price: 255000,
+                s100: '4.8',
+                s200: '0'
+            },
+            {
+                name: 'REAPER',
+                model: 'reaper',
+                price: 260000,
+                s100: '8.2',
+                s200: '0'
+            },
+            {
+                name: 'TEMPESTA',
+                model: 'tempesta',
+                price: 262000,
+                s100: '7.3',
+                s200: '0'
+            },
+            {
+                name: 'SHEAVA',
+                model: 'sheava',
+                price: 135000,
+                s100: '4.9',
+                s200: '0'
+            },
+            {
+                name: 'TYRUS',
+                model: 'tyrus',
+                price: 235000,
+                s100: '4.2',
+                s200: '0'
+            },
+            {
+                name: 'XA-21',
+                model: 'xa21',
+                price: 270000,
+                s100: '3.8',
+                s200: '0'
+            },
+            {
+                name: 'TROPHYTRUCK',
+                model: 'trophytruck',
+                price: 70000,
+                s100: '4.6',
+                s200: '0'
+            },
+            {
+                name: 'ZENTORNO',
+                model: 'zentorno',
+                price: 220000,
+                s100: '3.9',
+                s200: '0'
+            },
+            {
+                name: 'SHOTARO',
+                model: 'shotaro',
+                price: 230000,
+                s100: '3.8',
+                s200: '0'
+            },
+            {
+                name: 'SANCTUS',
+                model: 'sanctus',
+                price: 44000,
+                s100: '5.4',
+                s200: '0'
+            },
+            {
+                name: 'VORTEX',
+                model: 'vortex',
+                price: 42000,
+                s100: '4.0',
+                s200: '0'
+            },
+            {
+                name: 'ENDURO',
+                model: 'enduro',
+                price: 29000,
+                s100: '5.6',
+                s200: '0'
+            },
+            {
+                name: 'BATI',
+                model: 'bati',
+                price: 42100,
+                s100: '5.0',
+                s200: '0'
+            },
+            {
+                name: 'Tesla S',
+                model: 'teslapd',
+                price: 200000,
+                s100: '3.7',
+                s200: '0'
+            },
+            {
+                name: 'Porsche Panamera',
+                model: 'panamera17turbo',
+                price: 300000,
+                s100: '2.3',
+                s200: '4.1'
+            },
+            {
+                name: 'BMW M5',
+                model: 'bmci',
+                price: 200000,
+                s100: '3.9',
+                s200: '11.2'
+            },
+            {
+                name: 'AUDI RS7',
+                model: 'rs7c8',
+                price: 285000,
+                s100: '3.9',
+                s200: '11.2'
+            },
+            {
+                name: 'PORSCHE 911R',
+                model: '911r',
+                price: 270000,
+                s100: '3.9',
+                s200: '11.2'
+            },
+            {
+                name: 'F12 TDF',
+                model: 'tdf',
+                price: 240000,
+                s100: '3.9',
+                s200: '11.2'
+            },
+            {
+                name: 'Ford F-150 Raptor',
+                model: '19raptor',
+                price: 155200,
+                s100: '3.9',
+                s200: '11.2'
+            },
+            {
+                name: 'LADA NIVA',
+                model: 'urban',
+                price: 20000,
+                s100: '3.9',
+                s200: '11.2'
+            },
+            {
+                name: 'Toyota 4Runner',
+                model: '4runner',
+                price: 39900,
+                s100: '3.9',
+                s200: '11.2'
+            },
+            {
+                name: 'GAUNTLET',
+                model: 'GAUNTLET',
+                price: 39900,
+                s100: '0',
+                s200: '0'
+            },
+            {
+                name: 'PARAGON',
+                model: 'paragon',
+                price: 62000,
+                s100: '0',
+                s200: '0'
+            },
+            {
+                name: 'KHAMELION',
+                model: 'khamelion',
+                price: 81500,
+                s100: '0',
+                s200: '0'
+            },
+            {
+                name: 'YOSEMITE',
+                model: 'yosemite3',
+                price: 27500,
+                s100: '0',
+                s200: '0'
+            },
+            {
+                name: 'brawler',
+                model: 'brawler',
+                price: 55600,
+                s100: '0',
+                s200: '0'
+            },
+            {
+                name: 'JUGULAR',
+                model: 'jugular',
+                price: 95000,
+                s100: '0',
+                s200: '0'
+            },
+        ].sort((a, b) => a.price - b.price),
         carsPointer: 0,
         myCar: 'none',
         camRotation: -90,
@@ -179,7 +588,7 @@ let menu = new Vue({
                 name: 'DELUXE',
                 k: 16.65,
                 bonus: 1.7,
-            }, 
+            },
         },
         assortSelected: 'vip',
         assortDays: '30',
@@ -215,6 +624,11 @@ let menu = new Vue({
         anyVar: null,
         anyVarSecond: null,
         anyVarС: null,
+
+        // Awards
+        currentAwards: 0,
+        lastDateAwards: 1627854415150,
+        timeLeftAwards: '',
 
         //i18n
         i18n: {
@@ -316,10 +730,10 @@ let menu = new Vue({
             bonus: "BONUS",
             moreMoneyEndGame: "MORE MONEY AT THE END OF THE GAME",
             na: "ON",
-            endPriv: "UNTIL THE END OF THE SUBSCRIPTION", 
+            endPriv: "UNTIL THE END OF THE SUBSCRIPTION",
             comingSoon: "THIS SECTION WILL BE AVAILABLE SOON!",
             level: "LEVEL",
-            tuning: "TUNING OF PERSONAL TRANSPORT", 
+            tuning: "TUNING OF PERSONAL TRANSPORT",
             second: "SECONDS",
             reloadQuickMarker: "RELOADING THE QUICK MARK FOR",
             cashBackVIP: "FOR SELLING OLD CLOTHES",
@@ -329,11 +743,11 @@ let menu = new Vue({
             question: "QUESTION",
             complaint: "COMPLAINT",
             suggestion: "SUGGESTION",
-            cheats: "THIRD-PARTY SOFTWARE", 
+            cheats: "THIRD-PARTY SOFTWARE",
             useBugs: "USING BUGS",
             insult: "INSULT",
             intruderID: "SPECIFY THE ID OF THE VIOLATOR",
-            questionInput: "DESCRIBE YOUR QUESTION", 
+            questionInput: "DESCRIBE YOUR QUESTION",
             improvementInput: "DESCRIBE YOUR PROPOSAL",
             send: "SEND",
             discord: "OUR DISCORD",
@@ -361,7 +775,9 @@ let menu = new Vue({
             notValid: "You are using forbidden characters. Remove them, and try again",
             clickForConnect: "CLICK TO CONNECT",
             rClickForConvert: "RIGHT CLICK TO CONVERT",
-            noMoney: "You don't have enough funds. Top up your balance and try again", 
+            noMoney: "You don't have enough funds. Top up your balance and try again",
+            getAdward: "GET A REWARD",
+            getNextAdward: "THE NEXT AWARD WILL BE AVAILABLE VIA",
         },
         i18nTemp: null,
         avatars: {
@@ -476,7 +892,7 @@ let menu = new Vue({
             98: 'n. 2',
             99: 'n. 3',
             100: 'n. 4',
-            101: 'n. 5', 
+            101: 'n. 5',
             102: 'n. 6',
             103: 'n. 7',
             104: 'n. 8',
@@ -547,12 +963,11 @@ let menu = new Vue({
         jetPackSkins: {
             'vip': [0, 36, 35, 34, 33, 32, 28, 27, 25, 23, 22, 20, 19, 16, 14],
             'premium': [37, 31, 29, 24, 21, 17, 15, 9, 8, 7, 6, 5, 3],
-            'deluxe': [40, 39, 38, 30, 26, 2, 21, 37, 1, 4, 11, 12, 10] 
+            'deluxe': [40, 39, 38, 30, 26, 2, 21, 37, 1, 4, 11, 12, 10]
         }
     },
     methods: {
-        log(...any)
-        {
+        log(...any) {
             console.log(any)
         },
         emitServer: function (eventName, ...args) {
@@ -572,7 +987,7 @@ let menu = new Vue({
                 this.cars[this.carsPointer].color = {
                     r: this.oldColor[0],
                     g: this.oldColor[1],
-                    b: this.oldColor[2]  
+                    b: this.oldColor[2]
                 }
                 menu[variable] = value;
                 //console.log(`callBackEmitToServer: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
@@ -585,9 +1000,9 @@ let menu = new Vue({
                 // //console.log(`callBackEmitToServer: ${JSON.stringify(this.oldColor)}; model: ${this.cars[this.carsPointer].model}; this.updateTuning: ${this.updateTuning}`)
                 menu.initColor();
                 setTimeout(() => {
-                    if(menu.initColor()) colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b)
-                    
-                else menu.setTimeout(() => colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b), 100)
+                    if (menu.initColor()) colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b)
+
+                    else menu.setTimeout(() => colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b), 100)
                 }, 100)
             } else menu[variable] = value;
             // //console.log(this.cars[this.carsPointer].model)  
@@ -626,94 +1041,82 @@ let menu = new Vue({
                 //console.log(el)
                 //console.log(`changeArgument(1): menu[${el[0]}][${el[1]}][${el[2]}] = ${el[3]}`)
                 menu[el[0]][el[1]][el[2]] = el[3];
-            }) 
+            })
         },
         useFunction(name, ...args) {
             return menu[name](...args);
         },
 
         // Срабатывает, когда человек "открывает" меню
-        eventOpen()
-        {
+        eventOpen() {
             // 
         },
 
-        translateSubPages()
-        {
-            if(this.subPage === 1) 
-            {
+        translateSubPages() {
+            if (this.subPage === 1) {
                 this.transleteById('i18nInvite', 'inviteText')
                 this.transleteById('i18nSelect', 'select')
-            }
-            else if(this.subPage === 2)
-            {
+            } else if (this.subPage === 2) {
                 this.transleteById('i18nActions', 'actions')
                 menu.friends.forEach(el => {
-                    if(document.getElementById(el.name)) document.getElementById(el.name).setAttribute('data-title', menu.i18n.delFriend);
+                    if (document.getElementById(el.name)) document.getElementById(el.name).setAttribute('data-title', menu.i18n.delFriend);
                 })
-            }
-            else if(this.subPage === 3) 
-            {
+            } else if (this.subPage === 3) {
                 this.transleteById('i18nAdd', 'add')
                 this.transleteById('i18nAccept', 'accept')
-                this.transleteById('i18nCancel', 'cancel') 
+                this.transleteById('i18nCancel', 'cancel')
             }
         },
 
-        transleteById(id, text)
-        {
+        transleteById(id, text) {
             document.querySelectorAll(`[id=${id}]`).forEach(el => {
                 el.setAttribute('data-title', menu.i18n[text]);
             })
         },
 
-        changePassword(current, newPass, newPass2)
-        {
-            if(newPass !== newPass2) return menu.emit('customNotify', 1, menu.i18n.newPassDontMatch)
-            if(/[^A-Z-a-z-0-9]/g.test(newPass)) return menu.emit('customNotify', 1, menu.i18n.newPassDontValid)
-            if(newPass.length > 20) return menu.emit('customNotify', 1, menu.i18n.newPassTooLong)
-            if(newPass.length < 4) return menu.emit('customNotify', 1, menu.i18n.newPassTooShort)
-            if(newPass === current) return menu.emit('customNotify', 1, menu.i18n.newPassSameCurrent)
-            menu.emitToServerWithWT(1000, 'sLogin:changePassword', current, newPass); 
-        }, 
-        changedPassword()
-        {
-            let cP = document.getElementById('currentPass'), nP = document.getElementById('newPass'), nP2 = document.getElementById('newPass2')
-            if(cP && nP && nP2) cP = nP = nP2 = ""
-            menu.emit('customNotify', 2, menu.i18n.changedPassword) 
+        changePassword(current, newPass, newPass2) {
+            if (newPass !== newPass2) return menu.emit('customNotify', 1, menu.i18n.newPassDontMatch)
+            if (/[^A-Z-a-z-0-9]/g.test(newPass)) return menu.emit('customNotify', 1, menu.i18n.newPassDontValid)
+            if (newPass.length > 20) return menu.emit('customNotify', 1, menu.i18n.newPassTooLong)
+            if (newPass.length < 4) return menu.emit('customNotify', 1, menu.i18n.newPassTooShort)
+            if (newPass === current) return menu.emit('customNotify', 1, menu.i18n.newPassSameCurrent)
+            menu.emitToServerWithWT(1000, 'sLogin:changePassword', current, newPass);
+        },
+        changedPassword() {
+            let cP = document.getElementById('currentPass'),
+                nP = document.getElementById('newPass'),
+                nP2 = document.getElementById('newPass2')
+            if (cP && nP && nP2) cP = nP = nP2 = ""
+            menu.emit('customNotify', 2, menu.i18n.changedPassword)
             menu.switchPage(1, 0)
         },
 
-        reportSend(text = menu.reportInput)
-        {
-            if(!menu.textValid(text)) return menu.emit('customNotify', 1, menu.i18n.notValid) 
-            if(menu.superCoolDown) return menu.emit('customNotify', 1, menu.i18n.stopFlood) 
-  
- 
+        reportSend(text = menu.reportInput) {
+            if (!menu.textValid(text)) return menu.emit('customNotify', 1, menu.i18n.notValid)
+            if (menu.superCoolDown) return menu.emit('customNotify', 1, menu.i18n.stopFlood)
+
+
             let reason = menu.reportType;
-            if(menu.reportType === 2)
-            {
+            if (menu.reportType === 2) {
                 reason = 3 + +menu.reportReason
-            } 
-            menu.emitToServerWithWT(250, 'sReport:new', reason, text)  
+            }
+            menu.emitToServerWithWT(250, 'sReport:new', reason, text)
             menu.superCoolDown = true
             menu.setTimeout(() => {
                 menu.superCoolDown = false
             }, 5000)
         },
 
-        reportSent() 
-        {
-            menu.switchPage(0,0); 
-            menu.reportInput = ''; 
-            menu.reportReason = 
-            menu.reportType = -1;   
+        reportSent() {
+            menu.switchPage(0, 0);
+            menu.reportInput = '';
+            menu.reportReason =
+                menu.reportType = -1;
             menu.emitToClient('notifyI18n', '2', 'report', 'send', '3500');
         },
 
         //Возвращает true, если текст проходит проверку на A-Z, А-Я, 0-9
-        textValid(text)
-        {
+        textValid(text) {
             return !(/[^A-Z-a-z-0-9-а-я-А-Я,ёЁ?! ]/g.test(text))
         },
 
@@ -738,19 +1141,18 @@ let menu = new Vue({
             }
         },
         //Page = -3 -> игнорирование запроса о смене страницы
-        switchPage(newPage, newSubPage = -1) {  
-            if(newPage === -3) return; 
-            if(newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, menu.i18n.notAvailable)
-            if(newPage === 5) 
-            {
-                if(menu.playingTime === -1) menu.switchPage(7,2) //Если из наблюдения вышел админ в режиме recon
-                setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000) 
+        switchPage(newPage, newSubPage = -1) {
+            if (newPage === -3) return;
+            if (newPage === 4 && menu.vip === 'none') return menu.emit('customNotify', 1, menu.i18n.notAvailable)
+            if (newPage === 5) {
+                if (menu.playingTime === -1) menu.switchPage(7, 2) //Если из наблюдения вышел админ в режиме recon
+                setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000)
             }
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 
-                
-                if(('alt' in window)) alt.emit('changeVarOnClient', ['page', newPage]) 
+
+                if (('alt' in window)) alt.emit('changeVarOnClient', ['page', newPage])
                 //console.log(`switchPage: ${newPage}; ${newSubPage}`)
                 // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
                 if (newSubPage !== -1 || (this.nextSubPage !== -1 && this.page !== 2)) {
@@ -760,24 +1162,23 @@ let menu = new Vue({
                     setTimeout(() => {
                         if (this.nextSubPage !== -1) {
                             this.subPage = this.nextSubPage;
-                            if(this.page <= -1) this.page = 0;   
+                            if (this.page <= -1) this.page = 0;
                             this.nextSubPage = -1;
                         } else this.subPage = newSubPage;
 
-                        this.translateSubPages() 
+                        this.translateSubPages()
                     }, 350)
                 } else {
                     //При закрывании страницы
-                    if(newPage === -2) 
-                    {
-                        menu.lastPage = this.page; 
+                    if (newPage === -2) {
+                        menu.lastPage = this.page;
                         newPage = 0;
                     }
                     //При открывании страницы, если надо ластовую
-                    if(newPage === -1 && menu.lastPage >= 0) newPage = menu.lastPage; 
+                    if (newPage === -1 && menu.lastPage >= 0) newPage = menu.lastPage;
                     this.page = newPage;
                     let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
-                    Vue.set(objInvite, 'name', menu.i18n.inviteText) 
+                    Vue.set(objInvite, 'name', menu.i18n.inviteText)
                     this.resetPageAfter(newPage);
 
                     if (this.coolDown) return;
@@ -819,17 +1220,16 @@ let menu = new Vue({
             //     this.anyVarSecond = null;
             //     this.anyVarC = null;
             // }
+            if(newPage === 8) this.theTime()
             this.updateTuning = false;
             this.recordKey = false;
         },
 
-        resetPageAfter(newPage)
-        {
+        resetPageAfter(newPage) {
             if (this.page === 5 && newPage === 0) this.wsWin = false
         },
 
-        setTimeout(nameFunction, time)
-        {
+        setTimeout(nameFunction, time) {
             setTimeout(nameFunction, time)
         },
 
@@ -841,16 +1241,13 @@ let menu = new Vue({
                 this.carsPointer = this.anyVarSecond.findIndex(el => el === this.anyVar)
                 //console.log(this.carsPointer)
             }
-            if(this.anyVarC[0] === this.anyVarSecond[this.carsPointer] && this.anyVarC[1].r !== this.anyVarC[2].r)  
-            {
-                menu.emitToServerWithWT(0, 'sCar:preview', { 
+            if (this.anyVarC[0] === this.anyVarSecond[this.carsPointer] && this.anyVarC[1].r !== this.anyVarC[2].r) {
+                menu.emitToServerWithWT(0, 'sCar:preview', {
                     model: 'thruster',
                     color: this.anyVarC[1],
-                    color2: this.anyVarC[2],  
+                    color2: this.anyVarC[2],
                 }, 48, this.anyVarSecond[this.carsPointer]);
-            }
-            else
-            {
+            } else {
                 menu.emitToServerWithWT(0, 'sCar:preview', {
                     model: 'thruster',
                     color: null,
@@ -901,8 +1298,7 @@ let menu = new Vue({
         },
 
         //
-        fUpdateLobbyMic(data)
-        {
+        fUpdateLobbyMic(data) {
             // //console.log(`fUpdateLobbyMic: ${JSON.stringify(data)}`)
             Object.keys(data).forEach(el => {
                 // el = el.toLocaleUpperCase(); 
@@ -910,26 +1306,23 @@ let menu = new Vue({
                     // //console.log(`fUpdateLobbyMic: ${player.name} === ${el} => ${player.name === el}`); 
                     return player.name === el
                 })
-                if(index === -1) return;
+                if (index === -1) return;
                 Vue.set(menu.lobby[index], 'mic', data[el])
                 // menu.lobby[index].mic = data[el]
-            })  
+            })
         },
 
-        fUpdateLobbyInGame(data)
-        {
+        fUpdateLobbyInGame(data) {
             Object.keys(data).forEach(el => {
                 let index = menu.lobby.findIndex(player => {
                     return player.name.toLowerCase() === el.toLowerCase()
                 })
-                if(index === -1) return;
+                if (index === -1) return;
                 // home + noReady
-                if(data[el] && (menu.lobby[index].ready === 0 || menu.lobby[index].ready === -1))
-                {
+                if (data[el] && (menu.lobby[index].ready === 0 || menu.lobby[index].ready === -1)) {
                     Vue.set(menu.lobby[index], 'inGame', data[el])
-                }
-                else Vue.set(menu.lobby[index], 'inGame', false)
-            })  
+                } else Vue.set(menu.lobby[index], 'inGame', false)
+            })
         },
 
         fInviteToLobby(lobbyID, myData) {
@@ -937,10 +1330,10 @@ let menu = new Vue({
             this.myData = myData;
             if (this.page !== 0 || !menu.show) //Если игрок не на главной странице
             {
-                this.emitToClient('cMenu:inviteToLobbyNotify'); 
+                this.emitToClient('cMenu:inviteToLobbyNotify');
                 this.nextSubPage = 4;
             } else this.switchPage(0, 4);
- 
+
             setTimeout(() => {
                 if (this.lobbyID === lobbyID && this.myData === myData) {
                     this.answerInvite(false)
@@ -949,17 +1342,16 @@ let menu = new Vue({
         },
 
         answerInvite(value) {
-            if(this.myData === null) return;
+            if (this.myData === null) return;
             this.emitServer('sLobby:answerInvite', value, this.lobbyID)
-            if(this.nextSubPage === 4) this.nextSubPage = 0; 
+            if (this.nextSubPage === 4) this.nextSubPage = 0;
             this.lobbyID = 0;
             this.myData = null;
 
-            if(this.subPage === 4)
-            {
+            if (this.subPage === 4) {
 
-                if(this.page !== 0) this.subPage = 0;
-                else this.switchPage(0, 0) 
+                if (this.page !== 0) this.subPage = 0;
+                else this.switchPage(0, 0)
             }
         },
 
@@ -1054,14 +1446,13 @@ let menu = new Vue({
                 online = false;
             })
         },
-        fRightClick(index)
-        {
+        fRightClick(index) {
             //Удаление новости 
             menu.emitToClient('bell:delete', index)
         },
 
-        loadLang(lang = this.lang) { 
-            if(lang !== this.lang) this.lang = lang;
+        loadLang(lang = this.lang) {
+            if (lang !== this.lang) this.lang = lang;
 
             if (lang === 'ru') this.loadRu();
             else this.loadEn();
@@ -1212,6 +1603,8 @@ let menu = new Vue({
                 clickForConnect: "НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ",
                 rClickForConvert: "НАЖМИТЕ ПРАВОЙ КНОПКОЙ, ЧТОБЫ КОНВЕРТИРОВАТЬ",
                 noMoney: "У вас не хватает средств. Пополните баланс и повторите попытку",
+                getAdward: "ПОЛУЧИТЬ НАГРАДУ",
+                getNextAdward: "СЛЕДУЮЩАЯ НАГРАДА СТАНЕТ ДОСТУПНА ЧЕРЕЗ",
             }
         },
         loadEn() {
@@ -1260,10 +1653,10 @@ let menu = new Vue({
         setPreviewCar(pointer = null, onlyColoring = false) {
             if (pointer === null) {
                 pointer = this.cars.findIndex(el => el.price === -1)
-                if (pointer === -1) pointer = 0; 
+                if (pointer === -1) pointer = 0;
                 this.carsPointer = pointer;
             }
-            menu.emitToServerWithWT(0, 'sCar:preview', { 
+            menu.emitToServerWithWT(0, 'sCar:preview', {
                 model: this.cars[pointer].model,
                 color: this.cars[pointer].color
             }, null, 0, onlyColoring);
@@ -1278,128 +1671,110 @@ let menu = new Vue({
                 menu.oldColor[2] !== this.cars[this.carsPointer].color.b) {
                 this.updateTuning = true;
                 let el = document.getElementById('changeColorCar');
-                if (el) 
-                {
+                if (el) {
                     el.style.backgroundColor = 'rgb(' + this.cars[this.carsPointer].color.r + ',' + this.cars[this.carsPointer].color.g + ',' + this.cars[this.carsPointer].color.b + ')';
                     // //console.log(`carColor: ${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}`)
-                    el.style.color = `#${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}` 
-                } 
+                    el.style.color = `#${contrastingColor([this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b])}`
+                }
             }
             // //console.log(`this.updateTuning: ${this.updateTuning}`)  
-             
+
             if (!this.cars[pointer].color) this.cars[pointer].color = {
                 r: 255,
                 g: 255,
                 b: 255
             }
-            if(menu.initColor()) colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b)
-            menu.setTimeout(() => 
-            {
-                if(menu.initColor()) colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b) 
-            }, 700)    
+            if (menu.initColor()) colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b)
+            menu.setTimeout(() => {
+                if (menu.initColor()) colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b)
+            }, 700)
         },
-        
+
         initColor() {
-            if(!initColor()) return false
-            ColorPicker(); 
+            if (!initColor()) return false
+            ColorPicker();
             return true;
         },
 
-        initColorToPos() {  
-            if(menu.initColor()) colorToPos('rgb ' + menu.cars[menu.carsPointer].color.r + ' ' + menu.cars[menu.carsPointer].color.g + ' ' + menu.cars[menu.carsPointer].color.b) 
+        initColorToPos() {
+            if (menu.initColor()) colorToPos('rgb ' + menu.cars[menu.carsPointer].color.r + ' ' + menu.cars[menu.carsPointer].color.g + ' ' + menu.cars[menu.carsPointer].color.b)
         },
 
-        sortLiveCar(plus, onlyMyCarsClick)
-        {
+        sortLiveCar(plus, onlyMyCarsClick) {
             //console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
-            if(onlyMyCarsClick === 3)
-            {
-                if(this.onlyMyCars) this.minSort = this.maxSort = 0
-                else 
-                {
-                    this.minSort = 1000;
-                    this.maxSort = 500000;
-                }
-            }
-            else if(this.onlyMyCars && onlyMyCarsClick === 1) this.onlyMyCars = false; 
-            let result = this.carsPointer;
-            if(+this.maxSort < +this.minSort) 
-            {
-                if(this.maxSort <= 0)
-                {
-                    this.minSort = 1000;
-                    this.maxSort = 500000;
-                }
+            if (onlyMyCarsClick === 3) {
+                if (this.onlyMyCars) this.minSort = this.maxSort = 0
                 else {
-                    this.minSort = this.maxSort-1
+                    this.minSort = 1000;
+                    this.maxSort = 500000;
+                }
+            } else if (this.onlyMyCars && onlyMyCarsClick === 1) this.onlyMyCars = false;
+            let result = this.carsPointer;
+            if (+this.maxSort < +this.minSort) {
+                if (this.maxSort <= 0) {
+                    this.minSort = 1000;
+                    this.maxSort = 500000;
+                } else {
+                    this.minSort = this.maxSort - 1
                 }
             }
-            if(plus)
-            {
-                if(result > this.cars.length) return result;
+            if (plus) {
+                if (result > this.cars.length) return result;
                 result += +1;
-                while(this.cars[result].price > this.maxSort) 
-                {
-                    if(this.cars[result].price === -1) break;
+                while (this.cars[result].price > this.maxSort) {
+                    if (this.cars[result].price === -1) break;
                     //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                    if(result === this.cars.length-1) break;
+                    if (result === this.cars.length - 1) break;
                     //console.log(`result(maxSort): ${result}`)
                     result -= +1;
                 }
-                while(this.cars[result].price < this.minSort)
-                {
-                    if(this.cars[result].price === -1) break;
+                while (this.cars[result].price < this.minSort) {
+                    if (this.cars[result].price === -1) break;
                     //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                    if(result === this.cars.length-1) break;
+                    if (result === this.cars.length - 1) break;
                     //console.log(`result(minSort): ${result}`)
                     result += +1;
                 }
-            }
-            else 
-            {
-                if(this.cars[result-+1].price > this.maxSort) 
-                {
+            } else {
+                if (this.cars[result - +1].price > this.maxSort) {
                     // result -= +1;
-                    while(this.cars[result].price > this.maxSort) 
-                    {
+                    while (this.cars[result].price > this.maxSort) {
                         //console.log(`${this.cars[result].price === -1}`)
-                        if(this.cars[result].price === -1) break;
+                        if (this.cars[result].price === -1) break;
                         //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                        if(result === this.cars.length-1) break;
+                        if (result === this.cars.length - 1) break;
                         //console.log(`result(maxSort): ${result}`)
                         result -= +1;
                     }
                 }
                 result -= 1;
                 //console.log(`${this.cars[result].price} | ${this.minSort}`)
-                if(this.cars[result].price < this.minSort) 
-                { 
+                if (this.cars[result].price < this.minSort) {
                     // result += +1;
-                    while(this.cars[result].price < this.minSort) 
-                    {
+                    while (this.cars[result].price < this.minSort) {
                         //console.log(`${this.cars[result].price === -1}`)
-                        if(this.cars[result].price === -1) break;
+                        if (this.cars[result].price === -1) break;
                         //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                        if(result === this.cars.length-1) break;
+                        if (result === this.cars.length - 1) break;
                         //console.log(`result(minSort): ${result}`)
                         result += +1;
                     }
                 }
             }
             //console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
-            if(this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
+            if (this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
 
-            return result; 
+            return result;
         },
         previewCar(plus, name = 'cars', onlyMyCarsClick = 1) {
             // if(!this.fCoolDown()) return;
             //console.log(`previewCar: ${plus}; ${name}; this.carsPointer: ${this.carsPointer};`) 
             let valueFalse = this.carsPointer,
                 valueTrue;
-            if((name === 'cars')) valueTrue = this.sortLiveCar(plus, onlyMyCarsClick)
+            if ((name === 'cars')) valueTrue = this.sortLiveCar(plus, onlyMyCarsClick)
             else {
                 if (plus) this.carsPointer === this[name].length - 1 ? valueTrue = this[name].length - 1 : valueTrue = this.carsPointer + 1;
-                else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1 
+                else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
             }
             if (valueFalse === valueTrue) return;
             if (name === 'cars') {
@@ -1417,21 +1792,27 @@ let menu = new Vue({
                 // if(valueTrue === valueFalse) this.carsPointer = -1
                 // else this.carsPointer = valueTrue
 
-                this.carsPointer = valueTrue;  
+                this.carsPointer = valueTrue;
                 let speicalSkins = [2, 21, 37, 1, 4, 11, 12, 10]
                 //console.log(`this.anyVarSecond: ${this.anyVarSecond[valueTrue]}; ${this.anyVarC[0] === this.anyVarSecond[valueTrue]}; ${this.anyVarC[1].r === this.anyVarC[2].r}`)
-                if (speicalSkins.some(el => el === this.anyVarSecond[valueTrue])) { 
-                    if(this.anyVarC[0] === this.anyVarSecond[valueTrue] && this.anyVarC[1].r !== this.anyVarC[2].r)  
-                    {
-                        menu.emitServer('sCar:preview', {  
+                if (speicalSkins.some(el => el === this.anyVarSecond[valueTrue])) {
+                    if (this.anyVarC[0] === this.anyVarSecond[valueTrue] && this.anyVarC[1].r !== this.anyVarC[2].r) {
+                        menu.emitServer('sCar:preview', {
                             model: 'thruster',
                             color: this.anyVarC[1],
-                            color2: this.anyVarC[2], 
-                        }, 48, this.anyVarSecond[valueTrue]); 
-                    }
-                    else
-                    {
-                        let color = {r: this.getRandomInt(255), g: this.getRandomInt(255), b: this.getRandomInt(255)}, color2 = {r: this.getRandomInt(255), g: this.getRandomInt(255), b: this.getRandomInt(255)};
+                            color2: this.anyVarC[2],
+                        }, 48, this.anyVarSecond[valueTrue]);
+                    } else {
+                        let color = {
+                                r: this.getRandomInt(255),
+                                g: this.getRandomInt(255),
+                                b: this.getRandomInt(255)
+                            },
+                            color2 = {
+                                r: this.getRandomInt(255),
+                                g: this.getRandomInt(255),
+                                b: this.getRandomInt(255)
+                            };
                         this.anyVarC = [this.anyVarSecond[valueTrue], color, color2];
                         menu.emitServer('sCar:preview', {
                             model: 'thruster',
@@ -1439,9 +1820,7 @@ let menu = new Vue({
                             color2: color2,
                         }, 48, this.anyVarSecond[valueTrue]);
                     }
-                }
-                else  
-                {
+                } else {
                     menu.emitServer('sCar:preview', {
                         model: 'thruster',
                         color: null,
@@ -1463,22 +1842,25 @@ let menu = new Vue({
             this.updateTuning = false;
 
         },
-        fSellCar(car) 
-        {
+        fSellCar(car) {
             let found = this.cars.findIndex(veh => veh.model === car.model)
             if (found === -1) return;
             this.cars[found].price = this.cars[found].price2;
-            this.cars[found].color = {r: 255, g: 255, b: 255}; 
+            this.cars[found].color = {
+                r: 255,
+                g: 255,
+                b: 255
+            };
             this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
             this.updateTuning = false;
             menu.cars.sort((a, b) => a.price - b.price)
-            this.setTimeout(() => { 
-                menu.emitToServerWithWT(0, 'sCar:preview', { 
+            this.setTimeout(() => {
+                menu.emitToServerWithWT(0, 'sCar:preview', {
                     model: menu.cars[menu.carsPointer].model,
                     color: menu.cars[menu.carsPointer].color
-                }, null, 0, false);  
-                if(!menu.initColor()) menu.setTimeout(() => menu.initColor(), 500) 
-            }, 200)   
+                }, null, 0, false);
+                if (!menu.initColor()) menu.setTimeout(() => menu.initColor(), 500)
+            }, 200)
         },
         request(friend, type, event = 'sFriends:rejectRequest') {
             if (type === 'friends') this[type] = this[type].filter(el => el.name !== friend)
@@ -1526,59 +1908,49 @@ let menu = new Vue({
             this[nameOut] = Math.ceil(this[nameIn] * +k);
             // if(menu['converterRM'] < 1) menu['converterRM'] = 1   
         },
-        getVipColor()
-        {
+        getVipColor() {
             return this.vip === 'deluxe' ? '#ff0000' : this.vip === 'premium' ? '#47b139' : '#ffc400'
         },
-        getVipEndTime()
-        {
+        getVipEndTime() {
             let left = this.myEndTime - +Date.now()
             //console.log(`getVipEndTime: ${this.myEndTime}; left: ${left}`)
-            if(+left > +86400000)
-            {
+            if (+left > +86400000) {
                 left /= +86400000;
                 left = `${left.toFixed(0)} ${this.i18n.days}`
-            }
-            else if(+left > +3600000)
-            {
+            } else if (+left > +3600000) {
                 left /= +3600000;
                 left = `${left.toFixed(0)} ${this.i18n.hours2}`
-            }
-            else if(+left > +60000)
-            {
+            } else if (+left > +60000) {
                 left /= +60000;
                 left = `${left.toFixed(0)} ${this.i18n.minutes}`
-            }
-            else left = `<1 ${this.i18n.minutes}`
+            } else left = `<1 ${this.i18n.minutes}`
 
             return left
         },
-        getVipPrice()
-        {
+        getVipPrice() {
             let value = this.assortPriv[this.assortSelected].k * this.assortDays
-            if(this.assortDays > 30) value -= +((this.assortDays/+30) * +25)
+            if (this.assortDays > 30) value -= +((this.assortDays / +30) * +25)
             return Math.ceil(value)
         },
         // getVipLevel(vip = menu.vip)
         // {
         //     return vip === 'deluxe' ? 3 : vip === 'premium' ? 2 : vip === 'vip' ? 1 : 0
         // },
-        fKeyDown(keyCode)
-        {
+        fKeyDown(keyCode) {
             // //console.log(keyCode) 
             // //console.log(menu.keyCodes[keyCode]) 
             // //console.log(menu.recordKey)  
             // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
-            if (menu.recordKey !== false) { 
+            if (menu.recordKey !== false) {
                 if (keyCode === 27) return menu.recordKey = false;
-                if (menu.keyCodes[keyCode] !== undefined) { 
+                if (menu.keyCodes[keyCode] !== undefined) {
                     let count = 0;
                     if (menu.keySitDown === keyCode) count += +1;
                     if (menu.keyQuickMarker === keyCode) count += +1;
                     if (menu.keyMapSize === keyCode) count += +1;
                     if (menu.keyFingerPointing === keyCode) count += +1;
-                    if (menu.keyMenu === keyCode) count += +1; 
-         
+                    if (menu.keyMenu === keyCode) count += +1;
+
                     if (count > 0) menu.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '2500');
                     else {
                         menu[menu.recordKey] = keyCode;
@@ -1586,97 +1958,120 @@ let menu = new Vue({
                     }
                 }
             }
-        }, 
-        fCheckCursor(value = false) 
-        {
+        },
+        fCheckCursor(value = false) {
             //console.log(`fCheckCursor: ${value}`)
-            if(value) //Положение "true"
+            if (value) //Положение "true"
             {
                 menu.fToggleCursor(false)
-                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+                if (menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
                 document.body.style.cursor = "auto"
                 menu.emit('showCursor', true)
-            }
-            else
-            {
+            } else {
                 menu.fToggleCursor(true)
-                if(menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
+                if (menu.cursorWhile !== null) clearInterval(menu.cursorWhile)
                 menu.cursorWhile = setInterval(menu.fCursoring, 0)
                 document.body.style.cursor = 'none'
-                menu.emit('showCursor', false)   
+                menu.emit('showCursor', false)
             }
         },
         //ADMIN
         //+10, -10, 0(update)
-        fGetReport(diff = 0)
-        {
-            if(diff !== 0) 
-            {
+        fGetReport(diff = 0) {
+            if (diff !== 0) {
                 menu.adminAny += +diff
                 menu.adminAny2 += +diff
             }
-            if(menu.adminAny < 0) menu.adminAny = 0
-            if(menu.adminAny2 < 10) menu.adminAny2 = 10 
+            if (menu.adminAny < 0) menu.adminAny = 0
+            if (menu.adminAny2 < 10) menu.adminAny2 = 10
 
-            menu.emitToServerWithWT(0, 'sReport:get', menu.adminType, menu.adminAny, menu.adminAny2) 
+            menu.emitToServerWithWT(0, 'sReport:get', menu.adminType, menu.adminAny, menu.adminAny2)
         },
         // fGetReportManual(start, stop)
         // {
         //     menu.emitServer('sReport:get', menu.adminType, start, stop)  
         // },
-        fDateToText(ms) 
-        { 
-            let result="", d = new Date(+ms); 
-            result += d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate() + 
-                      " "+ d.getHours()+":"+d.getMinutes()+":"+
-                      d.getSeconds();
+        fDateToText(ms) {
+            let result = "",
+                d = new Date(+ms);
+            result += d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() +
+                " " + d.getHours() + ":" + d.getMinutes() + ":" +
+                d.getSeconds();
             return result;
         },
-        fGetReportReason(number)
-        {
-            
-            console.log(`fGetReportReason: ${number}`) 
-            if(+number > +4) return 'НЕИЗВЕСТНО' 
+        fGetReportReason(number) {
+
+            console.log(`fGetReportReason: ${number}`)
+            if (+number > +4) return 'НЕИЗВЕСТНО'
             let reason = [
                 'ИСПОЛЬЗОВАНИЕ ЗАПРЕЩЕНОГО ПО',
                 'ИСПОЛЬЗОВАНИЕ БАГОВ',
-                'ОСКОРБИТЕЛЬНОЕ ПОВЕДЕНИЕ'] 
+                'ОСКОРБИТЕЛЬНОЕ ПОВЕДЕНИЕ'
+            ]
 
-            return reason[number-2].toUpperCase()
+            return reason[number - 2].toUpperCase()
         },
-        fGetReportReasonShort(number)
-        {
+        fGetReportReasonShort(number) {
             console.log(`fGetReportReasonShort: ${number}`)
-            if(+number > +4) return 'НЕИЗВЕСТНО'  
+            if (+number > +4) return 'НЕИЗВЕСТНО'
             let reason = [
                 'cheats',
                 'bugs',
-                'insult']  
+                'insult'
+            ]
 
-            return reason[number-2].toUpperCase()
+            return reason[number - 2].toUpperCase()
         },
+        fFormatDate(num) {
+            if (!num) return '00';
+            return num.toString().length === 1 ? `0${num}` : num
+        },
+        theTime: function () {
+            console.log(`theTime:`)
+            // Цикл обратного отсчета
+            menu.theTimeInterval()
+            let x = setInterval(() => menu.theTimeInterval(x), 1000);
+        },
+        theTimeInterval: function(x = null) 
+        {
+            let hours = 0,
+            minute = 0,
+            seconds = 0; 
+            console.log(`theTime2!`)
+
+            let diff = 86400000 - (Date.now() - +menu.lastDateAwards)
+
+            // Преобразование времени в дни, часы, минуты и секунды
+                hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            // Проверка истечения времени
+            if (diff < 0 || menu.page !== 8 || !menu.show) {
+                if(x !== null) clearInterval(x);
+            }
+
+            if(hours === undefined) hours = 0
+            Vue.set(menu, 'timeLeftAwards', `${menu.fFormatDate(hours)}:${menu.fFormatDate(minute)}:${menu.fFormatDate(seconds)}`)
+        }
     },
 });
 
 if ('alt' in window) {
     alt.on('toggle', toggle => {
-        menu.show = toggle;  
+        menu.show = toggle;
         // document.body.style.cursor = "auto" 
         // document.body.style.cursor = 'none' 
-        if(toggle)
-        {
+        if (toggle) {
             menu.fCheckCursor()
             menu.eventOpen();
-        }
-        else
-        {
-            if(menu.cursorWhile !== null) 
-            {
+        } else {
+            if (menu.cursorWhile !== null) {
                 clearInterval(menu.cursorWhile)
                 menu.cursorWhile = null;
-            } 
+            }
             document.body.style.cursor = 'none'
-            menu.emit('showCursor', false)    
+            menu.emit('showCursor', false)
         }
         // if(toggle)
         // {  
@@ -1828,8 +2223,59 @@ if ('alt' in window) {
                 online: true
             }
         ]
-        menu.adminCurrentReport = {id: 21, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 4, resultMsg: null, adminID: 17}
-        menu.reportPlayers = [{id: 17, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 3}, {id: 25, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 35, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 45, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 22, authorID: 17, type: 2, msg: '18', dateCreate: 1626731216981, result: 0}, {id: 18, authorID: 17, type: 0, msg: '12113333333333333333333333333333333333333333', dateCreate: 1626731216981,  result: 1},]
+        menu.adminCurrentReport = {
+            id: 21,
+            authorID: 17,
+            type: 2,
+            msg: '18',
+            dateCreate: 1626731216981,
+            result: 4,
+            resultMsg: null,
+            adminID: 17
+        }
+        menu.reportPlayers = [{
+            id: 17,
+            authorID: 17,
+            type: 2,
+            msg: '18',
+            dateCreate: 1626731216981,
+            result: 3
+        }, {
+            id: 25,
+            authorID: 17,
+            type: 2,
+            msg: '18',
+            dateCreate: 1626731216981,
+            result: 0
+        }, {
+            id: 35,
+            authorID: 17,
+            type: 2,
+            msg: '18',
+            dateCreate: 1626731216981,
+            result: 0
+        }, {
+            id: 45,
+            authorID: 17,
+            type: 2,
+            msg: '18',
+            dateCreate: 1626731216981,
+            result: 0
+        }, {
+            id: 22,
+            authorID: 17,
+            type: 2,
+            msg: '18',
+            dateCreate: 1626731216981,
+            result: 0
+        }, {
+            id: 18,
+            authorID: 17,
+            type: 0,
+            msg: '12113333333333333333333333333333333333333333',
+            dateCreate: 1626731216981,
+            result: 1
+        }, ]
         menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
@@ -1843,17 +2289,34 @@ if ('alt' in window) {
                 name: "Dima",
                 ready: 1,
                 inGame: true,
-                mic: false 
+                mic: false
             }
-        ]) 
+        ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true
-        menu.bell = [{id: 1, msg: "TICKET#7: 'Не открывать сервер': С такими предложениями мы посылаем нахуй", type: 1}, 
-        {id: 2, msg: "Вам поступил запрос в друзья", type: 0},{id: 4, msg: "Вам поступил запрос в друзь2", type: 3},{id: 3, msg: "Вам поступил запрос в друзь3", type: 4},]
-        menu.switchPage(3, 0) 
+        menu.bell = [{
+                id: 1,
+                msg: "TICKET#7: 'Не открывать сервер': С такими предложениями мы посылаем нахуй",
+                type: 1
+            },
+            {
+                id: 2,
+                msg: "Вам поступил запрос в друзья",
+                type: 0
+            }, {
+                id: 4,
+                msg: "Вам поступил запрос в друзь2",
+                type: 3
+            }, {
+                id: 3,
+                msg: "Вам поступил запрос в друзь3",
+                type: 4
+            },
+        ]
+        menu.switchPage(8, 0)
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
-        menu.bonusMoney = 5 
+        menu.bonusMoney = 5
         menu.wsWin = true
         // menu.fInviteToLobby(1, [{name: "Player", ready: 0}, {name: "Resce", ready: 0}, {name: "DarkLegend", ready: 1}])
         // menu.statusGame = true;
@@ -1867,17 +2330,20 @@ if ('alt' in window) {
     menu.carsPointer = 1
     menu.cars[1].price = -1
     // menu.anyVar = 34 //УБРАТЬ!
-        setTimeout(() => { 
-            menu.reportType = 0
-            if(menu.page !== 2) return;
-            menu.initColor()
+    setTimeout(() => {
+        menu.reportType = 0
+        if (menu.page !== 2) return;
+        menu.initColor()
     }, 800)
+    setTimeout(() => {
+        menu.currentAwards = 0
+    }, 400)
     menu.adminLevel = 1
-} 
+}
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
 document.addEventListener('keydown', function (event) {
-    menu.fKeyDown(event.keyCode) 
+    menu.fKeyDown(event.keyCode)
 });
 
 // document.addEventListener('mousedown', e => {
