@@ -1741,31 +1741,31 @@
                     <div class="progressMain">
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 1}"
-                            src="./img/awards/Money Emoji [Free Download Money Face Emoji].png">
+                            src="./img/awards/1.png">
                         </div>
                         <div class="progressAwards"> 
                             <img :class="{progressAwardsImgActive: currentAwards === 2}"
-                            src="./img/awards/Sunglasses Emoji [Free Download Cool Emoji].png">
+                            src="./img/awards/2.png">
                         </div>
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 3}"
-                            src="./img/awards/Drooling Emoji [Download iPhone Emojis].png">
+                            src="./img/awards/3.png">
                         </div>
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 4}"
-                            src="./img/awards/Crying Sad Emoji.png">
+                            src="./img/awards/4.png">
                         </div>
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 5}"
-                            src="./img/awards/Smile Emoji With Hearts.png">
+                            src="./img/awards/5.png">
                         </div>
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 6}"
-                            src="./img/awards/Party Face Emoji.png">
-                        </div>
+                            src="./img/awards/6.png">
+                        </div> 
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 7}"
-                            src="./img/awards/Hot Emoji.png">
+                            src="./img/awards/HotEmoji.png">
                         </div>
                     </div>
 
@@ -1798,7 +1798,7 @@
                         text-shadow: 1px 1px 2px #0000007e;
                         margin-top: 4vh; color: #ffffff;"
                         v-else>
-                            <span>{{i18n.getNextAward}}: {{timeLeftAwards}}</span>
+                            <span v-if="timeLeftAwards !== null">{{i18n.getNextAward}}: {{timeLeftAwards}}</span>
                         </div>
 
                         <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 1.3vh;

@@ -2050,10 +2050,11 @@ let menu = new Vue({
                 minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
                 seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            // Проверка истечения времени
-            if (diff < 0 || menu.page !== 8 || !menu.show || menu.currentAwards === 0) {
+            // Проверка истечения времени 
+            if (menu.page !== 8 || !menu.show) {
                 if(x !== null) clearInterval(x);
             }
+            if(diff < 0 || menu.currentAwards === 0) return Vue.set(menu, 'timeLeftAwards', null); 
 
             if(hours === undefined) hours = 0
             Vue.set(menu, 'timeLeftAwards', `${menu.fFormatDate(hours)}:${menu.fFormatDate(minute)}:${menu.fFormatDate(seconds)}`)
