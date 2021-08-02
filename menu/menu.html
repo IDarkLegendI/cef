@@ -1787,9 +1787,9 @@
                     <div style="display: flex; flex-direction: column; align-items: center;">
                         <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
                         font-family: 'Roboto Condensed', cursive;
-                        text-shadow: 1px 1px 2px #0000007e;
+                        text-shadow: 1px 1px 2px #0000007e; 
                         margin-top: 4vh;"
-                        v-if="Date.now() - lastDateAwards > 86400000" v-on:click="switchPage(0,0)">
+                        v-if="Date.now() - lastDateAwards > 86400000" v-on:click="emitToServerWithWT(1000, 'sAwards:use')">
                             <span>{{i18n.getAward}}</span>
                         </div>
                         
