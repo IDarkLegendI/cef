@@ -869,25 +869,25 @@
                                                 v-on:click="emitServer('sCar:applyTuning', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
                                                 v-show="updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">{{i18n.applyTuning}}($200)</a>
 
+                                            <a id="mouseFocus" style="background-color: #ffffff81"
+                                                v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
+
                                             <section
-                                                style="display: flex; align-items: center; justify-content: center;">
-                                                <a id="mouseFocus" style="background-color: rgba(255, 255, 255, 0.863);"
+                                                style="display: flex; align-items: center; justify-content: center;"
+                                                v-else>
+                                                <a id="mouseFocus" style="background-color: rgba(255, 255, 255, 0.863)"
                                                     v-if="+cars[carsPointer].price2 !== +0"
                                                     v-on:click="switchPage(2,2)">{{i18n.sellCar}}</a>
 
-                                                <a id="mouseFocus" v-if="cars[carsPointer].price !== -1" 
+                                                <a id="mouseFocus"
                                                     v-on:click="emitServer('sCar:set', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.select}}</a>
                                             </section>
-
-                                            
-                                            <a id="mouseFocus" style="background-color: #ffffff81"
-                                                v-if="cars[carsPointer].price === -1">{{i18n.selected}}</a>
                                         </section>
                                         <section style="display: flex; align-items: center;" v-else>
                                             <a id="mouseFocus" style="background-color: #fffb00; color: black"
                                                 v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
                                         </section>
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div
                                     style="padding-right: 2.5%; width: 17vw; height: 19.2vh; right: 2.5%; font-family: 'Oswald'; 
@@ -1458,8 +1458,8 @@
                             </transition>
                             <transition enter-active-class="animated slideInLeft faster"
                                 leave-active-class="animated slideOutRight faster">
-                                <div class="btnback"
-                                    v-show="(reportInput.length > 0 && reportType === '2') || reportInput.length > 6">
+                                <div class="btnback"  
+                                    v-show="(reportInput.length > 0 && reportType === '2' && reportInput.length < 5) || reportInput.length > 6">
                                     <a id="mouseFocus" v-on:click="reportSend()">{{i18n.send}}</a>
                                     <!-- switchPage(0,0); reportInput = ''; reportReason = reportType = -1; -->
                                 </div>

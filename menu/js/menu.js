@@ -1095,12 +1095,14 @@ let menu = new Vue({
         reportSend(text = menu.reportInput) {
             if (!menu.textValid(text)) return menu.emit('customNotify', 1, menu.i18n.notValid)
             if (menu.superCoolDown) return menu.emit('customNotify', 1, menu.i18n.stopFlood)
+            if(menu.reportInput.length > 5) return 
 
 
             let reason = menu.reportType;
-            if (menu.reportType === 2) {
+            if (+menu.reportType === +2) {
                 reason = 3 + +menu.reportReason
             }
+            console.log(`reason: ${reason}; ${menu.reportType}; ${menu.reportInput}; ${+menu.reportType === +2}`)  
             menu.emitToServerWithWT(250, 'sReport:new', reason, text)
             menu.superCoolDown = true
             menu.setTimeout(() => {
@@ -2008,11 +2010,11 @@ let menu = new Vue({
             let reason = [
                 'ИСПОЛЬЗОВАНИЕ ЗАПРЕЩЕНОГО ПО',
                 'ИСПОЛЬЗОВАНИЕ БАГОВ',
-                'ОСКОРБИТЕЛЬНОЕ ПОВЕДЕНИЕ'
+                'ОСКОРБИТЕЛЬНОЕ ПОВЕДЕНИЕ' 
             ]
 
-            return reason[number - 2].toUpperCase()
-        },
+            return reason[number - 1].toUpperCase()
+        }, 
         fGetReportReasonShort(number) {
             console.log(`fGetReportReasonShort: ${number}`)
             if (+number > +4) return 'НЕИЗВЕСТНО'
@@ -2022,7 +2024,7 @@ let menu = new Vue({
                 'insult'
             ]
 
-            return reason[number - 2].toUpperCase()
+            return reason[number - 1].toUpperCase()
         },
         fFormatDate(num) {
             if (!num) return '00';
