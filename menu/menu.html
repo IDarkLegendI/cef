@@ -1790,7 +1790,7 @@
                         text-shadow: 1px 1px 2px #0000007e;
                         margin-top: 4vh;"
                         v-if="Date.now() - lastDateAwards > 86400000" v-on:click="switchPage(0,0)">
-                            <span>{{i18n.getAdward}}</span>
+                            <span>{{i18n.getAward}}</span>
                         </div>
                         
                         <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
@@ -1798,7 +1798,15 @@
                         text-shadow: 1px 1px 2px #0000007e;
                         margin-top: 4vh; color: #ffffff "
                         v-else>
-                            <span>{{i18n.getNextAdward}}: {{timeLeftAwards}}</span>
+                            <span>{{i18n.getNextAward}}: {{timeLeftAwards}}</span>
+                        </div>
+                        
+                        <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
+                        font-family: 'Roboto Condensed', cursive;
+                        text-shadow: 1px 1px 2px #0000007e;
+                        margin-top: 4vh; color: #ffffff "
+                        v-else>
+                            <span>{{i18n.getNextAward}}: {{timeLeftAwards}}</span>
                         </div>
 
                         <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2vh;

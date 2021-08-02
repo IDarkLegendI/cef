@@ -3689,15 +3689,15 @@ input[type="button" i]:focus, .button :focus, .button :active {
 
 .progressAwards img {
   width: 2.5vw;
-  -webkit-transition: .4s ease-out;
-  transition: .4s ease-out;
+  -webkit-transition: .8s ease-out;
+  transition: .8s ease-out;
   -webkit-filter: drop-shadow(0 0 2px #00000080);
           filter: drop-shadow(0 0 2px #00000080);
 }
 
 .progressAwardsImgActive {
-  -webkit-transition: .4s ease-out;
-  transition: .4s ease-out;
+  -webkit-transition: .8s ease-out;
+  transition: .8s ease-out;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
   -webkit-filter: drop-shadow(0 0 10px #00000080);
@@ -3727,10 +3727,15 @@ input[type="button" i]:focus, .button :focus, .button :active {
       -ms-flex-pack: center;
           justify-content: center;
   min-width: 3.5vw;
+  -webkit-transition: .8s ease-out;
+  transition: .8s ease-out;
 }
 
 .progressTitleActive {
-  font-size: 1.5vw;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transition: .8s ease-out;
+  transition: .8s ease-out;
   color: #fff;
 }
 

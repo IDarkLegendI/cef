@@ -776,8 +776,8 @@ let menu = new Vue({
             clickForConnect: "CLICK TO CONNECT",
             rClickForConvert: "RIGHT CLICK TO CONVERT",
             noMoney: "You don't have enough funds. Top up your balance and try again",
-            getAdward: "GET A REWARD",
-            getNextAdward: "THE NEXT AWARD WILL BE AVAILABLE VIA",
+            getAward: "GET A REWARD",
+            getNextAward: "THE NEXT AWARD WILL BE AVAILABLE VIA",
         },
         i18nTemp: null,
         avatars: {
@@ -1603,8 +1603,9 @@ let menu = new Vue({
                 clickForConnect: "НАЖМИТЕ, ЧТОБЫ ПОДКЛЮЧИТЬ",
                 rClickForConvert: "НАЖМИТЕ ПРАВОЙ КНОПКОЙ, ЧТОБЫ КОНВЕРТИРОВАТЬ",
                 noMoney: "У вас не хватает средств. Пополните баланс и повторите попытку",
-                getAdward: "ПОЛУЧИТЬ НАГРАДУ",
-                getNextAdward: "СЛЕДУЮЩАЯ НАГРАДА СТАНЕТ ДОСТУПНА ЧЕРЕЗ",
+                getAward: "ПОЛУЧИТЬ НАГРАДУ",
+                getNextAward: "СЛЕДУЮЩАЯ НАГРАДА СТАНЕТ ДОСТУПНА ЧЕРЕЗ",
+                award: "СЛЕДУЮЩАЯ НАГРАДА СТАНЕТ ДОСТУПНА ЧЕРЕЗ",
             }
         },
         loadEn() {
