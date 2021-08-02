@@ -627,7 +627,7 @@ let menu = new Vue({
 
         // Awards
         currentAwards: 0,
-        lastDateAwards: 1627854415150,
+        lastDateAwards: 0,
         timeLeftAwards: '',
 
         //i18n
@@ -2035,13 +2035,15 @@ let menu = new Vue({
             let x = setInterval(() => menu.theTimeInterval(x), 1000);
         },
         theTimeInterval: function(x = null) 
-        {
+        { 
+            let nowDiff = Date.now() - +menu.lastDateAwards
+            if(nowDiff > 172800000) menu.currentAwards = 0;
             let hours = 0,
             minute = 0,
             seconds = 0; 
             console.log(`theTime2!`)
 
-            let diff = 86400000 - (Date.now() - +menu.lastDateAwards)
+            let diff = 86400000 - (nowDiff) 
 
             // Преобразование времени в дни, часы, минуты и секунды
                 hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -2049,7 +2051,7 @@ let menu = new Vue({
                 seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
             // Проверка истечения времени
-            if (diff < 0 || menu.page !== 8 || !menu.show) {
+            if (diff < 0 || menu.page !== 8 || !menu.show || menu.currentAwards === 0) {
                 if(x !== null) clearInterval(x);
             }
 
@@ -2337,9 +2339,8 @@ if ('alt' in window) {
         if (menu.page !== 2) return;
         menu.initColor()
     }, 800)
-    setTimeout(() => {
-        menu.currentAwards = 0
-    }, 400)
+    menu.currentAwards = 2
+    menu.lastDateAwards = 1627854415150
     menu.adminLevel = 1
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
