@@ -1050,7 +1050,7 @@ let menu = new Vue({
 
         // Срабатывает, когда человек "открывает" меню
         eventOpen() {
-            // 
+            menu.resetPage(menu.page, menu.subPage) 
         },
 
         translateSubPages() {
