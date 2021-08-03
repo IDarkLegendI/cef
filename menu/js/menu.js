@@ -718,7 +718,7 @@ let menu = new Vue({
             timeActions: "VALIDITY TIME",
             agreeOffer: "You agree to all the terms and conditions of the offer",
             days: "DAYS",
-            sortByPrice: "SORT BY PRICE",
+            sortByPrice: "SORT",
             minValue: "MINIMUM",
             maxValue: "MAXIMUM",
             infoSort: "TO SEE YOUR CARS SET THE MINIMUM PRICE TO ZERO",
@@ -1548,7 +1548,7 @@ let menu = new Vue({
                 timeActions: "ВРЕМЯ ДЕЙСТВИЯ",
                 agreeOffer: "Вы соглашаетесь со всеми правилами и условиями офферты",
                 days: "ДНЕЙ",
-                sortByPrice: "СОРТИРОВКА ПО ЦЕНЕ",
+                sortByPrice: "СОРТИРОВКА",
                 minValue: "МИНИМАЛЬНАЯ",
                 maxValue: "МАКСИМАЛЬНАЯ",
                 infoSort: "ЧТОБЫ ВИДЕТЬ СВОИ МАШИНЫ ПОСТАВЬТЕ МИНИМАЛЬНУЮ ЦЕНУ НА НОЛЬ",
@@ -2320,7 +2320,7 @@ if ('alt' in window) {
                 type: 4
             },
         ]
-        menu.switchPage(8, 0)
+        menu.switchPage(2, 0)
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5

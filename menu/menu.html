@@ -24,7 +24,7 @@
     <!-- <canvas style="z-index: 99;"></canvas> -->
     <section id="body">
         <div id="cursor"></div>
-        <div id="aura"></div> 
+        <div id="aura"></div>
         <!-- ГЛАВНАЯ -->
         <transition appear enter-active-class="animated zoomInUp fast"
             leave-active-class="animated rotateOutUpLeft fast" name="custom-classes-transition">
@@ -40,12 +40,13 @@
                             </div>
                             <span style="font-size: 2.8vh;">${{money.toFixed(0)}}</span>
                         </div>
-                        <div class="buttons"> 
+                        <div class="buttons">
                             <div class="btns1">
                                 <div :style="{order: adminLevel}" class="btn" id="mouseFocus"
                                     v-on:click="adminLevel === 0 ? emit('cMenu:DiscordInvite') : switchPage(7,0); adminBell = false">
-                                    <span>{{adminLevel === 0 ? i18n.discord : "АДМИН ПАНЕЛЬ"}}</span> 
-                                    <img alt="" src="./img/record.png" style="width: 0.8vw; height: 0.8vw; margin-left: 0.25vw;" v-if="adminBell">
+                                    <span>{{adminLevel === 0 ? i18n.discord : "АДМИН ПАНЕЛЬ"}}</span>
+                                    <img alt="" src="./img/record.png"
+                                        style="width: 0.8vw; height: 0.8vw; margin-left: 0.25vw;" v-if="adminBell">
                                 </div>
                                 <div class="btn" id="mouseFocus" v-on:click="switchPage(6,0)">
                                     <span>{{i18n.managmentSub}}</span>
@@ -543,7 +544,7 @@
                                             v-bind:key="item.id" v-for="(item, index) in bell">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros avatarNews">
-                                                    <!-- 0 - error, 1 - ok --> 
+                                                    <!-- 0 - error, 1 - ok -->
                                                     <img src="../menu/img/no.png" v-if="item.type === 0">
                                                     <img src="../menu/img/accepted.png" v-if="item.type === 1">
                                                     <img src="../menu/img/justice-scale.png" v-if="item.type === 2">
@@ -887,50 +888,13 @@
                                             <a id="mouseFocus" style="background-color: #fffb00; color: black"
                                                 v-on:click="emitServer('sCar:buy', {model: cars[carsPointer].model, color: cars[carsPointer].color})">{{i18n.buy}}</a>
                                         </section>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div
-                                    style="padding-right: 2.5%; width: 17vw; height: 19.2vh; right: 2.5%; font-family: 'Oswald'; 
+                                    style="padding-right: 2.5%; width: 17vw; right: 2.5%; font-family: 'Oswald';  transition: all 1s;
                             color: #efefefea; font-size: 1.3vw; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
                                     <h1>{{i18n.sortByPrice}}</h1>
                                     <hr style="width: 100%; height: 0;">
-                                    <div
-                                        style="display: flex; justify-content: space-between; height: 10vh; align-items: center;">
-                                        <div class="priceRange"
-                                            style="display: flex; flex-direction: column; align-items: center; width: 10vw;">
-                                            <div style="flex-basis: 20%;">
-                                                <h1 style="font-size: 0.8vw;">{{i18n.minValue}}</h1>
-                                            </div>
-
-                                            <div style="flex-basis: 25%;"><input @change="previewCar(false)"
-                                                    max="500000" min="0" step="1000" style="width: 6vw;" type="range"
-                                                    v-model="minSort">
-                                            </div>
-
-                                            <div style="flex-basis: 30%;"><input @change="previewCar(false)"
-                                                    onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.minSort = 0"
-                                                    style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;"
-                                                    type="text" v-model="minSort"></div>
-                                        </div>
-
-                                        <div class="priceRange"
-                                            style="display: flex; flex-direction: column; align-items: center; width: 10vw;">
-                                            <div style="flex-basis: 20%;">
-                                                <h1 style="font-size: 0.8vw;">{{i18n.maxValue}}</h1>
-                                            </div>
-
-                                            <div style="flex-basis: 25%;"><input @change="previewCar(false)"
-                                                    max="500000" min="0" step="1000" style="width: 6vw;" type="range"
-                                                    v-model="maxSort">
-                                            </div>
-
-                                            <div style="flex-basis: 30%;"><input @change="previewCar(false)"
-                                                    onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.maxSort = 0"
-                                                    style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;"
-                                                    type="text" v-model="maxSort"></div>
-                                        </div>
-                                    </div>
-
                                     <div class="checkboxes" style="transform: scale(0.8); margin: 0;">
                                         <div class="checkboxtest" style="margin: 0;">
                                             <span style="text-shadow: 0 0 3px black;">{{i18n.onlyMyCars}}</span>
@@ -938,6 +902,48 @@
                                                     id="onlyMyCars" type="checkbox" v-model='onlyMyCars' /><label
                                                     for="onlyMyCars" id="mouseFocus"></label></div>
                                         </div>
+                                    </div>
+                                    <hr style="width: 100%; height: 0;">
+                                    <div style="min-height: 10vh;">
+                                        <transition enter-active-class="animated fadeInUp fast"
+                                            leave-active-class="animated fadeOutDown fast">
+                                            <div style="display: flex; justify-content: space-between; align-items: center;"
+                                                v-show="!onlyMyCars">
+                                                <div class="priceRange"
+                                                    style="display: flex; flex-direction: column; align-items: center; width: 10vw;">
+                                                    <div style="flex-basis: 20%;">
+                                                        <h1 style="font-size: 0.8vw;">{{i18n.minValue}}</h1>
+                                                    </div>
+
+                                                    <div style="flex-basis: 25%;"><input @change="previewCar(false)"
+                                                            max="500000" min="0" step="1000" style="width: 6vw;"
+                                                            type="range" v-model="minSort">
+                                                    </div>
+
+                                                    <div style="flex-basis: 30%;"><input @change="previewCar(false)"
+                                                            onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.minSort = 0"
+                                                            style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;"
+                                                            type="text" v-model="minSort"></div>
+                                                </div>
+
+                                                <div class="priceRange"
+                                                    style="display: flex; flex-direction: column; align-items: center; width: 10vw;">
+                                                    <div style="flex-basis: 20%;">
+                                                        <h1 style="font-size: 0.8vw;">{{i18n.maxValue}}</h1>
+                                                    </div>
+
+                                                    <div style="flex-basis: 25%;"><input @change="previewCar(false)"
+                                                            max="500000" min="0" step="1000" style="width: 6vw;"
+                                                            type="range" v-model="maxSort">
+                                                    </div>
+
+                                                    <div style="flex-basis: 30%;"><input @change="previewCar(false)"
+                                                            onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) menu.maxSort = 0"
+                                                            style="width: 5.8vw;  border-radius: 0.4em; background-color: #fff; text-align: center; font-family: 'Oswald'; font-size: 0.9vw;"
+                                                            type="text" v-model="maxSort"></div>
+                                                </div>
+                                            </div>
+                                        </transition>
                                     </div>
                                     <!-- <transition enter-active-class="animated fadeInUp" 
                             leave-active-class="animated fadeOutDown"> 
@@ -1092,10 +1098,11 @@
                                         <div class="donatimgform">
                                             <img alt="" src="img/gold.png">
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div @contextmenu="converterD < 10 ? converterD = 10 : '';  converterRM < 1 ? converterRM = 1 : '';     
-                                converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)" class="calculator leftform">
+                                converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)"
+                                    class="calculator leftform">
                                     <h1>КОНВЕРТЕР</h1>
                                     <div class="converterblock">
                                         <div class="inputcalc">
@@ -1105,21 +1112,21 @@
                                         </div>
                                         <div class="donatimgform">
                                             <img alt="" src="img/shop/bounce.png">
-                                        </div> 
+                                        </div>
                                         <div class="inputcalc">
                                             <span>$</span>
                                             <input max="1000000000" min="10" type="number" v-model="converterD"
                                                 v-on:keyup="changeConverter('converterRM', 'converterD', 0.1)">
                                         </div>
                                     </div>
-                                    <input :value="i18n.rClickForConvert" class="buttonBuy"
-                                        style="font-size: 1.3vh;" type="button">
+                                    <input :value="i18n.rClickForConvert" class="buttonBuy" style="font-size: 1.3vh;"
+                                        type="button">
                                 </div>
                             </div>
                             <div class="rightdonat">
                                 <div class="premium donatform"
                                     v-on:click="assortSelected = 'premium'; switchPage(3, 1)">
-                                    <h1>PREMIUM</h1> 
+                                    <h1>PREMIUM</h1>
                                     <ul>
                                         <li>АВТОМОБИЛИ</li>
                                         <li>МНОГО ОДЕЖДЫ</li>
@@ -1458,7 +1465,7 @@
                             </transition>
                             <transition enter-active-class="animated slideInLeft faster"
                                 leave-active-class="animated slideOutRight faster">
-                                <div class="btnback"  
+                                <div class="btnback"
                                     v-show="(reportInput.length > 0 && reportType === '2' && reportInput.length < 5) || reportInput.length > 6">
                                     <a id="mouseFocus" v-on:click="reportSend()">{{i18n.send}}</a>
                                     <!-- switchPage(0,0); reportInput = ''; reportReason = reportType = -1; -->
@@ -1528,13 +1535,15 @@
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; height: 10vh;">
+                            <div
+                                style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; height: 10vh;">
                                 <span style="font-size: 3vh;">ПАНЕЛЬ АДМИНИСТРАТОРА {{adminLevel}} УРОВНЯ</span>
                                 <div class="nameupline">
                                     <span>{{myName}}</span>
                                 </div>
                             </div>
-                            <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                            <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
+                                v-on:click="switchPage(0,0)">
                                 <span>{{i18n.btnBack}}</span>
                             </div>
                         </div>
@@ -1544,9 +1553,9 @@
                                 <img alt="" src="./img/cigar.png"> УПРАВЛЕНИЕ ВОПРОСАМИ
                             </button>
                             <button class="exitToMenu adminButton"
-                                v-on:click="adminAny = 0; adminAny2 = 10; adminType = 1; fGetReport('0'); switchPage(7, 1)"> 
+                                v-on:click="adminAny = 0; adminAny2 = 10; adminType = 1; fGetReport('0'); switchPage(7, 1)">
                                 <img alt="" src="./img/gavel.png"> УПРАВЛЕНИЕ ЖАЛОБАМИ
-                            </button> 
+                            </button>
                             <button class="exitToMenu adminButton" v-on:click="switchPage(0, 0)">
                                 <img alt="" src="./img/win/enter.png"> {{i18n.exitToMenu}}
                             </button>
@@ -1563,13 +1572,15 @@
                             </div>
                             <span style="font-size: 3vh;">УПРАВЛЕНИЕ
                                 {{adminType === 0 ? "ВОПРОСАМИ" : "ЖАЛОБАМИ"}}</span>
-                            <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus" v-on:click="switchPage(7,0)"> 
+                            <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
+                                v-on:click="switchPage(7,0)">
                                 <span>{{i18n.btnBack}}</span>
                             </div>
-                        </div>  
+                        </div>
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <div class="zaprosi" style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
+                            <div class="zaprosi"
+                                style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-bind:key="ticket.id"
                                         v-for="(ticket, index) in reportPlayers">
@@ -1581,34 +1592,52 @@
                                             </div>
                                             <div
                                                 style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                                <div class="nickzapros reportZapros typeLP" style="min-width: 6vw;  max-width: 6vw;">
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 6vw;  max-width: 6vw;">
                                                     {{ticket.type === 0 ? "ВОПРОС" : ticket.type === 1 ? "ИДЕЯ" : "ЖАЛОБА"}}
-                                                    ID:{{ticket.id}} 
+                                                    ID:{{ticket.id}}
                                                 </div>
-                                                <div class="nickzapros reportZapros typeLP" style="min-width: 5vw;  max-width: 5vw;">
-                                                    АВТОР ID: {{ticket.authorID}} 
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 5vw;  max-width: 5vw;">
+                                                    АВТОР ID: {{ticket.authorID}}
                                                 </div>
-                                                <div class="nickzapros reportZapros" style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw" v-if="ticket.type >= 2">
-                                                    ПРОВЕРИТЬ ИГРОКА ID:{{ticket.msg}} НА ПРЕДМЕТ {{fGetReportReasonShort(ticket.type)}}</div>
-                                                <div class="nickzapros reportZapros" style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw" v-else>
-                                                    MSG: {{ticket.msg}}</div> 
-                                                <div class="nickzapros reportZapros typeLP" style="min-width: 9vw; max-width: 9vw;">
+                                                <div class="nickzapros reportZapros"
+                                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw"
+                                                    v-if="ticket.type >= 2">
+                                                    ПРОВЕРИТЬ ИГРОКА ID:{{ticket.msg}} НА ПРЕДМЕТ
+                                                    {{fGetReportReasonShort(ticket.type)}}</div>
+                                                <div class="nickzapros reportZapros"
+                                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw" v-else>
+                                                    MSG: {{ticket.msg}}</div>
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 9vw; max-width: 9vw;">
                                                     {{fDateToText(ticket.dateCreate)}}
-                                                </div>   
-                                                <div class="nickzapros reportZapros typeLP" style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">  
-                                                    {{ticket.result === 0 ? "НОВЫЙ" : ticket.result === 1 ? "ОТЛОЖЕННЫЙ" : ticket.result === 3 ? "ОТКЛОНЕН" : ticket.result === 2 ? "ЗАКРЫТ" : "ПРОСРОЧЕННЫЙ"}} 
-                                                    {{(ticket.result === 2 || ticket.result === 3) && ticket.adminID ? `BY ${ticket.adminID}` : ""}}   
                                                 </div>
-                                                <div style="display: flex; justify-content: space-around; min-width: 5vw;">  
-                                                    <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ" style="margin-right: 0;">
-                                                        <img alt="" src="img/pencil.png" 
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
+                                                    {{ticket.result === 0 ? "НОВЫЙ" : ticket.result === 1 ? "ОТЛОЖЕННЫЙ" : ticket.result === 3 ? "ОТКЛОНЕН" : ticket.result === 2 ? "ЗАКРЫТ" : "ПРОСРОЧЕННЫЙ"}}
+                                                    {{(ticket.result === 2 || ticket.result === 3) && ticket.adminID ? `BY ${ticket.adminID}` : ""}}
+                                                </div>
+                                                <div
+                                                    style="display: flex; justify-content: space-around; min-width: 5vw;">
+                                                    <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
+                                                        style="margin-right: 0;">
+                                                        <img alt="" src="img/pencil.png"
                                                             v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,2);">
                                                     </div>
-                                                    <div class="btnzapros" data-title="НАБЛЮДАТЬ" style="margin-right: 0;" v-if="ticket.type >= 2 && ticket.online"> 
-                                                        <img alt="" src="img/eye.png" v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); playingTime = -1; adminCurrentReport = reportPlayers[index]; assortDays = 120;">  
+                                                    <div class="btnzapros" data-title="НАБЛЮДАТЬ"
+                                                        style="margin-right: 0;"
+                                                        v-if="ticket.type >= 2 && ticket.online">
+                                                        <img alt="" src="img/eye.png"
+                                                            v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); playingTime = -1; adminCurrentReport = reportPlayers[index]; assortDays = 120;">
                                                     </div>
-                                                    <div class="btnzapros" data-title="ОТКЛОНИТЬ" style="margin-right: 0;" v-if="ticket.type <= 1 && ticket.result === 0"> 
-                                                        <img alt="" onclick="setTimeout(() => menu.fGetReport('0'), 250)" src="img/close.png" v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
+                                                    <div class="btnzapros" data-title="ОТКЛОНИТЬ"
+                                                        style="margin-right: 0;"
+                                                        v-if="ticket.type <= 1 && ticket.result === 0">
+                                                        <img alt=""
+                                                            onclick="setTimeout(() => menu.fGetReport('0'), 250)"
+                                                            src="img/close.png"
+                                                            v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1639,43 +1668,56 @@
                                 <span>GTAROYAL.RU</span>
                             </div>
                             <span style="font-size: 3vh;">РЕДАКТИРОВАНИЕ ЗАЯВКИ</span>
-                            <div @contextmenu="switchPage(7,0)" class="btn" id="mouseFocus" v-on:click="switchPage(7,1); fGetReport('0');">
+                            <div @contextmenu="switchPage(7,0)" class="btn" id="mouseFocus"
+                                v-on:click="switchPage(7,1); fGetReport('0');">
                                 <span>{{i18n.btnBack}}</span>
-                            </div> 
-                        </div>
-                        <section style="display: flex; justify-content: center; align-items: center;height: 30vh;" v-if="adminCurrentReport.type <= 1">
-                            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <span style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
-                                {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}} {{adminCurrentReport.msg}}
-                            </span> 
-                            <span style="font-size: 2.5vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw; padding-top: 2vh;" 
-                            v-if="adminCurrentReport.adminID !== null">
-                                АДМИНИСТРАТОР#{{adminCurrentReport.adminID}} 
-                                {{`${adminCurrentReport.resultMsg === null ? 'ПРОИЗВЕЛ ПОСЛЕДНИЕ ДЕЙСТВИЕ' : 'ОТВЕТИЛ: ' + adminCurrentReport.resultMsg}`}}
-                            </span> 
-                            <div class="settings changePassword" style="width: 100%">
-                                <div class="group" style="margin-right: 0; width: 38vw; margin-top: 4vh;">
-                                    <input class="inputText"
-                                        id="reportMSG" required
-                                        style="width: 38vw;" type="text">
-                                    <span class="bar" style="width: 38vw;"></span>
-                                    <label class="labelText">{{adminCurrentReport.adminID === null ? "ОТВЕТ ДЛЯ ИГРОКА" : "НЕ СОГЛАСНЫ С ПРЕДЫДУЩИМ ОТВЕТОМ? ВАШ ОТВЕТ ЗАМЕНИТ СТАРЫЙ"}}</label>
-                                </div> 
                             </div>
-                            <div style="display: flex; justify-content: center;">
-                                <div class="btnback">
-                                    <a href="#" id="mouseFocus"
-                                        onclick="menu.emitServer('sReport:edit', document.getElementById('reportMSG').value, 0, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, menu.adminCurrentReport.msg); setTimeout(() => menu.fGetReport('0'), 250)">ОТПРАВИТЬ СООБЩЕНИЕ И ЗАКРЫТЬ ЗАЯВКУ</a>
+                        </div>
+                        <section style="display: flex; justify-content: center; align-items: center;height: 30vh;"
+                            v-if="adminCurrentReport.type <= 1">
+                            <div
+                                style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <span
+                                    style="font-size: 2.5vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw;">
+                                    {{adminCurrentReport.type === 0 ? "ВОПРОС ИГРОКА:" : "ИГРОК ПРЕДЛАГАЕТ:"}}
+                                    {{adminCurrentReport.msg}}
+                                </span>
+                                <span
+                                    style="font-size: 2.5vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; width: 38vw; padding-top: 2vh;"
+                                    v-if="adminCurrentReport.adminID !== null">
+                                    АДМИНИСТРАТОР#{{adminCurrentReport.adminID}}
+                                    {{`${adminCurrentReport.resultMsg === null ? 'ПРОИЗВЕЛ ПОСЛЕДНИЕ ДЕЙСТВИЕ' : 'ОТВЕТИЛ: ' + adminCurrentReport.resultMsg}`}}
+                                </span>
+                                <div class="settings changePassword" style="width: 100%">
+                                    <div class="group" style="margin-right: 0; width: 38vw; margin-top: 4vh;">
+                                        <input class="inputText" id="reportMSG" required style="width: 38vw;"
+                                            type="text">
+                                        <span class="bar" style="width: 38vw;"></span>
+                                        <label
+                                            class="labelText">{{adminCurrentReport.adminID === null ? "ОТВЕТ ДЛЯ ИГРОКА" : "НЕ СОГЛАСНЫ С ПРЕДЫДУЩИМ ОТВЕТОМ? ВАШ ОТВЕТ ЗАМЕНИТ СТАРЫЙ"}}</label>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: center;">
+                                    <div class="btnback">
+                                        <a href="#" id="mouseFocus"
+                                            onclick="menu.emitServer('sReport:edit', document.getElementById('reportMSG').value, 0, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, menu.adminCurrentReport.msg); setTimeout(() => menu.fGetReport('0'), 250)">ОТПРАВИТЬ
+                                            СООБЩЕНИЕ И ЗАКРЫТЬ ЗАЯВКУ</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </section>
-                        <section style="display: flex; flex-direction: column; justify-content: center; align-items: center;" v-if="adminCurrentReport.type >= 2">
-                            <span style="font-size: 3vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;">
-                                ЖАЛОБА НА ИГРОКА {{adminCurrentReport.msg}} ЗА {{fGetReportReason(adminCurrentReport.type)}}
+                        <section
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;"
+                            v-if="adminCurrentReport.type >= 2">
+                            <span
+                                style="font-size: 3vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;">
+                                ЖАЛОБА НА ИГРОКА {{adminCurrentReport.msg}} ЗА
+                                {{fGetReportReason(adminCurrentReport.type)}}
                             </span>
-                            <span style="font-size: 3vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;" v-if="adminCurrentReport.adminID !== null">
-                                ПОСЛЕДНЕЕ ДЕЙСТВИЕ ОТ ADMIN#{{adminCurrentReport.adminID}}: 
+                            <span
+                                style="font-size: 3vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top: 2vh;"
+                                v-if="adminCurrentReport.adminID !== null">
+                                ПОСЛЕДНЕЕ ДЕЙСТВИЕ ОТ ADMIN#{{adminCurrentReport.adminID}}:
                                 {{
                                     adminCurrentReport.result === 0 ? "РАССМАТРИВАЛ" : adminCurrentReport.result === 1 ? "ОТЛОЖИЛ" :  
                                     adminCurrentReport.result === 3 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 2 ? "ЗАКРЫЛ" : "ПРОСРОЧИЛ" 
@@ -1688,8 +1730,8 @@
                                     v-on:click="assortDays = 60">ЕСТЬ ПОДОЗРЕНИЯ</span>
                                 <span :class="{minibtnRed: +assortDays === +90}" class="minibtn"
                                     v-on:click="assortDays = 90; place = 3">ИГРОК НАРУШИЛ ПРАВИЛА ПРОЕКТА</span>
-                            </div>                           
-                            
+                            </div>
+
                             <div class="settingsh1" style="padding-top: 4vh;" v-if="assortDays === 90">
                                 <span :class="{minibtnRed: +place === +0}" class="minibtn"
                                     v-on:click="place = 0">ИСПОЛЬЗОВАЛ СТОРОНЕЕ ПО</span>
@@ -1701,20 +1743,23 @@
                                     v-on:click="place = 3">ДРУГОЕ</span>
                             </div>
 
-                            <div class="settings changePassword" style="width: 100%; display: flex; justify-content: center; align-items: center; padding-top: 2vh" v-if="+assortDays === +90">
+                            <div class="settings changePassword"
+                                style="width: 100%; display: flex; justify-content: center; align-items: center; padding-top: 2vh"
+                                v-if="+assortDays === +90">
                                 <div class="group" style="margin-right: 0; width: 38vw;">
-                                    <input class="inputText inputTextRed"
-                                        id="reportMSG" onkeyup="this.value=this.value.replace(/\s+/gi,'')" required
+                                    <input class="inputText inputTextRed" id="reportMSG"
+                                        onkeyup="this.value=this.value.replace(/\s+/gi,'')" required
                                         style="width: 38vw;" type="text">
                                     <span class="bar barRed" style="width: 38vw;"></span>
                                     <label class="labelText">УКАЖИТЕ НАСКОЛЬКО ЧАСОВ ЗАБАНИТЬ ИГРОКА</label>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: center;" v-show="assortDays !== +120">
-                                <div class="btnback"> 
+                                <div class="btnback">
                                     <a href="#" id="mouseFocus"
                                         onclick="menu.emitServer('sReport:edit', menu.assortDays === +90 ? document.getElementById('reportMSG').value : null,  
-                                        menu.assortDays/+30, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, null, menu.adminCurrentReport.msg, menu.place); setTimeout(() => menu.fGetReport('0'), 250)">ПРИМЕНИТЬ ИЗМЕНЕНИЯ</a> 
+                                        menu.assortDays/+30, menu.adminCurrentReport.id, menu.adminCurrentReport.authorID, null, menu.adminCurrentReport.msg, menu.place); setTimeout(() => menu.fGetReport('0'), 250)">ПРИМЕНИТЬ
+                                        ИЗМЕНЕНИЯ</a>
                                 </div>
                             </div>
                         </section>
@@ -1740,41 +1785,36 @@
                 <div style="display: flex; flex-direction: column; align-items: center; margin-top: 2vh;">
                     <div class="progressMain">
                         <div class="progressAwards">
-                            <img :class="{progressAwardsImgActive: currentAwards === 1}"
-                            src="./img/awards/1.png">
-                        </div>
-                        <div class="progressAwards"> 
-                            <img :class="{progressAwardsImgActive: currentAwards === 2}"
-                            src="./img/awards/2.png">
+                            <img :class="{progressAwardsImgActive: currentAwards === 1}" src="./img/awards/1.png">
                         </div>
                         <div class="progressAwards">
-                            <img :class="{progressAwardsImgActive: currentAwards === 3}"
-                            src="./img/awards/3.png">
+                            <img :class="{progressAwardsImgActive: currentAwards === 2}" src="./img/awards/2.png">
                         </div>
                         <div class="progressAwards">
-                            <img :class="{progressAwardsImgActive: currentAwards === 4}"
-                            src="./img/awards/4.png">
+                            <img :class="{progressAwardsImgActive: currentAwards === 3}" src="./img/awards/3.png">
                         </div>
                         <div class="progressAwards">
-                            <img :class="{progressAwardsImgActive: currentAwards === 5}"
-                            src="./img/awards/5.png">
+                            <img :class="{progressAwardsImgActive: currentAwards === 4}" src="./img/awards/4.png">
                         </div>
                         <div class="progressAwards">
-                            <img :class="{progressAwardsImgActive: currentAwards === 6}"
-                            src="./img/awards/6.png">
-                        </div> 
+                            <img :class="{progressAwardsImgActive: currentAwards === 5}" src="./img/awards/5.png">
+                        </div>
+                        <div class="progressAwards">
+                            <img :class="{progressAwardsImgActive: currentAwards === 6}" src="./img/awards/6.png">
+                        </div>
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 7}"
-                            src="./img/awards/HotEmoji.png">
+                                src="./img/awards/HotEmoji.png">
                         </div>
                     </div>
 
                     <div :style="{marginTop: currentAwards !== 0 ? '1vw' : '0'}" class="container">
                         <div class="progress">
-                          <div :id="'progress' + currentAwards" class="progress-bar"></div>
+                            <div :id="'progress' + currentAwards" class="progress-bar"></div>
                         </div>
-                    </div>      
-                    <div :style="{color: currentAwards !== 0 ? '#ffffff9d' : '#fff'}" class="progressMain progressTitles">
+                    </div>
+                    <div :style="{color: currentAwards !== 0 ? '#ffffff9d' : '#fff'}"
+                        class="progressMain progressTitles">
                         <div :class="{progressTitleActive: currentAwards === 1}">25$</div>
                         <div :class="{progressTitleActive: currentAwards === 2}">50$</div>
                         <div :class="{progressTitleActive: currentAwards === 3}">75$</div>
@@ -1782,22 +1822,21 @@
                         <div :class="{progressTitleActive: currentAwards === 5}">200$</div>
                         <div :class="{progressTitleActive: currentAwards === 6}">300$</div>
                         <div :class="{progressTitleActive: currentAwards === 7}">400$</div>
-                    </div>      
-                    
+                    </div>
+
                     <div style="display: flex; flex-direction: column; align-items: center;">
                         <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e; 
-                        margin-top: 4vh;"
-                        v-if="Date.now() - lastDateAwards > 86400000" v-on:click="emitToServerWithWT(1000, 'sAwards:use')">
+                        margin-top: 4vh;" v-if="Date.now() - lastDateAwards > 86400000"
+                            v-on:click="emitToServerWithWT(1000, 'sAwards:use')">
                             <span>{{i18n.getAward}}</span>
                         </div>
-                        
+
                         <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e;
-                        margin-top: 4vh; color: #ffffff;"
-                        v-else>
+                        margin-top: 4vh; color: #ffffff;" v-else>
                             <span v-if="timeLeftAwards !== null">{{i18n.getNextAward}}: {{timeLeftAwards}}</span>
                         </div>
 
@@ -1811,8 +1850,8 @@
                         <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e;
-                        margin-top: 4vh;"
-                        v-if="adminLevel > 0" v-on:click="currentAwards > 6 ? currentAwards = 0 : currentAwards += 1">
+                        margin-top: 4vh;" v-if="adminLevel > 0"
+                            v-on:click="currentAwards > 6 ? currentAwards = 0 : currentAwards += 1">
                             <span>ТЕСТ КНОПКА ДЛЯ АДМИНОВ</span>
                         </div>
                     </div>
