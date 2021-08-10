@@ -2320,7 +2320,7 @@ if ('alt' in window) {
                 type: 4
             },
         ]
-        menu.switchPage(2, 0)
+        menu.switchPage(8, 0)
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5
