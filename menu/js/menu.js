@@ -2151,12 +2151,12 @@ if ('alt' in window) {
         menu.lifeTime = data.lifeTime;
     });
 
-    alt.on('bMenu:reCalcWinScreen', (data) => {
-        menu.wsWin = data.wsWin;
-        menu.place = data.place;
-        menu.plusMoney += +data.plusMoney;
-        menu.bonusMoney += +data.bonusMoney;
-    });
+    // alt.on('bMenu:reCalcWinScreen', (data) => {
+    //     menu.wsWin = data.wsWin;
+    //     menu.place = data.place;
+    //     menu.plusMoney += +data.plusMoney;
+    //     menu.bonusMoney += +data.bonusMoney;
+    // });
 
     alt.on('bMenu:updateRank', (obj) => {
         menu.elo = obj.elo;
