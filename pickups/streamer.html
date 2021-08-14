@@ -22,7 +22,7 @@
                     let dist = distance(pos, object.pos);
                     if(!object.created && dist <= STREAM_RANGE) {
                         object.created = true;
-                        alt.emit("createObject", name, object.model, object.pos);
+                        alt.emit("createObject", name, object.model, object.pos, object.color);
                         iLength++;
                     }
                     else if(object.created && dist > STREAM_RANGE) {
@@ -52,11 +52,12 @@
                     // //console.log(`STREAM_RANGE = ${STREAM_RANGE}`)
                 }
             }
-            const addObject = (name, model, x, y, z) => {
+            const addObject = (name, model, x, y, z, color) => {
                 OBJECTS[name] = {
                     model,
                     pos: { x, y, z },
-                    created: false
+                    created: false,
+                    color: color
                 };
                 if(LAST_POS) updatePlayerPos(LAST_POS.x, LAST_POS.y, LAST_POS.z);
             }
