@@ -73,6 +73,7 @@ let menu = new Vue({
                 s100: '0',
                 s200: '0'
             },
+            { name: 'BMW M4', model: 'm422', price: 215000, s100: '3.4', s200: '0' },
             {
                 name: 'Lamborghini Performante 18',
                 model: '18performante',
