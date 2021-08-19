@@ -1815,13 +1815,13 @@
                     </div>
                     <div :style="{color: currentAwards !== 0 ? '#ffffff9d' : '#fff'}"
                         class="progressMain progressTitles">
-                        <div :class="{progressTitleActive: currentAwards === 1}">150$</div>
-                        <div :class="{progressTitleActive: currentAwards === 2}">300$</div>
-                        <div :class="{progressTitleActive: currentAwards === 3}">400$</div>
-                        <div :class="{progressTitleActive: currentAwards === 4}">500$</div>
-                        <div :class="{progressTitleActive: currentAwards === 5}">800$</div> 
-                        <div :class="{progressTitleActive: currentAwards === 6}">1000$</div> 
-                        <div :class="{progressTitleActive: currentAwards === 7}">2000$</div>
+                        <div :class="{progressTitleActive: currentAwards === 1}">{{150 * getBonus()}}$</div>
+                        <div :class="{progressTitleActive: currentAwards === 2}">{{300 * getBonus()}}$</div>
+                        <div :class="{progressTitleActive: currentAwards === 3}">{{400 * getBonus()}}$</div>
+                        <div :class="{progressTitleActive: currentAwards === 4}">{{500 * getBonus()}}$</div>
+                        <div :class="{progressTitleActive: currentAwards === 5}">{{800 * getBonus()}}$</div> 
+                        <div :class="{progressTitleActive: currentAwards === 6}">{{1000 * getBonus()}}$</div> 
+                        <div :class="{progressTitleActive: currentAwards === 7}">{{2000 * getBonus()}}$</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; align-items: center;">
@@ -1842,18 +1842,25 @@
 
                         <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 1.3vh;
                         font-family: 'Roboto Condensed', cursive;
+                        text-shadow: 1px 1px 2px #0000007e; 
+                        margin-top: 4vh; color: #ffffffc7;">
+                            <span v-if="getBonus() !== 1">{{i18n.vipAward}}</span>
+                        </div>
+
+                        <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 1.3vh;
+                        font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e;
-                        margin-top: 4vh; color: #ffffffc7" v-if="currentAwards !== 0">
+                        margin-top: 1vh; color: #ffffffc7" v-if="currentAwards !== 0">
                             <span>{{i18n.awardInfo}}</span>
                         </div>
 
-                        <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2vh;
+                        <!-- <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e;
                         margin-top: 4vh;" v-if="adminLevel > 0"
                             v-on:click="currentAwards > 6 ? currentAwards = 0 : currentAwards += 1">
                             <span>ТЕСТ КНОПКА ДЛЯ АДМИНОВ</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>

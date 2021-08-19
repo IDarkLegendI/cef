@@ -779,6 +779,7 @@ let menu = new Vue({
             noMoney: "You don't have enough funds. Top up your balance and try again",
             getAward: "GET A REWARD",
             getNextAward: "THE NEXT AWARD WILL BE AVAILABLE VIA",
+            vipAward: "THE REWARD IS BASED ON YOUR VIP MULTIPLIER",
             awardInfo: "THE NEXT AWARD MUST BE RECEIVED NO LATER THAN TWO DAYS FROM THE DATE OF RECEIPT OF THE PREVIOUS ONE",
         },
         i18nTemp: null,
@@ -1609,6 +1610,7 @@ let menu = new Vue({
                 noMoney: "У вас не хватает средств. Пополните баланс и повторите попытку",
                 getAward: "ПОЛУЧИТЬ НАГРАДУ",
                 getNextAward: "СЛЕДУЮЩАЯ НАГРАДА СТАНЕТ ДОСТУПНА ЧЕРЕЗ",
+                vipAward: "НАГРАДА УКАЗАНА С УЧЕТОМ ВАШЕГО VIP МНОЖИТЕЛЯ",
                 awardInfo: "ОБРАТИТЕ ВНИМАНИЕ, СЛЕДУЮЩУЮ НАГРАДУ НЕОБХОДИМО ПОЛУЧИТЬ НЕ ПОЗДНЕЕ, ЧЕМ ДВОЕ СУТОК С МОМЕНТА ПОЛУЧЕНИЯ ПРЕДЫДУЩЕЙ",
             }
         },
@@ -2039,6 +2041,7 @@ let menu = new Vue({
         },
         theTimeInterval: function(x = null) 
         { 
+            return;
             let nowDiff = Date.now() - +menu.lastDateAwards
             if(nowDiff > 172800000) menu.currentAwards = 0;
             let hours = 0,
@@ -2061,7 +2064,12 @@ let menu = new Vue({
 
             if(hours === undefined) hours = 0
             Vue.set(menu, 'timeLeftAwards', `${menu.fFormatDate(hours)}:${menu.fFormatDate(minute)}:${menu.fFormatDate(seconds)}`)
-        }
+        },
+        getBonus()
+        {
+            if(this.vip === 'none') return 1
+            return this.assortPriv[this.vip].bonus
+        },
     },
 });
 
