@@ -3744,6 +3744,7 @@ input[type="button" i]:focus, .button :focus, .button :active {
   -webkit-transition: .8s ease-out;
   transition: .8s ease-out;
   color: #fff;
+  margin-left: 0.15vw;
 }
 
 .container {
