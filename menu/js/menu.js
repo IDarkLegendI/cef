@@ -2041,7 +2041,6 @@ let menu = new Vue({
         },
         theTimeInterval: function(x = null) 
         { 
-            return;
             let nowDiff = Date.now() - +menu.lastDateAwards
             if(nowDiff > 172800000) menu.currentAwards = 0;
             let hours = 0,
