@@ -781,6 +781,8 @@ let menu = new Vue({
             getNextAward: "THE NEXT AWARD WILL BE AVAILABLE VIA",
             vipAward: "THE REWARD IS BASED ON YOUR VIP MULTIPLIER",
             awardInfo: "THE NEXT AWARD MUST BE RECEIVED NO LATER THAN TWO DAYS FROM THE DATE OF RECEIPT OF THE PREVIOUS ONE",
+            awardGiven: "AWARDS BRING",
+            more: "MORE",
         },
         i18nTemp: null,
         avatars: {
@@ -1612,6 +1614,8 @@ let menu = new Vue({
                 getNextAward: "СЛЕДУЮЩАЯ НАГРАДА СТАНЕТ ДОСТУПНА ЧЕРЕЗ",
                 vipAward: "НАГРАДА УКАЗАНА С УЧЕТОМ ВАШЕГО VIP МНОЖИТЕЛЯ",
                 awardInfo: "ОБРАТИТЕ ВНИМАНИЕ, СЛЕДУЮЩУЮ НАГРАДУ НЕОБХОДИМО ПОЛУЧИТЬ НЕ ПОЗДНЕЕ, ЧЕМ ДВОЕ СУТОК С МОМЕНТА ПОЛУЧЕНИЯ ПРЕДЫДУЩЕЙ",
+                awardGiven: "НАГРАДЫ ПРИНОСЯТ",
+                more: "БОЛЬШЕ",
             }
         },
         loadEn() {
@@ -2328,7 +2332,7 @@ if ('alt' in window) {
                 type: 4
             },
         ]
-        menu.switchPage(8, 0)
+        menu.switchPage(4, 0)
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5

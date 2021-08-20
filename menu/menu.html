@@ -1278,6 +1278,8 @@
                                     <li>{{i18n.armourVIP}}: {{(2 * +assortPriv[vip].k).toFixed(0)}}%</li>
                                     <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}%
                                         {{i18n.moreMoneyEndGame}}</li>
+                                        <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}%
+                                        {{i18n.awardGiven}} {{i18n.more}}</li>
                                     <li>{{i18n.tuning}} {{vipLevel}} {{i18n.level}}</li>
                                     <li>{{i18n.reloadQuickMarker}} {{((2 - +assortPriv[vip].bonus) * 10).toFixed(0)}}
                                         {{i18n.second}}{{lang === 'ru' ? assortPriv[vip].bonus === 1.7 ? "Ы" : "" : ""}}
