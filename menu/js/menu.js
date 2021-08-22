@@ -71,7 +71,8 @@ let menu = new Vue({
                 model: 'none',
                 price: 0,
                 s100: '0',
-                s200: '0'
+                s200: '0',
+                color: {r: 255, g:255, b:255} 
             },
             { name: 'BMW M4', model: 'm422', price: 215000, s100: '3.4', s200: '0' },
             {
@@ -989,7 +990,7 @@ let menu = new Vue({
         },
         callBackEmitToServer: function (variable, value) {
             if (variable === 'carsPointer') {
-                this.cars[this.carsPointer].color = {
+                this.cars[this.carsPointer].color = { 
                     r: this.oldColor[0],
                     g: this.oldColor[1],
                     b: this.oldColor[2]
@@ -1007,7 +1008,7 @@ let menu = new Vue({
                 setTimeout(() => {
                     if (menu.initColor()) colorToPos('rgb ' + this.cars[this.carsPointer].color.r + ' ' + this.cars[this.carsPointer].color.g + ' ' + this.cars[this.carsPointer].color.b)
 
-                    else menu.setTimeout(() => colorToPos('rgb ' + menu.cars[pointer].color.r + ' ' + menu.cars[pointer].color.g + ' ' + menu.cars[pointer].color.b), 100)
+                    else menu.setTimeout(() => colorToPos('rgb ' + menu.cars[this.carsPointer].color.r + ' ' + menu.cars[this.carsPointer].color.g + ' ' + menu.cars[this.carsPointer].color.b), 100)
                 }, 100)
             } else menu[variable] = value;
             // //console.log(this.cars[this.carsPointer].model)  
@@ -1203,6 +1204,8 @@ let menu = new Vue({
             if (this.page === 2 && (newPage === 0 || newPage === 4)) {
                 menu.emit('cCar:setCarPreview', false);
                 if (this.subPage === 0) {
+                    if(this.getCountCars() >= 1) this.onlyMyCars = true 
+                    else this.onlyMyCars = false 
                     this.cars[this.carsPointer].color = {
                         r: this.oldColor[0],
                         g: this.oldColor[1],
@@ -1622,7 +1625,7 @@ let menu = new Vue({
             document.getElementById('inputAddFriend').placeholder = "Input NickName"
             menu.i18n = JSON.parse(menu.i18nTemp);
         },
-        updateCars(list, selected) {
+        updateCars(list, selected, loadUser) {
             // //console.log(`LIST: ${JSON.stringify(list)}; selected: ${JSON.stringify(selected)}`)
             // { 
             //     model: string,  
@@ -1659,6 +1662,17 @@ let menu = new Vue({
 
             this.carsPointer = this.cars.findIndex(el => el.model === carSelected);
             if (this.page === 2) this.setPreviewCar(this.carsPointer);
+            else if(loadUser) {
+                if(this.getCountCars() > 1) this.onlyMyCars = true  
+                else this.onlyMyCars = false
+            }
+            console.log(`updateCars: loadUser: ${loadUser}; getCountCars: ${this.getCountCars()}; ${this.getCountCars() > 1}`)
+        },
+
+        // True, если машины есть
+        getCountCars()
+        {
+            return +(menu.cars.reduce(function(sum, current) {return sum + +(current.price === 0 ? 1 : 0)}, 0))
         },
 
         setPreviewCar(pointer = null, onlyColoring = false) {
@@ -1672,6 +1686,7 @@ let menu = new Vue({
                 color: this.cars[pointer].color
             }, null, 0, onlyColoring);
             // //console.log(`setPreviewCar: ${this.cars[this.carsPointer].model}; ${this.oldColor[3]} --> ${this.cars[this.carsPointer].model !== this.oldColor[3]}`)
+            console.log(`setPreviewCar: ${JSON.stringify(this.cars[this.carsPointer])}`); 
             if (this.cars[this.carsPointer].model !== this.oldColor[3]) {
                 menu.oldColor = [this.cars[this.carsPointer].color.r, this.cars[this.carsPointer].color.g, this.cars[this.carsPointer].color.b,
                     this.cars[this.carsPointer].model
@@ -1712,7 +1727,9 @@ let menu = new Vue({
         },
 
         sortLiveCar(plus, onlyMyCarsClick) {
-            //console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
+            let temp = 0;
+            console.log(`sortLiveCar: ${onlyMyCarsClick}; ${this.onlyMyCars}`)
+            if(onlyMyCarsClick !== 3) onlyMyCarsClick = this.onlyMyCars ? 3 : onlyMyCarsClick 
             if (onlyMyCarsClick === 3) {
                 if (this.onlyMyCars) this.minSort = this.maxSort = 0
                 else {
@@ -1732,22 +1749,26 @@ let menu = new Vue({
             if (plus) {
                 if (result > this.cars.length) return result;
                 result += +1;
-                while (this.cars[result].price > this.maxSort) {
-                    if (this.cars[result].price === -1) break;
-                    //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                    if (result === this.cars.length - 1) break;
-                    //console.log(`result(maxSort): ${result}`)
-                    result -= +1;
-                }
-                while (this.cars[result].price < this.minSort) {
-                    if (this.cars[result].price === -1) break;
-                    //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
-                    if (result === this.cars.length - 1) break;
-                    //console.log(`result(minSort): ${result}`)
-                    result += +1;
-                }
+                if(this.cars[result])
+                {
+                    while (this.cars[result].price > this.maxSort) {
+                        if (this.cars[result].price === -1) break;
+                        //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                        if (result === this.cars.length - 1) break;
+                        //console.log(`result(maxSort): ${result}`)
+                        result -= +1;
+                    }
+                    while (this.cars[result].price < this.minSort) {
+                        if (this.cars[result].price === -1) break;
+                        //console.log(`${result} === ${this.cars.length-1} --> ${result === this.cars.length-1}`)
+                        if (result === this.cars.length - 1) break;
+                        //console.log(`result(minSort): ${result}`)
+                        result += +1;
+                    }
+                } 
             } else {
-                if (this.cars[result - +1].price > this.maxSort) {
+                temp = result - +1;
+                if (this.cars[temp] && this.cars[temp].price > this.maxSort) {
                     // result -= +1;
                     while (this.cars[result].price > this.maxSort) {
                         //console.log(`${this.cars[result].price === -1}`)
@@ -1760,7 +1781,7 @@ let menu = new Vue({
                 }
                 result -= 1;
                 //console.log(`${this.cars[result].price} | ${this.minSort}`)
-                if (this.cars[result].price < this.minSort) {
+                if (this.cars[temp] && this.cars[result].price < this.minSort) {
                     // result += +1;
                     while (this.cars[result].price < this.minSort) {
                         //console.log(`${this.cars[result].price === -1}`)
@@ -1771,9 +1792,9 @@ let menu = new Vue({
                         result += +1;
                     }
                 }
-            }
+            } 
             //console.log(`result: ${this.cars[result].price} | min: ${this.minSort} | max: ${this.maxSort}`)
-            if (this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
+            if (this.cars[result] && this.cars[result].price !== -1 && (this.minSort > this.cars[result].price || this.maxSort < this.cars[result].price)) this.minSort = this.maxSort = this.cars[result].price
 
             return result;
         },
@@ -1788,11 +1809,11 @@ let menu = new Vue({
                 else this.carsPointer === 0 ? valueTrue = 0 : valueTrue = this.carsPointer - 1
             }
             if (valueFalse === valueTrue) return;
-            if (name === 'cars') {
+            if (name === 'cars' && this.cars[valueTrue]) {
                 if (!this.cars[valueTrue].color) this.cars[valueTrue].color = {
-                    r: 255,
+                    r: 255, 
                     g: 255,
-                    b: 255
+                    b: 255 
                 }
                 this.waitEmitToServer(50, 'carsPointer', valueTrue, valueFalse, 'sCar:preview', {
                     model: this.cars[valueTrue].model,
@@ -1865,6 +1886,19 @@ let menu = new Vue({
             this.oldColor = [car.color.r, car.color.g, car.color.b, car.model]
             this.updateTuning = false;
             menu.cars.sort((a, b) => a.price - b.price)
+            console.log(`fSellCar: ${this.getCountCars()}`) 
+            // Если при продаже последней машины был включен режим "только мои машины"
+            // && this.onlyMyCars
+            if(this.getCountCars() <= 1) {
+                let foundIndex = this.cars.findIndex(el => el.model === 'none');
+                if (foundIndex !== -1) 
+                {
+                    this.cars[foundIndex].price = -1;
+                    this.carsPointer = foundIndex;  
+                } 
+                // this.onlyMyCars = false 
+                return menu.emitToServerWithWT(0, 'sCar:preview', {model: 'none'}, null, 0, false);
+            } 
             this.setTimeout(() => {
                 menu.emitToServerWithWT(0, 'sCar:preview', {
                     model: menu.cars[menu.carsPointer].model,
@@ -2209,7 +2243,7 @@ if ('alt' in window) {
     });
 
     alt.on('bFriends:updateOnline', (allPlayers) => menu.updateOnline(allPlayers))
-    alt.on('bMenu:updateCars', (list, selected) => menu.updateCars(list, selected))
+    alt.on('bMenu:updateCars', (list, selected, loadUser) => menu.updateCars(list, selected, loadUser))
     alt.on('bMenu:setPreviewCar', () => menu.setPreviewCar())
     alt.on('bMenu:fInviteToLobby', (lobbyID, myData) => menu.fInviteToLobby(lobbyID, myData))
     alt.on('bMenu:fLeaveLobby', () => menu.fLeaveLobby(true))

@@ -111,6 +111,7 @@ function colorToPos(color){
   var hsl = color.toHsl();
   hue = hsl.h;
   var hsv = color.toHsv();
+  if(!spectrumRect) return; 
   var x = spectrumRect.width * hsv.s;
   var y = spectrumRect.height * (1 - hsv.v);
   var hueY = hueRect.height - ((hue / 360) * hueRect.height);
