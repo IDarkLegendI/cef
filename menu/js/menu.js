@@ -75,6 +75,7 @@ let menu = new Vue({
                 color: {r: 255, g:255, b:255} 
             },
             { name: 'BMW M4', model: 'm422', price: 215000, s100: '3.4', s200: '0' },
+            { name: 'McLaren P1', model: 'p1', price: 275000, s100: '4.8', s200: '0' }, 
             {
                 name: 'Lamborghini Performante 18',
                 model: '18performante',
