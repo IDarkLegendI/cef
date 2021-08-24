@@ -24,6 +24,7 @@ let menu = new Vue({
         keyMapSize: 90,
         keyQuickMarker: 88,
         keySitDown: 17,
+        keyAutoPilot: 78,
         keyFingerPointing: 66,
         keyMenu: 112,
 
@@ -785,6 +786,7 @@ let menu = new Vue({
             awardInfo: "THE NEXT AWARD MUST BE RECEIVED NO LATER THAN TWO DAYS FROM THE DATE OF RECEIPT OF THE PREVIOUS ONE",
             awardGiven: "AWARDS BRING",
             more: "MORE",
+            autoPilot: "AUTOPILOT",
         },
         i18nTemp: null,
         avatars: {
@@ -1144,6 +1146,7 @@ let menu = new Vue({
                     keyMapSize: this.keyMapSize,
                     keyQuickMarker: this.keyQuickMarker,
                     keySitDown: this.keySitDown,
+                    keyAutoPilot: this.keyAutoPilot,
                     keyFingerPointing: this.keyFingerPointing,
                     keyMenu: this.keyMenu,
                 })
@@ -1620,6 +1623,7 @@ let menu = new Vue({
                 awardInfo: "ОБРАТИТЕ ВНИМАНИЕ, СЛЕДУЮЩУЮ НАГРАДУ НЕОБХОДИМО ПОЛУЧИТЬ НЕ ПОЗДНЕЕ, ЧЕМ ДВОЕ СУТОК С МОМЕНТА ПОЛУЧЕНИЯ ПРЕДЫДУЩЕЙ",
                 awardGiven: "НАГРАДЫ ПРИНОСЯТ",
                 more: "БОЛЬШЕ",
+                autoPilot: "АВТОПИЛОТ",
             }
         },
         loadEn() {
@@ -1991,6 +1995,7 @@ let menu = new Vue({
                 if (keyCode === 27) return menu.recordKey = false;
                 if (menu.keyCodes[keyCode] !== undefined) {
                     let count = 0;
+                    if (menu.keyAutoPilot === keyCode) count += +1;
                     if (menu.keySitDown === keyCode) count += +1;
                     if (menu.keyQuickMarker === keyCode) count += +1;
                     if (menu.keyMapSize === keyCode) count += +1;

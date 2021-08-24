@@ -669,6 +669,16 @@
                                     </div>
                                     <div class="binds">
                                         <div class="bind">
+                                            <span class="bindname">{{i18n.autoPilot}}</span>
+                                            <div class="settingCenter"><span
+                                                    :style="{animationName: recordKey === 'keyAutoPilot' ? 'flash' : 'none'}"
+                                                    class="bindbtn" id="mouseFocus"
+                                                    v-on:click="recordKey === 'keyAutoPilot' ? recordKey = false : recordKey = 'keyAutoPilot'">{{keyCodes[keyAutoPilot].toUpperCase()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="binds" v-if="vipLevel > 1">
+                                        <div class="bind">
                                             <span class="bindname">{{i18n.keyMenu}}</span>
                                             <div class="settingCenter"><span
                                                     :style="{animationName: recordKey === 'keyMenu' ? 'flash' : 'none'}"
