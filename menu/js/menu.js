@@ -2113,6 +2113,10 @@ let menu = new Vue({
             if(this.vip === 'none') return 1
             return this.assortPriv[this.vip].bonus
         },
+        fInit()
+        {
+
+        }
     },
 });
 
@@ -2404,17 +2408,6 @@ document.addEventListener('keydown', function (event) {
     menu.fKeyDown(event.keyCode)
 });
 
-// document.addEventListener('mousedown', e => {
-//     if(e.button === 2) //console.log(`mousedown: CLICK!`) 
-//   });
-// document.addEventListener('mouseup', e => {
-//     if(e.button === 2) 
-//     {
-//         menu.emit('showCursor', false)  
-//         //console.log(`mouseup: CLICK!`)
-//         menu.fCheckCursor()
-//     }
-//   });
 menu.cars.forEach((el, index) => {
     menu.cars[index].price2 = JSON.stringify(el.price)
 })
