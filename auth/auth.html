@@ -186,9 +186,13 @@
 <script src="particles.min.js"></script>
 <script>
     function load() {
-        if ('alt' in window) {
-            alt.emit('emitToClient', 'cAuth:Ready');
-        }
+        console.log(`Auth.html: load`)
+        setTimeout(() => {
+                if ('alt' in window) {
+                console.log(`Auth.html: call cAuth:Ready`)
+                alt.emit('emitToClient', 'cAuth:Ready');
+            }
+        }, 1000) 
     }
 
     particlesJS("particles-js", {
