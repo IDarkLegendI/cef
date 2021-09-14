@@ -24,7 +24,7 @@ let menu = new Vue({
         keyMapSize: 90,
         keyQuickMarker: 88,
         keySitDown: 17,
-        keyAutoPilot: 78,
+        keyAutoPilot: 76,
         keyFingerPointing: 66,
         keyMenu: 112,
 
