@@ -1842,7 +1842,7 @@
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e; 
                         margin-top: 4vh;" v-if="Date.now() - lastDateAwards > 86400000"
-                            v-on:click="emitToServerWithWT(1000, 'sAwards:use')">
+                            v-on:click="emitToServerWithWT(5000, 'sAwards:use')"> 
                             <span>{{i18n.getAward}}</span>
                         </div>
 
