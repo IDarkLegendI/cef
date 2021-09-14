@@ -787,6 +787,7 @@ let menu = new Vue({
             awardGiven: "AWARDS BRING",
             more: "MORE",
             autoPilot: "AUTOPILOT",
+            forCars: "FOR CARS",
         },
         i18nTemp: null,
         avatars: {
@@ -1624,6 +1625,7 @@ let menu = new Vue({
                 awardGiven: "НАГРАДЫ ПРИНОСЯТ",
                 more: "БОЛЬШЕ",
                 autoPilot: "АВТОПИЛОТ",
+                forCars: "ДЛЯ АВТОМОБИЛЕЙ",
             }
         },
         loadEn() {

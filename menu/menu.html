@@ -1298,6 +1298,7 @@
                                     <li>CASHBACK {{i18n.upTo}} {{Math.round(+assortPriv[vip].k*2.8).toFixed(0)}}%
                                         {{i18n.cashBackCAR}}
                                     </li>
+                                    <li v-if="vipLevel > 1">{{i18n.autoPilot}} {{i18n.forCars}}</li>
                                     <li style="font-size: 0.8vw;">{{i18n.componentsVIP}}
                                         {{(100 * +assortPriv[vip].bonus) - +100}}%</li>
                                 </ul>
