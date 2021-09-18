@@ -106,7 +106,7 @@
                         <transition-group name="list-complete" style="width: 100%;" tag="div">
                             <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
-                                    <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
+                                    <div :style="{animationName: friend.mic ? 'flash faster' : 'none', opacity: friend.name === 'playerLocal' ? 0 : 1}"
                                         class="animated infinite flash slower">
                                         <p :style="{borderColor: friend.color}" class="key" id="friendName">
                                             {{friend.name}}</p>
