@@ -75,8 +75,9 @@
                                                     <img alt="" src="img/Crown.png">
                                                 </div>
                                                 <div class="ready" v-if="player.ready >= 0">
+                                                    <span v-show="player.ready === 2">{{i18n.inGame}}</span>
                                                     <span v-show="player.ready === 1">{{i18n.ready}}</span>
-                                                    <span class="readynot"
+                                                    <span class="readynot" 
                                                         v-show="player.ready === 0">{{i18n.notready}}</span>
                                                 </div>
                                             </section>
