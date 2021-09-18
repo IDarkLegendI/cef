@@ -112,7 +112,7 @@
                                             {{friend.name}}</p>
                                         <p class="textHelp"
                                             style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
-                                            <img :src="`../hud/img/${friend.hp > 0 ? 'heart' : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`"
+                                            <img :src="`../hud/img/${friend.hp > 0 ? (friend.armour > 0 ? 'armour' : 'heart') : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`"
                                                 style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 1px red)">
                                             <p v-if="friend.hp > 0">{{friend.hp}}</p>
                                         </p>

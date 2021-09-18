@@ -471,7 +471,7 @@ else
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000) 
     let index = 0;
     hud.kills = 1;
-    hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
+    hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, armour: 100, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
     setInterval(() => {
         // hud.fUpdateKills("OBLIKO", 45)
         // hud.fupdateWarmUP('123333333333333', true) 
