@@ -552,18 +552,20 @@ p {
     width: 100%;
     margin-top: 60vh;
 }
-/* 
+
 .list-complete-enter, .list-complete-leave-to
 {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(100px);
     position: absolute;
+    right: 0;
+    /* top: 5vh; */
 }
 .list-complete-leave-active
 {
-    transform: translateY(-10px);
-    position: absolute;
-} */
+    transform: translateY(-100px);
+    /* position: absolute; */
+}
 
 .list-complete-item
 {

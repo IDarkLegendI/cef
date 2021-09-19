@@ -81,8 +81,8 @@
                         <!-- <img class="vip" :src="`../menu/img/corona.png`" alt=""> -->
                     </div>
                 </div>
-            </transition>
-            <transition enter-active-class="animated fadeInLeft" leave-active-class="animated fadeOutRight" 
+            </transition> 
+            <transition enter-active-class="animated fadeInRight" leave-active-class="animated fadeOutRight" 
                 name="custom-classes-transition3">
                 <div class="observer" v-show="help === 2 && !showLogo && Object.keys(lobby).length === 0">   
                     <div style="width: 100%;">
@@ -103,7 +103,7 @@
                 name="custom-classes-transition4">
                 <section>
                     <div class="observer list-complete-item">
-                        <transition-group name="list-complete" style="width: 100%;" tag="div">
+                        <transition-group enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutRight" style="width: 100%;" tag="div">
                             <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
                                     <div :style="{animationName: friend.mic ? 'flash faster' : 'none', opacity: friend.name === 'playerLocal' ? 0 : 1}"
