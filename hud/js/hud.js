@@ -286,6 +286,12 @@ var hud = new Vue({
         }
     }, 
     methods: {
+        fGetColor(value)
+        {
+            if(value < +30) return 'red'
+            else if(value < +60) return 'orange'
+            else return 'green'
+        },
         fUpdateKills(name, dist, kills = 1)
         {
             this.kills += kills;
@@ -326,35 +332,36 @@ var hud = new Vue({
                 this.time -= 1; 
             }, 1000); 
         },
-        fKillFeedUpdate(text)
+        fKillFeedUpdate(obj)
         {  
             if(this.killFeed[2]) 
             {
-                //console.log(`${this.killFeed[2]}; ${this.killFeed.splice(0, 1)}`)
-                return setTimeout(() => this.fKillFeedUpdate(text), 50) 
+                console.log(`${this.killFeed[2]}; ${this.killFeed.splice(0, 1)}`)
+                return setTimeout(() => this.fKillFeedUpdate(obj), 0) 
             }
-            this.killFeed.push(text);
+            obj.iKey = Date.now()
+            this.killFeed.push(obj);
             let htmlEl = document.getElementById('killfeed');
             if(htmlEl == null) return;
              
             htmlEl.style.opacity = 1;    
 
             if(this.killFeedInterval != null) clearInterval(this.killFeedInterval);
-            this.killFeedInterval = setInterval(() => {
-                if(htmlEl.style.opacity <= 0.4) 
-                {
-                    this.killFeed.splice(0, this.killFeed.length)
-                }
-                if(htmlEl.style.opacity <= 0.3) 
-                {  
-                    htmlEl.style.opacity = 0;
-                    clearInterval(this.killFeedInterval);
-                    this.killFeedInterval = null;
-                    this.killFeed = [];
-                }
-                htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
-                // //console.log(htmlEl.style.opacity)
-            }, 500);    
+            // this.killFeedInterval = setInterval(() => {
+            //     if(htmlEl.style.opacity <= 0.3) 
+            //     {
+            //         this.killFeed.splice(0, this.killFeed.length)
+            //     }
+            //     if(htmlEl.style.opacity <= 0.2) 
+            //     {  
+            //         htmlEl.style.opacity = 0;
+            //         clearInterval(this.killFeedInterval);
+            //         this.killFeedInterval = null;
+            //         this.killFeed = [];
+            //     }
+            //     htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
+            //     // //console.log(htmlEl.style.opacity)
+            // }, 500);    
         },
         fPlayAudio(name, volume = 0.1) 
         {
@@ -455,6 +462,12 @@ if ('alt' in window) {
     alt.on('fPlayAudio',(name, volume) => hud.fPlayAudio(name, volume))       
     alt.on('changeVar', (...args) => hud.changeVar(...args)) 
     alt.on('useFunction', (...args) => hud.useFunction(...args))  
+    alt.on('testHud', (...args) => {
+        hud.showHUD = true; 
+        setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend'}), 0)
+        setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
+        setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: 'Heavy Sniper', killerName: 'DarkLegend'}), 0) 
+    })  
 }  
 else  
 { 
@@ -472,13 +485,14 @@ else
     let index = 0;
     hud.kills = 1;
     hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, armour: 100, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
-    setInterval(() => {
-        // hud.fUpdateKills("OBLIKO", 45)
-        // hud.fupdateWarmUP('123333333333333', true) 
-        // hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
-    }, 1100) 
+    // setInterval(() => {
+    //     // hud.fUpdateKills("OBLIKO", 45)
+    //     // hud.fupdateWarmUP('123333333333333', true) 
+    //     hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
+    // }, 5000) 
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
-    // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
-    // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
-    // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A1"), 1000)
+    setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend'}), 0)
+    setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
+    setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: 'Heavy Sniper', killerName: 'DarkLegend'}), 0)
+    // Vue.set(hud, killFeed, [...hud.killFeed, {victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', iKey: 1}])
 }
