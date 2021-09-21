@@ -341,27 +341,27 @@ var hud = new Vue({
             }
             obj.iKey = Date.now()
             this.killFeed.push(obj);
-            let htmlEl = document.getElementById('killfeed');
+            let htmlEl = document.getElementById('killfeed'); 
             if(htmlEl == null) return;
              
             htmlEl.style.opacity = 1;    
 
-            if(this.killFeedInterval != null) clearInterval(this.killFeedInterval);
-            // this.killFeedInterval = setInterval(() => {
-            //     if(htmlEl.style.opacity <= 0.3) 
-            //     {
-            //         this.killFeed.splice(0, this.killFeed.length)
-            //     }
-            //     if(htmlEl.style.opacity <= 0.2) 
-            //     {  
-            //         htmlEl.style.opacity = 0;
-            //         clearInterval(this.killFeedInterval);
-            //         this.killFeedInterval = null;
-            //         this.killFeed = [];
-            //     }
-            //     htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
-            //     // //console.log(htmlEl.style.opacity)
-            // }, 500);    
+            if(this.killFeedInterval != null) clearInterval(this.killFeedInterval); 
+            this.killFeedInterval = setInterval(() => {
+                if(htmlEl.style.opacity <= 0.3) 
+                {
+                    this.killFeed.splice(0, this.killFeed.length)
+                }
+                if(htmlEl.style.opacity <= 0.2) 
+                {  
+                    htmlEl.style.opacity = 0;
+                    clearInterval(this.killFeedInterval);
+                    this.killFeedInterval = null;
+                    this.killFeed = [];
+                }
+                htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
+                // //console.log(htmlEl.style.opacity)
+            }, 500);    
         },
         fPlayAudio(name, volume = 0.1) 
         {
@@ -493,6 +493,6 @@ else
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend'}), 0)
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
-    setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: 'Heavy Sniper', killerName: 'DarkLegend'}), 0)
+    setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: "Carbine Rifle", killerName: 'DarkLegend'}), 0)
     // Vue.set(hud, killFeed, [...hud.killFeed, {victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', iKey: 1}])
 }
