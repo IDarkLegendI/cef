@@ -1356,9 +1356,9 @@ let menu = new Vue({
             }, 30000)
         },
 
-        answerInvite(value) {
+        answerInvite(value, readyStatus) {
             if (this.myData === null) return;
-            this.emitServer('sLobby:answerInvite', value, this.lobbyID)
+            this.emitServer('sLobby:answerInvite', value, this.lobbyID, readyStatus)
             if (this.nextSubPage === 4) this.nextSubPage = 0;
             this.lobbyID = 0;
             this.myData = null;
