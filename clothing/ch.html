@@ -7,7 +7,7 @@
 
 <body>
 	<div id="app">
-		<div class="b1">
+		<div class="b1" v-show="visible">
 			<div class="contentb1">
 				<div style="display: flex; flex-direction: column; margin-top: 2vh">
 					<p style="font-size: 1.5vh; margin: 0;">{{titleBalance}}</p>
@@ -122,6 +122,7 @@
 			k: 2,
 			money: 0,
 
+			visible: false,
 			bMan: true,
 			myClothes: {},
 			camRotation: 180,
@@ -5094,11 +5095,15 @@
 
 		alt.on('setLang', lang => {
 			//console.log(`ch.lang: ${lang}`)
-			if (lang === 'ru') setTimeout(loadRusLang, 500);
+			if (lang === 'ru') setTimeout(loadRusLang, 350);   
 		})
 		alt.on('changeVar', (...args) => {
 			app.changeVar(...args)
 			//console.log(`changeVar: ${JSON.stringify(...args)}`)
 		})
+		alt.on('toggleVisible', toggle => {
+			app.visible = toggle
+			// console.log(`ch.toggleVisible: ${app.visible}`)
+		}) 
 	}
 </script>
