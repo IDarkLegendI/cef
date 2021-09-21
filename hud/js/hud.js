@@ -18,6 +18,7 @@ var hud = new Vue({
         
         showHUD: false, 
         showLogo: false,
+        showLogoTimer: null,
         startPlayers: 0,
         killsHandle: null,
         killsBar: false,
@@ -439,7 +440,19 @@ if ('alt' in window) {
     }) 
     // alt.on('giveKill', hud.fUpdateKills)
 
-    alt.on('toggleLoad', toggle => hud.showLogo = toggle)
+    alt.on('toggleLoad', (toggle, duration) => 
+    { 
+        console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
+        hud.showLogo = toggle
+        if(hud.showLogoTimer !== null)
+        {
+            clearTimeout(hud.showLogoTimer);
+            hud.showLogoTimer = null;
+        } 
+        if(duration !== null) setTimeout(() => {
+            hud.showLogo = !toggle 
+        }, duration)
+    })
  
     alt.on('updateAmmo', (clip, ammo) => hud.ammo = [clip, ammo])
     alt.on('updateWarmUP', hud.fupdateWarmUP)  
