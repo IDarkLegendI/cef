@@ -27,7 +27,7 @@
         <div id="aura"></div>
         <!-- ГЛАВНАЯ -->
         <transition appear enter-active-class="animated zoomInUp fast"
-            leave-active-class="animated rotateOutUpLeft fast" name="custom-classes-transition">
+            leave-active-class="animated zoomOutUp fast" name="custom-classes-transition">
             <section v-show="page === 0">
                 <div class="main" id="main" style="display: flex; justify-content: center;">
                     <div class="upper">
@@ -1036,12 +1036,12 @@
                                 <div class="settingsh1" id="sellCar">
                                     <h1>{{i18n.acceptAction}}</h1>
                                 </div>
-                                <div class="settingsh1" id="sellCar" style="padding-top: 4vh;">
+                                <div class="settingsh1" id="sellCar" style="padding-top: 2.2416666666666667vw;">
                                     <h1 style="font-size: 2.5vh">{{i18n.toSellCar}} "{{cars[carsPointer].name}}"</h1>
                                 </div>
                                 <div class="settingsh1" id="sellCar" style="padding-top: 1vh;">
                                     <h1 style="font-size: 2.5vh">
-                                        {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}:
+                                        {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}: 
                                         ${{Math.round(cars[carsPointer].price2 / +2).toFixed(0)}}</h1>
                                 </div>
                                 <div class="settingsh1" id="sellCar" style="padding-top: 1vh;" v-if="vip !== 'none'">
@@ -1187,7 +1187,7 @@
                             <div class="settingsh1">
                                 <h1>{{i18n.acceptAction}}</h1>
                             </div>
-                            <div class="settingsh1" style="padding-top: 4vh;">
+                            <div class="settingsh1" style="padding-top: 2.2416666666666667vw;">
                                 <h1 style="font-size: 2.5vh">{{i18n.connectPrivileges}}
                                     "{{assortPriv[assortSelected].name}}":</h1>
                             </div>
@@ -1459,7 +1459,7 @@
                                 </div>
                             </div>
                             <transition enter-active-class="animated zoomInUp" leave-active-class="animated zoomOut">
-                                <div style="padding-top: 4vh; display: flex; align-items: center; justify-content: space-between;"
+                                <div style="padding-top: 2.2416666666666667vw; display: flex; align-items: center; justify-content: space-between;"
                                     v-if="reportType !== -1 && reportType !== '2' || (reportReason !== -1 && reportType === '2')">
                                     <div class="group">
                                         <input class="inputText inputTextRed" required type="number"
@@ -1703,7 +1703,7 @@
                                     {{`${adminCurrentReport.resultMsg === null ? 'ПРОИЗВЕЛ ПОСЛЕДНИЕ ДЕЙСТВИЕ' : 'ОТВЕТИЛ: ' + adminCurrentReport.resultMsg}`}}
                                 </span>
                                 <div class="settings changePassword" style="width: 100%">
-                                    <div class="group" style="margin-right: 0; width: 38vw; margin-top: 4vh;">
+                                    <div class="group" style="margin-right: 0; width: 38vw; margin-top: 2.2416666666666667vw;">
                                         <input class="inputText" id="reportMSG" required style="width: 38vw;"
                                             type="text">
                                         <span class="bar" style="width: 38vw;"></span>
@@ -1737,7 +1737,7 @@
                                     adminCurrentReport.result === 3 ? "ОТКЛОНИЛ" : adminCurrentReport.result === 2 ? "ЗАКРЫЛ" : "ПРОСРОЧИЛ" 
                                 }} РЕПОРТ
                             </span>
-                            <div class="settingsh1" style="padding-top: 4vh;">
+                            <div class="settingsh1" style="padding-top: 2.2416666666666667vw;">
                                 <span :class="{minibtnRed: +assortDays === +30}" class="minibtn"
                                     v-on:click="assortDays = 30">НАРУШЕНИЙ НЕ ОБНАРУЖЕНО</span>
                                 <span :class="{minibtnRed: +assortDays === +60}" class="minibtn"
@@ -1746,7 +1746,7 @@
                                     v-on:click="assortDays = 90; place = 3">ИГРОК НАРУШИЛ ПРАВИЛА ПРОЕКТА</span>
                             </div>
 
-                            <div class="settingsh1" style="padding-top: 4vh;" v-if="assortDays === 90">
+                            <div class="settingsh1" style="padding-top: 2.2416666666666667vw;" v-if="assortDays === 90">
                                 <span :class="{minibtnRed: +place === +0}" class="minibtn"
                                     v-on:click="place = 0">ИСПОЛЬЗОВАЛ СТОРОНЕЕ ПО</span>
                                 <span :class="{minibtnRed: +place === +1}" class="minibtn"
@@ -1842,7 +1842,7 @@
                         <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e; 
-                        margin-top: 4vh;" v-if="Date.now() - lastDateAwards > 86400000"
+                        margin-top: 2.2416666666666667vw;" v-if="Date.now() - lastDateAwards > 86400000"
                             v-on:click="emitToServerWithWT(5000, 'sAwards:use')"> 
                             <span>{{i18n.getAward}}</span>
                         </div>
@@ -1850,14 +1850,14 @@
                         <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2.5vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e;
-                        margin-top: 4vh; color: #ffffff;" v-else>
+                        margin-top: 2.2416666666666667vw; color: #ffffff;" v-else>
                             <span v-if="timeLeftAwards !== null">{{i18n.getNextAward}}: {{timeLeftAwards}}</span>
                         </div>
 
                         <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 1.3vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e; 
-                        margin-top: 4vh; color: #ffffffc7;">
+                        margin-top: 2.2416666666666667vw; color: #ffffffc7;">
                             <span v-if="getBonus() !== 1">{{i18n.vipAward}}</span>
                         </div>
 
@@ -1871,7 +1871,7 @@
                         <!-- <div class="btn" id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 2vh;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e;
-                        margin-top: 4vh;" v-if="adminLevel > 0"
+                        margin-top: 2.2416666666666667vw;" v-if="adminLevel > 0"
                             v-on:click="currentAwards > 6 ? currentAwards = 0 : currentAwards += 1">
                             <span>ТЕСТ КНОПКА ДЛЯ АДМИНОВ</span>
                         </div> -->
