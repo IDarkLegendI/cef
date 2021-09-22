@@ -126,7 +126,7 @@ html {
       -ms-flex-pack: start;
           justify-content: flex-start;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 1.8vmin;
+  font-size: 1.00875vw;
 }
 
 .btn:hover {
@@ -197,7 +197,6 @@ html {
 
 .down {
   width: 90vw;
-  height: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -211,7 +210,7 @@ html {
 }
 
 .left {
-  height: 100%;
+  height: 43.01vw;
   -ms-flex-preferred-size: 72%;
       flex-basis: 72%;
   display: -webkit-box;
@@ -230,7 +229,7 @@ html {
 
 .upleft {
   width: 64.4vw;
-  height: 45vmin;
+  height: 25.21875vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -248,7 +247,7 @@ html {
 .stack {
   -ms-flex-preferred-size: 37%;
       flex-basis: 37%;
-  height: 45.5vmin;
+  height: 25.21875vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -289,7 +288,7 @@ html {
 
 .ticket {
   width: 100%;
-  height: 21vmin;
+  height: 11.76875vw;
   border-color: #5aa800;
   -webkit-box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
           box-shadow: 0 0 10px #5aa800, inset 0 0 10px #5aa800;
@@ -319,7 +318,7 @@ html {
 
 .shop {
   width: 100%;
-  height: 21vmin;
+  height: 11.76875vw;
   border-color: #9e00be;
   -webkit-box-shadow: 0 0 5px #9e00be, inset 0 0 5px #9e00be;
           box-shadow: 0 0 5px #9e00be, inset 0 0 5px #9e00be;
@@ -336,7 +335,7 @@ html {
 
 .downleft {
   width: 64.7vw;
-  height: 28vmin;
+  height: 15.691666666666665vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -512,7 +511,7 @@ html {
 }
 
 .bptext {
-  margin-top: 2.6vmin;
+  margin-top: 1.4570833333333333vw;
   margin-left: 1.5vw;
   font-family: 'Rubik', sans-serif;
 }
@@ -536,7 +535,7 @@ html {
           justify-content: space-between;
   font-size: 1.3vw;
   margin-left: 1.5vw;
-  margin-top: 4vmin;
+  margin-top: 2.2416666666666667vw;
 }
 
 .bpstats1 {
@@ -588,16 +587,16 @@ html {
 }
 
 .virtname {
-  margin-top: 2.2vmin;
-  margin-left: 2vmin;
+  margin-top: 1.2329166666666669vw;
+  margin-left: 1.1208333333333333vw;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 3.5vmin;
+  font-size: 1.961458333333333vw;
 }
 
 .virttext {
-  margin-top: 1vmin;
-  margin-left: 2vmin;
-  font-size: 1.4vmin;
+  margin-top: 0.5604166666666667vw;
+  margin-left: 1.1208333333333333vw;
+  font-size: 0.7845833333333333vw;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -619,7 +618,7 @@ html {
           justify-content: center;
   position: relative;
   margin-top: auto;
-  top: 3vmin;
+  top: 1.68125vw;
 }
 
 .virticon img {
@@ -633,7 +632,7 @@ html {
   margin-left: 3vw;
   -ms-flex-preferred-size: 25%;
       flex-basis: 25%;
-  height: 100%;
+  height: 43vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -641,9 +640,6 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   text-shadow: 1px 1px 2px #0000007e;
   border: 3px solid #00df64;
   border-radius: 5px;
@@ -677,7 +673,7 @@ html {
   margin-left: 3vw;
   -ms-flex-preferred-size: 25%;
       flex-basis: 25%;
-  height: 100%;
+  height: 43vw;
   border: 3px solid #00df64;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 5px #00df64, inset 0 0 5px #00df64;
@@ -714,7 +710,7 @@ html {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin-bottom: 3vmin;
+  margin-bottom: 1.68125vw;
   height: 4.5vmin;
 }
 
@@ -748,7 +744,7 @@ html {
 .car {
   -ms-flex-preferred-size: 60%;
       flex-basis: 60%;
-  height: 100%;
+  height: 24.9vw;
 }
 
 .carContent {
@@ -780,15 +776,15 @@ html {
 .textcar1 {
   color: white;
   font-weight: 700;
-  font-size: 5vmin;
+  font-size: 2.8020833333333335vw;
   font-family: 'Roboto Condensed', sans-serif;
   padding: 0;
-  line-height: 5vmin;
+  line-height: 2.8020833333333335vw;
 }
 
 .textcar2 {
   color: white;
-  font-size: 4.5vmin;
+  font-size: 2.521875vw;
   font-family: 'Rubik', sans-serif;
   font-weight: 100;
   letter-spacing: -2px;
@@ -798,10 +794,10 @@ html {
 .textcar3 {
   font-family: 'Rubik', sans-serif;
   position: relative;
-  font-size: 2.7vmin;
+  font-size: 29.052000000000003px;
   letter-spacing: -1px;
   margin-left: 3%;
-  bottom: 0.5vmin;
+  bottom: 0.28020833333333334vw;
   color: #000000;
   background-color: #fff;
   padding-left: 1%;
@@ -833,7 +829,7 @@ html {
 }
 
 .iconcar img {
-  height: 32vmin;
+  height: 17.933333333333334vw;
   width: 34vw;
 }
 
@@ -845,11 +841,11 @@ html {
   width: 90%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-size: 4vh;
+  font-size: 2.2416666666666667vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 13vmin;
+  height: 7.285416666666666vw;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -877,7 +873,7 @@ html {
 
 .textticket4 {
   color: #00ff37;
-  font-size: 2.2vh;
+  font-size: 1.2329166666666669vw;
 }
 
 .textticketblock {
@@ -907,14 +903,14 @@ html {
 
 .iconticket {
   position: relative;
-  bottom: 18vmin;
+  bottom: 10.0875vw;
   left: 16.5vw;
   width: 10.5vw;
-  height: 15vmin;
+  height: 8.40625vw;
 }
 
 .iconticket img {
-  width: calc( 7.5vw + 5.3vmin);
+  width: 10.47vw;
   height: auto;
 }
 
@@ -936,7 +932,7 @@ html {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-size: 4vmin;
+  font-size: 2.2416666666666667vw;
 }
 
 .textshop1 {
@@ -947,13 +943,13 @@ html {
 .iconshop {
   position: relative;
   left: 13.5vw;
-  bottom: 4vmin;
+  bottom: 2.2416666666666667vw;
   width: 13vw;
-  height: 20vmin;
+  height: 11.208333333333334vw;
 }
 
 .iconshop img {
-  width: calc( 9.5vw + 6.3vmin);
+  width: 13.03vw;
   height: auto;
 }
 
@@ -969,9 +965,9 @@ html {
   border: 0.11em solid #e0e0e0;
   padding: 0.3vmin 2vmin;
   border-radius: 0.5em;
-  line-height: 4.3vmin;
-  height: 4.3vmin;
-  font-size: 1.8vmin;
+  line-height: 2.4097916666666666vw;
+  height: 2.4097916666666666vw;
+  font-size: 1.00875vw;
   text-align: center;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
@@ -988,8 +984,8 @@ html {
   border: 0.11em solid red;
   padding: 0.3vmin 2vmin;
   border-radius: 0.5em;
-  line-height: 4.3vmin;
-  font-size: 1.8vmin;
+  line-height: 2.4097916666666666vw;
+  font-size: 1.00875vw;
   text-align: center;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
@@ -1010,7 +1006,7 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 3vmin;
+  margin-top: 1.68125vw;
   margin-left: 2vw;
   margin-right: 2vw;
   font-size: 2.1vw;
@@ -1063,7 +1059,7 @@ html {
 
 .righticon img {
   width: 20vw;
-  height: 55vmin;
+  height: 30.822916666666664vw;
 }
 
 #cursor, #aura {
@@ -1771,7 +1767,7 @@ a:hover {
   font-size: 1.7vmin;
   border-radius: 6px;
   padding: 0vmin 1vw;
-  line-height: 4.3vmin;
+  line-height: 2.4097916666666666vw;
   font-family: 'Roboto Condensed', sans-serif;
   text-shadow: none;
   -webkit-transition: .2s ease-out;
@@ -2395,8 +2391,8 @@ a:hover {
 .btnzapros:after {
   content: attr(data-title);
   position: absolute;
-  -webkit-transform: translate(10.5vw, -3vmin);
-          transform: translate(10.5vw, -3vmin);
+  -webkit-transform: translate(10.5vw, -1.68125vw);
+          transform: translate(10.5vw, -1.68125vw);
   z-index: 1;
   background: #a5ff14d3;
   font-family: Arial, sans-serif;
@@ -2690,7 +2686,7 @@ a:hover {
 
 .vip .donatimgform {
   width: 10vw;
-  top: 3vmin;
+  top: 1.68125vw;
   left: 3vw;
 }
 
@@ -2745,7 +2741,7 @@ a:hover {
 
 .premium .premiumimgform {
   position: relative;
-  top: 3vmin;
+  top: 1.68125vw;
   left: 4vw;
 }
 
@@ -2929,7 +2925,7 @@ a:hover {
 .nameupline {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;
-  font-size: 3vmin;
+  font-size: 1.68125vw;
 }
 
 .balancemoney {
@@ -3011,7 +3007,7 @@ a:hover {
 }
 
 .bancontent h2 {
-  font-size: 3vmin;
+  font-size: 1.68125vw;
   color: white;
   padding-top: 2vmin;
 }
@@ -3450,7 +3446,7 @@ input[type="button" i]:focus, .button :focus, .button :active {
 
 .elDonateBlock {
   height: 20vmin;
-  padding: 3vmin 1.5vw;
+  padding: 1.68125vw 1.5vw;
   border-radius: 10% 10%;
 }
 

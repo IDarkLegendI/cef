@@ -29,7 +29,7 @@
         <transition appear enter-active-class="animated zoomInUp fast"
             leave-active-class="animated rotateOutUpLeft fast" name="custom-classes-transition">
             <section v-show="page === 0">
-                <div class="main" id="main">
+                <div class="main" id="main" style="display: flex; justify-content: center;">
                     <div class="upper">
                         <div class="maininfo">
                             <div class="nameroyale" id="mouseFocus">
@@ -220,12 +220,12 @@
                                     <div class="noobpart1" v-on:click="switchPage(3)">
                                         <div id="mouseFocus"
                                             style="display: flex; color: white; flex-direction: column; justify-content: space-between;">
-                                            <div style="font-size: 3.5vh; font-family: 'Rubik'">
+                                            <div style="font-size: 1.961458333333333vw; font-family: 'Rubik'">
                                                 <div>{{i18n.pack}}</div>
                                                 <div style="font-family: 'Roboto Condensed'">{{i18n.noob}}</div>
                                             </div>
                                             <div
-                                                style="font-size: 1.6vh; font-family: 'Roboto Condensed'; display: flex; margin-top: 1vh;">
+                                                style="font-size: 0.8966666666666667vw; font-family: 'Roboto Condensed'; display: flex; margin-top: 0.5604166666666667vw;">
                                                 <div>{{i18n.left}}:</div>
                                                 <div style="margin-left: 0.3vw;">{{i18n.time}}</div>
                                             </div>
