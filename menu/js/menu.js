@@ -1537,7 +1537,7 @@ let menu = new Vue({
                 inviteToLobby: 'ПРИГЛАШЕНИЕ В ЛОББИ',
                 accept: 'ПРИНЯТЬ',
                 cancel: 'ОТКАЗАТЬСЯ',
-                quickWeaponT: 'БРАТЬ ПОДОБРАННОЕ ОРУЖИЕ В РУКИ',
+                quickWeaponT: 'БРАТЬ ПОДБИРАЕМОЕ ОРУЖИЕ В РУКИ', 
                 infoStopGame: 'Закончив игру, Вы покинете лобби',
                 applyColor: 'ПРИМЕНИТЬ ЦВЕТ',
                 applyTuning: 'ПРИМЕНИТЬ ТЮНИНГ',
