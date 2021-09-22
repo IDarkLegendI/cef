@@ -37,7 +37,7 @@ html {
 
 .main {
   width: 90vw;
-  height: 42vw;
+  height: 50.4375vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1059,7 +1059,7 @@ html {
 
 .righticon img {
   width: 20vw;
-  height: 30.822916666666664vw;
+  height: 31.1vw;
 }
 
 #cursor, #aura {
