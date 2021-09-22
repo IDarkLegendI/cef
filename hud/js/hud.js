@@ -488,7 +488,7 @@ else
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 
     // hud.showLogo = true;
-    hud.help = 2;
+    hud.help = 1;
     // hud.keyMenu = 66
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)

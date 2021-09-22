@@ -191,37 +191,38 @@
                             </transition-group>
                         </div>
                     </transition>
-
-                    <transition name="custom-classes-transition4" enter-active-class="animated rotateInUpLeft fast"
-                        leave-active-class="animated rotateOutDownRight fast">
-                        <section>
-                            <div class="help animated bounce delay-2s slower" v-show="help === 1">
-                                <div class="subHelp">
-                                    <div>
-                                        <p class="key">
-                                            <img src="./img/keyboard.png" alt="">
-                                            <img src="./img/plus.png" alt="" id="plus">
-                                            <img src="./img/computer-mouse.png" alt="" id="pcMouse">
-                                        </p>
-                                        <p class="textHelp">{{getText('management')}}</p>
-                                    </div>
-                                </div>
-                                <div class="subHelp">
-                                    <div>
-                                        <p class="key">
-                                            <img src="./img/keyboard.png" alt="">
-                                            <img src="./img/plus.png" alt="" id="plus">
-                                            <img src="./img/numKeyBoard.png" alt="">
-                                        </p>
-                                        <p class="textHelp">{{getText('management')}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                    </transition>
                 </div>
             </section>
         </transition>
         <section v-show="visible">
+            <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
+            name="custom-classes-transition4">
+            <section v-show="help === 1 && showHUD">
+                <div class="help animated bounce delay-2s slower">
+                    <div class="subHelp">
+                        <div>
+                            <p class="key">
+                                <img alt="" src="./img/keyboard.png">
+                                <img alt="" id="plus" src="./img/plus.png">
+                                <img alt="" id="pcMouse" src="./img/computer-mouse.png">
+                            </p>
+                            <p class="textHelp">{{getText('management')}}</p>
+                        </div>
+                    </div>
+                    <div class="subHelp">
+                        <div>
+                            <p class="key">
+                                <img alt="" src="./img/keyboard.png">
+                                <img alt="" id="plus" src="./img/plus.png">
+                                <img alt="" src="./img/numKeyBoard.png">
+                            </p>
+                            <p class="textHelp">{{getText('management')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </transition>
+
             <transition name="custom-classes-transition3" enter-active-class="animated rollIn slow"
                 leave-active-class="animated rollOut fast">
                 <div class="logoLoad" v-show='showLogo'>
