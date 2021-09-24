@@ -9,6 +9,7 @@ let menu = new Vue({
         cursorWhile: null,
         fCursoring: undefined,
         fToggleCursor: undefined,
+        slientMode: false,
 
         //money
         money: 0,
@@ -789,6 +790,8 @@ let menu = new Vue({
             autoPilot: "AUTOPILOT",
             randomColorInWarmUp: "RANDOM COLOR OF WEAPONS IN THE WARM-UP AND GAME",
             forCars: "FOR CARS",
+            slientModeEnable: "You have enabled the 'do not disturb' mode, now you will not receive invitations to the lobby. \nYou can disable the mode in the character section",
+            slientModeDisable: "You have disabled the 'do not disturb' mode, now you will receive invitations to the lobby",   
         },
         i18nTemp: null,
         avatars: {
@@ -1342,6 +1345,7 @@ let menu = new Vue({
         },
 
         fInviteToLobby(lobbyID, myData) {
+            if(this.slientMode) return this.answerInvite(false);  
             this.lobbyID = lobbyID;
             this.myData = myData;
             if (this.page !== 0 || !menu.show) //Если игрок не на главной странице
@@ -1628,6 +1632,8 @@ let menu = new Vue({
                 autoPilot: "АВТОПИЛОТ",
                 randomColorInWarmUp: "РАНДОМНЫЙ ЦВЕТ ОРУЖИЯ В ИГРЕ И РАЗМИНКЕ",
                 forCars: "ДЛЯ АВТОМОБИЛЕЙ",
+                slientModeEnable: "Вы включили режим 'не беспокоить', теперь вам не будут приходить приглашения в лобби. \nОтключить режим можно в разделе персонажа",
+                slientModeDisable: "Вы отключили режим 'не беспокоить', теперь вам будут приходить приглашения в лобби",  
             }
         },
         loadEn() {
@@ -2381,7 +2387,7 @@ if ('alt' in window) {
             },
         ]
         // menu.switchPage(4, 1)
-        // menu.switchPage(4, 1)
+        menu.switchPage(0, 4)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
