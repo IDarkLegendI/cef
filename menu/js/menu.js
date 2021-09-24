@@ -787,6 +787,7 @@ let menu = new Vue({
             awardGiven: "AWARDS BRING",
             more: "MORE",
             autoPilot: "AUTOPILOT",
+            randomColorInWarmUp: "RANDOM COLOR OF WEAPONS IN THE WARM-UP AND GAME",
             forCars: "FOR CARS",
         },
         i18nTemp: null,
@@ -1625,6 +1626,7 @@ let menu = new Vue({
                 awardGiven: "НАГРАДЫ ПРИНОСЯТ",
                 more: "БОЛЬШЕ",
                 autoPilot: "АВТОПИЛОТ",
+                randomColorInWarmUp: "РАНДОМНЫЙ ЦВЕТ ОРУЖИЯ В ИГРЕ И РАЗМИНКЕ",
                 forCars: "ДЛЯ АВТОМОБИЛЕЙ",
             }
         },
@@ -2378,7 +2380,7 @@ if ('alt' in window) {
                 type: 4
             },
         ]
-        menu.switchPage(0, 0)
+        // menu.switchPage(4, 1)
         // menu.switchPage(4, 1)
         menu.plusMoney = 5
         menu.bonusMoney = 5

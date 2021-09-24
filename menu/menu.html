@@ -755,9 +755,9 @@
                     leave-active-class="animated rotateOutDownLeft fast">
                     <section v-if="subPage === 1">
                         <div
-                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 25vh;">
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 10.0390625vw;">
                             <h1
-                                style="font-size: 4.5vh; color: #fff; font-family: 'Roboto Condensed', sans-serif; padding-bottom:1.4010416666666667vw;">
+                                style="font-size: 1.80703125vw; color: #fff; font-family: 'Roboto Condensed', sans-serif; padding-bottom: 1.4010416666666667vw;">
                                 {{i18n.changePassword}}</h1>
                             <div class="settings changePassword">
                                 <div class="group" style="padding-left: 0;">
@@ -1032,20 +1032,20 @@
                                 </div>
                             </div>
                             <div class="agreePage"
-                                style="width: 50vw; text-shadow: 0 0 3px black; height: 50vh; display: flex; justify-content: center;">
+                                style="width: 50vw; text-shadow: 0 0 3px black; height: 20.078125vw; display: flex; justify-content: center;">
                                 <div class="settingsh1" id="sellCar">
                                     <h1>{{i18n.acceptAction}}</h1>
                                 </div>
                                 <div class="settingsh1" id="sellCar" style="padding-top: 2.2416666666666667vw;">
-                                    <h1 style="font-size:1.4010416666666667vw">{{i18n.toSellCar}} "{{cars[carsPointer].name}}"</h1>
+                                    <h1 style="font-size: 1.4010416666666667vw">{{i18n.toSellCar}} "{{cars[carsPointer].name}}"</h1>
                                 </div>
                                 <div class="settingsh1" id="sellCar" style="padding-top: 0.5604166666666667vw;">
-                                    <h1 style="font-size:1.4010416666666667vw">
+                                    <h1 style="font-size: 1.4010416666666667vw">
                                         {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}: 
                                         ${{Math.round(cars[carsPointer].price2 / +2).toFixed(0)}}</h1>
                                 </div>
                                 <div class="settingsh1" id="sellCar" style="padding-top: 0.5604166666666667vw;" v-if="vip !== 'none'">
-                                    <h1 style="font-size:1.4010416666666667vw">
+                                    <h1 style="font-size: 1.4010416666666667vw">
                                         CASHBACK:
                                         ${{Math.round(cars[carsPointer].price2 * (+assortPriv[vip].k / +70)).toFixed(0)}}
                                     </h1>
@@ -1101,10 +1101,10 @@
                                         <li>EXAMPLE</li>
                                     </ul>
                                     <div class="imgprice">
-                                        <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
+                                        <div class="podvalDonat" style="top: 3.3329687500000005vw; left: 1vw">
                                             <span class="donatbtn">{{Math.ceil(assortPriv['vip'].k*+30)}}RM</span>
                                             <input :value="i18n.clickForConnect" class="buttonBuy"
-                                                style="font-size: 1.5vh;" type="button">
+                                                style="font-size: 0.6023437500000001vw;" type="button">
                                         </div>
                                         <div class="donatimgform">
                                             <img alt="" src="img/gold.png">
@@ -1130,7 +1130,7 @@
                                                 v-on:keyup="changeConverter('converterRM', 'converterD', 0.1)">
                                         </div>
                                     </div>
-                                    <input :value="i18n.rClickForConvert" class="buttonBuy" style="font-size: 1.3vh;"
+                                    <input :value="i18n.rClickForConvert" class="buttonBuy" style="font-size: 0.5220312500000001vw;"
                                         type="button">
                                 </div>
                             </div>
@@ -1208,7 +1208,7 @@
                                 <span :class="{minibtnRed: +assortDays === +120}" class="minibtn"
                                     v-on:click="assortDays = 120">120</span>
                             </div>
-                            <div class="settingsh1" style="padding-top: 3vh;">
+                            <div class="settingsh1" style="padding-top: 1.2046875000000001vw;">
                                 <h1 style="font-size: 0.5604166666666667vw">{{i18n.agreeOffer}}</h1>
                             </div>
                             <div class="btnback">
@@ -1231,14 +1231,14 @@
                         <div class="nameupline">
                             <span>GTAROYAL.RU</span>
                         </div>
-                        <span style="font-size: 3vh;">{{lang === 'ru' ? i18n.control : ''}} {{i18n.privileges}}</span>
+                        <span style="font-size: 1.2046875000000001vw;">{{lang === 'ru' ? i18n.control : ''}} {{i18n.privileges}}</span>
                         <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
                             <span>{{i18n.btnBack}}</span>
                         </div>
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-around;">
+                <div style="display: flex; justify-content: space-around; height: 85vh; align-items: center;">
                     <div class="donateMain"
                         style="flex-basis: 25%; display: flex; flex-direction: column; justify-content: space-around;">
                         <div class="elDonateBlock form" id="mouseFocus"
@@ -1262,15 +1262,15 @@
                             </div>
                             <div style="display: flex;">
                                 <div class="arrowleft vipArrow" style="margin-right: 1vw;">
-                                    <img src="./img/arrowLeftRed.png" style="height: 5vh; width: 3vw;"
+                                    <img src="./img/arrowLeftRed.png" style="height: 2.0078125vw; width: 3vw;"
                                         v-on:click="emit('cWalking:change', gait.name, false)">
                                 </div>
                                 <div class="iconJetPack">
-                                    <img alt="" src="./img/donate/runner.png" style="height: 22vh; width: 14vw;">
+                                    <img alt="" src="./img/donate/runner.png" style="height: 8.834375vw; width: 14vw;">
                                 </div>
                                 <div style="display: flex; align-items: center;">
                                     <div class="arrowright vipArrow" style="margin-left: 1vw;">
-                                        <img src="./img/arrowRightRed.png" style="height: 5vh; width: 3vw;"
+                                        <img src="./img/arrowRightRed.png" style="height: 2.0078125vw; width: 3vw;"
                                             v-on:click="emit('cWalking:change', gait.name, true)">
                                     </div>
                                 </div>
@@ -1279,10 +1279,10 @@
                     </div>
                     <div class="donateMain"
                         style="flex-basis: 35%; display: flex; flex-direction: column; justify-content: space-evenly;">
-                        <div :class="vip" class="elDonateBlock donatform form" style="height: 55.5vh; flex-basis: auto">
+                        <div :class="vip" class="elDonateBlock donatform form" style="height: 30.28671875vw; flex-basis: auto">
                             <h1 class="infoHeading">{{vip.toUpperCase()}}</h1>
                             <h1
-                                style="font-size: 1.5vh; display: flex; justify-content: center; padding-top: 0.28020833333333334vw; font-weight: 100; letter-spacing: 0">
+                                style="font-size: 0.6023437500000001vw; display: flex; justify-content: center; padding-top: 0.28020833333333334vw; font-weight: 100; letter-spacing: 0">
                                 {{i18n.endPriv}}: {{getVipEndTime()}}</h1>
                             <div class="infoDonate">
                                 <ul> 
@@ -1300,6 +1300,7 @@
                                         {{i18n.cashBackCAR}}
                                     </li>
                                     <li v-if="vipLevel > 1">{{i18n.autoPilot}} {{i18n.forCars}}</li>
+                                    <li>{{i18n.randomColorInWarmUp}}</li>
                                     <li style="font-size: 0.8vw;">{{i18n.componentsVIP}}
                                         {{(100 * +assortPriv[vip].bonus) - +100}}%</li>
                                 </ul>
@@ -1329,7 +1330,7 @@
                 <div class="winMain">
                     <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                         <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}"
-                            style="font-size: 8vh;"> 
+                            style="font-size: 3.2125vw;"> 
                             {{ wsWin ? i18n.win : i18n.lose}}!</h1>
                         <h1 style="padding-top:1.1208333333333333vw; font-style: oblique; font-size:1.1208333333333333vw;">{{phrase}}</h1>
                     </div>
@@ -1340,7 +1341,7 @@
                                 <h1>{{i18n.kills}}</h1>
                                 <img src="../hud/img/skull.png" alt="">
                             </div>
-                        </div>
+                        </div> 
                         <div class="winEl">
                             <h1 class="winText">{{place}}</h1>
                             <h1 style="font-size: 1.8vw;">/{{placeAll}}</h1>
@@ -1406,7 +1407,7 @@
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <span style="font-size: 3vh;">{{i18n.managmentSub}}</span>
+                            <span style="font-size: 1.2046875000000001vw;">{{i18n.managmentSub}}</span>
                             <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
                                 <span>{{i18n.btnBack}}</span>
                             </div>
@@ -1470,7 +1471,7 @@
                                             class="labelText">{{reportType === '0' ? i18n.questionInput : reportType === '2' ? i18n.intruderID : i18n.improvementInput}}</label>
                                     </div>
                                     <div class="headrightImg"
-                                        style="width: 3.5vw; display: flex; justify-content: flex-end; margin-bottom: 2.0vh;"
+                                        style="width: 3.5vw; display: flex; justify-content: flex-end; margin-bottom: 0.803125vw;"
                                         v-if="reportType === '2'">
                                         <img src="./img/selection.png" style="width: 2vw; height: 2vw;"
                                             v-on:click="switchPage(6,1); emit('cMenu:loadLastPlayers'); setTimeout(translateSubPages, 1000)">
@@ -1500,7 +1501,7 @@
                                 <span>GTAROYAL.RU</span>
                             </div>
                             <span
-                                style="font-size: 3vh;">{{lang === 'ru' ? "НЕДАВНИЕ ИГРОКИ С КОТОРЫМИ ВЫ КОНТАКТИРОВАЛИ" : "RECENT PLAYERS YOU HAVE BEEN IN CONTACT WITH"}}</span>
+                                style="font-size: 1.2046875000000001vw;">{{lang === 'ru' ? "НЕДАВНИЕ ИГРОКИ С КОТОРЫМИ ВЫ КОНТАКТИРОВАЛИ" : "RECENT PLAYERS YOU HAVE BEEN IN CONTACT WITH"}}</span>
                             <div class="btn" id="mouseFocus" v-on:click="switchPage(6,0)">
                                 <span>{{i18n.btnBack}}</span>
                             </div>
@@ -1551,7 +1552,7 @@
                             </div>
                             <div
                                 style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; height: 5.604166666666667vw;">
-                                <span style="font-size: 3vh;">ПАНЕЛЬ АДМИНИСТРАТОРА {{adminLevel}} УРОВНЯ</span>
+                                <span style="font-size: 1.2046875000000001vw;">ПАНЕЛЬ АДМИНИСТРАТОРА {{adminLevel}} УРОВНЯ</span>
                                 <div class="nameupline">
                                     <span>{{myName}}</span>
                                 </div>
@@ -1584,7 +1585,7 @@
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <span style="font-size: 3vh;">УПРАВЛЕНИЕ
+                            <span style="font-size: 1.2046875000000001vw;">УПРАВЛЕНИЕ
                                 {{adminType === 0 ? "ВОПРОСАМИ" : "ЖАЛОБАМИ"}}</span>
                             <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
                                 v-on:click="switchPage(7,0)">
@@ -1594,7 +1595,7 @@
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="zaprosi"
-                                style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
+                                style="width: 65vw; min-height: 25.2984375vw; max-height: 25.2984375vw; overflow: hidden;">
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-bind:key="ticket.id"
                                         v-for="(ticket, index) in reportPlayers">
@@ -1616,12 +1617,12 @@
                                                     АВТОР ID: {{ticket.authorID}}
                                                 </div>
                                                 <div class="nickzapros reportZapros"
-                                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw"
+                                                    style="font-size: 0.6023437500000001vw; max-width: 20vw; min-width: 20vw"
                                                     v-if="ticket.type >= 2">
                                                     ПРОВЕРИТЬ ИГРОКА ID:{{ticket.msg}} НА ПРЕДМЕТ
-                                                    {{fGetReportReasonShort(ticket.type)}}</div>
+                                                    {{fGetReportReasonShort(ticket.type)}}</div> 
                                                 <div class="nickzapros reportZapros"
-                                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw" v-else>
+                                                    style="font-size: 0.6023437500000001vw; max-width: 20vw; min-width: 20vw" v-else>
                                                     MSG: {{ticket.msg}}</div>
                                                 <div class="nickzapros reportZapros typeLP"
                                                     style="min-width: 9vw; max-width: 9vw;">
@@ -1681,13 +1682,13 @@
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <span style="font-size: 3vh;">РЕДАКТИРОВАНИЕ ЗАЯВКИ</span>
+                            <span style="font-size: 1.2046875000000001vw;">РЕДАКТИРОВАНИЕ ЗАЯВКИ</span>
                             <div @contextmenu="switchPage(7,0)" class="btn" id="mouseFocus"
                                 v-on:click="switchPage(7,1); fGetReport('0');">
-                                <span>{{i18n.btnBack}}</span>
+                                <span>{{i18n.btnBack}}</span> 
                             </div>
                         </div>
-                        <section style="display: flex; justify-content: center; align-items: center;height: 30vh;"
+                        <section style="display: flex; justify-content: center; align-items: center; height: 12.046875vw;"
                             v-if="adminCurrentReport.type <= 1">
                             <div
                                 style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -1724,12 +1725,12 @@
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;"
                             v-if="adminCurrentReport.type >= 2">
                             <span
-                                style="font-size: 3vh; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top:1.1208333333333333vw;">
+                                style="font-size: 1.2046875000000001vw; color: white; font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top:1.1208333333333333vw;">
                                 ЖАЛОБА НА ИГРОКА {{adminCurrentReport.msg}} ЗА
                                 {{fGetReportReason(adminCurrentReport.type)}}
                             </span>
                             <span
-                                style="font-size: 3vh; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top:1.1208333333333333vw;"
+                                style="font-size: 1.2046875000000001vw; color: rgb(255, 31, 31); font-family:'Roboto Condensed', cursive; text-shadow: 1px 1px 2px #0000007e; padding-top:1.1208333333333333vw;"
                                 v-if="adminCurrentReport.adminID !== null">
                                 ПОСЛЕДНЕЕ ДЕЙСТВИЕ ОТ ADMIN#{{adminCurrentReport.adminID}}:
                                 {{
@@ -1790,7 +1791,7 @@
                     <div class="nameupline">
                         <span>GTAROYAL.RU</span>
                     </div>
-                    <span style="font-size: 3vh;">{{i18n.awards}}</span>
+                    <span style="font-size: 1.2046875000000001vw;">{{i18n.awards}}</span>
                     <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
                         <span>{{i18n.btnBack}}</span>
                     </div>
@@ -1854,14 +1855,14 @@
                             <span v-if="timeLeftAwards !== null">{{i18n.getNextAward}}: {{timeLeftAwards}}</span>
                         </div>
 
-                        <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 1.3vh;
+                        <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 0.5220312500000001vw;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e; 
                         margin-top: 2.2416666666666667vw; color: #ffffffc7;">
-                            <span v-if="getBonus() !== 1">{{i18n.vipAward}}</span>
+                            <span v-if="getBonus() !== 1">{{i18n.vipAward}}</span> 
                         </div>
 
-                        <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 1.3vh;
+                        <div id="mouseFocus" style="margin: 0; font-weight: 500; font-size: 0.5220312500000001vw;
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e;
                         margin-top: 0.5604166666666667vw; color: #ffffffc7" v-if="currentAwards !== 0">

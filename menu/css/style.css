@@ -36,12 +36,11 @@ html {
 
 .main {
   width: 90vw;
-  height: calc(19vw + 60vh);
+  height: 90vh;
   display: flex;
   flex-direction: column;
   position: absolute;
   left: 50%;
-  top: 10%;
   transform: translate(-50%, -50%);
 }
 
@@ -57,7 +56,7 @@ html {
 .maininfo {
   display: flex;
   align-items: center;
-  font-size: 4vmin;
+  font-size: 2.25vw;
   color: #fff;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 700;
@@ -68,7 +67,7 @@ html {
 }
 
 .hr hr {
-  height: 5vmin;
+  height: 2.8125vw;
 }
 
 .money {
@@ -767,7 +766,7 @@ html {
   margin-top: 1vmin;
 }
 .textright .textright1 {
-  line-height: 5vmin;
+  line-height: 2.8125vw;
   border: 2px solid #747474;
   padding: 0.5vmin 1.1208333333vw;
   border-radius: 100px;
@@ -1009,8 +1008,8 @@ input[type=checkbox] {
 
 @-webkit-keyframes click-wave {
   0% {
-    height: 4vmin;
-    width: 4vmin;
+    height: 2.25vw;
+    width: 2.25vw;
     opacity: 0.35;
     position: relative;
   }
@@ -1025,8 +1024,8 @@ input[type=checkbox] {
 
 @keyframes click-wave {
   0% {
-    height: 4vmin;
-    width: 4vmin;
+    height: 2.25vw;
+    width: 2.25vw;
     opacity: 0.35;
     position: relative;
   }
@@ -1132,7 +1131,7 @@ input[type=checkbox] {
 }
 
 .btnback {
-  margin-top: 4vmin;
+  margin-top: 2.25vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1243,7 +1242,7 @@ a:hover {
   border-radius: 0.2604166667vw;
   color: white;
   min-width: 9vw;
-  height: 4vmin;
+  height: 2.25vw;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.2vw;
 }
@@ -1613,8 +1612,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5vmin;
-  width: 5vmin;
+  height: 2.8125vw;
+  width: 2.8125vw;
   transition: 0.5s ease-out;
 }
 .borderlobby img {
@@ -1779,7 +1778,7 @@ a:hover {
 
 .ticket .minibtn {
   padding: 0 1vw;
-  line-height: 4vmin;
+  line-height: 2.25vw;
   margin-left: 2vw;
 }
 
@@ -1921,7 +1920,7 @@ a:hover {
 }
 
 .imgprice {
-  font-size: 5vmin;
+  font-size: 2.8125vw;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -1961,7 +1960,7 @@ a:hover {
 
 .donatbtn {
   font-family: "fontPrice";
-  font-size: 5vmin;
+  font-size: 2.8125vw;
   text-shadow: 0px 0px 5px black;
 }
 
@@ -2205,7 +2204,7 @@ a:hover {
 }
 .bancontent h1 {
   margin: 0;
-  font-size: 5vmin;
+  font-size: 2.8125vw;
 }
 .bancontent span {
   font-size: 1.1208333333vw;
@@ -2330,7 +2329,7 @@ a:hover {
   bottom: 5px;
   right: 1.25vw;
   width: 0.7vw;
-  height: 22vmin;
+  height: 12.375vw;
 }
 
 @-webkit-keyframes color {
@@ -2544,7 +2543,7 @@ input[type=button i]:focus, .button :focus, .button :active {
 }
 
 .donateMain {
-  height: 80vmin;
+  height: 45vw;
   padding: 0 5vw;
   font-weight: 700;
   font-size: 1.8vw;
@@ -2552,7 +2551,7 @@ input[type=button i]:focus, .button :focus, .button :active {
 }
 
 .elDonateBlock {
-  height: 20vmin;
+  height: 11.25vw;
   padding: 1.68125vw 1.5vw;
   border-radius: 10% 10%;
 }
@@ -2566,12 +2565,12 @@ input[type=button i]:focus, .button :focus, .button :active {
 
 .iconJetPack {
   position: relative;
-  top: 4vmin;
+  top: 2.25vw;
 }
 
 .iconJetPack img {
   width: 19vw;
-  height: 22vmin;
+  height: 12.375vw;
 }
 
 .infoHeading {
@@ -2579,7 +2578,7 @@ input[type=button i]:focus, .button :focus, .button :active {
   justify-content: center;
   font-weight: 900;
   text-shadow: 0px 0px 5px #ff0000;
-  font-size: 4vmin;
+  font-size: 2.25vw;
 }
 
 .infoDonate {
