@@ -2068,6 +2068,13 @@
     </section>
 </body>
 <script>
+    function vhToVw(value) {
+        let px = (value * +document.documentElement.clientHeight) / +100
+        px /= +document.documentElement.clientWidth
+        px *= +100
+         
+        console.log(`${px}vw`)
+    }
     function load() {
         if (!('alt' in window)) {
             // setTimeout(() => {
