@@ -2387,7 +2387,7 @@ if ('alt' in window) {
             },
         ]
         // menu.switchPage(4, 1)
-        menu.switchPage(0, 4)
+        menu.switchPage(3, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
