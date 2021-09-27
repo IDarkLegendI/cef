@@ -1345,9 +1345,9 @@ let menu = new Vue({
         },
 
         fInviteToLobby(lobbyID, myData) {
-            if(this.slientMode) return this.answerInvite(false);  
             this.lobbyID = lobbyID;
             this.myData = myData;
+            if(this.slientMode) return this.answerInvite(false);  
             if (this.page !== 0 || !menu.show) //Если игрок не на главной странице
             {
                 this.emitToClient('cMenu:inviteToLobbyNotify');
