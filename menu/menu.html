@@ -876,7 +876,7 @@
                                         <a id="mouseFocus" v-on:click="switchPage(0, 0)">{{i18n.btnBack}}</a>
 
                                         <a id="mouseFocus" style="background-color: #ffffffdc; color: black"
-                                            v-on:click="emitServer('sCar:testDrive', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
+                                            v-on:click="emitToServerWithWT(250, 'sCar:testDrive', {model: cars[carsPointer].model, color: cars[carsPointer].color})"
                                             v-show="!updateTuning && cars[carsPointer].model !== undefined && cars[carsPointer].model !== 'none'">TEST
                                             DRIVE</a>
                                         <section id="mouseFocus"
