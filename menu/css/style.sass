@@ -31,14 +31,15 @@ html
     overflow: hidden
 .main
     width: 90vw 
-    // height: calc(19vw + 60vh)
-    height: 90vh
+    height: calc(19vw + 60vh)
     // height: 75vw
     display: flex
     flex-direction: column
     // border: 0.15625vw solid red
     position: absolute
     left: 50%
+    top: 10%
+    // transition: .2s ease-out
     transform: translate(-50%, -50%) 
 
 .upper
@@ -56,7 +57,7 @@ html
     display: flex
     // width: 18% 
     align-items: center
-    font-size: 2.2500000000000004vw
+    font-size: 4vmin
     color: #fff
     font-family: 'Roboto Condensed', sans-serif
     font-weight: 700
@@ -66,8 +67,8 @@ html
     padding-right: 1vw
 
 .hr hr
-    height: 2.8125vw
- 
+    height: 5vmin
+
 .money
     display: flex
     flex-direction: column
@@ -467,15 +468,15 @@ html
     h1
         padding: 0
         margin: 0
- 
+
 .btnbackperson
     display: flex
     justify-content: space-around
     margin-bottom: 1.1208333333333333vw
     // margin-bottom: 1.68125vw
-    height: 2.53125vw
-    min-height: 2.53125vw
-    max-height: 2.53125vw
+    height: 4.5vmin
+    min-height: 4.5vmin
+    max-height: 4.5vmin
     // background-color: blue
     .minibtn
         padding-top: 0
@@ -484,9 +485,8 @@ html
 .btnbackperson2
     display: flex
     justify-content: space-around
-    align-items: center
     margin-bottom: 1.68125vw
-    height: 2.53125vw
+    height: 4.5vmin
     .minibtn
         // padding: 0
         padding-top: 0
@@ -512,7 +512,7 @@ html
     border-color: black
 
 .btnbackperson2 .black:hover
-    background-color: black
+    background-color: black    
 // BLOCK CAR
 
 .car
@@ -742,7 +742,7 @@ html
     margin-left: 2vw
     margin-top: 1vmin
     .textright1
-        line-height: 2.8125vw
+        line-height: 5vmin
         border: 2px solid #747474
         padding: 0.5vmin 1.1208333333333333vw
         border-radius: 100px
@@ -976,8 +976,8 @@ input[type=checkbox]
 
 @keyframes click-wave
     0%
-        height: 2.2500000000000004vw
-        width: 2.2500000000000004vw
+        height: 4vmin
+        width: 4vmin
         opacity: 0.35
         position: relative
 
@@ -1075,7 +1075,7 @@ input[type=checkbox]
         // transform: translateX(-15%)
 
 .btnback
-    margin-top: 2.2500000000000004vw
+    margin-top: 4vmin
     display: flex
     flex-direction: row
     justify-content: center
@@ -1130,9 +1130,9 @@ a:hover
     flex-direction: column
     justify-content: center
     align-items: center
-    // padding-top: 2.8125vw
+    // padding-top: 5vmin
     // position: fixed
-    // bottom: 2.8125vw
+    // bottom: 5vmin
     // left: 50%
     // transform: translateX(-50%)
     // border: 1px solid black
@@ -1189,7 +1189,7 @@ a:hover
     color: white
     // width: 9vw
     min-width: 9vw
-    height: 2.2500000000000004vw
+    height: 4vmin
     font-family: 'Roboto Condensed', sans-serif
     font-size: 1.2vw
 
@@ -1540,8 +1540,8 @@ a:hover
     display: flex
     align-items: center
     justify-content: center
-    height: 2.8125vw
-    width: 2.8125vw
+    height: 5vmin
+    width: 5vmin
     // border: 1px solid #f0f0f0
     // border-radius: 15px
     transition: .5s ease-out
@@ -1560,7 +1560,7 @@ a:hover
         border-radius: 50%
 
 .crownimg
-    // height: 2.8125vw
+    // height: 5vmin
     width: 1.0vw
     margin-bottom: 1vmin
     img
@@ -1694,7 +1694,7 @@ a:hover
 .ticket .minibtn
     // margin-top: 1vmin
     padding: 0 1vw
-    line-height: 2.2500000000000004vw
+    line-height: 4vmin
     // position: absolute
     margin-left: 2vw
 
@@ -1813,7 +1813,7 @@ a:hover
 .imgprice
     // padding-left: 1vw
     // padding-bottom: -1vmin
-    font-size: 2.8125vw
+    font-size: 5vmin
     display: flex
     align-items: flex-end
     justify-content: space-between
@@ -1859,7 +1859,7 @@ a:hover
     // padding: 1vmin 1vw
     // margin-left: 0.5vw
     font-family: 'fontPrice'
-    font-size: 2.8125vw
+    font-size: 5vmin
     text-shadow: 0px 0px 5px black
 
 .vip
@@ -1887,8 +1887,8 @@ a:hover
         padding-top: 1.1208333333333333vw
     li::before
         content: '- '
-        // font-size: 2.2500000000000004vw
-        // line-height: 2.2500000000000004vw
+        // font-size: 4vmin
+        // line-height: 4vmin
         color: yellow
         font-weight: bold
         text-shadow: 0.0521vw 0.0521vw 0.1041vw #ff0000
@@ -1938,7 +1938,7 @@ a:hover
     li::before
         content: '- '
         // font-size: 1.68125vw
-        // line-height: 2.2500000000000004vw
+        // line-height: 4vmin
         color: #00ff15
         font-weight: bold
         text-shadow: 0.0521vw 0.0521vw 0.1041vw #00ff15
@@ -1971,8 +1971,8 @@ a:hover
         padding-top: 1.1208333333333333vw
     li::before
         content: '- '
-        // font-size: 2.2500000000000004vw
-        // line-height: 2.2500000000000004vw
+        // font-size: 4vmin
+        // line-height: 4vmin
         color: red
         font-weight: bold
         text-shadow: 0.0521vw 0.0521vw 0.1041vw #ff0000
@@ -2045,7 +2045,7 @@ a:hover
     justify-content: space-around
     // width: 65%
     // left: 50%
-    // top: 2.8125vw
+    // top: 5vmin
     // transform: translateX(-50%)
     font-size: 1.1208333333333333vw
     font-family: 'Roboto Condensed', cursive
@@ -2105,7 +2105,7 @@ a:hover
     flex-direction: column
     h1
         margin: 0
-        font-size: 2.8125vw
+        font-size: 5vmin
     span
         font-size: 1.1208333333333333vw
         margin-top: 1vmin
@@ -2208,12 +2208,12 @@ a:hover
 
 .hue-map
     position: absolute
-    top: 0.840625vw 
+    top: 0.840625vw
     bottom: 5px
     right: 1.25vw
     // margin: -5vmin 12.5vw
     width: 0.7vw
-    height: 12.375vw
+    height: 22vmin
 
 @keyframes color
     0%
@@ -2368,14 +2368,14 @@ input[type="button" i]:focus, .button :focus, .button :active
 
 //Управление донатом    
 .donateMain
-    height: 45vw
+    height: 80vmin
     padding: 0 5vw
     font-weight: 700
     font-size: 1.8vw
     font-family: 'Roboto Condensed', sans-serif
 
 .elDonateBlock
-    height: 11.25vw
+    height: 20vmin
     padding: 1.68125vw 1.5vw
     border-radius: 10% 10%
 
@@ -2387,18 +2387,18 @@ input[type="button" i]:focus, .button :focus, .button :active
 
 .iconJetPack
     position: relative
-    top: 2.2500000000000004vw
+    top: 4vmin
 
 .iconJetPack img
     width: 19vw
-    height: 12.375vw
+    height: 22vmin
 
 .infoHeading
     display: flex
     justify-content: center
     font-weight: 900
     text-shadow: 0px 0px 5px #ff0000
-    font-size: 2.2500000000000004vw 
+    font-size: 4vmin
 
 .infoDonate
     margin-top: 1vmin
@@ -2621,16 +2621,6 @@ $var7: #f63a0f
         -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1)
         box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1)
 
-
-.slientIcon
-    width: 2vw
-    transition: .4s ease-out
-    padding-bottom: 0.15vw
- 
-.slientIcon:hover
-    transition: .4s ease-out
-    transform: scale(1.3)
-    padding-left: 0.3vw
 
 #progress1
     width: 1.3vw
