@@ -568,6 +568,8 @@ let menu = new Vue({
         //Bell
         bell: null,
         hoverBell: false,
+        hoverBellType: 0,
+        hoverBellTimer: null,
 
         //Misc
         miscInput: '',
@@ -792,6 +794,10 @@ let menu = new Vue({
             forCars: "FOR CARS",
             slientModeEnable: "You have enabled the 'do not disturb' mode, now you will not receive invitations to the lobby. \nYou can disable the mode in the character section",
             slientModeDisable: "You have disabled the 'do not disturb' mode, now you will receive invitations to the lobby",   
+            bellInfoDetails: "CLICK THE LEFT BUTTON FOR DETAILS",  
+            bellInfoDelete: "CLICK THE RIGHT BUTTON TO DELETE",  
+            bellNewFriend: "THERE ARE REJECTED APPLICATIONS FOR FRIENDS",  
+             // ei18n
         },
         i18nTemp: null,
         avatars: {
@@ -1466,6 +1472,36 @@ let menu = new Vue({
                 online = false;
             })
         },
+
+        fBellCheck()
+        {
+            if(this.requestsIn.length > 1 && this.bell.some(el => el.type === 2)) this.emitToClient('bell:push', this.i18n.bellNewFriend, 2, this.show) 
+        },
+
+        fBellLeave()
+        {
+            if(this.hoverBellTimer !== null) clearTimeout(this.hoverBellTimer); 
+            this.hoverBellTimer = setTimeout(() => 
+            {
+                this.hoverBell = false; 
+                this.hoverBellTimer = null
+            }, 1000)
+        },
+
+        fBellOver()
+        {
+            if(this.hoverBellTimer !== null) 
+            {
+                clearTimeout(this.hoverBellTimer); 
+                this.hoverBellTimer = null;
+            }
+        },
+
+        fLeftClick(index) {
+            if(this.bell[index].type === 2) this.switchPage(0, 3)
+            console.log(this.bell[index].type)
+        },
+
         fRightClick(index) {
             //Удаление новости 
             menu.emitToClient('bell:delete', index)
@@ -1634,6 +1670,10 @@ let menu = new Vue({
                 forCars: "ДЛЯ АВТОМОБИЛЕЙ",
                 slientModeEnable: "Вы включили режим 'не беспокоить', теперь вам не будут приходить приглашения в лобби. \nОтключить режим можно в разделе персонажа",
                 slientModeDisable: "Вы отключили режим 'не беспокоить', теперь вам будут приходить приглашения в лобби",  
+                bellInfoDetails: "НАЖМИТЕ ЛЕВУЮ КНОПКУ ДЛЯ ПЕРЕХОДА В РАЗДЕЛ",  
+                bellInfoDelete: "НАЖМИТЕ ПРАВУЮ КНОПКУ ДЛЯ УДАЛЕНИЯ",  
+                bellNewFriend: "ЕСТЬ НЕПРИНЯТЫЕ ЗАЯВКИ В ДРУЗЬЯ",  
+                // ri18n
             }
         },
         loadEn() {
@@ -2253,6 +2293,7 @@ if ('alt' in window) {
         setTimeout(() => {
             menu.translateSubPages()
         }, 1000)
+        menu.fBellCheck(); 
         //console.log(`menu.requestsOut: ${menu.requestsOut}`)
         // menu.updateOnline(allPlayers); 
     })
@@ -2377,17 +2418,47 @@ if ('alt' in window) {
                 msg: "Вам поступил запрос в друзья",
                 type: 0
             }, {
+                id: 3,
+                msg: "2",
+                type: 0
+            },
+            {
                 id: 4,
+                msg: "Вам поступил запрос в друзья",
+                type: 0
+            }, {
+                id: 5,
                 msg: "Вам поступил запрос в друзь2",
                 type: 3
             }, {
-                id: 3,
+                id: 6,
+                msg: "Вам поступил запрос в друзь3",
+                type: 4
+            },{
+                id: 7,
+                msg: "Вам поступил запрос в друзь2",
+                type: 3
+            }, {
+                id: 8,
+                msg: "Вам поступил запрос в друзь4",
+                type: 4
+            },
+            {
+                id: 9,
+                msg: "Вам поступил запрос в друзья",
+                type: 0
+            }, {
+                id: 10,
+                msg: "Вам поступил запрос в друзь2",
+                type: 3
+            }, {
+                id: 11,
                 msg: "Вам поступил запрос в друзь3",
                 type: 4
             },
         ]
         // menu.switchPage(4, 1)
-        menu.switchPage(3, 0)
+        menu.switchPage(0, 5)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -2411,6 +2482,7 @@ if ('alt' in window) {
     menu.currentAwards = 2
     menu.lastDateAwards = 1627854415150
     menu.adminLevel = 1
+    menu.hoverBell = true
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();

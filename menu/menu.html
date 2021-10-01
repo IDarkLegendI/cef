@@ -545,16 +545,16 @@
                                 </div>
                                 <div class="zaprosi" style="margin-left: 0.5vw; margin-right: 0.5vw; padding-top: 0">
                                     <transition-group name="list-complete" tag="div">
-                                        <div @contextmenu="fRightClick(index)" @mouseleave="hoverBell = false"
-                                            @mouseover="hoverBell = true" class="zapros zaprosNews list-complete-item"
+                                        <div @contextmenu="fRightClick(index)" @mouseleave="fBellLeave()" @mouseover="hoverBell = true; hoverBellType = item.type; fBellOver();"
+                                            class="zapros zaprosNews list-complete-item" v-on:click="fLeftClick(index)"
                                             v-bind:key="item.id" v-for="(item, index) in bell">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros avatarNews">
                                                     <!-- 0 - error, 1 - ok -->
                                                     <img src="../menu/img/no.png" v-if="item.type === 0">
                                                     <img src="../menu/img/accepted.png" v-if="item.type === 1">
-                                                    <img src="../menu/img/justice-scale.png" v-if="item.type === 2">
-                                                    <img src="../menu/img/team.png" v-if="item.type === 3">
+                                                    <img src="../menu/img/support.png" v-if="item.type === 2">
+                                                    <img src="../menu/img/justice-scale.png" v-if="item.type === 3">
                                                     <img src="../menu/img/cigar.png" v-if="item.type === 4">
                                                 </div>
                                                 <div class="nickzapros" style="font-size: 1vw;">
@@ -564,6 +564,13 @@
                                         </div>
                                     </transition-group>
                                 </div>
+                                <div style="min-height: 2.0vw; display: flex; justify-content: center; align-items: center;">
+                                    <transition enter-active-class="animated fadeIn slower" leave-active-class="animated fadeOut slower">
+                                        <div style="display: flex; justify-content: center; margin-bottom: 0.5vw; margin-top: 0.5vw; font-family: 'Roboto Condensed'; font-size: 0.8vw;" v-show="hoverBell">
+                                            <h1>{{hoverBellType === 2 ? i18n.bellInfoDetails : i18n.bellInfoDelete}}</h1> 
+                                        </div>
+                                    </transition>
+                                </div> 
                                 <div class="btnbackperson">
                                     <span class="minibtn" id="mouseFocus"
                                         v-on:click="switchPage(0, 0)"><span>{{i18n.person}}</span></span>
