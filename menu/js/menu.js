@@ -1474,8 +1474,9 @@ let menu = new Vue({
         },
 
         fBellCheck()
-        {
-            if(this.requestsIn.length > 1 && this.bell.some(el => el.type === 2)) this.emitToClient('bell:push', this.i18n.bellNewFriend, 2, this.show) 
+        {   
+            console.log(`fBellCheck: ${this.requestsIn.length > 0}; this.bell: ${this.bell}; ${(this.bell === null || !this.bell.some(el => el.type === 2))}`)   
+            if(this.requestsIn.length > 0 && (this.bell === null || !this.bell.some(el => el.type === 2))) this.emitToClient('bell:push', this.i18n.bellNewFriend, 2, this.show) 
         },
 
         fBellLeave()
@@ -1498,7 +1499,11 @@ let menu = new Vue({
         },
 
         fLeftClick(index) {
-            if(this.bell[index].type === 2) this.switchPage(0, 3)
+            if(this.bell[index].type === 2) 
+            { 
+                this.switchPage(0, 3)
+                this.fRightClick(index)
+            }
             console.log(this.bell[index].type)
         },
 
@@ -2282,6 +2287,7 @@ if ('alt' in window) {
 
     // Friends
     alt.on('bMenu:updateFriends', (friends, requestsIn, requestsOut) => {
+        console.log(`bMenu:updateFriends`) 
         menu.friends = [];
         if (friends != null) JSON.parse(friends).forEach(el => menu.friends.push({
             name: el,
