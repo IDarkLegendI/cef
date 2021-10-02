@@ -20,24 +20,24 @@
 					</div>
 					<div style="display: flex; width: 50%; justify-content: space-between; align-items: center;">
 						<div :class="{'animated infinite wobble slower active': (currentTitle === 'Glasses')}"
-							class="customelement">
+							class="customelement" >
 							<img @click="showGlasses" alt="" src="./img/oki.png">
 						</div>
 						<div :class="{'animated infinite wobble slower active': (currentTitle === 'Masks')}"
-							class="customelement" style="height: 6.5vh">
+							class="customelement" >
 							<img @click="showMasks" alt="" src="./img/facemask.png">
 						</div>
 					</div>
 					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Tops')}"
-						class="customelement" style="height: 7vh">
+						class="customelement" >
 						<img @click="showTops" alt="" :src="`./img/${bMan ? 'topi' : 't-shirt'}.png`">
 					</div>
 					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Legs')}"
-						class="customelement" style="height: 7vh">
+						class="customelement" >
 						<img @click="showLegs" alt="" :src="`./img/${bMan ? 'shtani' : 'skirt'}.png`">
 					</div>
 					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Feet')}"
-						class="customelement" style="height: 6.5vh">
+						class="customelement" >
 						<img @click="showFeet" alt="" src="./img/boti.png">
 					</div>
 				</div>
@@ -98,9 +98,9 @@
 				</div>
 				<div class="btns">
 					<section v-if="currentTitle && !colorCloth">
-						<div style="display: flex; align-items: center; font-size: 1.5vh;">
+						<div style="display: flex; align-items: center; font-size: 1vw;">
 							<p>{{saleText}}: </p>
-							<p style="padding-left: 0.25vw; font-size: 2vh; color: greenyellow">${{showSale()}}</p>
+							<p style="padding-left: 0.25vw; font-size: 1.1vw; color: greenyellow">${{showSale()}}</p>
 						</div>
 						<div class="btn"><input :value="showPrice()" class="button btngreen" type="button"
 								v-on:click="buy()"></div>
