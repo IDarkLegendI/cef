@@ -186,11 +186,11 @@ html {
 .sandwiches {
    display: flex;
    flex-direction: column;
-   justify-content: center;
-   align-items: center;
+   /* justify-content: flex-start;
+   align-items: center; */
    min-height: 22vh;
    max-height: 22vh;
-   /* background-color: red; */
+   /* background-color: red; */ 
 }
 
 .sandwichcustom {
