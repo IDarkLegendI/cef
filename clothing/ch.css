@@ -15,6 +15,10 @@ html {
    background-image: url(fon.jpg); 
 } */
 
+#fade {
+   opacity: 0;
+}
+
 .b1 {
    position: fixed;
    right: 0;

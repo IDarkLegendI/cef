@@ -5,7 +5,7 @@
 <link href="../animate.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
-<body onload="load()">
+<body id="fade" onload="load()">
 	<div id="app">
 		<div class="b1" v-show="visible">
 			<div class="contentb1"> 
@@ -4400,8 +4400,9 @@
 
 	function load()
 	{
+		document.getElementById('fade').style.opacity = 1;
 		if('alt' in window) return;
-		 
+		  
 		loadMans()
 		app.visible = true
 		app.currentTitle = 'Tops'
