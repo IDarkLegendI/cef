@@ -50,7 +50,7 @@
 						<div  class="namecustom">
 							<div class="textnamecustom">{{ colorText }}
 								{{ currentCloth.colors.length === +1 ? 1 : currentColorNum + +1}} {{ ofText }}
-								{{ currentCloth.colors.length === +1 ? 1 : currentCloth.colors.length - +1 }}</div>
+								{{ currentCloth.colors.length === +1 ? 1 : currentCloth.colors.length}}</div> 
 						</div>
 						<div class="textnamecustom"><input :value='+currentColorNum + +1' class="inputForNumber"
 								onchange="app.changeNum(+this.value - +1, false)"
@@ -77,16 +77,15 @@
 							<img @click="nextCloth" src="./img/arrowRight.png" width="30vw">
 						</div>
 					</div>
-					<div class="sandwichcustom" v-show="currentCloth.underColors.length > 1">
+					<div class="sandwichcustom" v-if="currentCloth.underColors && currentCloth.underColors.length > 1">
 						<div class="arrowleftcustom">
 							<img @click="prevUnderColor" src="./img/arrowLeft.png" width="30vw">
 						</div>
-						<div class="namecustom">
+						<div class="namecustom"> 
 							<div class="textnamecustom">{{ underColorText }} 
-								<!-- {{ currentCloth.underColor + 1}} {{ ofText }}  -->
-								{{ currentCloth.underColors.length === +1 ? 1 : currentUnderColorNum + +1 }} {{ ofText }} 
-								{{ currentCloth.underColors.length === +1 ? 1 : currentCloth.underColors.length - +1 }}</div> 
-						</div>
+								{{ currentCloth.underColors && currentCloth.underColors.length === +1 ? 1 : currentUnderColorNum + +1 }} {{ ofText }} 
+								{{ currentCloth.underColors && currentCloth.underColors.length === +1 ? 1 : currentCloth.underColors.length}}</div> 
+						</div> 
 						<div class="textnamecustom"><input :value='+currentUnderColorNum + +1' class="inputForNumber"
 							onchange="app.changeNumUnderColor(+this.value - +1, false)" 
 							onkeyup="var yratext=/[^0-9]/g; if(yratext.test(this.value)) {this.value = 0; app.changeNumUnderColor(+this.value - +1, false)}"
@@ -94,7 +93,7 @@
 						<div class="arrowrightcustom">
 							<img @click="nextUnderColor" src="./img/arrowRight.png" width="30vw">
 						</div>
-					</div>
+					</div> 
 				</div>
 				<div class="btns">
 					<section v-if="currentTitle && !colorCloth">
