@@ -532,15 +532,15 @@ input::-webkit-inner-spin-button {
 .fireworks .firework {
   position: relative;
   top: 0px;
-  left: 0px;
-	margin: 0px 50px;
+  left: 0px; 
+	margin: 0px 2.6041666666666665vw;
 }
 .fireworks .firework:before{
   content: "";
 	display: block;
-	border-radius: 5px;
+	border-radius: 0.2604166666666667vw;
   background-color: skyblue;
-  width: 5px;
+  width: 0.2604166666666667vw;
   height: 0px;
 	will-change: transform;
 	transform: translateY(1000px);
@@ -551,8 +551,8 @@ input::-webkit-inner-spin-button {
 .fireworks .firework .explosion {
   position: absolute;
   top: 0;
-  width: 5px;
-  height: 20px;
+  width: 0.2604166666666667vw;
+  height: 1.0416666666666667vw;
   opacity: 0;
   transform-origin: top center;
 	will-change: transform;
@@ -589,7 +589,7 @@ input::-webkit-inner-spin-button {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	border-radius: 5px;
+	border-radius: 0.2604166666666667vw;
 	will-change: transform;
 	animation: explosion2 0.7s ease-in-out 3s infinite;
 }
@@ -616,13 +616,13 @@ input::-webkit-inner-spin-button {
 		transform: translateY(1000px);
 	}
 	25%{
-		height: 25px;
+		height: 1.3020833333333333vw;
 	}
 	50%{
-		height: 50px;
+		height: 2.6041666666666665vw;
 	}
 	75%{
-		height: 30px;
+		height: 1.5625vw;
 	}
 	100%{
 		height: 0;
@@ -636,7 +636,7 @@ input::-webkit-inner-spin-button {
 		opacity: 0;
 	}
 	50%{
-		height: 25px;
+		height: 1.3020833333333333vw;
 		opacity: 1;
 	}
 	100%{
@@ -646,19 +646,19 @@ input::-webkit-inner-spin-button {
 }
 @keyframes explosion2{
 	0%{
-		transform: translateY(0px);
+		transform: translateY(0);
 	}
 	25%{
-		transform: translateY(5px);
+		transform: translateY(0.2604166666666667vw);
 	}
 	50%{
-		transform: translateY(10px);
+		transform: translateY(0.5208333333333334vw);
 	}
 	75%{
-		transform: translateY(50px);
+		transform: translateY(2.6041666666666665vw);
 	}
 	100%{
-		transform: translateY(70px);
+		transform: translateY(3.6458333333333335vw);
 	}
 }
 input[type="range" i]
@@ -676,7 +676,7 @@ html input[type="range"] {
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   html input[type="range"] {
-    overflow: hidden;
+    overflow: hidden; 
     height: 1.852vh;
     -webkit-appearance: none;
     background-color: #ddd;
