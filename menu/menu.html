@@ -2082,8 +2082,10 @@
 </body>
 <script>
     function vhToVw(value) {
-        let px = (value * +document.documentElement.clientHeight) / +100
-        px /= +document.documentElement.clientWidth
+        let h = 1076, w = 1920
+        // console.log(`h: ${document.documentElement.clientHeight}; w: ${document.documentElement.clientWidth}`)
+        let px = (value * +h) / +100
+        px /= +w 
         px *= +100
          
         console.log(`${px}vw`)
