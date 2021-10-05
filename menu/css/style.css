@@ -1827,12 +1827,12 @@ a:hover {
 
 .maindonat {
   width: 90vw;
-  height: 70vmin;
+  height: 39.2291666667vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   position: absolute;
-  padding-top: 7vmin;
 }
 .maindonat h1 {
   padding-top: 1.1208333333vw;
@@ -1930,12 +1930,11 @@ a:hover {
 }
 
 .imgprice {
-  font-size: 5vmin;
+  font-size: 2.8020833333vw;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   margin-top: auto;
-  height: 12vmin;
 }
 .imgprice img {
   transition: 0.5s ease-in-out;
