@@ -30,7 +30,7 @@ let menu = new Vue({
         keyMenu: 112,
 
         //Block Game 
-        textMatch: 'В поиске',
+        textMatch: 'ОЖИДАНИЕ СВОБОДНОГО МИРА...',
         countWarmUp: 0,
         statusGame: false,
 
@@ -652,8 +652,8 @@ let menu = new Vue({
             control: 'MANAGE',
             start: 'START',
             game: 'GAME',
-            status: 'Status',
-            expectation: 'Players waiting',
+            status: 'STATUS',
+            expectation: 'PLAYERS WAITING',
             stop: 'STOP',
             clickready: 'Click for ready',
             clicknotready: 'Click if not ready',
@@ -1533,8 +1533,8 @@ let menu = new Vue({
                 control: 'УПРАВЛЕНИЕ',
                 start: 'НАЧАТЬ',
                 game: 'ИГРУ',
-                status: 'Статус',
-                expectation: 'Игроков в ожидании',
+                status: 'СТАТУС',
+                expectation: 'ИГРОКОВ В ОЖИДАНИИ',
                 stop: 'ЗАКОНЧИТЬ',
                 clickready: 'Нажмите для готовности',
                 clicknotready: 'Нажмите, если не готовы',
@@ -2464,7 +2464,7 @@ if ('alt' in window) {
             },
         ]
         // menu.switchPage(4, 1)
-        menu.switchPage(4, 0)
+        menu.switchPage(0, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
