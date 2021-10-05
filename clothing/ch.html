@@ -169,6 +169,7 @@
 		},
 		computed: {
 			colorCloth() {
+				// console.log(`ch: ${this.myClothes[this.currentTitle].underColor} === ${this.currentCloth.underColor} --> ${this.myClothes[this.currentTitle].underColor === this.currentCloth.underColor}`)
 				// //console.log(`colorCloth: ${this.myClothes[this.currentTitle].color} !== ${this.currentCloth.color} --> ${this.myClothes[this.currentTitle].color !== this.currentCloth.color}`) 
 				// //console.log(`colorCloth: ${JSON.stringify(this.currentArr[this.myClothes[this.currentTitle].number])} !== ${JSON.stringify(this.currentCloth)} --> ${this.currentArr[this.myClothes[this.currentTitle].number] !== this.currentCloth}`) 
 				// //console.log(`this.myClothes[this.currentTitle]: ${this.myClothes[this.currentTitle]}`) 
@@ -334,7 +335,7 @@
 					color: this.currentCloth.color,
 					underColor: this.currentCloth.underColor,
 				}
-				// //console.log(`buy ----------------->	${JSON.stringify(obj)}`) 
+				// console.log(`buy ----------------->	${JSON.stringify(obj)}`)  
 				alt.emit('emitToServer', 'sClothing:buy', obj);
 			},
 

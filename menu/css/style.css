@@ -1841,7 +1841,7 @@ a:hover {
 }
 
 .leftdonat {
-  flex-basis: 29.5%;
+  flex-basis: 25%;
   height: 100%;
   display: flex;
   flex-direction: column;

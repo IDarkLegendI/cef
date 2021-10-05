@@ -1175,10 +1175,10 @@ let menu = new Vue({
                 if (this.subPage === -2) return;
 
 
-                if (('alt' in window)) alt.emit('changeVarOnClient', ['page', newPage])
-                //console.log(`switchPage: ${newPage}; ${newSubPage}`)
+                if (('alt' in window)) alt.emit('changeVarOnClient', ['page', newPage]) 
+                console.log(`switchPage: ${newPage}; ${newSubPage}; nextSubPage: ${this.nextSubPage}`)
                 // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
-                if (newSubPage !== -1 || (this.nextSubPage !== -1 && this.page !== 2)) {
+                if (newSubPage !== -1 || (this.nextSubPage !== -1 && this.page !== 2)) { 
                     // if(newPage == 0) return this.subPage = newSubPage;
                     this.page = newPage;
                     this.subPage = -2;
@@ -2464,7 +2464,7 @@ if ('alt' in window) {
             },
         ]
         // menu.switchPage(4, 1)
-        menu.switchPage(1, 0)
+        menu.switchPage(3, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
