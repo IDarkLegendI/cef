@@ -1101,90 +1101,92 @@
                 <transition enter-active-class="animated rotateInUpLeft" leave-active-class="animated rotateOutDownLeft"
                     name="custom-classes-transition">
                     <section v-if="subPage === 0">
-                        <div class="maindonat">
-                            <div class="leftdonat">
-                                <div class="vip donatform leftform"
-                                    v-on:click="assortSelected = 'vip'; switchPage(3, 1)">
-                                    <h1>VIP</h1>
-                                    <ul>
-                                        <li>АВТОМОБИЛИ</li>
-                                        <li>МНОГО ОДЕЖДЫ</li>
-                                        <li>ВСЕ ФУНКЦИИ VIP</li>
-                                        <li>EXAMPLE</li>
-                                    </ul>
-                                    <div class="imgprice">
-                                        <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
-                                            <span class="donatbtn">{{Math.ceil(assortPriv['vip'].k*+30)}}RM</span>
-                                            <input :value="i18n.clickForConnect" class="buttonBuy"
-                                                style="font-size: 1.5vh;" type="button">
-                                        </div>
-                                        <div class="donatimgform">
-                                            <img alt="" src="img/gold.png">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div @contextmenu="converterD < 10 ? converterD = 10 : '';  converterRM < 1 ? converterRM = 1 : '';     
-                                converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)"
-                                    class="calculator leftform">
-                                    <h1>КОНВЕРТЕР</h1>
-                                    <div class="converterblock">
-                                        <div class="inputcalc">
-                                            <span>RM</span>
-                                            <input max="1000000000" min="1" type="number" v-model="converterRM"
-                                                v-on:keyup="changeConverter('converterD', 'converterRM', 10)">
-                                        </div>
-                                        <div class="donatimgform">
-                                            <img alt="" src="img/shop/bounce.png">
-                                        </div>
-                                        <div class="inputcalc">
-                                            <span>$</span>
-                                            <input max="1000000000" min="10" type="number" v-model="converterD"
-                                                v-on:keyup="changeConverter('converterRM', 'converterD', 0.1)">
+                        <div style="width: 100vw; height: 90vh; display: flex; justify-content: center;">
+                            <div class="maindonat">
+                                <div class="leftdonat">
+                                    <div class="vip donatform leftform"
+                                        v-on:click="assortSelected = 'vip'; switchPage(3, 1)">
+                                        <h1>VIP</h1>
+                                        <ul>
+                                            <li>АВТОМОБИЛИ</li>
+                                            <li>МНОГО ОДЕЖДЫ</li>
+                                            <li>ВСЕ ФУНКЦИИ VIP</li>
+                                            <li>EXAMPLE</li>
+                                        </ul>
+                                        <div class="imgprice">
+                                            <div class="podvalDonat" style="top: 8.3vh; left: 1vw">
+                                                <span class="donatbtn">{{Math.ceil(assortPriv['vip'].k*+30)}}RM</span>
+                                                <input :value="i18n.clickForConnect" class="buttonBuy"
+                                                    style="font-size: 1.5vh;" type="button">
+                                            </div>
+                                            <div class="donatimgform">
+                                                <img alt="" src="img/gold.png">
+                                            </div>
                                         </div>
                                     </div>
-                                    <input :value="i18n.rClickForConvert" class="buttonBuy" style="font-size: 1.3vh;"
-                                        type="button">
-                                </div>
-                            </div>
-                            <div class="rightdonat">
-                                <div class="premium donatform"
-                                    v-on:click="assortSelected = 'premium'; switchPage(3, 1)">
-                                    <h1>PREMIUM</h1>
-                                    <ul>
-                                        <li>АВТОМОБИЛИ</li>
-                                        <li>МНОГО ОДЕЖДЫ</li>
-                                        <li>ВСЕ ФУНКЦИИ VIP</li>
-                                        <li>EXAMPLE</li>
-                                        <li>EXAMPLE</li>
-                                        <li>EXAMPLE</li>
-                                    </ul>
-                                    <div class="imgprice">
-                                        <div class="podvalDonat">
-                                            <span class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
-                                            <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
+                                    <div @contextmenu="converterD < 10 ? converterD = 10 : '';  converterRM < 1 ? converterRM = 1 : '';     
+                                    converterRM <= moneyRM ? emitToServerWithWT(1000, 'sMoney:convert', converterRM) : emit('customNotify', 1, i18n.noMoney)"
+                                        class="calculator leftform">
+                                        <h1>КОНВЕРТЕР</h1>
+                                        <div class="converterblock">
+                                            <div class="inputcalc">
+                                                <span>RM</span>
+                                                <input max="1000000000" min="1" type="number" v-model="converterRM"
+                                                    v-on:keyup="changeConverter('converterD', 'converterRM', 10)">
+                                            </div>
+                                            <div class="donatimgform donatimgformArrow">
+                                                <img alt="" src="img/shop/curved-arrow.png">
+                                            </div>
+                                            <div class="inputcalc">
+                                                <span>$</span>
+                                                <input max="1000000000" min="10" type="number" v-model="converterD"
+                                                    v-on:keyup="changeConverter('converterRM', 'converterD', 0.1)">
+                                            </div>
                                         </div>
-                                        <div class="premiumimgform">
-                                            <img alt="" src="img/emerald.png">
-                                        </div>
+                                        <input :value="i18n.rClickForConvert" class="buttonBuy" style="font-size: 0.9285416666666666vw;"
+                                            type="button">
                                     </div>
                                 </div>
-                                <div class="deluxe donatform" v-on:click="assortSelected = 'deluxe'; switchPage(3, 1)">
-                                    <h1>DELUXE</h1>
-                                    <ul>
-                                        <li>АВТОМОБИЛИ</li>
-                                        <li>МНОГО ОДЕЖДЫ</li>
-                                        <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
-                                        <li>EXAMPLE</li>
-                                        <li>EXAMPLE</li>
-                                        <li>EXAMPLE</li>
-                                    </ul>
-                                    <div class="imgprice">
-                                        <div class="podvalDonat">
-                                            <span class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
-                                            <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
+                                <div class="rightdonat">
+                                    <div class="premium donatform"
+                                        v-on:click="assortSelected = 'premium'; switchPage(3, 1)">
+                                        <h1>PREMIUM</h1>
+                                        <ul>
+                                            <li>АВТОМОБИЛИ</li>
+                                            <li>МНОГО ОДЕЖДЫ</li>
+                                            <li>ВСЕ ФУНКЦИИ VIP</li>
+                                            <li>EXAMPLE</li>
+                                            <li>EXAMPLE</li>
+                                            <li>EXAMPLE</li>
+                                        </ul>
+                                        <div class="imgprice">
+                                            <div class="podvalDonat">
+                                                <span class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
+                                                <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
+                                            </div>
+                                            <div class="premiumimgform">
+                                                <img alt="" src="img/emerald.png">
+                                            </div>
                                         </div>
-                                        <div class="deluxeimgform">
-                                            <img alt="" src="img/corona.png">
+                                    </div>
+                                    <div class="deluxe donatform" v-on:click="assortSelected = 'deluxe'; switchPage(3, 1)">
+                                        <h1>DELUXE</h1>
+                                        <ul>
+                                            <li>АВТОМОБИЛИ</li>
+                                            <li>МНОГО ОДЕЖДЫ</li>
+                                            <li>ВСЕ ФУНКЦИИ VIP, PREMIUM</li>
+                                            <li>EXAMPLE</li>
+                                            <li>EXAMPLE</li>
+                                            <li>EXAMPLE</li>
+                                        </ul>
+                                        <div class="imgprice">
+                                            <div class="podvalDonat">
+                                                <span class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
+                                                <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
+                                            </div>
+                                            <div class="deluxeimgform">
+                                                <img alt="" src="img/corona.png">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
