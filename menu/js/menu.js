@@ -2464,7 +2464,7 @@ if ('alt' in window) {
             },
         ]
         // menu.switchPage(4, 1)
-        menu.switchPage(3, 0)
+        menu.switchPage(4, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -2476,7 +2476,7 @@ if ('alt' in window) {
     menu.disableCursor = true
     menu.placeAll = 3;
     menu.place = 2;
-    menu.vip = 'deluxe'
+    menu.vip = 'vip'
     menu.carsPointer = 1
     menu.cars[1].price = -1
     // menu.anyVar = 34 //УБРАТЬ!

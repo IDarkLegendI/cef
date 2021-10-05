@@ -1095,7 +1095,7 @@
                     <div class="btn" id="mouseFocus">
                         <span>{{i18n.topap}}</span>
                     </div>
-                    <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
+                    <div class="btn" id="mouseFocus" v-on:click="switchPage(subPage === 0 ? 0 : 3,0)">
                         <span>{{i18n.btnBack}}</span>
                     </div>
                 </div>
