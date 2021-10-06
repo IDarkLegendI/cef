@@ -250,10 +250,10 @@
                                                 <div class="bpname">
                                                     <span>{{i18n.rank}}</span>
                                                 </div>
-                                                <div style="display: flex; align-items: center; justify-content: space-between; width: 86%;">
+                                                <div style="display: flex; align-items: center;">
                                                     <span style="font-size: 0.8vw;">{{i18n.backmatch}}:</span>
                                                         <span :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}"
-                                                            style="font-size: 0.9vw;">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
+                                                            style="font-size: 0.9vw; padding-left: 0.2vw;">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
                                                         </span>
                                                 </div>
                                             </div>
