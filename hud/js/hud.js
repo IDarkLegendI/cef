@@ -334,7 +334,8 @@ var hud = new Vue({
             }, 1000); 
         },
         fKillFeedUpdate(obj)
-        {  
+        {   
+            console.log(`fKillFeedUpdate: ${JSON.stringify(obj)}`)
             if(this.killFeed[2]) 
             {
                 console.log(`${this.killFeed[2]}; ${this.killFeed.splice(0, 1)}`)
@@ -464,7 +465,7 @@ if ('alt' in window) {
     })
 
     alt.on('fTimeUpdate', hud.fTimeUpdate) 
-    alt.on('updateKillFeed', hud.fKillFeedUpdate)   
+    alt.on('updateKillFeed', hud.fKillFeedUpdate)    
 
     alt.on('updateHelp', toggle =>
     {
@@ -484,11 +485,11 @@ if ('alt' in window) {
 }  
 else  
 { 
-    hud.obs.show = false;
+    hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
-    hud.showHUD = true; 
+    hud.showHUD = false; 
     // hud.showLogo = true;
-    hud.help = 1;
+    hud.help = 0;
     // hud.keyMenu = 66
     // hud.showLogo = true; 
     // hud.fUpdateKills("OBLIKO", 100)
