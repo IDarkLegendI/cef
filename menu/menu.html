@@ -125,7 +125,7 @@
                                     <section v-if="!statusGame">
                                         <!-- Если игрок капитан -->
                                         <div class="ticket form" id="mouseFocus" v-if="lobby[myID].ready <= -1"
-                                            v-on:click="emitToServerWithWT(1000, 'sMenu:startGame'); emit('startGame');">
+                                            v-on:click="emit('startGame');">
                                             <div class="textticket">
                                                 <div class="textticket1">{{i18n.start}} <span
                                                         class="textticket2">{{i18n.game}}</span></div>
@@ -189,7 +189,7 @@
                                     <!-- Если игрок в игре -->
                                     <section v-else>
                                         <div class="ticket ticketRed form" id="mouseFocus"
-                                            v-on:click="emitServer('sMenu:endGame', -3)">
+                                            v-on:click="emit('endGame');">
                                             <div class="textticket" style="justify-content: center;">
                                                 <div class="textticket1">{{i18n.stop}} <span
                                                         class="textticket2">{{i18n.game}}</span>
