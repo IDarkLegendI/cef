@@ -108,17 +108,17 @@
                             leave-active-class="animated bounceOutRight" style="width: 100%;" tag="div">
                             <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
-                                    <div :style="{animationName: friend.mic ? 'flash' : 'none'}" 
-                                        class="animated infinite flash slow">   
+                                    <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
+                                        class="animated infinite flash slow">
                                         <p :style="{borderColor: friend.color}" class="key" id="friendName">
                                             {{friend.name}}</p>
                                         <p class="textHelp"
                                             style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
                                             <img :src="`../hud/img/${friend.hp > 0 ? (friend.armour > 0 ? 'armour' : 'heart') : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`"
                                                 style="height: auto; width: 0.7vw;">
-                                                <section v-if="friend.hp > 0">
-                                                    <p>{{friend.armour > 0 ? friend.armour : friend.hp}}</p>
-                                                </section>
+                                            <section v-if="friend.hp > 0">
+                                                <p>{{friend.armour > 0 ? friend.armour : friend.hp}}</p>
+                                            </section>
                                         </p>
                                         <!-- <img class="animated infinite flash slower" src="./img/mic.png" v-if="friend.mic" 
                                         style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 2px green)" :style="{paddingLeft: friend.hp > 0 ? '0.25vw' : 0}"> -->
@@ -146,7 +146,7 @@
                                 {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
                         </div>
                         <div class="alive" v-show="!obs.show">
-                            <div class="numberAlive" id="alive"> 
+                            <div class="numberAlive" id="alive">
                                 <p>{{ammo[0]}}</p>
                                 <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
                             </div>
@@ -179,12 +179,12 @@
                                     v-bind:key="kill.iKey">
                                     <div class="killelement"
                                         style="display: flex; align-items: center; align-self: center">
-                                        <span class="killElementText">{{kill.killerName}}</span>     
-                                        <div style="height: 2vh; padding: 0vh 1.2vh"> 
+                                        <span class="killElementText">{{kill.killerName}}</span>
+                                        <div style="height: 2vh; padding: 0vh 1.2vh">
                                             <img :src="`./img/kf/${kill.weaponName}.png`"
-                                                onerror="this.src='./img/kf/1.png'" 
+                                                onerror="this.src='./img/kf/1.png'"
                                                 style="max-width: 6vw; height: 100%; filter: drop-shadow(0 0 1px #000000);">
-                                        </div> 
+                                        </div>
                                         <span class="killElementText">{{kill.victimName}}</span>
                                     </div>
                                 </div>
@@ -196,32 +196,32 @@
         </transition>
         <section v-show="visible">
             <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
-            name="custom-classes-transition4">
-            <section v-show="help === 1 && showHUD">
-                <div class="help animated bounce delay-2s slower">
-                    <div class="subHelp">
-                        <div>
-                            <p class="key">
-                                <img alt="" src="./img/keyboard.png">
-                                <img alt="" id="plus" src="./img/plus.png">
-                                <img alt="" id="pcMouse" src="./img/computer-mouse.png">
-                            </p>
-                            <p class="textHelp">{{getText('management')}}</p>
+                name="custom-classes-transition4">
+                <section v-show="help === 1 && showHUD">
+                    <div class="help animated bounce delay-2s slower">
+                        <div class="subHelp">
+                            <div>
+                                <p class="key">
+                                    <img alt="" src="./img/keyboard.png">
+                                    <img alt="" id="plus" src="./img/plus.png">
+                                    <img alt="" id="pcMouse" src="./img/computer-mouse.png">
+                                </p>
+                                <p class="textHelp">{{getText('management')}}</p>
+                            </div>
+                        </div>
+                        <div class="subHelp">
+                            <div>
+                                <p class="key">
+                                    <img alt="" src="./img/keyboard.png">
+                                    <img alt="" id="plus" src="./img/plus.png">
+                                    <img alt="" src="./img/numKeyBoard.png">
+                                </p>
+                                <p class="textHelp">{{getText('management')}}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="subHelp">
-                        <div>
-                            <p class="key">
-                                <img alt="" src="./img/keyboard.png">
-                                <img alt="" id="plus" src="./img/plus.png">
-                                <img alt="" src="./img/numKeyBoard.png">
-                            </p>
-                            <p class="textHelp">{{getText('management')}}</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </transition>
+                </section>
+            </transition>
 
             <transition name="custom-classes-transition3" enter-active-class="animated rollIn slow"
                 leave-active-class="animated rollOut fast">
@@ -257,6 +257,7 @@
 <script src="./Notify/js/noty.min.js"></script>
 <script src="../vue.js"></script>
 <script src="js/hud.js"></script>
+<script src="js/audio.js"></script> 
 
 <script>
     if (!('alt' in window)) document.getElementById('fade').style.opacity = 1;
