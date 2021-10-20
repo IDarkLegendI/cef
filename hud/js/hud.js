@@ -414,6 +414,9 @@ var hud = new Vue({
         useFunction(name, ...args) {
             return hud[name](...args);
         },
+        useFunctionAny(name, ...args) {
+            return window[name](...args);
+        },
     },
 })
 
@@ -475,7 +478,8 @@ if ('alt' in window) {
 
     alt.on('fPlayAudio',(name, volume) => hud.fPlayAudio(name, volume))       
     alt.on('changeVar', (...args) => hud.changeVar(...args)) 
-    alt.on('useFunction', (...args) => hud.useFunction(...args))  
+    alt.on('useFunction', (...args) => hud.useFunction(...args))   
+    alt.on('useFunctionAny', (...args) => hud.useFunctionAny(...args))  
     alt.on('testHud', (...args) => {
         hud.showHUD = true; 
         setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend'}), 0)
