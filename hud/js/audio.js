@@ -45,8 +45,11 @@
     }
 
     function pan(range, volume) {
-        panner.pan.value = Math.sin(range * (Math.PI / 180))
-        gainNode.gain.value = volume
+        // console.log(`pan: ${Math.sin(range * (Math.PI / 180)) }`) 
+        console.log(`pan: ${(range/+360) - +1}`)  
+        panner.pan.value = (range/+360) - +1  
+        // panner.pan.value = Math.sin(range * (Math.PI / 360)) 
+        gainNode.gain.value = volume 
     }
 
     // функция остановки воспроизведения
