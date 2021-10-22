@@ -46,10 +46,10 @@
 
     function pan(range, volume) {
         // console.log(`pan: ${Math.sin(range * (Math.PI / 180)) }`) 
-        console.log(`pan: ${(range/+360) - +1}`)  
-        panner.pan.value = (range/+360) - +1  
+        // console.log(`pan: ${(range/+360) - +1}`)  
+        panner.pan.value = +range
         // panner.pan.value = Math.sin(range * (Math.PI / 360)) 
-        gainNode.gain.value = volume 
+        gainNode.gain.value = volume
     }
 
     // функция остановки воспроизведения
@@ -67,3 +67,95 @@
     loadSoundFile('./audio/win.mp3', -1);
     loadSoundFile('./audio/Friend_Deliver.mp3', -2);
     loadSoundFile('./audio/prison_alarm_01.mp3', -3);
+
+    let audioCtx, panner2;
+
+    function init(posX, posY, posZ) {
+
+        audioCtx = new window.AudioContext();
+
+        listener = audioCtx.listener;
+
+        if (listener.positionX) {
+            listener.positionX.value = posX;
+            listener.positionY.value = posY;
+            listener.positionZ.value = posZ - 5;
+        } else {
+            listener.setPosition(posX, posY, posZ - 5);
+        }
+ 
+        if (listener.forwardX) {
+            listener.forwardX.value = 0;
+            listener.forwardY.value = 0;
+            listener.forwardZ.value = -1;
+            listener.upX.value = 0;
+            listener.upY.value = 1;
+            listener.upZ.value = 0;
+        } else {
+            listener.setOrientation(0, 0, -1, 0, 1, 0);
+        }
+
+        const pannerModel = 'HRTF';
+
+        const innerCone = 0;
+        const outerCone = 180;
+        const outerGain = 0.2;
+
+        const distanceModel = 'linear';
+
+        const maxDistance = 50;
+
+        const refDistance = 1; 
+
+        const rollOff = 10;
+
+        const positionX = 0;
+        const positionY = 0;
+        const positionZ = 72;
+
+        const orientationX = 0.0;
+        const orientationY = 0.0;
+        const orientationZ = -1.0;
+
+        // let's use the class method for creating our panner node and pass in all those parameters we've set.
+
+        panner2 = new PannerNode(audioCtx, {
+            panningModel: pannerModel,
+            distanceModel: distanceModel,
+            positionX: positionX,
+            positionY: positionY,
+            positionZ: positionZ,
+            orientationX: orientationX,
+            orientationY: orientationY,
+            orientationZ: orientationZ,
+            refDistance: refDistance,
+            maxDistance: maxDistance,
+            rolloffFactor: rollOff,
+            coneInnerAngle: innerCone,
+            coneOuterAngle: outerCone,
+            coneOuterGain: outerGain
+        })
+    }
+
+    var play2 = function (type) {
+        setTimeout(() => {
+            console.log(`play2: ${type}`)
+            // создаем источник
+            source = audioCtx.createBufferSource();
+            // подключаем буфер к источнику
+            console.log(JSON.stringify(buffer[type]))
+            source.buffer = buffer[type];
+            // дефолтный получатель звука
+            destination = audioCtx.destination;
+            // подключаем источник к получателю 
+            source.connect(panner2).connect(destination);
+            // воспроизводим
+            source.start(0);
+        }, 1000)
+    }
+
+    alt.on("updatePlayerPosition", function (x, y, z, angle) {
+        // console.log(`updatePlayerPosition: ${angle}`) 
+        panner2.setPosition(x, y, z);
+        panner2.setOrientation(Math.cos(angle), -Math.sin(angle), 1);
+    });
