@@ -104,8 +104,8 @@
                 name="custom-classes-transition4">
                 <section>
                     <div class="observer list-complete-item">
-                        <transition-group enter-active-class="animated fadeIn"
-                            leave-active-class="animated fadeOut" style="width: 100%; min-height: 17vh;" tag="div">
+                        <transition-group enter-active-class="animated fadeIn faster"
+                            leave-active-class="animated fadeOut faster" style="width: 100%; min-height: 17vh;" tag="div">
                             <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
                                     <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
