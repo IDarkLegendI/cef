@@ -1405,7 +1405,7 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center;">
-                        <button class="exitToMenu" v-on:click="switchPage(0, 0)">
+                        <button class="exitToMenu" v-on:click="switchPage(0, 0); emitToClient('cAudio:stop')">
                             <img src="./img/win/enter.png" alt=""> {{i18n.exitToMenu}}
                         </button>
                     </div>
