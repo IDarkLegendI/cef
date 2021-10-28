@@ -373,6 +373,10 @@ var hud = new Vue({
             this.audio.volume = volume;   
             this.audio.play();  
         },
+        fStopAudio()
+        {
+            if(this.audio !== null) this.audio.pause();
+        },
         getLevel: function(elo = 0) {
             if(elo < 800) return '01';
             else if(elo < 950) return '02';
