@@ -133,11 +133,11 @@ input[type=checkbox] {
 .color-picker-panel {
   background: #1F232A;
   width: 15vw;
-  height: 24vh;
+  height: 13.450000000000001vw;
   border-radius: 8px;
   border: 2px solid #364347;
-  position: absolute; 
-  top: 71.8%; 
+  position: relative; 
+  /* bottom: 1vw;  */
   left: 2.5%; 
   /* transform: translate(-50%, -50%); */
 }
@@ -198,7 +198,7 @@ input[type=checkbox] {
 .spectrum-map {
   position: relative;
   width: 11.3vw;
-  height: 19vh;
+  height: 10.647916666666667vw;
   overflow: hidden;
 }
 
@@ -237,7 +237,7 @@ input[type=checkbox] {
   bottom: 0;
   left: 0; */
   width: 100%;
-  height: 80%;
+  height: 10vw;
 }
 
 .button {
@@ -355,10 +355,10 @@ input[type=checkbox] {
 .button.mode-toggle {
   /* position: absolute; */
   /* top: 6px; */
-  margin-top: 1.2vh;
+  margin-top: 0.6725vw;
   width: 14vw;
-  height: 2vh;
-  font-size: 1.2vh;
+  height: 1.1208333333333331vw;
+  font-size: 0.6725vw;
 }
 
 .value-fields {
@@ -521,8 +521,8 @@ input::-webkit-inner-spin-button {
 
 .fireworks {
   position: absolute;
-  top: 10vh;
-	height: 30vh;
+  top: 5.604166666666666vw;
+	height: 16.8125vw;
 	width: 100vw;
 	display: flex;
 	align-items: center;
@@ -675,14 +675,14 @@ html input[type="range"] {
   transition: box-shadow 0.2s ease-in-out;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  html input[type="range"] {
+  html input[type="range"] { 
     overflow: hidden; 
-    height: 1.852vh;
+    height: 1.0378916666666667vw;
     -webkit-appearance: none;
     background-color: #ddd;
   }
   html input[type="range"]::-webkit-slider-runnable-track {
-    height: 1.852vh;
+    height: 1.0378916666666667vw;
     -webkit-appearance: none;
     color: #444;
     transition: box-shadow 0.2s ease-in-out;
@@ -690,7 +690,7 @@ html input[type="range"] {
   html input[type="range"]::-webkit-slider-thumb {
     width: 1.04vw;
     -webkit-appearance: none;
-    height: 1.852vh;
+    height: 1.0378916666666667vw;
     cursor: ew-resize;
     background: #fff;
     box-shadow: -340px 0 0 330px #1597ff, inset 0 0 0 1.04vw #1597ff;

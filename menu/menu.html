@@ -814,7 +814,7 @@
                 <transition enter-active-class="animated rotateInUpLeft fast"
                     leave-active-class="animated rotateOutDownLeft fast">
                     <section v-if="subPage === 0">
-                        <div style="display: flex; flex-direction: column;">
+                        <div style="display: flex; flex-direction: column; justify-content: space-around; height: 98vh;">
                             <div class="upline">
                                 <div class="nameupline">
                                     <span>GTAROYAL.RU</span>
@@ -827,8 +827,9 @@
                                 <input @input="changeCamRotation()" max="360" min="-180" step="1" style="opacity: 0;"
                                     type="range" v-model.number="camRotation">
                             </div>
-                            <div :style="{opacity: cars[carsPointer].model === 'none' ? 0 : 1}" class="colorPicker"
-                                style="padding-left: 2.5%;">
+                            <!--  border: 1px solid red -->
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div :style="{opacity: cars[carsPointer].model === 'none' ? 0 : 1}" class="colorPicker" style="padding-left: 2.5%">
                                 <div class="color-picker-panel" id="colorpicker">
                                     <div class="panel-row">
                                         <div class="spectrum-map">
@@ -850,11 +851,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--  border: 1px solid red -->
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div style="flex-basis: 20%; display: flex; ">
-
-                                </div>
                                 <div class="mainauto">
                                     <div class="switchauto">
                                         <div class="arrowleft">

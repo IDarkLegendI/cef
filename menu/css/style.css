@@ -1317,7 +1317,7 @@ a:hover {
 }
 
 .rotation {
-  height: 69vmin;
+  max-width: 100vw;
   z-index: 1;
 }
 
