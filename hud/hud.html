@@ -54,7 +54,7 @@
                 leave-active-class="animated hinge">
                 <!-- animated infinite pulse slow -->
 
-                <div class="observer" style="padding-top: 21vh;" 
+                <div class="observer" style="padding-top: 21vh;"
                     v-show="obs.show && !killsBarShow && obs.nick.length !== +0">
                     <div style="width: 100%;">
                         <div class="helpObServer animated infinite bounce delay-3s slower">
@@ -105,7 +105,8 @@
                 <section>
                     <div class="observer list-complete-item">
                         <transition-group enter-active-class="animated fadeIn faster"
-                            leave-active-class="animated fadeOut faster" style="width: 100%; min-height: 17vh;" tag="div">
+                            leave-active-class="animated fadeOut faster" style="width: 100%; min-height: 17vh;"
+                            tag="div">
                             <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
                                 <div class="subHelpOBS">
                                     <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
@@ -235,14 +236,25 @@
                 </div>
             </transition>
 
-            <transition name="gtaRoyalRuAnimate" enter-active-class="animated fadeInLeftBig slow"
-                leave-active-class="animated fadeOutLeftBig fast">
-                <div style="position: absolute; bottom: 0%; opacity: 0.9; width: 100%; padding: 0;  min-height: 2vh;" v-show="!showLogo">
-                    <h1 id="gtaRoyalRu"
-                        style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
-                        GTAROYAL.RU</h1>
-                </div>
-            </transition>
+            <div
+                style="display: flex; flex-direction: column; align-items: center; position: absolute; bottom: 0.4%; width: 100%; padding: 0;  min-height: 1vh;">
+                <transition enter-active-class="animated fadeInLeftBig slow" leave-active-class="animated fadeOutLeftBig fast"
+                    name="gtaRoyalRuAnimate">
+                    <div style="padding-bottom: 0.2%;" v-show="!showLogo">
+                        <h1 id="gtaRoyalRu"
+                            style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
+                            GTAROYAL.RU</h1>
+                    </div>
+                </transition>
+                <transition enter-active-class="animated fadeInLeftBig slow" leave-active-class="animated fadeOutLeftBig fast"
+                    name="gtaRoyalRuAnimate">
+                    <div v-show="!showLogo && showHUD">
+                        <div class="progress">
+                            <div class="bar shadow wiggle"></div>
+                        </div> 
+                    </div>
+                </transition>
+            </div>
         </section>
     </section>
 </body>
@@ -257,13 +269,14 @@
 <script src="./Notify/js/noty.min.js"></script>
 <script src="../vue.js"></script>
 <script src="js/hud.js"></script>
-<script src="js/audio.js"></script> 
+<script src="js/audio.js"></script>
 
 <script>
     if (!('alt' in window)) document.getElementById('fade').style.opacity = 1;
 
     function load() {
         setTimeout(() => {
+            hud.recoilEl = document.querySelectorAll('.bar')[0]
             document.getElementById('fade').style.opacity = 1;
         }, 1000);
     }

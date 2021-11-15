@@ -452,14 +452,14 @@ html {
   display: flex;
   flex-direction: column;
   text-shadow: 0.0521vw 0.0521vw 0.1041vw #0000007e;
-  border: 0.15625vw solid #00df64;
+  border: 0.15625vw solid #05e269;
   border-radius: 0.2604166667vw;
   box-shadow: 0 0 0.2604vw #00df64, inset 0 0 5px #00df64;
   transition: 0.2s ease-out;
 }
 
 .right:hover {
-  background-color: #00b150;
+  background-color: #00b150d5;
   text-shadow: none;
 }
 .right:hover span {

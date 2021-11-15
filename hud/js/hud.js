@@ -39,6 +39,10 @@ var hud = new Vue({
         killFeedInterval: null, 
         killFeedHTML: null,
 
+        //Progress Recoil
+        kRecoil: 20,
+        recoilEl: null,
+
         //Lobby 
         lobby: {},
         
@@ -421,6 +425,16 @@ var hud = new Vue({
         useFunctionAny(name, ...args) {
             return window[name](...args);
         },
+        calcRecoilK(max)
+        {
+            hud.kRecoil = +100 / +max
+        },
+        setProgressRecoil(value) 
+        {
+            let x = value * +hud.kRecoil
+            hud.recoilEl.style.width = `${x}%`
+            hud.recoilEl.style.opacity = `${x / +50}`
+        },
     },
 })
 
@@ -493,9 +507,9 @@ if ('alt' in window) {
 }  
 else  
 { 
-    hud.obs.show = true;
+    hud.obs.show = false;
     hud.obs.nick = 'DarkLegend'
-    hud.showHUD = false; 
+    hud.showHUD = true; 
     // hud.showLogo = true;
     hud.help = 0;
     // hud.keyMenu = 66
