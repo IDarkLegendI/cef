@@ -167,7 +167,7 @@ body {
 #gtaRoyalRu {
     font-family: 'Roboto Condensed'; 
     text-shadow: 0 0 0.5px black, 0 0 0.1em black;
-    animation: color 5s infinite ease-in-out;
+    animation: color 30s infinite cubic-bezier(.36, .55, .63, .48);
 } 
  
 @keyframes color {
