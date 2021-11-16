@@ -459,7 +459,9 @@ if ('alt' in window) {
     });
 
     alt.on('updateAlive', count => { 
+        // console.log(`updateAlive before: ${hud.alivePlayers}; count: ${count}`)
         hud.alivePlayers = count; 
+        // console.log(`updateAlive after: ${hud.alivePlayers}; count: ${count}`) 
     }) 
     // alt.on('giveKill', hud.fUpdateKills)
 
