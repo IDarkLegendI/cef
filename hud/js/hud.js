@@ -30,6 +30,8 @@ var hud = new Vue({
         ammo: [0, 0],
         time: 120,
         timeInterval: null,
+        
+        notifyNow: 0,
 
         //KillFeed
         killFeed: [
@@ -436,12 +438,22 @@ var hud = new Vue({
             hud.recoilEl.style.width = `${x}%`
             hud.recoilEl.style.opacity = `${x / +80}`
         },
+        notifyClearAll()
+        {
+            Noty.closeAll(); 
+        },
+        notifyClear(queue)
+        {
+            Noty.closeAll(queue); 
+        }
     },
 })
 
 if ('alt' in window) {
-    alt.on('customNotify', (notifyType, text, time, pos = 9) => {
-        notify(notifyType, pos, text, time);
+    alt.on('customNotify', (notifyType, text, time, pos = 9, queue) => {
+        notify(notifyType, pos, text, time, queue);
+        if(hud.notifyNow > 10) hud.notifyClearAll()
+        else if(queue === 'a' && hud.notifyNow > 2) hud.notifyClearAll(queue)
         // //console.log(`${notifyType}, 9, ${text}, ${time}`);
     });
 
