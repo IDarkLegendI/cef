@@ -428,12 +428,13 @@ var hud = new Vue({
         calcRecoilK(max)
         {
             hud.kRecoil = +100 / +max
+            console.log(`hud.kRecoil: ${hud.kRecoil}`)
         },
         setProgressRecoil(value) 
         {
             let x = value * +hud.kRecoil
             hud.recoilEl.style.width = `${x}%`
-            hud.recoilEl.style.opacity = `${x / +50}`
+            hud.recoilEl.style.opacity = `${x / +80}`
         },
     },
 })
