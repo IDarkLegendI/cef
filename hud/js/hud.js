@@ -451,9 +451,9 @@ var hud = new Vue({
 
 if ('alt' in window) {
     alt.on('customNotify', (notifyType, text, time, pos = 9, queue) => {
-        notify(notifyType, pos, text, time, queue);
         if(hud.notifyNow > 10) hud.notifyClearAll()
         else if(queue === 'a' && hud.notifyNow > 2) hud.notifyClearAll(queue)
+        notify(notifyType, pos, text, time, queue);
         // //console.log(`${notifyType}, 9, ${text}, ${time}`);
     });
 
