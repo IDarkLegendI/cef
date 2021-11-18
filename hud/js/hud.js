@@ -344,7 +344,6 @@ var hud = new Vue({
             console.log(`fKillFeedUpdate: ${JSON.stringify(obj)}`)
             if(this.killFeed[2]) 
             {
-                console.log(`${this.killFeed[2]}; ${this.killFeed.splice(0, 1)}`)
                 return setTimeout(() => this.fKillFeedUpdate(obj), 0) 
             }
             obj.iKey = Date.now()
@@ -542,7 +541,7 @@ else
     //     hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
     // }, 5000) 
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
-    setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend'}), 0)
+    setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', borderRed: true}), 0)
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: "Carbine Rifle", killerName: 'DarkLegend'}), 0)
     // Vue.set(hud, killFeed, [...hud.killFeed, {victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', iKey: 1}])

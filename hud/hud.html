@@ -179,7 +179,8 @@
                                 <div class="killfeed list-complete-item" v-for="(kill, index) in killFeed"
                                     v-bind:key="kill.iKey">
                                     <div class="killelement"
-                                        style="display: flex; align-items: center; align-self: center">
+                                        :style="{borderColor: kill.borderRed ? '#FF0000' : 'black', boxShadow: `0 0 2.5px ${kill.borderRed ? '#FF0000' : 'black'}`}"
+                                        style="display: flex; align-items: center; align-self: center;">
                                         <span class="killElementText">{{kill.killerName}}</span>
                                         <div style="height: 2vh; padding: 0vh 1.2vh">
                                             <img :src="`./img/kf/${kill.weaponName}.png`"
