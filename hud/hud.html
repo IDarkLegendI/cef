@@ -111,7 +111,7 @@
                                 <div class="subHelpOBS">
                                     <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
                                         class="animated infinite flash slow">
-                                        <p :style="{borderColor: friend.color}" class="key" id="friendName">
+                                        <p :style="{borderColor: friend.color, boxShadow: `0 0 2px ${friend.color}`}" class="key" id="friendName">
                                             {{friend.name}}</p>
                                         <p class="textHelp"
                                             style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
