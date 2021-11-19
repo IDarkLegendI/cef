@@ -238,12 +238,12 @@
             </transition>
 
             <div
-                style="display: flex; flex-direction: row-reverse; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
+                style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
                 <transition enter-active-class="animated fadeInLeftBig slow" leave-active-class="animated fadeOutLeftBig fast"
                     name="gtaRoyalRuAnimate"> 
                     <div style="padding-bottom: 0.2%;" v-show="!showLogo">
                         <h1 id="gtaRoyalRu"
-                            style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
+                            style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;"> 
                             GTAROYAL.RU</h1>
                     </div>
                 </transition>
@@ -252,7 +252,7 @@
                     <div v-show="!showLogo">
                         <div class="progress">
                             <div class="bar shadow wiggle"></div>
-                        </div> 
+                        </div>  
                     </div>
                 </transition>
             </div>
@@ -277,8 +277,11 @@
 
     function load() {
         setTimeout(() => {
-            hud.recoilEl = document.querySelectorAll('.bar')[0]
+            hud.recoilEl = document.querySelectorAll('.progress')[0]
+            hud.recoilElBar = document.querySelectorAll('.bar')[0]
             document.getElementById('fade').style.opacity = 1;
+            hud.calcRecoilK(2)
+            hud.setProgressRecoil(2)
         }, 1000);
     }
 </script>

@@ -44,6 +44,7 @@ var hud = new Vue({
         //Progress Recoil
         kRecoil: 20,
         recoilEl: null,
+        recoilElBar: null,
 
         //Lobby 
         lobby: {},
@@ -434,8 +435,8 @@ var hud = new Vue({
         setProgressRecoil(value) 
         {
             let x = value * +hud.kRecoil
-            hud.recoilEl.style.width = `${x}%`
-            hud.recoilEl.style.opacity = `${x / +80}`
+            hud.recoilElBar.style.width = `${x}%`
+            hud.recoilEl.style.opacity = `${x / +100}`   
         },
         notifyClearAll()
         {
