@@ -23,6 +23,7 @@ var hud = new Vue({
         killsHandle: null,
         killsBar: false,
         killsBarShow: false,
+        killsGifShow: false,
 
         //HUD
         alivePlayers: 0,
@@ -306,7 +307,14 @@ var hud = new Vue({
             if(kills === -1) return
             this.killsBar = [name, dist];
             if(this.killsHandle !== null) clearTimeout(this.killsHandle);
-
+            this.killsGifShow = false;
+           setTimeout(() => { 
+                this.killsGifShow = true;
+                setTimeout(() => { 
+                    this.killsGifShow = false
+                }, 7000);  
+            }, 400);  
+             
             this.killsBarShow = true;
             this.killsHandle = setTimeout(() => { 
                 this.killsBarShow = false;

@@ -35,7 +35,7 @@
                 <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition2"
                     leave-active-class="animated bounceOutRight">
                     <div class="killInfo" v-show="killsBarShow">
-                        <img src="./img/blood.png" alt="">
+                        <img :src="`./img/${killsGifShow ? 'blood-splatter' : 'blood-splatter-static'}.gif`" alt="">
                         <div class="kills">
                             <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
                             <h1 id="killInfo" class="killText2">
