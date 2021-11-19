@@ -536,11 +536,10 @@ else
     let index = 0;
     hud.kills = 1;
     hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, armour: 100, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
-    // setInterval(() => {
-    //     // hud.fUpdateKills("OBLIKO", 45)
-    //     // hud.fupdateWarmUP('123333333333333', true) 
-    //     hud.fKillFeedUpdate(`DOLBAEB KILL DOLBAEBA2 из M4A1-${index++}`) 
-    // }, 5000) 
+    hud.fUpdateKills("OBLIKO", 45)
+    setInterval(() => {
+        hud.fUpdateKills("OBLIKO", 45)
+    }, 15000) 
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', borderRed: true}), 0)
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
