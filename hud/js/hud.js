@@ -444,6 +444,8 @@ var hud = new Vue({
         {
             let x = value * +hud.kRecoil
             hud.recoilElBar.style.width = `${x}%`
+            hud.recoilElBar.style.background = `rgba(120, 81, 169, ${x/100})`
+            console.log(`${x/100}`)
             hud.recoilEl.style.background = `linear-gradient(90deg, rgba(0, 255, 26, 1) 0%, rgba(255, 242, 0, 1) ${100-x}%, rgba(255, 0, 0, 1) ${200-x}%`   
         },
         notifyClearAll()
