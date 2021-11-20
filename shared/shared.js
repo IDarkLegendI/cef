@@ -29,14 +29,14 @@ let avatars =  {
 }
 
 function getAvatar(nick) { 
-    // console.log(`nick[0]: ${JSON.stringify(nick)}`)
+    console.log(`nick[0]: ${JSON.stringify(nick)}`)
     if (nick) {
         return avatars[nick[0].toUpperCase()]
     } else return avatars['A']
 }
 
 function getPhoto(avatar, name) {
-    // console.log(`getPhoto: ${name}; avatar: ${avatar}`)
+    console.log(`getPhoto: ${name}; avatar: ${avatar}`)
     if (avatar === null) return Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`)
     // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
     const url = `https://cdn.discordapp.com/avatars/${avatar}.png`

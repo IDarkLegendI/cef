@@ -7,7 +7,8 @@ var hud = new Vue({
             nick: "1234213",
             level: '06',
             kills: '0',
-            vip: 'deluxe'
+            vip: 'deluxe',
+            avatar: null
         },
 
         visible: true,
@@ -377,11 +378,7 @@ var hud = new Vue({
          }, 
         getAvatar(nick)
         {
-            if(nick) 
-            {
-                return avatars[nick[0].toUpperCase()]
-            }
-            else return avatars['A']
+            return getAvatar(nick)
         },
         rgbToHex(red, green, blue)
         {
@@ -416,8 +413,8 @@ var hud = new Vue({
         {
             let x = value * +hud.kRecoil
             hud.recoilElBar.style.width = `${x}%`
-            hud.recoilElBar.style.background = `rgba(120, 81, 169, ${x/100})`
-            console.log(`${x/100}`)
+            hud.recoilElBar.style.background = `rgba(23, 23, 24, ${x/70})`
+            // console.log(`${x/100}`)
             hud.recoilEl.style.background = `linear-gradient(90deg, rgba(0, 255, 26, 1) 0%, rgba(255, 242, 0, 1) ${100-x}%, rgba(255, 0, 0, 1) ${200-x}%`   
         },
         notifyClearAll()
@@ -427,6 +424,13 @@ var hud = new Vue({
         notifyClear(queue)
         {
             Noty.closeAll(queue); 
+        },
+        async fObsUpdate(data, avatar)
+        {
+            hud.obs = data;  
+            hud.obs.avatar = await getPhoto(avatar, hud.name);   
+            if(hud.obs.avatar.length < 5) hud.obs.avatar = null; 
+            hud.obs.level = hud.getLevel(data.level) 
         }
     },
 })
@@ -476,11 +480,7 @@ if ('alt' in window) {
     alt.on('updateAmmo', (clip, ammo) => hud.ammo = [clip, ammo])
     alt.on('updateWarmUP', hud.fupdateWarmUP)  
 
-    alt.on('obServer', data => 
-    { 
-        hud.obs = data;  
-        hud.obs.level = hud.getLevel(data.level) 
-    })
+    alt.on('obServer', hud.fObsUpdate)
 
     alt.on('fTimeUpdate', hud.fTimeUpdate) 
     alt.on('updateKillFeed', hud.fKillFeedUpdate)    
@@ -504,6 +504,7 @@ if ('alt' in window) {
 }  
 else  
 { 
+    hud.obs.avatar = null
     hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 

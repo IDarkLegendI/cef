@@ -68,7 +68,8 @@
                     </div>
                     <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}"
                         class="obsCenter">
-                        <img :src="`../shared/img/avatars/${getAvatar(obs.nick)}.jpg`" class="avatar">
+                        <img :src="obs.avatar" class="avatar" style="height: 100px; width: 100px;" v-if="obs.avatar !== null">
+                        <img :src="`../shared/img/avatars/${getAvatar(obs.nick)}.jpg`" class="avatar" v-else>
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>
                             <div class="kills" style="padding-top: 0.5vh;">
@@ -283,12 +284,12 @@
             document.getElementById('fade').style.opacity = 1;
             hud.calcRecoilK(2)
             let i = 0
-            setInterval(() => {
-                if(i > 2) i = 0
-                else i += +0.001
-                // console.log(i)
-                hud.setProgressRecoil(i)
-            }, 0)
+            // setInterval(() => {
+            //     if(i > 2) i = 0
+            //     else i += +0.001
+            //     // console.log(i)
+            //     hud.setProgressRecoil(i)
+            // }, 0)
         }, 1000);
     }
 </script>
