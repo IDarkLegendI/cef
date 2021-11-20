@@ -27,3 +27,22 @@ let avatars =  {
     "Y": "24",
     "Z": "25"
 }
+
+function getAvatar(nick) { 
+    // console.log(`nick[0]: ${JSON.stringify(nick)}`)
+    if (nick) {
+        return avatars[nick[0].toUpperCase()]
+    } else return avatars['A']
+}
+
+function getPhoto(avatar, name) {
+    // console.log(`getPhoto: ${name}; avatar: ${avatar}`)
+    if (avatar === null) return Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`)
+    // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
+    const url = `https://cdn.discordapp.com/avatars/${avatar}.png`
+
+    return fetch(url)
+        .then(response => (response.ok) ? response.blob() : Promise.reject())
+        .then(result => Promise.resolve(URL.createObjectURL(result)))
+        .catch(() => Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`))
+}

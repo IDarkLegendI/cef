@@ -1281,7 +1281,7 @@ let menu = new Vue({
                 if (player.name === menu.myName) {
                     myID = index;
                     return player.ava = menu.myAvatar;
-                } else player.ava = await this.getPhoto(null, player.name)
+                } else player.ava = await getPhoto(null, player.name)
             })
 
             if (data.length < 4) {
@@ -1370,20 +1370,9 @@ let menu = new Vue({
         },
 
         //FRIENDS
-        getPhoto(avatar, name = this.myName) {
-            if (avatar === null) return Promise.resolve(`../shared/img/avatars/${this.getAvatar(name)}.jpg`)
-            // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
-            const url = `https://cdn.discordapp.com/avatars/${avatar}.png`
-
-            return fetch(url)
-                .then(response => (response.ok) ? response.blob() : Promise.reject())
-                .then(result => Promise.resolve(URL.createObjectURL(result)))
-                .catch(() => Promise.resolve(`../shared/img/avatars/${this.getAvatar(name)}.jpg`))
-        },
         getAvatar(nick) {
-            if (nick) {
-                return avatars[nick[0].toUpperCase()]
-            } else return avatars['A']
+            // console.log(`getAvatar: ${nick}; ${getAvatar(nick)}`)
+            return getAvatar(nick)
         },
         getRandomInt: function (max) {
             return Math.floor(Math.random() * Math.floor(max));
@@ -2211,7 +2200,7 @@ if ('alt' in window) {
 
     alt.on('bMenu:setMyAvatar', async (avatar) => {
         // //console.log(`bMenu:setMyAvatar: ${avatar}`)  
-        menu.myAvatar = await menu.getPhoto(avatar)
+        menu.myAvatar = await getPhoto(avatar)
         menu.fUpdateLobby([{
             name: menu.myName,
             ava: menu.myAvatar,
@@ -2296,10 +2285,10 @@ if ('alt' in window) {
     menu.show = true;
     menu.carsPointer = 1;
     setTimeout(async () => {
-        menu.myAvatar = await menu.getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35');
+        menu.myAvatar = await getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35', menu.myName);
         menu.getLevel();
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
-        menu.friends = [{
+        /*menu.friends = [{
                 name: 'DARKLEGEND',
                 online: true
             }, {
@@ -2314,7 +2303,7 @@ if ('alt' in window) {
                 name: 'Dima2',
                 online: true
             }
-        ]
+        ]*/
         menu.adminCurrentReport = {
             id: 21,
             authorID: 17,
@@ -2368,8 +2357,8 @@ if ('alt' in window) {
             dateCreate: 1626731216981,
             result: 1
         }, ]
-        menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
-        menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
+        // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
+        // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
         menu.fUpdateLobby([{
                 name: "DARKLEGEND",
