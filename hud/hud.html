@@ -68,7 +68,7 @@
                     </div>
                     <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}"
                         class="obsCenter">
-                        <img class="avatar" :src="`../menu/img/avatars/${getAvatar(obs.nick)}.jpg`">
+                        <img :src="`../shared/img/avatars/${getAvatar(obs.nick)}.jpg`" class="avatar">
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>
                             <div class="kills" style="padding-top: 0.5vh;">
@@ -269,6 +269,7 @@
 <script src="./Notify/js/notify.js"></script>
 <script src="./Notify/js/noty.min.js"></script>
 <script src="../vue.js"></script>
+<script src="../shared/shared.js"></script>
 <script src="js/hud.js"></script>
 <script src="js/audio.js"></script>
 

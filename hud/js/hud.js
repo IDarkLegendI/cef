@@ -55,34 +55,6 @@ var hud = new Vue({
         helpMainMenu: false,
         //Misc
         audio: null,
-        avatars: {
-            "A": "0",
-            "B": "1",
-            "C": "2",
-            "D": "3", 
-            "E": "4",
-            "F": "5",
-            "G": "6",
-            "H": "7",
-            "I": "8",
-            "J": "9",
-            "K": "10",
-            "L": "11",
-            "M": "12",
-            "N": "13", 
-            "O": "14",
-            "P": "15",
-            "Q": "16",
-            "R": "17",
-            "S": "18",
-            "T": "19",
-            "U": "20",
-            "V": "21",
-            "W": "22",
-            "X": "23",
-            "Y": "24",
-            "Z": "25"
-        },
         keyCodes: {
             3: 'break',
             8: 'backspace',
@@ -407,9 +379,9 @@ var hud = new Vue({
         {
             if(nick) 
             {
-                return this.avatars[nick[0].toUpperCase()]
+                return avatars[nick[0].toUpperCase()]
             }
-            else return this.avatars['A']
+            else return avatars['A']
         },
         rgbToHex(red, green, blue)
         {
@@ -532,7 +504,7 @@ if ('alt' in window) {
 }  
 else  
 { 
-    hud.obs.show = false;
+    hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
     hud.showHUD = true; 
     // hud.showLogo = true;
@@ -546,10 +518,10 @@ else
     let index = 0;
     hud.kills = 1;
     hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, armour: 100, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
-    hud.fUpdateKills("OBLIKO", 45)
-    setInterval(() => {
-        hud.fUpdateKills("OBLIKO", 45)
-    }, 15000) 
+    // hud.fUpdateKills("OBLIKO", 45)
+    // setInterval(() => {
+    //     hud.fUpdateKills("OBLIKO", 45)
+    // }, 15000) 
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', borderRed: true}), 0)
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)

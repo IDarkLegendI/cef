@@ -89,7 +89,7 @@
                                             <img src="img/plus.png" alt="" v-if="player.ava === 0">
                                             <!-- <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt="" v-else> -->
                                             <section v-else>
-                                                <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt=""
+                                                <img :id="'player'+index" :src="`../shared/img/avatars/${player.ava}.jpg`" alt=""
                                                     v-if="player.ava < 100">
                                                 <img :id="'player'+index" :src="player.ava" alt="" v-else>
                                             </section>
@@ -331,7 +331,7 @@
                         <transition name="person-friend2">
                             <div class="rightNoHover" v-show="subPage === 1">
                                 <div class="friendsh1">
-                                    <h1>{{i18n.invite}}</h1>
+                                    <h1>{{i18n.invite}}</h1> 
                                 </div>
                                 <div class="zaprosi">
                                     <transition-group name="list-complete" tag="div">
@@ -339,7 +339,7 @@
                                             v-for="(friend, index) in getOnlineFriend()" v-bind:key="friend.name">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
-                                                    <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
+                                                    <img :src="`../shared/img/avatars/${getAvatar(friend.name)}.jpg`">
                                                 </div>
                                                 <div class="nickzapros">{{friend.name}}</div>
                                             </div>
@@ -371,7 +371,7 @@
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros" :class="{online: friend.online}">
                                                     <!-- <img src="img/ava.jpg" alt=""> -->
-                                                    <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
+                                                    <img :src="`../shared/img/avatars/${getAvatar(friend.name)}.jpg`">
                                                 </div>
                                                 <div class="nickzapros">{{friend.name}}</div>
                                             </div>
@@ -430,7 +430,7 @@
                                                 v-for="(friend, index) in findFriend()">
                                                 <div class="avatarnickzapros">
                                                     <div class="avatarzapros">
-                                                        <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                        <img :src="`../shared/img/avatars/${getAvatar(friend)}.jpg`">
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
@@ -456,8 +456,8 @@
                                             <div class="zapros list-complete-item" v-for="(friend, index) in requestsIn"
                                                 v-bind:key="friend">
                                                 <div class="avatarnickzapros">
-                                                    <div class="avatarzapros">
-                                                        <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                    <div class="avatarzapros"> 
+                                                        <img :src="`../shared/img/avatars/${getAvatar(friend)}.jpg`">
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
@@ -487,7 +487,7 @@
                                                 v-for="(friend, index) in requestsOut" v-bind:key="friend">
                                                 <div class="avatarnickzapros">
                                                     <div class="avatarzapros">
-                                                        <img :src="`../menu/img/avatars/${getAvatar(friend)}.jpg`">
+                                                        <img :src="`../shared/img/avatars/${getAvatar(friend)}.jpg`">
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
@@ -520,7 +520,7 @@
                                             v-bind:key="friend.name">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
-                                                    <img :src="`../menu/img/avatars/${getAvatar(friend.name)}.jpg`">
+                                                    <img :src="`../shared/img/avatars/${getAvatar(friend.name)}.jpg`">
                                                 </div>
                                                 <div class="nickzapros">{{friend.name}}</div>
                                             </div>
@@ -1525,7 +1525,7 @@
                                         v-for="(player, index) in reportPlayers">
                                         <div class="avatarnickzapros">
                                             <div class="avatarzapros" style="border: 2px solid #ff0000">
-                                                <img :src="`../menu/img/avatars/${getAvatar(player.name)}.jpg`">
+                                                <img :src="`../shared/img/avatars/${getAvatar(player.name)}.jpg`">
                                             </div>
                                             <div
                                                 style="display: flex; align-items: center; justify-content: space-between; width: 30vw;">
@@ -2113,7 +2113,8 @@
 <script src='./js/tinycolor.min.js'></script>
 <script src="js/script.js"></script>
 <script src="./js/tools.js"></script>
-<script src="../vue.js"></script>
+<script src="../shared/shared.js"></script>
+<script src="../vue.js"></script> 
 <script src="js/menu.js"></script> 
 <script src="js/app.min.js"></script>
 <!-- <script src="./js/fireworks.js"></script> -->
