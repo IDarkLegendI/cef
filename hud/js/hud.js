@@ -285,7 +285,7 @@ var hud = new Vue({
                 this.killsGifShow = true;
                 setTimeout(() => { 
                     this.killsGifShow = false
-                }, 7000);  
+                }, 6500);  
             }, 400);  
              
             this.killsBarShow = true;
@@ -505,14 +505,14 @@ if ('alt' in window) {
 else  
 { 
     hud.obs.avatar = null
-    hud.obs.show = true;
-    hud.obs.nick = 'DarkLegend'
-    hud.showHUD = true; 
+    // hud.obs.show = true;
+    // hud.obs.nick = 'DarkLegend'
+    // hud.showHUD = true; 
     // hud.showLogo = true;
     hud.help = 0;
     // hud.keyMenu = 66
     // hud.showLogo = true; 
-    // hud.fUpdateKills("OBLIKO", 100)
+    hud.fUpdateKills("OBLIKO", 100)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A12"), 2000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000) 
