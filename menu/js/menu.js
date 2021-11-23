@@ -1391,7 +1391,8 @@ let menu = new Vue({
         },
         getKD: function () {
             let value = (+this.kills / +this.matches).toFixed(2);
-            return value === 'NaN' ? '0.00' : value
+            if(value < 0) value = '0.00' 
+            return isNaN(value) ? '0.00' : value
         },
         showProfileDetails: function (name, value = null) {
             let el = document.getElementById(name);
