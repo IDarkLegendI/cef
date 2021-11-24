@@ -46,6 +46,8 @@ let menu = new Vue({
         myID: 0,
         lobbyID: 0,
         myData: null,
+        discordAvatars: [],
+        discordAvatarsCount: 0,
 
         //Friend menu
         // friends: ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', '123', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', '1223', '12', '23', '33', '444', '55', '66'],
@@ -1278,10 +1280,8 @@ let menu = new Vue({
             }
 
             data.forEach(async (player, index) => {
-                if (player.name === menu.myName) {
-                    myID = index;
-                    return player.ava = menu.myAvatar;
-                } else player.ava = await getPhoto(null, player.name)
+                if (player.name === menu.myName) myID = index;
+                player.ava = await menu.getAvatar(player.name)
             })
 
             if (data.length < 4) {
@@ -1370,10 +1370,6 @@ let menu = new Vue({
         },
 
         //FRIENDS
-        getAvatar(nick) {
-            // console.log(`getAvatar: ${nick}; ${getAvatar(nick)}`)
-            return getAvatar(nick)
-        },
         getRandomInt: function (max) {
             return Math.floor(Math.random() * Math.floor(max));
         },
@@ -2130,10 +2126,28 @@ let menu = new Vue({
             if(this.vip === 'none') return 1
             return this.assortPriv[this.vip].bonus
         },
-        fInit()
-        {
 
-        }
+        //Discord Avatars
+        // avatar = null, если аватарки(в т.ч. випки) нету
+        // avatar = undefined, если информации на клиенте нету(надо запрашивать)
+        async getAvatar(name)
+        {
+            if(!('alt' in window)) return await getPhoto(menu.discordAvatars[name], name)
+
+            if(menu.discordAvatars[name] === undefined) return menu.emitToClient('cMenu:getAvatar', name);
+            return await getPhoto(menu.discordAvatars[name], name)
+        },
+        setDiscordAvatar(name, avatar = null)
+        {
+            menu.discordAvatars[name] = avatar
+            menu.discordAvatarsCount += +1
+            if(menu.discordAvatarsCount > 100)
+            { 
+                menu.discordAvatars = []
+                menu.discordAvatarsCount = 0
+            }
+            console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatar: ${avatar}; ${JSON.stringify(menu.discordAvatars)}`)
+        },
     },
 });
 
@@ -2202,6 +2216,8 @@ if ('alt' in window) {
     alt.on('bMenu:setMyAvatar', async (avatar) => {
         console.log(`bMenu:setMyAvatar: ${avatar}`)    
         menu.myAvatar = await getPhoto(avatar)
+        menu.discordAvatars[menu.myName] = await getPhoto(avatar)
+        menu.discordAvatarsCount += +1
         menu.fUpdateLobby([{
             name: menu.myName,
             ava: menu.myAvatar,
@@ -2286,7 +2302,8 @@ if ('alt' in window) {
     menu.show = true;
     menu.carsPointer = 1;
     setTimeout(async () => {
-        menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
+        // menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
+        menu.setDiscordAvatar(menu.myName, '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
         menu.getLevel();
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
         /*menu.friends = [{
@@ -2368,11 +2385,17 @@ if ('alt' in window) {
                 mic: false
             },
             {
-                name: "Dima",
+                name: "Gruzd",
                 ready: 1,
                 inGame: true,
                 mic: false
-            }
+            },
+            {
+                name: "Katya",
+                ready: 1,
+                inGame: true,
+                mic: false
+            },
         ])
         // menu.fUpdateLobby([{name: "Player-1", ava: 1}, {name: "Player-2", ava: 2}, {name: "DarkLegend", ava: 1}]) // Если хочешь пригласить чтобы кнопка появилась
         // menu.wsWin = true

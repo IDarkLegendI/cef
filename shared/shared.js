@@ -35,9 +35,22 @@ function getAvatar(nick) {
     } else return avatars['A']
 }
 
-function getPhoto(avatar, name) {
+async function getPhoto(avatar, name) {
     // console.log(`getPhoto: ${name}; avatar: ${avatar}`)
-    if (avatar === null) return Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`)
+    if (avatar === null || avatar === undefined) return Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`)
+    // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
+    const url = `https://cdn.discordapp.com/avatars/${avatar}.png` 
+
+    return fetch(url)
+        .then(response => (response.ok) ? response.blob() : Promise.reject())
+        .then(result => Promise.resolve(URL.createObjectURL(result)))
+        .catch(() => Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`))
+}
+
+// В случае неудачи возвращает ошибку
+function getPhotoNew(avatar, name) {
+    // console.log(`getPhoto: ${name}; avatar: ${avatar}`)
+    if (avatar === null) return Promise.resolve(false)
     // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
     const url = `https://cdn.discordapp.com/avatars/${avatar}.png` 
 

@@ -87,11 +87,8 @@
                                             class="borderlobby animated infinite flash slower"
                                             v-on:click="fInviteOrProfile(player.ava)">
                                             <img src="img/plus.png" alt="" v-if="player.ava === 0">
-                                            <!-- <img :id="'player'+index" :src="`img/avatars/${player.ava}.jpg`" alt="" v-else> -->
                                             <section v-else>
-                                                <img :id="'player'+index" :src="`../shared/img/avatars/${player.ava}.jpg`" alt=""
-                                                    v-if="player.ava < 100">
-                                                <img :id="'player'+index" :src="player.ava" alt="" v-else>
+                                                <img :id="'player'+index" :src="player.ava" alt="">
                                             </section>
                                         </div>
                                         <div class="nicklobby">{{player.name.toUpperCase()}}</div>
