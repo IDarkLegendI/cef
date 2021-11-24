@@ -2200,7 +2200,7 @@ if ('alt' in window) {
     });
 
     alt.on('bMenu:setMyAvatar', async (avatar) => {
-        // //console.log(`bMenu:setMyAvatar: ${avatar}`)  
+        console.log(`bMenu:setMyAvatar: ${avatar}`)    
         menu.myAvatar = await getPhoto(avatar)
         menu.fUpdateLobby([{
             name: menu.myName,
@@ -2286,7 +2286,7 @@ if ('alt' in window) {
     menu.show = true;
     menu.carsPointer = 1;
     setTimeout(async () => {
-        menu.myAvatar = await getPhoto('287911323130396673/ff8e10f4425b81c3d5c4c7440e3fae35', menu.myName);
+        menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
         menu.getLevel();
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
         /*menu.friends = [{
