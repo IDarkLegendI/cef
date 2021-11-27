@@ -336,7 +336,7 @@
                                             v-for="(friend, index) in getOnlineFriend()" v-bind:key="friend.name">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
-                                                    <img :src="`../shared/img/avatars/${getAvatar(friend.name)}.jpg`">
+                                                    <img :src="getAvatar(friend.name)">
                                                 </div>
                                                 <div class="nickzapros">{{friend.name}}</div>
                                             </div>
@@ -365,12 +365,12 @@
                                         <div class="zapros list-complete-item" v-for="(friend, index) in friends"
                                             v-bind:key="friend.name"
                                             v-on:mouseleave="showProfileDetails(friend.name, 0)">
-                                            <div class="avatarnickzapros">
+                                            <div class="avatarnickzapros"> 
                                                 <div class="avatarzapros" :class="{online: friend.online}">
-                                                    <!-- <img src="img/ava.jpg" alt=""> -->
-                                                    <img :src="`../shared/img/avatars/${getAvatar(friend.name)}.jpg`">
+                                                    <!-- <img src="img/ava.jpg" alt=""> --> 
+                                                    <img :src="getAvatar(friend.name)">
                                                 </div>
-                                                <div class="nickzapros">{{friend.name}}</div>
+                                                <div class="nickzapros">{{friend.name}}: {{getAvatar(friend.name)}}</div>
                                             </div>
                                             <div class="btnszapros">
                                                 <div :id='friend.name' class="btnzapros profileDetails i18nDelete"
@@ -427,7 +427,7 @@
                                                 v-for="(friend, index) in findFriend()">
                                                 <div class="avatarnickzapros">
                                                     <div class="avatarzapros">
-                                                        <img :src="`../shared/img/avatars/${getAvatar(friend)}.jpg`">
+                                                        <img :src="getAvatar(friend)">
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
@@ -454,7 +454,7 @@
                                                 v-bind:key="friend">
                                                 <div class="avatarnickzapros">
                                                     <div class="avatarzapros"> 
-                                                        <img :src="`../shared/img/avatars/${getAvatar(friend)}.jpg`">
+                                                        <img :src="getAvatar(friend)">
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
@@ -484,7 +484,7 @@
                                                 v-for="(friend, index) in requestsOut" v-bind:key="friend">
                                                 <div class="avatarnickzapros">
                                                     <div class="avatarzapros">
-                                                        <img :src="`../shared/img/avatars/${getAvatar(friend)}.jpg`">
+                                                        <img :src="getAvatar(friend)">
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
                                                 </div>
@@ -517,7 +517,7 @@
                                             v-bind:key="friend.name">
                                             <div class="avatarnickzapros">
                                                 <div class="avatarzapros">
-                                                    <img :src="`../shared/img/avatars/${getAvatar(friend.name)}.jpg`">
+                                                    <img :src="getAvatar(friend.name)">
                                                 </div>
                                                 <div class="nickzapros">{{friend.name}}</div>
                                             </div>
@@ -1522,7 +1522,7 @@
                                         v-for="(player, index) in reportPlayers">
                                         <div class="avatarnickzapros">
                                             <div class="avatarzapros" style="border: 2px solid #ff0000">
-                                                <img :src="`../shared/img/avatars/${getAvatar(player.name)}.jpg`">
+                                                <img :src="getAvatar(player.name)">
                                             </div>
                                             <div
                                                 style="display: flex; align-items: center; justify-content: space-between; width: 30vw;">

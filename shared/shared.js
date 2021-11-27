@@ -29,28 +29,20 @@ let avatars =  {
 }
 
 function getAvatar(nick) { 
-    console.log(`nick[0]: ${JSON.stringify(nick)}`)
+    // console.log(`nick[0]: ${JSON.stringify(nick)}`)
     if (nick) {
         return avatars[nick[0].toUpperCase()]
     } else return avatars['A']
 }
 
-async function getPhoto(avatar, name) {
-    // console.log(`getPhoto: ${name}; avatar: ${avatar}`)
-    if (avatar === null || avatar === undefined) return Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`)
-    // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
-    const url = `https://cdn.discordapp.com/avatars/${avatar}.png` 
-
-    return fetch(url)
-        .then(response => (response.ok) ? response.blob() : Promise.reject())
-        .then(result => Promise.resolve(URL.createObjectURL(result)))
-        .catch(() => Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`))
+function getAvatarNew(name) {
+    const url = `../shared/img/avatars/${getAvatar(name)}.jpg` 
+    return url
 }
 
-// В случае неудачи возвращает ошибку
-function getPhotoNew(avatar, name) {
-    // console.log(`getPhoto: ${name}; avatar: ${avatar}`)
-    if (avatar === null) return Promise.resolve(false)
+async function getPhoto(avatar, name) { 
+    console.log(`getPhoto: ${name}; avatar: ${avatar}; undefined?:${avatar === undefined}`) 
+    if (avatar === null || avatar === undefined) return Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`)
     // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
     const url = `https://cdn.discordapp.com/avatars/${avatar}.png` 
 

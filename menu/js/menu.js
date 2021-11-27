@@ -1280,7 +1280,11 @@ let menu = new Vue({
             }
 
             data.forEach(async (player, index) => {
-                if (player.name === menu.myName) myID = index;
+                if (player.name === menu.myName) 
+                {
+                    myID = index;
+                    return player.ava = menu.myAvatar;
+                }
                 player.ava = await menu.getAvatar(player.name)
             })
 
@@ -2130,25 +2134,34 @@ let menu = new Vue({
         //Discord Avatars
         // avatar = null, если аватарки(в т.ч. випки) нету
         // avatar = undefined, если информации на клиенте нету(надо запрашивать)
-        async getAvatar(name)
-        {
-            if(!('alt' in window)) return await getPhoto(menu.discordAvatars[name], name)
-
-            if(menu.discordAvatars[name] === undefined) return menu.emitToClient('cMenu:getAvatar', name);
-            return await getPhoto(menu.discordAvatars[name], name)
+        getAvatar(name)
+        { 
+            // if(!('alt' in window)) return await getPhoto(menu.discordAvatars[name], name)
+             
+            // console.log(`getAvatar(${name}) --> menu.discordAvatars[name]: ${JSON.stringify(menu.discordAvatars[name])}; undefined?: ${menu.discordAvatars[name] === undefined}`)
+            return menu.discordAvatars[name] === undefined ? getAvatarNew(name) : menu.discordAvatars[name]
         },
-        setDiscordAvatar(name, avatar = null)
-        {
-            menu.discordAvatars[name] = avatar
+
+        async setDiscordAvatar(name, avatar = null)
+        { 
+            let result = await getPhoto(avatar, name)
+            Vue.set(menu.discordAvatars, name, result)
+            // menu.discordAvatars[name] = avatar
             menu.discordAvatarsCount += +1
-            if(menu.discordAvatarsCount > 100)
+            if(menu.discordAvatarsCount > +100)
             { 
                 menu.discordAvatars = []
-                menu.discordAvatarsCount = 0
-            }
-            console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatar: ${avatar}; ${JSON.stringify(menu.discordAvatars)}`)
+                menu.discordAvatarsCount = 0 
+            } 
+            console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatar: ${avatar}; result: ${result}; ${JSON.stringify(menu.discordAvatars)}`)
         },
     },
+    // computed: {
+    //     itemAvatar()
+    //     {
+
+    //     }
+    // },
 });
 
 if ('alt' in window) {
@@ -2216,8 +2229,7 @@ if ('alt' in window) {
     alt.on('bMenu:setMyAvatar', async (avatar) => {
         console.log(`bMenu:setMyAvatar: ${avatar}`)    
         menu.myAvatar = await getPhoto(avatar)
-        menu.discordAvatars[menu.myName] = await getPhoto(avatar)
-        menu.discordAvatarsCount += +1
+        menu.setDiscordAvatar(menu.myName, avatar) 
         menu.fUpdateLobby([{
             name: menu.myName,
             ava: menu.myAvatar,
@@ -2302,11 +2314,12 @@ if ('alt' in window) {
     menu.show = true;
     menu.carsPointer = 1;
     setTimeout(async () => {
-        // menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
+        menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
         menu.setDiscordAvatar(menu.myName, '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
+        menu.setDiscordAvatar('Gruzd', '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
         menu.getLevel();
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
-        /*menu.friends = [{
+        menu.friends = [{
                 name: 'DARKLEGEND',
                 online: true
             }, {
@@ -2318,10 +2331,10 @@ if ('alt' in window) {
                 online: true
             },
             {
-                name: 'Dima2',
+                name: 'Dima2', 
                 online: true
             }
-        ]*/
+        ]
         menu.adminCurrentReport = {
             id: 21,
             authorID: 17,
