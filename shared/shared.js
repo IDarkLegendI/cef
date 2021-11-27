@@ -51,3 +51,15 @@ async function getPhoto(avatar, name) {
         .then(result => Promise.resolve(URL.createObjectURL(result)))
         .catch(() => Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`))
 }
+
+async function getPhotoNew(avatar, name) { 
+    console.log(`getPhotoNew: ${name}; avatar: ${avatar}; undefined?:${avatar === undefined}`) 
+    if (avatar === null || avatar === undefined) return Promise.resolve(false)
+    // if(avatar.length < 5) return `./img/avatars/${avatar}.jpg`; 
+    const url = `https://cdn.discordapp.com/avatars/${avatar}.png` 
+
+    return fetch(url)
+        .then(response => (response.ok) ? response.blob() : Promise.reject())
+        .then(result => Promise.resolve(URL.createObjectURL(result)))
+        .catch(() => Promise.resolve(false))
+}

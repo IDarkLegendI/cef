@@ -1269,6 +1269,8 @@ let menu = new Vue({
 
         //LOBBY
         fUpdateLobby(data) {
+            // menu.discordAvatars = [];
+            // menu.discordAvatarsCount = 0;
             //console.log(JSON.stringify(data))
             if (data[0].name && data[0].name !== menu.myName) {
                 let index = data.findIndex(el => el.name === menu.myName);
@@ -2144,7 +2146,8 @@ let menu = new Vue({
 
         async setDiscordAvatar(name, avatar = null)
         { 
-            let result = await getPhoto(avatar, name)
+            let result = await getPhotoNew(avatar, name)
+            if(!result) return
             Vue.set(menu.discordAvatars, name, result)
             // menu.discordAvatars[name] = avatar
             menu.discordAvatarsCount += +1
