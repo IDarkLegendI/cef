@@ -39,7 +39,7 @@ function getAvatarNew(name) {
     const url = `../shared/img/avatars/${getAvatar(name)}.jpg` 
     return url
 }
-
+ 
 async function getPhoto(avatar, name) { 
     console.log(`getPhoto: ${name}; avatar: ${avatar}; undefined?:${avatar === undefined}`) 
     if (avatar === null || avatar === undefined) return Promise.resolve(`../shared/img/avatars/${getAvatar(name)}.jpg`)

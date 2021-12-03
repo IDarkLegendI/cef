@@ -1271,7 +1271,7 @@ let menu = new Vue({
         fUpdateLobby(data) {
             // menu.discordAvatars = [];
             // menu.discordAvatarsCount = 0;
-            //console.log(JSON.stringify(data))
+            console.log(`fUpdateLobby --> data: ${JSON.stringify(data)}`)
             if (data[0].name && data[0].name !== menu.myName) {
                 let index = data.findIndex(el => el.name === menu.myName);
                 if (index !== -1) {
@@ -1286,9 +1286,16 @@ let menu = new Vue({
                 {
                     myID = index;
                     return player.ava = menu.myAvatar;
+                } 
+                if(player.ava === null) player.ava = getAvatar(player.name)
+                else  
+                {
+                    player.ava = await getPhoto(player.ava, player.name) 
+                    menu.setDiscordAvatarUrl(player.name, player.ava) 
                 }
-                player.ava = await menu.getAvatar(player.name)
-            })
+                console.log(`player.ava = ${JSON.stringify(player.ava)}`)
+                // player.ava = await menu.getAvatar(player.name)
+            })  
 
             if (data.length < 4) {
                 data.push({
@@ -2157,6 +2164,19 @@ let menu = new Vue({
                 menu.discordAvatarsCount = 0 
             } 
             console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatar: ${avatar}; result: ${result}; ${JSON.stringify(menu.discordAvatars)}`)
+        },
+        setDiscordAvatarUrl(name, avatarUrl = null)
+        { 
+            if(!avatarUrl) return; 
+            Vue.set(menu.discordAvatars, name, avatarUrl)
+            // menu.discordAvatars[name] = avatar
+            menu.discordAvatarsCount += +1
+            if(menu.discordAvatarsCount > +100)
+            { 
+                menu.discordAvatars = []
+                menu.discordAvatarsCount = 0 
+            } 
+            console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatarUrl: ${avatarUrl}; result: ${result}; ${JSON.stringify(menu.discordAvatars)}`)
         },
     },
     // computed: {
