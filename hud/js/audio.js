@@ -61,12 +61,14 @@
     // Deliver_Pick_Up = 0
     // win = -1
     // Friend_Deliver = -2
-    // prison_alarm_01 = -3
+    // Friend_Deliver = -3
+    // prison_alarm_01 = -4
     loadSoundFile('./audio/Deliver_Pick_Up.mp3', 0);
     loadSoundFile('./audio/Enemy_Deliver.mp3', 1);
     loadSoundFile('./audio/win.mp3', -1);
     loadSoundFile('./audio/Friend_Deliver.mp3', -2);
-    loadSoundFile('./audio/prison_alarm_01.mp3', -3);
+    loadSoundFile('./audio/Friend_Deliver.mp3', -3); 
+    loadSoundFile('./audio/prison_alarm_01.mp3', -4);
 
     let audioCtx, panner2;
 
