@@ -2085,7 +2085,6 @@ let menu = new Vue({
                 'ИСПОЛЬЗОВАНИЕ БАГОВ',
                 'ОСКОРБИТЕЛЬНОЕ ПОВЕДЕНИЕ' 
             ]
-
             return reason[number - 3].toUpperCase()
         }, 
         fGetReportReasonShort(number) {
@@ -2154,11 +2153,11 @@ let menu = new Vue({
         async setDiscordAvatar(name, avatar = null)
         { 
             let result = await getPhotoNew(avatar, name)
-            if(!result) return
+            if(!result) return 
             Vue.set(menu.discordAvatars, name, result)
             // menu.discordAvatars[name] = avatar
             menu.discordAvatarsCount += +1
-            if(menu.discordAvatarsCount > +100)
+            if(menu.discordAvatarsCount > +100) 
             { 
                 menu.discordAvatars = []
                 menu.discordAvatarsCount = 0 
@@ -2173,10 +2172,10 @@ let menu = new Vue({
             menu.discordAvatarsCount += +1
             if(menu.discordAvatarsCount > +100)
             { 
-                menu.discordAvatars = []
+                menu.discordAvatars = [] 
                 menu.discordAvatarsCount = 0 
             } 
-            console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatarUrl: ${avatarUrl}; result: ${result}; ${JSON.stringify(menu.discordAvatars)}`)
+            console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatarUrl: ${avatarUrl}; ${JSON.stringify(menu.discordAvatars)}`)
         },
     },
     // computed: {
@@ -2350,7 +2349,7 @@ if ('alt' in window) {
                 online: true
             },
             {
-                name: 'Dima',
+                name: 'Dima', 
                 online: true
             },
             {
@@ -2371,46 +2370,48 @@ if ('alt' in window) {
         menu.reportPlayers = [{
             id: 17,
             authorID: 17,
-            type: 2,
+            type: 3,
             msg: '18',
             dateCreate: 1626731216981,
             result: 3
-        }, {
-            id: 25,
-            authorID: 17,
-            type: 2,
-            msg: '18',
-            dateCreate: 1626731216981,
-            result: 0
-        }, {
-            id: 35,
-            authorID: 17,
-            type: 2,
-            msg: '18',
-            dateCreate: 1626731216981,
-            result: 0
-        }, {
-            id: 45,
-            authorID: 17,
-            type: 2,
-            msg: '18',
-            dateCreate: 1626731216981,
-            result: 0
-        }, {
-            id: 22,
-            authorID: 17,
-            type: 2,
-            msg: '18',
-            dateCreate: 1626731216981,
-            result: 0
-        }, {
-            id: 18,
-            authorID: 17,
-            type: 0,
-            msg: '12113333333333333333333333333333333333333333',
-            dateCreate: 1626731216981,
-            result: 1
-        }, ]
+        }, 
+        // {
+        //     id: 25,
+        //     authorID: 17,
+        //     type: 2,
+        //     msg: '18',
+        //     dateCreate: 1626731216981,
+        //     result: 0
+        // }, {
+        //     id: 35,
+        //     authorID: 17,
+        //     type: 2,
+        //     msg: '18',
+        //     dateCreate: 1626731216981,
+        //     result: 0
+        // }, {
+        //     id: 45,
+        //     authorID: 17,
+        //     type: 2,
+        //     msg: '18',
+        //     dateCreate: 1626731216981,
+        //     result: 0
+        // }, {
+        //     id: 22,
+        //     authorID: 17,
+        //     type: 2,
+        //     msg: '18',
+        //     dateCreate: 1626731216981,
+        //     result: 0
+        // }, {
+        //     id: 18,
+        //     authorID: 17,
+        //     type: 0,
+        //     msg: '12113333333333333333333333333333333333333333',
+        //     dateCreate: 1626731216981,
+        //     result: 1
+        // }, 
+    ]
         // menu.requestsIn = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend', 'Res1ce', 'Obliko', 'Vanya', 'ADS', 'D2arkLegend', 'Res21ce', 'Obliko2', 'Van2ya', 'AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG']
         // menu.requestsOut = ['DarkLegend']
@@ -2485,7 +2486,7 @@ if ('alt' in window) {
             },
         ]
         // menu.switchPage(4, 1)
-        menu.switchPage(0, 0)
+        menu.switchPage(7, 0)
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
