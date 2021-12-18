@@ -2336,8 +2336,8 @@ if ('alt' in window) {
     menu.show = true;
     menu.carsPointer = 1;
     setTimeout(async () => {
-        // menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
-        // menu.setDiscordAvatar(menu.myName, '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
+        menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
+        menu.setDiscordAvatar(menu.myName, '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
         // menu.setDiscordAvatar('Gruzd', '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
         menu.getLevel();
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
