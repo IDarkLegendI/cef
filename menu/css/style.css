@@ -35,8 +35,6 @@ html {
 }
 
 .main {
-  width: 90vw;
-  height: 90vh;
   display: flex;
   flex-direction: column;
   position: absolute;
