@@ -470,6 +470,7 @@ if ('alt' in window) {
     { 
         console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
         hud.showLogo = toggle
+        if(toggle) startGlitchGR()
         if(hud.showLogoTimer !== null)
         {
             clearTimeout(hud.showLogoTimer);
@@ -509,12 +510,12 @@ else
     hud.obs.avatar = null
     // hud.obs.show = true;
     // hud.obs.nick = 'DarkLegend'
-    hud.showHUD = true; 
-    // hud.showLogo = true;
+    hud.showHUD = false; 
+    hud.showLogo = true;
     hud.help = 0;
     // hud.keyMenu = 66
     // hud.showLogo = true; 
-    hud.fUpdateKills("OBLIKO", 100)
+    // hud.fUpdateKills("OBLIKO", 100)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A12"), 2000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000) 
@@ -530,4 +531,4 @@ else
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
     setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: "Carbine Rifle", killerName: 'DarkLegend'}), 0)
     // Vue.set(hud, killFeed, [...hud.killFeed, {victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', iKey: 1}])
-}
+} 
