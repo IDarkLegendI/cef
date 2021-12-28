@@ -1145,6 +1145,11 @@ let menu = new Vue({
                 if (menu.playingTime === -1) return menu.switchPage(7, 2) //Если из наблюдения вышел админ в режиме recon
                 setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000)
             }
+            else if(newPage === 7 && newSubPage === 1)
+            {
+                menu.anyVar = [] 
+                menu.emitServer('sAdmin:getPlayers')
+            }
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 
@@ -1207,7 +1212,7 @@ let menu = new Vue({
                 // }
             }
 
-            if (newPage === 2 && newSubPage === 1) {
+            else if (newPage === 2 && newSubPage === 1) {
                 this.anyVarSecond = menu.fGetJPSkins(); // this.anyVarSecond - возможные скины игрока
                 // //console.log(`reset: ${JSON.stringify(this.anyVarSecond)}`)
                 // //console.log(this.anyVarSecond.length)
@@ -1219,7 +1224,8 @@ let menu = new Vue({
             //     this.anyVarSecond = null;
             //     this.anyVarC = null;
             // }
-            if(newPage === 8) this.theTime()
+            else if(newPage === 8) this.theTime()
+            else if(this.page === 7 && this.subPage === 1) menu.anyVar = [] 
             this.updateTuning = false;
             this.recordKey = false;
         },
@@ -2486,7 +2492,9 @@ if ('alt' in window) {
             },
         ]
         // menu.switchPage(4, 1)
-        menu.switchPage(0, 0)
+        // menu.switchPage(7, 1)
+        menu.page = 7
+        menu.subPage = 1
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -2501,6 +2509,7 @@ if ('alt' in window) {
     menu.vip = 'vip'
     menu.carsPointer = 1
     menu.cars[1].price = -1
+    menu.anyVar = [{id: 17, name: 'DarkLegend2', session: 1, home: false}]
     // menu.anyVar = 34 //УБРАТЬ!
     setTimeout(() => {
         menu.reportType = 0

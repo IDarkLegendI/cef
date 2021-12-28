@@ -1572,7 +1572,7 @@
                         </div>
                         <div style="display: flex; justify-content: center; flex-wrap: wrap;">
                             <button class="exitToMenu adminButton"
-                                v-on:click="adminAny = 0; adminAny2 = 10; adminType = 0; fGetReport('0'); switchPage(7, 1)">
+                                v-on:click="adminAny = 0; switchPage(7, 1)">
                                 <img alt="" src="./img/team.png"> УПРАВЛЕНИЕ ИГРОКАМИ
                             </button>
                             <button class="exitToMenu adminButton"
@@ -1587,6 +1587,117 @@
                                 <img alt="" src="./img/win/enter.png"> {{i18n.exitToMenu}}
                             </button>
                         </div>
+                    </div>
+                </section>
+            </transition>
+            <transition enter-active-class="animated fadeIn fast" leave-active-class="animated fadeOut fast">
+                <section v-if="subPage === 1">
+                    <div style="display: flex; flex-direction: column; height: 100vh;">
+                        <div class="upline">
+                            <div class="nameupline">
+                                <span>GTAROYAL.RU</span>
+                            </div>
+                            <span style="font-size: 3vh;">УПРАВЛЕНИЕ ИГРОКАМИ</span>
+                            <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
+                                v-on:click="switchPage(7,0)">
+                                <span>{{i18n.btnBack}}</span>
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div class="zaprosi"
+                                style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
+                                <div
+                                style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                <div class="nickzapros reportZapros typeLP"
+                                    style="min-width: 8vw;  max-width: 8vw;">
+                                    NAME
+                                </div>
+                                <div class="nickzapros reportZapros typeLP"
+                                    style="min-width: 5vw;  max-width: 5vw;">
+                                    ID
+                                </div>
+                                <div class="nickzapros reportZapros"
+                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw"> SESSION</div>
+                                <div class="nickzapros reportZapros typeLP"
+                                    style="min-width: 9vw; max-width: 9vw;">
+                                    1
+                                </div>
+                                <div class="nickzapros reportZapros typeLP"
+                                    style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
+                                    1
+                                </div>
+                                <div
+                                    style="display: flex; justify-content: space-around; min-width: 5vw;">
+                                </div>
+                            </div>
+                                <transition-group name="list-complete" tag="div">
+                                    <div class="zapros list-complete-item" v-bind:key="ticket.id"
+                                        v-for="(ticket, index) in anyVar">
+                                        <div class="avatarnickzapros" style="width: 100%; height: 2.4vw;">
+                                            <div class="avatarzapros"
+                                                style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
+                                                <img :src="`../menu/img/${ticket.type === 0 ? 'cigar' : ticket.type === 1 ? 'plusbtn' : 'justice-scale'}.png`"
+                                                    style="border-radius: 0%;">
+                                            </div>
+                                            <div
+                                                style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 6vw;  max-width: 6vw;">
+                                                    {{ticket.name}}
+                                                </div>
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 5vw;  max-width: 5vw;">
+                                                    {{ticket.id}}
+                                                </div>
+                                                <div class="nickzapros reportZapros"
+                                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw"> 
+                                                    {{ticket.session}}</div>
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 9vw; max-width: 9vw;">
+                                                </div>
+                                                <div class="nickzapros reportZapros typeLP"
+                                                    style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
+                                                </div>
+                                                <div
+                                                    style="display: flex; justify-content: space-around; min-width: 5vw;">
+                                                    <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
+                                                        style="margin-right: 0;">
+                                                        <img alt="" src="img/pencil.png"
+                                                            v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,3);">
+                                                    </div>
+                                                    <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
+                                                        style="margin-right: 0;"
+                                                        v-if="ticket.type >= 2 && ticket.online">
+                                                        <img alt="" src="img/eye.png"
+                                                            v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
+                                                    </div>
+                                                    <div class="btnzapros" data-title="ОТКЛОНИТЬ"
+                                                        style="margin-right: 0;"
+                                                        v-if="ticket.type <= 1 && ticket.result === 0">
+                                                        <img alt=""
+                                                            onclick="setTimeout(() => menu.fGetReport('0'), 250)"
+                                                            src="img/close.png"
+                                                            v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition-group>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; width: 100vw;">
+                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('-10');">
+                                <img alt="" src="./img/arrowLeftRed.png">
+                            </button>
+                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('0');">
+                                ОБНОВИТЬ
+                            </button>
+                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('+10');">
+                                <img alt="" src="./img/arrowRightRed.png">
+                            </button>
+                        </div> 
                     </div>
                 </section>
             </transition>

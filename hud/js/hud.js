@@ -32,6 +32,8 @@ var hud = new Vue({
         ammo: [0, 0],
         time: 120,
         timeInterval: null,
+        timeDestroyedCars: 60,
+        timeDestroyedCarsInterval: null,
         
         notifyNow: 0,
 
@@ -306,19 +308,20 @@ var hud = new Vue({
                 hud.intervalWUP = null;  
             }, time); 
         },
-        fTimeDisplay()
+        fTimeDisplay(time = this.time)
         {
-            let minute = Math.floor((this.time / 60));
-            let second = this.time - (minute * 60);
+            let minute = Math.floor((time / 60));
+            let second = time - (minute * 60);
             return `${minute}:${second < 10 ? '0' : ''}${second}`; 
         },
-        fTimeUpdate(time)
+        // timeDestroyedCarsInterval
+        fTimeUpdate(time, timeName, intervalName)
         {
-            if(this.timeInterval != null) clearInterval(this.timeInterval);
-            this.time = time;
-            this.timeInterval = setInterval(() => {
-                if(this.time <= 0) return clearInterval(this.timeInterval); 
-                this.time -= 1; 
+            if(hud[timeName] != null) clearInterval(hud[intervalName]); 
+            hud[timeName] = time;
+            hud[intervalName] = setInterval(() => {
+                if(hud[timeName] <= 0) return clearInterval(hud[intervalName]); 
+                hud[timeName] -= 1; 
             }, 1000); 
         },
         fKillFeedUpdate(obj)
@@ -482,7 +485,6 @@ if ('alt' in window) {
 
     alt.on('obServer', hud.fObsUpdate)
 
-    alt.on('fTimeUpdate', hud.fTimeUpdate) 
     alt.on('updateKillFeed', hud.fKillFeedUpdate)    
 
     alt.on('updateHelp', toggle =>
@@ -507,7 +509,7 @@ else
     hud.obs.avatar = null
     // hud.obs.show = true;
     // hud.obs.nick = 'DarkLegend'
-    // hud.showHUD = true; 
+    hud.showHUD = true; 
     // hud.showLogo = true;
     hud.help = 0;
     // hud.keyMenu = 66

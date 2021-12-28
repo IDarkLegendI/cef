@@ -62,6 +62,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
     /* margin-right: 6.5vw; */
     /* margin-top: 0.9vh; */
     flex-wrap: nowrap;

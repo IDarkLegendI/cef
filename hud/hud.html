@@ -164,10 +164,19 @@
                     </div>
                     <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
                         leave-active-class="animated bounceOut">
-                        <div class="playersInfo" v-show="!obs.show && time > 0" id="column2">
+                        <div id="column2" v-show="!obs.show && time > 0">
                             <div class="alive">
                                 <div class="numberTime">{{fTimeDisplay()}}</div>
                                 <div class="textTime"><img src="./img/circle.png" alt=""></div>
+                            </div>
+                        </div>
+                    </transition>
+                    <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut"
+                        name="custom-classes-transition">
+                        <div id="column2" v-show="!obs.show && timeDestroyedCars > 0">
+                            <div class="alive">
+                                <div class="numberTime">{{fTimeDisplay(timeDestroyedCars)}}</div>
+                                <div class="textTime"><img alt="" src="./img/car.png"></div>
                             </div>
                         </div>
                     </transition>
