@@ -434,7 +434,21 @@ var hud = new Vue({
             hud.obs.avatar = await getPhoto(avatar, hud.name);   
             if(hud.obs.avatar.length < 5) hud.obs.avatar = null; 
             hud.obs.level = hud.getLevel(data.level) 
-        }
+        }, 
+        toggleLoad(toggle, duration)
+        {
+            console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
+            hud.showLogo = toggle
+            if(toggle) startGlitchGR()
+            if(hud.showLogoTimer !== null)
+            {
+                clearTimeout(hud.showLogoTimer);
+                hud.showLogoTimer = null;
+            } 
+            if(duration !== null) setTimeout(() => {
+                hud.showLogo = !toggle 
+            }, duration)
+        },
     },
 })
 
@@ -466,20 +480,7 @@ if ('alt' in window) {
     }) 
     // alt.on('giveKill', hud.fUpdateKills)
 
-    alt.on('toggleLoad', (toggle, duration) => 
-    { 
-        console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
-        hud.showLogo = toggle
-        if(toggle) startGlitchGR()
-        if(hud.showLogoTimer !== null)
-        {
-            clearTimeout(hud.showLogoTimer);
-            hud.showLogoTimer = null;
-        } 
-        if(duration !== null) setTimeout(() => {
-            hud.showLogo = !toggle 
-        }, duration)
-    })
+    alt.on('toggleLoad', hud.toggleLoad)
  
     alt.on('updateAmmo', (clip, ammo) => hud.ammo = [clip, ammo])
     alt.on('updateWarmUP', hud.fupdateWarmUP)  
@@ -511,7 +512,8 @@ else
     // hud.obs.show = true;
     // hud.obs.nick = 'DarkLegend'
     hud.showHUD = false; 
-    hud.showLogo = true;
+    hud.toggleLoad(true, null)
+    // hud.showLogo = true;
     hud.help = 0;
     // hud.keyMenu = 66
     // hud.showLogo = true; 
