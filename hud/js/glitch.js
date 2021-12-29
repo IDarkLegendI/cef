@@ -35,8 +35,19 @@ Ticker.prototype.reset = function() {
 
 Ticker.prototype.loop = function() {
     console.log('Glitch: 2')
-    if(!hud.showLogo) return false
 	var self = this;
+    if(!hud.showLogo) 
+	{
+		this.done = false;
+		this.cycleCurrent = 0;
+		this.letterCurrent = 0;
+		this.letters.each( function() {
+			var $this = $( this );
+			$this.text( $this.attr( 'data-orig' ) );
+			$this.removeClass( 'done' );
+		});
+		return false
+	}
 	this.letters.each( function( index, elem ) {
 		var $elem = $( elem );
 		if( index >= self.letterCurrent ) {
@@ -65,7 +76,7 @@ Ticker.prototype.loop = function() {
 	} else {
 		setTimeout( function() {
 			self.reset();
-		}, 3000 );
+		}, 5000 ); 
 	}
 };
 
@@ -74,10 +85,10 @@ function startGlitchGR()
     $words = $( '.word' );
 
     $words.each( function() { 
-        if(!hud.showLogo) return false
+		console.log('Glitch: 1') 
+        // if(!hud.showLogo) return false
         var $this = $( this ),
             ticker = new Ticker( $this ).reset();
         $this.data( 'ticker', ticker  );
-        console.log('Glitch: 1')
     });
 }

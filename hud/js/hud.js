@@ -436,7 +436,7 @@ var hud = new Vue({
             hud.obs.level = hud.getLevel(data.level) 
         }, 
         toggleLoad(toggle, duration)
-        {
+        { 
             console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
             hud.showLogo = toggle
             if(toggle) startGlitchGR()
