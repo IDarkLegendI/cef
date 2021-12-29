@@ -34,6 +34,8 @@ var hud = new Vue({
         timeInterval: null,
         timeDestroyedCars: 60,
         timeDestroyedCarsInterval: null,
+
+        airAlert: true,
         
         notifyNow: 0,
 
@@ -511,8 +513,8 @@ else
     hud.obs.avatar = null
     // hud.obs.show = true;
     // hud.obs.nick = 'DarkLegend'
-    hud.showHUD = false; 
-    hud.toggleLoad(true, null)
+    hud.showHUD = true; 
+    // hud.toggleLoad(true, null)
     // hud.showLogo = true;
     hud.help = 0;
     // hud.keyMenu = 66

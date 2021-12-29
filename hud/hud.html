@@ -137,23 +137,32 @@
             <section v-if='showHUD && visible'>
                 <div class="hud">
                     <div class="playersInfo">
-                        <div class="alive" v-show="!obs.show">
-                            <div class="numberAlive" id="alive"
+                        <div style="display: flex; " v-show="!obs.show">
+                            <div class="alive"> 
+                                <div class="numberAlive" id="alive"
                                 :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
-                            <div class="textAlive" id="alive">{{getText('kill2')}}</div>
-                        </div>
-                        <div class="alive" v-show="!obs.show">
-                            <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                            <div class="textAlive" id="alive">
-                                {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
-                        </div>
-                        <div class="alive" v-show="!obs.show">
-                            <div class="numberAlive" id="alive">
-                                <p>{{ammo[0]}}</p>
-                                <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
+                                <div class="textAlive" id="alive">{{getText('kill2')}}</div>
                             </div>
-                            <div class="textAlive" id="alive"><img src="./img/bullets.png" alt=""></div>
+                            
+                            
+                            <div class="alive" v-show="!obs.show">
+                                <div class="numberAlive" id="alive">{{alivePlayers}}</div>
+                                <div class="textAlive" id="alive">
+                                    {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
+                            </div>
+
+                            <div class="alive">
+                                <div class="numberAlive" id="alive">
+                                    <p>{{ammo[0]}}</p>
+                                    <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
+                                </div>
+                                <div class="textAlive" id="alive"><img alt="" src="./img/bullets.png"></div>
+                            </div> 
                         </div>
+                        <!-- <div class="alive" v-show="!obs.show">
+                            <img src="./img/targeting.png" alt="" style="width: 2vw; ">
+                            <img src="./img/targetingheli.png" alt="" style="width: 100%">
+                        </div> -->
 
                         <!-- OBSERVER HUD -->
                         <div class="alive" v-show="obs.show">
