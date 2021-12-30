@@ -112,6 +112,14 @@ body {
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.226));
 }
 
+.airAlert {
+    height: 100%; 
+    width: auto;
+    /* filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.281)); */
+    background-color: rgba(46, 23, 23, 0.24);
+    border-radius: 3vh;
+}
+
 .killInfo{
     display: flex;
     flex-direction: column;
@@ -639,3 +647,4 @@ p {
     color: #6f6;
     transform: translateX(0) scale(1);
   }
+

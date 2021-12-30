@@ -36,6 +36,7 @@ var hud = new Vue({
         timeDestroyedCarsInterval: null,
 
         airAlert: true,
+        targetAlert: true,
         
         notifyNow: 0,
 

@@ -68,7 +68,8 @@
                     </div>
                     <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}"
                         class="obsCenter">
-                        <img :src="obs.avatar" class="avatar" style="height: 100px; width: 100px;" v-if="obs.avatar !== null">
+                        <img :src="obs.avatar" class="avatar" style="height: 100px; width: 100px;"
+                            v-if="obs.avatar !== null">
                         <img :src="`../shared/img/avatars/${getAvatar(obs.nick)}.jpg`" class="avatar" v-else>
                         <div class="obsTexts">
                             <h1>{{obs.nick}}</h1>
@@ -112,7 +113,8 @@
                                 <div class="subHelpOBS">
                                     <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
                                         class="animated infinite flash slow">
-                                        <p :style="{borderColor: friend.color, boxShadow: `0 0 2px ${friend.color}`}" class="key" id="friendName">
+                                        <p :style="{borderColor: friend.color, boxShadow: `0 0 2px ${friend.color}`}"
+                                            class="key" id="friendName">
                                             {{friend.name}}</p>
                                         <p class="textHelp"
                                             style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
@@ -136,15 +138,24 @@
             leave-active-class="animated bounceOutRight">
             <section v-if='showHUD && visible'>
                 <div class="hud">
-                    <div class="playersInfo">
-                        <div style="display: flex; " v-show="!obs.show">
-                            <div class="alive"> 
+                    <div class="playersInfo"> 
+                        <div style="display: flex; align-items: center;" v-show="!obs.show">
+                            <div class="alive" style="padding-left: 0.5vw;" v-show="targetAlert">
+                                <div style="height: 3.1vh;">
+                                    <img class="airAlert" src="./img/targeting.png">
+                                </div>
+                            </div>
+                            <div class="alive" style="padding-left: 0.5vw;" v-show="airAlert">
+                                <div style="height: 3.1vh;">
+                                    <img class="airAlert" src="./img/targetingheli.png">
+                                </div>
+                            </div>
+                            <div class="alive">
                                 <div class="numberAlive" id="alive"
-                                :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
+                                    :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
                                 <div class="textAlive" id="alive">{{getText('kill2')}}</div>
                             </div>
-                            
-                            
+
                             <div class="alive" v-show="!obs.show">
                                 <div class="numberAlive" id="alive">{{alivePlayers}}</div>
                                 <div class="textAlive" id="alive">
@@ -157,12 +168,8 @@
                                     <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
                                 </div>
                                 <div class="textAlive" id="alive"><img alt="" src="./img/bullets.png"></div>
-                            </div> 
+                            </div>
                         </div>
-                        <!-- <div class="alive" v-show="!obs.show">
-                            <img src="./img/targeting.png" alt="" style="width: 2vw; ">
-                            <img src="./img/targetingheli.png" alt="" style="width: 100%">
-                        </div> -->
 
                         <!-- OBSERVER HUD -->
                         <div class="alive" v-show="obs.show">
@@ -239,9 +246,9 @@
                                 </p>
                                 <p class="textHelp">{{getText('management')}}</p>
                             </div>
-                        </div> 
+                        </div>
                     </div>
-                </section> 
+                </section>
             </transition>
 
             <transition name="custom-classes-transition3" enter-active-class="animated rollIn slow"
@@ -250,7 +257,7 @@
                     <div style="display: flex; flex-direction: column; align-items: center;">
                         <img src="./img/kinghud.png" alt="" class="animated infinite wobble slower" id="logo">
                         <h1 class="animated flash delay-2s fast word" id="gtaRoyalRu"
-                        style="padding-top: 20vh; font-size: 3vh;">
+                            style="padding-top: 20vh; font-size: 3vh;">
                             GTAROYAL.RU</h1>
                     </div>
                 </div>
@@ -258,24 +265,24 @@
 
             <div
                 style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
-                <transition enter-active-class="animated fadeInLeftBig slow" leave-active-class="animated fadeOutLeftBig fast"
-                    name="gtaRoyalRuAnimate"> 
+                <transition enter-active-class="animated fadeInLeftBig slow"
+                    leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
                     <div style="padding-bottom: 0.2%;" v-show="!showLogo">
                         <h1 id="gtaRoyalRu"
-                            style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;"> 
+                            style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
                             GTAROYAL.RU</h1>
                     </div>
                 </transition>
-                <transition enter-active-class="animated fadeInLeftBig slow" leave-active-class="animated fadeOutLeftBig fast"
-                    name="gtaRoyalRuAnimate">
+                <transition enter-active-class="animated fadeInLeftBig slow"
+                    leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
                     <div v-show="!showLogo">
                         <div class="progress">
                             <div class="bar shadow wiggle"></div>
-                        </div>  
+                        </div>
                     </div>
                 </transition>
             </div>
-        </section> 
+        </section>
     </section>
 </body>
 
