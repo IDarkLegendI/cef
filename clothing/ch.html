@@ -12,7 +12,7 @@
 			<div class="contentb1">
 				<div style="display: flex; flex-direction: column; margin-top: 1vh">
 					<p style="font-size: 1.5vh; margin: 0;">{{titleBalance}}</p>
-					<p style="font-size: 2vh; margin: 0; margin-top: 0.11vh">${{money}}</p>
+					<p style="font-size: 2vh; margin: 0; margin-top: 0.11vh">${{money.toFixed(0)}}</p>
 				</div>
 				<div class="switchcustom">
 					<div :class="{'animated infinite wobble slower active': (currentTitle === 'Hats')}"
