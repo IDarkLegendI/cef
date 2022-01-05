@@ -34,7 +34,7 @@ Ticker.prototype.reset = function() {
 };
 
 Ticker.prototype.loop = function() {
-    console.log('Glitch: 2')
+    // console.log('Glitch: 2')
 	var self = this;
     if(!hud.showLogo) 
 	{
@@ -85,7 +85,7 @@ function startGlitchGR()
     $words = $( '.word' );
 
     $words.each( function() { 
-		console.log('Glitch: 1') 
+		// console.log('Glitch: 1') 
         // if(!hud.showLogo) return false
         var $this = $( this ),
             ticker = new Ticker( $this ).reset();

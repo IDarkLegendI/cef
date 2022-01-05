@@ -442,16 +442,31 @@ var hud = new Vue({
         { 
             console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
             hud.showLogo = toggle
-            if(toggle) startGlitchGR()
             if(hud.showLogoTimer !== null)
             {
-                clearTimeout(hud.showLogoTimer);
+                clearInterval(hud.showLogoTimer);
                 hud.showLogoTimer = null;
             } 
-            if(duration !== null) setTimeout(() => {
-                hud.showLogo = !toggle 
-            }, duration)
+            let docBody = document.getElementById('fade'), step = (1 / + duration) * 60 , interval =  +duration / +60, nowAlpha = 0
+            if(toggle) setTimeout(() => 
+            {
+                if(hud.showLogo) startGlitchGR()
+            }, 2500)
+            else {
+                nowAlpha = 1
+                step *= -1
+            }
+            if(duration !== null) hud.showLogoTimer = setInterval(() => {
+                // hud.showLogo = !toggle
+                nowAlpha += +step
+                docBody.style.background = `rgba(34, 34, 34, ${nowAlpha})`
+            }, interval)
         },
+        getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+          }
     },
 })
 
@@ -514,7 +529,8 @@ else
     hud.obs.avatar = null
     // hud.obs.show = true;
     // hud.obs.nick = 'DarkLegend'
-    hud.showHUD = true; 
+    // hud.showHUD = true; 
+    hud.toggleLoad(true, 3000)
     // hud.toggleLoad(true, null)
     // hud.showLogo = true;
     hud.help = 0;

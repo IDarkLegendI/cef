@@ -19,275 +19,287 @@
 
 <body id="fade" onload="load()">
     <section id="body">
-        <section v-show="visible">
-            <div class="center">
-                <transition name="custom-classes-transition" enter-active-class="animated zoomInUp"
-                    leave-active-class="animated zoomOutUp">
-                    <section v-if="showWUP && !killsBarShow">
-                        <div class="warmInfo">
-                            <h1 class="animated infinite" v-bind:class="[pulseWUP ? 'pulse fast' : 'pulse slower']"
-                                :style="{borderColor: pulseWUP ? 'rgb(255, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.5)'}">
-                                {{textWUP}}
-                            </h1>
-                        </div>
-                    </section>
-                </transition>
-                <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition2"
-                    leave-active-class="animated bounceOutRight">
-                    <div class="killInfo" v-show="killsBarShow">
-                        <img :src="`./img/${killsGifShow ? 'blood-splatter' : 'blood-splatter-static'}.gif`" alt="">
-                        <div class="kills">
-                            <h1 id="kills" class="killText"><span class="killsnumber">{{kills}}</span></h1>
-                            <h1 id="killInfo" class="killText2">
-                                {{kills === 1 ? getText('kill') : kills < 5 ? getText('kills') : getText('kill2')}}</h1>
-                        </div>
-                        <h1 class="killText" id="killInfo">{{getText('ukilled')}} <span
-                                class="killTextplayer">{{killsBar[0]}}</span> {{getText('distance')}} <span
-                                :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
-                            {{getText('meters')}}
-                        </h1>
-                    </div>
-                </transition>
-            </div>
-            <!-- OBSERVER -->
-            <transition enter-active-class="animated fadeInLeft" name="custom-classes-transition3"
-                leave-active-class="animated hinge">
-                <!-- animated infinite pulse slow -->
-
-                <div class="observer" style="padding-top: 21vh;"
-                    v-show="obs.show && !killsBarShow && obs.nick.length !== +0">
-                    <div style="width: 100%;">
-                        <div class="helpObServer animated infinite bounce delay-3s slower">
-                            <div class="subHelpOBS">
-                                <div>
-                                    <p class="key">{{keyCodes[keyMenu].toUpperCase()}}</p>
-                                    <p class="textHelp">{{getText('exit')}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}"
-                        class="obsCenter">
-                        <img :src="obs.avatar" class="avatar" style="height: 100px; width: 100px;"
-                            v-if="obs.avatar !== null">
-                        <img :src="`../shared/img/avatars/${getAvatar(obs.nick)}.jpg`" class="avatar" v-else>
-                        <div class="obsTexts">
-                            <h1>{{obs.nick}}</h1>
-                            <div class="kills" style="padding-top: 0.5vh;">
-                                <img src="./img/skull.png" alt="">
-                                <h1 class="obsKills">{{obs.kills}}</h1>
-                                <hr style="height: 0vh; opacity: 0;">
-                                <img :src="`../menu/img/levels/${obs.level}.png`" alt="" class="level"
-                                    style="width: 1.5vw;">
-                            </div>
-                        </div>
-                        <!-- <img class="vip" :src="`../menu/img/corona.png`" alt=""> -->
-                    </div>
-                </div>
-            </transition>
-            <transition enter-active-class="animated fadeInRight" leave-active-class="animated fadeOutRight"
+        <!-- Загрузочный экран -->
+        <section v-if='showLogo'>
+            <!-- <canvas style="position: absolute; height: 100%; width: 100vw;"></canvas>  -->
+            <transition enter-active-class="animated rollIn slow" leave-active-class="animated rollOut fast"
                 name="custom-classes-transition3">
-                <div class="observer" v-show="help === 2 && !showLogo && Object.keys(lobby).length === 0">
-                    <div style="width: 100%;">
-                        <div class="helpObServer animated infinite bounce slow">
-                            <div class="subHelpOBS">
-                                <div>
-                                    <p class="key">{{keyCodes[keyMenu].toUpperCase()}}</p>
-                                    <p class="textHelp">{{getText('menu')}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </transition>
-
-            <!-- LOBBY PLAYERS -->
-            <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
-                name="custom-classes-transition4">
-                <section>
-                    <div class="observer list-complete-item">
-                        <transition-group enter-active-class="animated fadeIn faster"
-                            leave-active-class="animated fadeOut faster" style="width: 100%; min-height: 17vh;"
-                            tag="div">
-                            <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
-                                <div class="subHelpOBS">
-                                    <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
-                                        class="animated infinite flash slow">
-                                        <p :style="{borderColor: friend.color, boxShadow: `0 0 2px ${friend.color}`}"
-                                            class="key" id="friendName">
-                                            {{friend.name}}</p>
-                                        <p class="textHelp"
-                                            style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
-                                            <img :src="`../hud/img/${friend.hp > 0 ? (friend.armour > 0 ? 'armour' : 'heart') : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`"
-                                                style="height: auto; width: 0.7vw;">
-                                            <section v-if="friend.hp > 0">
-                                                <p>{{friend.armour > 0 ? friend.armour : friend.hp}}</p>
-                                            </section>
-                                        </p>
-                                        <!-- <img class="animated infinite flash slower" src="./img/mic.png" v-if="friend.mic" 
-                                        style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 2px green)" :style="{paddingLeft: friend.hp > 0 ? '0.25vw' : 0}"> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </transition-group>
-                    </div>
-                </section>
-            </transition>
-        </section>
-        <transition name="custom-classes-transition" enter-active-class="animated bounceInLeft"
-            leave-active-class="animated bounceOutRight">
-            <section v-if='showHUD && visible'>
-                <div class="hud">
-                    <div class="playersInfo">
-                        <div style="display: flex; align-items: center;" v-show="!obs.show">
-                            <transition enter-active-class="animated flash" leave-active-class="animated fadeOut"
-                                name="custom-classes-transition">
-                                <div class="alive" style="padding-left: 0.5vw;" v-show="targetAlert">
-                                    <div style="height: 3.1vh;">
-                                        <img class="airAlert" src="./img/targeting.png">
-                                    </div>
-                                </div>
-                            </transition> 
-                            <transition enter-active-class="animated flash" leave-active-class="animated fadeOut"
-                                name="custom-classes-transition">
-                                <div class="alive" style="padding-left: 0.5vw;" v-show="airAlert">
-                                    <div style="height: 3.1vh;">
-                                        <img class="airAlert" src="./img/targetingheli.png">
-                                    </div>
-                                </div>
-                            </transition>
-                            <div class="alive">
-                                <div class="numberAlive" id="alive"
-                                    :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
-                                <div class="textAlive" id="alive">{{getText('kill2')}}</div>
-                            </div>
-
-                            <div class="alive" v-show="!obs.show">
-                                <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                                <div class="textAlive" id="alive">
-                                    {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
-                            </div>
-
-                            <div class="alive">
-                                <div class="numberAlive" id="alive">
-                                    <p>{{ammo[0]}}</p>
-                                    <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
-                                </div>
-                                <div class="textAlive" id="alive"><img alt="" src="./img/bullets.png"></div>
-                            </div>
-                        </div>
-
-                        <!-- OBSERVER HUD -->
-                        <div class="alive" v-show="obs.show">
-                            <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                            <div class="textAlive" id="alive">
-                                {{alivePlayers === 1 ? getText('player') : getText('players')}}</div>
-                        </div>
-                    </div>
-                    <transition name="custom-classes-transition" enter-active-class="animated bounceIn"
-                        leave-active-class="animated bounceOut">
-                        <div id="column2" v-show="!obs.show && time > 0">
-                            <div class="alive">
-                                <div class="numberTime">{{fTimeDisplay()}}</div>
-                                <div class="textTime"><img src="./img/circle.png" alt=""></div>
-                            </div>
-                        </div>
-                    </transition>
-                    <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut"
-                        name="custom-classes-transition">
-                        <div id="column2" v-show="!obs.show && timeDestroyedCars > 0">
-                            <div class="alive">
-                                <div class="numberTime">{{fTimeDisplay(timeDestroyedCars)}}</div>
-                                <div class="textTime"><img alt="" src="./img/car.png"></div>
-                            </div>
-                        </div>
-                    </transition>
-
-                    <!-- KILL FEED -->
-                    <transition name="custom-classes-transition3" enter-active-class="animated tada"
-                        leave-active-class="animated hinge">
-                        <div id="killfeed" style="display: flex; justify-content: flex-end;" v-show="visible">
-                            <transition-group name="list-complete" tag="div">
-                                <div class="killfeed list-complete-item" v-for="(kill, index) in killFeed"
-                                    v-bind:key="kill.iKey">
-                                    <div class="killelement"
-                                        :style="{borderColor: kill.borderRed ? '#FF0000' : 'black', boxShadow: `0 0 2.5px ${kill.borderRed ? '#FF0000' : 'black'}`}"
-                                        style="display: flex; align-items: center; align-self: center;">
-                                        <span class="killElementText">{{kill.killerName}}</span>
-                                        <div style="height: 2vh; padding: 0vh 1.2vh">
-                                            <img :src="`./img/kf/${kill.weaponName}.png`"
-                                                onerror="this.src='./img/kf/1.png'"
-                                                style="max-width: 6vw; height: 100%; filter: drop-shadow(0 0 1px #000000);">
-                                        </div>
-                                        <span class="killElementText">{{kill.victimName}}</span>
-                                    </div>
-                                </div>
-                            </transition-group>
-                        </div>
-                    </transition>
-                </div>
-            </section>
-        </transition>
-        <section v-show="visible">
-            <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
-                name="custom-classes-transition4">
-                <section v-show="help === 1 && showHUD">
-                    <div class="help animated bounce delay-2s slower">
-                        <div class="subHelp">
-                            <div>
-                                <p class="key">
-                                    <img alt="" src="./img/keyboard.png">
-                                    <img alt="" id="plus" src="./img/plus.png">
-                                    <img alt="" id="pcMouse" src="./img/computer-mouse.png">
-                                </p>
-                                <p class="textHelp">{{getText('management')}}</p>
-                            </div>
-                        </div>
-                        <div class="subHelp">
-                            <div>
-                                <p class="key">
-                                    <img alt="" src="./img/keyboard.png">
-                                    <img alt="" id="plus" src="./img/plus.png">
-                                    <img alt="" src="./img/numKeyBoard.png">
-                                </p>
-                                <p class="textHelp">{{getText('management')}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </transition>
-
-            <transition name="custom-classes-transition3" enter-active-class="animated rollIn slow"
-                leave-active-class="animated rollOut fast">
-                <div class="logoLoad" v-show='showLogo'>
+                <div class="logoLoad">
                     <div style="display: flex; flex-direction: column; align-items: center;">
-                        <img src="./img/kinghud.png" alt="" class="animated infinite wobble slower" id="logo">
+                        <img :class="{'animated infinite wobble slower': true}" alt="" id="logo" src="./img/kinghud.png">
                         <h1 class="animated flash delay-2s fast word" id="gtaRoyalRu"
                             style="padding-top: 20vh; font-size: 3vh;">
                             GTAROYAL.RU</h1>
                     </div>
                 </div>
             </transition>
+        </section>
+        <section v-else>
+            <transition enter-active-class="animated fadeIn slow" leave-active-class="animated fadeOut slow"
+                name="custom-classes-transition3">
+                <section v-show="visible">
+                    <div class="center">
+                        <transition enter-active-class="animated zoomInUp" leave-active-class="animated zoomOutUp"
+                            name="custom-classes-transition">
+                            <section v-if="showWUP && !killsBarShow">
+                                <div class="warmInfo">
+                                    <h1 :style="{borderColor: pulseWUP ? 'rgb(255, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.5)'}"
+                                        class="animated infinite"
+                                        v-bind:class="[pulseWUP ? 'pulse fast' : 'pulse slower']">
+                                        {{textWUP}}
+                                    </h1>
+                                </div>
+                            </section>
+                        </transition>
+                        <transition enter-active-class="animated fadeInLeft" leave-active-class="animated bounceOutRight"
+                            name="custom-classes-transition2">
+                            <div class="killInfo" v-show="killsBarShow">
+                                <img :src="`./img/${killsGifShow ? 'blood-splatter' : 'blood-splatter-static'}.gif`"
+                                    alt="">
+                                <div class="kills">
+                                    <h1 class="killText" id="kills"><span class="killsnumber">{{kills}}</span></h1>
+                                    <h1 class="killText2" id="killInfo">
+                                        {{kills === 1 ? getText('kill') : kills < 5 ? getText('kills') : getText('kill2')}}
+                                    </h1>
+                                </div>
+                                <h1 class="killText" id="killInfo">{{getText('ukilled')}} <span
+                                        class="killTextplayer">{{killsBar[0]}}</span> {{getText('distance')}} <span
+                                        :style="{color: killsBar[1] > 50 ? 'red' : '#ebebeb'}">{{killsBar[1]}}</span>
+                                    {{getText('meters')}}
+                                </h1>
+                            </div>
+                        </transition>
+                    </div>
+                    <!-- OBSERVER -->
+                    <transition enter-active-class="animated fadeInLeft" leave-active-class="animated hinge"
+                        name="custom-classes-transition3">
+                        <!-- animated infinite pulse slow -->
 
-            <div
-                style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
-                <transition enter-active-class="animated fadeInLeftBig slow"
-                    leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
-                    <div style="padding-bottom: 0.2%;" v-show="!showLogo">
-                        <h1 id="gtaRoyalRu"
-                            style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
-                            GTAROYAL.RU</h1>
-                    </div>
-                </transition>
-                <transition enter-active-class="animated fadeInLeftBig slow"
-                    leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
-                    <div v-show="!showLogo">
-                        <div class="progress">
-                            <div class="bar shadow wiggle"></div>
+                        <div class="observer" style="padding-top: 21vh;"
+                            v-show="obs.show && !killsBarShow && obs.nick.length !== +0">
+                            <div style="width: 100%;">
+                                <div class="helpObServer animated infinite bounce delay-3s slower">
+                                    <div class="subHelpOBS">
+                                        <div>
+                                            <p class="key">{{keyCodes[keyMenu].toUpperCase()}}</p>
+                                            <p class="textHelp">{{getText('exit')}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div :style="{animationName: obs.vip === 'vip' ? 'colorYellow' : obs.vip === 'premium' ? 'colorGreen' : obs.vip === 'deluxe' ? 'colorRed' : 'none'}"
+                                class="obsCenter">
+                                <img :src="obs.avatar" class="avatar" style="height: 100px; width: 100px;"
+                                    v-if="obs.avatar !== null">
+                                <img :src="`../shared/img/avatars/${getAvatar(obs.nick)}.jpg`" class="avatar" v-else>
+                                <div class="obsTexts">
+                                    <h1>{{obs.nick}}</h1>
+                                    <div class="kills" style="padding-top: 0.5vh;">
+                                        <img alt="" src="./img/skull.png">
+                                        <h1 class="obsKills">{{obs.kills}}</h1>
+                                        <hr style="height: 0vh; opacity: 0;">
+                                        <img :src="`../menu/img/levels/${obs.level}.png`" alt="" class="level"
+                                            style="width: 1.5vw;">
+                                    </div>
+                                </div>
+                                <!-- <img class="vip" :src="`../menu/img/corona.png`" alt=""> -->
+                            </div>
                         </div>
+                    </transition>
+                    <transition enter-active-class="animated fadeInRight" leave-active-class="animated fadeOutRight"
+                        name="custom-classes-transition3">
+                        <div class="observer" v-show="help === 2 && !showLogo && Object.keys(lobby).length === 0">
+                            <div style="width: 100%;">
+                                <div class="helpObServer animated infinite bounce slow">
+                                    <div class="subHelpOBS">
+                                        <div>
+                                            <p class="key">{{keyCodes[keyMenu].toUpperCase()}}</p>
+                                            <p class="textHelp">{{getText('menu')}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <!-- LOBBY PLAYERS -->
+                    <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
+                        name="custom-classes-transition4">
+                        <section>
+                            <div class="observer list-complete-item">
+                                <transition-group enter-active-class="animated fadeIn faster"
+                                    leave-active-class="animated fadeOut faster" style="width: 100%; min-height: 17vh;"
+                                    tag="div">
+                                    <div class="helpObServer" v-bind:key="friend.name" v-for="(friend, index) in lobby">
+                                        <div class="subHelpOBS">
+                                            <div :style="{animationName: friend.mic ? 'flash' : 'none'}"
+                                                class="animated infinite flash slow">
+                                                <p :style="{borderColor: friend.color, boxShadow: `0 0 2px ${friend.color}`}"
+                                                    class="key" id="friendName">
+                                                    {{friend.name}}</p>
+                                                <p class="textHelp"
+                                                    style="display: flex; align-items: center; justify-content: space-between; width: 1vw; align-self: center; align-content: center;">
+                                                    <img :src="`../hud/img/${friend.hp > 0 ? (friend.armour > 0 ? 'armour' : 'heart') : friend.hp === 0 ? 'heartb' : 'nosignal'}.png`"
+                                                        style="height: auto; width: 0.7vw;">
+                                                    <section v-if="friend.hp > 0">
+                                                        <p>{{friend.armour > 0 ? friend.armour : friend.hp}}</p>
+                                                    </section>
+                                                </p>
+                                                <!-- <img class="animated infinite flash slower" src="./img/mic.png" v-if="friend.mic" 
+                                        style="height: auto; width: 0.7vw; filter: drop-shadow(0 0 2px green)" :style="{paddingLeft: friend.hp > 0 ? '0.25vw' : 0}"> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition-group>
+                            </div>
+                        </section>
+                    </transition>
+                </section>
+            </transition>
+            <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight"
+                name="custom-classes-transition">
+                <section v-if='showHUD && visible'>
+                    <div class="hud">
+                        <div class="playersInfo">
+                            <div style="display: flex; align-items: center;" v-show="!obs.show">
+                                <transition enter-active-class="animated flash" leave-active-class="animated fadeOut"
+                                    name="custom-classes-transition">
+                                    <div class="alive" style="padding-left: 0.5vw;" v-show="targetAlert">
+                                        <div style="height: 3.1vh;">
+                                            <img class="airAlert" src="./img/targeting.png">
+                                        </div>
+                                    </div>
+                                </transition>
+                                <transition enter-active-class="animated flash" leave-active-class="animated fadeOut"
+                                    name="custom-classes-transition">
+                                    <div class="alive" style="padding-left: 0.5vw;" v-show="airAlert">
+                                        <div style="height: 3.1vh;">
+                                            <img class="airAlert" src="./img/targetingheli.png">
+                                        </div>
+                                    </div>
+                                </transition>
+                                <div class="alive">
+                                    <div :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}" class="numberAlive"
+                                        id="alive">{{kills}}
+                                    </div>
+                                    <div class="textAlive" id="alive">{{getText('kill2')}}</div>
+                                </div>
+
+                                <div class="alive" v-show="!obs.show">
+                                    <div class="numberAlive" id="alive">{{alivePlayers}}</div>
+                                    <div class="textAlive" id="alive">
+                                        {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
+                                </div>
+
+                                <div class="alive">
+                                    <div class="numberAlive" id="alive">
+                                        <p>{{ammo[0]}}</p>
+                                        <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
+                                    </div>
+                                    <div class="textAlive" id="alive"><img alt="" src="./img/bullets.png"></div>
+                                </div>
+                            </div>
+
+                            <!-- OBSERVER HUD -->
+                            <div class="alive" v-show="obs.show">
+                                <div class="numberAlive" id="alive">{{alivePlayers}}</div>
+                                <div class="textAlive" id="alive">
+                                    {{alivePlayers === 1 ? getText('player') : getText('players')}}</div>
+                            </div>
+                        </div>
+                        <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut"
+                            name="custom-classes-transition">
+                            <div id="column2" v-show="!obs.show && time > 0">
+                                <div class="alive">
+                                    <div class="numberTime">{{fTimeDisplay()}}</div>
+                                    <div class="textTime"><img alt="" src="./img/circle.png"></div>
+                                </div>
+                            </div>
+                        </transition>
+                        <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut"
+                            name="custom-classes-transition">
+                            <div id="column2" v-show="!obs.show && timeDestroyedCars > 0">
+                                <div class="alive">
+                                    <div class="numberTime">{{fTimeDisplay(timeDestroyedCars)}}</div>
+                                    <div class="textTime"><img alt="" src="./img/car.png"></div>
+                                </div>
+                            </div>
+                        </transition>
+
+                        <!-- KILL FEED -->
+                        <transition enter-active-class="animated tada" leave-active-class="animated hinge"
+                            name="custom-classes-transition3">
+                            <div id="killfeed" style="display: flex; justify-content: flex-end;" v-show="visible">
+                                <transition-group name="list-complete" tag="div">
+                                    <div class="killfeed list-complete-item" v-bind:key="kill.iKey"
+                                        v-for="(kill, index) in killFeed">
+                                        <div :style="{borderColor: kill.borderRed ? '#FF0000' : 'black', boxShadow: `0 0 2.5px ${kill.borderRed ? '#FF0000' : 'black'}`}"
+                                            class="killelement"
+                                            style="display: flex; align-items: center; align-self: center;">
+                                            <span class="killElementText">{{kill.killerName}}</span>
+                                            <div style="height: 2vh; padding: 0vh 1.2vh">
+                                                <img :src="`./img/kf/${kill.weaponName}.png`"
+                                                    onerror="this.src='./img/kf/1.png'"
+                                                    style="max-width: 6vw; height: 100%; filter: drop-shadow(0 0 1px #000000);">
+                                            </div>
+                                            <span class="killElementText">{{kill.victimName}}</span>
+                                        </div>
+                                    </div>
+                                </transition-group>
+                            </div>
+                        </transition>
                     </div>
+                </section>
+            </transition>
+            <section v-show="visible">
+                <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"
+                    name="custom-classes-transition4">
+                    <section v-show="help === 1 && showHUD">
+                        <div class="help animated bounce delay-2s slower">
+                            <div class="subHelp">
+                                <div>
+                                    <p class="key">
+                                        <img alt="" src="./img/keyboard.png">
+                                        <img alt="" id="plus" src="./img/plus.png">
+                                        <img alt="" id="pcMouse" src="./img/computer-mouse.png">
+                                    </p>
+                                    <p class="textHelp">{{getText('management')}}</p>
+                                </div>
+                            </div>
+                            <div class="subHelp">
+                                <div>
+                                    <p class="key">
+                                        <img alt="" src="./img/keyboard.png">
+                                        <img alt="" id="plus" src="./img/plus.png">
+                                        <img alt="" src="./img/numKeyBoard.png">
+                                    </p>
+                                    <p class="textHelp">{{getText('management')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </transition>
-            </div>
+
+                <div
+                    style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
+                    <transition enter-active-class="animated fadeInLeftBig slow"
+                        leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
+                        <div style="padding-bottom: 0.2%;" v-show="!showLogo">
+                            <h1 id="gtaRoyalRu"
+                                style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
+                                GTAROYAL.RU</h1>
+                        </div>
+                    </transition>
+                    <transition enter-active-class="animated fadeInLeftBig slow"
+                        leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
+                        <div v-show="!showLogo">
+                            <div class="progress">
+                                <div class="bar shadow wiggle"></div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+            </section>
         </section>
     </section>
 </body>
