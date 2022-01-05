@@ -138,18 +138,24 @@
             leave-active-class="animated bounceOutRight">
             <section v-if='showHUD && visible'>
                 <div class="hud">
-                    <div class="playersInfo"> 
+                    <div class="playersInfo">
                         <div style="display: flex; align-items: center;" v-show="!obs.show">
-                            <div class="alive" style="padding-left: 0.5vw;" v-show="targetAlert">
-                                <div style="height: 3.1vh;">
-                                    <img class="airAlert" src="./img/targeting.png">
+                            <transition enter-active-class="animated flash" leave-active-class="animated fadeOut"
+                                name="custom-classes-transition">
+                                <div class="alive" style="padding-left: 0.5vw;" v-show="targetAlert">
+                                    <div style="height: 3.1vh;">
+                                        <img class="airAlert" src="./img/targeting.png">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="alive" style="padding-left: 0.5vw;" v-show="airAlert">
-                                <div style="height: 3.1vh;">
-                                    <img class="airAlert" src="./img/targetingheli.png">
+                            </transition> 
+                            <transition enter-active-class="animated flash" leave-active-class="animated fadeOut"
+                                name="custom-classes-transition">
+                                <div class="alive" style="padding-left: 0.5vw;" v-show="airAlert">
+                                    <div style="height: 3.1vh;">
+                                        <img class="airAlert" src="./img/targetingheli.png">
+                                    </div>
                                 </div>
-                            </div>
+                            </transition>
                             <div class="alive">
                                 <div class="numberAlive" id="alive"
                                     :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}">{{kills}}</div>
