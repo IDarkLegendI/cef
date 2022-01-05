@@ -437,35 +437,50 @@ var hud = new Vue({
             hud.obs.avatar = await getPhoto(avatar, hud.name);   
             if(hud.obs.avatar.length < 5) hud.obs.avatar = null; 
             hud.obs.level = hud.getLevel(data.level) 
-        }, 
+        // }, 
+        // toggleLoad(toggle, duration)
+        // { 
+        //     console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
+        //     if(duration === null) duration = 0
+        //     hud.showLogo = toggle
+        //     if(hud.showLogoTimer !== null)
+        //     {
+        //         clearInterval(hud.showLogoTimer);
+        //         hud.showLogoTimer = null;
+        //     } 
+        //     let docBody = document.getElementById('fade'), step = (1 / + duration) * 144 , interval =  +duration / +144, nowAlpha = 0
+        //     if(toggle) setTimeout(() => 
+        //     {
+        //         if(hud.showLogo) startGlitchGR()
+        //     }, 2500)
+        //     else {
+        //         nowAlpha = 1
+        //         step *= -1
+        //     }
+        //     if(duration !== null) hud.showLogoTimer = setInterval(() => {
+        //         // hud.showLogo = !toggle
+        //         nowAlpha += +step
+        //         docBody.style.background = `rgba(0, 0, 0, ${nowAlpha})`
+        //     }, interval)
+        // },
+        // getRandomInt(min, max) {
+        //     min = Math.ceil(min);
+        //     max = Math.floor(max);
+        //     return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+        // },
         toggleLoad(toggle, duration)
         { 
             console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
             hud.showLogo = toggle
+            if(toggle) startGlitchGR()
             if(hud.showLogoTimer !== null)
             {
-                clearInterval(hud.showLogoTimer);
+                clearTimeout(hud.showLogoTimer);
                 hud.showLogoTimer = null;
             } 
-            let docBody = document.getElementById('fade'), step = (1 / + duration) * 60 , interval =  +duration / +60, nowAlpha = 0
-            if(toggle) setTimeout(() => 
-            {
-                if(hud.showLogo) startGlitchGR()
-            }, 2500)
-            else {
-                nowAlpha = 1
-                step *= -1
-            }
-            if(duration !== null) hud.showLogoTimer = setInterval(() => {
-                // hud.showLogo = !toggle
-                nowAlpha += +step
-                docBody.style.background = `rgba(34, 34, 34, ${nowAlpha})`
-            }, interval)
-        },
-        getRandomInt(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+            if(duration !== null) hud.showLogoTimer = setTimeout(() => {
+                hud.showLogo = !toggle 
+            }, duration)
         },
     },
 })
