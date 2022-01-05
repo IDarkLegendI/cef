@@ -527,10 +527,10 @@ if ('alt' in window) {
 else  
 { 
     hud.obs.avatar = null
-    // hud.obs.show = true;
-    // hud.obs.nick = 'DarkLegend'
-    // hud.showHUD = true; 
-    hud.toggleLoad(true, 3000)
+    hud.obs.show = true;
+    hud.obs.nick = 'DarkLegend'
+    hud.showHUD = true; 
+    // hud.toggleLoad(true, 3000)
     // hud.toggleLoad(true, null)
     // hud.showLogo = true;
     hud.help = 0;

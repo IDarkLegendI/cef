@@ -161,7 +161,7 @@
                 <section v-if='showHUD && visible'>
                     <div class="hud">
                         <div class="playersInfo">
-                            <div style="display: flex; align-items: center;" v-show="!obs.show">
+                            <div style="display: flex; align-items: center;">
                                 <transition enter-active-class="animated flash" leave-active-class="animated fadeOut"
                                     name="custom-classes-transition">
                                     <div class="alive" style="padding-left: 0.5vw;" v-show="targetAlert">
@@ -178,26 +178,28 @@
                                         </div>
                                     </div>
                                 </transition>
-                                <div class="alive">
-                                    <div :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}" class="numberAlive"
-                                        id="alive">{{kills}}
+                                <section style="display: flex; align-items: center;" v-show="!obs.show">
+                                    <div class="alive">
+                                        <div :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}" class="numberAlive"
+                                            id="alive">{{kills}}
+                                        </div>
+                                        <div class="textAlive" id="alive">{{getText('kill2')}}</div>
                                     </div>
-                                    <div class="textAlive" id="alive">{{getText('kill2')}}</div>
-                                </div>
-
-                                <div class="alive" v-show="!obs.show">
-                                    <div class="numberAlive" id="alive">{{alivePlayers}}</div>
-                                    <div class="textAlive" id="alive">
-                                        {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
-                                </div>
-
-                                <div class="alive">
-                                    <div class="numberAlive" id="alive">
-                                        <p>{{ammo[0]}}</p>
-                                        <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
+    
+                                    <div class="alive">
+                                        <div class="numberAlive" id="alive">{{alivePlayers}}</div>
+                                        <div class="textAlive" id="alive">
+                                            {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
                                     </div>
-                                    <div class="textAlive" id="alive"><img alt="" src="./img/bullets.png"></div>
-                                </div>
+    
+                                    <div class="alive">
+                                        <div class="numberAlive" id="alive">
+                                            <p>{{ammo[0]}}</p>
+                                            <p style="color: #ebebeb80; font-size: 1.5vh;">/{{ammo[1]}}</p>
+                                        </div>
+                                        <div class="textAlive" id="alive"><img alt="" src="./img/bullets.png"></div>
+                                    </div>
+                                </section>
                             </div>
 
                             <!-- OBSERVER HUD -->
