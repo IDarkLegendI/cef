@@ -437,7 +437,7 @@ var hud = new Vue({
             hud.obs.avatar = await getPhoto(avatar, hud.name);   
             if(hud.obs.avatar.length < 5) hud.obs.avatar = null; 
             hud.obs.level = hud.getLevel(data.level) 
-        // }, 
+        },  
         // toggleLoad(toggle, duration)
         // { 
         //     console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
@@ -472,7 +472,7 @@ var hud = new Vue({
         { 
             console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
             hud.showLogo = toggle
-            if(toggle) startGlitchGR()
+            if(toggle) startGlitchGR() 
             if(hud.showLogoTimer !== null)
             {
                 clearTimeout(hud.showLogoTimer);
