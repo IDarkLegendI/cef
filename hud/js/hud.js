@@ -472,7 +472,9 @@ var hud = new Vue({
         { 
             console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
             hud.showLogo = toggle
-            if(toggle) startGlitchGR() 
+            if(toggle) setTimeout(() => {
+                startGlitchGR() 
+            }, 1000)
             if(hud.showLogoTimer !== null)
             {
                 clearTimeout(hud.showLogoTimer);

@@ -32,10 +32,10 @@
                             GTAROYAL.RU</h1>
                     </div>
                 </div>
-            </transition>
-        </section>
+            </transition> 
+        </section> 
         <section v-else>
-            <transition enter-active-class="animated fadeIn slow" leave-active-class="animated fadeOut slow"
+            <transition enter-active-class="animated fadeIn faster" leave-active-class="animated fadeOut faster" 
                 name="custom-classes-transition3">
                 <section v-show="visible">
                     <div class="center">
@@ -286,7 +286,7 @@
                     style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
                     <transition enter-active-class="animated fadeInLeftBig slow"
                         leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
-                        <div style="padding-bottom: 0.2%;" v-show="!showLogo">
+                        <div style="padding-bottom: 0.2%;">
                             <h1 id="gtaRoyalRu"
                                 style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
                                 GTAROYAL.RU</h1>
@@ -294,7 +294,7 @@
                     </transition>
                     <transition enter-active-class="animated fadeInLeftBig slow"
                         leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
-                        <div v-show="!showLogo">
+                        <div> 
                             <div class="progress">
                                 <div class="bar shadow wiggle"></div>
                             </div>
@@ -325,12 +325,14 @@
 <script>
     if (!('alt' in window)) document.getElementById('fade').style.opacity = 1;
 
-    function load() {
+    function load() { 
         setTimeout(() => {
-            hud.recoilEl = document.querySelectorAll('.progress')[0]
-            hud.recoilElBar = document.querySelectorAll('.bar')[0]
+            setTimeout(() => { 
+                hud.recoilEl = document.querySelectorAll('.progress')[0]
+                hud.recoilElBar = document.querySelectorAll('.bar')[0]
+                hud.calcRecoilK(2)
+            }, 2000)
             document.getElementById('fade').style.opacity = 1;
-            hud.calcRecoilK(2)
             let i = 0
             // setInterval(() => {
             //     if(i > 2) i = 0
