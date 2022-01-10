@@ -156,8 +156,11 @@
         }, 1000)
     }
 
-    alt.on("updatePlayerPosition", function (x, y, z, angle) {
-        // console.log(`updatePlayerPosition: ${angle}`) 
-        panner2.setPosition(x, y, z);
-        panner2.setOrientation(Math.cos(angle), -Math.sin(angle), 1);
-    });
+    if('alt' in window)
+    {
+        alt.on("updatePlayerPosition", function (x, y, z, angle) {
+            // console.log(`updatePlayerPosition: ${angle}`) 
+            panner2.setPosition(x, y, z);
+            panner2.setOrientation(Math.cos(angle), -Math.sin(angle), 1);
+        });
+    }
