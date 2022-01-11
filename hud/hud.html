@@ -26,16 +26,17 @@
                 name="custom-classes-transition3">
                 <div class="logoLoad">
                     <div style="display: flex; flex-direction: column; align-items: center;">
-                        <img :class="{'animated infinite wobble slower': true}" alt="" id="logo" src="./img/kinghud.png">
+                        <img :class="{'animated infinite wobble slower': true}" alt="" id="logo"
+                            src="./img/kinghud.png">
                         <h1 class="animated flash delay-2s fast word" id="gtaRoyalRu"
                             style="padding-top: 20vh; font-size: 3vh;">
                             GTAROYAL.RU</h1>
                     </div>
                 </div>
-            </transition> 
-        </section> 
+            </transition>
+        </section>
         <section v-else>
-            <transition enter-active-class="animated fadeIn faster" leave-active-class="animated fadeOut faster" 
+            <transition enter-active-class="animated fadeIn faster" leave-active-class="animated fadeOut faster"
                 name="custom-classes-transition3">
                 <section v-show="visible">
                     <div class="center">
@@ -51,8 +52,8 @@
                                 </div>
                             </section>
                         </transition>
-                        <transition enter-active-class="animated fadeInLeft" leave-active-class="animated bounceOutRight"
-                            name="custom-classes-transition2">
+                        <transition enter-active-class="animated fadeInLeft"
+                            leave-active-class="animated bounceOutRight" name="custom-classes-transition2">
                             <div class="killInfo" v-show="killsBarShow">
                                 <img :src="`./img/${killsGifShow ? 'blood-splatter' : 'blood-splatter-static'}.gif`"
                                     alt="">
@@ -180,18 +181,18 @@
                                 </transition>
                                 <section style="display: flex; align-items: center;" v-show="!obs.show">
                                     <div class="alive">
-                                        <div :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}" class="numberAlive"
-                                            id="alive">{{kills}}
+                                        <div :style="{color: (kills / startPlayers) > 0.6 ? 'red' : '#ebebeb9a'}"
+                                            class="numberAlive" id="alive">{{kills}}
                                         </div>
                                         <div class="textAlive" id="alive">{{getText('kill2')}}</div>
                                     </div>
-    
+
                                     <div class="alive">
                                         <div class="numberAlive" id="alive">{{alivePlayers}}</div>
                                         <div class="textAlive" id="alive">
                                             {{alivePlayers === 1 ? getText('enemy') : getText('enemies')}}</div>
                                     </div>
-    
+
                                     <div class="alive">
                                         <div class="numberAlive" id="alive">
                                             <p>{{ammo[0]}}</p>
@@ -282,26 +283,26 @@
                     </section>
                 </transition>
             </section>
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;"
-            v-show="!showLogo">
-            <transition enter-active-class="animated fadeInLeftBig slow"
-                leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
-                <div style="padding-bottom: 0.2%;">
-                    <h1 id="gtaRoyalRu"
-                        style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
-                        GTAROYAL.RU</h1>
-                </div>
-            </transition>
-            <transition enter-active-class="animated fadeInLeftBig slow"
-                leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate">
-                <div> 
-                    <div class="progress">
-                        <div class="bar shadow wiggle"></div>
-                    </div>
-                </div>
-            </transition>
-        </div>
         </section>
+        <div
+        style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
+        <transition enter-active-class="animated fadeInLeftBig slow"
+            leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate" v-show="!showLogo">
+            <div style="padding-bottom: 0.2%;">
+                <h1 id="gtaRoyalRu"
+                    style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
+                    GTAROYAL.RU</h1>
+            </div>
+        </transition>
+        <transition enter-active-class="animated fadeInLeftBig slow"
+            leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate" v-show="!showLogo">
+            <div>
+                <div class="progress">
+                    <div class="bar shadow wiggle"></div>
+                </div>
+            </div>
+        </transition>
+    </div>
     </section>
 </body>
 
@@ -324,13 +325,13 @@
 <script>
     if (!('alt' in window)) document.getElementById('fade').style.opacity = 1;
 
-    function load() { 
+    function load() {
         setTimeout(() => {
-            setTimeout(() => { 
+            setTimeout(() => {
                 hud.recoilEl = document.querySelectorAll('.progress')[0]
                 hud.recoilElBar = document.querySelectorAll('.bar')[0]
                 hud.calcRecoilK(2)
-            }, 2000)
+            }, 1500)  
             document.getElementById('fade').style.opacity = 1;
             let i = 0
             // setInterval(() => {
@@ -342,4 +343,4 @@
         }, 1000);
     }
 </script>
-<!-- JS -->
+<!-- JS --> 

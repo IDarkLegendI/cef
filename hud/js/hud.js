@@ -405,7 +405,7 @@ var hud = new Vue({
             })  
         },
         useFunction(name, ...args) {
-            return hud[name](...args);
+            return hud[name](...args); 
         },
         useFunctionAny(name, ...args) {
             return window[name](...args);
@@ -418,9 +418,9 @@ var hud = new Vue({
         setProgressRecoil(value) 
         {
             let x = value * +hud.kRecoil
-            hud.recoilElBar.style.width = `${x}%`
-            hud.recoilElBar.style.background = `rgba(23, 23, 24, ${x/70})`
-            // console.log(`${x/100}`)
+            hud.recoilElBar.style.width = `${+x}%`
+            hud.recoilElBar.style.background = `rgba(23, 23, 24, ${+x/70})`
+            // console.log(`setProgressRecoil --> value: ${+value}; hud.kRecoil: ${hud.kRecoil}; x: ${x}; x/100: ${+x/100}`) 
             hud.recoilEl.style.background = `linear-gradient(90deg, rgba(0, 255, 26, 1) 0%, rgba(255, 242, 0, 1) ${100-x}%, rgba(255, 0, 0, 1) ${200-x}%`   
         },
         notifyClearAll()
