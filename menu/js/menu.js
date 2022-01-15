@@ -1148,7 +1148,7 @@ let menu = new Vue({
             else if(newPage === 7 && newSubPage === 1)
             {
                 menu.anyVar = [] 
-                menu.emitServer('sAdmin:getPlayers')
+                menu.emitServer('sAdminPanel:getPlayers')
             }
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
