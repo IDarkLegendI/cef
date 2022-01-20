@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/style2.css">
-    <title>GTAROYAL.RU</title> 
+    <title>GTAROYAL.RU</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -22,12 +22,12 @@
 
 <body id="fade" onload="load()">
     <!-- <canvas style="z-index: 99;"></canvas> -->
-    <section id="body"> 
+    <section id="body">
         <div id="cursor"></div>
         <div id="aura"></div>
         <!-- ГЛАВНАЯ -->
-        <transition appear enter-active-class="animated zoomInUp fast"
-            leave-active-class="animated zoomOutUp fast" name="custom-classes-transition">
+        <transition appear enter-active-class="animated zoomInUp fast" leave-active-class="animated zoomOutUp fast"
+            name="custom-classes-transition">
             <section v-show="page === 0">
                 <div class="main" id="main" style="display: flex; justify-content: center">
                     <div class="upper">
@@ -77,7 +77,7 @@
                                                 <div class="ready" v-if="player.ready >= 0">
                                                     <span v-show="player.ready === 2">{{i18n.inGame}}</span>
                                                     <span v-show="player.ready === 1">{{i18n.ready}}</span>
-                                                    <span class="readynot" 
+                                                    <span class="readynot"
                                                         v-show="player.ready === 0">{{i18n.notready}}</span>
                                                 </div>
                                             </section>
@@ -249,15 +249,16 @@
                                                 </div>
                                                 <div style="display: flex; align-items: center;">
                                                     <span style="font-size: 0.8vw;">{{i18n.backmatch}}:</span>
-                                                        <span :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}"
-                                                            style="font-size: 0.9vw; padding-left: 0.2vw;">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
-                                                        </span>
+                                                    <span
+                                                        :style="{color: lastMatch >= 1 ? 'green' : lastMatch <= -1 ? 'red' : 'orange'}"
+                                                        style="font-size: 0.9vw; padding-left: 0.2vw;">{{lastMatch > 0 ? "+" : ""}}{{lastMatch}}
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="bpmaininfo">
                                                 <div class="bpstats">
                                                     <div class="bpstats1">
-                                                        <div class="kd"> 
+                                                        <div class="kd">
                                                             <span>K/D:</span> <span class="bpscore">{{getKD()}}</span>
                                                         </div>
                                                         <div class="elo" style="margin-top: 0.28020833333333334vw">
@@ -299,9 +300,11 @@
                             <div class="right" v-show="subPage === 0">
 
                                 <div class="headright">
-                                    <div style="display: flex; align-content: center; align-items: center; justify-content: space-between; filter: drop-shadow(0px 0px 5px #000000d2); width: 12.5vw;">
+                                    <div
+                                        style="display: flex; align-content: center; align-items: center; justify-content: space-between; filter: drop-shadow(0px 0px 5px #000000d2); width: 12.5vw;">
                                         <span class="headright1">{{i18n.person}}</span>
-                                        <img class="slientIcon" src="./img/minus.png" v-if="slientMode" v-on:click="slientMode = false; emit('customNotify', 2, i18n.slientModeDisable, 2000)">
+                                        <img class="slientIcon" src="./img/minus.png" v-if="slientMode"
+                                            v-on:click="slientMode = false; emit('customNotify', 2, i18n.slientModeDisable, 2000)">
                                     </div>
                                     <div class="headrightImg">
                                         <img :class="{'animated infinite wobble slower active': bell !== null}"
@@ -328,7 +331,7 @@
                         <transition name="person-friend2">
                             <div class="rightNoHover" v-show="subPage === 1">
                                 <div class="friendsh1">
-                                    <h1>{{i18n.invite}}</h1> 
+                                    <h1>{{i18n.invite}}</h1>
                                 </div>
                                 <div class="zaprosi">
                                     <transition-group name="list-complete" tag="div">
@@ -365,9 +368,9 @@
                                         <div class="zapros list-complete-item" v-for="(friend, index) in friends"
                                             v-bind:key="friend.name"
                                             v-on:mouseleave="showProfileDetails(friend.name, 0)">
-                                            <div class="avatarnickzapros"> 
+                                            <div class="avatarnickzapros">
                                                 <div class="avatarzapros" :class="{online: friend.online}">
-                                                    <!-- <img src="img/ava.jpg" alt=""> --> 
+                                                    <!-- <img src="img/ava.jpg" alt=""> -->
                                                     <img :src="getAvatar(friend.name)">
                                                 </div>
                                                 <div class="nickzapros">{{friend.name}}</div>
@@ -453,7 +456,7 @@
                                             <div class="zapros list-complete-item" v-for="(friend, index) in requestsIn"
                                                 v-bind:key="friend">
                                                 <div class="avatarnickzapros">
-                                                    <div class="avatarzapros"> 
+                                                    <div class="avatarzapros">
                                                         <img :src="getAvatar(friend)">
                                                     </div>
                                                     <div class="nickzapros">{{friend}}</div>
@@ -527,9 +530,10 @@
                                 <div class="btnbackperson2">
                                     <span class="minibtn red" id="mouseFocus"
                                         v-on:click="answerInvite(false)">{{i18n.cancel}}</span>
-                                    <span class="minibtn black" id="mouseFocus"    
-                                        v-on:click="slientMode = !slientMode; emit('customNotify', slientMode ? 4 : 2, slientMode ? i18n.slientModeEnable : i18n.slientModeDisable, 5000)"><img alt="" src="./img/minus.png" style="width: 2.2vw;"></span>
-                                    <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">  
+                                    <span class="minibtn black" id="mouseFocus"
+                                        v-on:click="slientMode = !slientMode; emit('customNotify', slientMode ? 4 : 2, slientMode ? i18n.slientModeEnable : i18n.slientModeDisable, 5000)"><img
+                                            alt="" src="./img/minus.png" style="width: 2.2vw;"></span>
+                                    <span class="minibtn green" id="mouseFocus" v-on:click="answerInvite(true)">
                                         {{i18n.accept}}</span>
                                 </div>
                             </div>
@@ -543,7 +547,8 @@
                                 </div>
                                 <div class="zaprosi" style="margin-left: 0.5vw; margin-right: 0.5vw; padding-top: 0">
                                     <transition-group name="list-complete" tag="div">
-                                        <div @contextmenu="fRightClick(index)" @mouseleave="fBellLeave()" @mouseover="hoverBell = true; hoverBellType = item.type; fBellOver();"
+                                        <div @contextmenu="fRightClick(index)" @mouseleave="fBellLeave()"
+                                            @mouseover="hoverBell = true; hoverBellType = item.type; fBellOver();"
                                             class="zapros zaprosNews list-complete-item" v-on:click="fLeftClick(index)"
                                             v-bind:key="item.id" v-for="(item, index) in bell">
                                             <div class="avatarnickzapros">
@@ -562,13 +567,17 @@
                                         </div>
                                     </transition-group>
                                 </div>
-                                <div style="min-height: 2.0vw; display: flex; justify-content: center; align-items: center;">
-                                    <transition enter-active-class="animated fadeIn slower" leave-active-class="animated fadeOut slower">
-                                        <div style="display: flex; justify-content: center; margin-bottom: 0.5vw; margin-top: 0.5vw; font-family: 'Roboto Condensed'; font-size: 0.8vw;" v-show="hoverBell">
-                                            <h1>{{hoverBellType === 2 ? i18n.bellInfoDetails : i18n.bellInfoDelete}}</h1> 
+                                <div
+                                    style="min-height: 2.0vw; display: flex; justify-content: center; align-items: center;">
+                                    <transition enter-active-class="animated fadeIn slower"
+                                        leave-active-class="animated fadeOut slower">
+                                        <div style="display: flex; justify-content: center; margin-bottom: 0.5vw; margin-top: 0.5vw; font-family: 'Roboto Condensed'; font-size: 0.8vw;"
+                                            v-show="hoverBell">
+                                            <h1>{{hoverBellType === 2 ? i18n.bellInfoDetails : i18n.bellInfoDelete}}
+                                            </h1>
                                         </div>
                                     </transition>
-                                </div> 
+                                </div>
                                 <div class="btnbackperson">
                                     <span class="minibtn" id="mouseFocus"
                                         v-on:click="switchPage(0, 0)"><span>{{i18n.person}}</span></span>
@@ -717,8 +726,9 @@
                                                     v-on:click="emit('cAudio:play', 'prison_alarm_01', volume)">
                                             </span>
                                             <div class="settingCenter">
-                                                <input max="1" min="0" step="0.01" style="width: 5.604166666666667vw; margin: 0;"
-                                                    type="range" v-model="volume">
+                                                <input max="1" min="0" step="0.01"
+                                                    style="width: 5.604166666666667vw; margin: 0;" type="range"
+                                                    v-model="volume">
                                             </div>
                                         </div>
                                         <div class="mapchoice1" style="padding-top:1.1208333333333333vw;">
@@ -811,7 +821,8 @@
                 <transition enter-active-class="animated rotateInUpLeft fast"
                     leave-active-class="animated rotateOutDownLeft fast">
                     <section v-if="subPage === 0">
-                        <div style="display: flex; flex-direction: column; justify-content: space-around; height: 98vh;">
+                        <div
+                            style="display: flex; flex-direction: column; justify-content: space-around; height: 98vh;">
                             <div class="upline">
                                 <div class="nameupline">
                                     <span>GTAROYAL.RU</span>
@@ -826,28 +837,29 @@
                             </div>
                             <!--  border: 1px solid red -->
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div :style="{opacity: cars[carsPointer].model === 'none' ? 0 : 1}" class="colorPicker" style="padding-left: 2.5%">
-                                <div class="color-picker-panel" id="colorpicker">
-                                    <div class="panel-row">
-                                        <div class="spectrum-map">
-                                            <button class="color-cursor" id="spectrum-cursor"></button>
-                                            <canvas id="spectrum-canvas"></canvas>
+                                <div :style="{opacity: cars[carsPointer].model === 'none' ? 0 : 1}" class="colorPicker"
+                                    style="padding-left: 2.5%">
+                                    <div class="color-picker-panel" id="colorpicker">
+                                        <div class="panel-row">
+                                            <div class="spectrum-map">
+                                                <button class="color-cursor" id="spectrum-cursor"></button>
+                                                <canvas id="spectrum-canvas"></canvas>
+                                            </div>
+                                            <div class="hue-map">
+                                                <button class="color-cursor" id="hue-cursor"></button>
+                                                <canvas id="hue-canvas"></canvas>
+                                            </div>
                                         </div>
-                                        <div class="hue-map">
-                                            <button class="color-cursor" id="hue-cursor"></button>
-                                            <canvas id="hue-canvas"></canvas>
-                                        </div>
-                                    </div>
 
-                                    <div class="panel-row">
-                                        <button class="button mode-toggle" id="mode-toggle mouseFocus"
-                                            v-on:click="setPreviewCar(carsPointer, true); emit('cAudio:play', 'coloring')">{{i18n.applyColor}}</button>
-                                    </div>
-                                    <div class="panel-row">
-                                        <span class="color-indicator" id="color-indicator"></span>
+                                        <div class="panel-row">
+                                            <button class="button mode-toggle" id="mode-toggle mouseFocus"
+                                                v-on:click="setPreviewCar(carsPointer, true); emit('cAudio:play', 'coloring')">{{i18n.applyColor}}</button>
+                                        </div>
+                                        <div class="panel-row">
+                                            <span class="color-indicator" id="color-indicator"></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                                 <div class="mainauto">
                                     <div class="switchauto">
                                         <div class="arrowleft">
@@ -1043,14 +1055,16 @@
                                     <h1>{{i18n.acceptAction}}</h1>
                                 </div>
                                 <div class="settingsh1" id="sellCar" style="padding-top: 2.2416666666666667vw;">
-                                    <h1 style="font-size:1.4010416666666667vw">{{i18n.toSellCar}} "{{cars[carsPointer].name}}"</h1>
+                                    <h1 style="font-size:1.4010416666666667vw">{{i18n.toSellCar}}
+                                        "{{cars[carsPointer].name}}"</h1>
                                 </div>
                                 <div class="settingsh1" id="sellCar" style="padding-top: 0.5604166666666667vw;">
                                     <h1 style="font-size:1.4010416666666667vw">
-                                        {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}: 
+                                        {{lang === 'ru' ? "ОЦЕНОЧНАЯ СТОИМОСТЬ" : "ESTIMATED COST"}}:
                                         ${{Math.round(cars[carsPointer].price2 / +2).toFixed(0)}}</h1>
                                 </div>
-                                <div class="settingsh1" id="sellCar" style="padding-top: 0.5604166666666667vw;" v-if="vip !== 'none'">
+                                <div class="settingsh1" id="sellCar" style="padding-top: 0.5604166666666667vw;"
+                                    v-if="vip !== 'none'">
                                     <h1 style="font-size:1.4010416666666667vw">
                                         CASHBACK:
                                         ${{Math.round(cars[carsPointer].price2 * (+assortPriv[vip].k / +70)).toFixed(0)}}
@@ -1082,7 +1096,8 @@
                     <div class="balancemoney">
                         <div
                             style="display: flex; flex-direction: column; align-items: center; color: rgb(255, 255, 255); text-shadow: 1px 1px 2px tomato;">
-                            <span class="rub" id="RMMoney" style="margin-top: 0.11208333333333334vw;">{{moneyRM}} RM</span>
+                            <span class="rub" id="RMMoney" style="margin-top: 0.11208333333333334vw;">{{moneyRM}}
+                                RM</span>
                         </div>
                     </div>
                     <div class="btn" id="mouseFocus">
@@ -1095,7 +1110,8 @@
                 <transition enter-active-class="animated rotateInUpLeft" leave-active-class="animated rotateOutDownLeft"
                     name="custom-classes-transition">
                     <section v-if="subPage === 0">
-                        <div style="width: 100vw; height: 85vh; display: flex; justify-content: center; align-items: center;">
+                        <div
+                            style="width: 100vw; height: 85vh; display: flex; justify-content: center; align-items: center;">
                             <div class="maindonat">
                                 <div class="leftdonat">
                                     <div class="vip donatform leftform"
@@ -1137,8 +1153,8 @@
                                                     v-on:keyup="changeConverter('converterRM', 'converterD', 0.1)">
                                             </div>
                                         </div>
-                                        <input :value="i18n.rClickForConvert" class="buttonBuy" style="font-size: 0.9285416666666666vw;"
-                                            type="button">
+                                        <input :value="i18n.rClickForConvert" class="buttonBuy"
+                                            style="font-size: 0.9285416666666666vw;" type="button">
                                     </div>
                                 </div>
                                 <div class="rightdonat">
@@ -1155,7 +1171,8 @@
                                         </ul>
                                         <div class="imgprice">
                                             <div class="podvalDonat">
-                                                <span class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
+                                                <span
+                                                    class="donatbtn">{{Math.ceil(assortPriv['premium'].k*+30)}}RM</span>
                                                 <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
                                             </div>
                                             <div class="premiumimgform">
@@ -1163,7 +1180,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="deluxe donatform" v-on:click="assortSelected = 'deluxe'; switchPage(3, 1)">
+                                    <div class="deluxe donatform"
+                                        v-on:click="assortSelected = 'deluxe'; switchPage(3, 1)">
                                         <h1>DELUXE</h1>
                                         <ul>
                                             <li>АВТОМОБИЛИ</li>
@@ -1175,7 +1193,8 @@
                                         </ul>
                                         <div class="imgprice">
                                             <div class="podvalDonat">
-                                                <span class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
+                                                <span
+                                                    class="donatbtn">{{Math.ceil(assortPriv['deluxe'].k*+30)}}RM</span>
                                                 <input :value="i18n.clickForConnect" class="buttonBuy" type="button">
                                             </div>
                                             <div class="deluxeimgform">
@@ -1193,7 +1212,7 @@
                     <section v-if="subPage === 1">
                         <div class="agreePage" style="width: 50vw; text-shadow: 0 0 3px black;">
                             <div class="settingsh1">
-                                <h1>{{i18n.acceptAction}}</h1> 
+                                <h1>{{i18n.acceptAction}}</h1>
                             </div>
                             <div class="settingsh1" style="padding-top: 2.2416666666666667vw;">
                                 <h1 style="font-size:1.4010416666666667vw">{{i18n.connectPrivileges}}
@@ -1204,7 +1223,8 @@
                                     {{getVipPrice()}} RM</h1>
                             </div>
                             <div class="settingsh1" style="padding-top: 0.5604166666666667vw;">
-                                <h1 style="font-size:1.4010416666666667vw">{{i18n.timeActions}}: {{assortDays}} {{i18n.days}}</h1>
+                                <h1 style="font-size:1.4010416666666667vw">{{i18n.timeActions}}: {{assortDays}}
+                                    {{i18n.days}}</h1>
                             </div>
                             <div class="settingsh1" style="padding-top: 0.5604166666666667vw;">
                                 <span :class="{minibtnRed: +assortDays === +30}" class="minibtn"
@@ -1278,7 +1298,8 @@
                                 </div>
                                 <div style="display: flex; align-items: center;">
                                     <div class="arrowright vipArrow" style="margin-left: 1vw;">
-                                        <img src="./img/arrowRightRed.png" style="height: 2.489583333333333vw; width: 3vw;"
+                                        <img src="./img/arrowRightRed.png"
+                                            style="height: 2.489583333333333vw; width: 3vw;"
                                             v-on:click="emit('cWalking:change', gait.name, true)">
                                     </div>
                                 </div>
@@ -1287,17 +1308,18 @@
                     </div>
                     <div class="donateMain"
                         style="flex-basis: 35%; display: flex; flex-direction: column; justify-content: space-evenly;">
-                        <div :class="vip" class="elDonateBlock donatform form" style="height: 27.634375vw; flex-basis: auto">
+                        <div :class="vip" class="elDonateBlock donatform form"
+                            style="height: 27.634375vw; flex-basis: auto">
                             <h1 class="infoHeading">{{vip.toUpperCase()}}</h1>
                             <h1
                                 style="font-size: 0.746875vw; display: flex; justify-content: center; padding-top: 0.28020833333333334vw; font-weight: 100; letter-spacing: 0">
                                 {{i18n.endPriv}}: {{getVipEndTime()}}</h1>
                             <div class="infoDonate">
-                                <ul> 
+                                <ul>
                                     <li>{{i18n.armourVIP}}: {{(5 + +assortPriv[vip].k).toFixed(0)}}%</li>
                                     <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}%
                                         {{i18n.moreMoneyEndGame}}</li>
-                                        <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}%
+                                    <li>{{lang === 'ru' ? i18n.na : ''}} {{(assortPriv[vip].bonus * +100) - +100}}%
                                         {{i18n.awardGiven}} {{i18n.more}}</li>
                                     <li>{{i18n.tuning}} {{vipLevel}} {{i18n.level}}</li>
                                     <li>{{i18n.reloadQuickMarker}} {{((2 - +assortPriv[vip].bonus) * 10).toFixed(0)}}
@@ -1338,12 +1360,14 @@
                 <div class="winMain">
                     <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                         <h1 :style="{animation: wsWin ? 'colorGreen 4s infinite ease-in-out' : 'color 8s infinite ease-in-out'}"
-                            style="font-size: 4.5vw"> 
+                            style="font-size: 4.5vw">
                             {{ wsWin ? i18n.win : i18n.lose}}!</h1>
-                        <h1 style="padding-top:1.1208333333333333vw; font-style: oblique; font-size:1.1208333333333333vw;">{{phrase}}</h1>
+                        <h1
+                            style="padding-top:1.1208333333333333vw; font-style: oblique; font-size:1.1208333333333333vw;">
+                            {{phrase}}</h1>
                     </div>
                     <div class="winLine animated bounce slower">
-                        <div class="winEl" v-if="+killsInMatch !== +0"> 
+                        <div class="winEl" v-if="+killsInMatch !== +0">
                             <h1 class="winText">{{killsInMatch}}</h1>
                             <div class="winElRight">
                                 <h1>{{i18n.kills}}</h1>
@@ -1557,7 +1581,7 @@
                         <div class="upline" style="height: 5.604166666666667vw; ">
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
-                            </div> 
+                            </div>
                             <div
                                 style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; height: 5.604166666666667vw;">
                                 <span style="font-size: 3vh;">ПАНЕЛЬ АДМИНИСТРАТОРА {{adminLevel}} УРОВНЯ</span>
@@ -1567,12 +1591,11 @@
                             </div>
                             <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
                                 v-on:click="switchPage(0,0)">
-                                <span>{{i18n.btnBack}}</span> 
+                                <span>{{i18n.btnBack}}</span>
                             </div>
                         </div>
                         <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-                            <button class="exitToMenu adminButton"
-                                v-on:click="adminAny = 0; switchPage(7, 1)">
+                            <button class="exitToMenu adminButton" v-on:click="adminAny = 0; switchPage(7, 1)">
                                 <img alt="" src="./img/team.png"> УПРАВЛЕНИЕ ИГРОКАМИ
                             </button>
                             <button class="exitToMenu adminButton"
@@ -1580,7 +1603,7 @@
                                 <img alt="" src="./img/cigar.png"> УПРАВЛЕНИЕ ВОПРОСАМИ
                             </button>
                             <button class="exitToMenu adminButton"
-                                v-on:click="adminAny = 0; adminAny2 = 10; adminType = 1; fGetReport('0'); switchPage(7, 2)"> 
+                                v-on:click="adminAny = 0; adminAny2 = 10; adminType = 1; fGetReport('0'); switchPage(7, 2)">
                                 <img alt="" src="./img/gavel.png"> УПРАВЛЕНИЕ ЖАЛОБАМИ
                             </button>
                             <button class="exitToMenu adminButton" v-on:click="switchPage(0, 0)">
@@ -1591,6 +1614,7 @@
                 </section>
             </transition>
             <transition enter-active-class="animated fadeIn fast" leave-active-class="animated fadeOut fast">
+                <!-- Управление игроками -->
                 <section v-if="subPage === 1">
                     <div style="display: flex; flex-direction: column; height: 100vh;">
                         <div class="upline">
@@ -1607,58 +1631,101 @@
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="zaprosi"
                                 style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
-                                <div
-                                style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                <div class="nickzapros reportZapros typeLP"
-                                    style="min-width: 8vw;  max-width: 8vw;">
-                                    NAME
+                                <div class="avatarnickzapros"
+                                    style="width: 100%; height: 2.4vw;">
+                                    <div class="avatarzapros"
+                                        style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; opacity: 0;">
+                                        <img :src="`${getAvatar('D')}`">
+                                    </div>
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                        <div class="nickzapros reportZapros typeLP"
+                                            style="min-width: 7.5vw;  max-width: 7.5vw;">
+                                            <div class="group" style="padding-left: 0; margin: 0;">
+                                                <input class="inputText inputTextWhite" id="adminFindName"
+                                                onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '7.5vw' : '2.5vw'; menu.updateAdminList();" required
+                                                    style="width: 2.5vw;" type="text"> 
+                                                <span class="bar barWhite" style="width: 100%;"></span>
+                                                <label class="labelText">NAME</label>
+                                            </div>
+                                        </div>
+                                        <div class="nickzapros reportZapros typeLP"
+                                            style="min-width: 5vw;  max-width: 5vw;">
+                                            <div class="group" style="padding-left: 0; margin: 0;">
+                                                <input class="inputText inputTextWhite" id="adminFindID"
+                                                    onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '5vw' : '0.8vw'; menu.updateAdminList();" required
+                                                    style="width: 0.8vw;" type="text">
+                                                <span class="bar barWhite" style="width: 100%;"></span>
+                                                <label class="labelText">ID</label>
+                                            </div>
+                                        </div>
+                                        <div class="nickzapros reportZapros typeLP"
+                                            style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
+                                            <div class="group" style="padding-left: 0; margin: 0;">
+                                                <input class="inputText inputTextWhite" id="adminFindSession"
+                                                    onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '20vw' : '3.52vw'; menu.updateAdminList();" required
+                                                    style="width: 3.52vw;" type="text">
+                                                <span class="bar barWhite" style="width: 100%;"></span>
+                                                <label class="labelText">SESSION</label>
+                                            </div></div>
+                                        <!-- <div class="nickzapros reportZapros typeLP"
+                                            style="min-width: 9vw; max-width: 9vw;">
+                                        </div>
+                                        <div class="nickzapros reportZapros typeLP"
+                                            style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
+                                        </div> -->
+                                        <div
+                                            style="display: flex; justify-content: space-around; min-width: 5vw; opacity: 0;">
+                                            <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
+                                                style="margin-right: 0;">
+                                                <img alt="" src="img/pencil.png"
+                                                    v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,3);">
+                                            </div>
+                                            <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
+                                                style="margin-right: 0;"
+                                                v-if="ticket.type >= 2 && ticket.online">
+                                                <img alt="" src="img/eye.png"
+                                                    v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
+                                            </div>
+                                            <div class="btnzapros" data-title="ОТКЛОНИТЬ"
+                                                style="margin-right: 0;"
+                                                v-if="ticket.type <= 1 && ticket.result === 0">
+                                                <img alt=""
+                                                    onclick="setTimeout(() => menu.fGetReport('0'), 250)"
+                                                    src="img/close.png"
+                                                    v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
+                                            </div> -->
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="nickzapros reportZapros typeLP"
-                                    style="min-width: 5vw;  max-width: 5vw;">
-                                    ID
-                                </div>
-                                <div class="nickzapros reportZapros"
-                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw"> SESSION</div>
-                                <div class="nickzapros reportZapros typeLP"
-                                    style="min-width: 9vw; max-width: 9vw;">
-                                    1
-                                </div>
-                                <div class="nickzapros reportZapros typeLP"
-                                    style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
-                                    1
-                                </div>
-                                <div
-                                    style="display: flex; justify-content: space-around; min-width: 5vw;">
-                                </div>
-                            </div>
                                 <transition-group name="list-complete" tag="div">
                                     <div class="zapros list-complete-item" v-bind:key="ticket.id"
                                         v-for="(ticket, index) in anyVar">
-                                        <div class="avatarnickzapros" style="width: 100%; height: 2.4vw;">
+                                        <div class="avatarnickzapros"
+                                            style="width: 100%; height: 2.4vw;" v-show="ticket.visible">
                                             <div class="avatarzapros"
                                                 style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
-                                                <img :src="`../menu/img/${ticket.type === 0 ? 'cigar' : ticket.type === 1 ? 'plusbtn' : 'justice-scale'}.png`"
-                                                    style="border-radius: 0%;">
+                                                <img :src="`${getAvatar(ticket.name)}`">
                                             </div>
                                             <div
                                                 style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                                                 <div class="nickzapros reportZapros typeLP"
-                                                    style="min-width: 6vw;  max-width: 6vw;">
+                                                    style="min-width: 7.5vw;  max-width: 7.5vw;">
                                                     {{ticket.name}}
                                                 </div>
                                                 <div class="nickzapros reportZapros typeLP"
                                                     style="min-width: 5vw;  max-width: 5vw;">
                                                     {{ticket.id}}
                                                 </div>
-                                                <div class="nickzapros reportZapros"
-                                                    style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw"> 
-                                                    {{ticket.session}}</div>
                                                 <div class="nickzapros reportZapros typeLP"
+                                                    style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
+                                                    {{ticket.session}}</div>
+                                                <!-- <div class="nickzapros reportZapros typeLP"
                                                     style="min-width: 9vw; max-width: 9vw;">
                                                 </div>
                                                 <div class="nickzapros reportZapros typeLP"
                                                     style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
-                                                </div>
+                                                </div> -->
                                                 <div
                                                     style="display: flex; justify-content: space-around; min-width: 5vw;">
                                                     <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
@@ -1697,7 +1764,7 @@
                             <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('+10');">
                                 <img alt="" src="./img/arrowRightRed.png">
                             </button>
-                        </div> 
+                        </div>
                     </div>
                 </section>
             </transition>
@@ -1741,7 +1808,7 @@
                                                 </div>
                                                 <div class="nickzapros reportZapros"
                                                     style="font-size: 1.5vh; max-width: 20vw; min-width: 20vw"
-                                                    v-if="ticket.type >= 2"> 
+                                                    v-if="ticket.type >= 2">
                                                     ПРОВЕРИТЬ ИГРОКА ID:{{ticket.msg}} НА ПРЕДМЕТ
                                                     {{fGetReportReasonShort(ticket.type)}}</div>
                                                 <div class="nickzapros reportZapros"
@@ -1802,7 +1869,7 @@
                 <section v-if="subPage === 3">
                     <div style="display: flex; flex-direction: column; height: 100vh;">
                         <div class="upline">
-                            <div class="nameupline"> 
+                            <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
                             <span style="font-size: 3vh;">РЕДАКТИРОВАНИЕ ЗАЯВКИ</span>
@@ -1827,7 +1894,8 @@
                                     {{`${adminCurrentReport.resultMsg === null ? 'ПРОИЗВЕЛ ПОСЛЕДНИЕ ДЕЙСТВИЕ' : 'ОТВЕТИЛ: ' + adminCurrentReport.resultMsg}`}}
                                 </span>
                                 <div class="settings changePassword" style="width: 100%">
-                                    <div class="group" style="margin-right: 0; width: 38vw; margin-top: 2.2416666666666667vw;">
+                                    <div class="group"
+                                        style="margin-right: 0; width: 38vw; margin-top: 2.2416666666666667vw;">
                                         <input class="inputText" id="reportMSG" required style="width: 38vw;"
                                             type="text">
                                         <span class="bar" style="width: 38vw;"></span>
@@ -1920,7 +1988,8 @@
                     </div>
                 </div>
 
-                <div style="display: flex; flex-direction: column; align-items: center; margin-top:1.1208333333333333vw;">
+                <div
+                    style="display: flex; flex-direction: column; align-items: center; margin-top:1.1208333333333333vw;">
                     <div class="progressMain">
                         <div class="progressAwards">
                             <img :class="{progressAwardsImgActive: currentAwards === 1}" src="./img/awards/1.png">
@@ -1957,8 +2026,8 @@
                         <div :class="{progressTitleActive: currentAwards === 2}">{{300 * getBonus()}}$</div>
                         <div :class="{progressTitleActive: currentAwards === 3}">{{400 * getBonus()}}$</div>
                         <div :class="{progressTitleActive: currentAwards === 4}">{{500 * getBonus()}}$</div>
-                        <div :class="{progressTitleActive: currentAwards === 5}">{{800 * getBonus()}}$</div> 
-                        <div :class="{progressTitleActive: currentAwards === 6}">{{1000 * getBonus()}}$</div> 
+                        <div :class="{progressTitleActive: currentAwards === 5}">{{800 * getBonus()}}$</div>
+                        <div :class="{progressTitleActive: currentAwards === 6}">{{1000 * getBonus()}}$</div>
                         <div :class="{progressTitleActive: currentAwards === 7}">{{2000 * getBonus()}}$</div>
                     </div>
 
@@ -1967,7 +2036,7 @@
                         font-family: 'Roboto Condensed', cursive;
                         text-shadow: 1px 1px 2px #0000007e; 
                         margin-top: 2.2416666666666667vw;" v-if="Date.now() - lastDateAwards > 86400000"
-                            v-on:click="emitToServerWithWT(5000, 'sAwards:use')"> 
+                            v-on:click="emitToServerWithWT(5000, 'sAwards:use')">
                             <span>{{i18n.getAward}}</span>
                         </div>
 
@@ -2193,14 +2262,16 @@
 </body>
 <script>
     function vhToVw(value) {
-        let h = 1076, w = 1920
+        let h = 1076,
+            w = 1920
         // console.log(`h: ${document.documentElement.clientHeight}; w: ${document.documentElement.clientWidth}`)
         let px = (value * +h) / +100
-        px /= +w 
+        px /= +w
         px *= +100
-         
+
         console.log(`${px}vw`)
     }
+
     function load() {
         if (!('alt' in window)) {
             // setTimeout(() => {
@@ -2213,21 +2284,20 @@
         //     document.getElementById('fade').style.opacity = 1;
         // }, 1000);
         setTimeout(() => {
-            document.addEventListener('DOMContentLoaded', function () 
-            {
-                menu.fCheckCursor(); 
+            document.addEventListener('DOMContentLoaded', function () {
+                menu.fCheckCursor();
                 // let a = new Fireworks();
                 // a.run(); 
             }, false);
-        }, 500) 
+        }, 500)
     }
 </script>
 <script src="../shared/shared.js"></script>
 <script src='./js/tinycolor.min.js'></script>
 <script src="js/script.js"></script>
 <script src="./js/tools.js"></script>
-<script src="../vue.js"></script> 
-<script src="js/menu.js"></script> 
+<script src="../vue.js"></script>
+<script src="js/menu.js"></script>
 <script src="js/app.min.js"></script>
 <!-- <script src="./js/fireworks.js"></script> -->
 </body>

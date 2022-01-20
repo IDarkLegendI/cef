@@ -1147,7 +1147,7 @@ let menu = new Vue({
             }
             else if(newPage === 7 && newSubPage === 1)
             {
-                menu.anyVar = [] 
+                menu.anyVar = [] // Используется для показа
                 menu.emitServer('sAdminPanel:getPlayers')
             }
             this.resetPage(newPage, newSubPage).then(() => {
@@ -2182,6 +2182,47 @@ let menu = new Vue({
                 menu.discordAvatarsCount = 0 
             } 
             console.log(`setDiscordAvatar: ${name}; discordAvatarsCount: ${menu.discordAvatarsCount}; avatarUrl: ${avatarUrl}; ${JSON.stringify(menu.discordAvatars)}`)
+        },
+
+        updateAdminList()
+        {
+            let adminFindName = document.getElementById('adminFindName').value, 
+            adminFindID = document.getElementById('adminFindID').value, 
+            adminFindSession = document.getElementById('adminFindSession').value, 
+            list = menu.anyVar;
+
+            if(adminFindName.length === 0 && adminFindID.length === 0 && adminFindSession.length === 0)
+            return menu.anyVar.forEach(el => el.visible = true)
+            menu.anyVar.forEach(el => el.visible = false)
+            list = menu.filterAList(list, adminFindName, 'name')
+            console.log(`list1: ${JSON.stringify(list)}`)
+            list = menu.filterAList(list, adminFindID.toString(), 'id')
+            console.log(`list2: ${JSON.stringify(list)}`)
+            list = menu.filterAList(list, adminFindSession.toString(), 'session')
+            console.log(`list3: ${JSON.stringify(list)}`)
+            Vue.set(menu, 'anyVar', list)
+        },
+        filterAList(list, param, nameParam) // Сам метод фильтрации, вход переменная по которой фильтруется
+        {
+            if(param === null || param.length === 0) return list;
+
+            // list.forEach(el => {
+            //     console.log(`${el[nameParam]} === ${param} ---> ${el[nameParam] === param}`)
+            //     if(!el.visible) // Проверяем только, если игрок уже не отфильтрован
+            //     {
+            //         if(el[nameParam] === param) el.visible = true
+            //         else el.visible = false
+            //     }
+            // })
+            list.forEach(el => {
+                console.log(`${el[nameParam]}.includes(${param}) ---> ${el[nameParam].toString().includes(param)}`)
+                if(!el.visible) // Проверяем только, если игрок уже не отфильтрован
+                {
+                    if(el[nameParam].toString().includes(param)) el.visible = true
+                    else el.visible = false
+                }
+            })
+            return list
         },
     },
     // computed: {
