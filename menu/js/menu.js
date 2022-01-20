@@ -2509,7 +2509,7 @@ if ('alt' in window) {
     menu.vip = 'vip'
     menu.carsPointer = 1
     menu.cars[1].price = -1
-    menu.anyVar = [{id: 17, name: 'DarkLegend2', session: 1, home: false}]
+    menu.anyVar = [{id: 17, name: 'DarkLegend2', session: 1, home: false, visible: true}]
     // menu.anyVar = 34 //УБРАТЬ!
     setTimeout(() => {
         menu.reportType = 0
