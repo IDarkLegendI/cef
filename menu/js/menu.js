@@ -2192,13 +2192,17 @@ let menu = new Vue({
             list = menu.anyVar;
 
             if(adminFindName.length === 0 && adminFindID.length === 0 && adminFindSession.length === 0) return menu.anyVar.forEach(el => el.visible = true)
-            menu.anyVar.forEach(el => el.visible = false)
+            menu.anyVar.forEach(el => el.visible = [])
             list = menu.filterAList(list, adminFindName, 'name', true)
             console.log(`list1: ${JSON.stringify(list)}`)
             list = menu.filterAList(list, adminFindID.toString(), 'id')
             console.log(`list2: ${JSON.stringify(list)}`)
             list = menu.filterAList(list, adminFindSession.toString(), 'session')
             console.log(`list3: ${JSON.stringify(list)}`)
+            list.forEach(el => {
+                el.visible = !el.visible.some(arr => arr === false)
+            })
+            console.log(`list4: ${JSON.stringify(list)}`)
             Vue.set(menu, 'anyVar', list)
         },
         filterAList(list, param, nameParam, toLowerCase = false) // Сам метод фильтрации, вход переменная по которой фильтруется
@@ -2218,22 +2222,18 @@ let menu = new Vue({
                 param = param.toLowerCase()
                 list.forEach(el => {
                     console.log(`${el[nameParam]}.includes(${param}) ---> ${el[nameParam].toString().includes(param)}`)
-                    if(!el.visible) // Проверяем только, если игрок уже не отфильтрован
-                    {
-                        if(el[nameParam].toString().toLowerCase().includes(param)) el.visible = true
-                        else el.visible = false
-                    }
+
+                        if(el[nameParam].toString().toLowerCase().includes(param)) el.visible.push(true)
+                        else el.visible.push(false)
                 })
             }
             else
             {
                 list.forEach(el => {
                     console.log(`${el[nameParam]}.includes(${param}) ---> ${el[nameParam].toString().includes(param)}`)
-                    if(!el.visible) // Проверяем только, если игрок уже не отфильтрован
-                    {
-                        if(el[nameParam].toString().includes(param)) el.visible = true
-                        else el.visible = false
-                    }
+
+                    if(el[nameParam].toString().includes(param)) el.visible.push(true)
+                    else el.visible.push(false)
                 })
             }
             return list
