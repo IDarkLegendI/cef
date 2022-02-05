@@ -25,12 +25,17 @@
             <transition enter-active-class="animated rollIn slow" leave-active-class="animated rollOut fast"
                 name="custom-classes-transition3">
                 <div class="logoLoad">
-                    <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 70vh;">
                         <img :class="{'animated infinite wobble slower': true}" alt="" id="logo"
-                            src="./img/kinghud.png">
-                        <h1 class="animated flash delay-2s fast word" id="gtaRoyalRu"
-                            style="padding-top: 20vh; font-size: 3vh;">
-                            GTAROYAL.RU</h1>
+                            src="./img/kinghud.png"> 
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <h1 class="animated flash delay-2s fast word" id="gtaRoyalRu"
+                                    style="font-size: 3vh;">
+                                    GTAROYAL.RU</h1>
+                                    <div style="width: 3vh;">
+                                        <img alt="" src="../shared/img/gifSmiles/time.gif" style="width: 100%; height: auto;">
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </transition>
@@ -284,25 +289,24 @@
                 </transition>
             </section>
         </section>
-        <div
-        style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;">
-        <transition enter-active-class="animated fadeInLeftBig slow"
-            leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate" v-show="!showLogo">
-            <div style="padding-bottom: 0.2%;">
-                <h1 id="gtaRoyalRu"
-                    style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
-                    GTAROYAL.RU</h1>
-            </div>
-        </transition>
-        <transition enter-active-class="animated fadeInLeftBig slow"
-            leave-active-class="animated fadeOutLeftBig fast" name="gtaRoyalRuAnimate" v-show="!showLogo">
-            <div>
-                <div class="progress">
-                    <div class="bar shadow wiggle"></div>
+        <transition enter-active-class="animated fadeInUpBig slow" leave-active-class="animated fadeOutDown fast" 
+            name="gtaRoyalRuAnimate"> 
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; position: absolute; bottom: 0.2%; width: 100%; padding: 0; min-height: 1vh;"
+                v-show='visible && !showLogo'>
+                <div style="padding-bottom: 0.2%;">
+                    <h1 id="gtaRoyalRu"
+                        style="font-size: 1.6vh; padding: 0; display: flex; justify-content: center; text-shadow: 0 0 1px black;">
+                        GTAROYAL.RU</h1>
+                </div>
+
+                <div> 
+                    <div class="progress">
+                        <div class="bar shadow wiggle"></div>
+                    </div>
                 </div>
             </div>
         </transition>
-    </div>
+
     </section>
 </body>
 
@@ -331,7 +335,7 @@
                 hud.recoilEl = document.querySelectorAll('.progress')[0]
                 hud.recoilElBar = document.querySelectorAll('.bar')[0]
                 hud.calcRecoilK(2)
-            }, 1500)  
+            }, 1500)
             document.getElementById('fade').style.opacity = 1;
             let i = 0
             // setInterval(() => {
@@ -343,4 +347,4 @@
         }, 1000);
     }
 </script>
-<!-- JS --> 
+<!-- JS -->
