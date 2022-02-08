@@ -1699,27 +1699,27 @@
                                     </div>
                                 </div>
                                 <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-bind:key="ticket.id"
-                                        v-for="(ticket, index) in anyVar">
+                                    <div class="zapros list-complete-item" v-bind:key="player.id"
+                                        v-for="(player, index) in anyVar">
                                         <div class="avatarnickzapros"
-                                            style="width: 100%; height: 2.4vw;" v-show="ticket.visible">
+                                            style="width: 100%; height: 2.4vw;" v-show="player.visible">
                                             <div class="avatarzapros"
                                                 style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
-                                                <img :src="`${getAvatar(ticket.name)}`">
+                                                <img :src="`${getAvatar(player.name)}`">
                                             </div>
                                             <div
                                                 style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                                                 <div class="nickzapros reportZapros typeLP"
                                                     style="min-width: 7.5vw;  max-width: 7.5vw;">
-                                                    {{ticket.name}}
+                                                    {{player.name}}
                                                 </div>
                                                 <div class="nickzapros reportZapros typeLP"
                                                     style="min-width: 5vw;  max-width: 5vw;">
-                                                    {{ticket.id}}
+                                                    {{player.id}}
                                                 </div>
                                                 <div class="nickzapros reportZapros typeLP"
                                                     style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
-                                                    {{ticket.session}}</div>
+                                                    {{player.session}}</div>
                                                 <!-- <div class="nickzapros reportZapros typeLP"
                                                     style="min-width: 9vw; max-width: 9vw;">
                                                 </div>
@@ -1735,16 +1735,15 @@
                                                     </div>
                                                     <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
                                                         style="margin-right: 0;"
-                                                        v-if="ticket.type >= 2 && ticket.online">
+                                                        v-if="player.type >= 2 && player.online">
                                                         <img alt="" src="img/eye.png"
-                                                            v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
+                                                            v-on:click="emitServer('sAdmin:recon', [player.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
                                                     </div> -->
                                                     <div class="btnzapros" data-title="СКРИНШОТ"
                                                         style="margin-right: 0;">
                                                         <img alt=""
-                                                            onclick="setTimeout(() => menu.fGetReport('0'), 250)"
                                                             src="img/admin/image.png"
-                                                            v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
+                                                            v-on:click="emitServer('sAdminPanel:getScreenShot', player.id);">
                                                     </div>
                                                 </div>
                                             </div>
