@@ -1739,11 +1739,17 @@
                                                         <img alt="" src="img/eye.png"
                                                             v-on:click="emitServer('sAdmin:recon', [player.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
                                                     </div> -->
-                                                    <div class="btnzapros" data-title="СКРИНШОТ"
+                                                    <div class="btnzapros" data-title="СКРИНШОТ ТОЛЬКО ИГРЫ"
                                                         style="margin-right: 0;">
                                                         <img alt=""
                                                             src="img/admin/image.png"
-                                                            v-on:click="emitServer('sAdminPanel:getScreenShot', player.id);">
+                                                            v-on:click="emitServer('sAdminPanel:getScreenShot', player.id, true);">
+                                                    </div>
+                                                    <div class="btnzapros" data-title="СКРИНШОТ"
+                                                        style="margin-right: 0;">
+                                                        <img alt=""
+                                                            src="img/admin/web.png" 
+                                                            v-on:click="emitServer('sAdminPanel:getScreenShot', player.id, false);">
                                                     </div>
                                                 </div>
                                             </div>

@@ -2240,27 +2240,32 @@ let menu = new Vue({
             }
             return list
         },
-        openScreenShot(imgBase64)
+        openScreenShot(imgBase64, playerID)
         {
             menu.adminAny = true
-            console.log(`openScreenShot: ${document.getElementById('screenShotImg').src}`)
+            menu.adminAny2 = playerID
+            console.log(`openScreenShot: ${document.getElementById('screenShotImg').src.length}`)
             document.getElementById('screenShotImg').src = `data:image/png;base64,${imgBase64}`;
-            console.log(`openScreenShot after: ${document.getElementById('screenShotImg').src}`)
+            console.log(`openScreenShot after: ${document.getElementById('screenShotImg').src.length}`)
         },
         closeScreenShot()
         {
             menu.adminAny = false
+            menu.adminAny2 = false
         },
     },
     // computed: {
     //     itemAvatar()
     //     {
-
+ 
     //     }
     // },
 });
 
 if ('alt' in window) {
+    //ADMINPANEL 
+    alt.on('bMenu:openScreenShot', menu.openScreenShot)
+
     alt.on('toggle', toggle => {
         menu.show = toggle;
         // document.body.style.cursor = "auto" 
