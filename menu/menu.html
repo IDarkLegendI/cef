@@ -1631,140 +1631,183 @@
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="zaprosi"
                                 style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
-                                <div class="avatarnickzapros"
-                                    style="width: 100%; height: 2.4vw;">
-                                    <div class="avatarzapros"
-                                        style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; opacity: 0;">
-                                        <img :src="`${getAvatar('D')}`">
-                                    </div>
-                                    <div
-                                        style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                        <div class="nickzapros reportZapros typeLP"
-                                            style="min-width: 7.5vw;  max-width: 7.5vw;">
-                                            <div class="group" style="padding-left: 0; margin: 0;">
-                                                <input class="inputText inputTextWhite" id="adminFindName"
-                                                onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '7.5vw' : '2.5vw'; menu.updateAdminList();" required
-                                                    style="width: 2.5vw;" type="text"> 
-                                                <span class="bar barWhite" style="width: 100%;"></span>
-                                                <label class="labelText">NAME</label>
-                                            </div>
+                                <section v-show='adminAny === 0'>
+                                    <div class="avatarnickzapros" style="width: 100%; height: 2.4vw;">
+                                        <div class="avatarzapros"
+                                            style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; opacity: 0;">
+                                            <img :src="`${getAvatar('D')}`">
                                         </div>
-                                        <div class="nickzapros reportZapros typeLP"
-                                            style="min-width: 5vw;  max-width: 5vw;">
-                                            <div class="group" style="padding-left: 0; margin: 0;">
-                                                <input class="inputText inputTextWhite" id="adminFindID"
-                                                    onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '5vw' : '0.8vw'; menu.updateAdminList();" required
-                                                    style="width: 0.8vw;" type="text">
-                                                <span class="bar barWhite" style="width: 100%;"></span>
-                                                <label class="labelText">ID</label>
-                                            </div>
-                                        </div>
-                                        <div class="nickzapros reportZapros typeLP"
-                                            style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
-                                            <div class="group" style="padding-left: 0; margin: 0;">
-                                                <input class="inputText inputTextWhite" id="adminFindSession"
-                                                    onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '20vw' : '3.52vw'; menu.updateAdminList();" required
-                                                    style="width: 3.52vw;" type="text">
-                                                <span class="bar barWhite" style="width: 100%;"></span>
-                                                <label class="labelText">SESSION</label>
-                                            </div></div>
-                                        <!-- <div class="nickzapros reportZapros typeLP"
-                                            style="min-width: 9vw; max-width: 9vw;">
-                                        </div>
-                                        <div class="nickzapros reportZapros typeLP"
-                                            style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
-                                        </div> -->
                                         <div
-                                            style="display: flex; justify-content: space-around; min-width: 5vw; opacity: 0;">
-                                            <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
-                                                style="margin-right: 0;">
-                                                <img alt="" src="img/pencil.png"
-                                                    v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,3);">
+                                            style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                            <div class="nickzapros reportZapros typeLP"
+                                                style="min-width: 7.5vw;  max-width: 7.5vw;">
+                                                <div class="group" style="padding-left: 0; margin: 0;">
+                                                    <input class="inputText inputTextWhite" id="adminFindName"
+                                                        onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '7.5vw' : '2.5vw'; menu.updateAdminList();"
+                                                        required style="width: 2.5vw;" type="text">
+                                                    <span class="bar barWhite" style="width: 100%;"></span>
+                                                    <label class="labelText">NAME</label>
+                                                </div>
                                             </div>
-                                            <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
-                                                style="margin-right: 0;"
-                                                v-if="ticket.type >= 2 && ticket.online">
-                                                <img alt="" src="img/eye.png"
-                                                    v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
+                                            <div class="nickzapros reportZapros typeLP"
+                                                style="min-width: 5vw;  max-width: 5vw;">
+                                                <div class="group" style="padding-left: 0; margin: 0;">
+                                                    <input class="inputText inputTextWhite" id="adminFindID"
+                                                        onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '5vw' : '0.8vw'; menu.updateAdminList();"
+                                                        required style="width: 0.8vw;" type="text">
+                                                    <span class="bar barWhite" style="width: 100%;"></span>
+                                                    <label class="labelText">ID</label>
+                                                </div>
                                             </div>
-                                            <div class="btnzapros" data-title="ОТКЛОНИТЬ"
-                                                style="margin-right: 0;"
-                                                v-if="ticket.type <= 1 && ticket.result === 0">
-                                                <img alt=""
-                                                    onclick="setTimeout(() => menu.fGetReport('0'), 250)"
-                                                    src="img/close.png"
-                                                    v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
+                                            <div class="nickzapros reportZapros typeLP"
+                                                style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
+                                                <div class="group" style="padding-left: 0; margin: 0;">
+                                                    <input class="inputText inputTextWhite" id="adminFindSession"
+                                                        onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '20vw' : '3.52vw'; menu.updateAdminList();"
+                                                        required style="width: 3.52vw;" type="text">
+                                                    <span class="bar barWhite" style="width: 100%;"></span>
+                                                    <label class="labelText">SESSION</label>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="nickzapros reportZapros typeLP"
+                                                style="min-width: 9vw; max-width: 9vw;">
+                                            </div>
+                                            <div class="nickzapros reportZapros typeLP"
+                                                style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
                                             </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <transition-group name="list-complete" tag="div">
-                                    <div class="zapros list-complete-item" v-bind:key="player.id"
-                                        v-for="(player, index) in anyVar">
-                                        <div class="avatarnickzapros"
-                                            style="width: 100%; height: 2.4vw;" v-show="player.visible">
-                                            <div class="avatarzapros"
-                                                style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
-                                                <img :src="`${getAvatar(player.name)}`">
-                                            </div>
                                             <div
-                                                style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                                <div class="nickzapros reportZapros typeLP"
-                                                    style="min-width: 7.5vw;  max-width: 7.5vw;">
-                                                    {{player.name}}
+                                                style="display: flex; justify-content: space-around; min-width: 5vw; opacity: 0;">
+                                                <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ" style="margin-right: 0;">
+                                                    <img alt="" src="img/pencil.png"
+                                                        v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,3);">
                                                 </div>
-                                                <div class="nickzapros reportZapros typeLP"
-                                                    style="min-width: 5vw;  max-width: 5vw;">
-                                                    {{player.id}}
+                                                <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
+                                                    style="margin-right: 0;"
+                                                    v-if="ticket.type >= 2 && ticket.online">
+                                                    <img alt="" src="img/eye.png"
+                                                        v-on:click="emitServer('sAdmin:recon', [ticket.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
                                                 </div>
-                                                <div class="nickzapros reportZapros typeLP"
-                                                    style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
-                                                    {{player.session}}</div>
-                                                <!-- <div class="nickzapros reportZapros typeLP"
-                                                    style="min-width: 9vw; max-width: 9vw;">
-                                                </div>
-                                                <div class="nickzapros reportZapros typeLP"
-                                                    style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
+                                                <div class="btnzapros" data-title="ОТКЛОНИТЬ"
+                                                    style="margin-right: 0;"
+                                                    v-if="ticket.type <= 1 && ticket.result === 0">
+                                                    <img alt=""
+                                                        onclick="setTimeout(() => menu.fGetReport('0'), 250)"
+                                                        src="img/close.png"
+                                                        v-on:click="emitServer('sReport:edit', null, 1, ticket.id, ticket.authorID);">
                                                 </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <transition-group name="list-complete" tag="div">
+                                        <div class="zapros list-complete-item" v-bind:key="player.id"
+                                            v-for="(player, index) in anyVar">
+                                            <div class="avatarnickzapros" style="width: 100%; height: 2.4vw;"
+                                                v-show="player.visible">
+                                                <div class="avatarzapros"
+                                                    style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
+                                                    <img :src="`${getAvatar(player.name)}`">
+                                                </div>
                                                 <div
-                                                    style="display: flex; justify-content: space-around; min-width: 5vw;">
-                                                    <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
-                                                        style="margin-right: 0;">
-                                                        <img alt="" src="img/pencil.png"
-                                                            v-on:click="">
+                                                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                                    <div class="nickzapros reportZapros typeLP"
+                                                        style="min-width: 7.5vw;  max-width: 7.5vw;">
+                                                        {{player.name}}
                                                     </div>
-                                                    <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
-                                                        style="margin-right: 0;"
-                                                        v-if="player.type >= 2 && player.online">
-                                                        <img alt="" src="img/eye.png"
-                                                            v-on:click="emitServer('sAdmin:recon', [player.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
+                                                    <div class="nickzapros reportZapros typeLP"
+                                                        style="min-width: 5vw;  max-width: 5vw;">
+                                                        {{player.id}}
+                                                    </div>
+                                                    <div class="nickzapros reportZapros typeLP"
+                                                        style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
+                                                        {{player.session}}</div>
+                                                    <!-- <div class="nickzapros reportZapros typeLP"
+                                                        style="min-width: 9vw; max-width: 9vw;">
+                                                    </div>
+                                                    <div class="nickzapros reportZapros typeLP"
+                                                        style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
                                                     </div> -->
-                                                    <div class="btnzapros" data-title="СКРИНШОТ ТОЛЬКО ИГРЫ"
-                                                        style="margin-right: 0;">
-                                                        <img alt=""
-                                                            src="img/admin/image.png"
-                                                            style="width: 1.05vw;"
-                                                            v-on:click="emitServer('sAdminPanel:getScreenShot', player.id, true);">
-                                                    </div>
-                                                    <div class="btnzapros" data-title="СКРИНШОТ"
-                                                        style="margin-right: 0;">
-                                                        <img alt=""
-                                                            src="img/admin/web.png" 
-                                                            v-on:click="emitServer('sAdminPanel:getScreenShot', player.id, false);">
+                                                    <div
+                                                        style="display: flex; justify-content: space-around; min-width: 5vw;">
+                                                        <!-- <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
+                                                            style="margin-right: 0;">
+                                                            <img alt="" src="img/pencil.png"
+                                                                v-on:click="">
+                                                        </div> -->
+                                                        <div class="btnzapros" data-title="ИНФОРМАЦИЯ"
+                                                            style="margin-right: 0;">
+                                                            <img alt="" src="img/admin/info.png"
+                                                                v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
+                                                        </div>
+                                                        <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
+                                                            style="margin-right: 0;"
+                                                            v-if="player.type >= 2 && player.online">
+                                                            <img alt="" src="img/eye.png"
+                                                                v-on:click="emitServer('sAdmin:recon', [player.msg], true); adminCurrentReport = reportPlayers[index]; assortDays = 120;">
+                                                        </div> -->
+                                                        <div class="btnzapros" data-title="СКРИНШОТ ТОЛЬКО ИГРЫ"
+                                                            style="margin-right: 0;">
+                                                            <img alt="" src="img/admin/image.png" style="width: 1.05vw;"
+                                                                v-on:click="emitServer('sAdminPanel:getScreenShot', player.id, true); adminPanelStartModal();">
+                                                        </div>
+                                                        <div class="btnzapros" data-title="СКРИНШОТ"
+                                                            style="margin-right: 0;">
+                                                            <img alt="" src="img/admin/web.png"
+                                                                v-on:click="emitServer('sAdminPanel:getScreenShot', player.id, false); adminPanelStartModal();">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </transition-group>
-                                <section id='screenShotModule' v-show='adminAny'>
-                                    <div style="position: absolute; height: 100vh; width: 100vw; top: 0; right: 0; display: flex; justify-content: center; align-items: center;">
-                                        <img alt="" id='screenShotImg' style="width: 100%; height: 100%;">
-                                    </div>
-                                    <div class="btnzapros" data-title="ЗАКРЫТЬ СКРИНШОТ"
-                                    style="position: absolute; height: 5vh; width: 100vw; bottom: 1vw; right: 0; display: flex; justify-content: center; align-items: flex-end; margin: 0;">
-                                        <img alt="" src="img/close.png" style="width: 2vw; filter: drop-shadow(0 0 0.5vw #070707a9);" v-on:click="closeScreenShot()">
-                                    </div>
+                                    </transition-group>
+                                </section>
+                                <section id='screenShotModule' v-show='adminAny > 0'>
+                                    <transition enter-active-class="animated fadeIn fast"
+                                        leave-active-class="animated fadeOut fast">
+                                        <section v-show="adminAny === 1">
+                                            <div
+                                                style="position: absolute; height: 100vh; width: 100vw; top: 0; right: 0; display: flex; justify-content: center; align-items: center;">
+                                                <div style="width: 10vh;">
+                                                    <img alt="" src="../shared/img/gifSmiles/time.gif"
+                                                        style="width: 100%; height: auto;">
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </transition>
+                                    <!-- СКРИНШОТ -->
+                                    <transition enter-active-class="animated fadeIn fast"
+                                        leave-active-class="animated fadeOut fast">
+                                        <section v-show="adminAny === 2">
+                                            <div
+                                                style="position: absolute; height: 100vh; width: 100vw; top: 0; right: 0; display: flex; justify-content: center; align-items: center;">
+                                                <img alt="" id='screenShotImg' style="width: 100%; height: 100%;">
+                                            </div>
+                                        </section>
+                                    </transition>
+
+                                    <!-- ИНФОРМАЦИЯ ОБ ИГРОКЕ -->
+                                    <transition enter-active-class="animated fadeIn fast"
+                                        leave-active-class="animated fadeOut fast">
+                                        <section v-show="adminAny === 3">
+                                                <!-- adminAny2 => objStyle -->
+                                                <!-- adminAny3 => obj -->
+                                            <div class="zapros list-complete-item" v-bind:key="str.id"
+                                                v-for="(str, index) in adminAny2">
+                                                <div class="avatarnickzapros" style="width: 100%; height: 2.4vw; display: flex; justify-content: center;">
+                                                    <p style="color: white;">{{index}}: {{str}}</p>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </transition>
+
+                                    <transition enter-active-class="animated fadeIn fast"
+                                        leave-active-class="animated fadeOut fast">
+                                        <div class="btnzapros" data-title="ЗАКРЫТЬ МОДАЛЬНОЕ ОКНО" style="position: absolute; height: 5vh; width: 100vw; bottom: 1vw; right: 0; display: flex; justify-content: center; align-items: flex-end; margin: 0;"
+                                            v-show="adminAny > 1">
+                                            <img alt="" src="img/close.png"
+                                                style="width: 2vw; filter: drop-shadow(0 0 0.5vw #070707a9);"
+                                                v-on:click="closeModal()">
+                                        </div>
+                                    </transition>
                                 </section>
                             </div>
                         </div>
