@@ -1394,17 +1394,17 @@ let menu = new Vue({
         getRandomInt: function (max) {
             return Math.floor(Math.random() * Math.floor(max));
         },
-        getLevel: function () {
-            if (this.elo < 800) this.level = '01';
-            else if (this.elo < 950) this.level = '02';
-            else if (this.elo < 1100) this.level = '03';
-            else if (this.elo < 1250) this.level = '04';
-            else if (this.elo < 1400) this.level = '05';
-            else if (this.elo < 1550) this.level = '06';
-            else if (this.elo < 1700) this.level = '07';
-            else if (this.elo < 1850) this.level = '08';
-            else if (this.elo < 2000) this.level = '09';
-            else this.level = '10';
+        getLevel: function (elo = this.elo) {
+            if (elo < 800) return '01';
+            else if (elo < 950) return '02';
+            else if (elo < 1100) return '03';
+            else if (elo < 1250) return '04';
+            else if (elo < 1400) return '05';
+            else if (elo < 1550) return '06';
+            else if (elo < 1700) return '07';
+            else if (elo < 1850) return '08';
+            else if (elo < 2000) return '09';
+            else return '10';
         },
         getKD: function () {
             let value = (+this.kills / +this.matches).toFixed(2);
@@ -2368,7 +2368,7 @@ if ('alt' in window) {
         menu.wins = obj.wins;
         menu.hours = obj.hours;
 
-        menu.getLevel();
+        menu.level = menu.getLevel();
     });
 
     alt.on('bMenu:updateCash', (cash, cashRM) => {
@@ -2418,7 +2418,7 @@ if ('alt' in window) {
         menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
         menu.setDiscordAvatar(menu.myName, '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
         // menu.setDiscordAvatar('Gruzd', '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
-        menu.getLevel();
+        menu.level = menu.getLevel(); 
         menu.allPlayers = ['Dark', 'Dsrsa', 'Dakr', 'Daaa', 'Daq', 'Dav', 'Das', 'Dac']
         menu.friends = [{
                 name: 'DARKLEGEND',
