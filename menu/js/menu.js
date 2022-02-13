@@ -1150,7 +1150,7 @@ let menu = new Vue({
             {
                 menu.adminAny = false // Используется для вкл\выкл скриншота
                 menu.anyVar = [] // Используется для показа
-                menu.closeScreenShot()
+                menu.closeModal()
                 menu.emitServer('sAdminPanel:getPlayers')
             }
             this.resetPage(newPage, newSubPage).then(() => {
