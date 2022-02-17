@@ -2225,6 +2225,7 @@ let menu = new Vue({
             {
                 param = param.toLowerCase()
                 list.forEach(el => {
+                    if(!el) return;
                     console.log(`${el[nameParam]}.includes(${param}) ---> ${el[nameParam].toString().includes(param)}`)
 
                         if(el[nameParam].toString().toLowerCase().includes(param)) el.visible.push(true)
