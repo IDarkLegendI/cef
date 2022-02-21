@@ -2160,6 +2160,11 @@ let menu = new Vue({
             return menu.discordAvatars[name] === undefined ? getAvatarNew(name) : menu.discordAvatars[name]
         },
 
+        async getPhoto(avatar, name)
+        {
+            return await getPhoto(avatar, name)
+        },
+
         async setDiscordAvatar(name, avatar = null)
         {
             let result = await getPhotoNew(avatar, name)
