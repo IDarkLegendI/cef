@@ -552,7 +552,7 @@ else
     // hud.showLogo = true;
     hud.help = 0;
     // hud.keyMenu = 66
-    hud.showLogo = true; 
+    // hud.showLogo = true; 
     hud.fUpdateKills("OBLIKO", 100)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A11"), 1000)
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A12"), 2000)
