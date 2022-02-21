@@ -2279,9 +2279,13 @@ let menu = new Vue({
                 menu.adminAnyTimer = null;
             }
         },
-        openInfoPlayer(objStyle, obj)
+        // Args change: avatar убирает, заменяя на ava(готовый url) + discordID
+        async openInfoPlayer(objStyle, obj)
         {
             console.log(`openInfoPlayer: ${JSON.stringify(objStyle)}`)
+            objStyle["ava"] = await menu.getPhoto(objStyle["avatar"], objStyle["name"])
+            objStyle["discordID"] = objStyle["avatar"].substring(0, objStyle["avatar"].indexOf('/'));
+            delete objStyle["avatar"];
             menu.adminAny = 3
             menu.adminAny2 = objStyle
             menu.adminAny3 = obj
