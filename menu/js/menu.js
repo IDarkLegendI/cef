@@ -2162,12 +2162,6 @@ let menu = new Vue({
 
         async setDiscordAvatar(name, avatar = null)
         {
-            if(avatar === null && menu.discordAvatars[name])
-            {
-                // Если аватар есть, а мы хотим его удалить
-                delete menu.discordAvatars[name];
-                return;
-            }
             let result = await getPhotoNew(avatar, name)
             if(!result) return 
             Vue.set(menu.discordAvatars, name, result)
