@@ -1408,8 +1408,8 @@ let menu = new Vue({
             else if (elo < 2000) return '09';
             else return '10';
         },
-        getKD: function () {
-            let value = (+this.kills / +this.matches).toFixed(2);
+        getKD: function (kills = this.kills, matches = this.matches) {
+            let value = (+kills / +matches).toFixed(2);
             if(value < 0) value = '0.00' 
             return isNaN(value) ? '0.00' : value
         },
