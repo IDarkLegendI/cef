@@ -1817,17 +1817,17 @@
                                 </section>
                             </div>
                         </div>
-                        <!-- <div style="display: flex; justify-content: center; width: 100vw;">
-                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('-10');">
+                        <div style="display: flex; justify-content: center; width: 100vw;" v-show="adminAny === 0">
+                            <!-- <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('-10');">
                                 <img alt="" src="./img/arrowLeftRed.png">
-                            </button>
-                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('0');">
+                            </button> -->
+                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="adminAny = 0; switchPage(7, 1)">
                                 ОБНОВИТЬ
                             </button>
-                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('+10');">
+                            <!-- <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('+10');">
                                 <img alt="" src="./img/arrowRightRed.png">
-                            </button>
-                        </div> -->
+                            </button> -->
+                        </div>
                     </div>
                 </section>
             </transition>
