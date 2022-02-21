@@ -1621,7 +1621,7 @@
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <span style="font-size: 3vh;">УПРАВЛЕНИЕ ИГРОКАМИ</span>
+                            <span style="font-size: 3vh;">УПРАВЛЕНИЕ {{adminAny === +3 ? 'ИГРОКОМ' : 'ИГРОКАМИ'}}</span>
                             <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
                                 v-on:click="switchPage(7,0)">
                                 <span>{{i18n.btnBack}}</span>
@@ -1677,7 +1677,8 @@
                                             </div> -->
                                             <div
                                                 style="display: flex; justify-content: space-around; min-width: 5vw; opacity: 0;">
-                                                <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ" style="margin-right: 0;">
+                                                <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
+                                                    style="margin-right: 0;">
                                                     <img alt="" src="img/pencil.png"
                                                         v-on:click="adminCurrentReport = reportPlayers[index]; assortDays = 120; switchPage(7,3);">
                                                 </div>
@@ -1787,19 +1788,44 @@
                                     <!-- ИНФОРМАЦИЯ ОБ ИГРОКЕ -->
                                     <transition enter-active-class="animated fadeIn fast"
                                         leave-active-class="animated fadeOut fast">
-                                        <section v-show="adminAny === 3">
-                                                <!-- adminAny2 => objStyle -->
-                                                <!-- adminAny3 => obj -->
-                                            <div class="zapros list-complete-item" v-bind:key="str.id"
-                                                v-for="(str, index) in adminAny2">
-                                                <div class="avatarnickzapros" style="width: 100%; height: 2.4vw; display: flex; justify-content: center;">
-                                                    <p style="color: white;">{{index}}: {{str}}</p>
+                                        <section style="font: 1.2vw 'Trebuchet MS', 'Lucida Sans';color: white" v-if="adminAny === 3">
+                                            <!-- adminAny2 => objStyle -->
+                                            <!-- adminAny3 => obj -->
+                                            <div style="display: flex; align-items: center; justify-content: center;">
+                                                <div :class="{online: adminAny2.online}" class="avatarzapros">
+                                                    <!-- <img src="img/ava.jpg" alt=""> -->
+                                                    <img :src="adminAny2.ava">
                                                 </div>
+                                                <div class="nickzapros" style="max-width: 50vw">{{adminAny2.name}}</div>
                                             </div>
-                                            <div class="zapros list-complete-item" v-bind:key="str.id"
-                                                v-for="(str, index) in adminAny3">
-                                                <div class="avatarnickzapros" style="width: 100%; height: 2.4vw; display: flex; justify-content: center;">
-                                                    <p style="color: rgba(255, 255, 255, 0.603);">{{index}}: {{str}}</p>
+                                            <div style="display: flex; justify-content: space-between; margin-top: 5vh; align-items: center;">
+                                                <div class="apInfoPlayerBlock" style="background-color: rgba(28, 199, 28, 0.705);">
+                                                    <div>
+                                                        <span>ID:</span> <span class="bpscore">{{adminAny2.id}}</span>
+                                                    </div>
+                                                    <div v-if="adminAny2.discordID">
+                                                        <span>DiscordID:</span> <span class="bpscore">{{adminAny2.discordID}}</span>
+                                                    </div>
+                                                        <div class="list-complete-item" v-bind:key="str.id"
+                                                        v-for="(str, index) in adminAny3">
+                                                        <span>{{index.toUpperCase()}}:</span> <span class="bpscore">{{str}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="apInfoPlayerBlock">
+                                                    <div><span>K/D:</span> <span class="bpscore">{{getKD(adminAny2.rank.kills, adminAny2.rank.matches)}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span>{{i18n.score}}:</span> <span class="bpscore">{{adminAny2.rank.elo}}</span>
+                                                    </div>
+                                                    <div class="matchs">
+                                                        <span>{{i18n.wins}}:</span> <span class="bpscore">{{adminAny2.rank.wins}}
+                                                            из
+                                                            {{adminAny2.rank.matches}}</span>
+                                                    </div>
+                                                    <div class="kd">{{i18n.hours}}:
+                                                        <span class="bpscore">
+                                                            {{adminAny2.rank.hours}}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </section>
@@ -1807,7 +1833,8 @@
 
                                     <transition enter-active-class="animated fadeIn fast"
                                         leave-active-class="animated fadeOut fast">
-                                        <div class="btnzapros" data-title="ЗАКРЫТЬ МОДАЛЬНОЕ ОКНО" style="position: absolute; height: 5vh; width: 100vw; bottom: 1vw; right: 0; display: flex; justify-content: center; align-items: flex-end; margin: 0;"
+                                        <div class="btnzapros" data-title="ЗАКРЫТЬ МОДАЛЬНОЕ ОКНО"
+                                            style="position: absolute; height: 5vh; width: 100vw; bottom: 1vw; right: 0; display: flex; justify-content: center; align-items: flex-end; margin: 0;"
                                             v-show="adminAny > 1">
                                             <img alt="" src="img/close.png"
                                                 style="width: 2vw; filter: drop-shadow(0 0 0.5vw #070707a9);"
@@ -1821,7 +1848,8 @@
                             <!-- <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('-10');">
                                 <img alt="" src="./img/arrowLeftRed.png">
                             </button> -->
-                            <button class="exitToMenu adminButton" id="adminButton" v-on:click="adminAny = 0; switchPage(7, 1)">
+                            <button class="exitToMenu adminButton" id="adminButton"
+                                v-on:click="adminAny = 0; switchPage(7, 1)">
                                 ОБНОВИТЬ
                             </button>
                             <!-- <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('+10');">
