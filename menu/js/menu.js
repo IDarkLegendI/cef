@@ -1045,7 +1045,7 @@ let menu = new Vue({
 
         // Срабатывает, когда человек "открывает" меню
         eventOpen() {
-            menu.resetPage(menu.page, menu.subPage) 
+            menu.resetPage(menu.page, menu.subPage, true) 
         },
 
         translateSubPages() {
@@ -1147,19 +1147,13 @@ let menu = new Vue({
                 if (menu.playingTime === -1) return menu.switchPage(7, 2) //Если из наблюдения вышел админ в режиме recon
                 setTimeout(() => this.emitToClient('cAudio:play', menu.wsWin ? 'win' : 'DirectedByROBERT'), 1000)
             }
-            else if(newPage === 7 && newSubPage === 1)
-            {
-                //menu.adminAny Используется для вкл\выкл скриншота
-                menu.anyVar = [] // Используется для показа
-                menu.closeModal()
-                menu.emitServer('sAdminPanel:getPlayers')
-            }
             this.resetPage(newPage, newSubPage).then(() => {
                 if (this.subPage === -2) return;
 
 
                 if (('alt' in window)) alt.emit('changeVarOnClient', ['page', newPage]) 
                 console.log(`switchPage: ${newPage}; ${newSubPage}; nextSubPage: ${this.nextSubPage}`)
+                this.prePostOpenPage(newPage, newSubPage)
                 // if(('alt' in window) && (newPage > 1 || newSubPage > 1)) return;
                 if (newSubPage !== -1 || (this.nextSubPage !== -1 && this.page !== 2)) { 
                     // if(newPage == 0) return this.subPage = newSubPage;
@@ -1198,7 +1192,8 @@ let menu = new Vue({
             })
         },
 
-        async resetPage(newPage, newSubPage) {
+        async resetPage(newPage, newSubPage, openMenu = false) {
+            console.log(`resetPage: newPage: ${newPage}; newSubPage: ${newSubPage}; openMenu: ${openMenu}; this.page: ${this.page}; subPage: ${this.subPage}`)
             if (this.page === 2 && (newPage === 0 || newPage === 4)) {
                 menu.emit('cCar:setCarPreview', false);
                 if (this.subPage === 0) {
@@ -1229,13 +1224,29 @@ let menu = new Vue({
             //     this.anyVarC = null;
             // }
             else if(newPage === 8) this.theTime()
-            else if(this.page === 7 && this.subPage === 1) menu.anyVar = [] 
+            else if(this.page === 7 && this.subPage === 1) 
+            {
+                if(openMenu) menu.prePostOpenPage(newPage, newSubPage)
+                else menu.anyVar = [] 
+            }
             this.updateTuning = false;
             this.recordKey = false;
         },
 
         resetPageAfter(newPage) {
             if (this.page === 5 && newPage === 0) this.wsWin = false
+        },
+
+        prePostOpenPage(newPage, newSubPage)
+        {
+            console.log(`prePostOpenPage: newPage: ${newPage}; newSubPage: ${newSubPage};`)
+            if(newPage === 7 && newSubPage === 1)
+            {
+                //menu.adminAny Используется для вкл\выкл скриншота
+                menu.anyVar = [] // Используется для показа
+                menu.closeModal()
+                menu.emitToServerWithWT(0, 'sAdminPanel:getPlayers')
+            }
         },
 
         setTimeout(nameFunction, time) {
