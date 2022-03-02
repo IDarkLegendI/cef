@@ -26,6 +26,12 @@
         <div id="cursor"></div>
         <div id="aura"></div>
         <!-- ГЛАВНАЯ -->
+        <div style="position: absolute; width: 100vw; margin-top: 1vh;">
+            <p style="color: #ffffff7e; display: flex; justify-content: center;">
+                PAGE: {{page}} |
+                SUBPAGE: {{subPage}}
+            </p>
+        </div>
         <transition appear enter-active-class="animated zoomInUp fast" leave-active-class="animated zoomOutUp fast"
             name="custom-classes-transition">
             <section v-show="page === 0">
@@ -1660,10 +1666,10 @@
                                                 </div>
                                             </div>
                                             <div class="nickzapros reportZapros typeLP"
-                                                style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
+                                                style="font-size: 1.5vh; min-width: 15vw; max-width: 15vw;">
                                                 <div class="group" style="padding-left: 0; margin: 0;">
                                                     <input class="inputText inputTextWhite" id="adminFindSession"
-                                                        onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '20vw' : '3.52vw'; menu.updateAdminList();"
+                                                        onkeyup="this.value=this.value.replace(/\s+/gi,''); this.style.width = this.value.length > 0 ? '15vw' : '3.52vw'; menu.updateAdminList();"
                                                         required style="width: 3.52vw;" type="text">
                                                     <span class="bar barWhite" style="width: 100%;"></span>
                                                     <label class="labelText">SESSION</label>
@@ -1676,7 +1682,7 @@
                                                 style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
                                             </div> -->
                                             <div
-                                                style="display: flex; justify-content: space-around; min-width: 5vw; opacity: 0;">
+                                                style="display: flex; justify-content: space-around; min-width: 10vw; opacity: 0;">
                                                 <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
                                                     style="margin-right: 0;">
                                                     <img alt="" src="img/pencil.png"
@@ -1719,7 +1725,7 @@
                                                         {{player.id}}
                                                     </div>
                                                     <div class="nickzapros reportZapros typeLP"
-                                                        style="font-size: 1.5vh; min-width: 20vw; max-width: 20vw;">
+                                                        style="font-size: 1.5vh; min-width: 15vw; max-width: 15vw;">
                                                         {{player.session}}</div>
                                                     <!-- <div class="nickzapros reportZapros typeLP"
                                                         style="min-width: 9vw; max-width: 9vw;">
@@ -1728,7 +1734,7 @@
                                                         style="min-width: 6.5vw;  max-width: 6.5vw; display: flex; justify-content: center;">
                                                     </div> -->
                                                     <div
-                                                        style="display: flex; justify-content: space-around; min-width: 5vw;">
+                                                        style="display: flex; justify-content: space-around; min-width: 10vw;">
                                                         <!-- <div class="btnzapros" data-title="РЕДАКТИРОВАНИЕ"
                                                             style="margin-right: 0;">
                                                             <img alt="" src="img/pencil.png"
@@ -1736,7 +1742,12 @@
                                                         </div> -->
                                                         <div class="btnzapros" data-title="ИНФОРМАЦИЯ"
                                                             style="margin-right: 0;">
-                                                            <img alt="" src="img/admin/info.png"
+                                                            <img alt="" src="img/admin/info.png" style="width: 1.3vw;"
+                                                                v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
+                                                        </div>
+                                                        <div class="btnzapros" data-title="НАКАЗАНИЯ"
+                                                            style="margin-right: 0;">
+                                                            <img alt="" src="img/admin/actions.png" style="width: 1.4vw;"
                                                                 v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
                                                         </div>
                                                         <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
