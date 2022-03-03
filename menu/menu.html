@@ -1747,8 +1747,8 @@
                                                         </div>
                                                         <div class="btnzapros" data-title="НАКАЗАНИЯ"
                                                             style="margin-right: 0;">
-                                                            <img alt="" src="img/admin/actions.png" style="width: 1.4vw;"
-                                                                v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
+                                                            <img alt="" src="img/gavel.png" style="width: 1.4vw;"
+                                                                v-on:click="adminAny2 = {id: player.id, name: player.name}; emitServer('sAdminPanel:getSentencesPlayer', player.id); adminPanelStartModal();">
                                                         </div>
                                                         <!-- <div class="btnzapros" data-title="НАБЛЮДАТЬ"
                                                             style="margin-right: 0;"
@@ -1799,7 +1799,8 @@
                                     <!-- ИНФОРМАЦИЯ ОБ ИГРОКЕ -->
                                     <transition enter-active-class="animated fadeIn fast"
                                         leave-active-class="animated fadeOut fast">
-                                        <section style="font: 1.2vw 'Trebuchet MS', 'Lucida Sans';color: white" v-if="adminAny === 3">
+                                        <section style="font: 1.2vw 'Trebuchet MS', 'Lucida Sans';color: white"
+                                            v-if="adminAny === 3">
                                             <!-- adminAny2 => objStyle -->
                                             <!-- adminAny3 => obj -->
                                             <div style="display: flex; align-items: center; justify-content: center;">
@@ -1809,27 +1810,34 @@
                                                 </div>
                                                 <div class="nickzapros" style="max-width: 50vw">{{adminAny2.name}}</div>
                                             </div>
-                                            <div style="display: flex; justify-content: space-between; margin-top: 5vh; align-items: center;">
-                                                <div class="apInfoPlayerBlock" style="background-color: rgba(28, 199, 28, 0.705);">
+                                            <div
+                                                style="display: flex; justify-content: space-between; margin-top: 5vh; align-items: center;">
+                                                <div class="apInfoPlayerBlock"
+                                                    style="background-color: rgba(28, 199, 28, 0.705);">
                                                     <div>
                                                         <span>ID:</span> <span class="bpscore">{{adminAny2.id}}</span>
                                                     </div>
                                                     <div v-if="adminAny2.discordID">
-                                                        <span>DiscordID:</span> <span class="bpscore">{{adminAny2.discordID}}</span>
+                                                        <span>DiscordID:</span> <span
+                                                            class="bpscore">{{adminAny2.discordID}}</span>
                                                     </div>
-                                                        <div class="list-complete-item" v-bind:key="str.id"
+                                                    <div class="list-complete-item" v-bind:key="str.id"
                                                         v-for="(str, index) in adminAny3">
-                                                        <span>{{index.toUpperCase()}}:</span> <span class="bpscore">{{str}}</span>
+                                                        <span>{{index.toUpperCase()}}:</span> <span
+                                                            class="bpscore">{{str}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="apInfoPlayerBlock">
-                                                    <div><span>K/D:</span> <span class="bpscore">{{getKD(adminAny2.rank.kills, adminAny2.rank.matches)}}</span>
+                                                    <div><span>K/D:</span> <span
+                                                            class="bpscore">{{getKD(adminAny2.rank.kills, adminAny2.rank.matches)}}</span>
                                                     </div>
                                                     <div>
-                                                        <span>{{i18n.score}}:</span> <span class="bpscore">{{adminAny2.rank.elo}}</span>
+                                                        <span>{{i18n.score}}:</span> <span
+                                                            class="bpscore">{{adminAny2.rank.elo}}</span>
                                                     </div>
                                                     <div class="matchs">
-                                                        <span>{{i18n.wins}}:</span> <span class="bpscore">{{adminAny2.rank.wins}}
+                                                        <span>{{i18n.wins}}:</span> <span
+                                                            class="bpscore">{{adminAny2.rank.wins}}
                                                             из
                                                             {{adminAny2.rank.matches}}</span>
                                                     </div>
@@ -1838,6 +1846,172 @@
                                                             {{adminAny2.rank.hours}}</span>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </section>
+                                    </transition>
+
+                                    <!-- НАКАЗАНИЯ -->
+                                    <transition enter-active-class="animated fadeIn fast"
+                                        leave-active-class="animated fadeOut fast">
+                                        <section style="font: 1.2vw 'Trebuchet MS', 'Lucida Sans';color: white"
+                                            v-if="adminAny === 4">
+                                            <!-- adminAny2 => {id: player.id, name: player.name} -->
+                                            <!-- adminAny3 => banHistory -->
+                                            <!-- assortDays => type ban -->
+                                            <!-- assortSelected => reason ban -->
+                                            <div
+                                                style="display: flex; flex-direction: column; justify-content: space-between; height: 63vh;">
+
+                                                <div
+                                                    style="display: flex; align-items: center; justify-content: center;">
+                                                    <div class="nickzapros" style="max-width: 50vw">ПОД РАССМОТРЕНИЕМ
+                                                        {{adminAny2.name}}({{adminAny2.id}})</div>
+                                                </div>
+
+                                                <div>
+                                                    <div
+                                                        style="display: flex; align-items: center; justify-content: center; margin-bottom: 2vh;">
+                                                        <div class="nickzapros" style="max-width: 50vw">
+                                                            ИСТОРИЯ НАКАЗАНИЙ
+                                                        </div>
+                                                    </div>
+                                                    <div class="apBanHistory" style="max-height: 4.8vw; overflow-y: auto;">
+                                                        <div style="display: flex; justify-content: center;" v-bind:key="index"
+                                                        v-for="(banHistory, index) in adminAny3.list">
+                                                        <div class="avatarnickzapros"
+                                                            style="max-width: 50vw; height: 2.4vw;">
+                                                            <div class="avatarzapros"
+                                                                style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
+                                                                <img :src="`../menu/img/admin/ban-user.png`"
+                                                                    style="border-radius: 0%;">
+                                                            </div>
+                                                            <div
+                                                                style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                                                <div class="nickzapros reportZapros"
+                                                                    style="min-width: 6vw;  max-width: 6vw;">
+                                                                    <div class="avatarzapros"
+                                                                        style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
+                                                                        <img :src="`../menu/img/admin/${getReasonName(banHistory.reason)}.png`"
+                                                                            style="border-radius: 0%;">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nickzapros reportZapros typeLP"
+                                                                    style="min-width: 18.25vw;  max-width: 18.25vw;">
+                                                                    {{fDateToText(banHistory.timeEnd)}}
+                                                                </div>
+                                                                <div class="nickzapros reportZapros typeLP"
+                                                                    style="min-width: 18.25vw;  max-width: 18.25vw; display: flex; justify-content: center;">
+                                                                    {{getLeftTime(banHistory.timeEnd)}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <div
+                                                        style="display: flex; align-items: center; justify-content: center; margin-bottom: 2vh;">
+                                                        <div class="nickzapros" style="max-width: 50vw">
+                                                            ТИП НАКАЗАНИЯ
+                                                        </div>
+                                                    </div>
+                                                    <div class="settingsh1">
+                                                        <span :class="{minibtnRed: +assortDays === +0}" class="minibtn"
+                                                            style="display: flex; 
+                                                        align-items: center; justify-content: center; align-self: center;"
+                                                            v-on:click="assortDays = 0">
+                                                            <div>
+                                                                КИКНУТЬ
+                                                            </div>
+                                                            <div
+                                                                style="width: 3vw; display: flex; justify-content: center;">
+                                                                <img class="apButtonImg" src="./img/admin/kick-off.png">
+                                                            </div>
+                                                        </span>
+                                                        <span :class="{minibtnRed: +assortDays === +1}" class="minibtn"
+                                                            style="display: flex; 
+                                                        align-items: center; justify-content: center; align-self: center;"
+                                                            v-on:click="assortDays = 1">
+                                                            <div>
+                                                                ЗАБАНИТЬ
+                                                            </div>
+                                                            <div
+                                                                style="width: 3vw; display: flex; justify-content: center;">
+                                                                <img class="apButtonImg" src="./img/admin/ban-user.png">
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div
+                                                        style="display: flex; align-items: center; justify-content: center; margin-bottom: 2vh;">
+                                                        <div class="nickzapros" style="max-width: 50vw">
+                                                            ПРИЧИНА НАКАЗАНИЯ
+                                                        </div>
+                                                    </div>
+                                                    <div class="settingsh1">
+                                                        <span :class="{minibtnRed: +assortSelected === +0}"
+                                                            class="minibtn"
+                                                            style="display: flex; 
+                                                        align-items: center; justify-content: center; align-self: center;"
+                                                            v-on:click="assortSelected = 0">
+                                                            <div>
+                                                                ЧИТЕР
+                                                            </div>
+                                                            <div
+                                                                style="width: 3vw; display: flex; justify-content: center;">
+                                                                <img class="apButtonImg" src="./img/admin/cheater.png">
+                                                            </div>
+                                                        </span>
+                                                        <span :class="{minibtnRed: +assortSelected === +1}"
+                                                            class="minibtn"
+                                                            style="display: flex; 
+                                                        align-items: center; justify-content: center; align-self: center;"
+                                                            v-on:click="assortSelected = 1">
+                                                            <div>
+                                                                СПАМЕР
+                                                            </div>
+                                                            <div
+                                                                style="width: 3vw; display: flex; justify-content: center;">
+                                                                <img class="apButtonImg" src="./img/admin/spam.png">
+                                                            </div>
+                                                        </span>
+                                                        <span :class="{minibtnRed: +assortSelected === +2}"
+                                                            class="minibtn"
+                                                            style="display: flex; 
+                                                        align-items: center; justify-content: center; align-self: center;"
+                                                            v-on:click="assortSelected = 2">
+                                                            <div>
+                                                                DDOS
+                                                            </div>
+                                                            <div
+                                                                style="width: 3vw; display: flex; justify-content: center;">
+                                                                <img class="apButtonImg" src="./img/admin/ddos.png">
+                                                            </div>
+                                                        </span>
+                                                        <span :class="{minibtnRed: +assortSelected === +3}"
+                                                            class="minibtn"
+                                                            style="display: flex; 
+                                                        align-items: center; justify-content: center; align-self: center;"
+                                                            v-on:click="assortSelected = 3">
+                                                            <div>
+                                                                ДРУГОЕ
+                                                            </div>
+                                                            <div
+                                                                style="width: 3vw; display: flex; justify-content: center;">
+                                                                <img class="apButtonImg" src="./img/admin/other.png">
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="btnback btnbackperson2" style="margin: 0;">
+                                                    <a :style="{opacity: (assortSelected !== null && assortDays !== null) ? 1 : 0.5}" class="red" href="#"
+                                                        id="mouseFocus"
+                                                        v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sVIP:buy', assortSelected, assortDays) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
+                                                        НАКАЗАНИЕ</a>
+                                                </div>
+                                                <!-- TODO ДОДЕЛАТЬ ЗАПРОС -->
                                             </div>
                                         </section>
                                     </transition>

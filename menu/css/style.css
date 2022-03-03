@@ -2911,4 +2911,19 @@ input[type=button i]:focus, .button :focus, .button :active {
 .apInfoPlayerBlock div {
   margin-top: 0.5vh;
   margin-bottom: 0.5vh;
+}
+
+.apButtonImg {
+  width: 2vw;
+}
+
+.apBanHistory::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 0.36vw;
+}
+
+.apBanHistory::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: #ffffff83;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }/*# sourceMappingURL=style.css.map */
