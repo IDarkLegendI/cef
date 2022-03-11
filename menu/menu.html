@@ -1636,9 +1636,9 @@
                         <div
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="zaprosi"
-                                style="width: 65vw; min-height: 63vh; max-height: 63vh; overflow: hidden;">
+                                style="width: 65vw; min-height: 63vh; max-height: 73vh; overflow: hidden; flex-basis: 100%;">
                                 <section v-show='adminAny === 0'>
-                                    <div class="avatarnickzapros" style="width: 100%; height: 2.4vw;">
+                                    <div class="avatarnickzapros" style="width: 100%; height: 2.4vw; height: 63vh;">
                                         <div class="avatarzapros"
                                             style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; opacity: 0;">
                                             <img :src="`${getAvatar('D')}`">
@@ -1655,7 +1655,7 @@
                                                     <label class="labelText">NAME</label>
                                                 </div>
                                             </div>
-                                            <div class="nickzapros reportZapros typeLP"
+                                            <div class="nickzapros reportZapros typeLP" 
                                                 style="min-width: 5vw;  max-width: 5vw;">
                                                 <div class="group" style="padding-left: 0; margin: 0;">
                                                     <input class="inputText inputTextWhite" id="adminFindID"
@@ -1860,7 +1860,7 @@
                                             <!-- assortDays => type ban -->
                                             <!-- assortSelected => reason ban -->
                                             <div
-                                                style="display: flex; flex-direction: column; justify-content: space-between; height: 63vh;">
+                                                style="display: flex; flex-direction: column; justify-content: space-between; height: 73vh;">
 
                                                 <div
                                                     style="display: flex; align-items: center; justify-content: center;">
@@ -1926,6 +1926,7 @@
                                                                             <img alt="" src="img/gavel.png"
                                                                                 style="width: 1.3vw;"
                                                                                 v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
+                                                                                <!-- TODO: доделать UNBAN -->
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -2030,10 +2031,26 @@
                                                         </span>
                                                     </div>
                                                 </div>
+
+                                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; align-items: center;">
+                                                    <div
+                                                        style="margin-bottom: 2vh;">
+                                                        <div class="nickzapros" style="max-width: 50vw">
+                                                            ДЛИТЕЛЬНОСТЬ НАКАЗАНИЯ
+                                                        </div>
+                                                    </div> 
+                                                    <div class="group">
+                                                        <input class="inputText inputTextRed" id="apBanTime" required type="number">
+                                                        <span class="bar barRed"></span>
+                                                        <label
+                                                            class="labelText">УКАЖИТЕ КОЛИЧЕСТВО ЧАСОВ НАКАЗАНИЯ</label>
+                                                    </div>
+                                                </div>
+
                                                 <div class="btnback btnbackperson2" style="margin: 0;">
                                                     <a :style="{opacity: (assortSelected !== null && assortDays !== null) ? 1 : 0.5}"
                                                         class="red" href="#" id="mouseFocus"
-                                                        v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sVIP:buy', assortSelected, assortDays) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
+                                                        v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sAdminPanel:setBan', adminAny2.id, assortDays, assortSelected, getElementById('apBanTime').value) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
                                                         НАКАЗАНИЕ</a>
                                                 </div>
                                                 <!-- TODO ДОДЕЛАТЬ ЗАПРОС -->
@@ -2578,6 +2595,7 @@
             // setTimeout(() => {
             //     menu.switchPage(1)
             // }, 10)
+            menu.document = document;
             return document.getElementById('fade').style.opacity = 1;
         }
         // else setTimeout(() => document.getElementById('fade').style.opacity = 1, 300); 
@@ -2587,6 +2605,7 @@
         setTimeout(() => {
             document.addEventListener('DOMContentLoaded', function () {
                 menu.fCheckCursor();
+                menu.document = document;
                 // let a = new Fireworks();
                 // a.run(); 
             }, false);
