@@ -1874,6 +1874,15 @@
                                                         <div class="nickzapros" style="max-width: 50vw">
                                                             ИСТОРИЯ НАКАЗАНИЙ
                                                         </div>
+
+                                                        <div class="nickzapros reportZapros"
+                                                            style="display: flex; justify-content: center; align-items: center;">
+                                                            <div class="btnzapros" data-title="ОБНОВИТЬ"
+                                                                style="margin: 0;">
+                                                                <img alt="" src="img/refresh.png" style="width: 1.3vw; display: flex; justify-content: center; align-items: center;"
+                                                                    v-on:click="emitServer('sAdminPanel:getSentencesPlayer', player.id);">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="apBanHistory" style="max-height: 4.8vw; overflow-y: auto;">
                                                         <div style="display: flex; justify-content: center;" v-bind:key="index"
