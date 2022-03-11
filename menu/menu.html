@@ -1884,37 +1884,53 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="apBanHistory" style="max-height: 4.8vw; overflow-y: auto;">
-                                                        <div style="display: flex; justify-content: center;" v-bind:key="index"
-                                                        v-for="(banHistory, index) in adminAny3.list">
-                                                        <div class="avatarnickzapros"
-                                                            style="max-width: 50vw; height: 2.4vw;">
-                                                            <div class="avatarzapros"
-                                                                style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
-                                                                <img :src="`../menu/img/admin/ban-user.png`"
-                                                                    style="border-radius: 0%;">
-                                                            </div>
-                                                            <div
-                                                                style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                                                <div class="nickzapros reportZapros"
-                                                                    style="min-width: 6vw;  max-width: 6vw;">
-                                                                    <div class="avatarzapros"
-                                                                        style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
-                                                                        <img :src="`../menu/img/admin/${getReasonName(banHistory.reason)}.png`"
-                                                                            style="border-radius: 0%;">
+                                                    <div class="apBanHistory"
+                                                        style="max-height: 4.8vw; overflow-y: auto;">
+                                                        <div style="display: flex; justify-content: center;"
+                                                            v-bind:key="index"
+                                                            v-for="(banHistory, index) in adminAny3.list">
+                                                            <div class="avatarnickzapros"
+                                                                style="width: 60vw; height: 2.4vw;">
+                                                                <div class="avatarzapros"
+                                                                    style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
+                                                                    <img :src="`../menu/img/admin/ban-user.png`"
+                                                                        style="border-radius: 0%;">
+                                                                </div>
+                                                                <div
+                                                                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                                                    <div class="nickzapros reportZapros"
+                                                                        style="width: 6vw;">
+                                                                        <div class="avatarzapros"
+                                                                            style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
+                                                                            <img :src="`../menu/img/admin/${getReasonName(banHistory.reason)}.png`"
+                                                                                style="border-radius: 0%;">
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="nickzapros reportZapros typeLP"
-                                                                    style="min-width: 18.25vw;  max-width: 18.25vw;">
-                                                                    {{fDateToText(banHistory.timeEnd)}}
-                                                                </div>
-                                                                <div class="nickzapros reportZapros typeLP"
-                                                                    style="min-width: 18.25vw;  max-width: 18.25vw; display: flex; justify-content: center;">
-                                                                    {{getLeftTime(banHistory.timeEnd)}}
+                                                                    <div class="nickzapros reportZapros typeLP"
+                                                                        style="width: 10.16vw;">
+                                                                        {{banHistory.adminName}}
+                                                                    </div>
+                                                                    <div class="nickzapros reportZapros typeLP"
+                                                                        style="width: 10.16vw;">
+                                                                        {{fDateToText(banHistory.timeEnd)}}
+                                                                    </div>
+                                                                    <div class="nickzapros reportZapros typeLP"
+                                                                        style="width: 10.16vw; display: flex; justify-content: center;">
+                                                                        {{getLeftTime(banHistory.timeEnd)}}
+                                                                    </div>
+                                                                    <div class="nickzapros reportZapros"
+                                                                        style="width: 6vw; display: flex; justify-content: center;">
+                                                                        <div class="btnzapros"
+                                                                            data-title="СНЯТЬ БЛОКИРОВКУ"
+                                                                            style="margin-right: 0;">
+                                                                            <img alt="" src="img/gavel.png"
+                                                                                style="width: 1.3vw;"
+                                                                                v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                     </div>
                                                 </div>
 
