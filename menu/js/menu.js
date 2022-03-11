@@ -11,6 +11,7 @@ let menu = new Vue({
         fCursoring: undefined,
         fToggleCursor: undefined,
         slientMode: false,
+        document: null,
 
         //money
         money: 0,
@@ -2323,7 +2324,7 @@ let menu = new Vue({
             menu.adminAny3 = banHistory
         },
         // Выдает название причины бана из номера
-        // Используется
+        // Используется 
         getReasonName(id)
         {
             id = +id
@@ -2338,6 +2339,10 @@ let menu = new Vue({
             {
                 return `ОСТАЛОСЬ ${Math.floor(((timeEnd - +dateNow) % (1000 * 60 * 60)) / (1000 * 60))} МИНУТ(Ы)`
             }
+        },
+        getElementById(inputID)
+        {
+            return menu.document.getElementById(inputID)
         },
     },
     // computed: {
