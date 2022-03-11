@@ -1879,7 +1879,7 @@
                                                             style="display: flex; justify-content: center; align-items: center;">
                                                             <div class="btnzapros" data-title="ОБНОВИТЬ"
                                                                 style="margin: 0;">
-                                                                <img alt="" src="img/refresh.png" style="width: 1.3vw; display: flex; justify-content: center; align-items: center;"
+                                                                <img alt="" src="img/refresh.png" style="opacity: 0.7; width: 1.3vw; display: flex; justify-content: center; align-items: center;"
                                                                     v-on:click="emitServer('sAdminPanel:getSentencesPlayer', player.id);">
                                                             </div>
                                                         </div>
@@ -1916,13 +1916,13 @@
                                                                     </div>
                                                                     <div class="nickzapros reportZapros typeLP"
                                                                         style="width: 10.16vw; display: flex; justify-content: center;">
-                                                                        {{getLeftTime(banHistory.timeEnd)}}
+                                                                        {{getLeftTime(banHistory.timeEnd, banHistory.timeEnded)}}
                                                                     </div>
                                                                     <div class="nickzapros reportZapros"
                                                                         style="width: 6vw; display: flex; justify-content: center;">
                                                                         <div class="btnzapros"
                                                                             data-title="СНЯТЬ БЛОКИРОВКУ"
-                                                                            style="margin-right: 0;">
+                                                                            style="margin-right: 0;" v-show="!banHistory.timeEnded">
                                                                             <img alt="" src="img/gavel.png"
                                                                                 style="width: 1.3vw;"
                                                                                 v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">

@@ -2314,6 +2314,12 @@ let menu = new Vue({
         {
             menu.assortDays = menu.assortSelected = null
             menu.adminAny = 4
+            let dateNow = Date.now()
+            for(el of banHistory.list)
+            {
+                console.log(`${JSON.stringify(el)}`)
+                el.timeEnded = dateNow > el.timeEnd 
+            }
             menu.adminAny3 = banHistory
         },
         // Выдает название причины бана из номера
@@ -2321,17 +2327,13 @@ let menu = new Vue({
         getReasonName(id)
         {
             id = +id
-            console.log(id)
             return id === +0 ? 'cheater' : id === +1 ? 'spam' : id === +2 ? 'ddos' : 'other'
         },
-        getLeftTime(timeEnd)
+        getLeftTime(timeEnd, timeEnded)
         {
             let dateNow = Date.now()
             // Если время вышло
-            if(dateNow > timeEnd)
-            {
-                return 'ИСТЕКЛО'
-            }
+            if(timeEnded) return 'ИСТЕКЛО'
             else 
             {
                 return `ОСТАЛОСЬ ${Math.floor(((timeEnd - +dateNow) % (1000 * 60 * 60)) / (1000 * 60))} МИНУТ(Ы)`
