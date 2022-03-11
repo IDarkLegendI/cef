@@ -2031,8 +2031,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="btnback btnbackperson2" style="margin: 0;">
-                                                    <a :style="{opacity: (assortSelected !== null && assortDays !== null) ? 1 : 0.5}" class="red" href="#"
-                                                        id="mouseFocus"
+                                                    <a :style="{opacity: (assortSelected !== null && assortDays !== null) ? 1 : 0.5}"
+                                                        class="red" href="#" id="mouseFocus"
                                                         v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sVIP:buy', assortSelected, assortDays) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
                                                         НАКАЗАНИЕ</a>
                                                 </div>

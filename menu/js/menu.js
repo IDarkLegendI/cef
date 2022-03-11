@@ -2688,6 +2688,11 @@ if ('alt' in window) {
                     timeEnd: Date.now()+5000000,
                     adminName: 'DarkLegend',
                     reason: '1'
+                },      
+                {
+                    timeEnd: Date.now()+15000000,
+                    adminName: 'Res1ce',
+                    reason: '3'
                 },
             ],
             lastIndex: 1
