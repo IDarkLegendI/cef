@@ -2036,21 +2036,29 @@
                                                     <div
                                                         style="margin-bottom: 2vh;">
                                                         <div class="nickzapros" style="max-width: 50vw">
-                                                            ДЛИТЕЛЬНОСТЬ НАКАЗАНИЯ
+                                                            ДЕТАЛИ НАКАЗАНИЯ
                                                         </div>
                                                     </div> 
-                                                    <div class="group">
-                                                        <input class="inputText inputTextRed" id="apBanTime" required type="number">
-                                                        <span class="bar barRed"></span>
-                                                        <label
-                                                            class="labelText">УКАЖИТЕ КОЛИЧЕСТВО ЧАСОВ НАКАЗАНИЯ</label>
+                                                    <div style="display: flex; justify-content: space-around; width: 50vw; padding-left: 1.6vw;">
+                                                        <div class="group" style="width: 40%; padding: 0; margin: 0;">
+                                                            <input class="inputText inputTextRed" id="apBanTime" required style="width: 18.6vw;" type="number">
+                                                            <span class="bar barRed" style="width: 18.6vw;"></span>
+                                                            <label
+                                                                class="labelText">УКАЖИТЕ КОЛИЧЕСТВО ЧАСОВ НАКАЗАНИЯ</label>
+                                                        </div>
+                                                        <div class="group" style="width: 32%; padding: 0; margin: 0;" v-show="assortSelected === +3">
+                                                            <input class="inputText inputTextRed" id="apBanTextReason" required style="width: 14vw;" type="number">
+                                                            <span class="bar barRed" style="width: 14vw;"></span>
+                                                            <label
+                                                                class="labelText">УКАЖИТЕ ПРИЧИНУ НАКАЗАНИЯ</label>
+                                                        </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="btnback btnbackperson2" style="margin: 0;">
                                                     <a :style="{opacity: (assortSelected !== null && assortDays !== null) ? 1 : 0.5}"
                                                         class="red" href="#" id="mouseFocus"
-                                                        v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sAdminPanel:setBan', adminAny2.id, assortDays, assortSelected, getElementById('apBanTime').value) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
+                                                        v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sAdminPanel:setBan', adminAny2.id, assortDays, assortSelected, getElementById('apBanTime').value, getElementById('apBanTextReason').value) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
                                                         НАКАЗАНИЕ</a>
                                                 </div>
                                                 <!-- TODO ДОДЕЛАТЬ ЗАПРОС -->
