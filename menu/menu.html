@@ -2060,7 +2060,7 @@
                                                 <div class="btnback btnbackperson2" style="margin: 0;">
                                                     <a :style="{opacity: (assortSelected !== null && assortDays !== null && (assortDays === +0 || assortDays === +1 && reportReason.length > 0) && (assortSelected !== +3 || assortSelected === +3 && reportInput.length > 1)) ? 1 : 0.5}"
                                                         class="red" href="#" id="mouseFocus"
-                                                        v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sAdminPanel:setBan', adminAny2.id, assortDays, assortSelected, reportReason, reportInput) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
+                                                        v-on:click="(assortSelected !== null && assortDays !== null) ? emitServer('sAdminPanel:setPunish', adminAny2.id, assortDays, assortSelected, reportInput, reportReason) : emit('customNotify', 1, 'Необходимо заполнить все поля')">ВЫДАТЬ
                                                         НАКАЗАНИЕ</a>
                                                 </div>
                                                 <!-- TODO ДОДЕЛАТЬ ЗАПРОС -->
