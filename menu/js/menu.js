@@ -2291,6 +2291,8 @@ let menu = new Vue({
             menu.adminAny = 0
             menu.adminAny2 = false
             menu.adminAny3 = 0
+            menu.reportInput = ''
+            menu.reportReason = -1
             if(menu.adminAnyTimer !== null)
             {
                 clearTimeout(menu.adminAnyTimer);
@@ -2315,6 +2317,7 @@ let menu = new Vue({
         {
             menu.assortDays = menu.assortSelected = null
             menu.adminAny = 4
+            menu.reportReason = menu.reportInput = ''
             let dateNow = Date.now()
             for(el of banHistory.list)
             {
