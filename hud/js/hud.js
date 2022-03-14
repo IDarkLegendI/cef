@@ -16,8 +16,8 @@ var hud = new Vue({
         textWUP: 'Поиск игрового мира...',
         pulseWUP: false,
         intervalWUP: null,
-        
-        showHUD: false, 
+
+        showHUD: false,
         showLogo: false,
         showLogoTimer: null,
         startPlayers: 0,
@@ -37,7 +37,7 @@ var hud = new Vue({
 
         airAlert: true,
         targetAlert: true,
-        
+
         notifyNow: 0,
 
         //KillFeed
@@ -45,7 +45,7 @@ var hud = new Vue({
             // "DOLBAEB KILL DOLBAEBA2 из M4A1",
             // "DOLBAEB KILL DOLBAEBA2 из M4A1",
         ],
-        killFeedInterval: null, 
+        killFeedInterval: null,
         killFeedHTML: null,
 
         //Progress Recoil
@@ -55,8 +55,8 @@ var hud = new Vue({
 
         //Lobby 
         lobby: {},
-        
-        help: 0,   
+
+        help: 0,
         keyMenu: 112,
         helpMainMenu: false,
         //Misc
@@ -223,221 +223,201 @@ var hud = new Vue({
                 en: 'KILLS'
             },
             kill2: {
-                ru: 'УБИЙСТВ', 
+                ru: 'УБИЙСТВ',
                 en: 'KILLS'
             },
             ukilled: {
-                ru: 'ВЫ УБИЛИ ИГРОКА', 
+                ru: 'ВЫ УБИЛИ ИГРОКА',
                 en: 'YOU KILLED THE PLAYER'
             },
             distance: {
-                ru: 'С РАССТОЯНИЯ В', 
+                ru: 'С РАССТОЯНИЯ В',
                 en: 'FROM A DISTANCE OF IN'
             },
             meters: {
-                ru: 'МЕТРОВ', 
+                ru: 'МЕТРОВ',
                 en: 'METERS'
             },
             exit: {
-                ru: 'выход', 
+                ru: 'выход',
                 en: 'exit'
             },
             menu: {
-                ru: 'меню', 
+                ru: 'меню',
                 en: 'menu'
             },
             enemy: {
-                ru: 'ВРАГ', 
+                ru: 'ВРАГ',
                 en: 'ENEMY'
             },
             enemies: {
-                ru: 'ВРАГОВ', 
+                ru: 'ВРАГОВ',
                 en: 'ENEMIES'
             },
             player: {
-                ru: 'ИГРОК', 
+                ru: 'ИГРОК',
                 en: 'PLAYER'
             },
             players: {
-                ru: 'ИГРОКОВ', 
+                ru: 'ИГРОКОВ',
                 en: 'PLAYERS'
             },
             management: {
-                ru: 'управление', 
+                ru: 'управление',
                 en: 'management'
             },
         },
-        getText(name)
-        {
+        getText(name) {
             return this.i18n[name][this.lang]
         }
-    }, 
+    },
     methods: {
-        fGetColor(value)
-        {
-            if(value < +30) return 'red'
-            else if(value < +60) return 'orange'
+        fGetColor(value) {
+            if (value < +30) return 'red'
+            else if (value < +60) return 'orange'
             else return 'green'
         },
-        fUpdateKills(name, dist, kills = 1)
-        {
+        fUpdateKills(name, dist, kills = 1) {
             this.kills += kills;
-            if(kills === -1) return
+            if (kills === -1) return
             this.killsBar = [name, dist];
-            if(this.killsHandle !== null) clearTimeout(this.killsHandle);
+            if (this.killsHandle !== null) clearTimeout(this.killsHandle);
             this.killsGifShow = false;
-           setTimeout(() => { 
+            setTimeout(() => {
                 this.killsGifShow = true;
-                setTimeout(() => { 
+                setTimeout(() => {
                     this.killsGifShow = false
-                }, 6500);  
-            }, 400);  
-             
+                }, 6500);
+            }, 400);
+
             this.killsBarShow = true;
-            this.killsHandle = setTimeout(() => { 
+            this.killsHandle = setTimeout(() => {
                 this.killsBarShow = false;
                 this.killsHandle = null;
-            }, 9000);  
-        }, 
-        fupdateWarmUP(text, pulse, time = 1500)
-        {
-            if(hud.intervalWUP != null) clearTimeout(hud.intervalWUP); 
-            hud.showWUP = true;
-            hud.textWUP = text; 
-            hud.pulseWUP = pulse; 
-
-            hud.intervalWUP = setTimeout(() => { 
-                hud.showWUP = false;
-                hud.intervalWUP = null;  
-            }, time); 
+            }, 9000);
         },
-        fTimeDisplay(time = this.time)
-        {
+        fupdateWarmUP(text, pulse, time = 1500) {
+            if (hud.intervalWUP != null) clearTimeout(hud.intervalWUP);
+            hud.showWUP = true;
+            hud.textWUP = text;
+            hud.pulseWUP = pulse;
+
+            hud.intervalWUP = setTimeout(() => {
+                hud.showWUP = false;
+                hud.intervalWUP = null;
+            }, time);
+        },
+        fTimeDisplay(time = this.time) {
             let minute = Math.floor((time / 60));
             let second = time - (minute * 60);
-            return `${minute}:${second < 10 ? '0' : ''}${second}`; 
+            return `${minute}:${second < 10 ? '0' : ''}${second}`;
         },
         // timeDestroyedCarsInterval
-        fTimeUpdate(time, timeName, intervalName)
-        {
-            if(hud[timeName] != null) clearInterval(hud[intervalName]); 
+        fTimeUpdate(time, timeName, intervalName) {
+            if (hud[timeName] != null) clearInterval(hud[intervalName]);
             hud[timeName] = time;
             hud[intervalName] = setInterval(() => {
-                if(hud[timeName] <= 0) return clearInterval(hud[intervalName]); 
-                hud[timeName] -= 1; 
-            }, 1000); 
+                if (hud[timeName] <= 0) return clearInterval(hud[intervalName]);
+                hud[timeName] -= 1;
+            }, 1000);
         },
-        fKillFeedUpdate(obj)
-        {   
+        fKillFeedUpdate(obj) {
             console.log(`fKillFeedUpdate: ${JSON.stringify(obj)}`)
-            if(this.killFeed[2]) 
-            {
-                return setTimeout(() => this.fKillFeedUpdate(obj), 0) 
+            if (this.killFeed[2]) {
+                return setTimeout(() => this.fKillFeedUpdate(obj), 0)
             }
             obj.iKey = Date.now()
             this.killFeed.push(obj);
-            let htmlEl = document.getElementById('killfeed'); 
-            if(htmlEl == null) return;
-             
-            htmlEl.style.opacity = 1;    
+            let htmlEl = document.getElementById('killfeed');
+            if (htmlEl == null) return;
 
-            if(this.killFeedInterval != null) clearInterval(this.killFeedInterval); 
+            htmlEl.style.opacity = 1;
+
+            if (this.killFeedInterval != null) clearInterval(this.killFeedInterval);
             this.killFeedInterval = setInterval(() => {
-                if(htmlEl.style.opacity <= 0.3) 
-                {
+                if (htmlEl.style.opacity <= 0.3) {
                     this.killFeed.splice(0, this.killFeed.length)
                 }
-                if(htmlEl.style.opacity <= 0.2) 
-                {  
+                if (htmlEl.style.opacity <= 0.2) {
                     htmlEl.style.opacity = 0;
                     clearInterval(this.killFeedInterval);
                     this.killFeedInterval = null;
                     this.killFeed = [];
                 }
-                htmlEl.style.opacity = htmlEl.style.opacity - 0.02; 
+                htmlEl.style.opacity = htmlEl.style.opacity - 0.02;
                 // //console.log(htmlEl.style.opacity)
-            }, 500);    
+            }, 500);
         },
-        fPlayAudio(name, volume = 0.1) 
-        {
-            if(this.audio !== null) this.audio.pause();
+        fPlayAudio(name, volume = 0.1) {
+            if (this.audio !== null) this.audio.pause();
             this.audio = new Audio(`./audio/${name}.mp3`);
 
-            this.audio.volume = volume;   
-            this.audio.play();  
+            this.audio.volume = volume;
+            this.audio.play();
         },
-        fStopAudio()
-        {
-            if(this.audio !== null) this.audio.pause();
+        fStopAudio() {
+            if (this.audio !== null) this.audio.pause();
         },
-        getLevel: function(elo = 0) {
-            if(elo < 800) return '01';
-            else if(elo < 950) return '02';
-            else if(elo < 1100) return '03';
-            else if(elo < 1250) return '04';
-            else if(elo < 1400) return '05';
-            else if(elo < 1550) return '06';
-            else if(elo < 1700) return '07';
-            else if(elo < 1850) return '08';
-            else if(elo < 2000) return '09';
-            else return '10'; 
-         }, 
-        getAvatar(nick)
-        {
+        getLevel: function (elo = 0) {
+            if (elo < 800) return '01';
+            else if (elo < 950) return '02';
+            else if (elo < 1100) return '03';
+            else if (elo < 1250) return '04';
+            else if (elo < 1400) return '05';
+            else if (elo < 1550) return '06';
+            else if (elo < 1700) return '07';
+            else if (elo < 1850) return '08';
+            else if (elo < 2000) return '09';
+            else return '10';
+        },
+        getAvatar(nick) {
             return getAvatar(nick)
         },
-        rgbToHex(red, green, blue)
-        {
-            return '#' + 
-            ("0" + (red).toString(16)).slice(-2) + 
-            ("0" + (green).toString(16)).slice(-2) +
-            ("0" + (blue).toString(16)).slice(-2);
+        rgbToHex(red, green, blue) {
+            return '#' +
+                ("0" + (red).toString(16)).slice(-2) +
+                ("0" + (green).toString(16)).slice(-2) +
+                ("0" + (blue).toString(16)).slice(-2);
         },
         //Изменяет необходимые аргументы. Входные данные: ['nameVar', value], ...
-        changeVar(...args) 
-        { 
+        changeVar(...args) {
             // //console.log(`changeVar: ${JSON.stringify(...args)}`)
-            args.forEach(el => { 
+            args.forEach(el => {
                 // //console.log(`changeVar(0): ${JSON.stringify(el)}`) 
                 // //console.log(`changeVar(1): hud.${el[0]} = ${el[1]}`) 
-                hud[el[0]] = el[1]; 
+                hud[el[0]] = el[1];
                 // //console.log(`changeVar: ${hud[el[0]]}`)  
-            })  
+            })
         },
         useFunction(name, ...args) {
-            return hud[name](...args); 
+            return hud[name](...args);
         },
         useFunctionAny(name, ...args) {
             return window[name](...args);
         },
-        calcRecoilK(max)
-        {
+        calcRecoilK(max) {
             hud.kRecoil = +100 / +max
             console.log(`hud.kRecoil: ${hud.kRecoil}`)
         },
-        setProgressRecoil(value) 
-        {
+        setProgressRecoil(value) {
             let x = value * +hud.kRecoil
             hud.recoilElBar.style.width = `${+x}%`
             hud.recoilElBar.style.background = `rgba(23, 23, 24, ${+x/70})`
             // console.log(`setProgressRecoil --> value: ${+value}; hud.kRecoil: ${hud.kRecoil}; x: ${x}; x/100: ${+x/100}`) 
-            hud.recoilEl.style.background = `linear-gradient(90deg, rgba(0, 255, 26, 1) 0%, rgba(255, 242, 0, 1) ${100-x}%, rgba(255, 0, 0, 1) ${200-x}%`   
+            hud.recoilEl.style.background = `linear-gradient(90deg, rgba(0, 255, 26, 1) 0%, rgba(255, 242, 0, 1) ${100-x}%, rgba(255, 0, 0, 1) ${200-x}%`
         },
-        notifyClearAll()
-        {
-            Noty.closeAll(); 
+        notifyClearAll() {
+            Noty.closeAll();
         },
-        notifyClear(queue)
-        {
-            Noty.closeAll(queue); 
+        notifyClear(queue) {
+            Noty.closeAll(queue);
         },
-        async fObsUpdate(data, avatar)
-        {
-            hud.obs = data;  
-            hud.obs.avatar = await getPhoto(avatar, hud.name);   
-            if(hud.obs.avatar.length < 5) hud.obs.avatar = null; 
-            hud.obs.level = hud.getLevel(data.level) 
-        },  
+        async fObsUpdate(data, avatar) {
+            hud.obs = data;
+            hud.obs.avatar = await getPhoto(avatar, hud.name);
+            if (hud.obs.avatar.length < 5) hud.obs.avatar = null;
+            hud.obs.level = hud.getLevel(data.level)
+        },
         // toggleLoad(toggle, duration)
         // { 
         //     console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
@@ -468,29 +448,32 @@ var hud = new Vue({
         //     max = Math.floor(max);
         //     return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
         // },
-        toggleLoad(toggle, duration)
-        { 
+        toggleLoad(toggle, duration) {
             console.log(`toggleLoad: ${toggle}; duration: ${duration}; hud.showLogoTimer: ${hud.showLogoTimer}`)
             hud.showLogo = toggle
-            if(toggle) setTimeout(() => {
-                startGlitchGR() 
+            if (toggle) setTimeout(() => {
+                startGlitchGR()
             }, 1000)
-            if(hud.showLogoTimer !== null)
-            {
+            if (hud.showLogoTimer !== null) {
                 clearTimeout(hud.showLogoTimer);
                 hud.showLogoTimer = null;
-            } 
-            if(duration !== null) hud.showLogoTimer = setTimeout(() => {
-                hud.showLogo = !toggle 
+            }
+            if (duration !== null) hud.showLogoTimer = setTimeout(() => {
+                hud.showLogo = !toggle
             }, duration)
+        },
+        toggleHudLoad(toggle)
+        {
+            if(toggle) document.getElementById('fade').style.backgroundColor = 'black'
+            else document.getElementById('fade').style.backgroundColor = ''
         },
     },
 })
 
 if ('alt' in window) {
     alt.on('customNotify', (notifyType, text, time, pos = 9, queue) => {
-        if(hud.notifyNow > 10) hud.notifyClearAll()
-        else if(queue === 'a' && hud.notifyNow > 2) hud.notifyClearAll(queue)
+        if (hud.notifyNow > 10) hud.notifyClearAll()
+        else if (queue === 'a' && hud.notifyNow > 2) hud.notifyClearAll(queue)
         notify(notifyType, pos, text, time, queue);
         // //console.log(`${notifyType}, 9, ${text}, ${time}`);
     });
@@ -501,52 +484,61 @@ if ('alt' in window) {
         hud.kills = 0;
         hud.killsBar = false;
         hud.killsBarShow = false;
-        if(this.killsHandle != null) clearTimeout(this.killsHandle);
-        
-        if(players != -1) hud.startPlayers = players; 
+        if (this.killsHandle != null) clearTimeout(this.killsHandle);
+
+        if (players != -1) hud.startPlayers = players;
         hud.killFeed = [];
-        if(hud.killFeedInterval != null) clearInterval(hud.killFeedInterval);
+        if (hud.killFeedInterval != null) clearInterval(hud.killFeedInterval);
     });
 
-    alt.on('updateAlive', count => { 
+    alt.on('updateAlive', count => {
         // console.log(`updateAlive before: ${hud.alivePlayers}; count: ${count}`)
-        hud.alivePlayers = count; 
+        hud.alivePlayers = count;
         // console.log(`updateAlive after: ${hud.alivePlayers}; count: ${count}`) 
-    }) 
+    })
     // alt.on('giveKill', hud.fUpdateKills)
 
     alt.on('toggleLoad', hud.toggleLoad)
- 
+
     alt.on('updateAmmo', (clip, ammo) => hud.ammo = [clip, ammo])
-    alt.on('updateWarmUP', hud.fupdateWarmUP)  
+    alt.on('updateWarmUP', hud.fupdateWarmUP)
 
     alt.on('obServer', hud.fObsUpdate)
 
-    alt.on('updateKillFeed', hud.fKillFeedUpdate)    
+    alt.on('updateKillFeed', hud.fKillFeedUpdate)
 
-    alt.on('updateHelp', toggle =>
-    {
+    alt.on('updateHelp', toggle => {
         hud.help = toggle
-    })    
-    alt.on('visible', toggle => hud.visible = toggle)    
+    })
+    alt.on('visible', toggle => hud.visible = toggle)
 
-    alt.on('fPlayAudio',(name, volume) => hud.fPlayAudio(name, volume))       
-    alt.on('changeVar', (...args) => hud.changeVar(...args)) 
-    alt.on('useFunction', (...args) => hud.useFunction(...args))   
-    alt.on('useFunctionAny', (...args) => hud.useFunctionAny(...args))  
+    alt.on('fPlayAudio', (name, volume) => hud.fPlayAudio(name, volume))
+    alt.on('changeVar', (...args) => hud.changeVar(...args))
+    alt.on('useFunction', (...args) => hud.useFunction(...args))
+    alt.on('useFunctionAny', (...args) => hud.useFunctionAny(...args))
     alt.on('testHud', (...args) => {
-        hud.showHUD = true; 
-        setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend'}), 0)
-        setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
-        setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: 'Heavy Sniper', killerName: 'DarkLegend'}), 0) 
-    })  
-}  
-else  
-{ 
+        hud.showHUD = true;
+        setTimeout(() => hud.fKillFeedUpdate({
+            victimName: 'Danila',
+            weaponName: '2',
+            killerName: 'DarkLegend'
+        }), 0)
+        setTimeout(() => hud.fKillFeedUpdate({
+            victimName: 'Gruzd',
+            weaponName: 'Hatchet',
+            killerName: 'DarkLegend'
+        }), 0)
+        setTimeout(() => hud.fKillFeedUpdate({
+            victimName: 'DanilaImtortal',
+            weaponName: 'Heavy Sniper',
+            killerName: 'DarkLegend'
+        }), 0)
+    })
+} else {
     hud.obs.avatar = null
     // hud.obs.show = true;
     hud.obs.nick = 'DarkLegend'
-    hud.showHUD = false; 
+    hud.showHUD = false;
     // hud.toggleLoad(true, 3000)
     // hud.toggleLoad(true, null)
     // hud.showLogo = true;
@@ -559,14 +551,41 @@ else
     // setTimeout(() => hud.fKillFeedUpdate("DOLBAEB KILL DOLBAEBA2 из M4A13"), 3000) 
     let index = 0;
     hud.kills = 1;
-    hud.lobby = {0: {name: 'DanilaImortal', color: '#00FF00', hp: 99, armour: 100, mic: false}, 1: {name: 'DarkLegend', color: '#FF0000', hp: -1, mic: true}}
+    hud.lobby = {
+        0: {
+            name: 'DanilaImortal',
+            color: '#00FF00',
+            hp: 99,
+            armour: 100,
+            mic: false
+        },
+        1: {
+            name: 'DarkLegend',
+            color: '#FF0000',
+            hp: -1,
+            mic: true
+        }
+    }
     // hud.fUpdateKills("OBLIKO", 45)
     // setInterval(() => {
     //     hud.fUpdateKills("OBLIKO", 45)
     // }, 15000) 
     // setInterval(() => hud.fupdateWarmUP('123333333333333', true), 1500)  
-    setTimeout(() => hud.fKillFeedUpdate({victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', borderRed: true}), 0)
-    setTimeout(() => hud.fKillFeedUpdate({victimName: 'Gruzd', weaponName: 'Hatchet', killerName: 'DarkLegend'}), 0)
-    setTimeout(() => hud.fKillFeedUpdate({victimName: 'DanilaImtortal', weaponName: "Carbine Rifle", killerName: 'DarkLegend'}), 0)
+    setTimeout(() => hud.fKillFeedUpdate({
+        victimName: 'Danila',
+        weaponName: '2',
+        killerName: 'DarkLegend',
+        borderRed: true
+    }), 0)
+    setTimeout(() => hud.fKillFeedUpdate({
+        victimName: 'Gruzd',
+        weaponName: 'Hatchet',
+        killerName: 'DarkLegend'
+    }), 0)
+    setTimeout(() => hud.fKillFeedUpdate({
+        victimName: 'DanilaImtortal',
+        weaponName: "Carbine Rifle",
+        killerName: 'DarkLegend'
+    }), 0)
     // Vue.set(hud, killFeed, [...hud.killFeed, {victimName: 'Danila', weaponName: '2', killerName: 'DarkLegend', iKey: 1}])
-} 
+}
