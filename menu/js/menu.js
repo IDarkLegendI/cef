@@ -2304,7 +2304,7 @@ let menu = new Vue({
             menu.reportReason = menu.reportInput = ''
             let dateNow = Date.now()
             console.log(`openSentencesPlayer: ${JSON.stringify(banHistory)}`)
-            for (el of banHistory.list) {
+            for (el of banHistory) {
                 console.log(`${JSON.stringify(el)}`)
                 el.timeEnded = dateNow > el.timeEnd
             }
@@ -2664,8 +2664,7 @@ if ('alt' in window) {
         id: 17,
         name: 'DarkLegend2'
     }
-    menu.openSentencesPlayer({
-        "list": [{
+    menu.openSentencesPlayer([{
                 "timeEnd": 1646306253725,
                 "adminName": 'Gruzd',
                 "reason": '3'
@@ -2680,9 +2679,7 @@ if ('alt' in window) {
                 "adminName": 'DarkLegend',
                 "reason": '1'
             },
-        ],
-        "lastIndex": 1
-    })
+        ])
     // {
     //     "list": [{
     //         "timeEnd": 1647097996447,
