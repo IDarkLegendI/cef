@@ -1655,7 +1655,7 @@
                                                     <label class="labelText">NAME</label>
                                                 </div>
                                             </div>
-                                            <div class="nickzapros reportZapros typeLP" 
+                                            <div class="nickzapros reportZapros typeLP"
                                                 style="min-width: 5vw;  max-width: 5vw;">
                                                 <div class="group" style="padding-left: 0; margin: 0;">
                                                     <input class="inputText inputTextWhite" id="adminFindID"
@@ -1866,13 +1866,14 @@
 
                                                 <div
                                                     style="display: flex; align-items: center; justify-content: center;">
-                                                    <div class="nickzapros" style="max-width: 50vw"><span style="color: #fefefeea;">ПОД РАССМОТРЕНИЕМ</span>
+                                                    <div class="nickzapros" style="max-width: 50vw"><span
+                                                            style="color: #fefefeea;">ПОД РАССМОТРЕНИЕМ</span>
                                                         {{adminAny2.name.toUpperCase()}}#{{adminAny2.id}}</div>
                                                 </div>
 
                                                 <div>
                                                     <div
-                                                        style="display: flex; align-items: center; justify-content: center; margin-bottom: 2vh;">
+                                                        style="display: flex; align-items: center; justify-content: center;">
                                                         <div class="nickzapros" style="max-width: 50vw">
                                                             ИСТОРИЯ НАКАЗАНИЙ
                                                         </div>
@@ -1881,16 +1882,16 @@
                                                             style="display: flex; justify-content: center; align-items: center;">
                                                             <div class="btnzapros" data-title="ОБНОВИТЬ"
                                                                 style="margin: 0;">
-                                                                <img alt="" src="img/refresh.png" style="opacity: 0.7; width: 1.3vw; display: flex; justify-content: center; align-items: center;"
+                                                                <img alt="" src="img/refresh.png"
+                                                                    style="opacity: 0.7; width: 1.3vw; display: flex; justify-content: center; align-items: center;"
                                                                     v-on:click="emitServer('sAdminPanel:getSentencesPlayer', player.id);">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="apBanHistory"
-                                                        style="max-height: 4.8vw; overflow-y: auto; overflow-x: hidden;">
-                                                        <div style="display: flex; justify-content: center;"
-                                                            v-bind:key="index"
-                                                            v-for="(banHistory, index) in adminAny3">
+                                                        style="max-height: 4.8vw; overflow-y: auto; overflow-x: hidden; z-index: 1;">
+                                                        <div style="display: flex; justify-content: center; z-index: 1;"
+                                                            v-bind:key="index" v-for="(banHistory, index) in adminAny3">
                                                             <div class="avatarnickzapros"
                                                                 style="width: 60vw; height: 2.4vw;">
                                                                 <div class="avatarzapros"
@@ -1900,9 +1901,14 @@
                                                                 </div>
                                                                 <div
                                                                     style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                                                    <div class="nickzapros reportZapros"
+                                                                    <div class="nickzapros reportZapros" 
                                                                         style="width: 6vw;">
-                                                                        <div class="avatarzapros"
+                                                                        <div class="avatarzapros btnzapros btnzaprosForList" data-title="Пригласить" style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;"
+                                                                            v-if="+banHistory.reason === +3">
+                                                                            <img :src="`../menu/img/admin/${getReasonName(banHistory.reason)}.png`"
+                                                                                style="border-radius: 0%;">
+                                                                        </div>
+                                                                        <div class="avatarzapros" v-else
                                                                             style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;">
                                                                             <img :src="`../menu/img/admin/${getReasonName(banHistory.reason)}.png`"
                                                                                 style="border-radius: 0%;">
@@ -1915,20 +1921,21 @@
                                                                     <div class="nickzapros reportZapros typeLP"
                                                                         style="width: 10.16vw;">
                                                                         {{fDateToText(banHistory.timeEnd)}}
-                                                                    </div> 
+                                                                    </div>
                                                                     <div class="nickzapros reportZapros typeLP"
                                                                         style="width: 10.16vw; display: flex; justify-content: center;">
                                                                         {{getLeftTime(banHistory.timeEnd, banHistory.timeEnded)}}
                                                                     </div>
                                                                     <div class="nickzapros reportZapros"
                                                                         style="width: 6vw; display: flex; justify-content: center;">
-                                                                        <div class="btnzapros"
+                                                                        <div class="btnzapros btnzaprosForListToLeft"
                                                                             data-title="СНЯТЬ БЛОКИРОВКУ"
-                                                                            style="margin-right: 0;" v-show="!banHistory.timeEnded">
+                                                                            style="margin-right: 0;"
+                                                                            v-show="!banHistory.timeEnded">
                                                                             <img alt="" src="img/gavel.png"
                                                                                 style="width: 1.3vw;"
                                                                                 v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
-                                                                                <!-- TODO: доделать UNBAN -->
+                                                                            <!-- TODO: доделать UNBAN -->
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -2034,25 +2041,31 @@
                                                     </div>
                                                 </div>
 
-                                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; align-items: center;" v-show="assortDays === +1 || assortSelected === +3">
-                                                    <div
-                                                        style="margin-bottom: 2vh;">
+                                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; align-items: center;"
+                                                    v-show="assortDays === +1 || assortSelected === +3">
+                                                    <div style="margin-bottom: 2vh;">
                                                         <div class="nickzapros" style="max-width: 50vw">
                                                             ДЕТАЛИ НАКАЗАНИЯ
                                                         </div>
-                                                    </div> 
-                                                    <div style="display: flex; justify-content: space-around; width: 50vw; padding-left: 1.6vw;">
-                                                        <div class="group" style="width: 40%; padding: 0; margin: 0;" v-show="assortDays === +1">
-                                                            <input class="inputText inputTextRed" id="apBanTime" required style="width: 18.6vw;" type="number" v-model="reportReason">
+                                                    </div>
+                                                    <div
+                                                        style="display: flex; justify-content: space-around; width: 50vw; padding-left: 1.6vw;">
+                                                        <div class="group" style="width: 40%; padding: 0; margin: 0;"
+                                                            v-show="assortDays === +1">
+                                                            <input class="inputText inputTextRed" id="apBanTime"
+                                                                required style="width: 18.6vw;" type="number"
+                                                                v-model="reportReason">
                                                             <span class="bar barRed" style="width: 18.6vw;"></span>
-                                                            <label
-                                                                class="labelText">УКАЖИТЕ КОЛИЧЕСТВО ЧАСОВ НАКАЗАНИЯ</label>
+                                                            <label class="labelText">УКАЖИТЕ КОЛИЧЕСТВО ЧАСОВ
+                                                                НАКАЗАНИЯ</label>
                                                         </div>
-                                                        <div class="group" style="width: 32%; padding: 0; margin: 0;" v-show="assortSelected === +3">
-                                                            <input class="inputText inputTextRed" id="apBanTextReason" required style="width: 14vw;" type="text" v-model="reportInput">
+                                                        <div class="group" style="width: 32%; padding: 0; margin: 0;"
+                                                            v-show="assortSelected === +3">
+                                                            <input class="inputText inputTextRed" id="apBanTextReason"
+                                                                required style="width: 14vw;" type="text"
+                                                                v-model="reportInput">
                                                             <span class="bar barRed" style="width: 14vw;"></span>
-                                                            <label
-                                                                class="labelText">УКАЖИТЕ ПРИЧИНУ НАКАЗАНИЯ</label>
+                                                            <label class="labelText">УКАЖИТЕ ПРИЧИНУ НАКАЗАНИЯ</label>
                                                         </div>
                                                     </div>
                                                 </div>

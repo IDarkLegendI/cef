@@ -1439,6 +1439,9 @@ a:hover
         transition: .6s ease-in-out
         transform: rotate(-360deg)
 
+.btnzaprosForList
+    margin: 0
+    
 .btnzapros img:hover
     transition: .6s ease-in-out
     transform: rotate(360deg)
@@ -1684,8 +1687,9 @@ a:hover
 .btnzapros:after
     content: attr(data-title)
     position: absolute
-    transform: translate(10.5vw, -1.68125vw)
-    z-index: 1
+    // transform: translate(10.5vw, -1.68125vw)
+    // display: block
+    z-index:99999999
     background: #fefefeda
     border-color: black
     font-size: 1.6vmin
@@ -1698,9 +1702,23 @@ a:hover
     opacity: 0
     transition: all 0.4s ease
 
+.btnzaprosForList:after
+    display: block
+
+.btnzaprosForListToLeft:after
+    display: block
+
 .btnzapros:hover::after
     opacity: 1
     transform: translate(-100%, -160%)
+
+.btnzaprosForList:hover::after 
+    opacity: 1
+    transform: translate(50%, -160%)
+
+.btnzaprosForListToLeft:hover::after 
+    opacity: 1
+    transform: translate(-100%, -150%)
 
 .ticket .minibtn
     // margin-top: 1vmin

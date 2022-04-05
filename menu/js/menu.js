@@ -2492,6 +2492,18 @@ if ('alt' in window) {
     menu.isAlt = false
     menu.show = true;
     menu.carsPointer = 1;
+    let x = {
+        "list": [{
+            "timeEnd": 1647120025353,
+            "adminName": "DarkLegend",
+            "reason": 2
+        }, {
+            "timeEnd": 1647051035718,
+            "adminName": "DarkLegend",
+            "reason": 2
+        }],
+        "lastIndex": 1
+    }
     setTimeout(async () => {
         menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
         menu.setDiscordAvatar(menu.myName, '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
@@ -2523,7 +2535,7 @@ if ('alt' in window) {
             {
                 name: 'Dima24',
                 online: true
-            },{
+            }, {
                 name: 'Vanya22',
                 online: true
             },
@@ -2534,7 +2546,7 @@ if ('alt' in window) {
             {
                 name: 'Dima2244',
                 online: true
-            },{
+            }, {
                 name: 'Vanya242',
                 online: true
             },
@@ -2543,9 +2555,9 @@ if ('alt' in window) {
                 online: true
             },
             {
-                name: 'Dima2244',
+                name: 'Dima22424',
                 online: true
-            },{
+            }, {
                 name: 'Va2nya242',
                 online: true
             },
@@ -2708,22 +2720,28 @@ if ('alt' in window) {
         id: 17,
         name: 'DarkLegend2'
     }
-    menu.openSentencesPlayer([{
-                "timeEnd": 1646306253725,
-                "adminName": 'Gruzd',
-                "reason": '3'
-            },
-            {
-                "timeEnd": Date.now() + +3600000,
-                "adminName": 'DarkLegend',
-                "reason": '2'
-            },
-            {
-                "timeEnd": Date.now() + 5000000,
-                "adminName": 'DarkLegend',
-                "reason": '1'
-            },
-        ])
+    menu.openSentencesPlayer([
+        {
+            "timeEnd": Date.now() + +3600000,
+            "adminName": 'DarkLegend',
+            "reason": '2'
+        },
+        {
+            "timeEnd": 1646306253725,
+            "adminName": 'Gruzd',
+            "reason": '3'
+        },
+        {
+            "timeEnd": Date.now() + +3600000,
+            "adminName": 'DarkLegend',
+            "reason": '2'
+        },
+        {
+            "timeEnd": Date.now() + 5000000,
+            "adminName": 'DarkLegend',
+            "reason": '1'
+        },
+    ])
     // {
     //     "list": [{
     //         "timeEnd": 1647097996447,
