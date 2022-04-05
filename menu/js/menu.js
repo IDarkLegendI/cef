@@ -2512,7 +2512,51 @@ if ('alt' in window) {
             {
                 name: 'Dima2',
                 online: true
-            }
+            }, {
+                name: 'Vanya2',
+                online: true
+            },
+            {
+                name: 'Dima3',
+                online: true
+            },
+            {
+                name: 'Dima24',
+                online: true
+            },{
+                name: 'Vanya22',
+                online: true
+            },
+            {
+                name: 'Dima32',
+                online: true
+            },
+            {
+                name: 'Dima2244',
+                online: true
+            },{
+                name: 'Vanya242',
+                online: true
+            },
+            {
+                name: 'Dima324',
+                online: true
+            },
+            {
+                name: 'Dima2244',
+                online: true
+            },{
+                name: 'Va2nya242',
+                online: true
+            },
+            {
+                name: 'D2ima324',
+                online: true
+            },
+            {
+                name: 'D3ima2244',
+                online: true
+            },
         ]
         menu.adminCurrentReport = {
             id: 21,
