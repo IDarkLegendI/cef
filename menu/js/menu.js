@@ -2739,7 +2739,8 @@ if ('alt' in window) {
             "timeEnd": 16463062253725,
             "adminName": 'Ivan',
             "reason": '3',
-            "customReason": 'Не пришел на тест'
+            "customReason": 'Не пришел на тест',
+            'unban': {"adminName": 'DarkLegend', 'date': 1646306253725, "reason": 'Ложный бан'}
         },
         {
             "timeEnd": Date.now() + +3600000,

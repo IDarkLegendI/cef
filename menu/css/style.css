@@ -1776,9 +1776,7 @@ a:hover {
 
 .flyTitle {
   position: absolute;
-  transform: translate(25%, 0%);
-  display: block;
-  z-index: 99999999;
+  z-index: 10000;
   background: #fefefe;
   color: green;
   border-color: black;
@@ -1790,12 +1788,17 @@ a:hover {
   font-family: "Roboto Condensed", sans-serif;
   white-space: nowrap;
   opacity: 0;
-  transition: all 0.4s ease;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0s linear 0.3s, transform 0.3s;
+  pointer-events: none;
 }
 
 .flyTitleHover {
   opacity: 1;
-  transform: translate(-40%, 0%);
+  visibility: visible;
+  transition-delay: 0s;
+  pointer-events: auto;
+  transform: translate(-40%, -35%);
 }
 
 .btnzapros:after {
@@ -1812,7 +1815,9 @@ a:hover {
   font-family: "Roboto Condensed", sans-serif;
   white-space: nowrap;
   opacity: 0;
-  transition: all 0.4s ease;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0s linear 0.3s, transform 0.3s;
+  pointer-events: none;
 }
 
 .btnzaprosForList:after {
@@ -1825,6 +1830,9 @@ a:hover {
 
 .btnzapros:hover::after {
   opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+  pointer-events: auto;
   transform: translate(-100%, -160%);
 }
 

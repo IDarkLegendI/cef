@@ -1904,7 +1904,7 @@
                                                                     <div class="nickzapros reportZapros" 
                                                                         @mouseleave="fDisplayCustomReason('apBanReason' + index, false)" style="width: 6vw;">
                                                                         <div @mouseover="fDisplayCustomReason('apBanReason' + index, true)" class="avatarzapros"
-                                                                            style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; position: relative;"  v-if="+banHistory.reason === +3">
+                                                                            style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; position: relative; cursor: pointer;" v-if="+banHistory.reason === +3">
                                                                             <div :id="'apBanReason' + index" class="flyTitle">{{banHistory.customReason}}</div>
                                                                             <img :src="`../menu/img/admin/${getReasonName(banHistory.reason)}.png`"
                                                                                 style="border-radius: 0%;">
@@ -1924,8 +1924,15 @@
                                                                         {{fDateToText(banHistory.timeEnd)}}
                                                                     </div>
                                                                     <div class="nickzapros reportZapros typeLP"
-                                                                        style="width: 10.16vw; display: flex; justify-content: center;">
-                                                                        {{getLeftTime(banHistory.timeEnd, banHistory.timeEnded)}}
+                                                                        @mouseleave="fDisplayCustomReason('apBanUnban' + index, false)" style="width: 10.16vw; display: flex; justify-content: center; opacity: 1; position: relative;">
+                                                                        <section @mouseover="fDisplayCustomReason('apBanUnban' + index, true)" style="cursor: pointer;" v-if="banHistory.unban">
+                                                                            <div :id="'apBanUnban' + index" class="flyTitle">Бан снят {{banHistory.unban.adminName}}: '{{banHistory.unban.reason}}' от {{fDateToText(banHistory.unban.date)}}</div>
+                                                                            <p style="opacity: 0.6">БАН СНЯТ</p>
+                                                                            <!-- {{banHistory.unban.adminName}} {{fDateToText(banHistory.unban.date)}} {{banHistory.unban.reason}} -->
+                                                                        </section>
+                                                                        <section style="opacity: 0.6" v-else>
+                                                                            {{getLeftTime(banHistory.timeEnd, banHistory.timeEnded)}}
+                                                                        </section>
                                                                     </div>
                                                                     <div class="nickzapros reportZapros"
                                                                         style="width: 6vw; display: flex; justify-content: center;">
