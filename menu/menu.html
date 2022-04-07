@@ -1873,7 +1873,7 @@
 
                                                 <div>
                                                     <div
-                                                        style="display: flex; align-items: center; justify-content: center;">
+                                                        style="display: flex; align-items: center; justify-content: center; z-index: -1;">
                                                         <div class="nickzapros" style="max-width: 50vw">
                                                             ИСТОРИЯ НАКАЗАНИЙ
                                                         </div>
@@ -1902,9 +1902,10 @@
                                                                 <div
                                                                     style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                                                                     <div class="nickzapros reportZapros" 
-                                                                        style="width: 6vw;">
-                                                                        <div class="avatarzapros btnzapros btnzaprosForList" data-title="Пригласить" style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw;"
-                                                                            v-if="+banHistory.reason === +3">
+                                                                        @mouseleave="fDisplayCustomReason('apBanReason' + index, false)" style="width: 6vw;">
+                                                                        <div @mouseover="fDisplayCustomReason('apBanReason' + index, true)" class="avatarzapros"
+                                                                            style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; position: relative;"  v-if="+banHistory.reason === +3">
+                                                                            <div :id="'apBanReason' + index" class="flyTitle">{{banHistory.customReason}}</div>
                                                                             <img :src="`../menu/img/admin/${getReasonName(banHistory.reason)}.png`"
                                                                                 style="border-radius: 0%;">
                                                                         </div>

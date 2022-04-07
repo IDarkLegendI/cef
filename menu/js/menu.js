@@ -2304,11 +2304,25 @@ let menu = new Vue({
             menu.reportReason = menu.reportInput = ''
             let dateNow = Date.now()
             console.log(`openSentencesPlayer: ${JSON.stringify(banHistory)}`)
+            let index = 0, idName
             for (el of banHistory) {
-                console.log(`${JSON.stringify(el)}`)
+                index += +1;
+                idName = 'apBanReason' + index
+                console.log(`${JSON.stringify(el)}; index: ${index}; idName: ${idName}; el.customReason: ${el.customReason}`)
                 el.timeEnded = dateNow > el.timeEnd
+                // if (document.getElementById(idName)) document.getElementById(idName).setAttribute('data-title', el.customReason);
             }
             menu.adminAny3 = banHistory
+        },
+        fDisplayCustomReason(name, visible)
+        {
+            // console.log(`name: ${name}; visible: ${visible}`)
+            // if (document.getElementById(idName)) document.getElementById(idName).setAttribute('data-title', customReason);
+            let doc = document.getElementById(name)
+            if(!doc) return
+            console.log(`doc: ${JSON.stringify(doc)}`)
+            if(visible) doc.classList.add('flyTitleHover');
+            else doc.classList.remove('flyTitleHover');
         },
         // Выдает название причины бана из номера
         // Используется 
@@ -2722,24 +2736,39 @@ if ('alt' in window) {
     }
     menu.openSentencesPlayer([
         {
+            "timeEnd": 16463062253725,
+            "adminName": 'Ivan',
+            "reason": '3',
+            "customReason": 'Не пришел на тест'
+        },
+        {
             "timeEnd": Date.now() + +3600000,
             "adminName": 'DarkLegend',
-            "reason": '2'
+            "reason": '2',
+            "customReason": 'Не пришел на тест2'
         },
         {
             "timeEnd": 1646306253725,
             "adminName": 'Gruzd',
-            "reason": '3'
+            "reason": '3',
+            "customReason": 'Не пришел на тест'
         },
         {
             "timeEnd": Date.now() + +3600000,
             "adminName": 'DarkLegend',
-            "reason": '2'
+            "reason": '2',
+            "customReason": ''
         },
         {
             "timeEnd": Date.now() + 5000000,
             "adminName": 'DarkLegend',
             "reason": '1'
+        },
+        {
+            "timeEnd": 1646306253725,
+            "adminName": 'Gruzd',
+            "reason": '3',
+            "customReason": 'Не голосовал за батьку'
         },
     ])
     // {
