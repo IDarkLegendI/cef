@@ -1939,7 +1939,7 @@
                                                                         <div class="btnzapros btnzaprosForListToLeft"
                                                                             data-title="СНЯТЬ БЛОКИРОВКУ"
                                                                             style="margin-right: 0;"
-                                                                            v-show="!banHistory.timeEnded">
+                                                                            v-show="!banHistory.timeEnded && !banHistory.unban">
                                                                             <img alt="" src="img/gavel.png"
                                                                                 style="width: 1.3vw;"
                                                                                 v-on:click="emitServer('sAdminPanel:getInfoPlayer', player.id); adminPanelStartModal();">
