@@ -2298,6 +2298,8 @@ let menu = new Vue({
             menu.adminAny2 = objStyle
             menu.adminAny3 = obj
         },
+
+        // *НАКАЗАНИЯ*
         async openSentencesPlayer(banHistory) {
             menu.assortDays = menu.assortSelected = undefined
             menu.adminAny = 4
@@ -2314,6 +2316,14 @@ let menu = new Vue({
             }
             menu.adminAny3 = banHistory
         },
+
+        checkToSendSentences()
+        {
+            return (menu.assortSelected !== undefined && menu.assortDays !== undefined && (menu.assortDays === +0 || (menu.assortDays === +1 || menu.assortDays === +2) && 
+            menu.reportReason.length > 0) && (menu.assortSelected !== +3 || menu.assortSelected === +3 && menu.reportInput.length > 1))
+        },
+
+        // **
         fDisplayCustomReason(name, visible)
         {
             // console.log(`name: ${name}; visible: ${visible}`)
@@ -2519,6 +2529,8 @@ if ('alt' in window) {
         "lastIndex": 1
     }
     setTimeout(async () => {
+        // menu.assortDays = 1
+        // menu.assortSelected = 3
         menu.myAvatar = await getPhoto('287911323130396673/822a88c7af61b2eeaa694c3c49b29330', menu.myName);
         menu.setDiscordAvatar(menu.myName, '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
         // menu.setDiscordAvatar('Gruzd', '287911323130396673/822a88c7af61b2eeaa694c3c49b29330');
