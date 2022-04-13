@@ -1629,7 +1629,7 @@
                             </div>
                             <div
                                 style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; height: 5.604166666666667vw;">
-                                <span style="font-size: 3vh;">УПРАВЛЕНИЕ {{adminAny === +4 ? `НАКАЗАНИЯМИ ${adminAny2.name.toUpperCase()}` : adminAny === +3 ? 'ИГРОКОМ' : 'ИГРОКАМИ'}}</span>
+                                <span style="font-size: 3vh;">УПРАВЛЕНИЕ {{adminAny === +4 ? `НАКАЗАНИЯМИ ${adminAny2.name.toUpperCase()}#${adminAny2.id}` : adminAny === +3 ? 'ИГРОКОМ' : 'ИГРОКАМИ'}}</span>
                             </div>
                             <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
                                 v-on:click="switchPage(7,0)">
@@ -1871,7 +1871,6 @@
                                                         style="display: flex; align-items: center; justify-content: center;  margin: 2vh 0;">
                                                         <div class="nickzapros" style="max-width: 50vw">
                                                             ИСТОРИЯ НАКАЗАНИЙ
-                                                            {{adminAny2.name.toUpperCase()}}#{{adminAny2.id}}
                                                         </div>
 
                                                         <div class="nickzapros reportZapros"
