@@ -1445,7 +1445,7 @@
                             <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <span style="font-size: 3vh;">{{i18n.managmentSub}}</span>
+                            <span style="font-size: 3vw;">{{i18n.managmentSub}}</span>
                             <div class="btn" id="mouseFocus" v-on:click="switchPage(0,0)">
                                 <span>{{i18n.btnBack}}</span>
                             </div>
@@ -1623,14 +1623,17 @@
                 <!-- Управление игроками -->
                 <section v-if="subPage === 1">
                     <div style="display: flex; flex-direction: column; height: 100vh;">
-                        <div class="upline">
-                            <div class="nameupline" style="flex-basis: 15%;">
+                        <div class="upline" style="height: 5.604166666666667vw; ">
+                            <div class="nameupline">
                                 <span>GTAROYAL.RU</span>
                             </div>
-                            <span style="font-size: 3vh; flex-basis: 25%;">УПРАВЛЕНИЕ {{adminAny === +3 ? 'ИГРОКОМ' : 'ИГРОКАМИ'}}</span>
+                            <div
+                                style="display: flex; flex-direction: column; align-items: center; justify-content: space-around; height: 5.604166666666667vw;">
+                                <span style="font-size: 3vh;">УПРАВЛЕНИЕ {{adminAny === +4 ? `НАКАЗАНИЯМИ ${adminAny2.name.toUpperCase()}` : adminAny === +3 ? 'ИГРОКОМ' : 'ИГРОКАМИ'}}</span>
+                            </div>
                             <div @contextmenu="switchPage(0,0)" class="btn" id="mouseFocus"
                                 v-on:click="switchPage(7,0)">
-                                <span style="flex-basis: 15%;">APANEL</span>
+                                <span>APANEL</span>
                             </div>
                         </div>
                         <div
@@ -1992,7 +1995,7 @@
                                                                 <img class="apButtonImg" src="./img/admin/ban-user.png">
                                                             </div>
                                                         </span>
-                                                        <span :class="{minibtnRed: +assortDays === +3}" class="minibtn"
+                                                        <!-- <span :class="{minibtnRed: +assortDays === +3}" class="minibtn"
                                                             style="display: flex; 
                                                         align-items: center; justify-content: center; align-self: center;"
                                                             v-on:click="assortDays = 3">
@@ -2003,7 +2006,7 @@
                                                                 style="width: 3vw; display: flex; justify-content: center;">
                                                                 <img class="apButtonImg" src="./img/admin/mute.png" style="width: 1.6vw">
                                                             </div>
-                                                        </span>
+                                                        </span> -->
                                                     </div>
                                                 </div>
                                                 <!-- Скрытый блок при разбане -->
