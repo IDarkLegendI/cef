@@ -2314,7 +2314,7 @@ let menu = new Vue({
                 el.timeEnded = dateNow > el.timeEnd
                 // if (document.getElementById(idName)) document.getElementById(idName).setAttribute('data-title', el.customReason);
             }
-            menu.adminAny3 = banHistory
+            menu.adminAny3 = banHistory.sort((a, b) => a.timeEnd - +b.timeEnd)
         },
 
         checkToSendSentences()
