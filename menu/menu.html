@@ -2110,13 +2110,13 @@
                                                 </div>
 
                                                 <div style="display: flex; justify-content: center;">
-                                                    <div class="btnback btnbackperson2" style="margin: 0;" v-show="assortDays === +2">
+                                                    <div class="btnback btnbackperson2" style="margin: 0; height: auto;" v-show="assortDays === +2">
                                                         <a href="#" id="mouseFocus"
                                                             v-on:click="assortDays = 0">
                                                             ОТМЕНА
                                                         </a>
                                                     </div>
-                                                    <div class="btnback btnbackperson2" style="margin: 0;">
+                                                    <div class="btnback btnbackperson2" style="margin: 0; height: auto;">
                                                         <a :style="{opacity: checkToSendSentences() ? 1 : 0.5}"
                                                             class="red" href="#" id="mouseFocus"
                                                             v-on:click="checkToSendSentences() ? (assortDays === +2 ? emitServer('sAdminPanel:unBan', adminAny2.id, reportReason) : emitServer('sAdminPanel:setPunish', adminAny2.id, assortDays, assortSelected, reportReason, reportInput)) : emit('customNotify', 1, 'Необходимо заполнить все поля')">
