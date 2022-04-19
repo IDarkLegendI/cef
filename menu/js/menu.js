@@ -1244,6 +1244,11 @@ let menu = new Vue({
                 if (openMenu) menu.prePostOpenPage(newPage, newSubPage)
                 else menu.anyVar = []
             }
+            else if(this.page === 1)
+            {
+                console.log(`document.removeEventListener('keydown')`)
+                document.removeEventListener('keydown', menu.fKeyDown, true);
+            }
             this.updateTuning = false;
             this.recordKey = false;
         },
@@ -1254,7 +1259,11 @@ let menu = new Vue({
 
         prePostOpenPage(newPage, newSubPage) {
             console.log(`prePostOpenPage: newPage: ${newPage}; newSubPage: ${newSubPage};`)
-            if (newPage === 7 && newSubPage === 1) {
+            if(newPage === 1)
+            {
+                document.addEventListener('keydown', menu.fKeyDown, true);
+            }  
+            else if (newPage === 7 && newSubPage === 1) {
                 //menu.adminAny Используется для вкл\выкл скриншота
                 menu.anyVar = [] // Используется для показа
                 menu.closeModal()
@@ -2039,8 +2048,9 @@ let menu = new Vue({
         // {
         //     return vip === 'deluxe' ? 3 : vip === 'premium' ? 2 : vip === 'vip' ? 1 : 0
         // },
-        fKeyDown(keyCode) {
-            // //console.log(keyCode) 
+        fKeyDown(event) {
+            const keyCode = event.keyCode
+            console.log(keyCode) 
             // //console.log(menu.keyCodes[keyCode]) 
             // //console.log(menu.recordKey)  
             // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
@@ -2821,10 +2831,7 @@ if ('alt' in window) {
 }
 menu.i18nTemp = JSON.stringify(menu.i18n);
 menu.loadLang();
-document.addEventListener('keydown', function (event) {
-    menu.fKeyDown(event.keyCode)
-});
-
+ 
 menu.cars.forEach((el, index) => {
     menu.cars[index].price2 = JSON.stringify(el.price)
 })
