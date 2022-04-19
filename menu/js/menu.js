@@ -1139,6 +1139,10 @@ let menu = new Vue({
         saveSettings(page, subPage = 0) {
             //console.log(`saveMenu`)
             if (page !== -1) this.switchPage(page, subPage);
+            menu.methodSaveSettings()
+        },
+        methodSaveSettings()
+        {
             if ('alt' in window) {
                 alt.emit('saveSettings', {
                     lang: this.lang,
@@ -1248,9 +1252,9 @@ let menu = new Vue({
             {
                 console.log(`document.removeEventListener('keydown')`)
                 document.removeEventListener('keydown', menu.fKeyDown, true);
+                this.recordKey = false;
             }
             this.updateTuning = false;
-            this.recordKey = false;
         },
 
         resetPageAfter(newPage) {
@@ -2069,6 +2073,7 @@ let menu = new Vue({
                     else {
                         menu[menu.recordKey] = keyCode;
                         menu.recordKey = false;
+                        menu.methodSaveSettings()
                     }
                 }
             }
