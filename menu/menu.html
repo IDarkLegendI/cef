@@ -791,6 +791,10 @@
                                                 <a href="#" id="mouseFocus"
                                                     v-on:click="saveSettings(1, 1)">{{i18n.changePassword}}</a>
                                             </div>
+                                            <div class="btnback">
+                                                <a href="#" id="mouseFocus"
+                                                    v-on:click="emitToClient('cSettings:setDefault')">{{i18n.defaultSettings}}</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
