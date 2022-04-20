@@ -662,6 +662,7 @@ let menu = new Vue({
         //i18n
         i18n: {
             // balance: 'Balance', 
+            or: 'OR',
             balance: 'BALANCE',
             personal: 'PRIVATE',
             managerCars: 'Manage your cars',
@@ -1202,6 +1203,7 @@ let menu = new Vue({
                     let objInvite = menu.lobby.find(el => (el.name === 'ПРИГЛАСИТЬ' || el.name === 'INVITE'))
                     Vue.set(objInvite, 'name', menu.i18n.inviteText)
                     this.resetPageAfter(newPage);
+                    menu.emitToClient('cMenu:updatePage', menu.page)
 
                     if (this.coolDown) return;
                     this.coolDown = true;
@@ -1531,6 +1533,7 @@ let menu = new Vue({
         loadRu() {
             document.getElementById('inputAddFriend').placeholder = "Введите NickName"
             menu.i18n = {
+                or: 'ИЛИ',
                 balance: 'БАЛАНС',
                 personal: 'ЛИЧНЫЙ',
                 managerCars: 'Управляйте своими машинами',
@@ -2054,9 +2057,9 @@ let menu = new Vue({
         // },
         fKeyDown(event) {
             const keyCode = event.keyCode
-            console.log(keyCode) 
-            // //console.log(menu.keyCodes[keyCode]) 
-            // //console.log(menu.recordKey)  
+            console.log(`!!!!!!!!!!!!keyCode: ${keyCode}`) 
+            console.log(`!!!!!!!!!!!!menu.keyCodes[keyCode]: ${menu.keyCodes[keyCode]}`) 
+            // //console.log(menu.recordKey)   
             // if (menu.recordKey !== false && menu.Object.keys(menu.keyCodes).some(el => el === event.code)) 
             if (menu.recordKey !== false) {
                 if (keyCode === 27) return menu.recordKey = false;
@@ -2069,7 +2072,7 @@ let menu = new Vue({
                     if (menu.keyFingerPointing === keyCode) count += +1;
                     if (menu.keyMenu === keyCode) count += +1;
 
-                    if (count > 0) menu.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '2500');
+                    if (count > 0 || keyCode === 112) menu.emitToClient('notifyI18n', '1', 'menu', 'keyBusy', '2500');
                     else {
                         menu[menu.recordKey] = keyCode;
                         menu.recordKey = false;
@@ -2741,8 +2744,8 @@ if ('alt' in window) {
         ]
         // menu.switchPage(4, 1)
         // menu.switchPage(7, 1)
-        menu.page = 7
-        menu.subPage = 1
+        menu.page = 1
+        menu.subPage = 0
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true

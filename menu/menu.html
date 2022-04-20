@@ -706,10 +706,30 @@
                                     <div class="binds" v-if="vipLevel > 1">
                                         <div class="bind">
                                             <span class="bindname">{{i18n.keyMenu}}</span>
-                                            <div class="settingCenter"><span
+                                            <section>
+
+                                            </section>
+                                            <div style="display: flex; width: 23%; justify-content: space-between;" v-if="keyMenu !== 112">
+                                                <div class="settingCenter">
+                                                    <span class="bindbtn" id="mouseFocus" style="animation-name: none">{{keyCodes[112].toUpperCase()}}</span>
+                                                </div>
+                                                <span style="display: flex; align-items: center;">
+                                                    <p class="bindname">
+                                                        {{i18n.or}}
+                                                    </p>
+                                                </span>
+                                                <div class="settingCenter"><span
                                                     :style="{animationName: recordKey === 'keyMenu' ? 'flash' : 'none'}"
                                                     class="bindbtn" id="mouseFocus"
                                                     v-on:click="recordKey === 'keyMenu' ? recordKey = false : recordKey = 'keyMenu'">{{keyCodes[keyMenu].toUpperCase()}}</span>
+                                                </div>
+                                            </div>
+                                            <div v-else>
+                                                <div class="settingCenter"><span
+                                                    :style="{animationName: recordKey === 'keyMenu' ? 'flash' : 'none'}"
+                                                    class="bindbtn" id="mouseFocus"
+                                                    v-on:click="recordKey === 'keyMenu' ? recordKey = false : recordKey = 'keyMenu'">{{keyCodes[keyMenu].toUpperCase()}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
