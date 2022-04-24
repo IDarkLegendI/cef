@@ -1265,6 +1265,7 @@ let menu = new Vue({
         },
 
         prePostOpenPage(newPage, newSubPage) {
+            menu.emitToClient('cMenu:updatePage', newPage, menu.page) 
             console.log(`prePostOpenPage: newPage: ${newPage}; newSubPage: ${newSubPage};`)
             if(newPage === 1)
             {
