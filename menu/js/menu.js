@@ -2321,21 +2321,33 @@ let menu = new Vue({
         },
 
         // *НАКАЗАНИЯ*
-        async openSentencesPlayer(banHistory) {
+        async openSentencesPlayer(banHistory, kickHistory) {
             menu.assortDays = menu.assortSelected = undefined
             menu.adminAny = 4
             menu.reportReason = menu.reportInput = ''
             let dateNow = Date.now()
             console.log(`openSentencesPlayer: ${JSON.stringify(banHistory)}`)
-            let index = 0, idName
+            // let index = 0, idName
             for (el of banHistory) {
-                index += +1;
-                idName = 'apBanReason' + index
-                console.log(`${JSON.stringify(el)}; index: ${index}; idName: ${idName}; el.customReason: ${el.customReason}`)
+                // index += +1;
+                // idName = 'apBanReason' + index
+                // console.log(`${JSON.stringify(el)}; index: ${index}; idName: ${idName}; el.customReason: ${el.customReason}`)
                 el.timeEnded = dateNow > el.timeEnd
                 // if (document.getElementById(idName)) document.getElementById(idName).setAttribute('data-title', el.customReason);
             }
-            menu.adminAny3 = banHistory.sort((a, b) => a.timeEnd - +b.timeEnd)
+
+            if(!kickHistory) kickHistory = []
+            for (el of kickHistory) {
+                el.timeEnd = el.time
+                delete el.time
+                el.timeEnded = null
+                el.customReason = 'GRAC'
+                // if (document.getElementById(idName)) document.getElementById(idName).setAttribute('data-title', el.customReason);
+            }
+
+            console.log(`openSentencesPlayer: ${JSON.stringify(kickHistory)}`)
+
+            menu.adminAny3 = banHistory.concat(kickHistory).sort((a, b) => a.timeEnd - +b.timeEnd)
         },
 
         checkToSendSentences()
@@ -2359,7 +2371,7 @@ let menu = new Vue({
         // Используется 
         getReasonName(id) {
             id = +id
-            return id === +0 ? 'cheater' : id === +1 ? 'spam' : id === +2 ? 'ddos' : 'other'
+            return id === +0 ? 'cheater' : id === +1 ? 'spam' : id === +2 ? 'ddos' :  id === +4 ? 'GRAC' : 'other'
         },
         getLeftTime(timeEnd, timeEnded) {
             let dateNow = Date.now()
@@ -2747,8 +2759,8 @@ if ('alt' in window) {
         ]
         // menu.switchPage(4, 1)
         // menu.switchPage(7, 1)
-        menu.page = 1
-        menu.subPage = 0
+        menu.page = 7
+        menu.subPage = 1
         menu.plusMoney = 5
         menu.bonusMoney = 5
         menu.wsWin = true
@@ -2767,7 +2779,8 @@ if ('alt' in window) {
         id: 17,
         name: 'DarkLegend2'
     }
-    menu.openSentencesPlayer([
+    menu.openSentencesPlayer(
+    [
         {
             "timeEnd": 16463062253725,
             "adminName": 'Ivan',
@@ -2804,7 +2817,14 @@ if ('alt' in window) {
             "reason": '3',
             "customReason": 'Не голосовал за батьку'
         },
-    ])
+    ], 
+    [{
+        "time": 16463062253725,
+        "adminName": 'Xuyan',
+        "reason": '4',
+        "customReason": '',
+        'hiddenText': 'HP BEFORE: 150, HP AFTER: 150'
+    },])
     // {
     //     "list": [{
     //         "timeEnd": 1647097996447,

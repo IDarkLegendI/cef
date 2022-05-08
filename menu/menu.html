@@ -1928,7 +1928,7 @@
                                                                         <div @mouseover="fDisplayCustomReason('apBanReason' + index, true)"
                                                                             class="avatarzapros"
                                                                             style="width: 1.5vw; height: 1.5vw; min-width: 1.5vw; padding-left: 0.5vw; position: relative; cursor: pointer;"
-                                                                            v-if="+banHistory.reason === +3">
+                                                                            v-if="+banHistory.reason === +3 || +banHistory.reason === +4">
                                                                             <div :id="'apBanReason' + index"
                                                                                 class="flyTitle">
                                                                                 {{banHistory.customReason}}</div>
@@ -1942,7 +1942,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="nickzapros reportZapros typeLP"
-                                                                        style="width: 10.16vw;">
+                                                                        style="width: 4.62vw;">
                                                                         {{banHistory.adminName}}
                                                                     </div>
                                                                     <div class="nickzapros reportZapros typeLP"
@@ -1951,7 +1951,7 @@
                                                                     </div>
                                                                     <div class="nickzapros reportZapros typeLP"
                                                                         @mouseleave="fDisplayCustomReason('apBanUnban' + index, false)"
-                                                                        style="width: 10.16vw; display: flex; justify-content: center; opacity: 1; position: relative;">
+                                                                        style="width: 13.7vw; display: flex; justify-content: center; opacity: 1; position: relative;">
                                                                         <section
                                                                             @mouseover="fDisplayCustomReason('apBanUnban' + index, true)"
                                                                             style="cursor: pointer;"
@@ -1971,7 +1971,12 @@
                                                                             <!-- {{banHistory.unban.adminName}} {{fDateToText(banHistory.unban.date)}} {{banHistory.unban.reason}} -->
                                                                         </section>
                                                                         <section style="opacity: 0.6" v-else>
-                                                                            {{getLeftTime(banHistory.timeEnd, banHistory.timeEnded)}}
+                                                                            <section v-if="banHistory.timeEnded === null">
+                                                                                {{banHistory.hiddenText}}
+                                                                            </section>
+                                                                            <section v-else>
+                                                                                {{getLeftTime(banHistory.timeEnd, banHistory.timeEnded)}}
+                                                                            </section>
                                                                         </section>
                                                                     </div>
                                                                     <div class="nickzapros reportZapros"
