@@ -2333,6 +2333,7 @@ let menu = new Vue({
                 // idName = 'apBanReason' + index
                 // console.log(`${JSON.stringify(el)}; index: ${index}; idName: ${idName}; el.customReason: ${el.customReason}`)
                 el.timeEnded = dateNow > el.timeEnd
+                el.type = 0 // ban
                 // if (document.getElementById(idName)) document.getElementById(idName).setAttribute('data-title', el.customReason);
             }
 
@@ -2342,6 +2343,7 @@ let menu = new Vue({
                 delete el.time
                 el.timeEnded = null
                 el.customReason = 'GRAC'
+                el.type = 1 // kick
                 // if (document.getElementById(idName)) document.getElementById(idName).setAttribute('data-title', el.customReason);
             }
 
