@@ -2349,7 +2349,13 @@ let menu = new Vue({
 
             console.log(`openSentencesPlayer: ${JSON.stringify(kickHistory)}`)
 
-            menu.adminAny3 = banHistory.concat(kickHistory).sort((a, b) => a.timeEnd - +b.timeEnd)
+            let timeA, timeB;
+            menu.adminAny3 = banHistory.concat(kickHistory).sort((a, b) => {
+                timeA = a.unban ? a.unban.date : Date.now() - a.timeEnd
+                timeB = b.unban ? b.unban.date : Date.now() - b.timeEnd
+
+                return +timeA - +timeB
+            })
         },
 
         checkToSendSentences()
@@ -2821,7 +2827,7 @@ if ('alt' in window) {
         },
     ], 
     [{
-        "time": 16463062253725,
+        "time": Date.now() + +3600,
         "adminName": 'Xuyan',
         "reason": '4',
         "customReason": '',
