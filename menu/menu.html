@@ -2178,11 +2178,11 @@
                                 </section>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: center; width: 100vw;" v-show="adminAny === 0">
+                        <div style="position: absolute; bottom: 1vh; width: 100vw; display: flex; justify-content: center;" v-show="adminAny === 0">
                             <!-- <button class="exitToMenu adminButton" id="adminButton" v-on:click="fGetReport('-10');">
                                 <img alt="" src="./img/arrowLeftRed.png">
                             </button> -->
-                            <button class="exitToMenu adminButton" id="adminButton"
+                            <button class="exitToMenu adminButton" id="adminButton" style="margin: 0;"
                                 v-on:click="adminAny = 0; switchPage(7, 1)">
                                 ОБНОВИТЬ
                             </button>
