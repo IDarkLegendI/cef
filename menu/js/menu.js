@@ -1752,6 +1752,13 @@ let menu = new Vue({
             }, 0))
         },
 
+        isNewCarColor()
+        {
+            return (menu.oldColor[0] !== this.cars[this.carsPointer].color.r ||
+            menu.oldColor[1] !== this.cars[this.carsPointer].color.g ||
+            menu.oldColor[2] !== this.cars[this.carsPointer].color.b)
+        },
+
         setPreviewCar(pointer = null, onlyColoring = false) {
             if (pointer === null) {
                 pointer = this.cars.findIndex(el => el.price === -1)
@@ -1769,9 +1776,7 @@ let menu = new Vue({
                     this.cars[this.carsPointer].model
                 ];
                 this.updateTuning = false;
-            } else if (menu.oldColor[0] !== this.cars[this.carsPointer].color.r ||
-                menu.oldColor[1] !== this.cars[this.carsPointer].color.g ||
-                menu.oldColor[2] !== this.cars[this.carsPointer].color.b) {
+            } else if (this.isNewCarColor()) {
                 this.updateTuning = true;
                 let el = document.getElementById('changeColorCar');
                 if (el) {
@@ -1939,6 +1944,11 @@ let menu = new Vue({
                 //     color: null 
                 // }, 48, this.anyVarSecond[valueTrue]);
             }
+        },
+        getOldCarColor()
+        {
+            console.log(`getOldCarColor: ${JSON.stringify(`${this.oldColor}`)}; cars[carsPointer].color: ${JSON.stringify(this.cars[this.carsPointer].color)}`)
+            return {r: this.oldColor[0], g: this.oldColor[1], b: this.oldColor[2]}
         },
         fApplyTuning(car) {
             //console.log(`fApplyTuning: ${JSON.stringify(car)}`)
